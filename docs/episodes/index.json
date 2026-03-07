@@ -4,7 +4,7 @@
     "title": "Paper Morning 2026-03-07",
     "description": "今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...",
     "audio_file": "2026-03-07.mp3",
-    "script": "各位早上好，周六的Paper Morning又和大家见面了。今天想先和大家聊一个问题：我们在AI for Science领域经常讨论foundation model、scaling law、预训练范式这些概念，但这些方法论层面的突破，其实在整个AI研究圈子里都在发酵。今天这几篇论文虽然没有直接做PDE求解或者neural operator，但它们各自在不同的旁边面上探索了一些根本性的问题，我觉得挺值得咱们关注意见。\n\n先看MOOSE-Star这篇，它提出了一个挺有意思的问题：现在的LLM做科学发现，大多是让模型做推理或者根据反馈来调整，但有没有可能直接建模科学发现的生成过程P(hypothesis|background)？这个思路其实很本质，等于是在问我们能不能让模型像科学家一样“产生”假设。问题在于直接训练这个目标会碰到组合爆炸的麻烦——从庞大的知识库里检索和组合灵感，复杂度是指数级的。MOOSE-Star的解决办法是把这个问题分解成子任务来训练，同时用动机引导的层级推理来把复杂度从指数降到对数。这个工作让我想到咱们做PDE求解的时候，也是把一个连续问题离散化，分而治之。也许这种“分...",
+    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想先从一篇挺有意思的视频生成工作聊起。Helios这个名字取得很浪漫，它是希腊神话里的太阳神。这篇论文确实带来了一些让人眼前一亮的东西：这是一个140亿参数的视频生成模型，能够在单张H100 GPU上跑到19.5FPS，同时支持分钟级的长视频生成。注意啊，这里有个细节很关键——他们做到了real-time generation，但没有用KV-cache、稀疏注意力或者模型量化这些常规的加速手段。这意味着他们从模型架构和训练本身就解决了效率问题，而不是靠 tricks 往上堆。对于我们做科学计算的人来说，这其实提供了一个很值得思考的参照：当你想要把一个很重的模型真真正正落地的时候，架构层面的创新往往比后面的优化技巧更有决定性。\n\n然后我想把话题引到SkillNet这个工作上。现在AI agent火得不行，大家都在讨论agent怎么调用工具、怎么完成复杂任务。但有一个根本性的问题很少被正面回应：agent学到的技能怎么积累、怎么复用？这篇论文提出的SkillNet很有意思，它试图给AI技能建立一个“基础设施”，不只是让agent...",
     "papers": [
       {
         "title": "Helios: Real Real-Time Long Video Generation Model",
@@ -32,6 +32,6 @@
         "arxiv_id": "2603.02604"
       }
     ],
-    "published_at": "2026-03-07T14:12:43.259090Z"
+    "published_at": "2026-03-07T22:50:57.744134Z"
   }
 ]
