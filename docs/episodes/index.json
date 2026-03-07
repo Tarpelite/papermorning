@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2026-03-07",
+    "title": "Paper Morning 2026-03-07",
+    "description": "今日学术播报: MOOSE-Star: Unlocking Tractabl, T2S-Bench & Structure-of-Thoug, Heterogeneous Agent Collaborat...",
+    "audio_file": "2026-03-07.mp3",
+    "script": "各位听众早上好，这里是Paper Morning学术晨间播报，今天是2026年03月07日。我是主播知新。今天，我们将为您带来五篇新鲜出炉的学术论文，它们分别从科学发现的训练范式、大模型的结构化推理、异构智能体协作、实时长视频生成到AI技能的体系化构建，为我们描绘了人工智能前沿的多样图景。对于专注于AI for Science，特别是PDE求解与神经算子的您来说，今天的播报或许能带来一些跨领域的启发。\n\n首先来看第一篇论文，标题是《MOOSE-Star：通过打破复杂性壁垒开启科学发现的可行训练》，英文原名是MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier。这篇论文的核心贡献在于，它首次系统性地论证了直接训练大语言模型进行科学假设生成所面临的数学不可行性，并提出了一种创新的训练框架来攻克这一难题。为什么说这项工作重要呢？我们知道，当前大模型在科学发现中的应用，大多停留在利用预训练模型进行推理或通过反馈微调的阶段。而真正模拟人类“基于背景知...",
+    "papers": [
+      {
+        "title": "MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier",
+        "url": "https://arxiv.org/abs/2603.03756",
+        "arxiv_id": "2603.03756"
+      },
+      {
+        "title": "T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning",
+        "url": "https://arxiv.org/abs/2603.03790",
+        "arxiv_id": "2603.03790"
+      },
+      {
+        "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2603.02604",
+        "arxiv_id": "2603.02604"
+      },
+      {
+        "title": "Helios: Real Real-Time Long Video Generation Model",
+        "url": "https://arxiv.org/abs/2603.04379",
+        "arxiv_id": "2603.04379"
+      },
+      {
+        "title": "SkillNet: Create, Evaluate, and Connect AI Skills",
+        "url": "https://arxiv.org/abs/2603.04448",
+        "arxiv_id": "2603.04448"
+      }
+    ],
+    "published_at": "2026-03-07T09:11:41.570678Z"
+  }
+]

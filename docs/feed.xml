@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:ns0="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Paper Morning - 学术晨间播报</title>
+    <description>每天早上用5分钟, 听AI为你播报最值得关注的学术动态</description>
+    <language>zh-cn</language>
+    <link>https://tarpelite.github.io/papermorning</link>
+    <ns0:author>Paper Morning</ns0:author>
+    <ns0:summary>每天早上用5分钟, 听AI为你播报最值得关注的学术动态</ns0:summary>
+    <ns0:image href="https://your-domain.com/cover.jpg" />
+    <ns0:category text="Science" />
+    <item>
+      <title>Paper Morning 2026-03-07</title>
+      <description>今日学术播报: MOOSE-Star: Unlocking Tractabl, T2S-Bench &amp; Structure-of-Thoug, Heterogeneous Agent Collaborat...</description>
+      <enclosure url="https://tarpelite.github.io/papermorning/episodes/2026-03-07.mp3" length="4205232" type="audio/mpeg" />
+      <guid>https://tarpelite.github.io/papermorning/episodes/2026-03-07.mp3</guid>
+      <pubDate>2026-03-07T09:11:41.570678Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+  </channel>
+</rss>

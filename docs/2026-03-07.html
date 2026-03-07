@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-03-07</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-03-07</h1>
+    <p class="date">2026-03-07</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-03-07.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位听众早上好，这里是Paper Morning学术晨间播报，今天是2026年03月07日。我是主播知新。今天，我们将为您带来五篇新鲜出炉的学术论文，它们分别从科学发现的训练范式、大模型的结构化推理、异构智能体协作、实时长视频生成到AI技能的体系化构建，为我们描绘了人工智能前沿的多样图景。对于专注于AI for Science，特别是PDE求解与神经算子的您来说，今天的播报或许能带来一些跨领域的启发。
+
+首先来看第一篇论文，标题是《MOOSE-Star：通过打破复杂性壁垒开启科学发现的可行训练》，英文原名是MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier。这篇论文的核心贡献在于，它首次系统性地论证了直接训练大语言模型进行科学假设生成所面临的数学不可行性，并提出了一种创新的训练框架来攻克这一难题。为什么说这项工作重要呢？我们知道，当前大模型在科学发现中的应用，大多停留在利用预训练模型进行推理或通过反馈微调的阶段。而真正模拟人类“基于背景知识生成新假设”这一创造性过程，即直接建模概率P(h|b)，被认为是一个圣杯。但作者指出，从海量知识库中检索并组合灵感点，其组合复杂度高达O(N^k)，这使得直接训练在数学上几乎不可行。MOOSE-Star的突破就在于，它巧妙地绕开了这一组合爆炸的壁垒。其关键技术亮点是引入了一种“灵感锚点”机制和分阶段训练策略。它不要求模型一次性从整个知识海洋中组合信息，而是引导模型先定位关键的知识锚点，再围绕锚点进行可控的扩展与合成。这为构建真正具有内生科学发现能力的模型，提供了一条全新的、可实践的路径。这不禁让我们联想到神经算子领域早期面临的挑战：如何从高维、复杂的函数空间中学习到通用的映射规则。MOOSE-Star在科学发现这一更高层次的“算子学习”上，提供了解决复杂性问题的全新思路。
+
+接下来是第二篇论文，《T2S-Bench与思维结构：全面评测并提示文本到结构的推理》，英文原名T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning。这篇论文的核心贡献是提出了一个专注于“文本到结构”推理的新评测基准，以及一种名为“思维结构”的提示技术，能显著提升大模型处理复杂文本任务的性能。它的重要性在于，它抓住了人类理解复杂文本的核心——构建内在的信息结构。无论是阅读学术文献、分析法律条款还是理解长篇叙述，我们都会下意识地提炼关键点、梳理逻辑关系、形成结构图。这篇论文正是将这种认知过程显式化，并教给大模型。其关键技术亮点，即“思维结构”提示法，它明确要求模型在给出最终答案前，先输出一个结构化的中间表示，比如概念图、关系列表或层次大纲。这个简单的步骤，就像是为模型的思考过程提供了一个“脚手架”。实验表明，该方法在包括摘要、问答、关系提取等八项任务上，都能带来一致且显著的性能提升。这对于我们科学计算领域的研究者也有借鉴意义。当我们训练模型去理解复杂的物理方程、论文或仿真数据时，是否也可以引导模型先构建一个关于方程变量、边界条件、物理约束之间关系的“思维结构”呢？这或许能提升神经算子在处理复杂PDE系统时的可解释性和泛化能力。
+
+现在关注第三篇论文，《异构智能体协作强化学习》，英文原名Heterogeneous Agent Collaborative Reinforcement Learning。这项研究的核心贡献是提出了一种全新的强化学习范式，让异构的智能体能够在训练阶段通过共享经验进行协作优化，而在执行阶段保持独立运行。这解决了传统方法的一个关键痛点。在现实世界的科学计算或控制问题中，我们常常需要部署多个功能、形态各异的智能体或求解器。传统的多智能体强化学习通常要求它们在执行时也必须紧密协调，这带来了巨大的部署复杂度。而HACRL框架的创新之处在于，它实现了“训练时协作，执行时独立”。其关键技术亮点是设计了一个“经验验证与共享”机制。不同智能体将自己探索到的、经过验证的有效轨迹片段存入一个共享池，其他智能体可以从中学习，但各自仍基于自身策略进行决策。这就像是一群各有所长的科学家，定期交流实验心得和成功案例，但回到自己的实验室后，仍用自己最擅长的方法独立工作。这种范式对于构建未来科学发现的AI生态系统极具启发。想象一下，一个专精于流体方程求解的神经算子，和一个擅长优化参数的智能体，它们可以通过HACRL框架在训练中相互促进，最终各自独立、却又更高效地解决复杂的多物理场耦合问题。
+
+然后是第四篇论文，《Helios：真正的实时长视频生成模型》，英文原名Helios: Real Real-Time Long Video Generation Model。这篇论文的核心贡献是推出了首个能在单张H100 GPU上以19.5帧每秒的速度生成分钟级长度、且质量过硬的大规模视频生成模型。它的重要性在于，将高质量长视频生成从“可看”推向了“可用”的实时领域。以往的长视频生成，要么面临内容漂移、画面崩坏的问题，需要复杂的后处理技巧来修正；要么为了保真度而牺牲速度，完全无法实时。Helios的突破是三维度的：在质量上，它无需依赖常见的防漂移启发式方法，如自我强制或关键帧采样，就能保持长序列的稳定性；在速度上，它不借助KV缓存、稀疏注意力等标准加速技术，就实现了真正的实时生成；在规模上，它以140亿的参数体量，达成了这一目标。其关键技术亮点在于一种全新的时空联合建模架构和动态分辨率分配机制。模型能够智能地判断视频片段在时间和空间维度上的信息密度，并动态分配计算资源，从而在保证关键帧清晰、动作连贯的同时，大幅提升效率。虽然这属于视觉生成领域，但其“长序列建模”和“高效计算分配”的核心思想，与我们用神经算子求解时空演化的PDE问题异曲同工。如何让模型在长时间、大尺度的物理仿真中保持稳定和高效，Helios在视频领域的实践或许能提供跨模态的灵感。
+
+最后，我们来看第五篇论文，《SkillNet：创建、评估与连接AI技能》，英文原名SkillNet: Create, Evaluate, and Connect AI Skills。这项工作的核心贡献是提出了一个开放的基础设施，旨在规模化地创建、评估和组织AI技能，以解决当前AI智能体技能无法系统化积累和迁移的瓶颈。它的重要性在于直指了AI智能体发展的一个根本性障碍——“重复造轮子”。现有的智能体虽然能调用工具执行复杂任务，但它们的经验与技能往往是孤立的、一次性的，无法像人类文明那样通过知识库和技能树代代累积。SkillNet的愿景就是为AI技能构建一个统一的“技能互联网”。其关键技术亮点包括一个标准化的技能描述语言、一个基于图结构的技能关系网络，以及一个自动化的技能评估与组合平台。在这个网络中，一个“求解泊松方程”的技能、一个“调整网格分辨率”的技能、一个“可视化流场”的技能可以被清晰地定义、评估，并像乐高积木一样连接起来，组合成更复杂的“计算流体力学仿真”工作流。这对于AI for Science的研究者来说，无疑是一个激动人心的蓝图。它意味着，未来我们或许可以不再是从零开始训练一个庞大的、黑箱的科学发现模型，而是从一个丰富的、可互操作的技能库中，灵活组合出针对特定科学问题的专用求解智能体，实现科学计算能力的模块化、可解释化和持续进化。
+
+总结今天的学术晨报，我们看到了一个鲜明的趋势：人工智能研究正在从追求单一模型的性能巅峰，转向构建更智能、更协作、更可积累的生态系统。从MOOSE-Star对科学发现本质的数学探索，到SkillNet对技能生态的系统构建；从思维结构提示对模型推理过程的显式引导，到异构智能体在训练与执行上的解耦协作，再到Helios对长序列生成在质量与效率上的双重突破。这些工作共同指向了一个未来：AI将不再是孤立的任务执行者，而是具备结构化思维、能协作共享、技能可传承的复杂认知系统。这对于我们AI for Science领域而言，启示或许在于，下一代科学智能体，不仅需要像神经算子那样精通于学习物理世界的底层映射规律，也需要具备MOOSE-Star的假设生成能力、SoT的结构化思维、HACRL的协作精神，并最终将其所有能力以SkillNet的方式沉淀和连接起来，形成不断进化的科学发现引擎。
+
+今天的Paper Morning学术晨间播报到此结束。感谢您的收听，我们下期再会。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.03756" target="_blank">MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier</a></li>
+<li><a href="https://arxiv.org/abs/2603.03790" target="_blank">T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2603.02604" target="_blank">Heterogeneous Agent Collaborative Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2603.04379" target="_blank">Helios: Real Real-Time Long Video Generation Model</a></li>
+<li><a href="https://arxiv.org/abs/2603.04448" target="_blank">SkillNet: Create, Evaluate, and Connect AI Skills</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
