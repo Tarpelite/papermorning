@@ -40,13 +40,13 @@ content:
 
 # --- LLM配置 ---
 llm:
-  provider: "deepseek"        # 切换到 Claude
+  provider: "minimax"        # 切换到 Claude
   deepseek:
     base_url: "https://api.deepseek.com/v1"
     model: "deepseek-chat"
   minimax:
     base_url: "https://api.minimax.chat/v1"
-    model: "MiniMax-Text-01"
+    model: "MiniMax-M2.5"
   claude:
     base_url: "https://api.anthropic.com/v1"
     model: "claude-sonnet-4-20250514"
