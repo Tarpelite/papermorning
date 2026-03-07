@@ -1,22 +1,22 @@
 # ============================================
 # Paper Morning - 每日自动播报
 # ============================================
-# 
-# 需要在 GitHub repo Settings > Secrets 中配置:
-#   - DEEPSEEK_API_KEY   (如果用 DeepSeek)
-#   - MINIMAX_API_KEY    (如果用 MiniMax)
-#   - ANTHROPIC_API_KEY  (如果用 Claude)
+#
+# Secrets 配置:
+#   - ANTHROPIC_API_KEY  (推荐, Claude生成质量最好)
+#   - DEEPSEEK_API_KEY   (备选)
+#   - MINIMAX_API_KEY    (备选)
 
 name: Daily Paper Morning
 
 on:
   schedule:
-    # UTC 22:30 = 北京时间 06:30, 确保7点起床时音频已生成
+    # UTC 22:30 = 北京时间 06:30
     - cron: '30 22 * * *'
-  workflow_dispatch:  # 支持手动触发 (调试用)
+  workflow_dispatch:
 
 permissions:
-  contents: write    # 需要 push 生成的文件回 repo
+  contents: write
 
 jobs:
   generate:
@@ -35,7 +35,10 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
       - name: Run Paper Morning
@@ -45,7 +48,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python src/main.py
 
-      - name: Commit and push generated files
+      - name: Commit and push
         run: |
           git config user.name "paper-morning-bot"
           git config user.email "bot@paper-morning"
