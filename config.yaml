@@ -40,7 +40,7 @@ content:
 
 # --- LLM配置 ---
 llm:
-  provider: "claude"        # 切换到 Claude
+  provider: "deepseek"        # 切换到 Claude
   deepseek:
     base_url: "https://api.deepseek.com/v1"
     model: "deepseek-chat"
