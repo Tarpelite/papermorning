@@ -1,7 +1,7 @@
 """
 synthesizer.py - 语音合成模块
 使用 edge-tts 将播报稿转换为 MP3 音频
-分段合成以避免长文本导致 NoAudioReceived 错误
+支持背景音乐混合（开头/结尾渐入渐出 + 正文低音量垫底）
 """
 
 import asyncio
@@ -10,16 +10,14 @@ import re
 import tempfile
 import edge_tts
 
-# edge-tts 单次合成的安全文本长度上限 (字符数)
 MAX_CHUNK_CHARS = 500
 
-# 已验证可用的中文女声 (按知性成熟程度排序, 作为 fallback 链)
 FALLBACK_VOICES = [
-    "zh-CN-XiaoxiaoNeural",     # 通用女声, 最稳定
-    "zh-CN-XiaoyiNeural",       # 温暖女声
-    "zh-CN-XiaohanNeural",      # 情感丰富女声
-    "zh-CN-XiaomengNeural",     # 甜美女声
-    "zh-CN-YunyangNeural",      # 新闻男声 (最后兜底)
+    "zh-CN-XiaoxiaoNeural",
+    "zh-CN-XiaoyiNeural",
+    "zh-CN-XiaohanNeural",
+    "zh-CN-XiaomengNeural",
+    "zh-CN-YunyangNeural",
 ]
 
 
@@ -28,7 +26,6 @@ async def _find_valid_voice(preferred: str) -> str:
     voices = await edge_tts.list_voices()
     available = {v["ShortName"] for v in voices}
 
-    # 打印可用的中文语音供调试
     zh_voices = sorted(v["ShortName"] for v in voices if v["ShortName"].startswith("zh-CN"))
     print(f"[synthesizer] Available zh-CN voices: {zh_voices}")
 
@@ -46,11 +43,7 @@ async def _find_valid_voice(preferred: str) -> str:
 
 
 def _split_text(text: str) -> list[str]:
-    """
-    将长文本按句子/段落切分为合适长度的 chunk。
-    优先按段落分，段落内再按句号/问号/感叹号分句，
-    确保每个 chunk 不超过 MAX_CHUNK_CHARS。
-    """
+    """将长文本按句子切分为合适长度的 chunk"""
     paragraphs = [p.strip() for p in text.split("\n") if p.strip()]
 
     chunks = []
@@ -94,11 +87,9 @@ async def _synthesize_chunk(text: str, output_path: str, voice: str, config: dic
     await communicate.save(output_path)
 
 
-async def _synthesize_all(text: str, output_path: str, config: dict):
-    """分段合成并拼接 MP3"""
+async def _synthesize_voice(text: str, output_path: str, config: dict):
+    """分段合成语音部分"""
     tts_config = config["tts"]
-
-    # 先验证语音可用性
     voice = await _find_valid_voice(tts_config["voice"])
 
     chunks = _split_text(text)
@@ -109,14 +100,11 @@ async def _synthesize_all(text: str, output_path: str, config: dict):
         for i, chunk in enumerate(chunks):
             chunk_path = os.path.join(tmpdir, f"chunk_{i:03d}.mp3")
             max_retries = 3
-            success = False
-
             for attempt in range(max_retries):
                 try:
                     await _synthesize_chunk(chunk, chunk_path, voice, config)
                     chunk_files.append(chunk_path)
                     print(f"  [synthesizer] Chunk {i+1}/{len(chunks)}: {len(chunk)} chars -> OK")
-                    success = True
                     break
                 except Exception as e:
                     if attempt < max_retries - 1:
@@ -124,33 +112,117 @@ async def _synthesize_all(text: str, output_path: str, config: dict):
                         print(f"  [synthesizer] Chunk {i+1} attempt {attempt+1} failed, retry in {wait}s...")
                         await asyncio.sleep(wait)
                     else:
-                        print(f"  [synthesizer] Chunk {i+1}/{len(chunks)}: FAILED after {max_retries} attempts ({e})")
-                        print(f"  [synthesizer] Failed text preview: {chunk[:100]}...")
+                        print(f"  [synthesizer] Chunk {i+1}/{len(chunks)}: FAILED ({e})")
 
         if not chunk_files:
             raise RuntimeError("All chunks failed to synthesize")
 
         print(f"[synthesizer] Successfully synthesized {len(chunk_files)}/{len(chunks)} chunks")
 
-        # MP3 是基于帧的格式，可以直接拼接二进制数据
         with open(output_path, "wb") as outfile:
             for cf in chunk_files:
                 with open(cf, "rb") as infile:
                     outfile.write(infile.read())
 
 
+def _mix_bgm(voice_path: str, output_path: str, config: dict):
+    """
+    将语音和背景音乐混合:
+    - 开头: 2秒纯BGM引入, 然后BGM渐弱
+    - 正文: BGM以低音量垫底
+    - 结尾: BGM渐强, 2秒纯BGM收尾
+    """
+    from pydub import AudioSegment
+
+    bgm_config = config.get("bgm", {})
+    bgm_path = bgm_config.get("file")
+
+    if not bgm_path or not os.path.exists(bgm_path):
+        print(f"[synthesizer] No BGM file found at '{bgm_path}', skipping mix")
+        # 无BGM时直接复制
+        if voice_path != output_path:
+            import shutil
+            shutil.copy2(voice_path, output_path)
+        return
+
+    print(f"[synthesizer] Mixing BGM: {bgm_path}")
+
+    voice = AudioSegment.from_mp3(voice_path)
+    bgm = AudioSegment.from_mp3(bgm_path)
+
+    # BGM参数
+    intro_ms = bgm_config.get("intro_duration_ms", 2500)    # 纯BGM引入时长
+    outro_ms = bgm_config.get("outro_duration_ms", 3000)    # 纯BGM收尾时长
+    fade_ms = bgm_config.get("fade_duration_ms", 1500)      # 渐变时长
+    bgm_volume_db = bgm_config.get("body_volume_db", -22)   # 正文期间BGM相对音量
+
+    # 确保BGM足够长 (循环)
+    total_needed = len(voice) + intro_ms + outro_ms + 2000  # 多留2秒余量
+    while len(bgm) < total_needed:
+        bgm = bgm + bgm
+
+    # 构建BGM轨道:
+    # [intro: 原音量] [fade_down] [body: 低音量] [fade_up] [outro: 原音量]
+    bgm_intro = bgm[:intro_ms]                              # 引入段, 原音量
+    bgm_body = bgm[intro_ms:intro_ms + len(voice)]          # 正文段
+    bgm_body = bgm_body + bgm_volume_db                     # 降低音量
+    bgm_outro = bgm[intro_ms + len(voice):intro_ms + len(voice) + outro_ms]  # 收尾段
+
+    # 对正文段做首尾渐变, 使过渡平滑
+    bgm_body = bgm_body.fade_in(fade_ms).fade_out(fade_ms)
+
+    # 构建语音轨道: 前面加静音对齐intro
+    silence_intro = AudioSegment.silent(duration=intro_ms)
+    voice_padded = silence_intro + voice
+
+    # 构建完整BGM轨道
+    bgm_full = bgm_intro + bgm_body + bgm_outro
+    bgm_full = bgm_full.fade_out(fade_ms)  # 最后整体淡出
+
+    # 对齐长度 (取较长的)
+    if len(bgm_full) > len(voice_padded):
+        voice_padded = voice_padded + AudioSegment.silent(duration=len(bgm_full) - len(voice_padded))
+    elif len(voice_padded) > len(bgm_full):
+        bgm_full = bgm_full + AudioSegment.silent(duration=len(voice_padded) - len(bgm_full))
+
+    # 混合
+    mixed = voice_padded.overlay(bgm_full)
+
+    # 导出
+    mixed.export(output_path, format="mp3", bitrate="192k")
+    print(f"[synthesizer] Mixed output: {len(mixed)/1000:.1f}s")
+
+
 def synthesize_audio(script: str, output_path: str, config: dict) -> str:
     """
-    将播报稿合成为 MP3 音频
+    将播报稿合成为 MP3 音频 (可选混合BGM)
     """
     tts_config = config["tts"]
     print(f"[synthesizer] Preferred voice: {tts_config['voice']}")
     print(f"[synthesizer] Rate: {tts_config.get('rate', '+0%')}")
     print(f"[synthesizer] Text length: {len(script)} chars")
-    print(f"[synthesizer] Generating audio -> {output_path}")
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    asyncio.run(_synthesize_all(script, output_path, config))
+
+    # 判断是否需要混BGM
+    bgm_config = config.get("bgm", {})
+    has_bgm = bgm_config.get("enabled", False) and bgm_config.get("file")
+
+    if has_bgm:
+        # 先合成纯语音到临时文件, 再混合BGM
+        voice_path = output_path.replace(".mp3", "_voice.mp3")
+        print(f"[synthesizer] Generating voice -> {voice_path}")
+        asyncio.run(_synthesize_voice(script, voice_path, config))
+
+        print(f"[synthesizer] Mixing with BGM -> {output_path}")
+        _mix_bgm(voice_path, output_path, config)
+
+        # 清理临时语音文件
+        if os.path.exists(voice_path):
+            os.remove(voice_path)
+    else:
+        print(f"[synthesizer] Generating audio (no BGM) -> {output_path}")
+        asyncio.run(_synthesize_voice(script, output_path, config))
 
     size_mb = os.path.getsize(output_path) / (1024 * 1024)
     print(f"[synthesizer] Done! File size: {size_mb:.2f} MB")
