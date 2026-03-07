@@ -1,0 +1,84 @@
+# ============================================
+# Paper Morning - 学术晨间播报配置
+# ============================================
+
+# --- 信息源配置 ---
+sources:
+  # HuggingFace Daily Papers (主数据源, 免费无需API key)
+  huggingface:
+    enabled: true
+    api_url: "https://huggingface.co/api/daily_papers"
+    max_papers: 50          # 每次拉取的论文数量上限
+
+  # arXiv API (补充数据源, 按关键词抓取你领域的最新论文)
+  arxiv:
+    enabled: true
+    categories:             # arXiv分类, 用于过滤
+      - "cs.LG"
+      - "cs.AI"
+      - "physics.comp-ph"
+      - "cs.NA"
+    keywords:               # 你的核心关键词, 用于相关性打分
+      - "neural operator"
+      - "PDE"
+      - "foundation model"
+      - "scientific computing"
+      - "physics-informed"
+      - "partial differential equation"
+      - "AI for science"
+      - "operator learning"
+    max_results: 30
+
+# --- 内容生成配置 ---
+content:
+  num_papers: 5             # 每期播报的论文数量
+  language: "zh-CN"         # 播报语言
+  style: "news_anchor"      # 风格: news_anchor | casual | academic
+  duration_minutes: 5       # 目标时长 (分钟), 影响生成文字量
+  # 个性化提示 - 让LLM知道"你是谁", 从而生成更贴合你兴趣的解读
+  host_context: |
+    你的听众是一位AI for Science方向的研究者，
+    专注于PDE求解的基础模型、神经算子、科学计算。
+    在解读论文时，可以适当关联neural operator、
+    physics-informed learning、operator learning等方向的进展。
+
+# --- LLM配置 (三选一, 通过环境变量传入API key) ---
+llm:
+  # 可选: deepseek | minimax | claude
+  provider: "deepseek"
+  # DeepSeek
+  deepseek:
+    base_url: "https://api.deepseek.com/v1"
+    model: "deepseek-chat"
+    # API key 通过环境变量 DEEPSEEK_API_KEY 传入
+  # MiniMax
+  minimax:
+    base_url: "https://api.minimax.chat/v1"
+    model: "MiniMax-Text-01"
+    # API key 通过环境变量 MINIMAX_API_KEY 传入
+  # Claude
+  claude:
+    base_url: "https://api.anthropic.com/v1"
+    model: "claude-sonnet-4-20250514"
+    # API key 通过环境变量 ANTHROPIC_API_KEY 传入
+
+# --- 语音合成配置 ---
+tts:
+  engine: "edge-tts"
+  voice: "zh-CN-XiaoruiNeural"   # 成熟知性女声 (备选: zh-CN-XiaoyiNeural, zh-CN-XiaoxiaoNeural)
+  rate: "-5%"                     # 语速微调, 略慢更有质感
+  volume: "+0%"
+  pitch: "-2Hz"                   # 音调微降, 更沉稳
+
+# --- 发布配置 ---
+publish:
+  # 播客元信息
+  podcast_title: "Paper Morning - 学术晨间播报"
+  podcast_description: "每天早上用5分钟, 听AI为你播报最值得关注的学术动态"
+  podcast_author: "Paper Morning"
+  podcast_language: "zh-cn"
+  podcast_cover: "https://your-domain.com/cover.jpg"  # 播客封面图URL
+  # 站点URL (用于生成RSS feed中的音频链接)
+  site_url: "https://your-username.github.io/paper-morning"
+  # 保留最近多少期
+  max_episodes: 30
