@@ -79,6 +79,6 @@ publish:
   podcast_language: "zh-cn"
   podcast_cover: "https://your-domain.com/cover.jpg"  # 播客封面图URL
   # 站点URL (用于生成RSS feed中的音频链接)
-  site_url: "https://your-username.github.io/paper-morning"
+  site_url: "https://tarpelite.github.io/papermorning"
   # 保留最近多少期
   max_episodes: 30
