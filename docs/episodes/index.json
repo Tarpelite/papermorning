@@ -2,10 +2,20 @@
   {
     "date": "2026-03-07",
     "title": "Paper Morning 2026-03-07",
-    "description": "今日学术播报: MOOSE-Star: Unlocking Tractabl, T2S-Bench & Structure-of-Thoug, Heterogeneous Agent Collaborat...",
+    "description": "今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...",
     "audio_file": "2026-03-07.mp3",
-    "script": "各位听众早上好，这里是Paper Morning学术晨间播报，今天是2026年03月07日。我是主播知新。今天，我们将为您带来五篇新鲜出炉的学术论文，它们分别从科学发现的训练范式、大模型的结构化推理、异构智能体协作、实时长视频生成到AI技能的体系化构建，为我们描绘了人工智能前沿的多样图景。对于专注于AI for Science，特别是PDE求解与神经算子的您来说，今天的播报或许能带来一些跨领域的启发。\n\n首先来看第一篇论文，标题是《MOOSE-Star：通过打破复杂性壁垒开启科学发现的可行训练》，英文原名是MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier。这篇论文的核心贡献在于，它首次系统性地论证了直接训练大语言模型进行科学假设生成所面临的数学不可行性，并提出了一种创新的训练框架来攻克这一难题。为什么说这项工作重要呢？我们知道，当前大模型在科学发现中的应用，大多停留在利用预训练模型进行推理或通过反馈微调的阶段。而真正模拟人类“基于背景知...",
+    "script": "各位早上好，又是一个充满新论文的清晨，Paper Morning准时开播。今天咱们的菜单有点特别，几篇论文看似来自不同领域，但内核却都在探讨同一个核心问题：如何让AI系统更“系统化”，从单点突破走向可持续、可积累的智能进化。这对于我们做AI for Science的人来说，尤其值得品味。\n\n先来看今天热度很高的一篇，来自视频生成领域的“赫利俄斯”。一句话概括，它首次实现了一个140亿参数、能在单张H100上以近20帧实时生成分钟级长视频的自回归扩散模型。但我想聊的不是它的帧率，而是它如何解决了长视频生成的“漂移”难题。你想想，我们训练物理模拟模型，无论是神经算子还是基础模型，最怕什么？就是模拟步数一长，误差累积，结果完全偏离物理规律。视频生成里的“漂移”问题，和我们PDE求解中的长期稳定性问题，在数学本质上何其相似。传统方法靠一些启发式技巧，比如自强制、误差库、关键帧采样来对抗漂移，就像我们过去在求解器中手动添加数值耗散一样。而赫利俄斯声称，它通过一个统一的输入表示和模型架构，就原生地实现了鲁棒性。这给我们一个强烈的暗示：或许在科学计算中，与其在损失函数里绞尽脑汁加入各种物理约束正则项...",
     "papers": [
+      {
+        "title": "Helios: Real Real-Time Long Video Generation Model",
+        "url": "https://arxiv.org/abs/2603.04379",
+        "arxiv_id": "2603.04379"
+      },
+      {
+        "title": "SkillNet: Create, Evaluate, and Connect AI Skills",
+        "url": "https://arxiv.org/abs/2603.04448",
+        "arxiv_id": "2603.04448"
+      },
       {
         "title": "MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier",
         "url": "https://arxiv.org/abs/2603.03756",
@@ -20,18 +30,8 @@
         "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
         "url": "https://arxiv.org/abs/2603.02604",
         "arxiv_id": "2603.02604"
-      },
-      {
-        "title": "Helios: Real Real-Time Long Video Generation Model",
-        "url": "https://arxiv.org/abs/2603.04379",
-        "arxiv_id": "2603.04379"
-      },
-      {
-        "title": "SkillNet: Create, Evaluate, and Connect AI Skills",
-        "url": "https://arxiv.org/abs/2603.04448",
-        "arxiv_id": "2603.04448"
       }
     ],
-    "published_at": "2026-03-07T09:11:41.570678Z"
+    "published_at": "2026-03-07T14:03:15.381970Z"
   }
 ]
