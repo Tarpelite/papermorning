@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-03-08</title>
+      <description>今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-03-08.mp3" length="8167802" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-03-08.mp3</guid>
+      <pubDate>2026-03-08T22:51:16.189956Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-03-07</title>
       <description>今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-03-07.mp3" length="8956491" type="audio/mpeg" />

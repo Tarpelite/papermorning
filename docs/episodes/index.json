@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-03-08",
+    "title": "Paper Morning 2026-03-08",
+    "description": "今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...",
+    "audio_file": "2026-03-08.mp3",
+    "script": "各位早上好，周日的Paper Morning如约而至。\n\n先看第一篇，Helios，一个140亿参数的视频生成模型，能在单张H100 GPU上跑出19.5FPS，同时支持分钟级的长视频生成。这件事为什么有意思呢？大家知道，视频生成模型在过去一年多里经历了爆发式增长，但主流路线几乎都依赖自回归或diffusion的级联结构，长视频 drift问题（就是生成到后面质量崩塌）几乎是行业共识的难题。Helios的突破点在于，它不需要常见的anti-drifting技巧，比如self-forcing或者keyframe采样，而是通过一个统一的输入表示，让模型原生就能处理长序列。这让我想到我们在PDE求解里经常讨论的“长期一致性”问题——如何在保持局部精度的同时维护全局稳定性。视频生成和长时间 PDE 积分在这一点上其实是相通的，只是问题域不同。\n\n第二篇 SkillNet 提出了一个开放的基础设施，用来系统性地创建、评估和组织AI技能。这两年AI agent火起来之后，大家都意识到一个问题：智能体每次遇到新任务都是从零学起，缺乏像人类一样的技能积累和迁移机制。SkillNet的思路是建立一个统一...",
+    "papers": [
+      {
+        "title": "Helios: Real Real-Time Long Video Generation Model",
+        "url": "https://arxiv.org/abs/2603.04379",
+        "arxiv_id": "2603.04379"
+      },
+      {
+        "title": "SkillNet: Create, Evaluate, and Connect AI Skills",
+        "url": "https://arxiv.org/abs/2603.04448",
+        "arxiv_id": "2603.04448"
+      },
+      {
+        "title": "MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier",
+        "url": "https://arxiv.org/abs/2603.03756",
+        "arxiv_id": "2603.03756"
+      },
+      {
+        "title": "T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning",
+        "url": "https://arxiv.org/abs/2603.03790",
+        "arxiv_id": "2603.03790"
+      },
+      {
+        "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2603.02604",
+        "arxiv_id": "2603.02604"
+      }
+    ],
+    "published_at": "2026-03-08T22:51:16.189956Z"
+  },
+  {
     "date": "2026-03-07",
     "title": "Paper Morning 2026-03-07",
     "description": "今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...",

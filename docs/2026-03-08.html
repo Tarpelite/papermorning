@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-03-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-03-08</h1>
+    <p class="date">2026-03-08</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-03-08.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周日的Paper Morning如约而至。
+
+先看第一篇，Helios，一个140亿参数的视频生成模型，能在单张H100 GPU上跑出19.5FPS，同时支持分钟级的长视频生成。这件事为什么有意思呢？大家知道，视频生成模型在过去一年多里经历了爆发式增长，但主流路线几乎都依赖自回归或diffusion的级联结构，长视频 drift问题（就是生成到后面质量崩塌）几乎是行业共识的难题。Helios的突破点在于，它不需要常见的anti-drifting技巧，比如self-forcing或者keyframe采样，而是通过一个统一的输入表示，让模型原生就能处理长序列。这让我想到我们在PDE求解里经常讨论的“长期一致性”问题——如何在保持局部精度的同时维护全局稳定性。视频生成和长时间 PDE 积分在这一点上其实是相通的，只是问题域不同。
+
+第二篇 SkillNet 提出了一个开放的基础设施，用来系统性地创建、评估和组织AI技能。这两年AI agent火起来之后，大家都意识到一个问题：智能体每次遇到新任务都是从零学起，缺乏像人类一样的技能积累和迁移机制。SkillNet的思路是建立一个统一本体论，把技能抽象成可复用的单元，并且从安全性、完整性、可执行性、可维护性和成本意识五个维度来评估。这让我想到 reinforcement learning 里一直想解决的 multi-task learning 问题——如何让不同任务之间共享知识但又不互相干扰。SkillNet提供了一个基础设施层面的解法，值得关注它后续能否真正形成一个可用的技能市场。
+
+第三篇 MOOSE-Star 试图解决一个很根本的问题：如何用大语言模型直接建模科学发现的推理过程 P（假设｜背景知识）。作者指出直接训练这个概率模型在数学上是 intractable 的，因为要从庞大的知识库里检索和组合灵感，涉及组合复杂度 O（N^k）。他们的方案是把问题分解，训练子任务，然后引入动机引导的分层推理。这个工作的意义不在于它在某个具体科学任务上取得了多高的指标，而在于它尝试把 LLM 的“猜测”能力变得更可控、更可解释。这和我们做 neural operator 时追求的可解释性其实是一个思路——不是只给一个黑箱输出，而是要让模型能说出“我为什么这么预测”。
+
+第四篇论文 T2S-Bench 和 Structure-of-Thought 很有意思。研究者发现人在读复杂文本的时候会做标记、推关系、建结构，于是他们问：语言模型能不能从文本结构化中受益？他们提出的 SoT 方法显式引导模型构建中间文本结构，在八个任务上都取得了一致的提升。这让我想起物理里经常说的“构型空间”概念——把问题从原始表示映射到一个更有结构的表示，往往能打开新的解法。T2S-Bench 覆盖了六个科学领域的数据，这说明在科学文本处理上，结构化可能尤其重要，因为科学写作本身就高度结构化——假设、实验、结论、引用，关系明确。
+
+第五篇 Heterogeneous Agent Collaborative Reinforcement Learning 是一个强化学习新范式。传统 RL 里智能体要么自己学自己的，要么靠一个老师来教学生。HACRL 允许异构智能体在训练时共享已经验证过的 rollout 数据，但推理时各跑各的。这就像一个研究团队，大家各自做实验，成功的经验分享出来，失败的教训也分享出来，但每个人还是独立做自己的课题。这种“双向互学习”模式在科学发现中其实很常见——不同实验室、不同课题组，通过论文和会议交流最新发现，但各自的具体研究方向可以完全不同。
+
+今天的五篇论文，表面上涉及视频生成、技能基础设施、科学推理、语言模型的结构化能力、强化学习，乍看之下和我们关注的 neural operator、PDE foundation model 距离不近。但如果往深里想，它们都在回答一个共同的问题：如何在复杂系统中建立长期一致性、如何让知识跨任务跨模态复用、如何把推理过程变得可控可解释。这些正是 AI for Science 未来的核心挑战——不只在 PDE 上跑出更好的精度，而是在整个科学发现的链条上，建立起更鲁棒、更可解释、更能持续学习的模型体系。好，祝大家周末愉快，科研顺利。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.04379" target="_blank">Helios: Real Real-Time Long Video Generation Model</a></li>
+<li><a href="https://arxiv.org/abs/2603.04448" target="_blank">SkillNet: Create, Evaluate, and Connect AI Skills</a></li>
+<li><a href="https://arxiv.org/abs/2603.03756" target="_blank">MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier</a></li>
+<li><a href="https://arxiv.org/abs/2603.03790" target="_blank">T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2603.02604" target="_blank">Heterogeneous Agent Collaborative Reinforcement Learning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
