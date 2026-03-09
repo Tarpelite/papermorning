@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-03-09</title>
+      <description>今日学术播报: Operator Learning Using Weak S, BandPO: Bridging Trust Regions, Penguin-VL: Exploring the Effi...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-03-09.mp3" length="8406666" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-03-09.mp3</guid>
+      <pubDate>2026-03-09T22:56:41.187449Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-03-08</title>
       <description>今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-03-08.mp3" length="8167802" type="audio/mpeg" />

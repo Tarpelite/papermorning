@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-03-09</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-03-09</h1>
+    <p class="date">2026-03-09</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-03-09.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想和大家分享几篇近期有意思的论文，涵盖我们关心的神经算子、RL优化、AI agent这些方向，也包括一篇关于VLM效率提升的新工作。
+
+先说第一篇，关于神经算子的弱监督学习。训练神经PDE求解器通常受限于昂贵的数据生成，或者因为高阶导数导致PINN训练不稳定。这篇论文提出了一种很有意思的替代方案：用Monte Carlo方法把PDE的解估计成随机过程，然后用Walk-on-Spheres算法产生弱监督信号来训练神经算子。关键在于，他们把Monte Carlo采样的成本分摊到了PDE实例的分布上，这样就能用很低的代价生成大量带噪声的解估计，用来做训练数据。我觉得这个思路的巧妙之处在于，它不是去硬磕求解器的精度，而是借助随机过程的数学性质，把一个确定性的难题转化成了一个统计估计问题。对我们做科学计算的人来说，这相当于多了一条可以走的路。
+
+说完了PDE求解，我们来看看大语言模型强化学习的新进展。PPO里的clipping机制一直是稳定训练的关键，但这篇论文指出了一个容易被忽视的问题：固定不变的边界会过度压制低概率动作的更新空间，导致高优势的策略被不成比例地抑制，模型的entropy也会快速下降。BandPO这个工作提出了一个叫Band的算子，它把f-divergence定义的信任域投影到动态的、感知概率的区间里。理论分析表明，这样做能够有效解决探索不足的问题。我觉得这个工作的价值在于，它让我们重新思考RL中“约束”这件事——不是越紧越好，而是要随着策略的演化动态调整。
+
+接下来换换口味，聊一篇关于VLM效率的论文。现在视觉语言模型的发展普遍依赖把模型做scale，这对手机、机器人这些算力受限的设备很不友好。这篇Penguin-VL做了一个有趣的尝试：不用CLIP或者SigLIP这种大规模对比学习训练出来的视觉编码器，而是用纯文本的LLM来初始化视觉编码器。作者指出，对比学习优化的目标是判别，这会强制产生粗粒度的类别不变性，反而压制了细粒度的视觉信息，而这些信息恰恰是密集描述和复杂推理所需要的。Penguin-VL在2B和8B规模的模型上做了实验，发现用LLM初始化的方式效果相当可观。这让我觉得，有时候打破一下固有的范式，反而能打开新思路。
+
+说完了VLM，我们来看看AI agent的最新进展。SkillNet这个名字很直白，它想解决的是：现在的AI agent虽然能灵活调用工具完成复杂任务，但缺乏系统性的技能积累和迁移能力。没有统一的机制来沉淀技能，agent们经常在孤立的环境里重复造轮子。SkillNet这个工作提出了一个开放基础设施，可以大规模创建、评估和组织AI技能。它用统一的本体论来结构化技能，支持从不同来源创建技能，建立丰富的关联，还能从安全性、完整性、可执行性、可维护性和成本意识多个维度来评估。这让我想到，其实和我们做科学数据、构建benchmark的思路是一样的——与其让每个模型从头学，不如建立一个可复用的技能库。
+
+最后一篇MOOSE-Star关注的是科学发现这个大问题。大语言模型在科学发现上很有潜力，但现有研究大多集中在推理或者反馈驱动的训练上，直接对生成假设这个过程P(假设|背景)建模的探索很少。这篇论文指出，直接训练这个条件概率在数学上是很困难的，因为需要从庞大的知识库中检索和组合灵感，涉及组合复杂性，复杂度是O(N的k次方)。MOOSE-Star通过在分解的子任务上训练，以及动机引导的分层推理，把复杂度从指数级降到了对数级O(log N)。这为科学发现这个方向打开了一个新的可能性空间。
+
+好，今天的播报就到这里。回顾这几篇论文，我看到一个共同的关键词：“可扩展性”。WoS-NO通过随机过程让神经算子训练更可扩展，BandPO通过动态区间让RL训练更可扩展，SkillNet通过技能基础设施让agent能力更可扩展，MOOSE-Star则是在科学发现的训练上寻找可扩展的路径。而Penguin-VL提醒我们，在追求效率的道路上，改变初始化方式可能比单纯改模型架构更有效。祝大家今天工作顺利。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.01193" target="_blank">Operator Learning Using Weak Supervision from Walk-on-Spheres</a></li>
+<li><a href="https://arxiv.org/abs/2603.04918" target="_blank">BandPO: Bridging Trust Regions and Ratio Clipping via Probability-Aware Bounds for LLM Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2603.06569" target="_blank">Penguin-VL: Exploring the Efficiency Limits of VLM with LLM-based Vision Encoders</a></li>
+<li><a href="https://arxiv.org/abs/2603.04448" target="_blank">SkillNet: Create, Evaluate, and Connect AI Skills</a></li>
+<li><a href="https://arxiv.org/abs/2603.03756" target="_blank">MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
