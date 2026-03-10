@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-03-10",
+    "title": "Paper Morning 2026-03-10",
+    "description": "今日学术播报: LoGeR: Long-Context Geometric , Lost in Stories: Consistency B, Holi-Spatial: Evolving Video S...",
+    "audio_file": "2026-03-10.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想从一个我们领域的基础问题聊起：怎么处理“长”的问题。不管是长视频、长文本，还是大规模数据的长期演化，本质上都在问同一件事——如何在有限的计算资源下，保持信息和推理的一致性。今天的几篇论文，正好从不同角度触及了这个挑战。\n\n先看第一篇，LoGeR，讲的是如何把几何重建模型扩展到分钟级的长视频。我们知道，dense 3D重建在短窗口上已经做得不错了，但一到长序列，attention的二次复杂度就成了瓶颈。LoGeR的思路很有意思，它引入了一个混合内存模块，其中一个是Test-Time Training的参数量内存，用来锚定全局坐标框架，防止尺度漂移；另一个是非参的内存来处理chunk之间的连续性。这其实和我们之前讨论过的operator learning里的长期记忆机制有异曲同工之妙——都是在用learning-based的方式来解决纯统计方法搞不定的跨窗口一致性问题。作者声称不需要后处理优化就能达到分钟级的高保真重建，这一点如果属实，会对机器人视觉或者AR应用有不小的推动。\n\n然后顺着一路往下，Holi-Spatial做的事情...",
+    "papers": [
+      {
+        "title": "LoGeR: Long-Context Geometric Reconstruction with Hybrid Memory",
+        "url": "https://arxiv.org/abs/2603.03269",
+        "arxiv_id": "2603.03269"
+      },
+      {
+        "title": "Lost in Stories: Consistency Bugs in Long Story Generation by LLMs",
+        "url": "https://arxiv.org/abs/2603.05890",
+        "arxiv_id": "2603.05890"
+      },
+      {
+        "title": "Holi-Spatial: Evolving Video Streams into Holistic 3D Spatial Intelligence",
+        "url": "https://arxiv.org/abs/2603.07660",
+        "arxiv_id": "2603.07660"
+      },
+      {
+        "title": "Believe Your Model: Distribution-Guided Confidence Calibration",
+        "url": "https://arxiv.org/abs/2603.03872",
+        "arxiv_id": "2603.03872"
+      },
+      {
+        "title": "How Far Can Unsupervised RLVR Scale LLM Training?",
+        "url": "https://arxiv.org/abs/2603.08660",
+        "arxiv_id": "2603.08660"
+      }
+    ],
+    "published_at": "2026-03-10T22:55:53.400066Z"
+  },
+  {
     "date": "2026-03-09",
     "title": "Paper Morning 2026-03-09",
     "description": "今日学术播报: Operator Learning Using Weak S, BandPO: Bridging Trust Regions, Penguin-VL: Exploring the Effi...",
