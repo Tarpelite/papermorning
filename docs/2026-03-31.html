@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-03-31</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-03-31</h1>
+    <p class="date">2026-03-31</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-03-31.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个我们领域里正在悄悄发生的变化聊起。最近视频生成和世界模型的工作特别活跃，但其实这些进展和我们关心的科学计算之间，存在一些有意思的关联。
+
+先来看第一篇工作，Hybrid Memory for Dynamic Video World Models。这篇文章解决的是一个很直观但很少被正式提出的问题：当前的世界模型在处理动态物体时会“失忆”。当物体移出画面再回来时，模型要么把它冻住，要么让它消失。作者提出混合记忆机制，把静态背景和动态主体分开处理，静态背景用精确归档，动态主体用持续追踪。他们还搞了一个HM-World数据集，有五万九千个高保真片段。这个工作的意义不只是视频生成本身，它其实在问一个很根本的问题：当我们想让AI理解物理世界时，如何让模型保持对物体的持续感知？这和我们做 PDE 求解时遇到的长期依赖问题其实是很像的。
+
+顺着这个思路，第二篇 PackForcing 就在处理另一个实际的工程问题：长视频生成时的计算效率瓶颈。自回归扩散模型生成长视频时，KV-cache会线性增长，内存爆炸。他们提出的三分区策略很有意思，把历史上下文分成“锚点 token”保留完整分辨率，“中间 token”做32倍压缩，“最近 token”保持高精度。这个设计让我想到我们在做神经算子时对不同尺度信息的分层处理——都是如何在计算资源和精度之间找平衡。顺便说一句，三十二倍的 token 压缩，这个数字和我们在算子学习里做降维的思路也隐隐呼应。
+
+第三篇 TAPS 转向了大语言模型的推理加速。Speculative decoding 已经被广泛使用，但这篇工作问了一个我们可能习以为常的问题：draft 模型到底该怎么训练？他们发现任务专属的训练数据对接受率影响巨大——用数学数据训练的 draft 在数学推理上更强，用对话数据训练的则更擅长通用任务。这揭示了一个我们在 AI4S 里也在思考的问题：foundation model 的训练数据分布，真的能“一个模型打天下”吗？还是说针对特定科学领域，也需要专门调优的 draft？
+
+第四篇工作就很有意思了，Medical AI Scientist。这是第一个专门针对临床医学的自主研究框架，把文献调研变成可追溯的证据，再生成研究想法，最后写成论文初稿。作者强调了一个词叫“clinician-engineer co-reasoning”，让医学专家和 AI 系统共同推理。这其实回应了我们一直在讨论的 AI agent 如何真正帮助科学发现，而不只是写代码或者画图表。它需要扎根于医学证据，有可解释性，有专业领域的约束。这和我们做物理信息神经网络时需要尊重物理定律，是一个道理。
+
+最后一篇 ShotStream 把多镜头视频生成重新定义成了 next-shot 的因果生成问题。用户可以流式地给出指令，模型动态调整叙事方向。他们用分布匹配蒸馏把双向模型转成因果模型，解决了误差累积的老大难问题。这里让我想到一个更大的图景：无论是视频生成还是科学模拟，我们其实都在和“误差累积”搏斗。区别在于视频是视觉误差，科学计算是物理偏差。但解决问题的思路——如何让模型在生成过程中保持一致性——是相通的。
+
+好了，今天的播报就到这里。这五篇文章表面上看是视频生成和 LLM 优化的专场，但把它们串起来看，有一个共同的脉络在浮现：如何在长程任务中保持一致性和记忆，如何在不同任务间做特化与通用的权衡，以及如何让 AI agent 真正扎根到专业领域的约束当中去。这些问题不会止于视频或者医学，它们会在我们关心的科学计算、PDE 求解、乃至整个 AI4S 的范式里持续回响。早上好各位，明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.25716" target="_blank">Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models</a></li>
+<li><a href="https://arxiv.org/abs/2603.25730" target="_blank">PackForcing: Short Video Training Suffices for Long Video Sampling and Long Context Inference</a></li>
+<li><a href="https://arxiv.org/abs/2603.27027" target="_blank">TAPS: Task Aware Proposal Distributions for Speculative Sampling</a></li>
+<li><a href="https://arxiv.org/abs/2603.28589" target="_blank">Towards a Medical AI Scientist</a></li>
+<li><a href="https://arxiv.org/abs/2603.25746" target="_blank">ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

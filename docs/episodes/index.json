@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-03-31",
+    "title": "Paper Morning 2026-03-31",
+    "description": "今日学术播报: Out of Sight but Not Out of Mi, PackForcing: Short Video Train, TAPS: Task Aware Proposal Dist...",
+    "audio_file": "2026-03-31.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域里正在悄悄发生的变化聊起。最近视频生成和世界模型的工作特别活跃，但其实这些进展和我们关心的科学计算之间，存在一些有意思的关联。\n\n先来看第一篇工作，Hybrid Memory for Dynamic Video World Models。这篇文章解决的是一个很直观但很少被正式提出的问题：当前的世界模型在处理动态物体时会“失忆”。当物体移出画面再回来时，模型要么把它冻住，要么让它消失。作者提出混合记忆机制，把静态背景和动态主体分开处理，静态背景用精确归档，动态主体用持续追踪。他们还搞了一个HM-World数据集，有五万九千个高保真片段。这个工作的意义不只是视频生成本身，它其实在问一个很根本的问题：当我们想让AI理解物理世界时，如何让模型保持对物体的持续感知？这和我们做 PDE 求解时遇到的长期依赖问题其实是很像的。\n\n顺着这个思路，第二篇 PackForcing 就在处理另一个实际的工程问题：长视频生成时的计算效率瓶颈。自回归扩散模型生成长视频时，KV-cache会线性增长，内存爆炸。他们提出的三分区策略很有...",
+    "papers": [
+      {
+        "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
+        "url": "https://arxiv.org/abs/2603.25716",
+        "arxiv_id": "2603.25716"
+      },
+      {
+        "title": "PackForcing: Short Video Training Suffices for Long Video Sampling and Long Context Inference",
+        "url": "https://arxiv.org/abs/2603.25730",
+        "arxiv_id": "2603.25730"
+      },
+      {
+        "title": "TAPS: Task Aware Proposal Distributions for Speculative Sampling",
+        "url": "https://arxiv.org/abs/2603.27027",
+        "arxiv_id": "2603.27027"
+      },
+      {
+        "title": "Towards a Medical AI Scientist",
+        "url": "https://arxiv.org/abs/2603.28589",
+        "arxiv_id": "2603.28589"
+      },
+      {
+        "title": "ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling",
+        "url": "https://arxiv.org/abs/2603.25746",
+        "arxiv_id": "2603.25746"
+      }
+    ],
+    "published_at": "2026-03-31T23:00:40.203578Z"
+  },
+  {
     "date": "2026-03-10",
     "title": "Paper Morning 2026-03-10",
     "description": "今日学术播报: LoGeR: Long-Context Geometric , Lost in Stories: Consistency B, Holi-Spatial: Evolving Video S...",

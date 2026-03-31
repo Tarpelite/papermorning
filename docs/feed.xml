@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-03-31</title>
+      <description>今日学术播报: Out of Sight but Not Out of Mi, PackForcing: Short Video Train, TAPS: Task Aware Proposal Dist...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-03-31.mp3" length="7303880" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-03-31.mp3</guid>
+      <pubDate>2026-03-31T23:00:40.203578Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-03-10</title>
       <description>今日学术播报: LoGeR: Long-Context Geometric , Lost in Stories: Consistency B, Holi-Spatial: Evolving Video S...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-03-10.mp3" length="7905115" type="audio/mpeg" />
