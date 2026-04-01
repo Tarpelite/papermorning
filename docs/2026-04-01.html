@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-01</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-01</h1>
+    <p class="date">2026-04-01</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-01.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周三，Paper Morning来和大家聊聊最近社区里热议的几项工作。
+
+先看一篇很有意思的生物基础模型工作。Lingshu-Cell提出了一个针对单细胞转录组数据的生成式模型，它用masked discrete diffusion直接在学习到的离散token空间里建模基因表达的概率分布。这件事为什么重要呢？因为过去单细胞领域的foundation model主要做的是静态表示学习，给你一个细胞，它能给你一个embedding，但你没办法让它生成新的细胞状态，也没办法做条件模拟。而Lingshu-Cell这次把生成式扩散和条件生成的能力带进来了，某种意义上是在为“虚拟细胞”这个愿景铺路。约18000个基因的依赖关系直接在一个离散空间里建模，这个魄力值得注意。
+
+然后是一篇survey，Project Imaging-X梳理了超过一千个开源医学影像数据集。这篇工作的价值不在于方法创新，而在于它回答了一个根本问题：医学影像领域为什么做不出强大的foundation model？答案很简单也很残酷——缺数据，而且这个缺数据不是数量问题，是隐私、标注、异构性的问题。这篇survey把现有数据集的模态、任务、解剖部位、标注质量都摊开来看，给后续想在这一领域做基础模型的人提供了一个非常实用的全景图。我觉得它更大的意义是提醒我们：AI4S的很多领域，不是模型不够强，是数据基础设施还没准备好。
+
+接着来看视频生成的一篇新工作VGGRPO。这个工作的出发点很直接：现在的大规模视频diffusion model生成质量不错，但几何一致性很差，之前的方法要么改模型架构要么在RGB空间做alignment，代价都太高。VGGRPO提出了一个latent空间里的geometry-guided reward，在冻结预训练模型的前提下做post-training，这样既保留了原模型的能力，又能提升几何一致性。这里有个值得思考的趋势：也许未来我们不需要从零训一个几何一致的视频模型，而是在已有模型基础上做针对性后训练就能达到目的。这和语言模型里RLHF的思路其实是一脉相承的。
+
+第四篇 LongCat-Next 提出了一种叫DiNA的统一多模态框架，核心思想是把各种模态都离散化成token，然后在离散空间里做自回归。这和现在主流的“语言是核心、其他模态是附件”的多模态架构不太一样。作者还专门设计了一个任意分辨率的visual transformer叫dNaViT，来处理连续的视觉信号到离散token的转换。这个工作的野心很明显：想在一个框架里统一所有模态的建模方式。如果成了，那可能真的会改变我们设计多模态系统的基础范式。
+
+最后来看一篇强化学习算法的工作FIPO。现在大语言模型做推理的时候，GRPO这类方法用的是outcome-based reward，把整个回答的正确与否当作一个全局信号来分配advantage。FIPO的作者指出这样做太粗粒度了，推理过程中那些关键的逻辑转折点和普通的填充词被同等对待，模型的学习效率就会卡在某个天花板下面。FIPO引入了discounted future-KL divergence，把每个token的credit assignment和它对未来轨迹的影响挂钩，形成了一种更细粒度的advantage计算。实验结果显示模型能突破长度停滞，真正开始进行深度推理。这个思路其实和control theory里的credit assignment问题很像，放在LLM训练里很有启发性。
+
+好，把今天的五篇论文放在一起看，我看到一个很清晰的趋势在浮现：从统一表征到精细化训练。LongCat-Next在尝试用离散token统一所有模态的表征，Imaging-X在为医学影像的基础模型铺路，Lingshu-Cell把生成式能力引入生物领域的表示学习，这些都是表征层面的突破。而VGGRPO和FIPO则代表另一个方向——如何在已有的基础模型上，通过更精细的后训练来激发新的能力，无论是几何一致性还是深度推理。这两条路最后会不会殊途同归，可能才是接下来几年最值得关注的问题。早上好，继续加油。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.25240" target="_blank">Lingshu-Cell: A generative cellular world model for transcriptome modeling toward virtual cells</a></li>
+<li><a href="https://arxiv.org/abs/2603.27460" target="_blank">Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development</a></li>
+<li><a href="https://arxiv.org/abs/2603.26599" target="_blank">VGGRPO: Towards World-Consistent Video Generation with 4D Latent Reward</a></li>
+<li><a href="https://arxiv.org/abs/2603.27538" target="_blank">LongCat-Next: Lexicalizing Modalities as Discrete Tokens</a></li>
+<li><a href="https://arxiv.org/abs/2603.19835" target="_blank">FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

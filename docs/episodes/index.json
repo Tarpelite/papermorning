@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-01",
+    "title": "Paper Morning 2026-04-01",
+    "description": "今日学术播报: Lingshu-Cell: A generative cel, Project Imaging-X: A Survey of, VGGRPO: Towards World-Consiste...",
+    "audio_file": "2026-04-01.mp3",
+    "script": "各位早上好，今天周三，Paper Morning来和大家聊聊最近社区里热议的几项工作。\n\n先看一篇很有意思的生物基础模型工作。Lingshu-Cell提出了一个针对单细胞转录组数据的生成式模型，它用masked discrete diffusion直接在学习到的离散token空间里建模基因表达的概率分布。这件事为什么重要呢？因为过去单细胞领域的foundation model主要做的是静态表示学习，给你一个细胞，它能给你一个embedding，但你没办法让它生成新的细胞状态，也没办法做条件模拟。而Lingshu-Cell这次把生成式扩散和条件生成的能力带进来了，某种意义上是在为“虚拟细胞”这个愿景铺路。约18000个基因的依赖关系直接在一个离散空间里建模，这个魄力值得注意。\n\n然后是一篇survey，Project Imaging-X梳理了超过一千个开源医学影像数据集。这篇工作的价值不在于方法创新，而在于它回答了一个根本问题：医学影像领域为什么做不出强大的foundation model？答案很简单也很残酷——缺数据，而且这个缺数据不是数量问题，是隐私、标注、异构性的问题。这篇surv...",
+    "papers": [
+      {
+        "title": "Lingshu-Cell: A generative cellular world model for transcriptome modeling toward virtual cells",
+        "url": "https://arxiv.org/abs/2603.25240",
+        "arxiv_id": "2603.25240"
+      },
+      {
+        "title": "Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development",
+        "url": "https://arxiv.org/abs/2603.27460",
+        "arxiv_id": "2603.27460"
+      },
+      {
+        "title": "VGGRPO: Towards World-Consistent Video Generation with 4D Latent Reward",
+        "url": "https://arxiv.org/abs/2603.26599",
+        "arxiv_id": "2603.26599"
+      },
+      {
+        "title": "LongCat-Next: Lexicalizing Modalities as Discrete Tokens",
+        "url": "https://arxiv.org/abs/2603.27538",
+        "arxiv_id": "2603.27538"
+      },
+      {
+        "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
+        "url": "https://arxiv.org/abs/2603.19835",
+        "arxiv_id": "2603.19835"
+      }
+    ],
+    "published_at": "2026-04-01T23:07:22.423194Z"
+  },
+  {
     "date": "2026-03-31",
     "title": "Paper Morning 2026-03-31",
     "description": "今日学术播报: Out of Sight but Not Out of Mi, PackForcing: Short Video Train, TAPS: Task Aware Proposal Dist...",
