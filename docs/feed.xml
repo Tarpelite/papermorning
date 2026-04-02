@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-02</title>
+      <description>今日学术播报: Project Imaging-X: A Survey of, Terminal Agents Suffice for En, ClawKeeper: Comprehensive Safe...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-02.mp3" length="9811009" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-02.mp3</guid>
+      <pubDate>2026-04-02T23:01:11.949442Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-01</title>
       <description>今日学术播报: Lingshu-Cell: A generative cel, Project Imaging-X: A Survey of, VGGRPO: Towards World-Consiste...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-01.mp3" length="7757784" type="audio/mpeg" />

@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-02",
+    "title": "Paper Morning 2026-04-02",
+    "description": "今日学术播报: Project Imaging-X: A Survey of, Terminal Agents Suffice for En, ClawKeeper: Comprehensive Safe...",
+    "audio_file": "2026-04-02.mp3",
+    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想先从一篇数据集调研工作聊起。过去几年，我们见证了视觉语言模型在自然图像上的爆发式进步，一个重要原因是有ImageNet、COCO这样的大规模benchmark。那么在医学影像领域，基础模型的发展能否复制同样的路径？这篇Project Imaging-X给出了目前最全面的答案。作者团队调研了超过一千个开放获取的医学影像数据集，涵盖CT、MRI、超声、病理切片等多种模态，并且系统标注了每个数据集的任务类型、解剖部位、标注质量等信息。这个工作的价值不仅在于整理，更在于揭示了一个我们不得不面对的现实：医学影像数据的碎片化程度远超想象，不同医院、不同设备、不同标注标准的数据难以直接规模化使用。作者在分析中也指出了几条可行的整合路径，比如通过预训练模型来弥补数据分布差异。这让我想到，这与我们在科学计算领域面临的困境何其相似——PDE求解器的训练数据同样分散在不同的物理场景中，如何构建统一的基础模型，可能是下一步最值得投入的方向。\n\n聊完数据，我们来看一篇关于AI agent架构的文章。Terminal Agents Suffice for ...",
+    "papers": [
+      {
+        "title": "Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development",
+        "url": "https://arxiv.org/abs/2603.27460",
+        "arxiv_id": "2603.27460"
+      },
+      {
+        "title": "Terminal Agents Suffice for Enterprise Automation",
+        "url": "https://arxiv.org/abs/2604.00073",
+        "arxiv_id": "2604.00073"
+      },
+      {
+        "title": "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers",
+        "url": "https://arxiv.org/abs/2603.24414",
+        "arxiv_id": "2603.24414"
+      },
+      {
+        "title": "MiroEval: Benchmarking Multimodal Deep Research Agents in Process and Outcome",
+        "url": "https://arxiv.org/abs/2603.28407",
+        "arxiv_id": "2603.28407"
+      },
+      {
+        "title": "ViGoR-Bench: How Far Are Visual Generative Models From Zero-Shot Visual Reasoners?",
+        "url": "https://arxiv.org/abs/2603.25823",
+        "arxiv_id": "2603.25823"
+      }
+    ],
+    "published_at": "2026-04-02T23:01:11.949442Z"
+  },
+  {
     "date": "2026-04-01",
     "title": "Paper Morning 2026-04-01",
     "description": "今日学术播报: Lingshu-Cell: A generative cel, Project Imaging-X: A Survey of, VGGRPO: Towards World-Consiste...",
