@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-03",
+    "title": "Paper Morning 2026-04-03",
+    "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",
+    "audio_file": "2026-04-03.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察聊起。我们这行当里，過去几年都在谈论模型架构的创新，但最近一年有一个趋势越来越明显：大家开始认真对待“数据”本身了。不只是说数据量有多大，而是数据怎么选、怎么配比、怎么在训练过程中动态调整。这股风从NLP领域吹过来，其实在科学计算里也很值得我们思考。\n\n先来看DataFlex这个工作。它是一个统一的数据中心化训练框架，支持三种数据优化的范式：样本选择、领域混合调整、样本重加权。听起来像是工程化的东西，但我感兴趣的其实是它背后的思路。传统的训练是把数据往模型里塞，默认数据是固定的。但DataFlex表明，数据本身也可以是优化的对象。这让我想到，我们在做PDE求解或者物理模拟的时候，是不是也经常忽略数据策略？比如一个多物理场的问题，不同物理 regimes 的数据怎么配比，模型在哪些工况下容易失效，这些问题我们往往靠经验调参，而不是系统性地优化。如果把DataFlex的思想迁移到科学数据上，或许能打开新的思路。\n\n说完数据策略，我们来看一个有点酷的工作，SKILL0。它研究的问题是：能不能把agent的“技能”直接...",
+    "papers": [
+      {
+        "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
+        "url": "https://arxiv.org/abs/2603.26164",
+        "arxiv_id": "2603.26164"
+      },
+      {
+        "title": "Generative World Renderer",
+        "url": "https://arxiv.org/abs/2604.02329",
+        "arxiv_id": "2604.02329"
+      },
+      {
+        "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
+        "url": "https://arxiv.org/abs/2604.02029",
+        "arxiv_id": "2604.02029"
+      },
+      {
+        "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
+        "url": "https://arxiv.org/abs/2604.02268",
+        "arxiv_id": "2604.02268"
+      },
+      {
+        "title": "Omni123: Exploring 3D Native Foundation Models with Limited 3D Data by Unifying Text to 2D and 3D Generation",
+        "url": "https://arxiv.org/abs/2604.02289",
+        "arxiv_id": "2604.02289"
+      }
+    ],
+    "published_at": "2026-04-03T23:02:58.369004Z"
+  },
+  {
     "date": "2026-04-02",
     "title": "Paper Morning 2026-04-02",
     "description": "今日学术播报: Project Imaging-X: A Survey of, Terminal Agents Suffice for En, ClawKeeper: Comprehensive Safe...",

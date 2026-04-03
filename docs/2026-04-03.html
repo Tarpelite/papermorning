@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-03</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-03</h1>
+    <p class="date">2026-04-03</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-03.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个观察聊起。我们这行当里，過去几年都在谈论模型架构的创新，但最近一年有一个趋势越来越明显：大家开始认真对待“数据”本身了。不只是说数据量有多大，而是数据怎么选、怎么配比、怎么在训练过程中动态调整。这股风从NLP领域吹过来，其实在科学计算里也很值得我们思考。
+
+先来看DataFlex这个工作。它是一个统一的数据中心化训练框架，支持三种数据优化的范式：样本选择、领域混合调整、样本重加权。听起来像是工程化的东西，但我感兴趣的其实是它背后的思路。传统的训练是把数据往模型里塞，默认数据是固定的。但DataFlex表明，数据本身也可以是优化的对象。这让我想到，我们在做PDE求解或者物理模拟的时候，是不是也经常忽略数据策略？比如一个多物理场的问题，不同物理 regimes 的数据怎么配比，模型在哪些工况下容易失效，这些问题我们往往靠经验调参，而不是系统性地优化。如果把DataFlex的思想迁移到科学数据上，或许能打开新的思路。
+
+说完数据策略，我们来看一个有点酷的工作，SKILL0。它研究的问题是：能不能把agent的“技能”直接学到模型参数里，而不是在推理时再去检索。我们知道现在很多agent系统是在运行时动态加载skill，但SKILL0提出，这样做会有噪声、token开销大，而且模型并没有真正学会，只是“调用”而已。它的做法很有意思：用强化学习设计了一个课程，一步步减少对skill context的依赖，最后让模型在没有外部线索的情况下也能自主执行。这让我想到科学计算里的一个经典问题：我们训练神经网络求解PDE的时候，是不是也经常依赖输入的边界条件或者初始条件？如果能让模型更内在地“理解”物理规律，而不是依赖显式的条件输入，或许能提高泛化能力。当然两者不完全一样，但这种“内化”的思路值得品味。
+
+接下来 Omni123 是一个3D生成的工作。它要解决的问题是：高质量3D数据太少了，训练一个3D native的foundation model很困难。它的核心洞察是，文本、图像、3D其实可以在一个统一的token序列里表示，这样图像和3D之间的跨模态一致性就能作为隐式的结构约束。这让我想到科学计算中，我们其实也经常面对数据稀缺的问题，尤其是一些极端工况或者实验成本很高的场景。如果能像Omni123这样，借助其他模态的信息来补充约束，或许也是一种思路。当然3D生成和PDE求解不是一回事，但这种跨模态利用的思想是有共性的。
+
+然后是Generative World Renderer。这个工作很有意思，它用AAA游戏的画面构建了一个大规模的渲染数据集，包含RGB和五种G-buffer通道，共400万帧。它的目标是要弥合合成数据和真实数据之间的差距，特别是做逆渲染和前向渲染的时候。说实话这个工作离我们直接关注的PDE求解比较远，但它触及了一个根本性的问题：数据真实性。我们在科学计算里训练的模型，往往也是在合成数据上学的，怎么才能更好地迁移到真实场景？这个数据集或许能为逆向问题的研究提供新的benchmark。
+
+最后是一篇survey，关于latent space的。它系统性地梳理了潜伏空间在语言模型中的演进，从最开始的中间表示，到后来的连续空间计算优势。作者们指出，潜伏空间能避免离散token的瓶颈，在语义保持和计算效率上有显著好处。这个survey本身是面向NLP的，但我特别关注它讨论的一个方向：未来模型可能会越来越多地在潜伏空间里做推理和规划。如果把这个想法放到科学计算里，我们是不是可以让神经网络在更连续的表征空间里做物理规律的推理，而不是每次都生成离散的输出？这或许会改变我们设计neural operator的方式。
+
+好了，今天的播报就到这里。总结一下我的感受：今天这几篇论文虽然各自领域不同，但有一个隐约的共同点，就是都在回答“如何在约束条件下做得更好”的问题。无论是数据有限、3D数据稀缺，还是推理时的计算瓶颈，研究者们都在寻找创造性的绕过方式。这种逆境中求突破的思维方式，其实和我们日常科研中面对各种约束的情况很像。也许多年以后回头看，这些看似不相关的尝试，会在某个我们还没想到的节点上交汇。各位周末愉快，Paper Morning下期再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.26164" target="_blank">DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models</a></li>
+<li><a href="https://arxiv.org/abs/2604.02329" target="_blank">Generative World Renderer</a></li>
+<li><a href="https://arxiv.org/abs/2604.02029" target="_blank">The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook</a></li>
+<li><a href="https://arxiv.org/abs/2604.02268" target="_blank">SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization</a></li>
+<li><a href="https://arxiv.org/abs/2604.02289" target="_blank">Omni123: Exploring 3D Native Foundation Models with Limited 3D Data by Unifying Text to 2D and 3D Generation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

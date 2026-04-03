@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-03</title>
+      <description>今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-03.mp3" length="8737689" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-03.mp3</guid>
+      <pubDate>2026-04-03T23:02:58.369004Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-02</title>
       <description>今日学术播报: Project Imaging-X: A Survey of, Terminal Agents Suffice for En, ClawKeeper: Comprehensive Safe...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-02.mp3" length="9811009" type="audio/mpeg" />
