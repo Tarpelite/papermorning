@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-04",
+    "title": "Paper Morning 2026-04-04",
+    "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",
+    "audio_file": "2026-04-04.mp3",
+    "script": "各位早上好，周末的Paper Morning又和大家见面了。\n\n今天想和大家聊几篇很有意思的论文，它们看似分布在不同领域，但背后有一条非常清晰的线索在呼应我们AI for Science社区一直在思考的问题。\n\n先说SKILL0这篇，它提出了一个很有野心的目标：能不能把大模型在推理时调用的技能，直接训练进模型参数里？听起来有点像我以前做物理模拟时想让神经网络真正“学会”物理规律，而不是每次推理时再查表。它用的办法是in-context强化学习，训练过程中逐步撤掉技能上下文，最终让模型能零样本执行任务。这个思路其实和我们追求的“内化物理先验”非常一致——不是外挂一个物理引擎，而是让模型本身具备物理直觉。当然，实际效果能不能达到推理时检索的效果，还需要更多验证。\n\n Steerable Visual Representations则从另一个角度回答了类似的问题：能不能更精细地控制模型的表示？它让视觉特征可以被自然语言引导，这样我们就可以说“关注这里的光照变化”而不是“关注最显著的物体”。这让我想到科学计算中一个经典困难：我们想看的往往不是数据中最“显眼”的部分，而是特定的物理量或结构。这种...",
+    "papers": [
+      {
+        "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
+        "url": "https://arxiv.org/abs/2603.26164",
+        "arxiv_id": "2603.26164"
+      },
+      {
+        "title": "Generative World Renderer",
+        "url": "https://arxiv.org/abs/2604.02329",
+        "arxiv_id": "2604.02329"
+      },
+      {
+        "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
+        "url": "https://arxiv.org/abs/2604.02029",
+        "arxiv_id": "2604.02029"
+      },
+      {
+        "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
+        "url": "https://arxiv.org/abs/2604.02268",
+        "arxiv_id": "2604.02268"
+      },
+      {
+        "title": "Steerable Visual Representations",
+        "url": "https://arxiv.org/abs/2604.02327",
+        "arxiv_id": "2604.02327"
+      }
+    ],
+    "published_at": "2026-04-04T22:58:57.364494Z"
+  },
+  {
     "date": "2026-04-03",
     "title": "Paper Morning 2026-04-03",
     "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",

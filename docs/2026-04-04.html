@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-04</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-04</h1>
+    <p class="date">2026-04-04</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-04.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周末的Paper Morning又和大家见面了。
+
+今天想和大家聊几篇很有意思的论文，它们看似分布在不同领域，但背后有一条非常清晰的线索在呼应我们AI for Science社区一直在思考的问题。
+
+先说SKILL0这篇，它提出了一个很有野心的目标：能不能把大模型在推理时调用的技能，直接训练进模型参数里？听起来有点像我以前做物理模拟时想让神经网络真正“学会”物理规律，而不是每次推理时再查表。它用的办法是in-context强化学习，训练过程中逐步撤掉技能上下文，最终让模型能零样本执行任务。这个思路其实和我们追求的“内化物理先验”非常一致——不是外挂一个物理引擎，而是让模型本身具备物理直觉。当然，实际效果能不能达到推理时检索的效果，还需要更多验证。
+
+ Steerable Visual Representations则从另一个角度回答了类似的问题：能不能更精细地控制模型的表示？它让视觉特征可以被自然语言引导，这样我们就可以说“关注这里的光照变化”而不是“关注最显著的物体”。这让我想到科学计算中一个经典困难：我们想看的往往不是数据中最“显眼”的部分，而是特定的物理量或结构。这种可控制的表示方法，或许能为科学数据的分析提供新的交互范式。
+
+ The Latent Space是一篇综述，探讨潜空间正在成为语言模型的原生运算 substrate。它指出了一个根本性的转变：很多关键的内部运算在连续潜空间里比在离散的token序列中更自然地完成。这其实呼应了我们operator learning的核心洞察——PDE本质上就是函数空间之间的映射，用连续的函数表示来处理，往往比离散网格更高效。看到NLP领域也在往这个方向走，挺让人感慨的。
+
+ DataFlex则是一个统一的数据中心训练框架，它把数据选择、数据混合优化、数据重权重这三种范式整合在一起。虽然它针对的是LLM，但这个统一的思路对科学数据的处理也很有启发——我们经常面临不同来源、不同标注质量的科学数据如何组合的问题，一个系统的数据优化框架或许能帮我们更高效地利用实验和模拟数据。
+
+今天的这几篇论文有一个共同的指向：无论是在语言、视觉还是科学计算领域，我们都在追求更精细的控制、更灵活的交互、以及把知识更深入地“内化”到模型之中。这种从“外部辅助”走向“内部能力”的趋势，或许会成为下一代AI for Science模型设计的重要方向。祝大家周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.26164" target="_blank">DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models</a></li>
+<li><a href="https://arxiv.org/abs/2604.02329" target="_blank">Generative World Renderer</a></li>
+<li><a href="https://arxiv.org/abs/2604.02029" target="_blank">The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook</a></li>
+<li><a href="https://arxiv.org/abs/2604.02268" target="_blank">SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization</a></li>
+<li><a href="https://arxiv.org/abs/2604.02327" target="_blank">Steerable Visual Representations</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
