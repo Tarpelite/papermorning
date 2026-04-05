@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-05",
+    "title": "Paper Morning 2026-04-05",
+    "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",
+    "audio_file": "2026-04-05.mp3",
+    "script": "各位早上好，周日的Paper Morning如约而至。\n\n今天想先从一个更大的图景说起。最近整个AI社区有一个非常明显的趋势，就是大家不再只盯着模型参数本身做文章，而是把注意力转向了数据侧。DataFlex这个工作就是一个很好的体现。它提出了一个统一的数据中心训练框架，支持三种数据优化范式：样本选择、领域混合调整和样本重加权，而且完全兼容现有的训练流程。这个工作让我想到，其实在科学计算领域，我们同样面临类似的问题——训练数据的分布、质量、采样策略，对最终模型的泛化能力影响巨大。但科学计算场景的特殊性在于，我们不仅要关注数据的多样性，更要关注数据所承载的物理先验和信息密度。DataFlex的框架或许可以启发我们思考，如何在PDE求解器的预训练中，系统性地优化数据配比，而不是简单地把所有可用数据一股脑喂给模型。\n\n接下来要说的Generative World Renderer，是一个非常有趣的数据集工作。它用了游戏引擎来构建大规模动态数据集，包含四百万帧同步的RGB和G-buffer通道数据。G-buffer这个词在图形学里指的是几何、法线、材质等辅助渲染信息，这个数据集的核心价值在于它试...",
+    "papers": [
+      {
+        "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
+        "url": "https://arxiv.org/abs/2603.26164",
+        "arxiv_id": "2603.26164"
+      },
+      {
+        "title": "Generative World Renderer",
+        "url": "https://arxiv.org/abs/2604.02329",
+        "arxiv_id": "2604.02329"
+      },
+      {
+        "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
+        "url": "https://arxiv.org/abs/2604.02029",
+        "arxiv_id": "2604.02029"
+      },
+      {
+        "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
+        "url": "https://arxiv.org/abs/2604.02268",
+        "arxiv_id": "2604.02268"
+      },
+      {
+        "title": "Steerable Visual Representations",
+        "url": "https://arxiv.org/abs/2604.02327",
+        "arxiv_id": "2604.02327"
+      }
+    ],
+    "published_at": "2026-04-05T23:01:14.337481Z"
+  },
+  {
     "date": "2026-04-04",
     "title": "Paper Morning 2026-04-04",
     "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",

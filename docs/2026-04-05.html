@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-05</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-05</h1>
+    <p class="date">2026-04-05</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-05.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周日的Paper Morning如约而至。
+
+今天想先从一个更大的图景说起。最近整个AI社区有一个非常明显的趋势，就是大家不再只盯着模型参数本身做文章，而是把注意力转向了数据侧。DataFlex这个工作就是一个很好的体现。它提出了一个统一的数据中心训练框架，支持三种数据优化范式：样本选择、领域混合调整和样本重加权，而且完全兼容现有的训练流程。这个工作让我想到，其实在科学计算领域，我们同样面临类似的问题——训练数据的分布、质量、采样策略，对最终模型的泛化能力影响巨大。但科学计算场景的特殊性在于，我们不仅要关注数据的多样性，更要关注数据所承载的物理先验和信息密度。DataFlex的框架或许可以启发我们思考，如何在PDE求解器的预训练中，系统性地优化数据配比，而不是简单地把所有可用数据一股脑喂给模型。
+
+接下来要说的Generative World Renderer，是一个非常有趣的数据集工作。它用了游戏引擎来构建大规模动态数据集，包含四百万帧同步的RGB和G-buffer通道数据。G-buffer这个词在图形学里指的是几何、法线、材质等辅助渲染信息，这个数据集的核心价值在于它试图弥合合成数据和真实数据之间的鸿沟。大家知道，在逆渲染问题里，我们往往只能从观测到的图像去推断场景的几何和材质属性，这是一个典型的不适定问题。传统方法依赖合成数据训练，但合成数据和真实数据的分布差异往往很大。这个工作用游戏引擎生成高质量数据，而且是带有物理意义的G-buffer，这让我想到，这其实为逆向问题的学习提供了一个很好的训练土壤。我们能不能把这些思想迁移到科学计算的逆问题求解上？比如用物理仿真生成带有多物理场耦合信息的数据集，来训练那些从观测反推参数的神经网络。
+
+第三篇是关于潜在空间的综述。潜在空间在语言模型中的地位正在发生微妙的变化——过去我们理解模型是通过显式的token生成过程，但现在越来越多的工作发现，许多关键运算其实是在连续的潜在空间里完成的。这篇综述从基础、演化、机制、能力、展望五个角度做了系统梳理。读完这篇我有一个很深的感触，其实在科学计算里，我们也在做类似的事情。传统数值求解是在离散的网格上进行，而现在越来越多的神经网络方法是在降维的潜在空间里做运算。这两者之间有什么本质联系？潜在空间的表示学习能否为PDE求解提供新的建模思路？这篇综述值得细读。
+
+然后是SKILL0，它提出了一个非常有意思的思路：与其在推理时动态检索技能，不如把技能内化到模型参数里。它设计了一个课程式的训练过程，逐步撤销上下文中的技能描述，让模型真正学会那些能力。这个思想让我联想到我们在AI4S中经常讨论的一个问题：如何让神经网络真正“学会”物理规律，而不是仅仅在推理时调用外部的物理约束？物理信息神经网络PINNs做的事情是在损失函数里加入物理先验，但SKILL0的方法更像是在参数层面直接吸收这些知识。哪种方式更本质？也许未来我们可以探索一种介于两者之间的路径，让物理先验以更内化的方式存在于模型之中。
+
+最后是Steerable Visual Representations，它让视觉表征可以用自然语言来引导。这个工作的核心创新在于，它不是简单地用文本去调整特征，而是做到了真正的可控性。这让我想到，在科学计算中我们也经常需要这种可控性——我们希望模型的输出能够响应不同条件下的物理参数、边界条件或者约束。如果这种引导机制能够延伸到科学计算领域，那或许我们可以实现真正意义上的“可控物理模拟”，根据不同的物理场景动态调整模型的预测行为。
+
+好了，今天的播报就到这里。总结下来一个整体的观察是：这一周的论文虽然来自不同方向，但它们不约而同地在指向同一个趋势——无论是数据优化、技能内化还是可控表征，大家都在试图让模型从“被动接受”走向“主动调控”。这种从静态到动态、从外部到内部的范式转变，或许正在为AI for Science的下一阶段埋下伏笔。我们下期再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2603.26164" target="_blank">DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models</a></li>
+<li><a href="https://arxiv.org/abs/2604.02329" target="_blank">Generative World Renderer</a></li>
+<li><a href="https://arxiv.org/abs/2604.02029" target="_blank">The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook</a></li>
+<li><a href="https://arxiv.org/abs/2604.02268" target="_blank">SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization</a></li>
+<li><a href="https://arxiv.org/abs/2604.02327" target="_blank">Steerable Visual Representations</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
