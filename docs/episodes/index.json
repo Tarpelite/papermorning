@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-06",
+    "title": "Paper Morning 2026-04-06",
+    "description": "今日学术播报: A Simple Baseline for Streamin, Self-Distilled RLVR, Steerable Visual Representatio...",
+    "audio_file": "2026-04-06.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想先说一句题外话。今天选的这几篇论文，表面上看跟咱们AI for Science的主场关系不大——视频理解、强化学习蒸馏、可视化表示、视频编辑、多智能体系统，哪个都不是PDE求解、不是Neural Operator。但我仔细读了之后，发现它们其实都在回答一个我们同样关心的问题：怎么用更少的数据、更少的计算，做出更可控、更可靠的系统？这里的思路，跟科学计算里现在热议的foundation model、test-time compute、预训练范式，是相通的。\n\n第一篇SimpleStream，讲的是视频理解。这两年大家做streaming video，都在堆复杂的memory机制，想让模型记住更长的上下文。但这篇文章发现，一个最简单的滑动窗口，只给模型喂最近4帧，就已经能打败大多数复杂的memory-based方法。他们在OVO-Bench和StreamingBench上测了13个主流模型，发现这个朴素基线居然毫不逊色。这个发现对我们意味着什么？我想起前阵子PDE求解里也在讨论类似的问题：要不要把整个时空域都塞进context win...",
+    "papers": [
+      {
+        "title": "A Simple Baseline for Streaming Video Understanding",
+        "url": "https://arxiv.org/abs/2604.02317",
+        "arxiv_id": "2604.02317"
+      },
+      {
+        "title": "Self-Distilled RLVR",
+        "url": "https://arxiv.org/abs/2604.03128",
+        "arxiv_id": "2604.03128"
+      },
+      {
+        "title": "Steerable Visual Representations",
+        "url": "https://arxiv.org/abs/2604.02327",
+        "arxiv_id": "2604.02327"
+      },
+      {
+        "title": "VOID: Video Object and Interaction Deletion",
+        "url": "https://arxiv.org/abs/2604.02296",
+        "arxiv_id": "2604.02296"
+      },
+      {
+        "title": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery",
+        "url": "https://arxiv.org/abs/2604.01658",
+        "arxiv_id": "2604.01658"
+      }
+    ],
+    "published_at": "2026-04-06T23:05:04.830945Z"
+  },
+  {
     "date": "2026-04-05",
     "title": "Paper Morning 2026-04-05",
     "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",
