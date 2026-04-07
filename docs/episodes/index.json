@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-07",
+    "title": "Paper Morning 2026-04-07",
+    "description": "今日学术播报: OpenWorldLib: A Unified Codeba, LIBERO-Para: A Diagnostic Benc, TriAttention: Efficient Long R...",
+    "audio_file": "2026-04-07.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一篇有点特别的论文聊起。OpenWorldLib，中文可以叫开放世界模型库，它做的事情是给“世界模型”这个概念下一个统一的定义。你知道这两年世界模型在AI里火得不行，但从强化学习里的Minecraft，到 robotics 的操控，再到物理仿真，大家说的世界模型其实指向的东西差别很大。这篇论文提出的定义很有意思：世界模型是以感知为中心、具备交互和长期记忆能力的模型框架，用于理解和预测复杂世界。这个定义其实和我们做科学计算的人常说的“数字孪生”有异曲同工之妙——都是试图构建一个能够模拟现实的“代理”。但更关键的是他们给出的能力分类：感知、交互、记忆、推理，这几个维度其实也在回答我们AI4S社区一个根本问题——下一代科学模拟器需要具备什么？光有预测能力够不够？显然不够，交互和记忆可能才是让模型真正“理解”物理世界的关键。\n\n然后第二篇 LIBERO-Para，是关于 VLA 模型——视觉语言动作模型在机器人操控中的语义鲁棒性。这个问题可能离我们做 PDE 或者科学计算比较远，但它揭示的现象值得深思：模型在指令措辞改变时，性能...",
+    "papers": [
+      {
+        "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
+        "url": "https://arxiv.org/abs/2604.04707",
+        "arxiv_id": "2604.04707"
+      },
+      {
+        "title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
+        "url": "https://arxiv.org/abs/2603.28301",
+        "arxiv_id": "2603.28301"
+      },
+      {
+        "title": "TriAttention: Efficient Long Reasoning with Trigonometric KV Compression",
+        "url": "https://arxiv.org/abs/2604.04921",
+        "arxiv_id": "2604.04921"
+      },
+      {
+        "title": "MinerU2.5-Pro: Pushing the Limits of Data-Centric Document Parsing at Scale",
+        "url": "https://arxiv.org/abs/2604.04771",
+        "arxiv_id": "2604.04771"
+      },
+      {
+        "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2604.02721",
+        "arxiv_id": "2604.02721"
+      }
+    ],
+    "published_at": "2026-04-07T23:10:04.975218Z"
+  },
+  {
     "date": "2026-04-06",
     "title": "Paper Morning 2026-04-06",
     "description": "今日学术播报: A Simple Baseline for Streamin, Self-Distilled RLVR, Steerable Visual Representatio...",

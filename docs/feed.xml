@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-07</title>
+      <description>今日学术播报: OpenWorldLib: A Unified Codeba, LIBERO-Para: A Diagnostic Benc, TriAttention: Efficient Long R...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-07.mp3" length="9009154" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-07.mp3</guid>
+      <pubDate>2026-04-07T23:10:04.975218Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-06</title>
       <description>今日学术播报: A Simple Baseline for Streamin, Self-Distilled RLVR, Steerable Visual Representatio...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-06.mp3" length="10544527" type="audio/mpeg" />
