@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-09</title>
+      <description>今日学术播报: Think in Strokes, Not Pixels: , RAGEN-2: Reasoning Collapse in, GBQA: A Game Benchmark for Eva...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-09.mp3" length="9496285" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-09.mp3</guid>
+      <pubDate>2026-04-09T23:11:14.823266Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-08</title>
       <description>今日学术播报: Video-MME-v2: Towards the Next, Learning to Retrieve from Agen, Claw-Eval: Toward Trustworthy ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-08.mp3" length="9852386" type="audio/mpeg" />

@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-09",
+    "title": "Paper Morning 2026-04-09",
+    "description": "今日学术播报: Think in Strokes, Not Pixels: , RAGEN-2: Reasoning Collapse in, GBQA: A Game Benchmark for Eva...",
+    "audio_file": "2026-04-09.mp3",
+    "script": "各位早上好，今天周四，Paper Morning继续开播。\n\n先说一篇关于图像生成的论文，标题是《Think in Strokes, Not Pixels》。这个工作提出了一个叫做“过程驱动图像生成”的范式，简单说就是不让模型一次性生成完整图像，而是让它像人画画一样，先规划布局、画草稿、审视、修改，一步步迭代完成。每一步都包含文本规划、视觉drafting、文本反思和视觉精修四个阶段。作者的核心主张是：当前的多模态模型虽然在文本-图像交错数据上训练，但能否真正“想象”出中间状态，这是一个很有趣的设问。这个工作的价值不在于图像生成效果本身，而在于它揭示了一个更根本的问题：我们如何让模型具备“思考过程”而不仅仅是端到端映射。这和我们做PDE求解时经常遇到的困境很像——我们有时只需要一个输入到输出的映射，但科学问题往往需要可解释的中间推理过程。这篇工作能否启发我们去设计更具过程性的neural operator？值得观察。\n\n接下来聊一篇关于Agent训练中推理质量评估的工作，题目是《RAGEN-2: Reasoning Collapse in Agentic RL》。这个问题非常关键：我们...",
+    "papers": [
+      {
+        "title": "Think in Strokes, Not Pixels: Process-Driven Image Generation via Interleaved Reasoning",
+        "url": "https://arxiv.org/abs/2604.04746",
+        "arxiv_id": "2604.04746"
+      },
+      {
+        "title": "RAGEN-2: Reasoning Collapse in Agentic RL",
+        "url": "https://arxiv.org/abs/2604.06268",
+        "arxiv_id": "2604.06268"
+      },
+      {
+        "title": "GBQA: A Game Benchmark for Evaluating LLMs as Quality Assurance Engineers",
+        "url": "https://arxiv.org/abs/2604.02648",
+        "arxiv_id": "2604.02648"
+      },
+      {
+        "title": "MegaTrain: Full Precision Training of 100B+ Parameter Large Language Models on a Single GPU",
+        "url": "https://arxiv.org/abs/2604.05091",
+        "arxiv_id": "2604.05091"
+      },
+      {
+        "title": "Vanast: Virtual Try-On with Human Image Animation via Synthetic Triplet Supervision",
+        "url": "https://arxiv.org/abs/2604.04934",
+        "arxiv_id": "2604.04934"
+      }
+    ],
+    "published_at": "2026-04-09T23:11:14.823266Z"
+  },
+  {
     "date": "2026-04-08",
     "title": "Paper Morning 2026-04-08",
     "description": "今日学术播报: Video-MME-v2: Towards the Next, Learning to Retrieve from Agen, Claw-Eval: Toward Trustworthy ...",
