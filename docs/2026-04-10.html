@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-10</h1>
+    <p class="date">2026-04-10</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-10.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个大家可能都注意到的现象聊起。这两年我们看AI顶会，会发现一个有趣的分叉：一方面大模型在刷榜，各种通用能力benchmark被不断突破；另一方面，越来越多的人开始问一个更本质的问题——这些通用能力，到底能在多大程度上延伸到具体场景？这不，今天的几篇论文就刚好踩在了这个张力上。
+
+先看第一篇，NUMINA，讲的是text-to-video模型里一个看似简单但实际很棘手的问题——让模型正确生成 prompt 里指定的物体数量。作者们发现，主流的diffusion model在处理“画面里有三只猫”这种指令时，经常会漏掉或者多出几个。于是他们提出了一个training-free的框架，通过分析attention map里的一些特殊head，识别出物体应该分布在哪些区域，然后保守地调整生成过程。这个思路挺巧妙的，相当于在模型原本的生成流程里插入了一个“校对”环节。值得关注的是，这个工作没有引入新的训练，而是利用了模型本身已经学到的结构化表示。这让我想到，可能很多所谓的数据对齐问题，未必要靠堆数据解决，有时候“调用”好已有能力反而更高效。
+
+接下来这篇HY-Embodied-0.5，是腾讯 robotics X 做的一套具身智能基础模型。他们明确区分了通用VLM和具身agent需要的不同能力——后者特别强调空间感知、时间序列理解，还有预测式推理。为了在边缘设备上也能跑，他们搞了一个2B参数的版本，同时保留了一个32B的强力版本用于复杂推理。这里有个技术细节我比较感兴趣，他们用了Mixture-of-Transformers架构，让不同模态的信息能更灵活地交互。这其实反映了一个趋势：具身智能不再只是把视觉语言模型直接搬过来用，而是要针对具体需求重新设计架构。
+
+然后是ClawBench，这个工作很有意思，它不测模型在现有benchmark上的分数，而是测AI agent能不能帮我们完成真实的日常在线任务——比如下单买东西、预约挂号、填申请表。作者们收集了153个任务，覆盖144个真实平台。结果发现，现有的agent在这些看似简单的任务上，犯错率仍然很高，特别是需要从用户提供的文档里提取信息、或者要在多个页面之间跳转的时候。这个工作给我们的提醒是：benchmark的设计本身就是一个研究方向，什么样的benchmark能真正测出agent的实用价值，有时候比模型本身更重要。
+
+第四篇是关于推理SFT的泛化问题。作者们挑战了一个流行说法——都说SFT是记忆，RL才是泛化。他们用长CoT数据做了实验，发现泛化能力其实不是没有，而是有条件的。他们观察到一个很有意思的现象：跨领域性能会先下降再回升，形成一个“dip-and-recovery”曲线。如果训练时间不够长，就会误以为SFT没有泛化能力。除此之外，数据质量和模型规模也都影响很大。这个发现对做post-training的人应该很有启发——可能不是方法本身有问题，而是训练得不够久、数据不够好。
+
+最后一篇MegaStyle，是关于构建大规模风格数据集的pipeline。他们用现有的text-to-image模型本身来生成风格一致的图片，然后用这些数据训练一个专门的style encoder。这个思路有点像是“用模型生成数据，再用数据提升模型”的循环。规模也不小，17万风格提示词，40万内容提示词，最终搞出了140万配对数据。这种数据工程可能看起来不如模型创新那么光鲜，但实际上为后续的风格控制研究提供了很重要的基础设施。
+
+好，最后提炼一下今天的整体观察。我看到这几篇论文其实都在回答一个共同的问题：怎么从“能做什么”推进到“可靠地做什么”。不管是生成模型的数量对齐、具身智能的空间推理、agent的真实任务完成率，还是推理SFT的泛化条件，大家的着力点都在从刷榜能力转向可控性、泛化性和实用性。这可能标志着AI研究正在从“能力涌现”的激动期，进入到“能力兑现”的深水区。
+
+好了，今天的播报就到这里，我们明天早上见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.08546" target="_blank">When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models</a></li>
+<li><a href="https://arxiv.org/abs/2604.07430" target="_blank">HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents</a></li>
+<li><a href="https://arxiv.org/abs/2604.08523" target="_blank">ClawBench: Can AI Agents Complete Everyday Online Tasks?</a></li>
+<li><a href="https://arxiv.org/abs/2604.06628" target="_blank">Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability</a></li>
+<li><a href="https://arxiv.org/abs/2604.08364" target="_blank">MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-10",
+    "title": "Paper Morning 2026-04-10",
+    "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
+    "audio_file": "2026-04-10.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家可能都注意到的现象聊起。这两年我们看AI顶会，会发现一个有趣的分叉：一方面大模型在刷榜，各种通用能力benchmark被不断突破；另一方面，越来越多的人开始问一个更本质的问题——这些通用能力，到底能在多大程度上延伸到具体场景？这不，今天的几篇论文就刚好踩在了这个张力上。\n\n先看第一篇，NUMINA，讲的是text-to-video模型里一个看似简单但实际很棘手的问题——让模型正确生成 prompt 里指定的物体数量。作者们发现，主流的diffusion model在处理“画面里有三只猫”这种指令时，经常会漏掉或者多出几个。于是他们提出了一个training-free的框架，通过分析attention map里的一些特殊head，识别出物体应该分布在哪些区域，然后保守地调整生成过程。这个思路挺巧妙的，相当于在模型原本的生成流程里插入了一个“校对”环节。值得关注的是，这个工作没有引入新的训练，而是利用了模型本身已经学到的结构化表示。这让我想到，可能很多所谓的数据对齐问题，未必要靠堆数据解决，有时候“调用”好已有能力...",
+    "papers": [
+      {
+        "title": "When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models",
+        "url": "https://arxiv.org/abs/2604.08546",
+        "arxiv_id": "2604.08546"
+      },
+      {
+        "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
+        "url": "https://arxiv.org/abs/2604.07430",
+        "arxiv_id": "2604.07430"
+      },
+      {
+        "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
+        "url": "https://arxiv.org/abs/2604.08523",
+        "arxiv_id": "2604.08523"
+      },
+      {
+        "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
+        "url": "https://arxiv.org/abs/2604.06628",
+        "arxiv_id": "2604.06628"
+      },
+      {
+        "title": "MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping",
+        "url": "https://arxiv.org/abs/2604.08364",
+        "arxiv_id": "2604.08364"
+      }
+    ],
+    "published_at": "2026-04-10T23:05:08.521268Z"
+  },
+  {
     "date": "2026-04-09",
     "title": "Paper Morning 2026-04-09",
     "description": "今日学术播报: Think in Strokes, Not Pixels: , RAGEN-2: Reasoning Collapse in, GBQA: A Game Benchmark for Eva...",
