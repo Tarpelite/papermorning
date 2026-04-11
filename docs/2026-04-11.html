@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-11</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-11</h1>
+    <p class="date">2026-04-11</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-11.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一篇关于推理泛化的文章聊起。最近有一种流行的说法，说监督微调SFT只是记忆，而强化学习RL才能泛化。但腾讯AI Lab这篇"Rethinking Generalization in Reasoning SFT"用实验告诉我们，这个说法太绝对了。他们发现跨领域泛化能力其实是有条件的，跟优化过程、训练数据和基础模型能力都有关。特别是他们观察到一个很有意思的现象：跨域性能会先下降再恢复——我把它叫做"先蹲后跳"模式。这就解释了为什么之前有些研究说泛化不存在，可能只是训练时间不够，checkpoint取得太早了。这对我们理解LLM的scaling law很有帮助，因为数据量和模型规模的增加会带来这种非单调的优化曲线。这篇文章的思路其实和科学计算中观察到的现象很像：我们训练神经网络求解PDE时，早期泛化曲线也不一定是单调的。
+
+说完了推理模型的泛化，我们来看看具身智能这个方向。腾讯 Robotics X 发布了 HY-Embodied-0.5，一套专门为真实世界机器人设计的基础模型。他们区分了通用VLM和具身智能的差异——后者需要空间和时间的视觉感知，加上预测、交互和规划的推理能力。这让我想到，这其实和我们在科学模拟中追求的目标很像：我们不只是要"看懂"物理现象，还要能"交互"和"预测"。他们用2B和32B两个版本分别针对边缘部署和复杂推理，这个思路也呼应了AI4S中不同精度需求场景的划分——有时我们需要轻量级模型做快速近似，有时需要大模型做深度推理。
+
+接下来这篇文章很有意思。西北大学和UIUC等机构推出了ClawBench，关注AI agent能否完成日常网络任务。他们设计了153个简单但真实的任务，涵盖144个平台，从下单到填申请表都有。这让我想到一个更根本的问题：我们能不能用AI agent来自动化科研工作本身？比如让agent帮我们设计实验、调试代码、分析数据？现有的benchmark主要测的是通用能力，而ClawBench提供了一种更接近真实场景的评估方式。这个方向和"AI辅助科学发现"这个大主题是相通的——我们在讨论如何用LLM帮科学家干活，而ClawBench某种意义上是在问：AI能不能先把科学家从繁琐的日常事务中解放出来？
+
+最后简单提一下两篇关于生成模型的工作。NUMINA解决的是text-to-video中"数不清"的问题——模型生成指定数量物体时会出错。他们通过选择特定的attention head来推导出可数的latent layout，再引导生成。这个思路很巧妙，它不是从头训练一个新模型，而是找到模型内部已经有的"计数能力"，然后加以利用。这让我想到，我们能不能用类似的方法从已经训练好的科学生成模型中"挖掘"出一些我们想要的物理性质？比如从预训练模型中提取对称性信息或者守恒律？而MegaStyle的工作是构建大规模风格数据集，他们用170K风格提示词和40万内容提示词组合，训练了一个风格编码器。这种数据工程的工作可能不如算法创新吸引眼球，但却是整个生成模型生态的重要基础设施。
+
+今天的几篇文章有一个共同的暗线：大家都在关注基础模型的能力边界和如何更高效地发挥这些能力。不管是推理泛化的条件分析、具身智能的专用化、还是让生成模型更精准地遵循指令，本质上都是在问同一个问题——我们如何让已经训练好的大模型更好地为特定目标服务？这其实也是AI4S面临的核心挑战：通用模型有了，但我们需要为物理模拟、方程求解这些具体任务做针对性的适配。今天的观察就到这里。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.08546" target="_blank">When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models</a></li>
+<li><a href="https://arxiv.org/abs/2604.07430" target="_blank">HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents</a></li>
+<li><a href="https://arxiv.org/abs/2604.08523" target="_blank">ClawBench: Can AI Agents Complete Everyday Online Tasks?</a></li>
+<li><a href="https://arxiv.org/abs/2604.06628" target="_blank">Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability</a></li>
+<li><a href="https://arxiv.org/abs/2604.08364" target="_blank">MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
