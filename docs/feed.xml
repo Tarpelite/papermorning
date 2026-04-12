@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-12</title>
+      <description>今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-12.mp3" length="8991600" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-12.mp3</guid>
+      <pubDate>2026-04-12T23:04:17.809400Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-11</title>
       <description>今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-11.mp3" length="7188524" type="audio/mpeg" />

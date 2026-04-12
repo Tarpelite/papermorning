@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-12",
+    "title": "Paper Morning 2026-04-12",
+    "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
+    "audio_file": "2026-04-12.mp3",
+    "script": "各位早上好，周末的Paper Morning又和大家见面了。今天想聊一个特别的话题：我们正在见证AI从“理解符号”走向“理解物理”的关键转折。\n\n先来看一篇挺有意思的工作。NUMINA解决的是一个看似简单但实际很本质的问题：现在的text-to-video模型，你告诉它“天空有五只鸟”，它可能给你生成三只，也可能给你生成七只，就是很难精确。这个工作的核心贡献是提出了一个训练-free的识别-引导框架，通过选择区分性的self-attention和cross-attention头，推导出可计数的潜在布局，然后保守地精炼这个布局并调制cross-attention来引导重新生成。我看到他们在新引入的CountBench上，最多提升了7.4%的计数准确率。这个工作的价值不在于方法本身多复杂，而在于它揭示了一个被长期忽视的问题：当模型生成的物体数量都不对的时候，后续的任何高级推理都免谈。这让我想到我们做PDE求解的时候，如果基础的位置信息和数量信息都不准确，那基于这些做物理模拟会有多大的系统误差？所以我挺期待看到这种计数能力被引入到科学模拟中去的。\n\n说完计数，我们来看看具身智能的新进展。HY...",
+    "papers": [
+      {
+        "title": "When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models",
+        "url": "https://arxiv.org/abs/2604.08546",
+        "arxiv_id": "2604.08546"
+      },
+      {
+        "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
+        "url": "https://arxiv.org/abs/2604.07430",
+        "arxiv_id": "2604.07430"
+      },
+      {
+        "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
+        "url": "https://arxiv.org/abs/2604.08523",
+        "arxiv_id": "2604.08523"
+      },
+      {
+        "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
+        "url": "https://arxiv.org/abs/2604.06628",
+        "arxiv_id": "2604.06628"
+      },
+      {
+        "title": "MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping",
+        "url": "https://arxiv.org/abs/2604.08364",
+        "arxiv_id": "2604.08364"
+      }
+    ],
+    "published_at": "2026-04-12T23:04:17.809400Z"
+  },
+  {
     "date": "2026-04-11",
     "title": "Paper Morning 2026-04-11",
     "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
