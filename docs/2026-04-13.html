@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-13</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-13</h1>
+    <p class="date">2026-04-13</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-13.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想和大家聊几篇挺有意思的论文，它们看似来自不同方向，但我觉得背后有一条主线贯穿着。
+
+先说第一篇，Matrix-Game 3.0。这是一个做实时视频生成世界模型的工作，用diffusion model来做720p的长视频交互。大家可能还记得去年、前年 diffusion model 在图像生成、视频生成上的爆发，但真正用到实时的物理模拟场景里，长期一致性是个大难题。这篇工作做了个挺实在的升级——搞了一套工业级的数据引擎，把虚幻引擎的合成数据、AAA游戏的大规模采集，还有真实世界的视频都整合到一起，然后用改进的模型架构实现了长期记忆和实时生成的兼顾。说实话，这不仅是做游戏的事，我们在AI4S里做物理模拟、做世界模型，其实同样面临长期一致性的问题。他们这套数据引擎的思路，或许能给做PDE求解、分子动力学模拟的朋友们一些启发。
+
+然后说WildDet3D，这篇我覺得挺有野心。它试图解决一个很根本的问题：现在的3D目标检测要么只能测固定类别，要么对开放世界的新物体没辙。WildDet3D提出了一个统一的几何感知架构，既能支持多种prompt方式，又能利用几何线索，而且专门针对开放世界的泛化来设计。大家有没有想过，我们在科学计算里训练的那些神经网络，其实也常常被困在“训练分布”里？遇到没见过的方程、没见过的物理场景，泛化就失灵了。这篇工作用几何先验来增强泛化的思路，其实跟我们在neural operator里强调的“抓住物理对称性”是一个道理，只是他们从视觉角度，我们从方程角度。
+
+第三篇FORGE是关于制造业场景的多模态大模型评估。这个方向很有意思，因为它把MLLM从“能看懂图片”拉到了“能不能干实事”的层面。他们构建了一个高质量的制造业多模态数据集，评估了18个主流模型在工件验证、结构表面检测、装配验证这些实际任务上的表现。结果发现，性能gap非常大，很多模型连基本的工业级要求都达不到。这个工作给我们的提醒是：无论是做视觉的还是做语言模型的，别总在通用benchmark上刷分，真正的硬仗在垂直领域。
+
+接下来这篇ClawBench很有趣，它不做模型，而是做了一套评估AI agent的基准。153个日常任务，144个真实平台，15个类别，从下单买的东西到预约挂号，再到填求职申请表，覆盖了方方面面。大家可能觉得，这不就是自动化鼠标键盘操作吗？但仔细一看，这些任务需要从用户提供的文档里提取信息，要跨平台多步骤工作流，还要写大量详细的表单。这其实测的是agent的规划、推理和执行能力。我一直在想，我们做AI for Science的，最终目标不就是让AI能自己设计实验、分析数据、甚至提出科学假设吗？ClawBench这套思路，其实给科研agent的评估提供了一个很好的参照。
+
+最后这篇Rethinking Generalizing in Reasoning SFT，非常值得细读。它直接挑战了一个流行的说法：SFT只是记忆，RL才能泛化。作者通过大量实验发现，推理任务的泛化其实是有条件的，跟优化动态、训练数据、基础模型能力都有关。他们还观察到一个很关键的现象：跨域性能会先下降再恢复，如果训练 checkpoint 取得太早，会低估泛化能力。这给我们的启示是：别急着下结论，很多所谓的“失败”可能只是训练不够。这对我们在做SFT、RLHF的老师们来说，是个很好的提醒。
+
+好，总结一下今天的观察。这五篇论文加起来，我看到一个共同的关键词在浮现：泛化。无论是世界模型要在没见过的场景里保持一致性，3D检测要识别训练集里没有的物体，MLLM要在工业环境里从实验室走向产线，还是agent要在真实平台上完成多样化的任务，以及大语言模型要在不同领域展现推理能力——大家都在面对同一个根本挑战：如何从“能做题”走向“能做事”。这不是某一项技术的突破能解决的，而是需要数据、模型、训练范式、评估体系全方位的迭代。这大概也是AI4S正在经历的阶段：从单一任务的solver，走向能应对真实复杂场景的基础能力。今天的分享就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.08995" target="_blank">Matrix-Game 3.0: Real-Time and Streaming Interactive World Model with Long-Horizon Memory</a></li>
+<li><a href="https://arxiv.org/abs/2604.08626" target="_blank">WildDet3D: Scaling Promptable 3D Detection in the Wild</a></li>
+<li><a href="https://arxiv.org/abs/2604.07413" target="_blank">FORGE:Fine-grained Multimodal Evaluation for Manufacturing Scenarios</a></li>
+<li><a href="https://arxiv.org/abs/2604.08523" target="_blank">ClawBench: Can AI Agents Complete Everyday Online Tasks?</a></li>
+<li><a href="https://arxiv.org/abs/2604.06628" target="_blank">Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

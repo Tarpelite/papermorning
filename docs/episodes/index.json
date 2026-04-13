@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-13",
+    "title": "Paper Morning 2026-04-13",
+    "description": "今日学术播报: Matrix-Game 3.0: Real-Time and, WildDet3D: Scaling Promptable , FORGE:Fine-grained Multimodal ...",
+    "audio_file": "2026-04-13.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊几篇挺有意思的论文，它们看似来自不同方向，但我觉得背后有一条主线贯穿着。\n\n先说第一篇，Matrix-Game 3.0。这是一个做实时视频生成世界模型的工作，用diffusion model来做720p的长视频交互。大家可能还记得去年、前年 diffusion model 在图像生成、视频生成上的爆发，但真正用到实时的物理模拟场景里，长期一致性是个大难题。这篇工作做了个挺实在的升级——搞了一套工业级的数据引擎，把虚幻引擎的合成数据、AAA游戏的大规模采集，还有真实世界的视频都整合到一起，然后用改进的模型架构实现了长期记忆和实时生成的兼顾。说实话，这不仅是做游戏的事，我们在AI4S里做物理模拟、做世界模型，其实同样面临长期一致性的问题。他们这套数据引擎的思路，或许能给做PDE求解、分子动力学模拟的朋友们一些启发。\n\n然后说WildDet3D，这篇我覺得挺有野心。它试图解决一个很根本的问题：现在的3D目标检测要么只能测固定类别，要么对开放世界的新物体没辙。WildDet3D提出了一个统一的几何感知架构，既能支持多种pr...",
+    "papers": [
+      {
+        "title": "Matrix-Game 3.0: Real-Time and Streaming Interactive World Model with Long-Horizon Memory",
+        "url": "https://arxiv.org/abs/2604.08995",
+        "arxiv_id": "2604.08995"
+      },
+      {
+        "title": "WildDet3D: Scaling Promptable 3D Detection in the Wild",
+        "url": "https://arxiv.org/abs/2604.08626",
+        "arxiv_id": "2604.08626"
+      },
+      {
+        "title": "FORGE:Fine-grained Multimodal Evaluation for Manufacturing Scenarios",
+        "url": "https://arxiv.org/abs/2604.07413",
+        "arxiv_id": "2604.07413"
+      },
+      {
+        "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
+        "url": "https://arxiv.org/abs/2604.08523",
+        "arxiv_id": "2604.08523"
+      },
+      {
+        "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
+        "url": "https://arxiv.org/abs/2604.06628",
+        "arxiv_id": "2604.06628"
+      }
+    ],
+    "published_at": "2026-04-13T23:12:41.903309Z"
+  },
+  {
     "date": "2026-04-12",
     "title": "Paper Morning 2026-04-12",
     "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
