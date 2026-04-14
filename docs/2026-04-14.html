@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-14</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-14</h1>
+    <p class="date">2026-04-14</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-14.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周二的Paper Morning如约而至。
+
+今天想先从一个我们领域的人都很熟悉的现象说起：当大语言模型在做强化学习微调的时候，常常会陷入一种“行为塌缩”的困境——模型反反复复犯同样的错误，采样多样性急剧下降。这其实不只是LLM的问题，任何做物理模拟强化学习的同学可能都有同感，当你用RL去控制一个机械臂或者优化一个分子构型时，策略一旦发现某个“还不错”的局部解，就会一直待在里面不出来。
+
+今天第一篇论文MEDS就是来解决这个问题的。它的核心思路很直接：与其只让当前策略增加熵，不如把历史轨迹也利用起来。论文提出用密度聚类来识别那些反复出现的错误模式，然后对掉进“常见错误集群”的轨迹施加更大的惩罚。这样一来，模型就被迫去探索那些不常走的路径。对于我们AI4S的人来说，这个方法的价值可能不仅仅在LLM——想象一下，如果你用RL来搜索材料结构或者设计新的分子，传统的entropy regularization只能保证当前策略的随机性，但无法避免策略在若干次尝试后开始重复访问相似的失败区域。MEDS提供了显式干预跨rollout多样性的能力，这可能是未来构建更高效的科学探索策略的一个新工具。
+
+说完RL，我们来聊聊量子计算。可能很多做AI4S的同学最近都在关注量子计算和AI的交叉，特别是LLM能不能帮我们写量子代码。QuanBench+这篇文章就干了一件很基础但非常重要的事情：他们发现现在评估LLM写量子代码的能力时，大多数benchmark都只在一个框架里做，比如只测Qiskit或者只测Cirq。这就导致一个问题——你分不清模型是真的理解了量子算法，还是只是对某个框架的API比较熟悉。QuanBench+构建了一个统一的基准，同时覆盖Qiskit、PennyLane和Cirq三个主流框架设计了42个对齐任务。更重要的是，他们还引入了基于反馈的修复评估——模型第一次写错了没关系，给它一次看错误信息再重来的机会。结果很有意思：即使是最强的模型，一锤定音的pass率也只有百分之五十多，但加上反馈修复之后提升显著。这说明什么？对于我们做量子计算的人来说，这提示了一个很现实的方向——与其追求一次生成正确，不如让LLM学会“调试”量子代码，这个能力可能比单纯的代码生成更接近实用。
+
+接下来这篇 survey 关于Attention Sink，可能看起来离我们有点远，但我觉得对做foundation model的同学来说非常重要。大家知道Transformer的核心是attention机制，但近年的研究逐渐发现一个现象：attention会过度关注某些“中性”token，比如句子开头常见的“.”或者BERT里的[CLS]token，这种现象就叫做Attention Sink。它会干扰模型的可解释性，甚至加剧幻觉问题。这篇survey第一次系统梳理了这个问题的发展脉络，从最初的发现到后来的各种解释，再到各种 mitigation 方法。对于我们做PDE foundation model的人来说，这其实提醒了一个很重要的事情：当我们在构建科学计算领域的foundation model时，同样的机制是不是也存在？特别是当我们的token包含坐标、时间步或者物理量的时候，会不会有某种“隐形的sink”在悄悄主导attention的学习？这篇survey可能值得一读，因为它不仅总结了方法，更重要的是提出了很多尚未解决的问题。
+
+说完了attention机制，我们换个口味，看看视频生成的工作。OmniShow做的是human-object interaction视频生成，看起来是一个应用导向的研究，但它背后涉及一个很核心的技术挑战：如何同时满足多种控制条件的约束。论文提出了一个统一的条件注入机制，能够把文本、参考图像、音频和人体姿态等多种模态的信息和谐地融合在一起。对我们AI4S有什么启发呢？实际上，这类工作本质上是把物理约束和视觉生成结合起来。人的动作和物体的交互本质上遵循牛顿力学，当你在生成这类视频时，你实际上是在隐式地模拟物理规律。虽然OmniShow没有显式地使用物理先验，但它对多模态条件的高效整合思路，或许可以帮助我们思考如何在科学模拟中加入更多的观测约束——比如在预测流体行为时，如何把实验测量、数值模拟和理论模型统一到一个框架里去。
+
+最后想聊聊SATO这篇文章，它做的是3D网格生成，但切入点很有意思。以前的autoregressive transformer生成网格时，要么按坐标排序导致序列太长，要么用patch切分破坏了几何连续性。SATO的核心创新是用triangle strip作为token单元——你可以理解为把网格看成由一条条连续的三角形带子组成的，这样既保持了UV边界和边缘流的结构性，又让序列长度变得合理。这个工作虽然是计算机图形学的，但它提出的“连续性优先”的tokenization策略，跟我们做科学计算时对网格处理的思路是一致的。无论是有限元分析还是分子动力学模拟，网格或粒子的连接关系本身就蕴含着物理意义，如何设计一种既能保留几何拓扑又能被transformer高效处理的表示，可能是未来几何深度学习里的一个重要方向。
+
+好了，今天的播报就到这里。总结一下今天的观察：这几篇论文虽然主题分散，但有一个共同的隐含线索——大家都在关注“结构”的保留和利用。无论是RL里历史轨迹的结构、量子代码里跨框架的结构、attention里token之间依赖的结构、多模态生成里条件之间的结构，还是网格生成里几何连续的结构，本质上都在回答同一个问题：如何在高效计算的同时不忘保持问题的内在结构。这可能也是我们AI4S领域一直在面对的核心挑战——当你用强大的神经网络去逼近复杂系统时，那些被你忽略的结构，往往才是科学的核心。今天的Paper Morning就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.11297" target="_blank">The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping</a></li>
+<li><a href="https://arxiv.org/abs/2604.08570" target="_blank">QuanBench+: A Unified Multi-Framework Benchmark for LLM-Based Quantum Code Generation</a></li>
+<li><a href="https://arxiv.org/abs/2604.10098" target="_blank">Attention Sink in Transformers: A Survey on Utilization, Interpretation, and Mitigation</a></li>
+<li><a href="https://arxiv.org/abs/2604.11804" target="_blank">OmniShow: Unifying Multimodal Conditions for Human-Object Interaction Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2604.09132" target="_blank">Strips as Tokens: Artist Mesh Generation with Native UV Segmentation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

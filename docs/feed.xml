@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-14</title>
+      <description>今日学术播报: The Past Is Not Past: Memory-E, QuanBench+: A Unified Multi-Fr, Attention Sink in Transformers...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-14.mp3" length="11210963" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-14.mp3</guid>
+      <pubDate>2026-04-14T23:13:42.746414Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-13</title>
       <description>今日学术播报: Matrix-Game 3.0: Real-Time and, WildDet3D: Scaling Promptable , FORGE:Fine-grained Multimodal ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-13.mp3" length="8397262" type="audio/mpeg" />

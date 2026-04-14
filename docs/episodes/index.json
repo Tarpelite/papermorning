@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-14",
+    "title": "Paper Morning 2026-04-14",
+    "description": "今日学术播报: The Past Is Not Past: Memory-E, QuanBench+: A Unified Multi-Fr, Attention Sink in Transformers...",
+    "audio_file": "2026-04-14.mp3",
+    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想先从一个我们领域的人都很熟悉的现象说起：当大语言模型在做强化学习微调的时候，常常会陷入一种“行为塌缩”的困境——模型反反复复犯同样的错误，采样多样性急剧下降。这其实不只是LLM的问题，任何做物理模拟强化学习的同学可能都有同感，当你用RL去控制一个机械臂或者优化一个分子构型时，策略一旦发现某个“还不错”的局部解，就会一直待在里面不出来。\n\n今天第一篇论文MEDS就是来解决这个问题的。它的核心思路很直接：与其只让当前策略增加熵，不如把历史轨迹也利用起来。论文提出用密度聚类来识别那些反复出现的错误模式，然后对掉进“常见错误集群”的轨迹施加更大的惩罚。这样一来，模型就被迫去探索那些不常走的路径。对于我们AI4S的人来说，这个方法的价值可能不仅仅在LLM——想象一下，如果你用RL来搜索材料结构或者设计新的分子，传统的entropy regularization只能保证当前策略的随机性，但无法避免策略在若干次尝试后开始重复访问相似的失败区域。MEDS提供了显式干预跨rollout多样性的能力，这可能是未来构建更高效的科学探索策略的一个...",
+    "papers": [
+      {
+        "title": "The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping",
+        "url": "https://arxiv.org/abs/2604.11297",
+        "arxiv_id": "2604.11297"
+      },
+      {
+        "title": "QuanBench+: A Unified Multi-Framework Benchmark for LLM-Based Quantum Code Generation",
+        "url": "https://arxiv.org/abs/2604.08570",
+        "arxiv_id": "2604.08570"
+      },
+      {
+        "title": "Attention Sink in Transformers: A Survey on Utilization, Interpretation, and Mitigation",
+        "url": "https://arxiv.org/abs/2604.10098",
+        "arxiv_id": "2604.10098"
+      },
+      {
+        "title": "OmniShow: Unifying Multimodal Conditions for Human-Object Interaction Video Generation",
+        "url": "https://arxiv.org/abs/2604.11804",
+        "arxiv_id": "2604.11804"
+      },
+      {
+        "title": "Strips as Tokens: Artist Mesh Generation with Native UV Segmentation",
+        "url": "https://arxiv.org/abs/2604.09132",
+        "arxiv_id": "2604.09132"
+      }
+    ],
+    "published_at": "2026-04-14T23:13:42.746414Z"
+  },
+  {
     "date": "2026-04-13",
     "title": "Paper Morning 2026-04-13",
     "description": "今日学术播报: Matrix-Game 3.0: Real-Time and, WildDet3D: Scaling Promptable , FORGE:Fine-grained Multimodal ...",
