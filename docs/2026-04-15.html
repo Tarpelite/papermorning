@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-15</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-15</h1>
+    <p class="date">2026-04-15</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-15.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周三，Paper Morning开播了。
+
+最近大家可能注意到了，HuggingFace trending上关于大模型推理和agent的论文特别多，我挑了五篇有代表性的来聊聊。这批工作有个共同特点：它们都在回答同一个深层问题——怎么让大模型真正“会用”而不是“会背”。
+
+先看第一篇，ClawGUI。这是一个做GUI agent的统一框架，包含训练、评估和部署三个环节。我注意到它的核心贡献不是模型结构上的创新，而是工程基础设施的完善——作者指出了这个领域长期被忽视的问题：在线强化训练时环境不稳定，评估标准在各工作中漂移，训练好的agent很难真正部署到真实设备上。这让我想到AI4S领域其实也面临类似的“基础设施gap”：我们有很多不错的neural operator模型，但把它们真正用到实际科学问题上时，数据管道、评估基准、部署工具都还很原始。这篇工作值得AI4S的研究者关注，因为它展示了一个领域的成熟是怎么从“能跑demo”走到“全栈可用”的。
+
+第二篇 KnowRL 很有意思，它研究的是怎么在强化学习训练中给模型提供有效的hint。作者提出了一个“最小充分指导”的思路，把hint分解成原子知识点，然后用约束子集搜索找到最小有效的组合。这里有个很深刻的观察：给太多hint反而会引入冗余和不一致，增加训练开销。这让我联想到物理信息神经网络（PINN）里的权重平衡问题——当我们同时约束多个物理方程时，怎么知道哪些约束是“最小充分”的？这个思路也许能给AI4S中multi-physics建模提供一些启发。
+
+第三篇关于on-policy distillation的论文很值得细读。作者系统研究了大模型蒸馏的成功条件，发现两条关键规律：学生和老师需要“思维模式兼容”，而且老师必须提供学生没见过的真正新能力。这听起来很直觉，但作者做了很扎实的实验验证，包括用弱到强的反向蒸馏——让1.5B的模型去教7B模型，发现两者在学生眼中“分布上不可区分”。这个发现对AI4S的启示是：我们现在流行用大模型蒸馏出小的领域专用模型，但如果两者“思维模式”不兼容，硬塞知识可能事倍功半。operator learning里的那些预训练大模型，是不是真的能教会小模型“物理直觉”，这个得打个问号。
+
+第四篇 MEDS 处理的是一个很实际的问题：RL训练久了，模型容易陷入“重复犯同样的错”的陷阱。作者提出用历史轨迹的表示做密度聚类，然后对频繁出现的错误模式施加额外惩罚。这本质上是一种“记忆增强”的reward shaping。想想它和科学计算里那些需要长期记忆的任务有什么关联？比如气候建模里模型需要记住跨越数十年的时空关联，或者分子动力学里需要捕捉慢速的构象变化——也许类似的“错误模式记忆”机制能帮上忙。
+
+最后一篇 Audio-Omni 尝试统一音频的理解、生成和编辑三个任务，用一个冻结的多模态LLM做高层推理，加上一个可训练的Diffusion Transformer做高质量生成。这两年多模态大模型进展很快，但Audio领域一直比较分散，这篇算是往统一方向迈了一步。对AI4S来说，音频信号处理在很多科学场景里都有用——比如地震波分析、语音辅助的实验数据分析——如果音频理解能更自然地融入AI4S的工作流，也许会带来一些新的可能性。
+
+好了，这五篇聊完了，我有一个整体观察：它们都在回答“怎么让大模型不仅知识多，而且会用”这个根本问题，无论是从训练范式、基础设施还是记忆机制的角度。这其实和AI4S的核心挑战很像——我们不缺 PDE 的解法，缺的是让这些解法真正“会用”到实际问题中去的那种“会”的能力。今天的papers在方法论层面其实给出了不少线索。各位今天加油。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.11784" target="_blank">ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents</a></li>
+<li><a href="https://arxiv.org/abs/2604.12627" target="_blank">KnowRL: Boosting LLM Reasoning via Reinforcement Learning with Minimal-Sufficient Knowledge Guidance</a></li>
+<li><a href="https://arxiv.org/abs/2604.13016" target="_blank">Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe</a></li>
+<li><a href="https://arxiv.org/abs/2604.11297" target="_blank">The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping</a></li>
+<li><a href="https://arxiv.org/abs/2604.10708" target="_blank">Audio-Omni: Extending Multi-modal Understanding to Versatile Audio Generation and Editing</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
