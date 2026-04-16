@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-16</title>
+      <description>今日学术播报: OccuBench: Evaluating AI Agent, RationalRewards: Reasoning Rew, GameWorld: Towards Standardize...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-16.mp3" length="8354003" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-16.mp3</guid>
+      <pubDate>2026-04-16T23:11:54.066648Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-15</title>
       <description>今日学术播报: ClawGUI: A Unified Framework f, KnowRL: Boosting LLM Reasoning, Rethinking On-Policy Distillat...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-15.mp3" length="7354662" type="audio/mpeg" />

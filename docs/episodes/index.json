@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-16",
+    "title": "Paper Morning 2026-04-16",
+    "description": "今日学术播报: OccuBench: Evaluating AI Agent, RationalRewards: Reasoning Rew, GameWorld: Towards Standardize...",
+    "audio_file": "2026-04-16.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个更大的图景说起。我们一直在聊AI for Science，但最近有几篇工作很有意思，它们虽然不直接做PDE求解或物理建模，却在方法论层面悄悄靠近我们关心的问题。它们展示了一种趋势：AI系统正在从“执行单一任务”向“理解复杂世界”进化，而这个能力恰恰是科学智能体的基础。\n\n先看第一篇，OccuBench。这个工作提出了一个针对AI智能体的基准测试，覆盖了100个真实职业场景，从急诊分诊到核电站安全监控，再到海关报关。它用语言世界模型来模拟这些专业环境，解决了以往benchmark只能评测少数公开领域的问题。\n\n我感兴趣的不只是这个评测框架本身，而是它背后的思路：让智能体在模拟的专业环境中学会“推理”，这本质上和我们在科学计算中追求的“基于物理的决策”是一致的。当AI能理解急诊室的优先级逻辑、能处理核电站的安全协议，它离理解一个PDE系统的约束条件也就不远了。\n\n接下来这篇 RationalRewards 把强化学习的奖励机制推进了一层。大多数视觉生成模型用的奖励模型只给一个分数，但这篇工作让奖励模型先写出多维度的cri...",
+    "papers": [
+      {
+        "title": "OccuBench: Evaluating AI Agents on Real-World Professional Tasks via Language World Models",
+        "url": "https://arxiv.org/abs/2604.10866",
+        "arxiv_id": "2604.10866"
+      },
+      {
+        "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
+        "url": "https://arxiv.org/abs/2604.11626",
+        "arxiv_id": "2604.11626"
+      },
+      {
+        "title": "GameWorld: Towards Standardized and Verifiable Evaluation of Multimodal Game Agents",
+        "url": "https://arxiv.org/abs/2604.07429",
+        "arxiv_id": "2604.07429"
+      },
+      {
+        "title": "SpatialEvo: Self-Evolving Spatial Intelligence via Deterministic Geometric Environments",
+        "url": "https://arxiv.org/abs/2604.14144",
+        "arxiv_id": "2604.14144"
+      },
+      {
+        "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
+        "url": "https://arxiv.org/abs/2604.14148",
+        "arxiv_id": "2604.14148"
+      }
+    ],
+    "published_at": "2026-04-16T23:11:54.066648Z"
+  },
+  {
     "date": "2026-04-15",
     "title": "Paper Morning 2026-04-15",
     "description": "今日学术播报: ClawGUI: A Unified Framework f, KnowRL: Boosting LLM Reasoning, Rethinking On-Policy Distillat...",
