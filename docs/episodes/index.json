@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-17",
+    "title": "Paper Morning 2026-04-17",
+    "description": "今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, Representations Before Pixels:...",
+    "audio_file": "2026-04-17.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的图景说起。大家有没有注意到，最近AI圈有个很有意思的趋势，不管是什么任务，都在往两个方向卷：一是让模型在推理的时候多“想一会儿”，也就是test-time compute；二是让不同任务、不同模态之间的知识能够更好地迁移。今天这几篇论文恰好都折射出这个趋势，我们一起来看看。\n\n先说HY-World 2.0，这是一个多模态世界模型，能从文本提示、单张图片甚至视频生成完整的3D场景。它采用了四阶段流水线，先生成全景图，然后做路径规划，接着做场景扩展，最后做场景合成。核心亮点是它产出的是3D Gaussian Splatting，这是一种新颖的辐射场表示方法，比传统的NeRF更高效。对于我们AI4S社区来说，这篇工作真正值得关注的地方在于，它展示了如何把“生成”从像素空间提升到结构化的3D表示空间。你可以想象，未来在材料设计或者流体模拟中，我们或许也能先用语言描述一个物理场景，然后让模型直接生成一个可交互的3D物理场。当然，现在的HY-World 2.0主要是视觉导向，但它打开的思路是通用的。\n\n接下来看Ratio...",
+    "papers": [
+      {
+        "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
+        "url": "https://arxiv.org/abs/2604.14268",
+        "arxiv_id": "2604.14268"
+      },
+      {
+        "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
+        "url": "https://arxiv.org/abs/2604.11626",
+        "arxiv_id": "2604.11626"
+      },
+      {
+        "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
+        "url": "https://arxiv.org/abs/2604.11707",
+        "arxiv_id": "2604.11707"
+      },
+      {
+        "title": "Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents",
+        "url": "https://arxiv.org/abs/2604.14004",
+        "arxiv_id": "2604.14004"
+      },
+      {
+        "title": "From P(y|x) to P(y): Investigating Reinforcement Learning in Pre-train Space",
+        "url": "https://arxiv.org/abs/2604.14142",
+        "arxiv_id": "2604.14142"
+      }
+    ],
+    "published_at": "2026-04-17T23:10:07.102749Z"
+  },
+  {
     "date": "2026-04-16",
     "title": "Paper Morning 2026-04-16",
     "description": "今日学术播报: OccuBench: Evaluating AI Agent, RationalRewards: Reasoning Rew, GameWorld: Towards Standardize...",

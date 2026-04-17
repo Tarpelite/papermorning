@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-17</title>
+      <description>今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, Representations Before Pixels:...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-17.mp3" length="9190966" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-17.mp3</guid>
+      <pubDate>2026-04-17T23:10:07.102749Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-16</title>
       <description>今日学术播报: OccuBench: Evaluating AI Agent, RationalRewards: Reasoning Rew, GameWorld: Towards Standardize...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-16.mp3" length="8354003" type="audio/mpeg" />
