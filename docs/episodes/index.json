@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-18",
+    "title": "Paper Morning 2026-04-18",
+    "description": "今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, Representations Before Pixels:...",
+    "audio_file": "2026-04-18.mp3",
+    "script": "各位早上好，周末的Paper Morning如约而至。\n\n今天想先从一个更大的图景开始聊。我们都知道，大语言模型带来了一个重要的范式转变，就是从单纯的“推理”走向“推理加行动”。但最近越来越多的工作开始把这个思路延伸到更广的领域，不只是文字，而是延伸到物理世界、视觉世界，乃至于科研本身。今天的几篇论文，正好从不同角度折射出了这个趋势。\n\n先来看HY-World 2.0，这是一个多模态世界模型框架。它的核心贡献是：给定文本提示、单张图片、多视角图片甚至视频，它能够生成可导航的三维高斯溅射场景。这个工作有意思的地方不在于它又能从文本生成三维了，而在于它把整个生成过程拆成了四个阶段：全景图生成、轨迹规划、世界扩展和世界合成。听起来很像我们构建物理仿真系统的思路——先建模环境结构，再规划交互方式，最后渲染细节。这其实反映了一个趋势：世界模型不再只是预测下一帧像素，而是开始具备“空间推理”和“规划”的能力。当模型能够理解“去哪里”和“怎么去”的时候，它就更接近我们所说的物理智能了。\n\n如果说HY-World是在物理空间里构建世界模型，那接下来这篇 RationalRewards 就是在视觉生成的...",
+    "papers": [
+      {
+        "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
+        "url": "https://arxiv.org/abs/2604.14268",
+        "arxiv_id": "2604.14268"
+      },
+      {
+        "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
+        "url": "https://arxiv.org/abs/2604.11626",
+        "arxiv_id": "2604.11626"
+      },
+      {
+        "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
+        "url": "https://arxiv.org/abs/2604.11707",
+        "arxiv_id": "2604.11707"
+      },
+      {
+        "title": "Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents",
+        "url": "https://arxiv.org/abs/2604.14004",
+        "arxiv_id": "2604.14004"
+      },
+      {
+        "title": "DR^{3}-Eval: Towards Realistic and Reproducible Deep Research Evaluation",
+        "url": "https://arxiv.org/abs/2604.14683",
+        "arxiv_id": "2604.14683"
+      }
+    ],
+    "published_at": "2026-04-18T23:04:48.242666Z"
+  },
+  {
     "date": "2026-04-17",
     "title": "Paper Morning 2026-04-17",
     "description": "今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, Representations Before Pixels:...",
