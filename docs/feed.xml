@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-19</title>
+      <description>今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, DR^{3}-Eval: Towards Realistic...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-19.mp3" length="7831136" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-19.mp3</guid>
+      <pubDate>2026-04-19T23:05:45.504794Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-18</title>
       <description>今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, Representations Before Pixels:...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-18.mp3" length="9572145" type="audio/mpeg" />
