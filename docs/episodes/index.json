@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-20",
+    "title": "Paper Morning 2026-04-20",
+    "description": "今日学术播报: Elucidating the SNR-t Bias of , Maximal Brain Damage Without D, PersonaVLM: Long-Term Personal...",
+    "audio_file": "2026-04-20.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想先聊一篇关于扩散模型基础理论的工作。扩散模型现在火得不行，从图像生成到科学模拟到处都在用，但这篇论文指出了一个之前被忽视的根本性问题——SNR-t偏差。作者发现，在训练时，样本的信噪比和 timestep 是严格绑定的，但推理时这个对应关系被打破了，导致误差累积。他们给出了一个简洁的微分校正方法。这个发现为什么重要呢？因为它提醒我们，扩散模型的采样过程和训练过程之间存在一个隐藏的契约破坏了。我们现在训练科学计算用的扩散模型时，往往只关心loss下降，却很少检查这个训练-推理的一致性。这篇工作算是一个提醒：做应用的时候，基础假设不能想当然。\n\n说完扩散模型的底层问题，我们来看一个更贴近实际应用层面的进展。现在训练大语言模型，尤其是有推理能力的模型，一个常见套路是用更强模型生成的合成数据来做微调。但这篇论文发现了一个大坑：对于Qwen3-8B这种新型推理模型，这个套路居然不work，甚至还会让性能下降。原因是教师模型生成的数据和学生模型的风格差异太大了。他们提出了TESSY框架，让教师和学生模型交替生成风格标记和非风格标记，从而弥合这...",
+    "papers": [
+      {
+        "title": "Elucidating the SNR-t Bias of Diffusion Probabilistic Models",
+        "url": "https://arxiv.org/abs/2604.16044",
+        "arxiv_id": "2604.16044"
+      },
+      {
+        "title": "Maximal Brain Damage Without Data or Optimization: Disrupting Neural Networks via Sign-Bit Flips",
+        "url": "https://arxiv.org/abs/2502.07408",
+        "arxiv_id": "2502.07408"
+      },
+      {
+        "title": "PersonaVLM: Long-Term Personalized Multimodal LLMs",
+        "url": "https://arxiv.org/abs/2604.13074",
+        "arxiv_id": "2604.13074"
+      },
+      {
+        "title": "How to Fine-Tune a Reasoning Model? A Teacher-Student Cooperation Framework to Synthesize Student-Consistent SFT Data",
+        "url": "https://arxiv.org/abs/2604.14164",
+        "arxiv_id": "2604.14164"
+      },
+      {
+        "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
+        "url": "https://arxiv.org/abs/2604.11707",
+        "arxiv_id": "2604.11707"
+      }
+    ],
+    "published_at": "2026-04-20T23:10:41.776099Z"
+  },
+  {
     "date": "2026-04-19",
     "title": "Paper Morning 2026-04-19",
     "description": "今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, DR^{3}-Eval: Towards Realistic...",

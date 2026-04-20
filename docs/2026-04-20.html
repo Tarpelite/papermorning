@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-20</h1>
+    <p class="date">2026-04-20</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-20.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想先聊一篇关于扩散模型基础理论的工作。扩散模型现在火得不行，从图像生成到科学模拟到处都在用，但这篇论文指出了一个之前被忽视的根本性问题——SNR-t偏差。作者发现，在训练时，样本的信噪比和 timestep 是严格绑定的，但推理时这个对应关系被打破了，导致误差累积。他们给出了一个简洁的微分校正方法。这个发现为什么重要呢？因为它提醒我们，扩散模型的采样过程和训练过程之间存在一个隐藏的契约破坏了。我们现在训练科学计算用的扩散模型时，往往只关心loss下降，却很少检查这个训练-推理的一致性。这篇工作算是一个提醒：做应用的时候，基础假设不能想当然。
+
+说完扩散模型的底层问题，我们来看一个更贴近实际应用层面的进展。现在训练大语言模型，尤其是有推理能力的模型，一个常见套路是用更强模型生成的合成数据来做微调。但这篇论文发现了一个大坑：对于Qwen3-8B这种新型推理模型，这个套路居然不work，甚至还会让性能下降。原因是教师模型生成的数据和学生模型的风格差异太大了。他们提出了TESSY框架，让教师和学生模型交替生成风格标记和非风格标记，从而弥合这个分布鸿沟。这个工作让我想到一个类比：这就像让一个数学教授去教小学生解题，用的是大学教授的思维方式和书写习惯，小学生根本接不住。TESSY的做法，相当于在教学过程中加入了一个“翻译”步骤，把高深的解题思路转化成学生能接受的表达方式。对于我们AI4S社区来说，这条经验同样适用——当我们用强大的teacher model生成科学计算的训练数据时，不能只看推理能力，还得关注风格兼容性。
+
+今天的最后一篇想聊聊视频预测的一个新思路，叫Re2Pix。现在的视频预测方法大多是直接预测未来帧，但这篇工作认为应该分两步走：先在特征空间预测未来语义，再根据语义去渲染像素。他们用冻结的vision foundation model提取特征，先预测特征表示，然后用latent diffusion model根据这些特征去生成画面。这个思路让我想起物理模拟中的分层方法——先预测粗粒度的物理量，再做细粒度的重建。本质上都是在把一个高维的生成问题分解为更容易把握的子问题。对于想做科学视频预测的朋友，这种层次化思路可能比端到端的直接预测更可控。
+
+好了，今天的播报就到这里。这几篇文章加起来，我看到一个共同的脉络：不管是扩散模型、推理模型还是视频生成，都在强调训练和推理之间的一致性问题——训练目标和使用场景的匹配、生成风格和学生能力的对齐、语义预测和像素重建的解耦。这种对“一致性”的关注，可能值得我们 在设计AI4S方法时多加留意。早上好各位，明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.16044" target="_blank">Elucidating the SNR-t Bias of Diffusion Probabilistic Models</a></li>
+<li><a href="https://arxiv.org/abs/2502.07408" target="_blank">Maximal Brain Damage Without Data or Optimization: Disrupting Neural Networks via Sign-Bit Flips</a></li>
+<li><a href="https://arxiv.org/abs/2604.13074" target="_blank">PersonaVLM: Long-Term Personalized Multimodal LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2604.14164" target="_blank">How to Fine-Tune a Reasoning Model? A Teacher-Student Cooperation Framework to Synthesize Student-Consistent SFT Data</a></li>
+<li><a href="https://arxiv.org/abs/2604.11707" target="_blank">Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
