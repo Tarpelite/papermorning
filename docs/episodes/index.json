@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-21",
+    "title": "Paper Morning 2026-04-21",
+    "description": "今日学术播报: Extending One-Step Image Gener, OneVL: One-Step Latent Reasoni, MultiWorld: Scalable Multi-Age...",
+    "audio_file": "2026-04-21.mp3",
+    "script": "各位早上好，今天Paper Morning开播。\n\n最近世界模型这个方向很热闹，咱们今天就聊聊这个领域的新进展。其实世界模型在AI for Science里是个很本质的东西，咱们做物理仿真，说到底就是在构建世界的模型，所以今天这几篇工作虽然表面上看是自动驾驶、游戏 agent 什么，但背后都在回答一个共同的问题：怎么让机器理解并预测复杂系统的行为。\n\n先看 OneVL这篇文章。它解决的是自动驾驶里一个很现实的问题：我们都知道 chain-of-thought 推理很强，但它本质上是一个自回归过程，每一步都要 token by token 地生成，这对实时性要求极高的自动驾驶来说是致命的延迟。作者的洞察很有意思：之前很多 latent CoT 方法效果不如显式推理，原因是它们把推理压缩成了纯语言的符号抽象，而没有抓住真正支配驾驶行为的因果动力学。OneVL 的做法是通过两个辅助解码器来监督隐状态的生成，一个解码器输出语言解释，另一个解码器重建环境状态，这样强制隐状态同时编码了语言推理和物理世界的因果信息。这个思路其实给我们做科学计算很大的启发：咱们训练 PDE 模型的时候，是不是也应该让...",
+    "papers": [
+      {
+        "title": "Extending One-Step Image Generation from Class Labels to Text via Discriminative Text Representation",
+        "url": "https://arxiv.org/abs/2604.18168",
+        "arxiv_id": "2604.18168"
+      },
+      {
+        "title": "OneVL: One-Step Latent Reasoning and Planning with Vision-Language Explanation",
+        "url": "https://arxiv.org/abs/2604.18486",
+        "arxiv_id": "2604.18486"
+      },
+      {
+        "title": "MultiWorld: Scalable Multi-Agent Multi-View Video World Models",
+        "url": "https://arxiv.org/abs/2604.18564",
+        "arxiv_id": "2604.18564"
+      },
+      {
+        "title": "Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence",
+        "url": "https://arxiv.org/abs/2604.18292",
+        "arxiv_id": "2604.18292"
+      },
+      {
+        "title": "OpenGame: Open Agentic Coding for Games",
+        "url": "https://arxiv.org/abs/2604.18394",
+        "arxiv_id": "2604.18394"
+      }
+    ],
+    "published_at": "2026-04-21T23:09:06.315516Z"
+  },
+  {
     "date": "2026-04-20",
     "title": "Paper Morning 2026-04-20",
     "description": "今日学术播报: Elucidating the SNR-t Bias of , Maximal Brain Damage Without D, PersonaVLM: Long-Term Personal...",
