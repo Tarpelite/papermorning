@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-22</title>
+      <description>今日学术播报: CoInteract: Physically-Consist, AnyRecon: Arbitrary-View 3D Re, Tstars-Tryon 1.0: Robust and R...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-22.mp3" length="6786656" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-22.mp3</guid>
+      <pubDate>2026-04-22T23:27:04.399822Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-21</title>
       <description>今日学术播报: Extending One-Step Image Gener, OneVL: One-Step Latent Reasoni, MultiWorld: Scalable Multi-Age...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-21.mp3" length="6915178" type="audio/mpeg" />
