@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-24",
+    "title": "Paper Morning 2026-04-24",
+    "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, LLaTiSA: Towards Difficulty-St...",
+    "audio_file": "2026-04-24.mp3",
+    "script": "各位早上好，Paper Morning 开播了。\n\n今天想先聊一篇把 diffusion model 和 LLM 做深度融合的工作。LLaDA2.0-Uni 这篇论文提出了一个统一的离散扩散大语言模型框架，它把视觉信号通过 SigLIP-VQ 做离散化，然后在一个基于 MoE 的 transformer 主干里同时做文本和图像的块级 mask 扩散，最后用 diffusion decoder 把离散 token 重建为高清图像。这两年 diffusion model 在生成任务上火力全开，而 LLM 在理解任务上稳坐钓鱼台，如何把两者统一到一个模型里是很多人关心的问题。这篇工作的价值不在于刷了多少个 benchmark，而在于它验证了离散扩散这条技术路径确实可以支撑统一的多模态理解与生成。熟悉 NLP 的朋友可能知道，scaling law 在语言模型里已经被验证得很充分了，但在 diffusion + LLM 这个新范式下，scaling 特性是否还能保持其实是不太清楚的。这篇工作给出了初步的证据，告诉我们这条路可能走得通。不过也要提醒一句，它在生成质量上“匹配 specialize...",
+    "papers": [
+      {
+        "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
+        "url": "https://arxiv.org/abs/2604.20796",
+        "arxiv_id": "2604.20796"
+      },
+      {
+        "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
+        "url": "https://arxiv.org/abs/2604.19734",
+        "arxiv_id": "2604.19734"
+      },
+      {
+        "title": "LLaTiSA: Towards Difficulty-Stratified Time Series Reasoning from Visual Perception to Semantics",
+        "url": "https://arxiv.org/abs/2604.17295",
+        "arxiv_id": "2604.17295"
+      },
+      {
+        "title": "Near-Future Policy Optimization",
+        "url": "https://arxiv.org/abs/2604.20733",
+        "arxiv_id": "2604.20733"
+      },
+      {
+        "title": "WorldMark: A Unified Benchmark Suite for Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2604.21686",
+        "arxiv_id": "2604.21686"
+      }
+    ],
+    "published_at": "2026-04-24T23:10:09.881425Z"
+  },
+  {
     "date": "2026-04-23",
     "title": "Paper Morning 2026-04-23",
     "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, AnyRecon: Arbitrary-View 3D Re, Near-Future Policy Optimizatio...",
