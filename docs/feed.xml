@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-04-25</title>
+      <description>今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-25.mp3" length="8063103" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-04-25.mp3</guid>
+      <pubDate>2026-04-25T23:07:06.045557Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-04-24</title>
       <description>今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, LLaTiSA: Towards Difficulty-St...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-24.mp3" length="8517007" type="audio/mpeg" />

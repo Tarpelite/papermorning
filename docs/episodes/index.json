@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-25",
+    "title": "Paper Morning 2026-04-25",
+    "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...",
+    "audio_file": "2026-04-25.mp3",
+    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想和大家聊一个我最近反复思考的命题：我们正处在一个“统一”的前夜。不管是模型架构、评估基准，还是跨实体的知识迁移，各种碎片化的尝试都在指向同一个方向——找到更本质的表示，让知识真正流动起来。\n\n先看第一篇论文，LLaDA2.0-Uni。这个工作把多模态理解和生成统一到了一个离散扩散大语言模型里。核心思路很巧妙：用SigLIP-VQ把视觉信号离散化，然后在backbone里用block-level masked diffusion同时处理文本和图像，最后通过一个扩散解码器把离散token还原成高清图像。这不是简单的多任务统一，而是从tokenization层面就打了通。我比较关注的是它的prefix-aware优化和few-step distillation，这些 inference efficiency 的改进让统一架构真正有了实用价值。更重要的是，它验证了一个观点：离散的masked diffusion不仅可以做生成，还能支撑高质量的理解任务，这对我们思考“什么是好的表示”很有启发。\n\n接下来这篇 UniT 就更有意思了，它试图...",
+    "papers": [
+      {
+        "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
+        "url": "https://arxiv.org/abs/2604.20796",
+        "arxiv_id": "2604.20796"
+      },
+      {
+        "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
+        "url": "https://arxiv.org/abs/2604.19734",
+        "arxiv_id": "2604.19734"
+      },
+      {
+        "title": "WorldMark: A Unified Benchmark Suite for Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2604.21686",
+        "arxiv_id": "2604.21686"
+      },
+      {
+        "title": "LLaTiSA: Towards Difficulty-Stratified Time Series Reasoning from Visual Perception to Semantics",
+        "url": "https://arxiv.org/abs/2604.17295",
+        "arxiv_id": "2604.17295"
+      },
+      {
+        "title": "Near-Future Policy Optimization",
+        "url": "https://arxiv.org/abs/2604.20733",
+        "arxiv_id": "2604.20733"
+      }
+    ],
+    "published_at": "2026-04-25T23:07:06.045557Z"
+  },
+  {
     "date": "2026-04-24",
     "title": "Paper Morning 2026-04-24",
     "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, LLaTiSA: Towards Difficulty-St...",
