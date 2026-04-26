@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-26",
+    "title": "Paper Morning 2026-04-26",
+    "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...",
+    "audio_file": "2026-04-26.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊一个很有意思的趋势，就是基础模型正在从“理解”走向“交互”，从“观察”走向“行动”。这个转变在NLP和CV领域已经很明显了，而现在它正在向更广泛的物理世界延伸。\n\n先看第一篇，LLaDA2.0-Uni。这是一个统一的多模态离散扩散大语言模型，它的核心理念很有意思：把视觉和文本都变成离散的token，然后在同一个transformer框架下做masked diffusion。这和我们过去看到的diffusion model不太一样，它不是逐步去噪，而是像BERT一样mask掉token然后预测。让我觉得有意思的是它的训练思路——通过视觉编码器把图像离散化，然后统一用block-level的mask策略。这其实呼应了我之前提到的“一切皆可tokenize”的趋势。当我们把物理信号、时空数据也都做成离散表示，是不是也能用类似的方法统一处理？这为未来科学计算中的多模态学习提供了一个参考架构。\n\n接下来这篇UniT就更直接了，它解决的是人形机器人学习中的一个痛点：怎么把人类的行为数据迁移到机器人身上。大家知道 human-to-ro...",
+    "papers": [
+      {
+        "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
+        "url": "https://arxiv.org/abs/2604.20796",
+        "arxiv_id": "2604.20796"
+      },
+      {
+        "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
+        "url": "https://arxiv.org/abs/2604.19734",
+        "arxiv_id": "2604.19734"
+      },
+      {
+        "title": "WorldMark: A Unified Benchmark Suite for Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2604.21686",
+        "arxiv_id": "2604.21686"
+      },
+      {
+        "title": "LLaTiSA: Towards Difficulty-Stratified Time Series Reasoning from Visual Perception to Semantics",
+        "url": "https://arxiv.org/abs/2604.17295",
+        "arxiv_id": "2604.17295"
+      },
+      {
+        "title": "Near-Future Policy Optimization",
+        "url": "https://arxiv.org/abs/2604.20733",
+        "arxiv_id": "2604.20733"
+      }
+    ],
+    "published_at": "2026-04-26T23:08:05.201648Z"
+  },
+  {
     "date": "2026-04-25",
     "title": "Paper Morning 2026-04-25",
     "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-03-08T22:51:16.189956Z"
-  },
-  {
-    "date": "2026-03-07",
-    "title": "Paper Morning 2026-03-07",
-    "description": "今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...",
-    "audio_file": "2026-03-07.mp3",
-    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想先从一篇挺有意思的视频生成工作聊起。Helios这个名字取得很浪漫，它是希腊神话里的太阳神。这篇论文确实带来了一些让人眼前一亮的东西：这是一个140亿参数的视频生成模型，能够在单张H100 GPU上跑到19.5FPS，同时支持分钟级的长视频生成。注意啊，这里有个细节很关键——他们做到了real-time generation，但没有用KV-cache、稀疏注意力或者模型量化这些常规的加速手段。这意味着他们从模型架构和训练本身就解决了效率问题，而不是靠 tricks 往上堆。对于我们做科学计算的人来说，这其实提供了一个很值得思考的参照：当你想要把一个很重的模型真真正正落地的时候，架构层面的创新往往比后面的优化技巧更有决定性。\n\n然后我想把话题引到SkillNet这个工作上。现在AI agent火得不行，大家都在讨论agent怎么调用工具、怎么完成复杂任务。但有一个根本性的问题很少被正面回应：agent学到的技能怎么积累、怎么复用？这篇论文提出的SkillNet很有意思，它试图给AI技能建立一个“基础设施”，不只是让agent...",
-    "papers": [
-      {
-        "title": "Helios: Real Real-Time Long Video Generation Model",
-        "url": "https://arxiv.org/abs/2603.04379",
-        "arxiv_id": "2603.04379"
-      },
-      {
-        "title": "SkillNet: Create, Evaluate, and Connect AI Skills",
-        "url": "https://arxiv.org/abs/2603.04448",
-        "arxiv_id": "2603.04448"
-      },
-      {
-        "title": "MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier",
-        "url": "https://arxiv.org/abs/2603.03756",
-        "arxiv_id": "2603.03756"
-      },
-      {
-        "title": "T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning",
-        "url": "https://arxiv.org/abs/2603.03790",
-        "arxiv_id": "2603.03790"
-      },
-      {
-        "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2603.02604",
-        "arxiv_id": "2603.02604"
-      }
-    ],
-    "published_at": "2026-03-07T22:50:57.744134Z"
   }
 ]
