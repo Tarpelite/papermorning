@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-04-27",
+    "title": "Paper Morning 2026-04-27",
+    "description": "今日学术播报: Agentic World Modeling: Founda, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...",
+    "audio_file": "2026-04-27.mp3",
+    "script": "各位早上好，新的一周开始了，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。最近大家可能注意到了，AI领域关于世界模型的讨论越来越热闹，但仔细听会发现，同样说“世界模型”，不同背景的人指的其实是截然不同的东西。今天第一篇论文就试图给这个问题做一个系统性的梳理。\n\n这篇叫做《Agentic World Modeling》的文章，来自一组在强化学习和机器人领域非常活跃的作者。他们提出了一个很有意思的“能力层级×物理法则”的分类框架。简单说，把世界模型分成三层：L1是基础的一步预测器，学的是局部转移算子；L2是可以做多步rollout的模拟器，而且能够尊重领域定律；L3更厉害，是能够自主修正模型的演化器，当预测失败时会自己改进。这个框架的聪明之处在于，它把大家对世界模型的模糊期待拆解成了可操作的能力阶梯。而且他们特别强调，一个好用的世界模型必须能够显式地编码领域物理定律，这和我们做PDE求解时强调物理先验嵌入，思路是一致的。现在很多agent项目都在讲规划、讲推理，但如果没有一个可靠的环境模型作为基础，那些高层决策都是空中楼阁。这篇文章给我们的提醒是：先把世界模型...",
+    "papers": [
+      {
+        "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
+        "url": "https://arxiv.org/abs/2604.22748",
+        "arxiv_id": "2604.22748"
+      },
+      {
+        "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
+        "url": "https://arxiv.org/abs/2604.19734",
+        "arxiv_id": "2604.19734"
+      },
+      {
+        "title": "WorldMark: A Unified Benchmark Suite for Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2604.21686",
+        "arxiv_id": "2604.21686"
+      },
+      {
+        "title": "LLaTiSA: Towards Difficulty-Stratified Time Series Reasoning from Visual Perception to Semantics",
+        "url": "https://arxiv.org/abs/2604.17295",
+        "arxiv_id": "2604.17295"
+      },
+      {
+        "title": "Video Analysis and Generation via a Semantic Progress Function",
+        "url": "https://arxiv.org/abs/2604.22554",
+        "arxiv_id": "2604.22554"
+      }
+    ],
+    "published_at": "2026-04-27T23:29:28.244523Z"
+  },
+  {
     "date": "2026-04-26",
     "title": "Paper Morning 2026-04-26",
     "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-03-09T22:56:41.187449Z"
-  },
-  {
-    "date": "2026-03-08",
-    "title": "Paper Morning 2026-03-08",
-    "description": "今日学术播报: Helios: Real Real-Time Long Vi, SkillNet: Create, Evaluate, an, MOOSE-Star: Unlocking Tractabl...",
-    "audio_file": "2026-03-08.mp3",
-    "script": "各位早上好，周日的Paper Morning如约而至。\n\n先看第一篇，Helios，一个140亿参数的视频生成模型，能在单张H100 GPU上跑出19.5FPS，同时支持分钟级的长视频生成。这件事为什么有意思呢？大家知道，视频生成模型在过去一年多里经历了爆发式增长，但主流路线几乎都依赖自回归或diffusion的级联结构，长视频 drift问题（就是生成到后面质量崩塌）几乎是行业共识的难题。Helios的突破点在于，它不需要常见的anti-drifting技巧，比如self-forcing或者keyframe采样，而是通过一个统一的输入表示，让模型原生就能处理长序列。这让我想到我们在PDE求解里经常讨论的“长期一致性”问题——如何在保持局部精度的同时维护全局稳定性。视频生成和长时间 PDE 积分在这一点上其实是相通的，只是问题域不同。\n\n第二篇 SkillNet 提出了一个开放的基础设施，用来系统性地创建、评估和组织AI技能。这两年AI agent火起来之后，大家都意识到一个问题：智能体每次遇到新任务都是从零学起，缺乏像人类一样的技能积累和迁移机制。SkillNet的思路是建立一个统一...",
-    "papers": [
-      {
-        "title": "Helios: Real Real-Time Long Video Generation Model",
-        "url": "https://arxiv.org/abs/2603.04379",
-        "arxiv_id": "2603.04379"
-      },
-      {
-        "title": "SkillNet: Create, Evaluate, and Connect AI Skills",
-        "url": "https://arxiv.org/abs/2603.04448",
-        "arxiv_id": "2603.04448"
-      },
-      {
-        "title": "MOOSE-Star: Unlocking Tractable Training for Scientific Discovery by Breaking the Complexity Barrier",
-        "url": "https://arxiv.org/abs/2603.03756",
-        "arxiv_id": "2603.03756"
-      },
-      {
-        "title": "T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning",
-        "url": "https://arxiv.org/abs/2603.03790",
-        "arxiv_id": "2603.03790"
-      },
-      {
-        "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2603.02604",
-        "arxiv_id": "2603.02604"
-      }
-    ],
-    "published_at": "2026-03-08T22:51:16.189956Z"
   }
 ]
