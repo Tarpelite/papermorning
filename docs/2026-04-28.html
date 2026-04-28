@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-28</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-28</h1>
+    <p class="date">2026-04-28</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-28.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天Paper Morning想和大家聊聊一个特别有意思的话题——从世界的建模到智能体的组织，我们似乎正在见证AI系统从“回答问题”向“理解世界”的一次关键跃迁。
+
+今天第一篇论文叫做《Agentic World Modeling》，作者提出了一个很有意思的“能力层级×物理规律”的分类框架。他们把世界模型分成三层：L1是预测器，只学单步的局部转移；L2是模拟器，能做多步的、带动作的推演，并且尊重领域规律；L3是进化器，当预测失败时能自主修正模型。这个框架让我想到我们做PDE求解和物理模拟的老本行——以前我们用数值方法解方程，本质上是把物理规律编码进去，而现在这些AI系统在学习物理规律本身。这两者之间有没有可能互相启发？比如L3 Evolver的思想是不是可以帮我们构建更能适应新物理场景的PDE求解器？这篇工作之所以现在出现，我觉得是因为大语言模型让智能体火起来了，但大家突然发现缺了一个核心能力——对环境的建模能力，而过去这个能力是被严重低估的。
+
+接下来这篇《World-R1》很有意思，它用强化学习来解决视频生成里的几何不一致问题。他们没有改模型结构，而是通过RL让视频生成器学会尊重3D约束。这让我想起一个我们在AI4S里经常讨论的问题：如何把物理先验注入神经网络？传统做法是加物理信息损失函数，或者改架构塞3D先验，但他们选择了一条不同的路——让模型自己通过奖励信号学会遵守3D规律。他们用的Flow-GRPO方法和3D foundation model作为奖励来源，这个思路其实很接近我们做物理约束学习的方式，只是把问题从PDE求解换成了视频生成。视频生成的几何一致性本质上也是一个物理问题——物体在时空中的演化要满足某种守恒律。这篇工作让我觉得，也许未来我们可以用类似思路，让科学计算模型自己学会尊重物理定律，而不是靠人工设计损失函数。
+
+第三篇《From Skills to Talent》提出了一种组织多智能体系统的新框架，叫做OneManCompany。他们把智能体的技能、工具和运行时配置打包成可移植的“人才”单元，然后通过类型化的组织接口来编排。这篇工作实际上在回应一个很根本的问题：单个智能体能力已经很强了，但多个智能体怎么组织？怎么治理？怎么持续改进？他们把这个问题提升到了“组织学”的层面。这让我想到我们实验室里做AI辅助科研的例子——当我们有多个AI agent分别负责文献检索、实验设计、数据分析的时候，如何让它们像一个真正的研究团队一样高效协作？这篇论文虽然不是直接做AI4S的，但它提出的组织原则可能对未来的科研智能体系统有重要启发。
+
+然后是《ReVSI》，这篇是关于视觉语言模型3D推理能力评估的。他们指出当前的空间智能benchmark存在系统性的问题：很多问答对是从点云标注转换过来的，但视频里明明可见的物体可能被遗漏，或者物体身份被标错，还有尺寸这类依赖几何的答案会被破坏。更严重的是，很多VLM实际上是在稀疏帧上运行的（比如只输入16到64帧），但评估时却假设模型能看到全场景。这篇工作让我想到一个更大的问题：我们怎么评估AI的科学推理能力？如果评估本身就有问题，那我们的模型到底是真的学会了物理直觉，还是只是在拟合数据集的偏差？这对于我们做AI4S的人来说特别重要——当我们训练一个PDE求解器或者科学发现模型的时候，我们的评估基准真的能反映它的实际能力吗？
+
+最后这篇《Video Analysis and Generation via a Semantic Progress Function》提出了一个很有意思的概念——语义进度函数。他们发现图像和视频生成模型的语义变化往往是非线性的：有时候内容长时间不变，有时候突然发生剧变。为了分析这种不均匀的语义节奏，他们引入了语义进度函数这个一维表示，把语义变化量化成一条曲线，然后用曲线与直线的偏离程度来衡量语义节奏的均匀性。更进一步，他们提出了语义线性化方法，可以对视频重新 timings，让语义变化以恒定速率展开。这个工作看起来是做视频生成的，但它本质上是在处理一个科学计算里非常基础的问题——如何理解和控制动态系统的演化节奏。不管是气候模拟还是流体方程，时间步上的采样和演化控制都是核心问题。也许他们的方法可以反过来启发我们做科学模拟时的自适应时间步控制？
+
+好了，今天的五篇论文聊完了。我有一个整体的观察：这一批论文其实都在回答同一个根本问题——当AI系统要从“生成内容”走向“理解并操控世界”的时候，我们需要什么样的基础设施和组织原则？从世界模型的分层设计，到物理约束的强化学习注入，到多智能体的组织架构，再到评估基准的反思，甚至到语义演化的量化分析，这些工作看似分散，但实际上都在为同一个未来做准备：一个AI能够理解物理世界、遵守物理规律、并且能够持续自我改进的明天。这或许也是我们AI4S社区最期待的方向——让机器真正学会物理，然后帮我们探索更多物理的奥秘。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.22748" target="_blank">Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond</a></li>
+<li><a href="https://arxiv.org/abs/2604.24764" target="_blank">World-R1: Reinforcing 3D Constraints for Text-to-Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2604.22446" target="_blank">From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company</a></li>
+<li><a href="https://arxiv.org/abs/2604.24300" target="_blank">ReVSI: Rebuilding Visual Spatial Intelligence Evaluation for Accurate Assessment of VLM 3D Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2604.22554" target="_blank">Video Analysis and Generation via a Semantic Progress Function</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
