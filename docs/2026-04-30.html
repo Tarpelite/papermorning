@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-04-30</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-04-30</h1>
+    <p class="date">2026-04-30</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-04-30.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。
+
+今天想先从一个咱们AI社区里大家都在讨论的话题说起—— foundation model 到底应该长什么样？过去一年，我们看到了太多把视觉、语言、音频简单拼接在一起的"多模态"模型，但它们的内核仍然是语言模型，外挂几个感知模块。GLM-5V-Turbo 这篇工作提出了一个更彻底的思路：把多模态感知变成推理、规划、工具使用和执行的核心部件，而不是给语言模型配一个辅助接口。这意味着视觉理解不再只是"看懂图片"，而是和语言推理一样，成为模型思考过程的一部分。团队在模型设计、多模态训练、强化学习、工具链扩展和 agent 框架集成这几个维度都做了系统性的改进，最终在多模态 agent 任务上取得了显著的性能提升。这篇文章的价值不在于某个单点突破，而在于它尝试重新定义 foundation model 的边界——当模型真正原生支持多模态交互时，它能做的事情会远超我们今天的想象。
+
+顺着多模态这个话题，第二篇论文把同样的思想引向了机器人感知的前沿。RADIO-ViPE 是一个在线语义 SLAM 系统，它不再依赖校准好的 RGB-D 输入，也不需要深度传感器或姿态初始化，直接从单目 RGB 视频流中就能完成开放词汇的三维场景理解。核心创新在于它把视觉和语言的多模态嵌入与几何信息紧密结合——这种耦合不仅发生在初始化阶段，还贯穿于优化过程和因子图连接中，从而保证了地图构建的一致性。这项工作让我们看到，当视觉语言模型和空间推理真正融合时，机器人理解复杂环境的能力可以提升到一个全新的层次。
+
+说完了感知，咱们再看看大模型自身的能力进化。第三篇论文关注的是一个非常实际的问题：怎么让 LLM 在生成时探索更多的语义空间？传统的随机采样主要产生的是词汇层面的变化，而真正的语义多样性很有限。作者提出了一个非常精巧的方法叫做 Exploratory Sampling，利用的洞察是神经网络在处理与训练数据相似的输入时误差较低，在处理新异输入时误差较高。他们在测试时训练了一个轻量级的 Distiller，用浅层表示去预测深层表示，从而建模模型的表征转化过程。在解码时，这个 Distiller 就能引导模型走向那些"不确定但有意义"的方向，产生真正语义多样的回复。这个思路和咱们科学计算中的不确定性问题其实有异曲同工之妙——都是在用模型的预测误差来指引探索的方向。
+
+接下来这篇就更有意思了，它把数据工程和软件开发做了类比。论文标题叫"Programming with Data"，核心观点是：如果我们能从原始语料中提取出结构化的知识表示，并且让这个表示同时服务于训练数据和评估，那么整个数据工程的生命周期就可以精确地映射到软件开发的生命周期中。训练数据变成了"源代码"，定义模型应该学什么；模型训练对应编译过程；评估对应测试；而当模型在某个领域任务上失败时，我们就能像调试代码一样精确定位数据中的缺陷，而不是盲目地往训练集里塞更多数据。这篇文章虽然关注的是 LLM 的领域适应问题，但它提出的"test-driven data engineering"思想对于咱们 AI4S 领域同样有启发——当我们构建科学数据的 pipeline 时，是否也可以借鉴这种反馈驱动的思路？
+
+最后这篇可以说是今天最"野心勃勃"的工作了。Recursive Multi-Agent Systems 把递归扩展的思路从单个模型延伸到了多 agent 系统。传统的递归语言模型是通过在潜在状态上迭代 refinement 来深化推理，这篇工作问的是：能不能把这种递归扩展的 principle 也应用到多 agent 协作中？作者提出的 RecursiveMAS 框架把整个系统看作一个统一的潜在空间递归计算，通过一个轻量级的 RecursiveLink 模块把异构的 agent 连接成协作环，实现跨 agent 的潜在状态传递和协同推理。更重要的是，他们设计了一套内外环学习算法来对整个系统进行迭代协同优化。这篇工作获得了 200 个 upvotes，是今天的热度第一，也反映出社区对 agent scaling 这个方向的强烈关注。
+
+今天的五篇论文有一个共同的线索——无论是大模型自身的能力扩展、多模态感知的深度整合、还是多 agent 系统的协作进化，大家都在探索同一个问题：如何在已经很强的单一能力之上，构建出更强大的系统性智能。这不是简单地把东西拼在一起，而是找到那些能够产生"涌现"的连接方式。这或许就是 AI 正在进入的新阶段：从堆参数、堆数据的基础设施建设，转向对架构和协作机制的深度挖掘。好了，今天的播报就到这里，我们明天再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.26752" target="_blank">GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents</a></li>
+<li><a href="https://arxiv.org/abs/2604.26067" target="_blank">RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments</a></li>
+<li><a href="https://arxiv.org/abs/2604.24927" target="_blank">Large Language Models Explore by Latent Distilling</a></li>
+<li><a href="https://arxiv.org/abs/2604.24819" target="_blank">Programming with Data: Test-Driven Data Engineering for Self-Improving LLMs from Raw Corpora</a></li>
+<li><a href="https://arxiv.org/abs/2604.25917" target="_blank">Recursive Multi-Agent Systems</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
