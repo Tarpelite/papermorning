@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-01",
+    "title": "Paper Morning 2026-05-01",
+    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
+    "audio_file": "2026-05-01.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的图景说起。大家有没有注意到，最近AI领域的基础模型研究正在悄悄发生一个转向——从单纯追求语言能力或者生成质量，开始往“agentic”和“世界模型”方向走了。这个趋势其实和我们在AI4S关心的问题特别相关，因为科学计算本身就是一种世界建模。\n\n先看第一篇论文，Visual Generation in the New Era。这篇文章很有意思，它不是讲具体的生成技术，而是给视觉生成领域画了一张路线图。作者把视觉生成分成了五个层次：原子生成、条件生成、上下文生成、agentic生成，最后是世界模型生成。这个分类方式让我想到我们做PDE求解时，从数值离散到神经网络近似，再到物理信息学习的发展路径，其实也是一个从“算子拟合”到“智能体建模”的过程。他们特别提到，现在模型在空间推理、长程一致性和因果理解上还有明显短板，而这些恰恰也是科学模拟中我们最关心的能力。你可以想象，如果一个视觉生成模型能够真正理解物体的物理行为和因果关系，那它和我们的物理仿真模型之间的距离就近多了。\n\n接下来这篇 Heterogeneous Sc...",
+    "papers": [
+      {
+        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+        "url": "https://arxiv.org/abs/2604.28185",
+        "arxiv_id": "2604.28185"
+      },
+      {
+        "title": "Heterogeneous Scientific Foundation Model Collaboration",
+        "url": "https://arxiv.org/abs/2604.27351",
+        "arxiv_id": "2604.27351"
+      },
+      {
+        "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
+        "url": "https://arxiv.org/abs/2604.26752",
+        "arxiv_id": "2604.26752"
+      },
+      {
+        "title": "RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments",
+        "url": "https://arxiv.org/abs/2604.26067",
+        "arxiv_id": "2604.26067"
+      },
+      {
+        "title": "Large Language Models Explore by Latent Distilling",
+        "url": "https://arxiv.org/abs/2604.24927",
+        "arxiv_id": "2604.24927"
+      }
+    ],
+    "published_at": "2026-05-01T23:28:53.992215Z"
+  },
+  {
     "date": "2026-04-30",
     "title": "Paper Morning 2026-04-30",
     "description": "今日学术播报: GLM-5V-Turbo: Toward a Native , RADIO-ViPE: Online Tightly Cou, Large Language Models Explore ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-02T23:01:11.949442Z"
-  },
-  {
-    "date": "2026-04-01",
-    "title": "Paper Morning 2026-04-01",
-    "description": "今日学术播报: Lingshu-Cell: A generative cel, Project Imaging-X: A Survey of, VGGRPO: Towards World-Consiste...",
-    "audio_file": "2026-04-01.mp3",
-    "script": "各位早上好，今天周三，Paper Morning来和大家聊聊最近社区里热议的几项工作。\n\n先看一篇很有意思的生物基础模型工作。Lingshu-Cell提出了一个针对单细胞转录组数据的生成式模型，它用masked discrete diffusion直接在学习到的离散token空间里建模基因表达的概率分布。这件事为什么重要呢？因为过去单细胞领域的foundation model主要做的是静态表示学习，给你一个细胞，它能给你一个embedding，但你没办法让它生成新的细胞状态，也没办法做条件模拟。而Lingshu-Cell这次把生成式扩散和条件生成的能力带进来了，某种意义上是在为“虚拟细胞”这个愿景铺路。约18000个基因的依赖关系直接在一个离散空间里建模，这个魄力值得注意。\n\n然后是一篇survey，Project Imaging-X梳理了超过一千个开源医学影像数据集。这篇工作的价值不在于方法创新，而在于它回答了一个根本问题：医学影像领域为什么做不出强大的foundation model？答案很简单也很残酷——缺数据，而且这个缺数据不是数量问题，是隐私、标注、异构性的问题。这篇surv...",
-    "papers": [
-      {
-        "title": "Lingshu-Cell: A generative cellular world model for transcriptome modeling toward virtual cells",
-        "url": "https://arxiv.org/abs/2603.25240",
-        "arxiv_id": "2603.25240"
-      },
-      {
-        "title": "Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development",
-        "url": "https://arxiv.org/abs/2603.27460",
-        "arxiv_id": "2603.27460"
-      },
-      {
-        "title": "VGGRPO: Towards World-Consistent Video Generation with 4D Latent Reward",
-        "url": "https://arxiv.org/abs/2603.26599",
-        "arxiv_id": "2603.26599"
-      },
-      {
-        "title": "LongCat-Next: Lexicalizing Modalities as Discrete Tokens",
-        "url": "https://arxiv.org/abs/2603.27538",
-        "arxiv_id": "2603.27538"
-      },
-      {
-        "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-        "url": "https://arxiv.org/abs/2603.19835",
-        "arxiv_id": "2603.19835"
-      }
-    ],
-    "published_at": "2026-04-01T23:07:22.423194Z"
   }
 ]
