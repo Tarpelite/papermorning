@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-02",
+    "title": "Paper Morning 2026-05-02",
+    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
+    "audio_file": "2026-05-02.mp3",
+    "script": "各位早上好，周六的早晨，Paper Morning又和大家见面了。\n\n今天想和大家聊一个正在发生的趋势，我觉得它可能会深刻影响我们AI for Science社区接下来的研究方向。\n\n先从一篇视野宏观的文章说起。Visual Generation in the New Era这篇论文提出了一个五级分类框架，把视觉生成从最早的原子级生成，到条件生成，再到上下文生成、Agentic生成，最后到World-Modeling生成。作者们认为，视觉生成领域正在从“看起来像”的像素合成阶段，走向“理解结构、动态和因果关系”的智能生成阶段。这个判断其实呼应了我们AI4S领域一个核心关切：无论是视觉模型还是物理模型，最终都需要从被动渲染走向主动推理。这篇是HuggingFace上的热门paper，76个赞，值得一读。\n\n那么，如何让AI真正具备这种主动性呢？接下来两篇论文给出了不同的路径。\n\nHeterogeneous Scientific Foundation Model Collaboration提出的Eywa框架，试图解决一个根本问题：现有的Agent系统过度依赖语言作为通用接口，但在科学领域，...",
+    "papers": [
+      {
+        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+        "url": "https://arxiv.org/abs/2604.28185",
+        "arxiv_id": "2604.28185"
+      },
+      {
+        "title": "Heterogeneous Scientific Foundation Model Collaboration",
+        "url": "https://arxiv.org/abs/2604.27351",
+        "arxiv_id": "2604.27351"
+      },
+      {
+        "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
+        "url": "https://arxiv.org/abs/2604.26752",
+        "arxiv_id": "2604.26752"
+      },
+      {
+        "title": "RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments",
+        "url": "https://arxiv.org/abs/2604.26067",
+        "arxiv_id": "2604.26067"
+      },
+      {
+        "title": "Turning the TIDE: Cross-Architecture Distillation for Diffusion Large Language Models",
+        "url": "https://arxiv.org/abs/2604.26951",
+        "arxiv_id": "2604.26951"
+      }
+    ],
+    "published_at": "2026-05-02T23:11:37.995332Z"
+  },
+  {
     "date": "2026-05-01",
     "title": "Paper Morning 2026-05-01",
     "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-03T23:02:58.369004Z"
-  },
-  {
-    "date": "2026-04-02",
-    "title": "Paper Morning 2026-04-02",
-    "description": "今日学术播报: Project Imaging-X: A Survey of, Terminal Agents Suffice for En, ClawKeeper: Comprehensive Safe...",
-    "audio_file": "2026-04-02.mp3",
-    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想先从一篇数据集调研工作聊起。过去几年，我们见证了视觉语言模型在自然图像上的爆发式进步，一个重要原因是有ImageNet、COCO这样的大规模benchmark。那么在医学影像领域，基础模型的发展能否复制同样的路径？这篇Project Imaging-X给出了目前最全面的答案。作者团队调研了超过一千个开放获取的医学影像数据集，涵盖CT、MRI、超声、病理切片等多种模态，并且系统标注了每个数据集的任务类型、解剖部位、标注质量等信息。这个工作的价值不仅在于整理，更在于揭示了一个我们不得不面对的现实：医学影像数据的碎片化程度远超想象，不同医院、不同设备、不同标注标准的数据难以直接规模化使用。作者在分析中也指出了几条可行的整合路径，比如通过预训练模型来弥补数据分布差异。这让我想到，这与我们在科学计算领域面临的困境何其相似——PDE求解器的训练数据同样分散在不同的物理场景中，如何构建统一的基础模型，可能是下一步最值得投入的方向。\n\n聊完数据，我们来看一篇关于AI agent架构的文章。Terminal Agents Suffice for ...",
-    "papers": [
-      {
-        "title": "Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development",
-        "url": "https://arxiv.org/abs/2603.27460",
-        "arxiv_id": "2603.27460"
-      },
-      {
-        "title": "Terminal Agents Suffice for Enterprise Automation",
-        "url": "https://arxiv.org/abs/2604.00073",
-        "arxiv_id": "2604.00073"
-      },
-      {
-        "title": "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers",
-        "url": "https://arxiv.org/abs/2603.24414",
-        "arxiv_id": "2603.24414"
-      },
-      {
-        "title": "MiroEval: Benchmarking Multimodal Deep Research Agents in Process and Outcome",
-        "url": "https://arxiv.org/abs/2603.28407",
-        "arxiv_id": "2603.28407"
-      },
-      {
-        "title": "ViGoR-Bench: How Far Are Visual Generative Models From Zero-Shot Visual Reasoners?",
-        "url": "https://arxiv.org/abs/2603.25823",
-        "arxiv_id": "2603.25823"
-      }
-    ],
-    "published_at": "2026-04-02T23:01:11.949442Z"
   }
 ]
