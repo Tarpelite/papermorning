@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-03",
+    "title": "Paper Morning 2026-05-03",
+    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
+    "audio_file": "2026-05-03.mp3",
+    "script": "各位早上好，又到了周末的Paper Morning时间。\n\n今天想和大家分享几篇非常有意思的论文，它们有一个共同的主题在呼应：AI agent正在从纯语言的世界里走出来，开始理解和操作我们这个物理世界。\n\n先看第一篇，Visual Generation in the New Era。这篇论文的标题本身就很直白：视觉生成正在从“原子映射”走向“agentic世界建模”。作者提出了一个五级分类法，从最基础的原子生成conditional生成in-context生成一直到agentic生成和世界模型生成。听起来像是技术术语的堆砌，但背后有一个很清晰的逻辑：过去的视觉模型本质上是一个被动的渲染器，给定条件就输出图像，但真正的智能需要的是对结构、动态和因果关系的理解。这让我想起我们在科学计算里常常说的“物理先验”，视觉生成领域的同行也在经历类似的范式转换，从纯粹的appearance synthesis走向grounded intelligence。\n\n接下来这篇Heterogeneous Scientific Foundation Model Collaboration很有意思，它提出了一个叫...",
+    "papers": [
+      {
+        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+        "url": "https://arxiv.org/abs/2604.28185",
+        "arxiv_id": "2604.28185"
+      },
+      {
+        "title": "Heterogeneous Scientific Foundation Model Collaboration",
+        "url": "https://arxiv.org/abs/2604.27351",
+        "arxiv_id": "2604.27351"
+      },
+      {
+        "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
+        "url": "https://arxiv.org/abs/2604.26752",
+        "arxiv_id": "2604.26752"
+      },
+      {
+        "title": "RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments",
+        "url": "https://arxiv.org/abs/2604.26067",
+        "arxiv_id": "2604.26067"
+      },
+      {
+        "title": "Turning the TIDE: Cross-Architecture Distillation for Diffusion Large Language Models",
+        "url": "https://arxiv.org/abs/2604.26951",
+        "arxiv_id": "2604.26951"
+      }
+    ],
+    "published_at": "2026-05-03T23:12:39.739107Z"
+  },
+  {
     "date": "2026-05-02",
     "title": "Paper Morning 2026-05-02",
     "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-04T22:58:57.364494Z"
-  },
-  {
-    "date": "2026-04-03",
-    "title": "Paper Morning 2026-04-03",
-    "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",
-    "audio_file": "2026-04-03.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察聊起。我们这行当里，過去几年都在谈论模型架构的创新，但最近一年有一个趋势越来越明显：大家开始认真对待“数据”本身了。不只是说数据量有多大，而是数据怎么选、怎么配比、怎么在训练过程中动态调整。这股风从NLP领域吹过来，其实在科学计算里也很值得我们思考。\n\n先来看DataFlex这个工作。它是一个统一的数据中心化训练框架，支持三种数据优化的范式：样本选择、领域混合调整、样本重加权。听起来像是工程化的东西，但我感兴趣的其实是它背后的思路。传统的训练是把数据往模型里塞，默认数据是固定的。但DataFlex表明，数据本身也可以是优化的对象。这让我想到，我们在做PDE求解或者物理模拟的时候，是不是也经常忽略数据策略？比如一个多物理场的问题，不同物理 regimes 的数据怎么配比，模型在哪些工况下容易失效，这些问题我们往往靠经验调参，而不是系统性地优化。如果把DataFlex的思想迁移到科学数据上，或许能打开新的思路。\n\n说完数据策略，我们来看一个有点酷的工作，SKILL0。它研究的问题是：能不能把agent的“技能”直接...",
-    "papers": [
-      {
-        "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-        "url": "https://arxiv.org/abs/2603.26164",
-        "arxiv_id": "2603.26164"
-      },
-      {
-        "title": "Generative World Renderer",
-        "url": "https://arxiv.org/abs/2604.02329",
-        "arxiv_id": "2604.02329"
-      },
-      {
-        "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
-        "url": "https://arxiv.org/abs/2604.02029",
-        "arxiv_id": "2604.02029"
-      },
-      {
-        "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
-        "url": "https://arxiv.org/abs/2604.02268",
-        "arxiv_id": "2604.02268"
-      },
-      {
-        "title": "Omni123: Exploring 3D Native Foundation Models with Limited 3D Data by Unifying Text to 2D and 3D Generation",
-        "url": "https://arxiv.org/abs/2604.02289",
-        "arxiv_id": "2604.02289"
-      }
-    ],
-    "published_at": "2026-04-03T23:02:58.369004Z"
   }
 ]
