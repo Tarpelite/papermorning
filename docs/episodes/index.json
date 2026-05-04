@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-04",
+    "title": "Paper Morning 2026-05-04",
+    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, UniVidX: A Unified Multimodal ...",
+    "audio_file": "2026-05-04.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察聊起。我们做AI for Science的人，经常会想一个问题：到底什么才算是科学问题的“基础模型”？是把NLP的大模型直接搬过来用，还是需要针对科学数据单独训练？昨天arXiv上有篇论文叫《Heterogeneous Scientific Foundation Model Collaboration》，作者提出了一个叫Eywa的框架，我觉得这个问题回答得很漂亮。\n\n他们指出，现在很多Agent系统很强，但本质上还是被语言绑架了——所有问题都要先翻译成自然语言才能处理。可是科学领域有大量非语言的数据形式，比如分子结构、气象图谱、力学传感器信号，这些都有各自的基础模型。Eywa的做法是让语言模型充当“调度员”，去调用这些专业模型来做推理，而不需要把所有东西都硬塞进语言的模态。这样一来，语言模型负责规划调用，专业模型负责精确预测，各取所长。我觉得这其实回应了我们领域一个核心争论：到底是做一个全能的语言模型来解所有PDE，还是构建一个生态，让不同物理领域的专用模型协同工作？Eywa证明了后者的可行性。\n\n顺着这个思路...",
+    "papers": [
+      {
+        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+        "url": "https://arxiv.org/abs/2604.28185",
+        "arxiv_id": "2604.28185"
+      },
+      {
+        "title": "Heterogeneous Scientific Foundation Model Collaboration",
+        "url": "https://arxiv.org/abs/2604.27351",
+        "arxiv_id": "2604.27351"
+      },
+      {
+        "title": "UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors",
+        "url": "https://arxiv.org/abs/2605.00658",
+        "arxiv_id": "2605.00658"
+      },
+      {
+        "title": "Co-Evolving Policy Distillation",
+        "url": "https://arxiv.org/abs/2604.27083",
+        "arxiv_id": "2604.27083"
+      },
+      {
+        "title": "Intern-Atlas: A Methodological Evolution Graph as Research Infrastructure for AI Scientists",
+        "url": "https://arxiv.org/abs/2604.28158",
+        "arxiv_id": "2604.28158"
+      }
+    ],
+    "published_at": "2026-05-04T23:29:00.398211Z"
+  },
+  {
     "date": "2026-05-03",
     "title": "Paper Morning 2026-05-03",
     "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-05T23:01:14.337481Z"
-  },
-  {
-    "date": "2026-04-04",
-    "title": "Paper Morning 2026-04-04",
-    "description": "今日学术播报: DataFlex: A Unified Framework , Generative World Renderer, The Latent Space: Foundation, ...",
-    "audio_file": "2026-04-04.mp3",
-    "script": "各位早上好，周末的Paper Morning又和大家见面了。\n\n今天想和大家聊几篇很有意思的论文，它们看似分布在不同领域，但背后有一条非常清晰的线索在呼应我们AI for Science社区一直在思考的问题。\n\n先说SKILL0这篇，它提出了一个很有野心的目标：能不能把大模型在推理时调用的技能，直接训练进模型参数里？听起来有点像我以前做物理模拟时想让神经网络真正“学会”物理规律，而不是每次推理时再查表。它用的办法是in-context强化学习，训练过程中逐步撤掉技能上下文，最终让模型能零样本执行任务。这个思路其实和我们追求的“内化物理先验”非常一致——不是外挂一个物理引擎，而是让模型本身具备物理直觉。当然，实际效果能不能达到推理时检索的效果，还需要更多验证。\n\n Steerable Visual Representations则从另一个角度回答了类似的问题：能不能更精细地控制模型的表示？它让视觉特征可以被自然语言引导，这样我们就可以说“关注这里的光照变化”而不是“关注最显著的物体”。这让我想到科学计算中一个经典困难：我们想看的往往不是数据中最“显眼”的部分，而是特定的物理量或结构。这种...",
-    "papers": [
-      {
-        "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-        "url": "https://arxiv.org/abs/2603.26164",
-        "arxiv_id": "2603.26164"
-      },
-      {
-        "title": "Generative World Renderer",
-        "url": "https://arxiv.org/abs/2604.02329",
-        "arxiv_id": "2604.02329"
-      },
-      {
-        "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
-        "url": "https://arxiv.org/abs/2604.02029",
-        "arxiv_id": "2604.02029"
-      },
-      {
-        "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
-        "url": "https://arxiv.org/abs/2604.02268",
-        "arxiv_id": "2604.02268"
-      },
-      {
-        "title": "Steerable Visual Representations",
-        "url": "https://arxiv.org/abs/2604.02327",
-        "arxiv_id": "2604.02327"
-      }
-    ],
-    "published_at": "2026-04-04T22:58:57.364494Z"
   }
 ]

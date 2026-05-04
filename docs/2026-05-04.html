@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-04</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-04</h1>
+    <p class="date">2026-05-04</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-04.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个观察聊起。我们做AI for Science的人，经常会想一个问题：到底什么才算是科学问题的“基础模型”？是把NLP的大模型直接搬过来用，还是需要针对科学数据单独训练？昨天arXiv上有篇论文叫《Heterogeneous Scientific Foundation Model Collaboration》，作者提出了一个叫Eywa的框架，我觉得这个问题回答得很漂亮。
+
+他们指出，现在很多Agent系统很强，但本质上还是被语言绑架了——所有问题都要先翻译成自然语言才能处理。可是科学领域有大量非语言的数据形式，比如分子结构、气象图谱、力学传感器信号，这些都有各自的基础模型。Eywa的做法是让语言模型充当“调度员”，去调用这些专业模型来做推理，而不需要把所有东西都硬塞进语言的模态。这样一来，语言模型负责规划调用，专业模型负责精确预测，各取所长。我觉得这其实回应了我们领域一个核心争论：到底是做一个全能的语言模型来解所有PDE，还是构建一个生态，让不同物理领域的专用模型协同工作？Eywa证明了后者的可行性。
+
+顺着这个思路，今天第二篇论文也很有意思。《Co-Evolving Policy Distillation》研究的是怎么把多个专家模型的能力蒸馏到一个模型里。他们发现直接混合训练会导致能力发散，而先训练专家再蒸馏又有行为差距问题。于是提出了一个“共同进化”的思路——让专家和学生在训练过程中就互相学习，而不是等专家完全训练好了再蒸馏。这个设计让我想到我们做PDE求解器的时候，其实经常要面对多物理场耦合的问题，不同求解器之间怎么协同训练，而不是各自为战，最后再想办法整合，可能也需要类似的思路。
+
+接下来两篇论文看起来是视觉和多模态方向的，但我觉得和我们关心的科学计算有深层联系。《Visual Generation in the New Era》这篇文章把视觉生成分成了五个层级，从最基础的原子生成，一直到世界模型级别的生成。他们特别提到，现在模型在空间推理、长期一致性、因果理解上还差得很远，而这恰恰是科学模拟最需要的品质。一个好的物理仿真，不仅要生成看起来对的画面，还要符合物理规律，要有因果链条。他们说的Agentic Generation，就是让生成模型具有物理世界的因果推理能力，这个方向其实和我们在做的物理信息神经网络有异曲同工之妙。
+
+而《UniVidX》这篇尝试用统一的框架做多模态视频生成，用的是视频扩散模型的先验。他们设计了一个随机条件掩码的机制，让模型在训练时随机决定哪些模态是干净的输入，哪些需要被噪声污染。这样模型就能学会在任意模态组合下生成结果。这让我想到一个问题：我们做科学计算的时候，经常有稀疏观测、缺失数据的困扰，如果能把这种多模态统一的思路迁移过来，是不是可以让PDE求解器在部分观测缺失的情况下仍然给出合理的预测？
+
+最后还有一篇偏基础设施的论文，《Intern-Atlas》提出构建一个方法论演化的知识图谱，用来追踪AI研究方法是怎么一步步发展演进的。他们认为现在的文献系统只是把论文连在一起，但没有讲清楚方法和方法之间的血缘关系。这让我想到我们AI4S领域也有类似的问题——一个新的operator架构出现的时候，它到底是在解决什么问题，之前有哪些尝试失败了，为什么现在这个时间点才成功？如果有这样的演化图谱，对于我们理解领域趋势会很有帮助。
+
+好，今天的播报就到这里。我总体有一个感觉：今天的几篇论文其实都在回答同一个问题，那就是在“通用”和“专精”之间，我们应该怎么处理它们的关系。无论是视觉生成走向世界模型，还是科学基础模型的协同调用，或者是蒸馏训练中的共同进化，都在探索如何让系统既有泛化能力，又不失专业深度。这种张力，可能正是我们这个领域接下来几年最核心的议题。咱们明天早上接着聊。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.28185" target="_blank">Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2604.27351" target="_blank">Heterogeneous Scientific Foundation Model Collaboration</a></li>
+<li><a href="https://arxiv.org/abs/2605.00658" target="_blank">UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors</a></li>
+<li><a href="https://arxiv.org/abs/2604.27083" target="_blank">Co-Evolving Policy Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2604.28158" target="_blank">Intern-Atlas: A Methodological Evolution Graph as Research Infrastructure for AI Scientists</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
