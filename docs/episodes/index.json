@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-06",
+    "title": "Paper Morning 2026-05-06",
+    "description": "今日学术播报: ARIS: Autonomous Research via , MolmoAct2: Action Reasoning Mo, From Context to Skills: Can La...",
+    "audio_file": "2026-05-06.mp3",
+    "script": "各位早上好，今天是周三，Paper Morning继续开播。\n\n先说第一篇，ARIS——一个自主研究智能体的框架。它的核心贡献很有意思：不仅仅是让智能体干活，更关键的是怎么防止它“摸鱼”或者“自欺欺人”。作者指出，长程研究任务中最大的风险不是智能体直接罢工，而是它给出一个听起来很合理、但证据链其实断裂的结论。这种“ plausible unsupported success”非常隐蔽。ARIS的解法是引入跨模型的对抗协作机制，让不同的智能体互相审查、互相挑战。这个思路让我想到科学研究中peer review的本质——原来不仅人需要同行评审，模型也需要。我个人判断，这篇工作对AI for Science的意义可能比它表面上看起来更大，因为自主科研智能体如果不可靠，结论是错的，那后续的实验设计、文献综述都可能跑偏。\n\n第二篇MolmoAct2是一个视觉语言动作模型，专门为机器人实际部署设计。作者没有追求参数的极致scale，而是务实得多——在三个维度上做工程优化：训练数据、推理延迟、以及跨平台适应性。特别值得关注的是他们提出的MolmoER backbone，专门针对空间推理和具身智能优化...",
+    "papers": [
+      {
+        "title": "ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration",
+        "url": "https://arxiv.org/abs/2605.03042",
+        "arxiv_id": "2605.03042"
+      },
+      {
+        "title": "MolmoAct2: Action Reasoning Models for Real-world Deployment",
+        "url": "https://arxiv.org/abs/2605.02881",
+        "arxiv_id": "2605.02881"
+      },
+      {
+        "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
+        "url": "https://arxiv.org/abs/2604.27660",
+        "arxiv_id": "2604.27660"
+      },
+      {
+        "title": "OpenSeeker-v2: Pushing the Limits of Search Agents with Informative and High-Difficulty Trajectories",
+        "url": "https://arxiv.org/abs/2605.04036",
+        "arxiv_id": "2605.04036"
+      },
+      {
+        "title": "Beyond SFT-to-RL: Pre-alignment via Black-Box On-Policy Distillation for Multimodal RL",
+        "url": "https://arxiv.org/abs/2604.28123",
+        "arxiv_id": "2604.28123"
+      }
+    ],
+    "published_at": "2026-05-06T23:29:51.630344Z"
+  },
+  {
     "date": "2026-05-05",
     "title": "Paper Morning 2026-05-05",
     "description": "今日学术播报: UniVidX: A Unified Multimodal , MolmoAct2: Action Reasoning Mo, From Context to Skills: Can La...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-07T23:10:04.975218Z"
-  },
-  {
-    "date": "2026-04-06",
-    "title": "Paper Morning 2026-04-06",
-    "description": "今日学术播报: A Simple Baseline for Streamin, Self-Distilled RLVR, Steerable Visual Representatio...",
-    "audio_file": "2026-04-06.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想先说一句题外话。今天选的这几篇论文，表面上看跟咱们AI for Science的主场关系不大——视频理解、强化学习蒸馏、可视化表示、视频编辑、多智能体系统，哪个都不是PDE求解、不是Neural Operator。但我仔细读了之后，发现它们其实都在回答一个我们同样关心的问题：怎么用更少的数据、更少的计算，做出更可控、更可靠的系统？这里的思路，跟科学计算里现在热议的foundation model、test-time compute、预训练范式，是相通的。\n\n第一篇SimpleStream，讲的是视频理解。这两年大家做streaming video，都在堆复杂的memory机制，想让模型记住更长的上下文。但这篇文章发现，一个最简单的滑动窗口，只给模型喂最近4帧，就已经能打败大多数复杂的memory-based方法。他们在OVO-Bench和StreamingBench上测了13个主流模型，发现这个朴素基线居然毫不逊色。这个发现对我们意味着什么？我想起前阵子PDE求解里也在讨论类似的问题：要不要把整个时空域都塞进context win...",
-    "papers": [
-      {
-        "title": "A Simple Baseline for Streaming Video Understanding",
-        "url": "https://arxiv.org/abs/2604.02317",
-        "arxiv_id": "2604.02317"
-      },
-      {
-        "title": "Self-Distilled RLVR",
-        "url": "https://arxiv.org/abs/2604.03128",
-        "arxiv_id": "2604.03128"
-      },
-      {
-        "title": "Steerable Visual Representations",
-        "url": "https://arxiv.org/abs/2604.02327",
-        "arxiv_id": "2604.02327"
-      },
-      {
-        "title": "VOID: Video Object and Interaction Deletion",
-        "url": "https://arxiv.org/abs/2604.02296",
-        "arxiv_id": "2604.02296"
-      },
-      {
-        "title": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery",
-        "url": "https://arxiv.org/abs/2604.01658",
-        "arxiv_id": "2604.01658"
-      }
-    ],
-    "published_at": "2026-04-06T23:05:04.830945Z"
   }
 ]
