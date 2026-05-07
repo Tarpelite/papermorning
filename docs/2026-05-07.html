@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-07</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-07</h1>
+    <p class="date">2026-05-07</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-07.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和各位见面了。
+
+今天想聊的几篇论文有一个共同的脉络：大家在把大模型时代积累的方法论——预训练、测试时扩展、奖励建模——正在迁移到物理世界的建模和交互中。这个趋势其实和我们做科学计算的人非常相关，因为物理模拟本质上也是一种world model的构建。
+
+先看HERMES++，这篇工作试图统一自动驾驶场景中的3D场景理解和未来几何预测。过去的方法要么侧重于语义理解，要么侧重于生成未来帧，但两者割裂。作者用BEV表示把多视角信息统一起来，再结合一个能预测几何演化的模块，实现理解与生成的闭环。说实话，这个思路在物理仿真里也很常见——我们不也是希望模型既懂得方程的语义，又能预测系统的演化吗？只不过他们面对的是街道场景，我们面对的是PDE定义的物理场。
+
+然后是两篇关于流式视频生成的工作，非常有意思。Stream-T1提出了一种针对流式视频的测试时扩展方法。我们知道视频生成通常需要大量去噪步，测试时成本很高。但流式生成的特性恰好适合做测试时扩展——因为它是分块合成的，每块只需要少量步数就可以达到可接受质量。Stream-T1利用这个特点，设计了噪声传播和少数步合成的策略，在保持质量的同时大幅降低计算开销。这让我想到我们做PDE求解时经常用的自适应步长策略，核心思想其实是相通的：在需要精细处理的地方多投入计算资源，在相对平滑的区域节约成本。
+
+第三篇Stream-R1则从另一个角度切入——如何更好地蒸馏一个已有的视频生成模型。他们提出两个很有意思的观察：第一，不同rollout之间的监督可靠性是不同的；第二，即使是同一个输出，不同空间区域和时间帧的改进潜力也不同。过去的蒸馏方法把这些都一视同仁，导致学生模型浪费容量去学习已经很好的部分。他们设计了一种基于可靠性-困惑度的奖励分配机制，让模型更聪明地分配学习资源。这对我们做科学计算的模型压缩很有启发——我们在训练operator网络时，是否也应该对不同复杂度区域区别对待？
+
+第四篇OpenSearch-VL关注的是多模态搜索agent的训练配方。这个工作的核心贡献是开源了一套完整的数据构建和训练流程，包括维基百科路径采样、模糊实体重写和视觉grounding等技术。他们的目标是让模型能够进行多步推理和证据验证。这让我想到我们在构建科学数据集时同样面临的挑战——如何设计数据让它包含足够的推理链条，而不是简单的模式匹配。
+
+最后是RLDX-1，一个面向灵巧操作的机器人策略。他们提出了多流动作变换器架构，用模态特定的流来处理异构信息，再通过跨模态自注意力来融合。这两年视觉语言动作模型发展很快，但大多数在需要运动感知、记忆决策和物理感知的复杂任务上仍然吃力。RLDX-1试图通过架构创新来解决这个问题。
+
+今天的这几篇论文看似分散，但实际上都指向同一个方向：如何让AI系统更好地理解和交互物理世界。无论是自动驾驶的世界模型、视频生成的物理一致性、还是机器人的灵巧操作，本质上都是在构建能够推理物理规律的智能体。这种趋势会不会在未来几年和科学计算产生更深的交汇？我觉得值得关注。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2604.28196" target="_blank">HERMES++: Toward a Unified Driving World Model for 3D Scene Understanding and Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.04461" target="_blank">Stream-T1: Test-Time Scaling for Streaming Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.03849" target="_blank">Stream-R1: Reliability-Perplexity Aware Reward Distillation for Streaming Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.05185" target="_blank">OpenSearch-VL: An Open Recipe for Frontier Multimodal Search Agents</a></li>
+<li><a href="https://arxiv.org/abs/2605.03269" target="_blank">RLDX-1 Technical Report</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

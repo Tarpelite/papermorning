@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-07</title>
+      <description>今日学术播报: HERMES++: Toward a Unified Dri, Stream-T1: Test-Time Scaling f, Stream-R1: Reliability-Perplex...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-07.mp3" length="6645595" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-07.mp3</guid>
+      <pubDate>2026-05-07T23:29:03.648659Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-06</title>
       <description>今日学术播报: ARIS: Autonomous Research via , MolmoAct2: Action Reasoning Mo, From Context to Skills: Can La...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-06.mp3" length="6858127" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-08.mp3" length="9852386" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-08.mp3</guid>
       <pubDate>2026-04-08T23:09:40.449053Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-07</title>
-      <description>今日学术播报: OpenWorldLib: A Unified Codeba, LIBERO-Para: A Diagnostic Benc, TriAttention: Efficient Long R...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-07.mp3" length="9009154" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-07.mp3</guid>
-      <pubDate>2026-04-07T23:10:04.975218Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
