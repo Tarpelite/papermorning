@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-08</h1>
+    <p class="date">2026-05-08</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-08.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning今天开播了。
+
+我们来聊聊本周新鲜出炉的几篇有意思的工作。
+
+先看Skill1这篇，它解决的是一个很实际的问题：怎么让语言模型agent能够持续进化自己的技能库。大家知道，现在的agent通常需要依赖一个预先定义好的技能库，但真实场景中技能是在不断积累的。Skill1的思路很巧妙，它用单个强化学习策略同时完成三项任务：从技能库中查询相关技能、实际使用这个技能解决问题、以及从解决经验中提炼出新技能。所有学习信号都来自一个统一的任务outcome目标。这和我们做科学计算的传统思路很不一样——我们通常是为每个子任务设计专门的模块或算法，而Skill1展示了一种更统一的演进路径。我联想到，这其实有点像是把一个科学求解器看成不断积累“解题经验”的agent，而不是静态的固定方法论。
+
+第二篇关于agentic search的论文提出了一个很根本的问题：现有的检索系统，不管是基于词义还是语义，在agent执行多步推理任务时都显得不够灵活。问题在于检索被压缩成一步，证据如果在早期被过滤掉，后面再强的推理模型也无法恢复。这对于需要发现中间实体、组合弱线索、然后修正计划的复杂任务来说是致命的。这个问题其实和科学发现过程非常相似——我们做研究时往往不是一次检索就找到答案，而是需要在文献中反复探索、交叉验证。这篇工作尝试让agent直接与语料库交互，某种程度上是在重建这种更动态的探究过程。
+
+然后是MARBLE，这篇处理的是diffusion model强化学习微调中的多目标优化问题。大家知道现在diffusion model在图像生成上效果很好，但要对齐人类偏好往往需要优化多个指标，比如美学质量、文本一致性、构图等。传统做法要么针对每个指标训练专门模型，要么用加权求和。MARBLE发现这些方法失败的根本原因在于样本级别的reward不匹配——不同样本的最佳reward组合可能完全不同。它提出的方法是在样本级别动态平衡各个reward的权重。这让我想到，科学计算中的多目标优化其实面临类似挑战：同时要保证精度、效率、稳定性等多个维度，静态的权重分配往往无法适应不同问题特征。
+
+再看Continuous Latent Diffusion Language Model，这个工作尝试用层次化的潜在扩散来生成文本，突破了传统自回归模型必须从左到右输出的限制。它先学习文本到潜在空间的映射，然后在连续潜在空间用diffusion model建模全局语义先验，最后条件解码出文本。这个思路和我们科学计算中用降维方法处理高维PDE解有些相通之处——都是在更紧致的表示空间里捕捉事物的本质结构。虽然应用领域不同，但对“层次化表示”的追求是一致的。
+
+最后是MiniCPM-o 4.5，它在多模态大模型上实现了实时全双工交互。所谓全双工，就是模型可以在生成回复的同时接收新的输入并即时调整，而不是像以前那样必须等生成完毕才能接收下一轮信息。这对于实现真正像人与人之间的自然交互很重要。想象一下，如果这种能力用到科学计算场景中，未来的数据可视化或许就不再是静态的图表，而是能实时响应研究者意图的交互式分析界面。
+
+今天的这几篇论文看起来分散，但我觉得有个共同的潜在线索：它们都在推动AI系统从静态、被动、单模态的模式向动态、主动、多模态的模式演进。无论是agent技能的自主进化、多步推理中的灵活检索、多目标的动态平衡，还是生成模型的非自回归范式、实时多模态交互，背后都是这个趋势。对于我们做AI4S的人来说，这意味着或许可以思考：在科学发现这个本质上高度动态、多步、跨模态的任务中，我们能不能从这些进展中汲取灵感，构建更智能的研究伙伴？
+
+好了，今天的播报就到这里，我们明天早餐时间再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.06130" target="_blank">Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2605.05242" target="_blank">Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2605.06507" target="_blank">MARBLE: Multi-Aspect Reward Balance for Diffusion RL</a></li>
+<li><a href="https://arxiv.org/abs/2605.06548" target="_blank">Continuous Latent Diffusion Language Model</a></li>
+<li><a href="https://arxiv.org/abs/2604.27393" target="_blank">MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-08</title>
+      <description>今日学术播报: Skill1: Unified Evolution of S, Beyond Semantic Similarity: Re, MARBLE: Multi-Aspect Reward Ba...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-08.mp3" length="7647443" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-08.mp3</guid>
+      <pubDate>2026-05-08T23:30:49.082805Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-07</title>
       <description>今日学术播报: HERMES++: Toward a Unified Dri, Stream-T1: Test-Time Scaling f, Stream-R1: Reliability-Perplex...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-07.mp3" length="6645595" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-09.mp3" length="9496285" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-09.mp3</guid>
       <pubDate>2026-04-09T23:11:14.823266Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-08</title>
-      <description>今日学术播报: Video-MME-v2: Towards the Next, Learning to Retrieve from Agen, Claw-Eval: Toward Trustworthy ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-08.mp3" length="9852386" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-08.mp3</guid>
-      <pubDate>2026-04-08T23:09:40.449053Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

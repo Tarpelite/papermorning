@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-08",
+    "title": "Paper Morning 2026-05-08",
+    "description": "今日学术播报: Skill1: Unified Evolution of S, Beyond Semantic Similarity: Re, MARBLE: Multi-Aspect Reward Ba...",
+    "audio_file": "2026-05-08.mp3",
+    "script": "各位早上好，Paper Morning今天开播了。\n\n我们来聊聊本周新鲜出炉的几篇有意思的工作。\n\n先看Skill1这篇，它解决的是一个很实际的问题：怎么让语言模型agent能够持续进化自己的技能库。大家知道，现在的agent通常需要依赖一个预先定义好的技能库，但真实场景中技能是在不断积累的。Skill1的思路很巧妙，它用单个强化学习策略同时完成三项任务：从技能库中查询相关技能、实际使用这个技能解决问题、以及从解决经验中提炼出新技能。所有学习信号都来自一个统一的任务outcome目标。这和我们做科学计算的传统思路很不一样——我们通常是为每个子任务设计专门的模块或算法，而Skill1展示了一种更统一的演进路径。我联想到，这其实有点像是把一个科学求解器看成不断积累“解题经验”的agent，而不是静态的固定方法论。\n\n第二篇关于agentic search的论文提出了一个很根本的问题：现有的检索系统，不管是基于词义还是语义，在agent执行多步推理任务时都显得不够灵活。问题在于检索被压缩成一步，证据如果在早期被过滤掉，后面再强的推理模型也无法恢复。这对于需要发现中间实体、组合弱线索、然后修正...",
+    "papers": [
+      {
+        "title": "Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2605.06130",
+        "arxiv_id": "2605.06130"
+      },
+      {
+        "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
+        "url": "https://arxiv.org/abs/2605.05242",
+        "arxiv_id": "2605.05242"
+      },
+      {
+        "title": "MARBLE: Multi-Aspect Reward Balance for Diffusion RL",
+        "url": "https://arxiv.org/abs/2605.06507",
+        "arxiv_id": "2605.06507"
+      },
+      {
+        "title": "Continuous Latent Diffusion Language Model",
+        "url": "https://arxiv.org/abs/2605.06548",
+        "arxiv_id": "2605.06548"
+      },
+      {
+        "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
+        "url": "https://arxiv.org/abs/2604.27393",
+        "arxiv_id": "2604.27393"
+      }
+    ],
+    "published_at": "2026-05-08T23:30:49.082805Z"
+  },
+  {
     "date": "2026-05-07",
     "title": "Paper Morning 2026-05-07",
     "description": "今日学术播报: HERMES++: Toward a Unified Dri, Stream-T1: Test-Time Scaling f, Stream-R1: Reliability-Perplex...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-09T23:11:14.823266Z"
-  },
-  {
-    "date": "2026-04-08",
-    "title": "Paper Morning 2026-04-08",
-    "description": "今日学术播报: Video-MME-v2: Towards the Next, Learning to Retrieve from Agen, Claw-Eval: Toward Trustworthy ...",
-    "audio_file": "2026-04-08.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先聊一个我最近反复思考的问题：我们做AI研究的人，其实在某种程度上，和那些做视频理解的团队面临着一个相似的困境——怎么知道我们真的在进步，而不是在自欺欺人？这也是今天我想和大家分享的第一篇论文，Video-MME-v2的核心关切所在。\n\n视频理解领域这两年确实很热闹，模型在各种benchmark上刷分刷得很高，但实际用起来又总觉得差点意思。这篇论文的作者指出了一个很尖锐的问题：现有benchmark和真实应用之间存在显著差距，排行榜上的高分和真实能力并不匹配。他们为此构建了一个新的评估框架，设计了三个递进复杂的评估层次，从基本的多点视觉信息聚合，到时序动态建模，再到复杂的多模态推理。更重要的是，他们提出了一种基于分组的非线性评估策略，不再简单地看每个问题的正确率，而是看一组相关问题上的整体表现。这种思路其实挺值得我们做科学计算的人借鉴的——我们在评价一个PDE求解器或者neural operator的时候，是否也应该更多关注它在相关任务族上的综合表现，而不是孤立地看单个方程的误差？\n\n接下来这篇论文把我拉回到一个更当下的热...",
-    "papers": [
-      {
-        "title": "Video-MME-v2: Towards the Next Stage in Benchmarks for Comprehensive Video Understanding",
-        "url": "https://arxiv.org/abs/2604.05015",
-        "arxiv_id": "2604.05015"
-      },
-      {
-        "title": "Learning to Retrieve from Agent Trajectories",
-        "url": "https://arxiv.org/abs/2604.04949",
-        "arxiv_id": "2604.04949"
-      },
-      {
-        "title": "Claw-Eval: Toward Trustworthy Evaluation of Autonomous Agents",
-        "url": "https://arxiv.org/abs/2604.06132",
-        "arxiv_id": "2604.06132"
-      },
-      {
-        "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-        "url": "https://arxiv.org/abs/2604.02176",
-        "arxiv_id": "2604.02176"
-      },
-      {
-        "title": "LIBERO-Para: A Diagnostic Benchmark and Metrics for Paraphrase Robustness in VLA Models",
-        "url": "https://arxiv.org/abs/2603.28301",
-        "arxiv_id": "2603.28301"
-      }
-    ],
-    "published_at": "2026-04-08T23:09:40.449053Z"
   }
 ]
