@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-09",
+    "title": "Paper Morning 2026-05-09",
+    "description": "今日学术播报: Beyond Semantic Similarity: Re, Continuous Latent Diffusion La, Skill1: Unified Evolution of S...",
+    "audio_file": "2026-05-09.mp3",
+    "script": "各位早上好，周末的Paper Morning又和大家见面了。今天想聊的话题可能和平时有些不同——我们暂时把PDE求解器和神经算子放一边，去看看大语言模型和Agent领域正在发生什么。不是因为这些方向不重要，而是我发现最近有几篇论文虽然表面上讲的是NLP和Agent，但其背后的思路其实和我们科学计算领域正在发生的范式转变隐隐呼应。\n\n先来看第一篇，它直接挑战了一个我们习以为常的假设。现代检索系统无论是基于关键词还是语义相似度，本质上都是把整个语料库压缩成一个固定的接口， Agent只能通过top-k的检索结果来获取信息。作者认为这对于agentic search来说是致命的瓶颈——因为复杂的多步推理需要灵活地发现中间实体、组合弱线索、在发现部分证据后修正计划，而传统检索一旦在早期过滤掉了相关信息，后面再强的推理模型也无法恢复。作者提出了一种直接与语料库交互的检索范式，让Agent能够动态地探索和回溯。这个思路其实和我们做科学计算时遇到的问题很像：当求解PDE的神经网络在某个空间区域失效时，我们能否让模型有机制去“回溯”并重新探索？这篇工作给出的方向值得思考。\n\n第二篇论文提出了一个挺有意...",
+    "papers": [
+      {
+        "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
+        "url": "https://arxiv.org/abs/2605.05242",
+        "arxiv_id": "2605.05242"
+      },
+      {
+        "title": "Continuous Latent Diffusion Language Model",
+        "url": "https://arxiv.org/abs/2605.06548",
+        "arxiv_id": "2605.06548"
+      },
+      {
+        "title": "Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2605.06130",
+        "arxiv_id": "2605.06130"
+      },
+      {
+        "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
+        "url": "https://arxiv.org/abs/2604.27393",
+        "arxiv_id": "2604.27393"
+      },
+      {
+        "title": "MiA-Signature: Approximating Global Activation for Long-Context Understanding",
+        "url": "https://arxiv.org/abs/2605.06416",
+        "arxiv_id": "2605.06416"
+      }
+    ],
+    "published_at": "2026-05-09T23:14:37.296461Z"
+  },
+  {
     "date": "2026-05-08",
     "title": "Paper Morning 2026-05-08",
     "description": "今日学术播报: Skill1: Unified Evolution of S, Beyond Semantic Similarity: Re, MARBLE: Multi-Aspect Reward Ba...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-10T23:05:08.521268Z"
-  },
-  {
-    "date": "2026-04-09",
-    "title": "Paper Morning 2026-04-09",
-    "description": "今日学术播报: Think in Strokes, Not Pixels: , RAGEN-2: Reasoning Collapse in, GBQA: A Game Benchmark for Eva...",
-    "audio_file": "2026-04-09.mp3",
-    "script": "各位早上好，今天周四，Paper Morning继续开播。\n\n先说一篇关于图像生成的论文，标题是《Think in Strokes, Not Pixels》。这个工作提出了一个叫做“过程驱动图像生成”的范式，简单说就是不让模型一次性生成完整图像，而是让它像人画画一样，先规划布局、画草稿、审视、修改，一步步迭代完成。每一步都包含文本规划、视觉drafting、文本反思和视觉精修四个阶段。作者的核心主张是：当前的多模态模型虽然在文本-图像交错数据上训练，但能否真正“想象”出中间状态，这是一个很有趣的设问。这个工作的价值不在于图像生成效果本身，而在于它揭示了一个更根本的问题：我们如何让模型具备“思考过程”而不仅仅是端到端映射。这和我们做PDE求解时经常遇到的困境很像——我们有时只需要一个输入到输出的映射，但科学问题往往需要可解释的中间推理过程。这篇工作能否启发我们去设计更具过程性的neural operator？值得观察。\n\n接下来聊一篇关于Agent训练中推理质量评估的工作，题目是《RAGEN-2: Reasoning Collapse in Agentic RL》。这个问题非常关键：我们...",
-    "papers": [
-      {
-        "title": "Think in Strokes, Not Pixels: Process-Driven Image Generation via Interleaved Reasoning",
-        "url": "https://arxiv.org/abs/2604.04746",
-        "arxiv_id": "2604.04746"
-      },
-      {
-        "title": "RAGEN-2: Reasoning Collapse in Agentic RL",
-        "url": "https://arxiv.org/abs/2604.06268",
-        "arxiv_id": "2604.06268"
-      },
-      {
-        "title": "GBQA: A Game Benchmark for Evaluating LLMs as Quality Assurance Engineers",
-        "url": "https://arxiv.org/abs/2604.02648",
-        "arxiv_id": "2604.02648"
-      },
-      {
-        "title": "MegaTrain: Full Precision Training of 100B+ Parameter Large Language Models on a Single GPU",
-        "url": "https://arxiv.org/abs/2604.05091",
-        "arxiv_id": "2604.05091"
-      },
-      {
-        "title": "Vanast: Virtual Try-On with Human Image Animation via Synthetic Triplet Supervision",
-        "url": "https://arxiv.org/abs/2604.04934",
-        "arxiv_id": "2604.04934"
-      }
-    ],
-    "published_at": "2026-04-09T23:11:14.823266Z"
   }
 ]

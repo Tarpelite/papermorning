@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-09</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-09</h1>
+    <p class="date">2026-05-09</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-09.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周末的Paper Morning又和大家见面了。今天想聊的话题可能和平时有些不同——我们暂时把PDE求解器和神经算子放一边，去看看大语言模型和Agent领域正在发生什么。不是因为这些方向不重要，而是我发现最近有几篇论文虽然表面上讲的是NLP和Agent，但其背后的思路其实和我们科学计算领域正在发生的范式转变隐隐呼应。
+
+先来看第一篇，它直接挑战了一个我们习以为常的假设。现代检索系统无论是基于关键词还是语义相似度，本质上都是把整个语料库压缩成一个固定的接口， Agent只能通过top-k的检索结果来获取信息。作者认为这对于agentic search来说是致命的瓶颈——因为复杂的多步推理需要灵活地发现中间实体、组合弱线索、在发现部分证据后修正计划，而传统检索一旦在早期过滤掉了相关信息，后面再强的推理模型也无法恢复。作者提出了一种直接与语料库交互的检索范式，让Agent能够动态地探索和回溯。这个思路其实和我们做科学计算时遇到的问题很像：当求解PDE的神经网络在某个空间区域失效时，我们能否让模型有机制去“回溯”并重新探索？这篇工作给出的方向值得思考。
+
+第二篇论文提出了一个挺有意思的替代方案。传统的大语言模型都是自回归地从左向右生成，但作者认为高质量的文本生成并不一定要受限于这种顺序。他们设计了Cola DLM，一个层次化的潜在扩散语言模型，通过层次信息分解来处理文本生成：先用一个Text VAE学习文本到潜在空间的映射，然后在连续潜在空间里用块因果的DiT建模全局语义先验，最后通过条件解码生成文本。这个框架的巧妙之处在于，它把扩散过程重新解释为潜在先验的传输而不是token级别的重建。让我想到我们在做算子学习时，是否也可以跳出“逐点预测”的思维定式，去学习更抽象的函数空间表示？
+
+第三篇关于Skill1的工作则关注一个很实际的问题：如何让语言模型Agent能够持续进化并复用成功的策略。作者认为维护一个技能库需要三种能力：选择相关技能、在执行中利用技能、以及从经验中提炼新技能。但现有方法往往把这三者割裂优化，导致互相冲突。Skill1的思路是用单一策略统一这三者，所有学习信号都来自最终的任务outcome。这让我想到物理模拟中的自我调整机制——一个好的求解器是否也应该能够从失败的预测中学习并调整自己的“技能库”？
+
+第四篇MiniCPM-o 4.5试图解决一个交互范式的问题。现在的多模态大模型虽然能处理实时信息，但感知和响应仍然是交替进行的——模型必须等用户说完才能回应，无法在生成过程中根据新的输入及时调整。MiniCPM-o 4.5实现了实时的全双工多模态交互，模型可以在生成的同时监听并响应新的信息。这其实呼应了我们在科学计算中追求的目标：能否让物理模拟在推理过程中实时接收新的观测数据并动态修正预测？
+
+最后一篇非常有意思，作者从认知科学中借用了“全局激活”的概念。他们认为人脑的意识访问对应于分布式记忆系统上的全局点燃，但个体无法直接访问所有被激活的内容——认知依赖的是一种紧凑的表示来近似全局影响。受此启发，他们提出了MiA-Signature，用子模优化选择高层概念来覆盖被激活的上下文空间，从而近似长文本处理中的全局影响。这篇工作的价值不在于技术细节，而在于它提醒我们：认知科学中关于注意力和记忆的洞察，完全可以为设计更高效的LLM架构提供启发。
+
+好，今天的播报差不多就到这里。我观察到这一组论文其实都指向同一个趋势：无论是检索、生成、交互还是长上下文处理，大家都在从“固定管道”走向“动态交互”，从“被动响应”走向“主动适应”。这和我们科学计算领域正在探索的方向其实是一致的——从固定的网格求解走向自适应的神经求解，从预先训练好的模型走向能够在推理时持续学习的系统。当大语言模型领域在讨论test-time compute和agentic search时，我们或许也应该思考：在PDE求解中，“推理时的计算”应该长什么样？早上好各位，我们下周再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.05242" target="_blank">Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2605.06548" target="_blank">Continuous Latent Diffusion Language Model</a></li>
+<li><a href="https://arxiv.org/abs/2605.06130" target="_blank">Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2604.27393" target="_blank">MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2605.06416" target="_blank">MiA-Signature: Approximating Global Activation for Long-Context Understanding</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
