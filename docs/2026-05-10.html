@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-10</h1>
+    <p class="date">2026-05-10</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-10.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周日的Paper Morning又跟各位见面了。今天想聊一个稍微有点发散的话题——最近大语言模型和Agent领域的一些新进展，它们或许在方法论层面能给AI for Science一些启发。
+
+先来看第一篇工作，叫《Beyond Semantic Similarity》，作者来自微软亚研院。这篇论文试图解决的问题很有意思：现在的检索系统，无论是基于关键词还是语义相似度，都把整个语料库“压缩”成一个固定的接口，开发者只能调用一个top-k检索，然后交给下游推理。但作者指出，对于真正需要多步推理的Agent任务来说，这种设计成了瓶颈——Agent需要发现中间实体、组合弱线索、根据部分证据修正计划，而这些能力在早期检索阶段丢失的信息后面是找不回来的。这让我想到，我们在做科学问题求解的时候不也经常这样吗？早期的特征提取或者粗粒度离散化可能会丢失一些微妙的结构信息，后面的精排或者求解阶段想补救就很困难。作者提出的思路是让Agent直接与原始语库交互，而不是通过一个固定的相似度接口。这个方向值得注意，因为它可能在科学文献检索、代码检索这些场景中有直接的应用价值。
+
+接下来看一篇架构层面的工作，《Continuous Latent Diffusion Language Model》。这篇论文提出了一个叫Cola DLM的模型，本质上是在尝试把扩散模型的思想引入语言生成。传统的自回归模型是一个token一个token地生成，这篇工作尝试在连续的潜空间里先做全局语义的建模，然后再通过条件解码生成文本。作者的视角很有意思，把扩散过程理解为一种“潜空间的信息传输”而不是token级别的重建。这让我想到，其实在科学计算里我们也经常做类似的事情——比如把高维的物理场压缩到低维的潜空间里表示，然后在这个空间里做推理或者优化。NLP领域的这个探索或许能为分子生成、材料设计这些需要全局结构建模的任务提供新的思路。
+
+第三篇工作《Skill1》关注的是Agent的技能进化问题。作者认为，一个好的Agent应该能够持续维护一个技能库，包括选择相关技能、在执行中运用技能、以及从经验中提炼新技能。但现有方法往往把这三个能力分开优化，容易产生冲突。Skill1的思路是用一个统一的策略，通过一个任务outcome信号来同时驱动这三方面的学习。这篇工作让我想到，其实在科学发现的场景里，我们也很希望AI Agent能够积累解决问题的“技能”——比如特定的求解技巧、某个领域的先验知识、或者处理特定类型方程的经验。如何让这些技能可持续地进化，可能是一个值得探索的方向。
+
+然后是一个多模态方面的工作，《MiniCPM-o 4.5》。这篇论文试图超越传统的“人问-机器答”的交互范式，向实时的全双工交互迈进。作者指出现有模型的几个瓶颈：感知和响应仍然是交替进行的，模型也比较被动，只会响应明确的指令。这篇工作尝试让模型能够在生成过程中实时incorporate新的输入，并且对多模态环境有主动的感知。这让我想到，在科学实验的场景里，我们其实很需要这种实时的交互能力——比如在实验过程中实时分析数据、根据当前结果动态调整下一步的测量方案，甚至在仪器控制中实现真正的实时反馈。
+
+最后一篇是《MiA-Signature》，这篇工作的出发点很有趣，作者借鉴了认知科学里的“全局点火”理论，提出用一种压缩的表示来近似长上下文中的全局激活效应。具体做法是用子模函数选择高层概念来覆盖被激活的上下文空间。这个思路对于处理超长科学文档、超长代码或者长程物理依赖关系应该有一定的参考价值。
+
+好，今天的播报就到这里。我观察到的一个整体趋势是：无论是检索、生成、Agent还是多模态交互，大家都在从“固定接口、被动响应”的范式，向“更灵活的信息访问、更主动的交互”方向转变。这种转变或许也在暗示我们，AI for Science领域同样需要更多关注如何让模型更主动、更灵活地与科学数据和物理世界交互。各位周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.05242" target="_blank">Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2605.06548" target="_blank">Continuous Latent Diffusion Language Model</a></li>
+<li><a href="https://arxiv.org/abs/2605.06130" target="_blank">Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2604.27393" target="_blank">MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2605.06416" target="_blank">MiA-Signature: Approximating Global Activation for Long-Context Understanding</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

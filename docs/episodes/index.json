@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-10",
+    "title": "Paper Morning 2026-05-10",
+    "description": "今日学术播报: Beyond Semantic Similarity: Re, Continuous Latent Diffusion La, Skill1: Unified Evolution of S...",
+    "audio_file": "2026-05-10.mp3",
+    "script": "各位早上好，周日的Paper Morning又跟各位见面了。今天想聊一个稍微有点发散的话题——最近大语言模型和Agent领域的一些新进展，它们或许在方法论层面能给AI for Science一些启发。\n\n先来看第一篇工作，叫《Beyond Semantic Similarity》，作者来自微软亚研院。这篇论文试图解决的问题很有意思：现在的检索系统，无论是基于关键词还是语义相似度，都把整个语料库“压缩”成一个固定的接口，开发者只能调用一个top-k检索，然后交给下游推理。但作者指出，对于真正需要多步推理的Agent任务来说，这种设计成了瓶颈——Agent需要发现中间实体、组合弱线索、根据部分证据修正计划，而这些能力在早期检索阶段丢失的信息后面是找不回来的。这让我想到，我们在做科学问题求解的时候不也经常这样吗？早期的特征提取或者粗粒度离散化可能会丢失一些微妙的结构信息，后面的精排或者求解阶段想补救就很困难。作者提出的思路是让Agent直接与原始语库交互，而不是通过一个固定的相似度接口。这个方向值得注意，因为它可能在科学文献检索、代码检索这些场景中有直接的应用价值。\n\n接下来看一篇架构层面的...",
+    "papers": [
+      {
+        "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
+        "url": "https://arxiv.org/abs/2605.05242",
+        "arxiv_id": "2605.05242"
+      },
+      {
+        "title": "Continuous Latent Diffusion Language Model",
+        "url": "https://arxiv.org/abs/2605.06548",
+        "arxiv_id": "2605.06548"
+      },
+      {
+        "title": "Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2605.06130",
+        "arxiv_id": "2605.06130"
+      },
+      {
+        "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
+        "url": "https://arxiv.org/abs/2604.27393",
+        "arxiv_id": "2604.27393"
+      },
+      {
+        "title": "MiA-Signature: Approximating Global Activation for Long-Context Understanding",
+        "url": "https://arxiv.org/abs/2605.06416",
+        "arxiv_id": "2605.06416"
+      }
+    ],
+    "published_at": "2026-05-10T23:27:24.183570Z"
+  },
+  {
     "date": "2026-05-09",
     "title": "Paper Morning 2026-05-09",
     "description": "今日学术播报: Beyond Semantic Similarity: Re, Continuous Latent Diffusion La, Skill1: Unified Evolution of S...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-11T23:02:16.708943Z"
-  },
-  {
-    "date": "2026-04-10",
-    "title": "Paper Morning 2026-04-10",
-    "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
-    "audio_file": "2026-04-10.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家可能都注意到的现象聊起。这两年我们看AI顶会，会发现一个有趣的分叉：一方面大模型在刷榜，各种通用能力benchmark被不断突破；另一方面，越来越多的人开始问一个更本质的问题——这些通用能力，到底能在多大程度上延伸到具体场景？这不，今天的几篇论文就刚好踩在了这个张力上。\n\n先看第一篇，NUMINA，讲的是text-to-video模型里一个看似简单但实际很棘手的问题——让模型正确生成 prompt 里指定的物体数量。作者们发现，主流的diffusion model在处理“画面里有三只猫”这种指令时，经常会漏掉或者多出几个。于是他们提出了一个training-free的框架，通过分析attention map里的一些特殊head，识别出物体应该分布在哪些区域，然后保守地调整生成过程。这个思路挺巧妙的，相当于在模型原本的生成流程里插入了一个“校对”环节。值得关注的是，这个工作没有引入新的训练，而是利用了模型本身已经学到的结构化表示。这让我想到，可能很多所谓的数据对齐问题，未必要靠堆数据解决，有时候“调用”好已有能力...",
-    "papers": [
-      {
-        "title": "When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models",
-        "url": "https://arxiv.org/abs/2604.08546",
-        "arxiv_id": "2604.08546"
-      },
-      {
-        "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
-        "url": "https://arxiv.org/abs/2604.07430",
-        "arxiv_id": "2604.07430"
-      },
-      {
-        "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-        "url": "https://arxiv.org/abs/2604.08523",
-        "arxiv_id": "2604.08523"
-      },
-      {
-        "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-        "url": "https://arxiv.org/abs/2604.06628",
-        "arxiv_id": "2604.06628"
-      },
-      {
-        "title": "MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping",
-        "url": "https://arxiv.org/abs/2604.08364",
-        "arxiv_id": "2604.08364"
-      }
-    ],
-    "published_at": "2026-04-10T23:05:08.521268Z"
   }
 ]
