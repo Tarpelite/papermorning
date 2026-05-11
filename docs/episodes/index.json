@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-11",
+    "title": "Paper Morning 2026-05-11",
+    "description": "今日学术播报: MACE-Dance: Motion-Appearance , Mean Mode Screaming: Mean--Var, HyperEyes: Dual-Grained Effici...",
+    "audio_file": "2026-05-11.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家可能都关心的问题聊起：这两年我们见证了扩散模型从实验室走向千行百业，但当我们把模型做得越来越大、越来越深的时候，是否真的理解了训练过程中会发生什么？第一篇论文就给了我们一个值得警惕的答案。\n\n来自Pengqi Lu的工作研究了深层 Diffusion Transformer 的训练稳定性问题。他们发现，当把DiT扩展到数百层时，网络会悄然进入一种“沉默”状态，论文称之为Mean Mode Screaming。听起来有点戏剧化，但机制本身很有意思：网络在训练表面稳定的情况下，梯度中会累积一种“均值相干”的反向冲击，它打开深层残差分支，让整个网络的表示趋于同质化，最终抑制了token之间的差异化表达。更关键的是，这个过程不是突然发生的，而是Softmax Jacobian的零空间在值同质化后逐步抑制注意力logit梯度导致的。作者通过梯度的精确分解验证了这一机制。这项工作给我们的启示很清楚：扩展不只是堆层数，架构中那些看似优雅的设计——比如残差连接、Softmax——在极端深度下可能成为隐蔽的脆弱点。对我们做科学计...",
+    "papers": [
+      {
+        "title": "MACE-Dance: Motion-Appearance Cascaded Experts for Music-Driven Dance Video Generation",
+        "url": "https://arxiv.org/abs/2512.18181",
+        "arxiv_id": "2512.18181"
+      },
+      {
+        "title": "Mean Mode Screaming: Mean--Variance Split Residuals for 1000-Layer Diffusion Transformers",
+        "url": "https://arxiv.org/abs/2605.06169",
+        "arxiv_id": "2605.06169"
+      },
+      {
+        "title": "HyperEyes: Dual-Grained Efficiency-Aware Reinforcement Learning for Parallel Multimodal Search Agents",
+        "url": "https://arxiv.org/abs/2605.07177",
+        "arxiv_id": "2605.07177"
+      },
+      {
+        "title": "Flow-OPD: On-Policy Distillation for Flow Matching Models",
+        "url": "https://arxiv.org/abs/2605.08063",
+        "arxiv_id": "2605.08063"
+      },
+      {
+        "title": "HumanNet: Scaling Human-centric Video Learning to One Million Hours",
+        "url": "https://arxiv.org/abs/2605.06747",
+        "arxiv_id": "2605.06747"
+      }
+    ],
+    "published_at": "2026-05-11T23:31:26.369505Z"
+  },
+  {
     "date": "2026-05-10",
     "title": "Paper Morning 2026-05-10",
     "description": "今日学术播报: Beyond Semantic Similarity: Re, Continuous Latent Diffusion La, Skill1: Unified Evolution of S...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-12T23:04:17.809400Z"
-  },
-  {
-    "date": "2026-04-11",
-    "title": "Paper Morning 2026-04-11",
-    "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
-    "audio_file": "2026-04-11.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一篇关于推理泛化的文章聊起。最近有一种流行的说法，说监督微调SFT只是记忆，而强化学习RL才能泛化。但腾讯AI Lab这篇\"Rethinking Generalization in Reasoning SFT\"用实验告诉我们，这个说法太绝对了。他们发现跨领域泛化能力其实是有条件的，跟优化过程、训练数据和基础模型能力都有关。特别是他们观察到一个很有意思的现象：跨域性能会先下降再恢复——我把它叫做\"先蹲后跳\"模式。这就解释了为什么之前有些研究说泛化不存在，可能只是训练时间不够，checkpoint取得太早了。这对我们理解LLM的scaling law很有帮助，因为数据量和模型规模的增加会带来这种非单调的优化曲线。这篇文章的思路其实和科学计算中观察到的现象很像：我们训练神经网络求解PDE时，早期泛化曲线也不一定是单调的。\n\n说完了推理模型的泛化，我们来看看具身智能这个方向。腾讯 Robotics X 发布了 HY-Embodied-0.5，一套专门为真实世界机器人设计的基础模型。他们区分了通用VLM和具身智能的差异——后者需...",
-    "papers": [
-      {
-        "title": "When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models",
-        "url": "https://arxiv.org/abs/2604.08546",
-        "arxiv_id": "2604.08546"
-      },
-      {
-        "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
-        "url": "https://arxiv.org/abs/2604.07430",
-        "arxiv_id": "2604.07430"
-      },
-      {
-        "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-        "url": "https://arxiv.org/abs/2604.08523",
-        "arxiv_id": "2604.08523"
-      },
-      {
-        "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-        "url": "https://arxiv.org/abs/2604.06628",
-        "arxiv_id": "2604.06628"
-      },
-      {
-        "title": "MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping",
-        "url": "https://arxiv.org/abs/2604.08364",
-        "arxiv_id": "2604.08364"
-      }
-    ],
-    "published_at": "2026-04-11T23:02:16.708943Z"
   }
 ]
