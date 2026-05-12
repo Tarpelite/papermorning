@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-12</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-12</h1>
+    <p class="date">2026-05-12</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-12.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周二的Paper Morning如约而至。
+
+今天想和大家聊几篇最近热度比较高的论文，但我的视角可能和单纯看标题不太一样。我关注的不是这些模型本身有多强，而是它们背后展现出来的范式，对我们AI for Science领域可能有什么启发。
+
+第一篇是Qwen-Image-2.0，一个统一了图像生成和编辑的多模态基础模型。它用Qwen3-VL作为条件编码器，配合一个多模态扩散Transformer，来实现高质量的文本渲染、多语言排版和高分辨率的照片级生成。这篇论文的技术细节很扎实，但我更在意的是它传递出来的一个信号：多模态理解正在成为生成模型的底层能力，而不是一个附加功能。这让我想到我们在科学计算里常说的"先理解后预测"——当你有一个强大的视觉-语言联合编码器，很多下游任务会变得更可控。这对做PDE求解或者实验数据可视化的同志来说，是一个值得关注的趋势。
+
+第二篇叫CollabVR，讲的是视频生成模型和视觉语言模型如何协同做推理。它提出了一个VLM-VGM的闭环框架，在每个生成步骤上都让VLM介入，避免长程漂移和误差累积。这让我特别感兴趣，因为它本质上是在解决"生成过程中的实时验证"问题。我们在科学模拟里经常遇到类似的挑战：模拟步骤一长，误差就发散，如果能有一个"副驾驶"在每一步检查、纠偏，效果会完全不同。VLM在这里扮演的就是这个角色，这个思路完全可以迁移到物理仿真的闭环控制里。
+
+第三篇是TMAS，关于测试时计算的多智能体协同。它通过多个专业化智能体的协作，在推理阶段动态分配计算资源，达到类似推理时的scaling效果。这其实很有意思，因为我们过去谈scaling law，往往指的是训练阶段的参数量和数据量的增长，但现在大家发现推理阶段的计算资源分配也能显著提升模型能力。如果把这个思路拿到科学计算里，测试时计算或许能帮助我们在求解PDE时自适应地分配算力——难点的地方多用点计算，简单的地方少用点，这和我们传统意义上的自适应网格 refinement 有异曲同工之妙。
+
+第四篇 PaperFit 解决的是一个非常实际的问题：如何用视觉反馈来优化 LaTeX 排版。它把这个问题定义为视觉排版优化，每次修改后都重新渲染验证，形成一个闭环。这让我特别有共鸣，因为我们在做物理信息神经网络或者科学文档生成时，也经常面临类似的困境：纯文本的反馈不够，必须看最终的可视化效果才能判断好坏。PaperFit 展示的"视觉闭环"思路，其实也是AI4S里我们一直在强调的——不能只看损失函数，要看物理上到底对不对。
+
+第五篇 SEIF 讲的是指令遵循能力的自我进化。它通过让模型自己生成越来越难的指令，同时根据模型能力动态调整训练数据，形成一个自我强化的循环。这个框架最有趣的地方在于把"难度演化"和"能力演化"绑在一起，互相驱动。这让我想到我们在训练神经网络求解器时，往往只用固定的benchmark，但如果能让模型自己发现自己的弱点，针对性生成更难的样本，训练效率可能会大幅提升。
+
+好以上就是今天的五篇论文。我整体的感觉是，这一波热点虽然看起来是视觉和语言模型的进展，但它们背后有几个共同的主题值得我们AI for Science的人注意：一是闭环验证正在成为标配，不管是视频生成、科学模拟还是排版优化，单纯的开环输出已经不够了；二是测试时计算和自适应资源分配的思想正在从语言模型渗透到更广泛的推理任务中；三是多智能体协作正在为复杂任务提供新的组织方式。这些趋势和我们关心的foundation model、operator learning、physics-informed learning都有内在联系，值得持续关注。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.10730" target="_blank">Qwen-Image-2.0 Technical Report</a></li>
+<li><a href="https://arxiv.org/abs/2605.08735" target="_blank">CollabVR: Collaborative Video Reasoning with Vision-Language and Video Generation Models</a></li>
+<li><a href="https://arxiv.org/abs/2605.10344" target="_blank">TMAS: Scaling Test-Time Compute via Multi-Agent Synergy</a></li>
+<li><a href="https://arxiv.org/abs/2605.10341" target="_blank">PaperFit: Vision-in-the-Loop Typesetting Optimization for Scientific Documents</a></li>
+<li><a href="https://arxiv.org/abs/2605.07465" target="_blank">SEIF: Self-Evolving Reinforcement Learning for Instruction Following</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

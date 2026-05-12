@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-12",
+    "title": "Paper Morning 2026-05-12",
+    "description": "今日学术播报: Qwen-Image-2.0 Technical Repor, CollabVR: Collaborative Video , TMAS: Scaling Test-Time Comput...",
+    "audio_file": "2026-05-12.mp3",
+    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想和大家聊几篇最近热度比较高的论文，但我的视角可能和单纯看标题不太一样。我关注的不是这些模型本身有多强，而是它们背后展现出来的范式，对我们AI for Science领域可能有什么启发。\n\n第一篇是Qwen-Image-2.0，一个统一了图像生成和编辑的多模态基础模型。它用Qwen3-VL作为条件编码器，配合一个多模态扩散Transformer，来实现高质量的文本渲染、多语言排版和高分辨率的照片级生成。这篇论文的技术细节很扎实，但我更在意的是它传递出来的一个信号：多模态理解正在成为生成模型的底层能力，而不是一个附加功能。这让我想到我们在科学计算里常说的\"先理解后预测\"——当你有一个强大的视觉-语言联合编码器，很多下游任务会变得更可控。这对做PDE求解或者实验数据可视化的同志来说，是一个值得关注的趋势。\n\n第二篇叫CollabVR，讲的是视频生成模型和视觉语言模型如何协同做推理。它提出了一个VLM-VGM的闭环框架，在每个生成步骤上都让VLM介入，避免长程漂移和误差累积。这让我特别感兴趣，因为它本质上是在解决\"生成过程中的实时...",
+    "papers": [
+      {
+        "title": "Qwen-Image-2.0 Technical Report",
+        "url": "https://arxiv.org/abs/2605.10730",
+        "arxiv_id": "2605.10730"
+      },
+      {
+        "title": "CollabVR: Collaborative Video Reasoning with Vision-Language and Video Generation Models",
+        "url": "https://arxiv.org/abs/2605.08735",
+        "arxiv_id": "2605.08735"
+      },
+      {
+        "title": "TMAS: Scaling Test-Time Compute via Multi-Agent Synergy",
+        "url": "https://arxiv.org/abs/2605.10344",
+        "arxiv_id": "2605.10344"
+      },
+      {
+        "title": "PaperFit: Vision-in-the-Loop Typesetting Optimization for Scientific Documents",
+        "url": "https://arxiv.org/abs/2605.10341",
+        "arxiv_id": "2605.10341"
+      },
+      {
+        "title": "SEIF: Self-Evolving Reinforcement Learning for Instruction Following",
+        "url": "https://arxiv.org/abs/2605.07465",
+        "arxiv_id": "2605.07465"
+      }
+    ],
+    "published_at": "2026-05-12T23:37:40.252988Z"
+  },
+  {
     "date": "2026-05-11",
     "title": "Paper Morning 2026-05-11",
     "description": "今日学术播报: MACE-Dance: Motion-Appearance , Mean Mode Screaming: Mean--Var, HyperEyes: Dual-Grained Effici...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-13T23:12:41.903309Z"
-  },
-  {
-    "date": "2026-04-12",
-    "title": "Paper Morning 2026-04-12",
-    "description": "今日学术播报: When Numbers Speak: Aligning T, HY-Embodied-0.5: Embodied Foun, ClawBench: Can AI Agents Compl...",
-    "audio_file": "2026-04-12.mp3",
-    "script": "各位早上好，周末的Paper Morning又和大家见面了。今天想聊一个特别的话题：我们正在见证AI从“理解符号”走向“理解物理”的关键转折。\n\n先来看一篇挺有意思的工作。NUMINA解决的是一个看似简单但实际很本质的问题：现在的text-to-video模型，你告诉它“天空有五只鸟”，它可能给你生成三只，也可能给你生成七只，就是很难精确。这个工作的核心贡献是提出了一个训练-free的识别-引导框架，通过选择区分性的self-attention和cross-attention头，推导出可计数的潜在布局，然后保守地精炼这个布局并调制cross-attention来引导重新生成。我看到他们在新引入的CountBench上，最多提升了7.4%的计数准确率。这个工作的价值不在于方法本身多复杂，而在于它揭示了一个被长期忽视的问题：当模型生成的物体数量都不对的时候，后续的任何高级推理都免谈。这让我想到我们做PDE求解的时候，如果基础的位置信息和数量信息都不准确，那基于这些做物理模拟会有多大的系统误差？所以我挺期待看到这种计数能力被引入到科学模拟中去的。\n\n说完计数，我们来看看具身智能的新进展。HY...",
-    "papers": [
-      {
-        "title": "When Numbers Speak: Aligning Textual Numerals and Visual Instances in Text-to-Video Diffusion Models",
-        "url": "https://arxiv.org/abs/2604.08546",
-        "arxiv_id": "2604.08546"
-      },
-      {
-        "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
-        "url": "https://arxiv.org/abs/2604.07430",
-        "arxiv_id": "2604.07430"
-      },
-      {
-        "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-        "url": "https://arxiv.org/abs/2604.08523",
-        "arxiv_id": "2604.08523"
-      },
-      {
-        "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-        "url": "https://arxiv.org/abs/2604.06628",
-        "arxiv_id": "2604.06628"
-      },
-      {
-        "title": "MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping",
-        "url": "https://arxiv.org/abs/2604.08364",
-        "arxiv_id": "2604.08364"
-      }
-    ],
-    "published_at": "2026-04-12T23:04:17.809400Z"
   }
 ]
