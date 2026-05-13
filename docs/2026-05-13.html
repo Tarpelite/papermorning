@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-13</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-13</h1>
+    <p class="date">2026-05-13</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-13.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。
+
+今天想跟大家聊一个正在悄然改变具身智能研究范式的话题——World Model，也就是世界模型。可能不少朋友已经注意到，近几个月来arXiv上关于世界模型的论文突然多了起来，而今天我们要讨论的几篇论文，恰好勾勒出了这个方向正在发生的几个关键转变。
+
+先来看这篇World Action Models，把这个概念叫做WAM。大家知道，传统的VLA模型，也就是视觉语言动作模型，在语义泛化方面已经做得很不错了，但它们本质上还是一种反应式的映射——看到什么就输出什么动作，中间并没有显式建模物理世界在干预下会如何演化。这篇工作的核心贡献，就是提出把预测性的世界模型嵌入到动作生成管道中，让模型同时建模未来状态和动作的联合分布，而不仅仅是条件分布。作者把这种新范式叫做World Action Models。这个思路让我想起我们在PDE求解里常说的“预测-校正”机制——先有对系统演化的预测，再基于预测来做决策，只不过这里预测的不是物理量而是智能体与环境交互的轨迹。当然，现在WAM的定义还比较宽泛，不同工作在架构、学习目标上各有侧重，这也引出了我们接下来要聊的话题。
+
+那么这篇MCP-Cosmos就更有意思了。它把世界模型和最近火热的MCP也就是模型上下文协议结合起来，提出了一种叫做BYOWM的策略，让Agent可以在潜在空间里先模拟状态转移、 refine计划，再去执行。这个思路其实很有意思，因为它其实在问一个根本性的问题：当我们有了LLM作为大脑，要不要给它配一个“物理直觉”？以前我们觉得LLM什么都能干，但现在看来，光有语言智能还不够，要真正完成复杂的自动化任务， Agent需要能够“想象”自己的行动会导致什么后果。这篇工作让我想到RL里的model-based方法——有了世界模型，就可以在仿真环境里大量试错，成本比真实交互低得多。现在只不过是把这一步放到了latent space来做，效率会更高。
+
+刚才两篇都是新工作，而第三篇是一篇综述，来自港科大几位老师的团队，系统梳理了世界模型在机器人学习中的角色变迁。这篇综述的价值在于，它把过去几年散落在不同子领域的进展——比如世界模型如何和policy耦合、如何作为learned simulator用于RL和评估、还有最近大火的可控视频生成模型——串联成了一条演进线索。读完会有一个清晰的感受：世界模型从最早只是一个辅助planning的工具，逐渐变成了可以独立生成数据、甚至可以替代真实物理环境的“数字孪生”。而随着foundation model和大规模视频生成技术的进步，这个趋势正在加速。
+
+到这里可能有些朋友会问，这些世界模型的工作跟AI for Science有什么关系？我个人的观察是，科学计算领域其实一直在做类似的事情——我们用神经网络逼近PDE的解算子，不就是一种隐式的世界模型吗？区别在于，传统上我们更关心空间和时间上的预测精度，而今天这些具身智能的工作提醒我们，预测只是第一步，关键是预测之后如何做决策、如何干预。这可能是科学计算下一步可以借鉴的方向。
+
+聊完世界模型这两篇，再来看一篇风格不太一样的。L2P这篇文章做的是如何高效利用预训练的latent diffusion model来训练像素空间的生成模型。大家知道，现在diffusion model在图像生成领域已经非常强了，但像素空间的模型训练成本极高。L2P的思路很巧妙：它直接把预训练LDM的知识迁移过来，冻住中间层，只训练浅层来学习latent到pixel的转换，而且用的是LDM自己生成的合成数据。这就相当于站在巨人的肩膀上，不用从零开始爬。作者在报告里说，这种方法可以让模型快速收敛，而且不需要任何真实数据。这个思路其实跟AI4S里用预训练的foundation model来做下游任务有异曲同工之处——都是先在大规模数据上学到通用表征，再针对特定目标做高效适配。
+
+最后一篇Token Superposition Training，是关于如何让LLM预训练更高效的。TST这个方法的核心，是在训练时把多个相邻token打包成一个bag，用multi-hot crossentropy来训练，然后再恢复标准训练。作者在270M到10B参数的规模上都验证了有效性。这个工作解决的是一个很实际的问题：大模型预训练太贵了，如何在不改并行方案、optimizer、tokenizer的前提下提升数据吞吐量？这种效率优先的思路，对于我们做AI4S的人来说其实很有启发——、科学计算场景里，动辄几十年的仿真数据、几十TB的物理观测，如何更高效地利用这些数据来训练模型，可能是决定foundation model能不能真正落地的关键。
+
+好了，今天播报的最后想做一个整体提炼。今天这几篇论文看起来散，但实际上都指向同一个趋势：不管是世界模型还是高效训练方法，大家都在做一件事——那就是把AI系统的能力从“反应式”向“预测式”迁移。过去的模型是看到输入给输出，现在的模型需要能够建模输入和输出之间的因果链条。这个趋势在NLP里是o1和test-time compute，在机器人里是世界模型，在科学计算里，其实就是我们一直在追求的、能够真正捕捉物理规律而非仅仅拟合数据点的可预测模型。这个方向的进展，值得我们持续关注。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.12090" target="_blank">World Action Models: The Next Frontier in Embodied AI</a></li>
+<li><a href="https://arxiv.org/abs/2605.09131" target="_blank">MCP-Cosmos: World Model-Augmented Agents for Complex Task Execution in MCP Environments</a></li>
+<li><a href="https://arxiv.org/abs/2605.00080" target="_blank">World Model for Robot Learning: A Comprehensive Survey</a></li>
+<li><a href="https://arxiv.org/abs/2605.12013" target="_blank">L2P: Unlocking Latent Potential for Pixel Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.06546" target="_blank">Efficient Pre-Training with Token Superposition</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-13</title>
+      <description>今日学术播报: World Action Models: The Next , MCP-Cosmos: World Model-Augmen, World Model for Robot Learning...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-13.mp3" length="10431051" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-13.mp3</guid>
+      <pubDate>2026-05-13T23:38:26.902007Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-12</title>
       <description>今日学术播报: Qwen-Image-2.0 Technical Repor, CollabVR: Collaborative Video , TMAS: Scaling Test-Time Comput...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-12.mp3" length="7360932" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-14.mp3" length="11210963" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-14.mp3</guid>
       <pubDate>2026-04-14T23:13:42.746414Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-13</title>
-      <description>今日学术播报: Matrix-Game 3.0: Real-Time and, WildDet3D: Scaling Promptable , FORGE:Fine-grained Multimodal ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-13.mp3" length="8397262" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-13.mp3</guid>
-      <pubDate>2026-04-13T23:12:41.903309Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
