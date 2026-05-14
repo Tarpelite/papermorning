@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-14",
+    "title": "Paper Morning 2026-05-14",
+    "description": "今日学术播报: AnyFlow: Any-Step Video Diffus, MulTaBench: Benchmarking Multi, Predicting Decisions of AI Age...",
+    "audio_file": "2026-05-14.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊一个我最近反复思考的问题：AI for Science的基础设施和benchmark，正在经历什么样的范式变迁？过去我们总说做好AI4S需要好的数据、好的模型、好的平台，但最近一系列工作让我觉得，这个故事可能正在被重新书写。\n\n先看AnyFlow这篇关于视频生成的工作。它提出了第一个any-step的流图蒸馏框架，解决了一个很有意思的矛盾：consistency distillation虽然能大幅减少采样步数，但代价是牺牲了ODE轨迹本身的优势——也就是说，当你想用更多推理步数来提升质量时，模型反而会掉链子。AnyFlow的思路是直接优化完整的ODE采样轨迹，而不是只盯着少步数这个单一目标。这让我想到我们在做PDE求解器或者物理模拟时，也常常面临类似的权衡：是追求单次推理的效率，还是追求累积的精度？any-step diffusion这个思路，某种程度上也是在回答一个更本质的问题：如何在推理阶段获得真正的scaling behavior。这个思想，或许值得我们在科学计算的推理优化中借鉴。\n\n然后看MulTaBench，这个...",
+    "papers": [
+      {
+        "title": "AnyFlow: Any-Step Video Diffusion Model with On-Policy Flow Map Distillation",
+        "url": "https://arxiv.org/abs/2605.13724",
+        "arxiv_id": "2605.13724"
+      },
+      {
+        "title": "MulTaBench: Benchmarking Multimodal Tabular Learning with Text and Image",
+        "url": "https://arxiv.org/abs/2605.10616",
+        "arxiv_id": "2605.10616"
+      },
+      {
+        "title": "Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling",
+        "url": "https://arxiv.org/abs/2605.12411",
+        "arxiv_id": "2605.12411"
+      },
+      {
+        "title": "EVA-Bench: A New End-to-end Framework for Evaluating Voice Agents",
+        "url": "https://arxiv.org/abs/2605.13841",
+        "arxiv_id": "2605.13841"
+      },
+      {
+        "title": "MinT: Managed Infrastructure for Training and Serving Millions of LLMs",
+        "url": "https://arxiv.org/abs/2605.13779",
+        "arxiv_id": "2605.13779"
+      }
+    ],
+    "published_at": "2026-05-14T23:30:25.136655Z"
+  },
+  {
     "date": "2026-05-13",
     "title": "Paper Morning 2026-05-13",
     "description": "今日学术播报: World Action Models: The Next , MCP-Cosmos: World Model-Augmen, World Model for Robot Learning...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-15T23:11:34.252817Z"
-  },
-  {
-    "date": "2026-04-14",
-    "title": "Paper Morning 2026-04-14",
-    "description": "今日学术播报: The Past Is Not Past: Memory-E, QuanBench+: A Unified Multi-Fr, Attention Sink in Transformers...",
-    "audio_file": "2026-04-14.mp3",
-    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想先从一个我们领域的人都很熟悉的现象说起：当大语言模型在做强化学习微调的时候，常常会陷入一种“行为塌缩”的困境——模型反反复复犯同样的错误，采样多样性急剧下降。这其实不只是LLM的问题，任何做物理模拟强化学习的同学可能都有同感，当你用RL去控制一个机械臂或者优化一个分子构型时，策略一旦发现某个“还不错”的局部解，就会一直待在里面不出来。\n\n今天第一篇论文MEDS就是来解决这个问题的。它的核心思路很直接：与其只让当前策略增加熵，不如把历史轨迹也利用起来。论文提出用密度聚类来识别那些反复出现的错误模式，然后对掉进“常见错误集群”的轨迹施加更大的惩罚。这样一来，模型就被迫去探索那些不常走的路径。对于我们AI4S的人来说，这个方法的价值可能不仅仅在LLM——想象一下，如果你用RL来搜索材料结构或者设计新的分子，传统的entropy regularization只能保证当前策略的随机性，但无法避免策略在若干次尝试后开始重复访问相似的失败区域。MEDS提供了显式干预跨rollout多样性的能力，这可能是未来构建更高效的科学探索策略的一个...",
-    "papers": [
-      {
-        "title": "The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping",
-        "url": "https://arxiv.org/abs/2604.11297",
-        "arxiv_id": "2604.11297"
-      },
-      {
-        "title": "QuanBench+: A Unified Multi-Framework Benchmark for LLM-Based Quantum Code Generation",
-        "url": "https://arxiv.org/abs/2604.08570",
-        "arxiv_id": "2604.08570"
-      },
-      {
-        "title": "Attention Sink in Transformers: A Survey on Utilization, Interpretation, and Mitigation",
-        "url": "https://arxiv.org/abs/2604.10098",
-        "arxiv_id": "2604.10098"
-      },
-      {
-        "title": "OmniShow: Unifying Multimodal Conditions for Human-Object Interaction Video Generation",
-        "url": "https://arxiv.org/abs/2604.11804",
-        "arxiv_id": "2604.11804"
-      },
-      {
-        "title": "Strips as Tokens: Artist Mesh Generation with Native UV Segmentation",
-        "url": "https://arxiv.org/abs/2604.09132",
-        "arxiv_id": "2604.09132"
-      }
-    ],
-    "published_at": "2026-04-14T23:13:42.746414Z"
   }
 ]

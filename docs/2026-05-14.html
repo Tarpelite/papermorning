@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-14</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-14</h1>
+    <p class="date">2026-05-14</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-14.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想和大家聊一个我最近反复思考的问题：AI for Science的基础设施和benchmark，正在经历什么样的范式变迁？过去我们总说做好AI4S需要好的数据、好的模型、好的平台，但最近一系列工作让我觉得，这个故事可能正在被重新书写。
+
+先看AnyFlow这篇关于视频生成的工作。它提出了第一个any-step的流图蒸馏框架，解决了一个很有意思的矛盾：consistency distillation虽然能大幅减少采样步数，但代价是牺牲了ODE轨迹本身的优势——也就是说，当你想用更多推理步数来提升质量时，模型反而会掉链子。AnyFlow的思路是直接优化完整的ODE采样轨迹，而不是只盯着少步数这个单一目标。这让我想到我们在做PDE求解器或者物理模拟时，也常常面临类似的权衡：是追求单次推理的效率，还是追求累积的精度？any-step diffusion这个思路，某种程度上也是在回答一个更本质的问题：如何在推理阶段获得真正的scaling behavior。这个思想，或许值得我们在科学计算的推理优化中借鉴。
+
+然后看MulTaBench，这个工作构建了一个包含四十个数据集的多模态表格学习benchmark，涵盖了图像-表格和文本-表格两类任务。它揭示了一个被长期忽视的问题：现有表格基础模型在处理非结构化数据时，往往直接冻结预训练嵌入，而没有针对具体任务做微调。更有意思的是，作者发现这种任务相关的微调其实能带来显著收益，只是之前的benchmark设计太粗糙，把信号淹没在噪声里了。这让我想到AI4S中的很多场景——比如我们处理实验数据时，往往既有数值表格、也有图像记录、甚至还有文本描述。MulTaBench提醒我们，跨模态融合不只是一个技术问题，更是一个benchmark设计问题：我们需要足够精细的评估框架，才能真正衡量方法的进步。
+
+接下来这篇关于预测AI智能体决策的工作，脑洞很大：它问的是，当一个AI智能体和另一个陌生的智能体交互时——比如谈判、议价——能否从有限的交互历史中预测对方的下一步决策？作者把这个问题建模成目标自适应的文本-表格预测：每一行决策是一个样本，融合了结构化的游戏状态、出价历史和对话文本，而模型的输入还包括同一个目标智能体之前参与的几场游戏。这本质上是在做少样本的角色建模。这让我联想到科学计算中的一个场景：当我们在做分子动力学模拟或者多智能体系统仿真时，如果我们能提前预测某个未知组件的行为模式，很多问题会变得更容易处理。当然，这个工作的背景是LLM智能体，但这种"从交互中学习对手模型"的思想，或许也能启发我们设计更高效的探索策略。
+
+再看EVA-Bench，这是语音智能体的端到端评估框架。它同时解决了两个难题：如何生成逼真的模拟对话，以及如何全面衡量语音交互中的各种失败模式。作者引入了两个复合指标，EVA-A衡量任务完成度，EVA-Q衡量交互质量。这个工作的价值不仅在于提供了一个好用的benchmark，更在于它提醒我们：评估这件事本身往往是被低估的。一个领域要成熟起来，缺的不是模型，而是可靠的衡量标准。AI4S其实也面临类似的问题——我们做了很多PDE求解器、很多operator learning模型，但到底什么样的评估任务、什么样的数据划分，才能真正区分方法的优劣？这可能是下一个十年我们需要认真对待的问题。
+
+最后看MinT，这是Mind Lab推出的托管基础设施系统，专门针对大规模LoRA微调和在线服务。它的核心设计思想很有意思：与其为每个微调后的策略生成完整的合并checkpoint，不如让基础模型常驻内存，只在各环节之间传递LoRA adapter的增量。这个设计在三个维度上实现了扩展：向上支持超过一万亿参数规模的Dense和MoE架构，向下支持轻量级设备，同时还能保持高效的吞吐。我关注这个工作的原因是，它代表了一种基础设施思路的转变：从"做更大的模型"到"更聪明地管理模型"。在AI4S场景中，我们可能不需要每次都从头训练一个很大的模型，而是需要一套灵活的基础设施，能在不同的实验配置之间快速切换。MinT至少在工程层面展示了一种可行的路径。
+
+今天的播报到这里。回头看这五篇论文，我最大的感受是：AI领域的基础设施和benchmark正在从"配角"变成"主角"。过去我们总觉得这些是支撑性的工作，但现在，无论是MinT的工程哲学、MulTaBench对评估精细度的追求，还是EVA-Bench对完整交互链路的关注，都在提醒我们：一个领域的成熟度，往往不在于最炫酷的模型，而在于有没有可靠的基础设施和评估框架来支撑整个研究社区的迭代。这可能是比任何单点突破都更值得关注的大趋势。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.13724" target="_blank">AnyFlow: Any-Step Video Diffusion Model with On-Policy Flow Map Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2605.10616" target="_blank">MulTaBench: Benchmarking Multimodal Tabular Learning with Text and Image</a></li>
+<li><a href="https://arxiv.org/abs/2605.12411" target="_blank">Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2605.13841" target="_blank">EVA-Bench: A New End-to-end Framework for Evaluating Voice Agents</a></li>
+<li><a href="https://arxiv.org/abs/2605.13779" target="_blank">MinT: Managed Infrastructure for Training and Serving Millions of LLMs</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
