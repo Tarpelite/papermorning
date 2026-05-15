@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-15</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-15</h1>
+    <p class="date">2026-05-15</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-15.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周五的Paper Morning来了。
+
+今天想先从一篇特别应景的论文开始聊。最近大家都在谈foundation model，但真正把它应用到多物理场问题上，挑战可不小。论文3就直面这个问题——他们发现，当你想用一个大一统的模型同时处理比如开放河道流体和孔隙介质流这两种完全不同的物理过程时，训练会变得极不稳定，梯度冲突严重，最后模型反而学不好任何一种。他们管这个叫“负迁移”。
+
+有意思的是，他们提出的解决方案用的是稀疏激活的MoE架构，但不只是简单加expert gating。他们设计了一个非常巧妙的物理信息自编码器，把状态空间压缩到16的三次方个物理潜在变量，然后用Helmholtz速度参数化来保证解码后的速度场是散度自由的。这样一来，不同物理 regime 的需求被巧妙地“解耦”了，模型可以在不同expert分支里各学各的，而不必在同一个参数空间里互相拉扯。这让我想到，其实我们以前在dense neural operator上勉强做多任务学习，本质上是在让一个模型做不可能的事——现在MoE提供了另一种思路，可能比单纯增大模型参数量更有针对性。
+
+然后我想聊聊论文4，这个工作虽然看起来是纯LLM方向的，但它提出的“训练-free scaling”思路，对我们做科学计算的其实很有启发。他们说能不能不靠额外训练，而是通过重新组合现有模型检查点里的“能力”来提升推理性能？这相当于在weight space里做evolutionary search，但加了一个MRI-Trust的机制来衡量每一层的重要性。他们在27B参数的模型上做到了GPQA 86.9%的准确率。各位，这说明什么？说明模型本身已经具备很多能力，关键是怎么把它们“调出来”而不是“重新学进去”。这个思想如果迁移到科学计算里，或许我们可以思考：训练好的PDE求解器，是不是也有类似的潜在能力没有被充分挖掘？有没有可能不做完整微调，而是通过某种merge或routing的方式来适配新任务？
+
+论文5关于多模态长期记忆的benchmark也很及时。现在LVLMs很火，但大家关注的一直是理解能力，真正系统性地评估“记忆”能力的还不多。他们搞了一个MEMLENS benchmark，发现一个有趣的现象：要答对这些需要记忆的问题，真的需要视觉证据，单纯靠文本是不够的。这其实给我们提了个醒——在科学场景里也一样，我们不能只看模型的语言理解能力，它对物理图像、几何结构的“记忆”和调用，可能才是关键。
+
+至于论文1和2，都是视频生成方向的工作，一个做分钟级的world model，一个做实时交互的diffusion distillation。SANA-WM那个混合线性注意力加上双分支相机控制，做得挺精巧；但说实话，这些离我们关心的物理模拟还有一段距离。不过有一点值得关注——它们在长上下文建模上的进展，未来或许能帮我们更好地处理跨时间尺度的物理过程仿真。
+
+好了，今天的整体观察是什么呢？我想说的是，AI4S领域正在经历一个从“暴力刷参”转向“精细设计”的阶段。不管是负迁移问题的MoE解法，还是训练-free的model merging，都在提示我们：下一阶段的突破，可能不在于模型有多大，而在于我们是否理解了不同物理知识之间的“接口”——怎样让它们既独立又协作。这可能比单纯追scaling law更有意思。周末愉快，各位。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.15178" target="_blank">SANA-WM: Efficient Minute-Scale World Modeling with Hybrid Linear Diffusion Transformer</a></li>
+<li><a href="https://arxiv.org/abs/2605.15141" target="_blank">Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.15179v1" target="_blank">Eradicating Negative Transfer in Multi-Physics Foundation Models via Sparse Mixture-of-Experts Routing</a></li>
+<li><a href="https://arxiv.org/abs/2605.14386" target="_blank">Darwin Family: MRI-Trust-Weighted Evolutionary Merging for Training-Free Scaling of Language-Model Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2605.14906" target="_blank">MemLens: Benchmarking Multimodal Long-Term Memory in Large Vision-Language Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

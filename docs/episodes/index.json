@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-15",
+    "title": "Paper Morning 2026-05-15",
+    "description": "今日学术播报: SANA-WM: Efficient Minute-Scal, Causal Forcing++: Scalable Few, Eradicating Negative Transfer ...",
+    "audio_file": "2026-05-15.mp3",
+    "script": "各位早上好，周五的Paper Morning来了。\n\n今天想先从一篇特别应景的论文开始聊。最近大家都在谈foundation model，但真正把它应用到多物理场问题上，挑战可不小。论文3就直面这个问题——他们发现，当你想用一个大一统的模型同时处理比如开放河道流体和孔隙介质流这两种完全不同的物理过程时，训练会变得极不稳定，梯度冲突严重，最后模型反而学不好任何一种。他们管这个叫“负迁移”。\n\n有意思的是，他们提出的解决方案用的是稀疏激活的MoE架构，但不只是简单加expert gating。他们设计了一个非常巧妙的物理信息自编码器，把状态空间压缩到16的三次方个物理潜在变量，然后用Helmholtz速度参数化来保证解码后的速度场是散度自由的。这样一来，不同物理 regime 的需求被巧妙地“解耦”了，模型可以在不同expert分支里各学各的，而不必在同一个参数空间里互相拉扯。这让我想到，其实我们以前在dense neural operator上勉强做多任务学习，本质上是在让一个模型做不可能的事——现在MoE提供了另一种思路，可能比单纯增大模型参数量更有针对性。\n\n然后我想聊聊论文4，这个...",
+    "papers": [
+      {
+        "title": "SANA-WM: Efficient Minute-Scale World Modeling with Hybrid Linear Diffusion Transformer",
+        "url": "https://arxiv.org/abs/2605.15178",
+        "arxiv_id": "2605.15178"
+      },
+      {
+        "title": "Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation",
+        "url": "https://arxiv.org/abs/2605.15141",
+        "arxiv_id": "2605.15141"
+      },
+      {
+        "title": "Eradicating Negative Transfer in Multi-Physics Foundation Models via Sparse Mixture-of-Experts Routing",
+        "url": "https://arxiv.org/abs/2605.15179v1",
+        "arxiv_id": "2605.15179v1"
+      },
+      {
+        "title": "Darwin Family: MRI-Trust-Weighted Evolutionary Merging for Training-Free Scaling of Language-Model Reasoning",
+        "url": "https://arxiv.org/abs/2605.14386",
+        "arxiv_id": "2605.14386"
+      },
+      {
+        "title": "MemLens: Benchmarking Multimodal Long-Term Memory in Large Vision-Language Models",
+        "url": "https://arxiv.org/abs/2605.14906",
+        "arxiv_id": "2605.14906"
+      }
+    ],
+    "published_at": "2026-05-15T23:29:07.450096Z"
+  },
+  {
     "date": "2026-05-14",
     "title": "Paper Morning 2026-05-14",
     "description": "今日学术播报: AnyFlow: Any-Step Video Diffus, MulTaBench: Benchmarking Multi, Predicting Decisions of AI Age...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-16T23:11:54.066648Z"
-  },
-  {
-    "date": "2026-04-15",
-    "title": "Paper Morning 2026-04-15",
-    "description": "今日学术播报: ClawGUI: A Unified Framework f, KnowRL: Boosting LLM Reasoning, Rethinking On-Policy Distillat...",
-    "audio_file": "2026-04-15.mp3",
-    "script": "各位早上好，今天周三，Paper Morning开播了。\n\n最近大家可能注意到了，HuggingFace trending上关于大模型推理和agent的论文特别多，我挑了五篇有代表性的来聊聊。这批工作有个共同特点：它们都在回答同一个深层问题——怎么让大模型真正“会用”而不是“会背”。\n\n先看第一篇，ClawGUI。这是一个做GUI agent的统一框架，包含训练、评估和部署三个环节。我注意到它的核心贡献不是模型结构上的创新，而是工程基础设施的完善——作者指出了这个领域长期被忽视的问题：在线强化训练时环境不稳定，评估标准在各工作中漂移，训练好的agent很难真正部署到真实设备上。这让我想到AI4S领域其实也面临类似的“基础设施gap”：我们有很多不错的neural operator模型，但把它们真正用到实际科学问题上时，数据管道、评估基准、部署工具都还很原始。这篇工作值得AI4S的研究者关注，因为它展示了一个领域的成熟是怎么从“能跑demo”走到“全栈可用”的。\n\n第二篇 KnowRL 很有意思，它研究的是怎么在强化学习训练中给模型提供有效的hint。作者提出了一个“最小充分指导”的思路...",
-    "papers": [
-      {
-        "title": "ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents",
-        "url": "https://arxiv.org/abs/2604.11784",
-        "arxiv_id": "2604.11784"
-      },
-      {
-        "title": "KnowRL: Boosting LLM Reasoning via Reinforcement Learning with Minimal-Sufficient Knowledge Guidance",
-        "url": "https://arxiv.org/abs/2604.12627",
-        "arxiv_id": "2604.12627"
-      },
-      {
-        "title": "Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe",
-        "url": "https://arxiv.org/abs/2604.13016",
-        "arxiv_id": "2604.13016"
-      },
-      {
-        "title": "The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping",
-        "url": "https://arxiv.org/abs/2604.11297",
-        "arxiv_id": "2604.11297"
-      },
-      {
-        "title": "Audio-Omni: Extending Multi-modal Understanding to Versatile Audio Generation and Editing",
-        "url": "https://arxiv.org/abs/2604.10708",
-        "arxiv_id": "2604.10708"
-      }
-    ],
-    "published_at": "2026-04-15T23:11:34.252817Z"
   }
 ]
