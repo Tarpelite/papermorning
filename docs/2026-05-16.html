@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-16</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-16</h1>
+    <p class="date">2026-05-16</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-16.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周六的早晨，Paper Morning又和大家见面了。
+
+今天想和大家聊几篇有意思的论文，核心主题是：在科学计算和智能体建模领域，我们正在看到一些范式层面的新尝试。
+
+先说一篇和咱们AI4S直接相关的文章。Scaling Scientific Machine Learning towards universal foundation model是很多人关心的话题，但这两年大家也逐渐意识到一个核心瓶颈：negative transfer。简单讲，就是把不同物理机制的PDE放在一个模型里训练，梯度冲突、训练不稳定、plasticity loss这些问题就来了。这篇叫Shodh-MoE的工作，提出了用稀疏MoE的思路来解决这个问题。它用的是一种latent transformer架构，先通过physics-informed autoencoder把状态压缩到16的三次方个物理latent，然后用Helmholtz风格的velocity参数化保证divergence-free。核心创新是sparse mixture-of-experts routing，让不同物理机制走不同的expert路径，避免互相干扰。
+
+这让我想到，其实NLP里multi-task learning的negative transfer问题已经被研究很久了，但直到MoE出现才给出比较实用的解法。科学计算领域的multi-physics问题，本质上也是类似的——不同PDE regime的spectral和geometric demands是不兼容的。Shodh-MoE的价值在于，它把这个思路concretize了，给出了一个可操作的架构。不过我个人比较好奇的是，这种sparse routing在inference时的计算开销和实际精度提升之间是否真的比dense model有显著优势，还需要更多实验验证。
+
+接下来转向视频生成和世界模型这个方向。SANA-WM这个工作关注的是一个很实际的问题：如何高效地生成长达一分钟的高质量视频，并且实现精确的camera control。它是一个2.6B参数的模型，在720p分辨率上达到了和大规模工业模型相当的视觉质量，但效率明显更高。它有四个核心设计：Hybrid Linear Attention结合了frame-wise的Gated DeltaNet和softmax attention，来处理长上下文；Dual-Branch Camera Control实现6-DoF trajectory的精确控制；两阶段生成管道用refiner提升质量；还有robust的annotation pipeline。
+
+这里有个很有趣的观察：大家以前可能觉得视频生成主要是娱乐和内容创作，但实际上minute-scale的高保真世界建模，对自动驾驶、机器人仿真这些需要物理一致性的场景非常关键。而SANA-WM的Hybrid Linear Attention设计，本质上是在处理长程依赖和局部细节之间的trade-off——这和我们PDE求解中面对的问题是很类似的。
+
+然后是Causal Forcing加加，这篇工作研究的是一个更激进的问题：能不能做到frame-wise的autoregression，只有1-2步采样就能生成高质量视频？它提出了一个causal consistency distillation的思路，解决了few-step AR student的初始化问题。如果把这个思路和科学计算联系起来，test-time compute的scaling在NLP里已经火了一波，现在在视频生成里也在探索。某种程度上，diffusion model的sampling steps和PDE的time-stepping是类似的——都是要在精度和计算成本之间找平衡。Causal Forcing加加的工作表明，即使是few-step也能保持质量，这对需要real-time交互的场景意义重大。
+
+最后简单提一下另外两篇。Darwin Family是个挺有意思的思路——不做额外训练，而是通过evolutionary merging把已有checkpoint的能力重新组合。它用了一个14维的adaptive merge genome，还有MRI-Trust Fusion来自适应平衡不同层的重要性。这个方向对咱们做foundation model的团队很有参考价值，因为pretraining成本越来越高，post-training的优化空间就变得很重要。MemLens则是提出了一个LVLMs长程记忆的benchmark，包含789个问题，涵盖五种记忆能力，它用cross-modal token-counting scheme来衡量context长度的影响。这个工作提醒我们，当模型要处理超长multimodal context时，记忆机制的设计会变得非常关键。
+
+今天的整体观察是：无论是视频生成还是多物理建模，研究者都在处理一个相似的核心挑战——如何在精度和计算成本之间找到平衡，如何在长程依赖和局部细节之间找到平衡。SANA-WM的Hybrid Linear Attention是在处理视觉的长程依赖，Shodh-MoE的sparse routing是在解决物理机制的冲突，Causal Forcing加加则是在探索few-step sampling的极限。这些工作有一个共同点，就是不再盲目追求scale，而是开始精细地考虑资源分配。这可能是接下来科学计算和生成模型共同演进的一个方向。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.15178" target="_blank">SANA-WM: Efficient Minute-Scale World Modeling with Hybrid Linear Diffusion Transformer</a></li>
+<li><a href="https://arxiv.org/abs/2605.15141" target="_blank">Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.14386" target="_blank">Darwin Family: MRI-Trust-Weighted Evolutionary Merging for Training-Free Scaling of Language-Model Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2605.15179v1" target="_blank">Eradicating Negative Transfer in Multi-Physics Foundation Models via Sparse Mixture-of-Experts Routing</a></li>
+<li><a href="https://arxiv.org/abs/2605.14906" target="_blank">MemLens: Benchmarking Multimodal Long-Term Memory in Large Vision-Language Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
