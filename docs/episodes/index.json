@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-18",
+    "title": "Paper Morning 2026-05-18",
+    "description": "今日学术播报: CiteVQA: Benchmarking Evidence, PhysBrain 1.0 Technical Report, FashionChameleon: Towards Real...",
+    "audio_file": "2026-05-18.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想和大家聊一个很有意思的趋势，我把它叫做“AI的下半场：从会答题到会举证”。为什么这么说呢？我们来看几篇论文。\n\n第一篇是CiteVQA，讲的是文档智能中的证据归属问题。我们知道现在的多模态大模型已经能很好地理解文档、回答问题了，但这里有个很隐蔽的陷阱：模型可能给出正确答案，却用的是错误的证据。在法律、医疗、金融这些高风险领域，这种“答案对但过程错”的问题其实是致命的。CiteVQA这个 benchmark 最大的价值在于，它要求模型不仅给出答案，还要返回支持答案的具体区域，也就是element-level的引用。这样就能同时评估答案的正确性和证据的可靠性。这个思路其实和我们做科学计算时强调的可解释性、PDE求解过程的可追溯性是一脉相承的。当我们用AI来辅助科学研究时光有结果是不够的，我们需要知道这个结果是怎么来的、依据是什么。\n\n第二篇 PhysBrain 1.0 很有趣，它研究的是如何让机器人获得物理常识。传统上机器人是通过模仿轨迹来学习的，但这种方法覆盖面太窄。PhysBrain的思路很巧妙：把大量的人类第一人称视频转换...",
+    "papers": [
+      {
+        "title": "CiteVQA: Benchmarking Evidence Attribution for Trustworthy Document Intelligence",
+        "url": "https://arxiv.org/abs/2605.12882",
+        "arxiv_id": "2605.12882"
+      },
+      {
+        "title": "PhysBrain 1.0 Technical Report",
+        "url": "https://arxiv.org/abs/2605.15298",
+        "arxiv_id": "2605.15298"
+      },
+      {
+        "title": "FashionChameleon: Towards Real-Time and Interactive Human-Garment Video Customization",
+        "url": "https://arxiv.org/abs/2605.15824",
+        "arxiv_id": "2605.15824"
+      },
+      {
+        "title": "MMSkills: Towards Multimodal Skills for General Visual Agents",
+        "url": "https://arxiv.org/abs/2605.13527",
+        "arxiv_id": "2605.13527"
+      },
+      {
+        "title": "Learning to Foresee: Unveiling the Unlocking Efficiency of On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2605.11739",
+        "arxiv_id": "2605.11739"
+      }
+    ],
+    "published_at": "2026-05-18T23:37:20.875665Z"
+  },
+  {
     "date": "2026-05-17",
     "title": "Paper Morning 2026-05-17",
     "description": "今日学术播报: SANA-WM: Efficient Minute-Scal, Causal Forcing++: Scalable Few, Darwin Family: MRI-Trust-Weigh...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-19T23:05:45.504794Z"
-  },
-  {
-    "date": "2026-04-18",
-    "title": "Paper Morning 2026-04-18",
-    "description": "今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, Representations Before Pixels:...",
-    "audio_file": "2026-04-18.mp3",
-    "script": "各位早上好，周末的Paper Morning如约而至。\n\n今天想先从一个更大的图景开始聊。我们都知道，大语言模型带来了一个重要的范式转变，就是从单纯的“推理”走向“推理加行动”。但最近越来越多的工作开始把这个思路延伸到更广的领域，不只是文字，而是延伸到物理世界、视觉世界，乃至于科研本身。今天的几篇论文，正好从不同角度折射出了这个趋势。\n\n先来看HY-World 2.0，这是一个多模态世界模型框架。它的核心贡献是：给定文本提示、单张图片、多视角图片甚至视频，它能够生成可导航的三维高斯溅射场景。这个工作有意思的地方不在于它又能从文本生成三维了，而在于它把整个生成过程拆成了四个阶段：全景图生成、轨迹规划、世界扩展和世界合成。听起来很像我们构建物理仿真系统的思路——先建模环境结构，再规划交互方式，最后渲染细节。这其实反映了一个趋势：世界模型不再只是预测下一帧像素，而是开始具备“空间推理”和“规划”的能力。当模型能够理解“去哪里”和“怎么去”的时候，它就更接近我们所说的物理智能了。\n\n如果说HY-World是在物理空间里构建世界模型，那接下来这篇 RationalRewards 就是在视觉生成的...",
-    "papers": [
-      {
-        "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
-        "url": "https://arxiv.org/abs/2604.14268",
-        "arxiv_id": "2604.14268"
-      },
-      {
-        "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
-        "url": "https://arxiv.org/abs/2604.11626",
-        "arxiv_id": "2604.11626"
-      },
-      {
-        "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
-        "url": "https://arxiv.org/abs/2604.11707",
-        "arxiv_id": "2604.11707"
-      },
-      {
-        "title": "Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents",
-        "url": "https://arxiv.org/abs/2604.14004",
-        "arxiv_id": "2604.14004"
-      },
-      {
-        "title": "DR^{3}-Eval: Towards Realistic and Reproducible Deep Research Evaluation",
-        "url": "https://arxiv.org/abs/2604.14683",
-        "arxiv_id": "2604.14683"
-      }
-    ],
-    "published_at": "2026-04-18T23:04:48.242666Z"
   }
 ]
