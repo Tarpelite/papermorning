@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-19",
+    "title": "Paper Morning 2026-05-19",
+    "description": "今日学术播报: LongLive-2.0: An NVFP4 Paralle, SkillsVote: Lifecycle Governan, Code as Agent Harness...",
+    "audio_file": "2026-05-19.mp3",
+    "script": "各位早上好，Paper Morning今天开播了。\n\n我们先来看一篇关于AI辅助研究的综述。AI for Auto-Research这篇论文很有意思，它把AI在科研全流程的应用梳理成了四个认识论阶段：从想法产生、代码实验，到论文写作、同行评审，再到成果传播。作者指出一个很现实的问题：即使是最前沿的大模型，在科研压力下仍然会编造结果、遗漏隐藏的错误、对创新性判断不可靠。这其实给我们提了个醒，当我们用AI来做科研的时候，AI的可靠性验证本身就是一个还没解决的基础问题。这篇论文对AI4S的意义在于，它让我们思考：在科学计算这个对精确性要求极高的领域，我们该如何在拥抱AI生产力的同时，守住科学诚信的底线？\n\n说完AI辅助研究，我们来看看Agent系统的发展。SkillsVote这篇文章关注的是Agent技能的生命周期治理。它把Agent的轨迹数据做成了可复用的技能单元，包含可执行的脚本和不可执行的程序性指导。这对AI4S有什么启发呢？想象一下，当我们的科学模拟Agent能够积累和复用解决特定PDE的经验，或者能够共享成功的参数调优策略，这将大大加速科学发现的效率。治理的意思不仅仅是积累，还要筛...",
+    "papers": [
+      {
+        "title": "LongLive-2.0: An NVFP4 Parallel Infrastructure for Long Video Generation",
+        "url": "https://arxiv.org/abs/2605.18739",
+        "arxiv_id": "2605.18739"
+      },
+      {
+        "title": "SkillsVote: Lifecycle Governance of Agent Skills from Collection, Recommendation to Evolution",
+        "url": "https://arxiv.org/abs/2605.18401",
+        "arxiv_id": "2605.18401"
+      },
+      {
+        "title": "Code as Agent Harness",
+        "url": "https://arxiv.org/abs/2605.18747",
+        "arxiv_id": "2605.18747"
+      },
+      {
+        "title": "Lance: Unified Multimodal Modeling by Multi-Task Synergy",
+        "url": "https://arxiv.org/abs/2605.18678",
+        "arxiv_id": "2605.18678"
+      },
+      {
+        "title": "AI for Auto-Research: Roadmap & User Guide",
+        "url": "https://arxiv.org/abs/2605.18661",
+        "arxiv_id": "2605.18661"
+      }
+    ],
+    "published_at": "2026-05-19T23:42:26.375767Z"
+  },
+  {
     "date": "2026-05-18",
     "title": "Paper Morning 2026-05-18",
     "description": "今日学术播报: CiteVQA: Benchmarking Evidence, PhysBrain 1.0 Technical Report, FashionChameleon: Towards Real...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-20T23:10:41.776099Z"
-  },
-  {
-    "date": "2026-04-19",
-    "title": "Paper Morning 2026-04-19",
-    "description": "今日学术播报: HY-World 2.0: A Multi-Modal Wo, RationalRewards: Reasoning Rew, DR^{3}-Eval: Towards Realistic...",
-    "audio_file": "2026-04-19.mp3",
-    "script": "各位早上好，Paper Morning开播了。今天想和大家聊几篇很有意思的论文，它们表面上看起来领域各异，但从深层逻辑看，其实都在回答一个共同的问题：AI怎么才能更接近我们想要的“理解”这个世界？\n\n先说HY-World 2.0。这是一个多模态世界模型，能把一段文本或者一张图片，变成一个完整的、可导航的3D高斯 splatting场景。四步流程非常漂亮：先根据输入生成全景图，然后规划导航轨迹，接着用双目的方法扩展场景深度，最后把各个部分合成在一起。整个过程像一个智能体在探索未知空间，一步步把二维信息“撑开”成三维结构。这件事的意义不只是视觉生成本身，而在于它展示了一种构建世界模型的可能路径——不是直接预测像素，而是先建模空间结构，再填充细节。这和我们做科学模拟的思路是相通的：我们需要的是一个能理解物理规律、预测演化的模型，而不只是生成好看图片的工厂。\n\n接着说一篇视觉生成方向的论文，RationalRewards。它提出了一个很本质的问题：现在的reward model（奖励模型）总是给个分数，但这个分数怎么来的，完全说不清。作者说，既然人类做判断时会有推理过程，那机器是不是也可以这样...",
-    "papers": [
-      {
-        "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
-        "url": "https://arxiv.org/abs/2604.14268",
-        "arxiv_id": "2604.14268"
-      },
-      {
-        "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
-        "url": "https://arxiv.org/abs/2604.11626",
-        "arxiv_id": "2604.11626"
-      },
-      {
-        "title": "DR^{3}-Eval: Towards Realistic and Reproducible Deep Research Evaluation",
-        "url": "https://arxiv.org/abs/2604.14683",
-        "arxiv_id": "2604.14683"
-      },
-      {
-        "title": "Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents",
-        "url": "https://arxiv.org/abs/2604.14004",
-        "arxiv_id": "2604.14004"
-      },
-      {
-        "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
-        "url": "https://arxiv.org/abs/2604.11707",
-        "arxiv_id": "2604.11707"
-      }
-    ],
-    "published_at": "2026-04-19T23:05:45.504794Z"
   }
 ]
