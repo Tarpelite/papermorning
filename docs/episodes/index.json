@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-20",
+    "title": "Paper Morning 2026-05-20",
+    "description": "今日学术播报: Active Learners as Efficient P, When Vision Speaks for Sound, GoLongRL: Capability-Oriented ...",
+    "audio_file": "2026-05-20.mp3",
+    "script": "各位早上好，Paper Morning又和各位见面了，今天想和大家聊几篇最近很有意思的论文，它们表面上看起来和我们熟悉的Neural Operator、PDE求解这些方向不太直接相关，但实际上都在回答一个更根本的问题：怎么让AI系统真正帮上科学研究的忙？\n\n第一篇关于主动学习的排序工作，核心贡献很直接：把传统的排序问题重新建模为从噪声成对比较中进行主动学习。他们发现一个很实际问题：当我们用LLM来做排序判断时，这些判断往往有噪声、依赖顺序、有时甚至不可传递，这时候再用经典的排序算法就显得牵强了。这篇工作的框架能在有限的调用预算下显著提升NDCG@10，而且通过一个巧妙的随机方向 oracle设计，把系统性的位置偏差转化成了零均值噪声。这个思路让我想到科学计算中的一个经典问题：当我们有大量候选的查询点或者训练样本时，怎么高效地筛选出信息量最大的那些？这本质上也是个排序和选择的问题，虽然场景不同，但问题结构是很相通的。\n\n第二篇关于多模态大模型理解视频声音的工作，揭示了一个容易被忽视的问题：现在的视频理解模型看起来能理解音频，但其实是靠视觉线索在猜声音，用行话说是“视听Clever Han...",
+    "papers": [
+      {
+        "title": "Active Learners as Efficient PRP Rerankers",
+        "url": "https://arxiv.org/abs/2605.14236",
+        "arxiv_id": "2605.14236"
+      },
+      {
+        "title": "When Vision Speaks for Sound",
+        "url": "https://arxiv.org/abs/2605.16403",
+        "arxiv_id": "2605.16403"
+      },
+      {
+        "title": "GoLongRL: Capability-Oriented Long Context Reinforcement Learning with Multitask Alignment",
+        "url": "https://arxiv.org/abs/2605.19577",
+        "arxiv_id": "2605.19577"
+      },
+      {
+        "title": "OpenComputer: Verifiable Software Worlds for Computer-Use Agents",
+        "url": "https://arxiv.org/abs/2605.19769",
+        "arxiv_id": "2605.19769"
+      },
+      {
+        "title": "AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
+        "url": "https://arxiv.org/abs/2605.20025",
+        "arxiv_id": "2605.20025"
+      }
+    ],
+    "published_at": "2026-05-20T23:50:17.599952Z"
+  },
+  {
     "date": "2026-05-19",
     "title": "Paper Morning 2026-05-19",
     "description": "今日学术播报: LongLive-2.0: An NVFP4 Paralle, SkillsVote: Lifecycle Governan, Code as Agent Harness...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-21T23:09:06.315516Z"
-  },
-  {
-    "date": "2026-04-20",
-    "title": "Paper Morning 2026-04-20",
-    "description": "今日学术播报: Elucidating the SNR-t Bias of , Maximal Brain Damage Without D, PersonaVLM: Long-Term Personal...",
-    "audio_file": "2026-04-20.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想先聊一篇关于扩散模型基础理论的工作。扩散模型现在火得不行，从图像生成到科学模拟到处都在用，但这篇论文指出了一个之前被忽视的根本性问题——SNR-t偏差。作者发现，在训练时，样本的信噪比和 timestep 是严格绑定的，但推理时这个对应关系被打破了，导致误差累积。他们给出了一个简洁的微分校正方法。这个发现为什么重要呢？因为它提醒我们，扩散模型的采样过程和训练过程之间存在一个隐藏的契约破坏了。我们现在训练科学计算用的扩散模型时，往往只关心loss下降，却很少检查这个训练-推理的一致性。这篇工作算是一个提醒：做应用的时候，基础假设不能想当然。\n\n说完扩散模型的底层问题，我们来看一个更贴近实际应用层面的进展。现在训练大语言模型，尤其是有推理能力的模型，一个常见套路是用更强模型生成的合成数据来做微调。但这篇论文发现了一个大坑：对于Qwen3-8B这种新型推理模型，这个套路居然不work，甚至还会让性能下降。原因是教师模型生成的数据和学生模型的风格差异太大了。他们提出了TESSY框架，让教师和学生模型交替生成风格标记和非风格标记，从而弥合这...",
-    "papers": [
-      {
-        "title": "Elucidating the SNR-t Bias of Diffusion Probabilistic Models",
-        "url": "https://arxiv.org/abs/2604.16044",
-        "arxiv_id": "2604.16044"
-      },
-      {
-        "title": "Maximal Brain Damage Without Data or Optimization: Disrupting Neural Networks via Sign-Bit Flips",
-        "url": "https://arxiv.org/abs/2502.07408",
-        "arxiv_id": "2502.07408"
-      },
-      {
-        "title": "PersonaVLM: Long-Term Personalized Multimodal LLMs",
-        "url": "https://arxiv.org/abs/2604.13074",
-        "arxiv_id": "2604.13074"
-      },
-      {
-        "title": "How to Fine-Tune a Reasoning Model? A Teacher-Student Cooperation Framework to Synthesize Student-Consistent SFT Data",
-        "url": "https://arxiv.org/abs/2604.14164",
-        "arxiv_id": "2604.14164"
-      },
-      {
-        "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
-        "url": "https://arxiv.org/abs/2604.11707",
-        "arxiv_id": "2604.11707"
-      }
-    ],
-    "published_at": "2026-04-20T23:10:41.776099Z"
   }
 ]
