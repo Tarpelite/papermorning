@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-21</title>
+      <description>今日学术播报: Enhancing Train-Free Infinite-, Mega-ASR: Towards In-the-wild^, Video2GUI: Synthesizing Large-...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-21.mp3" length="9837967" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-21.mp3</guid>
+      <pubDate>2026-05-21T23:36:51.243703Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-20</title>
       <description>今日学术播报: Active Learners as Efficient P, When Vision Speaks for Sound, GoLongRL: Capability-Oriented ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-20.mp3" length="7417983" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-22.mp3" length="6786656" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-22.mp3</guid>
       <pubDate>2026-04-22T23:27:04.399822Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-21</title>
-      <description>今日学术播报: Extending One-Step Image Gener, OneVL: One-Step Latent Reasoni, MultiWorld: Scalable Multi-Age...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-21.mp3" length="6915178" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-21.mp3</guid>
-      <pubDate>2026-04-21T23:09:06.315516Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
