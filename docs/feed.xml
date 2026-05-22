@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-22</title>
+      <description>今日学术播报: TransitLM: A Large-Scale Datas, Full Attention Strikes Back: T, DelTA: Discriminative Token Cr...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-22.mp3" length="8249304" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-22.mp3</guid>
+      <pubDate>2026-05-22T23:40:38.479220Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-21</title>
       <description>今日学术播报: Enhancing Train-Free Infinite-, Mega-ASR: Towards In-the-wild^, Video2GUI: Synthesizing Large-...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-21.mp3" length="9837967" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-23.mp3" length="10293751" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-23.mp3</guid>
       <pubDate>2026-04-23T23:14:44.552313Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-22</title>
-      <description>今日学术播报: CoInteract: Physically-Consist, AnyRecon: Arbitrary-View 3D Re, Tstars-Tryon 1.0: Robust and R...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-22.mp3" length="6786656" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-22.mp3</guid>
-      <pubDate>2026-04-22T23:27:04.399822Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

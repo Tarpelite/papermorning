@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-22",
+    "title": "Paper Morning 2026-05-22",
+    "description": "今日学术播报: TransitLM: A Large-Scale Datas, Full Attention Strikes Back: T, DelTA: Discriminative Token Cr...",
+    "audio_file": "2026-05-22.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察说起最近大语言模型的研究，颇有点“一切皆可transformer”的意思，但仔细看下去会发现很多工作悄悄在回归更本质的问题：效率、推理能力、以及模型到底学到了什么。这些问题其实和我们AI for Science社区关心的议题高度相关。\n\n先看TransitLM这篇工作。它做的事情听起来很直接：用LLM来做公交路线规划，而且是不依赖任何地图数据的端到端模型。作者收集了1300万条真实出行记录，涵盖四个中国城市的12万站点。模型需要从起点直接输出到终点的完整路线，包括换乘方案。更有意思的是，这个模型在没有显式地理信息的情况下，竟然能隐式地将任意GPS坐标映射到最近的站点。这让我想到我们做neural operator时的一个核心挑战：如何在没有显式网格的情况下，让模型学会从离散观测到连续场的映射。TransitLM用大规模数据驱动的方式解决了这个问题，它的“隐式 grounding”机制或许能为我们设计物理场的表示方法提供一些启发。\n\n接下来这篇Full Attention Strikes Back很有意思。它试图...",
+    "papers": [
+      {
+        "title": "TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation",
+        "url": "https://arxiv.org/abs/2605.22355",
+        "arxiv_id": "2605.22355"
+      },
+      {
+        "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
+        "url": "https://arxiv.org/abs/2605.16928",
+        "arxiv_id": "2605.16928"
+      },
+      {
+        "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
+        "url": "https://arxiv.org/abs/2605.21467",
+        "arxiv_id": "2605.21467"
+      },
+      {
+        "title": "Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?",
+        "url": "https://arxiv.org/abs/2605.22109",
+        "arxiv_id": "2605.22109"
+      },
+      {
+        "title": "π-Bench: Evaluating Proactive Personal Assistant Agents in Long-Horizon Workflows",
+        "url": "https://arxiv.org/abs/2605.14678",
+        "arxiv_id": "2605.14678"
+      }
+    ],
+    "published_at": "2026-05-22T23:40:38.479220Z"
+  },
+  {
     "date": "2026-05-21",
     "title": "Paper Morning 2026-05-21",
     "description": "今日学术播报: Enhancing Train-Free Infinite-, Mega-ASR: Towards In-the-wild^, Video2GUI: Synthesizing Large-...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-23T23:14:44.552313Z"
-  },
-  {
-    "date": "2026-04-22",
-    "title": "Paper Morning 2026-04-22",
-    "description": "今日学术播报: CoInteract: Physically-Consist, AnyRecon: Arbitrary-View 3D Re, Tstars-Tryon 1.0: Robust and R...",
-    "audio_file": "2026-04-22.mp3",
-    "script": "各位早上好，周三的Paper Morning如约而至。\n\n今天想先从一个观察说起。上周我们还在讨论大模型如何改变科学研究的范式，但这周业界的一批新工作其实在悄悄回答另一个问题：当生成式AI已经能生成逼真的视频、3D内容、甚至能“理解”物理交互时，这些能力能不能反过来帮助我们更好地建模物理世界？\n\n先看CoInteract这个工作，它用Diffusion Transformer来合成人和物体的交互视频。表面上看这是一个视觉生成任务，但它解决的两个核心问题——手部和面部的结构稳定性、以及物理上合理的接触——其实正是物理模拟领域的经典难题。研究者引入了一个叫Human-Aware Mixture-of-Experts的模块，让不同的“专家”分别处理不同身体区域，这其实暗示了一个思路：与其让一个统一的模型学习所有物理交互，不如让模型学会对不同物理场景进行针对性建模。这个思想其实和我们之前讨论过的neural operator的分块处理策略有相通之处。\n\n然后是AnyRecon，它做的是任意视角的3D重建。传统方法受限于稀疏视角的几何一致性，而他们用视频扩散模型来生成新视角。关键创新在于引入了一...",
-    "papers": [
-      {
-        "title": "CoInteract: Physically-Consistent Human-Object Interaction Video Synthesis via Spatially-Structured Co-Generation",
-        "url": "https://arxiv.org/abs/2604.19636",
-        "arxiv_id": "2604.19636"
-      },
-      {
-        "title": "AnyRecon: Arbitrary-View 3D Reconstruction with Video Diffusion Model",
-        "url": "https://arxiv.org/abs/2604.19747",
-        "arxiv_id": "2604.19747"
-      },
-      {
-        "title": "Tstars-Tryon 1.0: Robust and Realistic Virtual Try-On for Diverse Fashion Items",
-        "url": "https://arxiv.org/abs/2604.19748",
-        "arxiv_id": "2604.19748"
-      },
-      {
-        "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-        "url": "https://arxiv.org/abs/2604.13346",
-        "arxiv_id": "2604.13346"
-      },
-      {
-        "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
-        "url": "https://arxiv.org/abs/2604.19734v1",
-        "arxiv_id": "2604.19734v1"
-      }
-    ],
-    "published_at": "2026-04-22T23:27:04.399822Z"
   }
 ]
