@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-23",
+    "title": "Paper Morning 2026-05-23",
+    "description": "今日学术播报: TransitLM: A Large-Scale Datas, Full Attention Strikes Back: T, DelTA: Discriminative Token Cr...",
+    "audio_file": "2026-05-23.mp3",
+    "script": "各位早上好，周末的Paper Morning如约而至。这几天后台收到不少听众的反馈，说希望听到更多关于AI基础模型方法论的内容，那今天我们就来聊几篇有意思的论文，它们看似来自不同方向，但其实都指向了一个共同的命题：我们怎么让AI更聪明、更高效地“做事”。\n\n先来说第一篇，TransitLM。这个工作很有意思，它构建了一个超过1300万条公交路线记录的数据集，覆盖四个中国城市的12万个站点。传统公交路线规划依赖地图基础设施和复杂的引擎，但这个工作证明了你可以完全从数据中学习路线规划，一个大语言模型能够把任意的GPS坐标隐式地映射到合适的站点。这让我想到科学计算里的一个趋势——端到端学习正在取代手工设计的求解器，物理信息神经网络也是类似的思路：与其显式地编码物理规律，不如让模型从数据中发现规律。TransitLM验证了这条路径在交通领域的可行性。\n\n接下来看一篇效率相关的工作。Full Attention Strikes Back针对长上下文推理的二次复杂度问题，提出了一个很巧妙的观察：全注意力模型本身内在就是稀疏的，只需要几百步微调就能转化为高度稀疏的模型。他们发现只有少数注意力头真正需...",
+    "papers": [
+      {
+        "title": "TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation",
+        "url": "https://arxiv.org/abs/2605.22355",
+        "arxiv_id": "2605.22355"
+      },
+      {
+        "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
+        "url": "https://arxiv.org/abs/2605.16928",
+        "arxiv_id": "2605.16928"
+      },
+      {
+        "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
+        "url": "https://arxiv.org/abs/2605.21467",
+        "arxiv_id": "2605.21467"
+      },
+      {
+        "title": "Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?",
+        "url": "https://arxiv.org/abs/2605.22109",
+        "arxiv_id": "2605.22109"
+      },
+      {
+        "title": "π-Bench: Evaluating Proactive Personal Assistant Agents in Long-Horizon Workflows",
+        "url": "https://arxiv.org/abs/2605.14678",
+        "arxiv_id": "2605.14678"
+      }
+    ],
+    "published_at": "2026-05-23T23:32:22.367614Z"
+  },
+  {
     "date": "2026-05-22",
     "title": "Paper Morning 2026-05-22",
     "description": "今日学术播报: TransitLM: A Large-Scale Datas, Full Attention Strikes Back: T, DelTA: Discriminative Token Cr...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-24T23:10:09.881425Z"
-  },
-  {
-    "date": "2026-04-23",
-    "title": "Paper Morning 2026-04-23",
-    "description": "今日学术播报: LLaDA2.0-Uni: Unifying Multimo, AnyRecon: Arbitrary-View 3D Re, Near-Future Policy Optimizatio...",
-    "audio_file": "2026-04-23.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察聊起。最近大家可能注意到了，AI圈子里“统一”这个词出现的频率越来越高从前两年的多模态统一，到今年的智能体统一，似乎每个团队都在试图用一个框架把所有能力装进去。那这种统一思潮背后到底意味着什么我觉得是值得思考的。\n\n今天第一篇论文LLaDA2.0-Uni就是一个典型的统一尝试，它把多模态理解和生成整合到一个离散扩散大语言模型里。核心做法是用一个全语义离散tokenizer把视觉信息变成token，然后在骨干网络里统一做block级别的masked diffusion，最后用一个扩散解码器重建图像。这个架构挺巧妙的，它把理解和生成放在同一个语义空间里处理，而不是像以前那样分成两个独立的模块。不过我更关心的是它为什么现在出现你们想，离散扩散这个方向其实已经有一段时间了，但之前大家都在各自为战，有人做文本，有人做图像，现在突然有人跳出来说要在一个模型里把视觉和语言对齐，这背后反映的其实是整个社区对“统一表示”的执念。说实话，从技术上看这个工作确实把多模态的边界又往前推了一步，但它真的解决了根本问题吗我觉得还有待观察，...",
-    "papers": [
-      {
-        "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-        "url": "https://arxiv.org/abs/2604.20796",
-        "arxiv_id": "2604.20796"
-      },
-      {
-        "title": "AnyRecon: Arbitrary-View 3D Reconstruction with Video Diffusion Model",
-        "url": "https://arxiv.org/abs/2604.19747",
-        "arxiv_id": "2604.19747"
-      },
-      {
-        "title": "Near-Future Policy Optimization",
-        "url": "https://arxiv.org/abs/2604.20733",
-        "arxiv_id": "2604.20733"
-      },
-      {
-        "title": "SmartPhotoCrafter: Unified Reasoning, Generation and Optimization for Automatic Photographic Image Editing",
-        "url": "https://arxiv.org/abs/2604.19587",
-        "arxiv_id": "2604.19587"
-      },
-      {
-        "title": "DR-Venus: Towards Frontier Edge-Scale Deep Research Agents with Only 10K Open Data",
-        "url": "https://arxiv.org/abs/2604.19859",
-        "arxiv_id": "2604.19859"
-      }
-    ],
-    "published_at": "2026-04-23T23:14:44.552313Z"
   }
 ]
