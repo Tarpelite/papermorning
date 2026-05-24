@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-24</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-24</h1>
+    <p class="date">2026-05-24</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-24.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个更大的图景聊起。大家有没有注意到，最近大语言模型领域正在悄悄发生一场静悄悄的革命——我们不再满足于让模型“更会说话”，而是开始真正思考怎么让模型“更会推理”、更“可持续地推理”。今天要聊的几篇论文，正好从不同角度切入了这个核心命题。
+
+第一篇TransitLM很有意思，它干了一件事：让LLM学会做公交线路规划，而且是不依赖任何地图数据的端到端学习。作者收集了四个中国城市超过1300万条真实的公交规划记录，涵盖12万个站点和13000多条线路，然后用这些数据去持续预训练一个LLM。实验结果很有意思：模型不仅能生成结构上合理的路线，还能够把任意的GPS坐标隐式地对应到合适的站点，而不需要任何显式的地图基础设施。这让我想到一个问题：当我们用大规模行为数据去“喂养”一个模型时，它学到的可能不仅仅是简单的模式匹配，而是一种对空间关系的隐式推理能力。这种能力如果迁移到科学计算场景——比如让模型去学习流体运动的隐式规律——会不会也能带来一些惊喜？这篇工作更多是展示了可能性，但我觉得它提醒我们：数据驱动的路线规划，和数据驱动的PDE求解，在本质上是相通的。
+
+接下来这篇Full Attention Strikes Back，切入的是一个非常实际的问题：长上下文推理的计算成本。传统全注意力机制的复杂度是O(n²)，这在长序列上简直是灾难。作者有三个非常漂亮的观察：第一，其实只有很少一部分attention head真正需要全量的长上下文处理；第二，长距离信息检索主要受一个低维子空间控制，可以用16维的索引器高效召回相关token；第三，有用的token预算在很大程度上是由query决定的。这三个洞见加在一起，意味着我们完全可以把一个全注意力模型“蒸馏”成高度稀疏的模型，而且只需要很少的适配训练步骤。我在意的不是这个稀疏化技巧本身，而是它背后的哲学：模型内部本身已经包含了大量的冗余和稀疏结构，关键在于我们有没有能力去“发现”它们。这和神经网络里的彩票假说有异曲同工之妙，也让我猜测：未来的科学计算基础模型，也许不需要从一开始就设计复杂的稀疏结构，而是在训练过程中让模型自己“长出”最有效的计算图。
+
+第三篇DelTA关注的是RLVR——就是用可验证奖励来做强化学习——这个范式最近在提升LLM推理能力上效果显著。但问题是：当我们只在最终答案上给出一个奖励信号时，这个信号是怎么一级一级地传递到每个token的？作者提出了一个非常洞察性的视角：把RLVR的更新过程看作是一个判别器，它在token梯度向量上进行线性分类，决定哪些token的概率应该增加，哪些应该减少。问题在于，传统方法里正负样本的质心是由优势加权的token梯度平均构造的，但这种方法很容易被高频共享的token主导，导致信号被稀释。DelTA的改进思路是更细粒度地分配token层面的credit。这篇工作让我想到一个更根本的问题：在科学计算里，如果我们想用强化学习来优化一个 PDE求解器，同样面临着“怎么把一个全局的损失信号分配到每一个计算步骤”的难题。也许DelTA的思路可以给我们一些启发。
+
+第四篇关于MLLM人格感知的工作，名字起得很尖锐——Perception or Prejudice。它指出了一个很重要但容易被忽视的问题：现在的多模态大模型在“感知”人格时，到底是真正理解了行为背后的性格特征，还是只是在做表面上的模式匹配？作者提出了一个叫Grounded Personality Reasoning的新任务，要求模型不仅给出Big Five人格评分，还要给出基于可观察行为的推理链条，并且要有人类验证的timestamped行为证据作为grounding。这是一个很有价值的benchmark建设工作。但我更关心的是它背后的方法论启示：当模型需要“解释”自己的人格判断时，它表现出的推理过程，和我们期望在科学模型中看到的“可解释性”，有没有共通之处？如果一个模型能够严谨地基于行为证据推断人格，那它是不是也能严谨地基于物理观测推断物理规律？
+
+最后一篇π-Bench关注的是主动型个人助理agent。现在很多agent能响应明确的指令，但真正困难的场景是用户自己都没想清楚需要什么，或者需求是逐渐浮现的。这个benchmark设计了100个多轮任务，涵盖5个不同的用户persona，核心挑战就是让agent能在用户明确说出需求之前就识别并满足隐藏意图。这让我想到一个类比：如果我们把“发现科学假设”看成一种主动推理任务——研究者自己可能只有一个模糊的方向，具体假设需要agent在和数据的交互中逐渐浮现——那π-Bench评估的这种“主动发现”能力，可能正是未来AI辅助科学发现系统的核心素质。
+
+好，稍微总结一下。今天聊的几篇论文看似分散，但它们共同指向一个趋势：LLM的研究正在从“能说什么”迈向“怎么能说得更对、更深、更主动”。无论是稀疏 attention 让长程推理可持续，token-level credit assignment 让学习信号更精准，还是主动agent 让模型学会预判需求——这些努力本质上都是在回答同一个问题：怎么让机器不只是被动响应，而是真正具备推理和规划的能力。这个趋势对于我们做AI for Science的人来说，其实是一个提醒：科学计算需要的不仅是拟合数据的模型，更需要能够主动推理、持续推理、并且能解释自己推理过程的智能系统。也许在不远的将来，今天这些看起来只是“通用AI”的进展，会成为科学智能的基石。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.22355" target="_blank">TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.16928" target="_blank">Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps</a></li>
+<li><a href="https://arxiv.org/abs/2605.21467" target="_blank">DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards</a></li>
+<li><a href="https://arxiv.org/abs/2605.22109" target="_blank">Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?</a></li>
+<li><a href="https://arxiv.org/abs/2605.14678" target="_blank">π-Bench: Evaluating Proactive Personal Assistant Agents in Long-Horizon Workflows</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
