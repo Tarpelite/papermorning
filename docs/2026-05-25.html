@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-25</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-25</h1>
+    <p class="date">2026-05-25</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-25.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周一的Paper Morning又和大家见面了。
+
+今天想先从一个观察说起。这两年我们看AI for Science的进展，常常觉得基础模型的思路已经从NLP和视觉领域渗透进来了，但反过来，视觉和语言模型那边最近发生的一些方法论变化，其实也值得我们关注。今天聊的几篇论文，看起来跟科学计算没有直接关系，但它们背后反映的某些趋势，其实在悄悄塑造整个AI研究的面貌。
+
+先说第一篇，关于Diffusion Transformers的跨层信息路由问题。这两年DiT已经成为图像生成的主流架构，但它的层级信息流动方式几乎是直接沿用原始Transformer的残差连接。这篇文章作者做了非常系统的诊断，发现传统残差加法存在三个症状：前向传播时幅度单调膨胀，反向传播时梯度急剧衰减，以及层间存在明显的冗余。这让我想起我们在做神经算子时，也经常遇到信息在不同层之间传递效率不高的问题。他们提出的DAR方法本质上是在做跨层的自适应路由，让模型自己决定哪些信息该保留、哪些该更新。这种思路其实跟我们在PDE求解里希望不同尺度信息高效融合的目标是一致的，只是这里处理的是diffusion过程的时间步和模型深度的联合优化。说是增量改进可能有点苛刻，但至少提醒我们，基础架构里的细节设计往往被低估了。
+
+然后第二篇Lens很有意思，它讲的是怎么用更少的训练计算达到更好的文本到图像生成效果。核心思路两方面：一是构建了一个高质量的8亿图像文本对数据集，每个caption平均109个词，信息密度比传统短caption高很多；二是每个batch里的图像来自多个相似描述的变体，这相当于一种数据层面的语义增强。模型只有38亿参数，但很多benchmark上超过了60亿参数的模型，训练计算量只用了别人的19.3%。这个工作给我们的启发是：在AI for Science里，我们常常太关注模型架构本身，而忽视了数据工程和训练策略的杠杆效应。现在大模型动辄千亿参数，但如果我们能在数据和训练效率上做出扎实改进，可能比盲目刷参数量更有实际价值。
+
+第三篇SkillOpt是关于AI agent技能自进化的。作者认为现在的agent技能要么是人工设计的，要么是一次性生成的，要么是松散控制的自我修订，都不够系统。他们的方案是把技能看作一个可训练的外部状态，用一个独立的优化器模型对技能文档进行增删改操作，每次修改必须要在验证集上严格提升才接受。这相当于把深度学习优化的整套方法论搬到了文本空间。我最早听到这个想法时觉得有点抽象，但它本质上是在探索怎么让agent的能力真正像权重一样可学习、可优化。如果这个思路成熟了，未来我们做科学实验的agent是不是也可以用类似的方式，让它自己学会设计实验方案、调整参数？这可能还很远，但方向值得关注。
+
+第四篇TransitLM是一个数据集和benchmark，做的是公交路线生成。他们收集了四个中国城市1300多万条路线记录，涵盖12万个站点和1.3万条线路。训练出来的模型可以在没有显式地图信息的情况下，根据任意GPS坐标生成合理的公交路线。这个工作的价值不在于路线规划本身，而在于它展示了一种可能性：复杂的空间推理任务可以从数据中端到端地学习出来，而不需要显式的结构化知识。这让我想到，我们做科学计算时，有时候过度依赖领域知识来设计模型结构，但也许有些任务真能用更数据驱动的方式来解决。当然这需要高质量的大规模数据集来支撑，这也是AI4S基础设施建设的一个重要方向。
+
+最后一篇是关于把完整注意力机制的知识迁移到稀疏注意力的。作者的洞见是：全注意力模型本身内在就是稀疏的，只有少部分attention head真正需要长距离处理，而且长距离检索主要由一个低维子空间主导。他们用16维的indexer就能高效检索相关token，训练几百步就能把一个全注意力模型转换成高度稀疏的版本，精度损失很小。这个工作的意义在于，它挑战了之前的假设：不是必须从零开始训练稀疏模型，而是可以挖掘已训练模型中已经存在的稀疏结构。这让我想到，我们在做神经算子压缩或者知识蒸馏的时候，是不是也可以从类似的角度思考——模型本身已经包含了某些我们想要的结构，提取出来可能比重新训练更高效。
+
+好，今天的播报就到这里。这几篇文章看似分散，但从我的视角看过去，它们共同反映了一个趋势：整个AI领域正在从单纯追求模型规模，转向更精细地挖掘已有系统的潜力。无论是对信息流动的自适应路由、对训练数据的深度加工、对agent能力的可学习化、还是对稀疏结构的主动提取，大家的注意力正在从“更大”转向“更巧”。这种转变对AI for Science其实是个好信号——因为科学计算从来不是比谁模型更大，而是看谁能在有限资源下精准地解决问题。我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.20708" target="_blank">Rethinking Cross-Layer Information Routing in Diffusion Transformers</a></li>
+<li><a href="https://arxiv.org/abs/2605.21573" target="_blank">Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models</a></li>
+<li><a href="https://arxiv.org/abs/2605.23904" target="_blank">SkillOpt: Executive Strategy for Self-Evolving Agent Skills</a></li>
+<li><a href="https://arxiv.org/abs/2605.22355" target="_blank">TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation</a></li>
+<li><a href="https://arxiv.org/abs/2605.16928" target="_blank">Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
