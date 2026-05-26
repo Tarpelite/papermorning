@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-26</title>
+      <description>今日学术播报: WBench: A Comprehensive Multi-, Foundation Protocol: A Coordin, Macaron-A2UI: A Model for Gene...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-26.mp3" length="9174039" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-26.mp3</guid>
+      <pubDate>2026-05-26T23:42:53.106252Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-25</title>
       <description>今日学术播报: Rethinking Cross-Layer Informa, Lens: Rethinking Training Effi, SkillOpt: Executive Strategy f...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-25.mp3" length="9781542" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-27.mp3" length="10871162" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-27.mp3</guid>
       <pubDate>2026-04-27T23:29:28.244523Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-26</title>
-      <description>今日学术播报: LLaDA2.0-Uni: Unifying Multimo, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-26.mp3" length="8168429" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-26.mp3</guid>
-      <pubDate>2026-04-26T23:08:05.201648Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
