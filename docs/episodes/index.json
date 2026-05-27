@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-27",
+    "title": "Paper Morning 2026-05-27",
+    "description": "今日学术播报: SpatialBench: Is Your Spatial , EvalVerse: Pipeline-Aware and , LocateAnything: Fast and High-...",
+    "audio_file": "2026-05-27.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个我们领域常常忽略的问题聊起：做benchmark这件事本身，到底是在推动进步，还是在悄悄限制我们的想象力？最近几篇很有意思的文章都指向了同一个方向——评估范式本身正在发生一些微妙但深远的转变。\n\n先来看一篇关于3D重建的工作。几何感知表示去噪，名字听起来有点绕，但它做的事情其实非常直接。我们知道，现在的feed-forward 3D重建模型已经很强了，但它们基本都是在“理想条件”下训练和评估的——也就是说，输入的图像都是干净的。可现实应用中，图像总会有各种退化。这篇工作提出的方法很巧妙：它不直接在像素层面去噪，而是利用3D重建模型已经学到的几何感知特征，在特征空间里做diffusion去噪。这样做的好处是什么呢？它能更好地保留场景的几何结构，而不只是让图像看起来更干净。这是一个很典型的“领域交叉”思路——把diffusion model这个生成工具，用在了重建任务里，而且用在了最合适的位置。某种程度上，这也在回答一个更大的问题：当我们有了强大的基础模型之后，如何让它在不那么理想的真实场景中保持鲁棒？\n\n接下来这个工作...",
+    "papers": [
+      {
+        "title": "SpatialBench: Is Your Spatial Foundation Model an All-Round Player?",
+        "url": "https://arxiv.org/abs/2605.27367",
+        "arxiv_id": "2605.27367"
+      },
+      {
+        "title": "EvalVerse: Pipeline-Aware and Expert-Calibrated Benchmarking for Professional Cinematic Video Generation",
+        "url": "https://arxiv.org/abs/2605.23271",
+        "arxiv_id": "2605.23271"
+      },
+      {
+        "title": "LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding",
+        "url": "https://arxiv.org/abs/2605.27365",
+        "arxiv_id": "2605.27365"
+      },
+      {
+        "title": "MobileGym: A Verifiable and Highly Parallel Simulation Platform for Mobile GUI Agent Research",
+        "url": "https://arxiv.org/abs/2605.26114",
+        "arxiv_id": "2605.26114"
+      },
+      {
+        "title": "Geometry-Aware Representation Denoising for Robust Multi-view 3D Reconstruction",
+        "url": "https://arxiv.org/abs/2605.26230",
+        "arxiv_id": "2605.26230"
+      }
+    ],
+    "published_at": "2026-05-27T23:46:29.418137Z"
+  },
+  {
     "date": "2026-05-26",
     "title": "Paper Morning 2026-05-26",
     "description": "今日学术播报: WBench: A Comprehensive Multi-, Foundation Protocol: A Coordin, Macaron-A2UI: A Model for Gene...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-28T23:30:06.181116Z"
-  },
-  {
-    "date": "2026-04-27",
-    "title": "Paper Morning 2026-04-27",
-    "description": "今日学术播报: Agentic World Modeling: Founda, UniT: Toward a Unified Physica, WorldMark: A Unified Benchmark...",
-    "audio_file": "2026-04-27.mp3",
-    "script": "各位早上好，新的一周开始了，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。最近大家可能注意到了，AI领域关于世界模型的讨论越来越热闹，但仔细听会发现，同样说“世界模型”，不同背景的人指的其实是截然不同的东西。今天第一篇论文就试图给这个问题做一个系统性的梳理。\n\n这篇叫做《Agentic World Modeling》的文章，来自一组在强化学习和机器人领域非常活跃的作者。他们提出了一个很有意思的“能力层级×物理法则”的分类框架。简单说，把世界模型分成三层：L1是基础的一步预测器，学的是局部转移算子；L2是可以做多步rollout的模拟器，而且能够尊重领域定律；L3更厉害，是能够自主修正模型的演化器，当预测失败时会自己改进。这个框架的聪明之处在于，它把大家对世界模型的模糊期待拆解成了可操作的能力阶梯。而且他们特别强调，一个好用的世界模型必须能够显式地编码领域物理定律，这和我们做PDE求解时强调物理先验嵌入，思路是一致的。现在很多agent项目都在讲规划、讲推理，但如果没有一个可靠的环境模型作为基础，那些高层决策都是空中楼阁。这篇文章给我们的提醒是：先把世界模型...",
-    "papers": [
-      {
-        "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-        "url": "https://arxiv.org/abs/2604.22748",
-        "arxiv_id": "2604.22748"
-      },
-      {
-        "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
-        "url": "https://arxiv.org/abs/2604.19734",
-        "arxiv_id": "2604.19734"
-      },
-      {
-        "title": "WorldMark: A Unified Benchmark Suite for Interactive Video World Models",
-        "url": "https://arxiv.org/abs/2604.21686",
-        "arxiv_id": "2604.21686"
-      },
-      {
-        "title": "LLaTiSA: Towards Difficulty-Stratified Time Series Reasoning from Visual Perception to Semantics",
-        "url": "https://arxiv.org/abs/2604.17295",
-        "arxiv_id": "2604.17295"
-      },
-      {
-        "title": "Video Analysis and Generation via a Semantic Progress Function",
-        "url": "https://arxiv.org/abs/2604.22554",
-        "arxiv_id": "2604.22554"
-      }
-    ],
-    "published_at": "2026-04-27T23:29:28.244523Z"
   }
 ]
