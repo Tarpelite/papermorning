@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-28",
+    "title": "Paper Morning 2026-05-28",
+    "description": "今日学术播报: ProRL: Effective Reinforcement, Agent Explorative Policy Optim, Self-Improving Language Models...",
+    "audio_file": "2026-05-28.mp3",
+    "script": "各位早上好，周四的Paper Morning准时开播了。\n\n今天想先从一个更大的话题聊起。最近RL，也就是强化学习，在大语言模型里火得不行，从DeepSeek到OpenAI的o1系列，都在强调RL训练带来的推理能力跃升。但今天这几篇论文，其实把RL的边界往更远推了一步——不只是让模型更会推理，还在解决实际部署中的问题。\n\n第一篇叫ProRL，讲的是推荐系统里的主动推荐。大家知道传统推荐是用户主动去搜，但主动推荐是系统主动给用户“铺路”，通过一系列中间商品，最终引导到目标商品。这本质上是一个路径规划问题，用RL是很自然的思路。但作者发现直接用policy gradient有个致命问题：路径一长，梯度估计就偏向于延伸路径，而不是真正有价值的探索。这个发现很本质，因为它揭示了长程决策中梯度估计的普遍困境。大家做AI4S的同事可能联想到——当我们用RL控制机器人、模拟物理系统时，是不是也常常遇到这个问题？路径越长，信号越稀释。这篇文章提出的校正方法，本质上是对梯度做方差约减，但更值得关注的是它把“路径级奖励分解成步级奖励”这个结构显式建模了，这个思路其实和我们在科学计算里做时间离散化时的某些思...",
+    "papers": [
+      {
+        "title": "ProRL: Effective Reinforcement Learning for Proactive Recommendation via Rectified Policy Gradient Estimation",
+        "url": "https://arxiv.org/abs/2605.28293",
+        "arxiv_id": "2605.28293"
+      },
+      {
+        "title": "Agent Explorative Policy Optimization for Multimodal Agentic Reasoning",
+        "url": "https://arxiv.org/abs/2605.28774",
+        "arxiv_id": "2605.28774"
+      },
+      {
+        "title": "Self-Improving Language Models with Bidirectional Evolutionary Search",
+        "url": "https://arxiv.org/abs/2605.28814",
+        "arxiv_id": "2605.28814"
+      },
+      {
+        "title": "DenoiseRL: Bootstrapping Reasoning Models to Recover from Noisy Prefixes",
+        "url": "https://arxiv.org/abs/2605.28421",
+        "arxiv_id": "2605.28421"
+      },
+      {
+        "title": "GEM: Generative Supervision Helps Embodied Intelligence",
+        "url": "https://arxiv.org/abs/2605.28548",
+        "arxiv_id": "2605.28548"
+      }
+    ],
+    "published_at": "2026-05-28T23:52:28.886995Z"
+  },
+  {
     "date": "2026-05-27",
     "title": "Paper Morning 2026-05-27",
     "description": "今日学术播报: SpatialBench: Is Your Spatial , EvalVerse: Pipeline-Aware and , LocateAnything: Fast and High-...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-29T23:29:36.311549Z"
-  },
-  {
-    "date": "2026-04-28",
-    "title": "Paper Morning 2026-04-28",
-    "description": "今日学术播报: Agentic World Modeling: Founda, World-R1: Reinforcing 3D Const, From Skills to Talent: Organis...",
-    "audio_file": "2026-04-28.mp3",
-    "script": "各位早上好，今天Paper Morning想和大家聊聊一个特别有意思的话题——从世界的建模到智能体的组织，我们似乎正在见证AI系统从“回答问题”向“理解世界”的一次关键跃迁。\n\n今天第一篇论文叫做《Agentic World Modeling》，作者提出了一个很有意思的“能力层级×物理规律”的分类框架。他们把世界模型分成三层：L1是预测器，只学单步的局部转移；L2是模拟器，能做多步的、带动作的推演，并且尊重领域规律；L3是进化器，当预测失败时能自主修正模型。这个框架让我想到我们做PDE求解和物理模拟的老本行——以前我们用数值方法解方程，本质上是把物理规律编码进去，而现在这些AI系统在学习物理规律本身。这两者之间有没有可能互相启发？比如L3 Evolver的思想是不是可以帮我们构建更能适应新物理场景的PDE求解器？这篇工作之所以现在出现，我觉得是因为大语言模型让智能体火起来了，但大家突然发现缺了一个核心能力——对环境的建模能力，而过去这个能力是被严重低估的。\n\n接下来这篇《World-R1》很有意思，它用强化学习来解决视频生成里的几何不一致问题。他们没有改模型结构，而是通过RL让视频生成...",
-    "papers": [
-      {
-        "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-        "url": "https://arxiv.org/abs/2604.22748",
-        "arxiv_id": "2604.22748"
-      },
-      {
-        "title": "World-R1: Reinforcing 3D Constraints for Text-to-Video Generation",
-        "url": "https://arxiv.org/abs/2604.24764",
-        "arxiv_id": "2604.24764"
-      },
-      {
-        "title": "From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company",
-        "url": "https://arxiv.org/abs/2604.22446",
-        "arxiv_id": "2604.22446"
-      },
-      {
-        "title": "ReVSI: Rebuilding Visual Spatial Intelligence Evaluation for Accurate Assessment of VLM 3D Reasoning",
-        "url": "https://arxiv.org/abs/2604.24300",
-        "arxiv_id": "2604.24300"
-      },
-      {
-        "title": "Video Analysis and Generation via a Semantic Progress Function",
-        "url": "https://arxiv.org/abs/2604.22554",
-        "arxiv_id": "2604.22554"
-      }
-    ],
-    "published_at": "2026-04-28T23:30:06.181116Z"
   }
 ]

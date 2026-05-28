@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-05-28</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-05-28</h1>
+    <p class="date">2026-05-28</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-05-28.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周四的Paper Morning准时开播了。
+
+今天想先从一个更大的话题聊起。最近RL，也就是强化学习，在大语言模型里火得不行，从DeepSeek到OpenAI的o1系列，都在强调RL训练带来的推理能力跃升。但今天这几篇论文，其实把RL的边界往更远推了一步——不只是让模型更会推理，还在解决实际部署中的问题。
+
+第一篇叫ProRL，讲的是推荐系统里的主动推荐。大家知道传统推荐是用户主动去搜，但主动推荐是系统主动给用户“铺路”，通过一系列中间商品，最终引导到目标商品。这本质上是一个路径规划问题，用RL是很自然的思路。但作者发现直接用policy gradient有个致命问题：路径一长，梯度估计就偏向于延伸路径，而不是真正有价值的探索。这个发现很本质，因为它揭示了长程决策中梯度估计的普遍困境。大家做AI4S的同事可能联想到——当我们用RL控制机器人、模拟物理系统时，是不是也常常遇到这个问题？路径越长，信号越稀释。这篇文章提出的校正方法，本质上是对梯度做方差约减，但更值得关注的是它把“路径级奖励分解成步级奖励”这个结构显式建模了，这个思路其实和我们在科学计算里做时间离散化时的某些思想是相通的。
+
+然后第二篇AXPO很有意思，它研究的是agentic reasoning，也就是带工具使用的推理。作者提出了一个概念叫“思维-行动差距”，特别形象：模型自己思考是一回事，调用工具是另一回事，两者不对称。在标准GRPO训练下，工具调用只发生在约30%的 rollout里，而且一旦调用，往往全错，导致学习信号被压制。这其实是一个RL训练中的探索-利用老问题，只是换了个具身智能的场景。有趣的是，作者的解决方案是让每个工具调用都单独做优势估计，相当于给每个行动单元独立的学习信号。这让我想到——我们在训练PDE求解器时，是不是也经常把整个时间序列的loss混在一起，而没有细粒度地学每个时间步？这篇文章的核心贡献在于，它把工具调用这个高方差动作单独拎出来做估计，这个思路对其他需要组合不同粒度行动的RL任务都有借鉴意义。
+
+第三篇BES关注的是语言模型的自我改进。大家知道现在有两种主流思路：一个是直接用reward model评分，另一个是用search做树状探索。这篇文章指出这两种方法都有局限——reward信号太稀疏，而且autoregressive expansion只在高概率区域探索。那它的解决方案很有创意：双向进化搜索。正向是 usual的演化扩展，逆向是目标分解，把最终答案拆成子目标，然后看哪些中间状态能导向这些子目标。这让我想到——这不就是我们在解PDE时常用的“从边界往里推”的思想吗？把一个难问题拆成若干个子问题，分别求解再组装。BES的核心洞见在于：不要只从概率最高的token往下扩展，也要从目标倒推哪些中间状态是“必须经过”的节点。这个框架很有潜力，因为它本质上是把deductive和inductive两种推理方式结合了。
+
+第四篇DenoiseRL继续在推理模型上做文章，但角度很不一样。现在RL训练推理模型普遍依赖更强的teacher model或者精心筛选的困难数据，这导致Scaling受限。这篇文章的思路很直接：既然weak model也会产生推理轨迹，那为什么不直接从这些错误的轨迹里学习？它把错误推理看成“带噪声的前缀”，然后用recovery-oriented的优化让模型学会在噪声之后“回到正轨”。这个思路太妙了——它把错误本身变成了学习信号，而不是单纯地过滤掉错误数据。我强烈推荐做科学模拟的同事关注这个方向：我们在训练物理神经网络时，是不是也可以让模型从“物理上不合理”的中间态学会恢复？这本质上是在建模系统的“鲁棒性”。
+
+最后一篇GEM研究的是具身智能里的视觉语言模型。大家知道现在VLA框架很火，但作者指出了一个关键gap：预训练时用的是高层语义数据，而实际执行时需要低层的空间物理知识。这其实是一个很有普遍性的问题——我们在做AI4S时，基础模型往往在互联网数据上预训练，但科学任务需要的恰是那些“看不见”的物理直觉。GEM的解法是加入一个depth map generation的生成式目标，让模型在预训练阶段就学会“看见”三维空间。这个设计很务实，因为它不引入新的数据源，而是让同一个视觉 encoder同时学到语义和空间两种表征。我注意到它和DenoiseRL有一个共同的底层思路：都是通过引入辅助目标来弥补基础模型能力谱系的缺失，一个补的是推理恢复能力，一个补的是空间理解。
+
+好，总结一下今天这几篇论文的整体观察：它们不约而同地在解决RL训练中的信号问题——无论是路径太长导致的梯度偏向，工具调用粒度不对，还是错误信号太弱，亦或是数据分布太窄。背后有一个共同的脉络：如何让强化学习在复杂推理、组合行动、长程决策这些更艰难的场景下依然有效。这和我们在AI4S里追求的“更准的PDE求解”、“更稳的物理模拟”本质上是同一个挑战——都是要让模型在更长序列、更多层次、更复杂结构上保持学习信号的可辨识度。或许 RL for Science的下一个突破点，不在于把某个具体算法搬过来，而在于理解这些跨场景的信号传递问题。
+
+今天就聊到这儿，周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.28293" target="_blank">ProRL: Effective Reinforcement Learning for Proactive Recommendation via Rectified Policy Gradient Estimation</a></li>
+<li><a href="https://arxiv.org/abs/2605.28774" target="_blank">Agent Explorative Policy Optimization for Multimodal Agentic Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2605.28814" target="_blank">Self-Improving Language Models with Bidirectional Evolutionary Search</a></li>
+<li><a href="https://arxiv.org/abs/2605.28421" target="_blank">DenoiseRL: Bootstrapping Reasoning Models to Recover from Noisy Prefixes</a></li>
+<li><a href="https://arxiv.org/abs/2605.28548" target="_blank">GEM: Generative Supervision Helps Embodied Intelligence</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
