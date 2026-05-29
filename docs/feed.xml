@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-29</title>
+      <description>今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-29.mp3" length="7902607" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-29.mp3</guid>
+      <pubDate>2026-05-29T23:50:50.238495Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-28</title>
       <description>今日学术播报: ProRL: Effective Reinforcement, Agent Explorative Policy Optim, Self-Improving Language Models...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-28.mp3" length="10559573" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-04-30.mp3" length="9044262" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-04-30.mp3</guid>
       <pubDate>2026-04-30T23:28:55.985048Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-04-29</title>
-      <description>今日学术播报: Programming with Data: Test-Dr, Recursive Multi-Agent Systems, From Skills to Talent: Organis...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-04-29.mp3" length="9856775" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-04-29.mp3</guid>
-      <pubDate>2026-04-29T23:29:36.311549Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

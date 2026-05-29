@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-29",
+    "title": "Paper Morning 2026-05-29",
+    "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
+    "audio_file": "2026-05-29.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一篇有点特殊的论文聊起。minWM这个工作关注的是怎么把视频生成模型变成实时的交互式世界模型。大家知道，这两年视频扩散模型进展很快，但真要让模型能够实时交互、控制相机视角、还要保证低延迟，这里涉及的是一个完整的系统工程：从数据构建、可控微调、自回归训练、几步蒸馏到流式推理。minWM提供了这样一个端到端的pipeline，能把现有的双向视频生成模型转换成少步自回归的世界模型。\n\n我为什么想聊这个？因为它触及到了一个我们领域很关心的问题——世界模型到底能不能真的用在物理模拟里。我们当然希望有一个模型能根据当前状态预测未来，而且要快、要可控。但现实是大多数视频生成模型都是双向的、一次生成一整段的，要改成自回归、实时交互，这里面的工程挑战和思路，对我们做科学模拟的人是很有启发的。毕竟，如果我们要用神经网络来预测 PDE 的解，同样面临如何让模型自回归起来、如何保证长期稳定性这些问题。\n\n第二篇论文 YoCausal 很有意思，它问了一个更根本的问题：现在的视频生成模型到底是真的理解了因果关系，还是只是统计上学会了时间序列的规...",
+    "papers": [
+      {
+        "title": "minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2605.30263",
+        "arxiv_id": "2605.30263"
+      },
+      {
+        "title": "YoCausal: How Far is Video Generation from World Model? A Causality Perspective",
+        "url": "https://arxiv.org/abs/2605.30346",
+        "arxiv_id": "2605.30346"
+      },
+      {
+        "title": "CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2605.25378",
+        "arxiv_id": "2605.25378"
+      },
+      {
+        "title": "OmniRetrieval: Unified Retrieval across Heterogeneous Knowledge Sources",
+        "url": "https://arxiv.org/abs/2605.29250",
+        "arxiv_id": "2605.29250"
+      },
+      {
+        "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
+        "url": "https://arxiv.org/abs/2605.29801",
+        "arxiv_id": "2605.29801"
+      }
+    ],
+    "published_at": "2026-05-29T23:50:50.238495Z"
+  },
+  {
     "date": "2026-05-28",
     "title": "Paper Morning 2026-05-28",
     "description": "今日学术播报: ProRL: Effective Reinforcement, Agent Explorative Policy Optim, Self-Improving Language Models...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-04-30T23:28:55.985048Z"
-  },
-  {
-    "date": "2026-04-29",
-    "title": "Paper Morning 2026-04-29",
-    "description": "今日学术播报: Programming with Data: Test-Dr, Recursive Multi-Agent Systems, From Skills to Talent: Organis...",
-    "audio_file": "2026-04-29.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域外的话题聊起——不知道你有没有这种感觉，现在做AI研究，尤其是基础模型，数据工程越来越像是一门“手艺活”，调参、加数据、堆卡，但缺乏系统性的方法论。论文1就试图回答这个问题：能不能把数据工程变成一个可诊断、可迭代的工程流程？\n\n这篇叫做《Programming with Data》的 work 来自 Chenkai Pan 他们，核心思想其实很直接但很有启发性：与其盲目给模型喂数据，不如从原始语料中提取结构化知识表示，用它同时指导训练数据的构建和评估。这样一来，模型在某个领域失败了，你就能精确诊断出是训练数据里缺了什么，而不是无差别地加数据。这实际上是把软件开发的“测试驱动开发”理念迁移到了数据工程里。训练数据变成了“源代码”，评估标准成了“测试用例”，整个过程变得可追溯、可优化。这个思路对于我们做AI4S的人来说其实很值得借鉴——当我们训练一个PDE求解器或科学基础模型时，我们真的知道训练数据里缺了什么吗？还是只是盲目扩充数据规模？\n\n说完数据工程，我们来看一个更面向系统架构的工作。论文2把最近火热的递归...",
-    "papers": [
-      {
-        "title": "Programming with Data: Test-Driven Data Engineering for Self-Improving LLMs from Raw Corpora",
-        "url": "https://arxiv.org/abs/2604.24819",
-        "arxiv_id": "2604.24819"
-      },
-      {
-        "title": "Recursive Multi-Agent Systems",
-        "url": "https://arxiv.org/abs/2604.25917",
-        "arxiv_id": "2604.25917"
-      },
-      {
-        "title": "From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company",
-        "url": "https://arxiv.org/abs/2604.22446",
-        "arxiv_id": "2604.22446"
-      },
-      {
-        "title": "ReVSI: Rebuilding Visual Spatial Intelligence Evaluation for Accurate Assessment of VLM 3D Reasoning",
-        "url": "https://arxiv.org/abs/2604.24300",
-        "arxiv_id": "2604.24300"
-      },
-      {
-        "title": "Vision-Language-Action Safety: Threats, Challenges, Evaluations, and Mechanisms",
-        "url": "https://arxiv.org/abs/2604.23775",
-        "arxiv_id": "2604.23775"
-      }
-    ],
-    "published_at": "2026-04-29T23:29:36.311549Z"
   }
 ]
