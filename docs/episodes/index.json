@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-30",
+    "title": "Paper Morning 2026-05-30",
+    "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
+    "audio_file": "2026-05-30.mp3",
+    "script": "各位早上好，今天是周末，Paper Morning准时开播。\n\n最近AI领域有几个很有意思的动向，我想跟大家聊聊。首先是视频生成和世界模型这个方向，大家知道过去一年视频扩散模型进展很快，但现在大家开始关心一个问题：这些模型真的理解物理世界的因果关系吗，还是只是学到了一些统计上的时间相关性？这其实是个很根本的问题，因为我们做科学计算、做物理模拟，最终要的是能够因果地推演未来，而不是简单地播放一段看起来合理的视频。\n\nYoCausal这篇工作就试图回答这个问题。作者提出了一个很有意思的思路：用时间反转的真实视频作为自然反事实样本，然后设计了两个指标，一个叫RSI，衡量模型能否感知时间的方向，另一个叫CCI，用VLM来分层判断因果认知。这个工作的巧妙之处在于，它不需要人工构造合成数据，而是利用現成的真实视频，成本很低。我觉得这个思路对于我们做科学模拟的人很有启发——我们在评估一个物理模型的时候，其实也应该问同样的问题：模型是在真正理解物理规律，还是只是在拟合数据中的统计关联？\n\n顺着这个思路，另一篇minWM的工作就更偏向工程实现了。它试图把双向的视频扩散模型变成可交互的、低延迟的世界模型，...",
+    "papers": [
+      {
+        "title": "minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2605.30263",
+        "arxiv_id": "2605.30263"
+      },
+      {
+        "title": "YoCausal: How Far is Video Generation from World Model? A Causality Perspective",
+        "url": "https://arxiv.org/abs/2605.30346",
+        "arxiv_id": "2605.30346"
+      },
+      {
+        "title": "CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2605.25378",
+        "arxiv_id": "2605.25378"
+      },
+      {
+        "title": "OmniRetrieval: Unified Retrieval across Heterogeneous Knowledge Sources",
+        "url": "https://arxiv.org/abs/2605.29250",
+        "arxiv_id": "2605.29250"
+      },
+      {
+        "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
+        "url": "https://arxiv.org/abs/2605.29801",
+        "arxiv_id": "2605.29801"
+      }
+    ],
+    "published_at": "2026-05-30T23:35:43.658070Z"
+  },
+  {
     "date": "2026-05-29",
     "title": "Paper Morning 2026-05-29",
     "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-01T23:28:53.992215Z"
-  },
-  {
-    "date": "2026-04-30",
-    "title": "Paper Morning 2026-04-30",
-    "description": "今日学术播报: GLM-5V-Turbo: Toward a Native , RADIO-ViPE: Online Tightly Cou, Large Language Models Explore ...",
-    "audio_file": "2026-04-30.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个咱们AI社区里大家都在讨论的话题说起—— foundation model 到底应该长什么样？过去一年，我们看到了太多把视觉、语言、音频简单拼接在一起的\"多模态\"模型，但它们的内核仍然是语言模型，外挂几个感知模块。GLM-5V-Turbo 这篇工作提出了一个更彻底的思路：把多模态感知变成推理、规划、工具使用和执行的核心部件，而不是给语言模型配一个辅助接口。这意味着视觉理解不再只是\"看懂图片\"，而是和语言推理一样，成为模型思考过程的一部分。团队在模型设计、多模态训练、强化学习、工具链扩展和 agent 框架集成这几个维度都做了系统性的改进，最终在多模态 agent 任务上取得了显著的性能提升。这篇文章的价值不在于某个单点突破，而在于它尝试重新定义 foundation model 的边界——当模型真正原生支持多模态交互时，它能做的事情会远超我们今天的想象。\n\n顺着多模态这个话题，第二篇论文把同样的思想引向了机器人感知的前沿。RADIO-ViPE 是一个在线语义 SLAM 系统，它不再依赖校准好的 RGB-D 输入，也不...",
-    "papers": [
-      {
-        "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
-        "url": "https://arxiv.org/abs/2604.26752",
-        "arxiv_id": "2604.26752"
-      },
-      {
-        "title": "RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments",
-        "url": "https://arxiv.org/abs/2604.26067",
-        "arxiv_id": "2604.26067"
-      },
-      {
-        "title": "Large Language Models Explore by Latent Distilling",
-        "url": "https://arxiv.org/abs/2604.24927",
-        "arxiv_id": "2604.24927"
-      },
-      {
-        "title": "Programming with Data: Test-Driven Data Engineering for Self-Improving LLMs from Raw Corpora",
-        "url": "https://arxiv.org/abs/2604.24819",
-        "arxiv_id": "2604.24819"
-      },
-      {
-        "title": "Recursive Multi-Agent Systems",
-        "url": "https://arxiv.org/abs/2604.25917",
-        "arxiv_id": "2604.25917"
-      }
-    ],
-    "published_at": "2026-04-30T23:28:55.985048Z"
   }
 ]
