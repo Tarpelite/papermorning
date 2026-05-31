@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-05-31</title>
+      <description>今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-31.mp3" length="8481271" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-05-31.mp3</guid>
+      <pubDate>2026-05-31T23:39:43.381473Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-05-30</title>
       <description>今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-30.mp3" length="6853111" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-02.mp3" length="6790417" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-02.mp3</guid>
       <pubDate>2026-05-02T23:11:37.995332Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-01</title>
-      <description>今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-01.mp3" length="6645595" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-01.mp3</guid>
-      <pubDate>2026-05-01T23:28:53.992215Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

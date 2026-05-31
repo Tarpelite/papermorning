@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-05-31",
+    "title": "Paper Morning 2026-05-31",
+    "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
+    "audio_file": "2026-05-31.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们一直在关注AI for Science里那些直接和物理方程、分子模拟相关的工作，但最近我注意到一个有趣的汇合点：视频生成模型正在试图理解因果律，而这恰恰是科学计算最底层的东西。今天的几篇论文虽然来自不同的方向，但都在叩问同一个问题：模型到底是在拟合统计规律，还是真的理解了世界的因果结构？\n\n先看第一篇minWM，它提出了一个构建实时交互式视频世界模型的全栈开源框架。大家知道，这两年视频扩散模型进展很快，但把它们变成可控、低延迟、可交互的世界模型，难度不在生成质量本身，而在于需要把双向的生成模型改造成自回归的推理模型，同时还要支持相机控制。minWM的思路很务实，它不从头训练，而是对现有的T2V/TI2V模型做可控微调，再加上少步蒸馏和流式推理流水线。我感兴趣的是它展示的可能性：当我们能够在几十毫秒内生成交互式视频时，这种能力能不能迁移到科学问题的可视化上？比如让我们对复杂系统的演化进行实时交互探索，这其实和我们在意的事有微妙的联系。\n\n第二篇YoCausal很有意思，它从因果推理的角度重新审视视...",
+    "papers": [
+      {
+        "title": "minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2605.30263",
+        "arxiv_id": "2605.30263"
+      },
+      {
+        "title": "YoCausal: How Far is Video Generation from World Model? A Causality Perspective",
+        "url": "https://arxiv.org/abs/2605.30346",
+        "arxiv_id": "2605.30346"
+      },
+      {
+        "title": "CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2605.25378",
+        "arxiv_id": "2605.25378"
+      },
+      {
+        "title": "OmniRetrieval: Unified Retrieval across Heterogeneous Knowledge Sources",
+        "url": "https://arxiv.org/abs/2605.29250",
+        "arxiv_id": "2605.29250"
+      },
+      {
+        "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
+        "url": "https://arxiv.org/abs/2605.29801",
+        "arxiv_id": "2605.29801"
+      }
+    ],
+    "published_at": "2026-05-31T23:39:43.381473Z"
+  },
+  {
     "date": "2026-05-30",
     "title": "Paper Morning 2026-05-30",
     "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-02T23:11:37.995332Z"
-  },
-  {
-    "date": "2026-05-01",
-    "title": "Paper Morning 2026-05-01",
-    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
-    "audio_file": "2026-05-01.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的图景说起。大家有没有注意到，最近AI领域的基础模型研究正在悄悄发生一个转向——从单纯追求语言能力或者生成质量，开始往“agentic”和“世界模型”方向走了。这个趋势其实和我们在AI4S关心的问题特别相关，因为科学计算本身就是一种世界建模。\n\n先看第一篇论文，Visual Generation in the New Era。这篇文章很有意思，它不是讲具体的生成技术，而是给视觉生成领域画了一张路线图。作者把视觉生成分成了五个层次：原子生成、条件生成、上下文生成、agentic生成，最后是世界模型生成。这个分类方式让我想到我们做PDE求解时，从数值离散到神经网络近似，再到物理信息学习的发展路径，其实也是一个从“算子拟合”到“智能体建模”的过程。他们特别提到，现在模型在空间推理、长程一致性和因果理解上还有明显短板，而这些恰恰也是科学模拟中我们最关心的能力。你可以想象，如果一个视觉生成模型能够真正理解物体的物理行为和因果关系，那它和我们的物理仿真模型之间的距离就近多了。\n\n接下来这篇 Heterogeneous Sc...",
-    "papers": [
-      {
-        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
-        "url": "https://arxiv.org/abs/2604.28185",
-        "arxiv_id": "2604.28185"
-      },
-      {
-        "title": "Heterogeneous Scientific Foundation Model Collaboration",
-        "url": "https://arxiv.org/abs/2604.27351",
-        "arxiv_id": "2604.27351"
-      },
-      {
-        "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
-        "url": "https://arxiv.org/abs/2604.26752",
-        "arxiv_id": "2604.26752"
-      },
-      {
-        "title": "RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments",
-        "url": "https://arxiv.org/abs/2604.26067",
-        "arxiv_id": "2604.26067"
-      },
-      {
-        "title": "Large Language Models Explore by Latent Distilling",
-        "url": "https://arxiv.org/abs/2604.24927",
-        "arxiv_id": "2604.24927"
-      }
-    ],
-    "published_at": "2026-05-01T23:28:53.992215Z"
   }
 ]
