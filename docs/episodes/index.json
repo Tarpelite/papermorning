@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-01",
+    "title": "Paper Morning 2026-06-01",
+    "description": "今日学术播报: GrepSeek: Training Search Agen, Trust-Region Behavior Blending, COLLEAGUE.SKILL: Automated AI ...",
+    "audio_file": "2026-06-01.mp3",
+    "script": "各位早上好，今天是周一，Paper Morning继续开播。\n\n先来看第一篇工作，GrepSeek，关注的是大模型搜索智能体如何直接操作语料库。大家知道，现在的检索系统基本都是一个套路：给定查询，用倒排索引或者稠密向量去召回文档。但这篇工作提出了一个挺有意思的互补视角——让智能体像人一样，直接在原始语料库上执行shell命令来查找、过滤和组合证据。这本质上是把搜索过程本身变成可学习的。我看到作者训练了一个紧凑的搜索智能体来做这件事。对我们AI for Science社区来说，这个思路值得注意，因为我们有很多大型科学语料库和代码仓库，如何高效地和它们交互本身就是个大问题。如果搜索智能体能学会直接操作数据，那可能为科学数据的自动化分析打开新的可能性。\n\n接下来这篇，Trust-Region Behavior Blending for On-Policy Distillation，讲的是模型蒸馏里的一个具体问题。我们知道离线蒸馏有个前缀不匹配的老毛病，学生用自己的早期输出作为前缀去学老师，但这些早期输出质量往往很差。TRB这个方法的思路很有意思，它在学生为中心的KL信任域内，用一个离老师最近...",
+    "papers": [
+      {
+        "title": "GrepSeek: Training Search Agents for Direct Corpus Interaction",
+        "url": "https://arxiv.org/abs/2605.29307",
+        "arxiv_id": "2605.29307"
+      },
+      {
+        "title": "Trust-Region Behavior Blending for On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2605.31159",
+        "arxiv_id": "2605.31159"
+      },
+      {
+        "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
+        "url": "https://arxiv.org/abs/2605.31264",
+        "arxiv_id": "2605.31264"
+      },
+      {
+        "title": "GGT-100K: Generative Ground Truth for Generalizable Real-World Image Restoration",
+        "url": "https://arxiv.org/abs/2605.31039",
+        "arxiv_id": "2605.31039"
+      },
+      {
+        "title": "SwanVoice: Expressive Long-Form Zero-Shot Speech Synthesis for Both Monologue and Dialogue",
+        "url": "https://arxiv.org/abs/2605.30993",
+        "arxiv_id": "2605.30993"
+      }
+    ],
+    "published_at": "2026-06-01T23:52:15.691262Z"
+  },
+  {
     "date": "2026-05-31",
     "title": "Paper Morning 2026-05-31",
     "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-03T23:12:39.739107Z"
-  },
-  {
-    "date": "2026-05-02",
-    "title": "Paper Morning 2026-05-02",
-    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...",
-    "audio_file": "2026-05-02.mp3",
-    "script": "各位早上好，周六的早晨，Paper Morning又和大家见面了。\n\n今天想和大家聊一个正在发生的趋势，我觉得它可能会深刻影响我们AI for Science社区接下来的研究方向。\n\n先从一篇视野宏观的文章说起。Visual Generation in the New Era这篇论文提出了一个五级分类框架，把视觉生成从最早的原子级生成，到条件生成，再到上下文生成、Agentic生成，最后到World-Modeling生成。作者们认为，视觉生成领域正在从“看起来像”的像素合成阶段，走向“理解结构、动态和因果关系”的智能生成阶段。这个判断其实呼应了我们AI4S领域一个核心关切：无论是视觉模型还是物理模型，最终都需要从被动渲染走向主动推理。这篇是HuggingFace上的热门paper，76个赞，值得一读。\n\n那么，如何让AI真正具备这种主动性呢？接下来两篇论文给出了不同的路径。\n\nHeterogeneous Scientific Foundation Model Collaboration提出的Eywa框架，试图解决一个根本问题：现有的Agent系统过度依赖语言作为通用接口，但在科学领域，...",
-    "papers": [
-      {
-        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
-        "url": "https://arxiv.org/abs/2604.28185",
-        "arxiv_id": "2604.28185"
-      },
-      {
-        "title": "Heterogeneous Scientific Foundation Model Collaboration",
-        "url": "https://arxiv.org/abs/2604.27351",
-        "arxiv_id": "2604.27351"
-      },
-      {
-        "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
-        "url": "https://arxiv.org/abs/2604.26752",
-        "arxiv_id": "2604.26752"
-      },
-      {
-        "title": "RADIO-ViPE: Online Tightly Coupled Multi-Modal Fusion for Open-Vocabulary Semantic SLAM in Dynamic Environments",
-        "url": "https://arxiv.org/abs/2604.26067",
-        "arxiv_id": "2604.26067"
-      },
-      {
-        "title": "Turning the TIDE: Cross-Architecture Distillation for Diffusion Large Language Models",
-        "url": "https://arxiv.org/abs/2604.26951",
-        "arxiv_id": "2604.26951"
-      }
-    ],
-    "published_at": "2026-05-02T23:11:37.995332Z"
   }
 ]
