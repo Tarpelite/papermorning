@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-03</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-03</h1>
+    <p class="date">2026-06-03</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-03.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个我们做研究的人都绕不开的话题聊起：怎么评价一个agent做得好不好？最近这两三年，agent的能力可以说是一路狂飙，但 benchmarks 饱和的速度也快得惊人。过去我们建一个benchmark，往往是先写一段自然语言描述的任务，再想办法把它映射成工具调用的序列。但这种方法有个根本问题：它只能覆盖到一小部分工具使用的模式，大量的实际场景被漏掉了。
+
+今天第一篇论文叫 TASTE，TASTE 的思路非常有意思，它是反过来的：不是从任务到工具，而是从工具序列本身出发，去反推什么样的任务是合理的、可执行的。它用了一个基于对比学习的 n-gram 模型，加上 LLM 来判断生成的任务是否有效，这样就能大规模地采样出覆盖范围非常广的工具组合，然后用这些组合再去构造任务。这个思路我觉得值得做 AI4S 的同学想一想：我们现在用的那些科学任务的 benchmark，是不是也有类似的问题？可能我们预设的任务形式本身就限制了模型的发挥空间，有时候从数据本身出发反过来推任务，反而能打开新的局面。
+
+那么有了更全面的 benchmark 之后，怎么训练出更强的 agent 呢？这是接下来两篇论文关心的事情。
+
+Harness-1 这篇工作提出了一个很有洞察的问题：现在的搜索 agent，通常是把整个搜索过程当作一个长长的序列来建模，模型不仅要决定下一步搜什么，还要同时记住之前看到了什么、哪些证据有用、哪些约束还没满足、哪些 claim 已经验证过了。作者认为这其实把太多Routine的状态管理工作交给了策略本身，而这种 bookkeeping 的工作完全可以让环境端来维护， RL 应该专注于真正有价值的语义决策。所以 Harness-1 引入了一个 stateful 的搜索 harness，这个 harness 在环境侧维护了一个工作内存，包括候选池、带重要性标签的精选集合、压缩的证据链接、验证记录等等。模型只需要在 RL 训练过程中跟这个 harness 交互，负责语义层面的搜索决策，而那些繁琐的状态管理全部交给 harness 来处理。这是一个很典型的“让专业的人做专业的事”的思路，把推理和记忆分离开来。
+
+那么如果既想让 agent 学到好的策略，又想让 agent 理解自己的行为对环境造成了什么影响呢？这就是 PaW 这篇论文要解决的问题了。RL 本身可以教 agent 哪些动作能得到高回报，但它并不教 agent 这些动作改变了什么。作者提出了一个很巧妙的观察：其实 RL 的 rollout 本身就包含了动作和结果成对的信息，每一个 transition 都是一个动作和它带来的下一个观测的配对。PaW 就是利用这个信号，在 RL 训练的同时加入了一个辅助的 world modeling 目标，让模型在学习策略的同时也学习世界模型。而且它并没有引入额外的推理开销，只是给同一个策略网络加了 auxiliary loss。我觉得这个思路对于我们做科学模拟的人特别有启发：以前我们训练物理模型，往往是纯监督学习让模型预测下一步状态，但其实 RL 过程中产生的那些“尝试-结果”对，本身就是非常好的世界模型训练数据。
+
+说完了 agent 的训练，我们再来一篇关于推理效率的论文。Domino 这篇是关于 speculative decoding 的。我们知道 speculative decoding 可以通过先让一个小的draft模型生成多个 token，然后让大的目标模型并行验证来加速推理。但这里有个 trade-off：自回归的 draft 模型虽然能建模 token 之间的因果依赖，但它的生成成本高；并行的 draft 模型成本低了，但牺牲了 block 内 token 之间的依赖建模。Domino 的做法是把这两件事解耦：先用并行的 draft 主干生成整个 block 的初步分布，然后用一个小巧的 Domino head 来加入前缀依赖的因果信息进行 refine。这样既保持了推理速度，又不会损失生成质量。
+
+最后还有一篇机器人相关的论文，AFUN，它要构建的是一个功能可供性的 foundation model。可供性（affordance）这个词在机器人领域很重要，意思是说一个物体能提供什么样的交互可能性。AFUN 可以从单张 RGB-D 图像和语言任务描述出发，预测出交互应该发生的位置和可执行的动作，而且它是一个可以跨不同环境、物体和任务泛化的基础模型。
+
+好了，今天的论文都简单过了一遍。我观察到的一个整体趋势是：不管是agent的benchmark设计、训练范式，还是推理效率的优化，大家都在做一件事——把不同模块的职责明确地划分开，让专业模块各司其职，然后再想办法让它们高效协作。从 TASTE 的任务和工具解耦，到 Harness-1 的语义决策和状态管理解耦，到 PaW 的策略学习和世界建模融合，再到 Domino 的因果建模和draft执行解耦，以及 AFUN 把感知和动作规划整合到一个模型里，其实都在回答同一个问题：怎么构建一个更高效、更可扩展的智能系统。这种模块化、分层化的思路，或许也是我们思考 AI4S 基础设施时的一个重要参考。
+
+好了，今天的早间播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.28556" target="_blank">A Matter of TASTE: Improving Coverage and Difficulty of Agent Benchmarks</a></li>
+<li><a href="https://arxiv.org/abs/2606.02373" target="_blank">Harness-1: Reinforcement Learning for Search Agents with State-Externalizing Harnesses</a></li>
+<li><a href="https://arxiv.org/abs/2606.02388" target="_blank">Policy and World Modeling Co-Training for Language Agents</a></li>
+<li><a href="https://arxiv.org/abs/2606.02551" target="_blank">AFUN: Towards an Affordance Foundation Model for Functionality Understanding</a></li>
+<li><a href="https://arxiv.org/abs/2605.29707" target="_blank">Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

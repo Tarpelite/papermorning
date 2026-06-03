@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-03</title>
+      <description>今日学术播报: A Matter of TASTE: Improving C, Harness-1: Reinforcement Learn, Policy and World Modeling Co-T...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-03.mp3" length="9733895" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-03.mp3</guid>
+      <pubDate>2026-06-03T00:13:17.412491Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-01</title>
       <description>今日学术播报: GrepSeek: Training Search Agen, Trust-Region Behavior Blending, COLLEAGUE.SKILL: Automated AI ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-01.mp3" length="7527697" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-04.mp3" length="7732706" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-04.mp3</guid>
       <pubDate>2026-05-04T23:29:00.398211Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-03</title>
-      <description>今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, GLM-5V-Turbo: Toward a Native ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-03.mp3" length="8212942" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-03.mp3</guid>
-      <pubDate>2026-05-03T23:12:39.739107Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
