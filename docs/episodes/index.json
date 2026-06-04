@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-04",
+    "title": "Paper Morning 2026-06-04",
+    "description": "今日学术播报: OCC-RAG: Optimal Cognitive Cor, NVIDIA OmniDreams: Real-Time G, World Models Meet Language Mod...",
+    "audio_file": "2026-06-04.mp3",
+    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想先从一个小趋势聊起。我们都知道过去一年大模型很火，但最近我注意到一个很有意思的转向：很多人开始反思，是不是所有问题都需要最大的模型？有些场景我们要的不是知识记忆，而是精准的推理能力。这就是今天第一篇论文 OCC-RAG 想要回答的问题。他们提出了一个叫做“最优认知核”的思路，用一个小规模语言模型配合检索增强，来做忠实的问答。核心洞察是，很多科学应用里，我们需要的是在给定上下文上进行多跳推理，而不是让模型自己从参数里回忆知识。这个思路其实和我们做PDE求解有点像——与其让一个超大模型记住所有解，不如让它在需要的时候能精准地调用和推理。我觉得这是一个有价值的思路转向，不是说小模型会取代大模型，而是场景不同、需求不同。\n\n那么说到具体的推理能力，最近有一个很火的讨论，就是世界模型和多模态大语言模型，谁能更好地做预测未来的任务。今天第三篇论文 World Models Meet Language Models 就很好地回答了这个问题。作者的洞察非常直观：世界模型擅长生成具体的视觉 rollout，而多模态大模型擅长抽象的规则推理。...",
+    "papers": [
+      {
+        "title": "OCC-RAG: Optimal Cognitive Core for Faithful Question Answering",
+        "url": "https://arxiv.org/abs/2606.00683",
+        "arxiv_id": "2606.00683"
+      },
+      {
+        "title": "NVIDIA OmniDreams: Real-Time Generative World Model for Closed-Loop Autonomous Vehicle Simulation",
+        "url": "https://arxiv.org/abs/2606.03159",
+        "arxiv_id": "2606.03159"
+      },
+      {
+        "title": "World Models Meet Language Models: On the Complementarity of Concrete and Abstract Reasoning",
+        "url": "https://arxiv.org/abs/2606.03603",
+        "arxiv_id": "2606.03603"
+      },
+      {
+        "title": "From Activation to Causality: Discovery of Causal Visual Representations in the Human Brain",
+        "url": "https://arxiv.org/abs/2605.23895",
+        "arxiv_id": "2605.23895"
+      },
+      {
+        "title": "Harness-1: Reinforcement Learning for Search Agents with State-Externalizing Harnesses",
+        "url": "https://arxiv.org/abs/2606.02373",
+        "arxiv_id": "2606.02373"
+      }
+    ],
+    "published_at": "2026-06-04T00:16:05.105799Z"
+  },
+  {
     "date": "2026-06-03",
     "title": "Paper Morning 2026-06-03",
     "description": "今日学术播报: A Matter of TASTE: Improving C, Harness-1: Reinforcement Learn, Policy and World Modeling Co-T...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-05T23:28:38.660491Z"
-  },
-  {
-    "date": "2026-05-04",
-    "title": "Paper Morning 2026-05-04",
-    "description": "今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, UniVidX: A Unified Multimodal ...",
-    "audio_file": "2026-05-04.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察聊起。我们做AI for Science的人，经常会想一个问题：到底什么才算是科学问题的“基础模型”？是把NLP的大模型直接搬过来用，还是需要针对科学数据单独训练？昨天arXiv上有篇论文叫《Heterogeneous Scientific Foundation Model Collaboration》，作者提出了一个叫Eywa的框架，我觉得这个问题回答得很漂亮。\n\n他们指出，现在很多Agent系统很强，但本质上还是被语言绑架了——所有问题都要先翻译成自然语言才能处理。可是科学领域有大量非语言的数据形式，比如分子结构、气象图谱、力学传感器信号，这些都有各自的基础模型。Eywa的做法是让语言模型充当“调度员”，去调用这些专业模型来做推理，而不需要把所有东西都硬塞进语言的模态。这样一来，语言模型负责规划调用，专业模型负责精确预测，各取所长。我觉得这其实回应了我们领域一个核心争论：到底是做一个全能的语言模型来解所有PDE，还是构建一个生态，让不同物理领域的专用模型协同工作？Eywa证明了后者的可行性。\n\n顺着这个思路...",
-    "papers": [
-      {
-        "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
-        "url": "https://arxiv.org/abs/2604.28185",
-        "arxiv_id": "2604.28185"
-      },
-      {
-        "title": "Heterogeneous Scientific Foundation Model Collaboration",
-        "url": "https://arxiv.org/abs/2604.27351",
-        "arxiv_id": "2604.27351"
-      },
-      {
-        "title": "UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors",
-        "url": "https://arxiv.org/abs/2605.00658",
-        "arxiv_id": "2605.00658"
-      },
-      {
-        "title": "Co-Evolving Policy Distillation",
-        "url": "https://arxiv.org/abs/2604.27083",
-        "arxiv_id": "2604.27083"
-      },
-      {
-        "title": "Intern-Atlas: A Methodological Evolution Graph as Research Infrastructure for AI Scientists",
-        "url": "https://arxiv.org/abs/2604.28158",
-        "arxiv_id": "2604.28158"
-      }
-    ],
-    "published_at": "2026-05-04T23:29:00.398211Z"
   }
 ]

@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-04</title>
+      <description>今日学术播报: OCC-RAG: Optimal Cognitive Cor, NVIDIA OmniDreams: Real-Time G, World Models Meet Language Mod...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-04.mp3" length="9075609" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-04.mp3</guid>
+      <pubDate>2026-06-04T00:16:05.105799Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-03</title>
       <description>今日学术播报: A Matter of TASTE: Improving C, Harness-1: Reinforcement Learn, Policy and World Modeling Co-T...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-03.mp3" length="9733895" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-05.mp3" length="8745840" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-05.mp3</guid>
       <pubDate>2026-05-05T23:28:38.660491Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-04</title>
-      <description>今日学术播报: Visual Generation in the New E, Heterogeneous Scientific Found, UniVidX: A Unified Multimodal ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-04.mp3" length="7732706" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-04.mp3</guid>
-      <pubDate>2026-05-04T23:29:00.398211Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
