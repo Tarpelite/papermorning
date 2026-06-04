@@ -2,37 +2,37 @@
   {
     "date": "2026-06-04",
     "title": "Paper Morning 2026-06-04",
-    "description": "今日学术播报: OCC-RAG: Optimal Cognitive Cor, NVIDIA OmniDreams: Real-Time G, World Models Meet Language Mod...",
+    "description": "今日学术播报: Cosmos 3: Omnimodal World Mode, Audio Interaction Model, Where Do Deep-Research Agents ...",
     "audio_file": "2026-06-04.mp3",
-    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想先从一个小趋势聊起。我们都知道过去一年大模型很火，但最近我注意到一个很有意思的转向：很多人开始反思，是不是所有问题都需要最大的模型？有些场景我们要的不是知识记忆，而是精准的推理能力。这就是今天第一篇论文 OCC-RAG 想要回答的问题。他们提出了一个叫做“最优认知核”的思路，用一个小规模语言模型配合检索增强，来做忠实的问答。核心洞察是，很多科学应用里，我们需要的是在给定上下文上进行多跳推理，而不是让模型自己从参数里回忆知识。这个思路其实和我们做PDE求解有点像——与其让一个超大模型记住所有解，不如让它在需要的时候能精准地调用和推理。我觉得这是一个有价值的思路转向，不是说小模型会取代大模型，而是场景不同、需求不同。\n\n那么说到具体的推理能力，最近有一个很火的讨论，就是世界模型和多模态大语言模型，谁能更好地做预测未来的任务。今天第三篇论文 World Models Meet Language Models 就很好地回答了这个问题。作者的洞察非常直观：世界模型擅长生成具体的视觉 rollout，而多模态大模型擅长抽象的规则推理。...",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个更大的视角切入。大家有没有注意到，最近AI圈子里有一个特别有意思的趋势：模型正在从“离线思考”走向“实时感知”。这个词可能听起来有点抽象，但放到具体的研究里，你会发现它正在改变很多领域的游戏规则。\n\n先来看一篇挺有野心的论文，Cosmos 3，omnimodal world models for Physical AI。它试图用一个统一的混合transformer架构，同时处理语言、图像、视频、音频和动作序列。这个工作的核心贡献一句话说，就是把视觉语言模型、视频生成器、世界模拟器和动作模型整合到了一个框架里。但我觉得它更值得关注的地方在于，它在回答一个根本性的问题：Physical AI需要什么样的基础模型？过去我们做具身智能，往往是把感知、规划、控制拆成几个独立的模块，每个模块单独优化。但Cosmos 3告诉你，也许一个足够强大的omnimodal模型，可以把所有这些能力统一起来。它在多个理解与生成任务上刷新了开源模型的最高水平。这背后反映的其实是AI for Science里我们也在思考的问题：当我们要用模型去理...",
     "papers": [
       {
-        "title": "OCC-RAG: Optimal Cognitive Core for Faithful Question Answering",
-        "url": "https://arxiv.org/abs/2606.00683",
-        "arxiv_id": "2606.00683"
+        "title": "Cosmos 3: Omnimodal World Models for Physical AI",
+        "url": "https://arxiv.org/abs/2606.02800",
+        "arxiv_id": "2606.02800"
       },
       {
-        "title": "NVIDIA OmniDreams: Real-Time Generative World Model for Closed-Loop Autonomous Vehicle Simulation",
-        "url": "https://arxiv.org/abs/2606.03159",
-        "arxiv_id": "2606.03159"
+        "title": "Audio Interaction Model",
+        "url": "https://arxiv.org/abs/2606.05121",
+        "arxiv_id": "2606.05121"
       },
       {
-        "title": "World Models Meet Language Models: On the Complementarity of Concrete and Abstract Reasoning",
-        "url": "https://arxiv.org/abs/2606.03603",
-        "arxiv_id": "2606.03603"
+        "title": "Where Do Deep-Research Agents Go Wrong? Span-Level Error Localization in Agent Trajectories",
+        "url": "https://arxiv.org/abs/2606.02060",
+        "arxiv_id": "2606.02060"
       },
       {
-        "title": "From Activation to Causality: Discovery of Causal Visual Representations in the Human Brain",
-        "url": "https://arxiv.org/abs/2605.23895",
-        "arxiv_id": "2605.23895"
+        "title": "Reproducing, Analyzing, and Detecting Reward Hacking in Rubric-Based Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2606.04923",
+        "arxiv_id": "2606.04923"
       },
       {
-        "title": "Harness-1: Reinforcement Learning for Search Agents with State-Externalizing Harnesses",
-        "url": "https://arxiv.org/abs/2606.02373",
-        "arxiv_id": "2606.02373"
+        "title": "OVO-S-Bench: A Hierarchical Benchmark for Streaming Spatial Intelligence in Multimodal LLMs",
+        "url": "https://arxiv.org/abs/2606.03890",
+        "arxiv_id": "2606.03890"
       }
     ],
-    "published_at": "2026-06-04T00:16:05.105799Z"
+    "published_at": "2026-06-04T23:48:26.543799Z"
   },
   {
     "date": "2026-06-03",
