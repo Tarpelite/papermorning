@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-05</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-05</h1>
+    <p class="date">2026-06-05</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-05.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了周五，Paper Morning开播的日子了。
+
+今天想先从一个我们日常科研中都会遇到的现象聊起。你有没有发现，当我们在评估一个新模型的时候，往往喜欢看一个汇总的榜单，一个数字从上往下排。但今天第一篇论文就告诉我们，这个做法可能正在掩盖一些重要的信息。
+
+这篇论文叫《后GCN时代的重新审视：基于曲率的分层评估》。作者指出，现在 relational learning 的评估总是用一张flat leaderboard，把性能 Across 不同的数据集做一个平均。但这背后其实隐含了一个假设，认为所有数据有着统一的结构。作者告诉我们，这个假设是有问题的。他们发现，数据的内在几何性质其实是决定模型效果的一个关键隐变量。传统的聚合指标会掩盖掉很多性能权衡，这些权衡只有在按几何属性对数据集进行分层之后才能显现出来。所以他们提出了一个基于曲率的评估框架，把数据集按正曲率、负曲率和近零曲率来分组。这个工作其实给我们的提醒是：在评估模型的时候，不能只看一个总分，要看模型在什么样的结构上擅长，在什么样的结构上不行，这对做应用的人来说其实非常重要。
+
+说完评估的问题，我们来看一个方法层面的进展。
+
+持续学习大家都不陌生，模型要在连续的任务流中保持能力不衰减。这篇《TailLoR》提出了一个基于谱分解的参数高效微调方法。它利用预训练权重分解出的奇异值分解的 U 和 V 矩阵作为一个固定的参考系，然后只在奇异值矩阵上学习一个低秩更新。这个设计很巧妙的地方在于，它引入了一个软谱惩罚项，用来阻止模型去更新那些主要奇异方向，因为这些方向对应的是模型已经学到的核心知识。通过这种方式，把细粒度的适应压缩到那些不那么重要的长尾奇异方向上，从而减少任务之间的干扰。这个思路其实给我们提供了一个新的视角：与其想着怎么防止遗忘，不如想想哪些参数是"可以忘"的，哪些是"不能忘"的。
+
+接下来这个工作就有点意思了，是关于人形机器人控制的。
+
+《HANDOFF》这篇论文讨论的是一个很实际的问题：当我们让人形机器人在真实世界里做事的时候，规划层和控制层之间需要一个什么样的接口？现有的全身控制器通常需要非常密集的运动学或空间参考，但规划器很难从任务语义直接合成这些密集的参考。作者的做法是定义了一个非常紧凑明确的接口，这个接口足够直观、通用、可组合，而且表达力足够丰富。然后他们用多教师 KL 蒸馏的方式，从三个互补的专家那里学习：一个做带安全滤波的全身运动跟踪，一个做运动，一个做跌倒恢复。把这三个专家的能力蒸馏到一个混合专家的学生模型里。这个工作让我觉得有意思的是，它不是在追求一个更强的单一控制器，而是在思考怎么设计一个好的接口，让规划和控制能够解耦，这可能是未来机器人系统的一个关键。
+
+然后我们来看代码模型这边的一个进展。
+
+《Code2LoRA》要解决的问题是：代码语言模型需要仓库级别的上下文来解析 import、API 和项目规范。现有方法要么把很长的上下文直接输入模型，要么就是对每个仓库做微调或者 LoRA，但前者推理开销大，后者维护成本高，特别是在代码库不断演化的情况下。这篇论文提出的 Code2LoRA 是一个超网络框架，它可以生成仓库特定的 LoRA 适配器，从而在零推理 token 开销的情况下注入仓库知识。而且它支持两种场景：静态版本适合理解稳定的代码库，演化版本则通过一个 GRU 的隐藏状态来跟踪代码的 diff 变化，适合活跃开发的场景。这让我想到，这其实是一个把持续学习或者说适配能力，推向了更细粒度的表现：一个模型要能快速适应每一个不同的代码仓库。
+
+最后一篇是关于机器人控制速度的。
+
+《TempoVLA》关注到一个很有趣的现象：机器人在做操作任务的时候，低风险的移动阶段需要快速执行，而高风险的接触阶段需要慢速精确的运动。但现有的视觉语言动作模型 VLA 在训练时继承的是一个固定的速度。作者发现，其实每个动作预测的幅度本身就决定了机器人移动的速度，这是一个可以直接控制执行速度的通道。TempoVLA 就是利用这个观察，设计了一个单一的可控速度的 VLA。它结合了两个组件：数据端的可变速度数据增强，以及推理端的动作幅度调节。这样同一个模型既可以快也可以慢，可以根据任务需求动态调整。这个工作的一个重要启示是：模型的能力往往比我们预设的要丰富，关键是要找到那个可以让我们主动调控的杠杆。
+
+好了，今天的五篇论文都聊完了。我最大的一个感受是，这几篇文章其实都在回答同一个问题，那就是"如何让模型更好地适应不同的情境"。无论是评估时按几何性质分层，持续学习时区分核心和长尾参数，机器人控制时设计灵活的接口，还是代码模型和 VLA 的各种自适应能力，都指向了一个趋势：我们不再满足于一个在固定数据上训练出来的单一最强模型，而是在追求一种更具适应性的智能。这种适应性可能才是未来模型最关键的能力。
+
+好了各位，今天的播报就到这里，祝大家周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.06397v1" target="_blank">The Post-GCN Decade Revisited: Curvature-Stratified Evaluation of Relational Learning</a></li>
+<li><a href="https://arxiv.org/abs/2606.06494v1" target="_blank">TailLoR: Protecting Principal Components in Parameter-Efficient Continual Learning</a></li>
+<li><a href="https://arxiv.org/abs/2606.06493v1" target="_blank">HANDOFF: Humanoid Agentic Task-Space Whole-Body Control via Distilled Complementary Teachers</a></li>
+<li><a href="https://arxiv.org/abs/2606.06492v1" target="_blank">Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution</a></li>
+<li><a href="https://arxiv.org/abs/2606.06491v1" target="_blank">TempoVLA: Learning Speed-Controllable Vision-Language-Action Policies</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
