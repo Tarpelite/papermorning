@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-06",
+    "title": "Paper Morning 2026-06-06",
+    "description": "今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...",
+    "audio_file": "2026-06-06.mp3",
+    "script": "各位早上好，周六的早晨，Paper Morning又和大家见面了。\n\n今天想和大家分享几篇最近在社区引发讨论的工作，不过我坦率地说，这几篇文章和我们一直关注的AI for Science方向关联度并不算高，更像是LLM agent和code模型的一场“内部消化”。但有意思的是，如果我们把视野稍微放宽一点，这些工作其实触及了一些我们不得不面对的基础性问题——比如怎么让模型真正理解持续演化的上下文，怎么在交互中动态调整计划，以及怎么把语言理解和物理世界建模统一起来。这些问题，某种程度上也是科学智能未来需要回答的。\n\n先看Code2LoRA，这个工作来自一个很实际的痛点：代码大模型在做代码补全或者理解一个项目的时候，往往缺乏足够的仓库级上下文。传统的做法要么是把大量代码塞进输入窗口，要么是对每个仓库单独做微调——前者太贵，后者太笨重，一旦代码库更新就失效了。Code2LoRA的思路是用一个超网络直接生成针对特定仓库的LoRA适配器，这样既不需要改变推理时的输入长度，又能动态注入仓库知识。更妙的是它区分了两种场景：静态版本适合已经相对稳定的代码库，演化版本则用GRU隐藏状态来追踪代码的diff...",
+    "papers": [
+      {
+        "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
+        "url": "https://arxiv.org/abs/2606.06492",
+        "arxiv_id": "2606.06492"
+      },
+      {
+        "title": "ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?",
+        "url": "https://arxiv.org/abs/2606.05553",
+        "arxiv_id": "2606.05553"
+      },
+      {
+        "title": "TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration",
+        "url": "https://arxiv.org/abs/2606.04743",
+        "arxiv_id": "2606.04743"
+      },
+      {
+        "title": "AdaPlanBench: Evaluating Adaptive Planning in Large Language Model Agents under World and User Constraints",
+        "url": "https://arxiv.org/abs/2606.05622",
+        "arxiv_id": "2606.05622"
+      },
+      {
+        "title": "World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis",
+        "url": "https://arxiv.org/abs/2606.05979",
+        "arxiv_id": "2606.05979"
+      }
+    ],
+    "published_at": "2026-06-06T23:37:10.086796Z"
+  },
+  {
     "date": "2026-06-05",
     "title": "Paper Morning 2026-06-05",
     "description": "今日学术播报: The Post-GCN Decade Revisited:, TailLoR: Protecting Principal , HANDOFF: Humanoid Agentic Task...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-07T23:29:03.648659Z"
-  },
-  {
-    "date": "2026-05-06",
-    "title": "Paper Morning 2026-05-06",
-    "description": "今日学术播报: ARIS: Autonomous Research via , MolmoAct2: Action Reasoning Mo, From Context to Skills: Can La...",
-    "audio_file": "2026-05-06.mp3",
-    "script": "各位早上好，今天是周三，Paper Morning继续开播。\n\n先说第一篇，ARIS——一个自主研究智能体的框架。它的核心贡献很有意思：不仅仅是让智能体干活，更关键的是怎么防止它“摸鱼”或者“自欺欺人”。作者指出，长程研究任务中最大的风险不是智能体直接罢工，而是它给出一个听起来很合理、但证据链其实断裂的结论。这种“ plausible unsupported success”非常隐蔽。ARIS的解法是引入跨模型的对抗协作机制，让不同的智能体互相审查、互相挑战。这个思路让我想到科学研究中peer review的本质——原来不仅人需要同行评审，模型也需要。我个人判断，这篇工作对AI for Science的意义可能比它表面上看起来更大，因为自主科研智能体如果不可靠，结论是错的，那后续的实验设计、文献综述都可能跑偏。\n\n第二篇MolmoAct2是一个视觉语言动作模型，专门为机器人实际部署设计。作者没有追求参数的极致scale，而是务实得多——在三个维度上做工程优化：训练数据、推理延迟、以及跨平台适应性。特别值得关注的是他们提出的MolmoER backbone，专门针对空间推理和具身智能优化...",
-    "papers": [
-      {
-        "title": "ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration",
-        "url": "https://arxiv.org/abs/2605.03042",
-        "arxiv_id": "2605.03042"
-      },
-      {
-        "title": "MolmoAct2: Action Reasoning Models for Real-world Deployment",
-        "url": "https://arxiv.org/abs/2605.02881",
-        "arxiv_id": "2605.02881"
-      },
-      {
-        "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
-        "url": "https://arxiv.org/abs/2604.27660",
-        "arxiv_id": "2604.27660"
-      },
-      {
-        "title": "OpenSeeker-v2: Pushing the Limits of Search Agents with Informative and High-Difficulty Trajectories",
-        "url": "https://arxiv.org/abs/2605.04036",
-        "arxiv_id": "2605.04036"
-      },
-      {
-        "title": "Beyond SFT-to-RL: Pre-alignment via Black-Box On-Policy Distillation for Multimodal RL",
-        "url": "https://arxiv.org/abs/2604.28123",
-        "arxiv_id": "2604.28123"
-      }
-    ],
-    "published_at": "2026-05-06T23:29:51.630344Z"
   }
 ]

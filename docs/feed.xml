@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-06</title>
+      <description>今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-06.mp3" length="9073729" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-06.mp3</guid>
+      <pubDate>2026-06-06T23:37:10.086796Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-05</title>
       <description>今日学术播报: The Post-GCN Decade Revisited:, TailLoR: Protecting Principal , HANDOFF: Humanoid Agentic Task...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-05.mp3" length="10073696" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-07.mp3" length="6645595" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-07.mp3</guid>
       <pubDate>2026-05-07T23:29:03.648659Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-06</title>
-      <description>今日学术播报: ARIS: Autonomous Research via , MolmoAct2: Action Reasoning Mo, From Context to Skills: Can La...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-06.mp3" length="6858127" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-06.mp3</guid>
-      <pubDate>2026-05-06T23:29:51.630344Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

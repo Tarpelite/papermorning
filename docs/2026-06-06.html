@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-06</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-06</h1>
+    <p class="date">2026-06-06</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-06.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周六的早晨，Paper Morning又和大家见面了。
+
+今天想和大家分享几篇最近在社区引发讨论的工作，不过我坦率地说，这几篇文章和我们一直关注的AI for Science方向关联度并不算高，更像是LLM agent和code模型的一场“内部消化”。但有意思的是，如果我们把视野稍微放宽一点，这些工作其实触及了一些我们不得不面对的基础性问题——比如怎么让模型真正理解持续演化的上下文，怎么在交互中动态调整计划，以及怎么把语言理解和物理世界建模统一起来。这些问题，某种程度上也是科学智能未来需要回答的。
+
+先看Code2LoRA，这个工作来自一个很实际的痛点：代码大模型在做代码补全或者理解一个项目的时候，往往缺乏足够的仓库级上下文。传统的做法要么是把大量代码塞进输入窗口，要么是对每个仓库单独做微调——前者太贵，后者太笨重，一旦代码库更新就失效了。Code2LoRA的思路是用一个超网络直接生成针对特定仓库的LoRA适配器，这样既不需要改变推理时的输入长度，又能动态注入仓库知识。更妙的是它区分了两种场景：静态版本适合已经相对稳定的代码库，演化版本则用GRU隐藏状态来追踪代码的diff变化，做到持续更新。这里有一个值得我们留意的信号：当我们谈论科学计算的foundation model时，是否也需要类似的“适配器”机制，来让通用模型快速适应特定物理领域或实验环境？
+
+接下来 ArcANE 这个工作很有意思，它在问一个常被忽视的问题：角色扮演agent能否理解角色的心理成长轨迹？现有的评估往往只看agent是否能回忆某个特定情节的信息，但真正考验角色理解能力的，是当情境发生变化时，agent能否根据角色的心理发展阶段做出符合逻辑的反应。ArcANE构建了一个覆盖17部小说、80个主角的benchmark，用“角色弧”来刻画心理变化轴，然后在不同阶段重复同一个情境，看agent的回应是否跟随角色成长。这让我想到，我们在训练科学模型的时候，是否也过于关注“知识回忆”而忽略了“推理演进”？比如一个材料发现的模型，它能否理解某种材料从实验设计到性能优化的完整认知链条？
+
+然后是TIDE，这个工作试图解决一个很现实的问题：现在的AI agent往往只响应用户的显式请求，但用户自己可能根本没意识到上下文中还藏着其他重要问题。TIDE框架的核心洞察是，单次预测往往会锚定在最显眼的问题上，给出泛泛的建议。所以它用了迭代式的模板引导发现机制，让agent逐步挖掘隐藏问题，并给出基于证据的具体行动建议。这其实回应了我们之前讨论过的一个趋势：ai agent不应该只是被动的工具，而应该具备主动发现问题的能力。在科研场景中，这种能力意味着什么？它能否帮我们从浩如烟海的实验数据中主动识别出被忽略的异常信号？
+
+AdaPlanBench 则把目光投向了规划能力的评估。它提出了一个很现实的挑战：真实世界中的规划往往同时受到物理世界约束和用户偏好的影响，而且这些约束不是一开始就完全给出的，而是随着交互过程逐渐披露。AdaPlanBench构建了一个基于307个家庭任务的可扩展基准，让agent在多轮交互中逐步发现和适应隐藏的约束。这和科学发现的过程其实有某种相似性——我们做实验时，往往不是一开始就能列出所有边界条件，而是在不断试错和调整中逐步明确问题的约束空间。
+
+最后是WLA，这个工作试图在一个统一的框架里同时做世界建模、语言推理和动作合成。它用自回归Transformer替代了之前world-action model里的双向扩散模型，来预测下一时刻的语义意图和物理动力学。WLA的野心是把egocentric video的世界建模能力和VLA模型的语言推理能力结合起来。这个方向和我们在意的一个大方向很接近：当我们要用AI真正理解和模拟物理世界时，统一的表示和建模框架可能是必经之路。
+
+好，说回整体观察。今天这几篇文章看起来比较分散，但它们其实在回应几个共同的主题：怎么让模型处理持续演化而不是静态固定的信息，怎么在交互中动态调整而不是一次性规划，以及怎么把不同模态的能力统一起来。这些问题在LLM agent社区内部发酵，但我相信它们最终会渗透到科学智能的各个角落——无论是让模型适配不断更新的科学知识库，还是让agent在实验过程中自适应地调整研究策略，甚至是统一语言理解和物理模拟的表示框架。我们关心的AI4S，从来不是一座孤岛，它和整个AI方法论的演进紧密相连。早上就到这里，我们下期再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.06492" target="_blank">Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution</a></li>
+<li><a href="https://arxiv.org/abs/2606.05553" target="_blank">ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?</a></li>
+<li><a href="https://arxiv.org/abs/2606.04743" target="_blank">TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration</a></li>
+<li><a href="https://arxiv.org/abs/2606.05622" target="_blank">AdaPlanBench: Evaluating Adaptive Planning in Large Language Model Agents under World and User Constraints</a></li>
+<li><a href="https://arxiv.org/abs/2606.05979" target="_blank">World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
