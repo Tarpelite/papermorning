@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-07",
+    "title": "Paper Morning 2026-06-07",
+    "description": "今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...",
+    "audio_file": "2026-06-07.mp3",
+    "script": "各位早上好，又到了周末的Paper Morning时间。今天想跟大家聊一个可能有点意外的主题——最近我花了不少时间看大语言模型和Agent领域的几篇新论文，倒不是因为它们直接解决了我们关心的PDE求解或者科学模拟问题，而是我觉得这些工作在方法论层面正在积累一些值得警惕的东西，也許能给我们AI for Science的思路一些启发。\n\n先来看第一篇，Code2LoRA，这工作解决的是一个很实际的问题：代码模型需要在仓库级别理解上下文才能正确处理import、API和项目规范。传统做法要么通过RAG把大量上下文塞进输入，要么对每个仓库做微调，成本都很高。Code2LoRA的思路是用一个超网络直接生成仓库专用的LoRA适配器，零token开销就能注入仓库知识。这里有个细节值得注意，它区分了两种场景：静态快照场景和持续演化场景，后者用GRU的隐藏状态随着代码diff更新适配器。我觉得这个设计很有意思，它其实在问一个更根本的问题：我们能不能在模型参数层面而不是输入层面来编码特定任务的知识？这和我们做operator learning时思考的问题有某种相似性——到底是设计一个universal的架...",
+    "papers": [
+      {
+        "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
+        "url": "https://arxiv.org/abs/2606.06492",
+        "arxiv_id": "2606.06492"
+      },
+      {
+        "title": "ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?",
+        "url": "https://arxiv.org/abs/2606.05553",
+        "arxiv_id": "2606.05553"
+      },
+      {
+        "title": "TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration",
+        "url": "https://arxiv.org/abs/2606.04743",
+        "arxiv_id": "2606.04743"
+      },
+      {
+        "title": "AdaPlanBench: Evaluating Adaptive Planning in Large Language Model Agents under World and User Constraints",
+        "url": "https://arxiv.org/abs/2606.05622",
+        "arxiv_id": "2606.05622"
+      },
+      {
+        "title": "World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis",
+        "url": "https://arxiv.org/abs/2606.05979",
+        "arxiv_id": "2606.05979"
+      }
+    ],
+    "published_at": "2026-06-07T23:37:48.716194Z"
+  },
+  {
     "date": "2026-06-06",
     "title": "Paper Morning 2026-06-06",
     "description": "今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-08T23:30:49.082805Z"
-  },
-  {
-    "date": "2026-05-07",
-    "title": "Paper Morning 2026-05-07",
-    "description": "今日学术播报: HERMES++: Toward a Unified Dri, Stream-T1: Test-Time Scaling f, Stream-R1: Reliability-Perplex...",
-    "audio_file": "2026-05-07.mp3",
-    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想聊的几篇论文有一个共同的脉络：大家在把大模型时代积累的方法论——预训练、测试时扩展、奖励建模——正在迁移到物理世界的建模和交互中。这个趋势其实和我们做科学计算的人非常相关，因为物理模拟本质上也是一种world model的构建。\n\n先看HERMES++，这篇工作试图统一自动驾驶场景中的3D场景理解和未来几何预测。过去的方法要么侧重于语义理解，要么侧重于生成未来帧，但两者割裂。作者用BEV表示把多视角信息统一起来，再结合一个能预测几何演化的模块，实现理解与生成的闭环。说实话，这个思路在物理仿真里也很常见——我们不也是希望模型既懂得方程的语义，又能预测系统的演化吗？只不过他们面对的是街道场景，我们面对的是PDE定义的物理场。\n\n然后是两篇关于流式视频生成的工作，非常有意思。Stream-T1提出了一种针对流式视频的测试时扩展方法。我们知道视频生成通常需要大量去噪步，测试时成本很高。但流式生成的特性恰好适合做测试时扩展——因为它是分块合成的，每块只需要少量步数就可以达到可接受质量。Stream-T1利用这个特点，设计了噪声传播和...",
-    "papers": [
-      {
-        "title": "HERMES++: Toward a Unified Driving World Model for 3D Scene Understanding and Generation",
-        "url": "https://arxiv.org/abs/2604.28196",
-        "arxiv_id": "2604.28196"
-      },
-      {
-        "title": "Stream-T1: Test-Time Scaling for Streaming Video Generation",
-        "url": "https://arxiv.org/abs/2605.04461",
-        "arxiv_id": "2605.04461"
-      },
-      {
-        "title": "Stream-R1: Reliability-Perplexity Aware Reward Distillation for Streaming Video Generation",
-        "url": "https://arxiv.org/abs/2605.03849",
-        "arxiv_id": "2605.03849"
-      },
-      {
-        "title": "OpenSearch-VL: An Open Recipe for Frontier Multimodal Search Agents",
-        "url": "https://arxiv.org/abs/2605.05185",
-        "arxiv_id": "2605.05185"
-      },
-      {
-        "title": "RLDX-1 Technical Report",
-        "url": "https://arxiv.org/abs/2605.03269",
-        "arxiv_id": "2605.03269"
-      }
-    ],
-    "published_at": "2026-05-07T23:29:03.648659Z"
   }
 ]

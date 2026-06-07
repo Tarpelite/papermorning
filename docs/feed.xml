@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-07</title>
+      <description>今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-07.mp3" length="9342685" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-07.mp3</guid>
+      <pubDate>2026-06-07T23:37:48.716194Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-06</title>
       <description>今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-06.mp3" length="9073729" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-08.mp3" length="7647443" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-08.mp3</guid>
       <pubDate>2026-05-08T23:30:49.082805Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-07</title>
-      <description>今日学术播报: HERMES++: Toward a Unified Dri, Stream-T1: Test-Time Scaling f, Stream-R1: Reliability-Perplex...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-07.mp3" length="6645595" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-07.mp3</guid>
-      <pubDate>2026-05-07T23:29:03.648659Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-07</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-07</h1>
+    <p class="date">2026-06-07</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-07.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了周末的Paper Morning时间。今天想跟大家聊一个可能有点意外的主题——最近我花了不少时间看大语言模型和Agent领域的几篇新论文，倒不是因为它们直接解决了我们关心的PDE求解或者科学模拟问题，而是我觉得这些工作在方法论层面正在积累一些值得警惕的东西，也許能给我们AI for Science的思路一些启发。
+
+先来看第一篇，Code2LoRA，这工作解决的是一个很实际的问题：代码模型需要在仓库级别理解上下文才能正确处理import、API和项目规范。传统做法要么通过RAG把大量上下文塞进输入，要么对每个仓库做微调，成本都很高。Code2LoRA的思路是用一个超网络直接生成仓库专用的LoRA适配器，零token开销就能注入仓库知识。这里有个细节值得注意，它区分了两种场景：静态快照场景和持续演化场景，后者用GRU的隐藏状态随着代码diff更新适配器。我觉得这个设计很有意思，它其实在问一个更根本的问题：我们能不能在模型参数层面而不是输入层面来编码特定任务的知识？这和我们做operator learning时思考的问题有某种相似性——到底是设计一个universal的架构，还是为特定任务生成专门的适配器？下一步会怎样演化很值得关注。
+
+聊完代码模型，顺势来看第二篇，ArcANE，这工作关注的是角色扮演Agent能不能“入戏”。我们都知道现在很多Agent系统会给自己设定人格或者角色，但之前很少有人系统性地检验它是否能随着故事情节推进保持一致的行为逻辑。ArcANE构建了一个覆盖17部小说、80个主要角色的benchmark，它的核心洞察是：角色不应该只有一个固定的人格，而应该有一个沿着心理轴变化的“角色弧”。作者在不同的叙事阶段给同一个场景探测模型反应，看它是否能捕捉到角色的成长或堕落。实验结果很有意思——把角色弧信息加进去之后，模型在所有上下文策略中表现都是最好的。这说明什么？说明我们以前对“上下文”的理解太狭隘了，不是塞越多信息越好，而是要找到那个动态的、任务相关的结构。我忍不住要想，这对科学计算意味着什么？我们训练模型的时候，是不是也常常忽视了问题本身的结构演化？
+
+接下来这篇TIDE很有意思，它提出了一个被严重低估的问题：我们现在的Agent都太被动了，只在用户明确提出需求时才行动，但用户很可能根本没意识到还有其它问题存在。TIDE的框架是让Agent主动从上下文里发现多个隐藏问题，配套一个模板引导的迭代机制。作者有一个很敏锐的观察：单次预测总是会锚定在最显著的问题上，给出泛泛的结论，迭代才有可能挖掘出更深入、更具体的问题。这让我想到，我们在做科学计算的时候其实也经常面对类似的情况——一个方程、一个模型，它可能同时有多个地方的精度不足或者物理解释不通，但通常我们只注意到最明显的那一个。如果Agent的主动发现能力能够迁移到科学问题的诊断上，会是怎样的图景？
+
+然后是AdaPlanBench，这工作关注的是Agent在同时面对世界约束和用户约束时的自适应规划能力。现实中的问题往往不是一开始就把所有约束条件给你，而是随着交互推进逐渐披露。AdaPlanBench构建了一个基于307个 household任务的可扩展基准，约束是在运行时动态揭示的。这让我想起我们做PDE求解时的感受——很多问题确实是逐步给定的，比如渐进式的网格加密、比如自适应的时间步长。区别在于，我们传统上是用数值分析的先验知识来驱动这种自适应，而这里Agent是用与环境的交互来驱动。也许这两种思路可以碰撞出一些新的东西。
+
+最后来看今天最“硬核”的一篇，World-Language-Action model。这篇试图统一三种能力：世界建模、语言推理和动作合成。它用一个自回归的Transformer主干而不是双向扩散模型来预测下一状态，这个状态同时包含语义层面的文本意图和物理层面的细粒度动力学。物理动力学通过世界建模目标来监督。作者想做的事情本质上是一个“具身的基础模型”，能够处理文本指令、图像和机器人状态。读完这篇我一直在想一个问题：我们做科学计算时，其实也在试图统一“物理定律的表达”和“具体问题的求解”，这两条路最终会走到一起去吗？
+
+好了，今天想和大家分享的整体观察是什么呢？我花了大约十分钟浏览这五篇论文，发现它们不约而同地在指向同一个方向——如何让Agent不只是被动地执行指令，而是能够主动发现问题、适应变化、保持结构化的一致性。这其实也是我们AI for Science一直在追求的东西，只是场景换到了科学问题上。这些在通用Agent上积累的方法论，也许很快就会被迁移到科学计算的核心挑战上来。我们拭目以待。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.06492" target="_blank">Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution</a></li>
+<li><a href="https://arxiv.org/abs/2606.05553" target="_blank">ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?</a></li>
+<li><a href="https://arxiv.org/abs/2606.04743" target="_blank">TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration</a></li>
+<li><a href="https://arxiv.org/abs/2606.05622" target="_blank">AdaPlanBench: Evaluating Adaptive Planning in Large Language Model Agents under World and User Constraints</a></li>
+<li><a href="https://arxiv.org/abs/2606.05979" target="_blank">World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
