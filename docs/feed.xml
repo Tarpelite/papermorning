@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-08</title>
+      <description>今日学术播报: GENEB: Why Genomic Models Are , Robots Need More than VLA and , Your UnEmbedding Matrix is Sec...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-08.mp3" length="10470548" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-08.mp3</guid>
+      <pubDate>2026-06-08T23:48:59.986539Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-07</title>
       <description>今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-07.mp3" length="9342685" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-09.mp3" length="8263097" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-09.mp3</guid>
       <pubDate>2026-05-09T23:14:37.296461Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-08</title>
-      <description>今日学术播报: Skill1: Unified Evolution of S, Beyond Semantic Similarity: Re, MARBLE: Multi-Aspect Reward Ba...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-08.mp3" length="7647443" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-08.mp3</guid>
-      <pubDate>2026-05-08T23:30:49.082805Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

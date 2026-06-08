@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-08",
+    "title": "Paper Morning 2026-06-08",
+    "description": "今日学术播报: GENEB: Why Genomic Models Are , Robots Need More than VLA and , Your UnEmbedding Matrix is Sec...",
+    "audio_file": "2026-06-08.mp3",
+    "script": "各位早上好，新的一周开始了，Paper Morning如约而至。\n\n今天想先从一个我们AI for Science社群常常忽略的问题聊起：到底怎么才算真正“评估”一个科学领域的基础模型？GENEB这篇论文就直接戳破了这个看似简单但实际非常棘手的问题。作者们发现，基因组学领域已经有几十个基础模型了，但它们的性能排名居然极度不稳定——同一个模型在不同的任务类别上排名可能天差地别。原因是现有的benchmark太碎片化，每个模型在不同的协议下测试，有的用zero-shot，有的用fine-tuning，根本没有统一的可比性。GENEB这个工作于是做了一个统一的诊断框架，用同一个probing协议在100个任务上测评了40个模型。结果很耐人寻味：没有绝对的赢家，模型的能力分布高度依赖于任务类型。这让我想到我们在PDE求解器或者Operator Learning里的评估不也常常面临类似问题吗？大家各跑各的benchmark，claim的提升到底来自模型本身还是数据或者评估协议的差异，往往说不清。这篇工作提醒我们，foundation model的成熟不仅仅是训练更大的模型，更需要建立可信赖的评估...",
+    "papers": [
+      {
+        "title": "GENEB: Why Genomic Models Are Hard to Compare",
+        "url": "https://arxiv.org/abs/2606.04525",
+        "arxiv_id": "2606.04525"
+      },
+      {
+        "title": "Robots Need More than VLA and World Models",
+        "url": "https://arxiv.org/abs/2606.06556",
+        "arxiv_id": "2606.06556"
+      },
+      {
+        "title": "Your UnEmbedding Matrix is Secretly a Feature Lens for Text Embeddings",
+        "url": "https://arxiv.org/abs/2606.07502",
+        "arxiv_id": "2606.07502"
+      },
+      {
+        "title": "SoCRATES: Towards Reliable Automated Evaluation of Proactive LLM Mediation across Domains and Socio-cognitive Variations",
+        "url": "https://arxiv.org/abs/2606.05563",
+        "arxiv_id": "2606.05563"
+      },
+      {
+        "title": "Time series Foundation Models based on Physics-Informed Synthetic Histories for Cold-Start Photovoltaic Forecasting",
+        "url": "https://arxiv.org/abs/2606.07457v1",
+        "arxiv_id": "2606.07457v1"
+      }
+    ],
+    "published_at": "2026-06-08T23:48:59.986539Z"
+  },
+  {
     "date": "2026-06-07",
     "title": "Paper Morning 2026-06-07",
     "description": "今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-09T23:14:37.296461Z"
-  },
-  {
-    "date": "2026-05-08",
-    "title": "Paper Morning 2026-05-08",
-    "description": "今日学术播报: Skill1: Unified Evolution of S, Beyond Semantic Similarity: Re, MARBLE: Multi-Aspect Reward Ba...",
-    "audio_file": "2026-05-08.mp3",
-    "script": "各位早上好，Paper Morning今天开播了。\n\n我们来聊聊本周新鲜出炉的几篇有意思的工作。\n\n先看Skill1这篇，它解决的是一个很实际的问题：怎么让语言模型agent能够持续进化自己的技能库。大家知道，现在的agent通常需要依赖一个预先定义好的技能库，但真实场景中技能是在不断积累的。Skill1的思路很巧妙，它用单个强化学习策略同时完成三项任务：从技能库中查询相关技能、实际使用这个技能解决问题、以及从解决经验中提炼出新技能。所有学习信号都来自一个统一的任务outcome目标。这和我们做科学计算的传统思路很不一样——我们通常是为每个子任务设计专门的模块或算法，而Skill1展示了一种更统一的演进路径。我联想到，这其实有点像是把一个科学求解器看成不断积累“解题经验”的agent，而不是静态的固定方法论。\n\n第二篇关于agentic search的论文提出了一个很根本的问题：现有的检索系统，不管是基于词义还是语义，在agent执行多步推理任务时都显得不够灵活。问题在于检索被压缩成一步，证据如果在早期被过滤掉，后面再强的推理模型也无法恢复。这对于需要发现中间实体、组合弱线索、然后修正...",
-    "papers": [
-      {
-        "title": "Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2605.06130",
-        "arxiv_id": "2605.06130"
-      },
-      {
-        "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
-        "url": "https://arxiv.org/abs/2605.05242",
-        "arxiv_id": "2605.05242"
-      },
-      {
-        "title": "MARBLE: Multi-Aspect Reward Balance for Diffusion RL",
-        "url": "https://arxiv.org/abs/2605.06507",
-        "arxiv_id": "2605.06507"
-      },
-      {
-        "title": "Continuous Latent Diffusion Language Model",
-        "url": "https://arxiv.org/abs/2605.06548",
-        "arxiv_id": "2605.06548"
-      },
-      {
-        "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
-        "url": "https://arxiv.org/abs/2604.27393",
-        "arxiv_id": "2604.27393"
-      }
-    ],
-    "published_at": "2026-05-08T23:30:49.082805Z"
   }
 ]
