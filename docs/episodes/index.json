@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-09",
+    "title": "Paper Morning 2026-06-09",
+    "description": "今日学术播报: Agents' Last Exam, LatentSkill: From In-Context T, FlashMemory-DeepSeek-V4: Light...",
+    "audio_file": "2026-06-09.mp3",
+    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想先从一个我们领域内外都在热议的话题聊起：AI agent到底有没有真正的能力提升？还是说我们现有的评测方式已经不足以衡量它的进步了？\n\n第一篇论文 Agents' Last Exam 提出的正是这个问题。作者认为，现在很多基准测试已经不能反映AI在实际经济价值任务中的表现了。他们与250多位行业专家合作，构建了一个关注长期任务、经济价值可验证的新评测框架ALE，覆盖55个子领域、13个行业集群。这让我想到我们在科学计算中经常讨论的“ 真问题”——到底什么样的任务才是有意义的？是解一个PDE，还是真正融入科研工作流？agent领域现在面临的评估困境，其实跟科学计算benchmark的问题很像：我们需要的是能够衡量“解决实际问题”能力的测试，而不是刷榜用的玩具数据。\n\n接下来这篇 LatentSkill 有意思的地方在于，它把agent的“技能”从prompt里搬到了模型权重里。具体做法是用一个预训练的超网络把文本技能转换成即插即用的LoRA适配器，这样技能知识就存储在权重空间而不是上下文空间。实验结果很亮眼，在ALFWorl...",
+    "papers": [
+      {
+        "title": "Agents' Last Exam",
+        "url": "https://arxiv.org/abs/2606.05405",
+        "arxiv_id": "2606.05405"
+      },
+      {
+        "title": "LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents",
+        "url": "https://arxiv.org/abs/2606.06087",
+        "arxiv_id": "2606.06087"
+      },
+      {
+        "title": "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention",
+        "url": "https://arxiv.org/abs/2606.09079",
+        "arxiv_id": "2606.09079"
+      },
+      {
+        "title": "Topological Neural Operators",
+        "url": "https://arxiv.org/abs/2606.09806v1",
+        "arxiv_id": "2606.09806v1"
+      },
+      {
+        "title": "WorldCraft: From Camera Navigation to Object Manipulation in Interactive Video World Models",
+        "url": "https://arxiv.org/abs/2605.25077",
+        "arxiv_id": "2605.25077"
+      }
+    ],
+    "published_at": "2026-06-09T23:52:32.670817Z"
+  },
+  {
     "date": "2026-06-08",
     "title": "Paper Morning 2026-06-08",
     "description": "今日学术播报: GENEB: Why Genomic Models Are , Robots Need More than VLA and , Your UnEmbedding Matrix is Sec...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-10T23:27:24.183570Z"
-  },
-  {
-    "date": "2026-05-09",
-    "title": "Paper Morning 2026-05-09",
-    "description": "今日学术播报: Beyond Semantic Similarity: Re, Continuous Latent Diffusion La, Skill1: Unified Evolution of S...",
-    "audio_file": "2026-05-09.mp3",
-    "script": "各位早上好，周末的Paper Morning又和大家见面了。今天想聊的话题可能和平时有些不同——我们暂时把PDE求解器和神经算子放一边，去看看大语言模型和Agent领域正在发生什么。不是因为这些方向不重要，而是我发现最近有几篇论文虽然表面上讲的是NLP和Agent，但其背后的思路其实和我们科学计算领域正在发生的范式转变隐隐呼应。\n\n先来看第一篇，它直接挑战了一个我们习以为常的假设。现代检索系统无论是基于关键词还是语义相似度，本质上都是把整个语料库压缩成一个固定的接口， Agent只能通过top-k的检索结果来获取信息。作者认为这对于agentic search来说是致命的瓶颈——因为复杂的多步推理需要灵活地发现中间实体、组合弱线索、在发现部分证据后修正计划，而传统检索一旦在早期过滤掉了相关信息，后面再强的推理模型也无法恢复。作者提出了一种直接与语料库交互的检索范式，让Agent能够动态地探索和回溯。这个思路其实和我们做科学计算时遇到的问题很像：当求解PDE的神经网络在某个空间区域失效时，我们能否让模型有机制去“回溯”并重新探索？这篇工作给出的方向值得思考。\n\n第二篇论文提出了一个挺有意...",
-    "papers": [
-      {
-        "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
-        "url": "https://arxiv.org/abs/2605.05242",
-        "arxiv_id": "2605.05242"
-      },
-      {
-        "title": "Continuous Latent Diffusion Language Model",
-        "url": "https://arxiv.org/abs/2605.06548",
-        "arxiv_id": "2605.06548"
-      },
-      {
-        "title": "Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2605.06130",
-        "arxiv_id": "2605.06130"
-      },
-      {
-        "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
-        "url": "https://arxiv.org/abs/2604.27393",
-        "arxiv_id": "2604.27393"
-      },
-      {
-        "title": "MiA-Signature: Approximating Global Activation for Long-Context Understanding",
-        "url": "https://arxiv.org/abs/2605.06416",
-        "arxiv_id": "2605.06416"
-      }
-    ],
-    "published_at": "2026-05-09T23:14:37.296461Z"
   }
 ]
