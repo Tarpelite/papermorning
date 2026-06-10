@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-10</h1>
+    <p class="date">2026-06-10</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-10.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想先从一个更大的观察说起。过去几个月啊，我们看到大模型领域有一个很明显的趋势，就是大家开始从“刷榜”转向“构建能力”。什么意思呢？不再只是追求某个 benchmark 上的分数，而是开始系统性地构建模型的基础能力——长上下文、多模态理解、具身智能、世界模型。那这些能力构建，跟我们AI for Science有什么关系呢？其实是密切相关的。因为科学问题的本质就是理解物理世界、建模复杂系统，而这些基础能力恰恰是通往更强大的科学计算工具的必经之路。今天这几篇论文，虽然不是直接做PDE求解或者神经算子，但我觉得对于我们理解这个趋势很重要。
+
+第一篇是快手的Keye-VL-2.0，这是一个针对超长视频理解的多模态大模型。他们提出了一个很实际的问题：小时级的视频怎么处理？传统的注意力机制在这么长的上下文上计算量爆炸，但他们首次把DeepSeek的稀疏注意力机制adapt到了多模态架构上，实现了无损的25万token上下文处理。这个技术细节本身很有价值，但我更想指出的是，他们做这件事的动机是“agentic intelligence”——让模型能够理解长视频，从而在真实场景中完成复杂任务。这其实呼应了我们AI4S社区一直在讨论的事情：如何让模型理解真实的、长时间跨度的物理过程？不管是气候模拟还是流体演化，本质上都是时间维度上的长程依赖问题。他们的稀疏注意力思路，或许能给未来处理长时间物理序列的模型一些启发。
+
+接下来第二篇Role-Agent，非常有想法的一个工作。他们让同一个LLM同时扮演agent和environment，通过自我对弈来实现bootstrap进化。这个思路很巧妙：agent执行动作并预测未来状态，然后拿预测和实际状态做对比作为过程奖励；同时模型作为environment来分析失败模式反过来指导agent。这本质上是一种无监督的自我改进范式。我读到这儿的时候，第一反应是这会不会给科学计算中的“在线学习”带来新的可能性？想象一下，如果我们让一个物理神经网络同时作为“求解器”和“验证器”，在求解过程中不断自我校正，这或许能解决我们现在面临的很多难题，比如PINN的梯度冲突、分布外泛化等等。当然这还是LLM层面的工作，但思想方法上我觉得很有迁移价值。
+
+第三篇ABot-Earth 0.5是一个生成式3D地球模型，用的是3D Gaussian Splatting表示。它可以从卫星影像生成大规模的三维城市场景，十分钟内能生出一平方公里的内容。这个工作的工程能力很强，但我更感兴趣的是他们选择的表示方法——3DGS。熟悉NeRF的朋友知道，3DGS最近在神经渲染领域火得很快，因为它渲染效率高、能捕捉几何细节。那把它用到地球建模上意味着什么？我个人判断，这可能代表着一种从“数值模拟”走向“生成式仿真”的范式转变。过去我们用物理方程数值求解来预测地球系统，未来是不是可以用生成模型来“想象”地球的各种状态？这种思路如果能和物理约束结合，可能会打开新的研究空间。
+
+第四篇是Retrospective Harness Optimization，RHO。这个工作解决的是一个很实际的问题：如何只用历史数据来优化agent的技能库，而不需要人工标注的验证集？他们的做法是从过去轨迹中选出一个有挑战性的任务集合，然后让agent自己重新求解、通过自我验证来筛选最优的技能更新方案。这本质上是把“试错”从在线学习搬到了离线进行，用我们熟悉的话说，有点像是offline RL的思路，但完全不需要ground truth reward。我觉得这个方法论对于科学计算中的模型迭代非常有参考价值。大家知道训练科学计算模型的时候，获取高质量标注数据往往代价很高，如果能像RHO这样充分利用历史求解轨迹来自我改进，那将大大降低数据依赖。
+
+最后一篇WorldOlympiad很有意思，它提出了一个专门用来诊断基于视频的世界模型的benchmark，分成了物理保真度、几何一致性和交互可控性三个维度。他们指出现在很多世界模型的工作只关注视觉质量或者短期时序连贯性，但根本不管生成的内容是否符合物理规律、是否有连贯的3D结构。这其实和我们做物理仿真的研究者关心的问题是一样的——你生成一个视频，哪怕看起来很逼真，但如果物体不受重力影响、碰撞不合逻辑，那对于科学模拟来说毫无价值。WorldOlympiad用分割和MLLM-as-judge来评估物理规则遵守程度，这个思路很直接但很有效。我甚至觉得，这个benchmark的方法论可以直接借鉴到物理神经网络的评估体系中来。
+
+好了，今天的论文聊完了。回头看一眼会发现一个有趣的共性：这些工作都在试图给大模型构建“物理世界的基础能力”——不管是长程时序理解、物理规则的遵守、还是三维几何的一致性。这和我们AI for Science追求的目标本质上是一致的。区别在于，他们用的是通用大模型的路径，我们用的是物理信息学习和神经算子的路径。但最终大家都会殊途同归：让模型真正理解物理世界，而不是仅仅拟合数据。所以接下来几周，我会持续关注这两条路径之间的交叉和融合，这也可能是未来几年最有意思的故事之一。咱们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.10651" target="_blank">Kwai Keye-VL-2.0 Technical Report</a></li>
+<li><a href="https://arxiv.org/abs/2606.10917" target="_blank">Role-Agent: Bootstrapping LLM Agents via Dual-Role Evolution</a></li>
+<li><a href="https://arxiv.org/abs/2606.09967" target="_blank">ABot-Earth 0.5: Generative 3D Earth Model</a></li>
+<li><a href="https://arxiv.org/abs/2606.05922" target="_blank">Retrospective Harness Optimization: Improving LLM Agents via Self-Preference over Trajectory Rollouts</a></li>
+<li><a href="https://arxiv.org/abs/2606.11129" target="_blank">WorldOlympiad: Can Your World Model Survive a Triathlon?</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

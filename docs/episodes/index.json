@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-10",
+    "title": "Paper Morning 2026-06-10",
+    "description": "今日学术播报: Kwai Keye-VL-2.0 Technical Rep, Role-Agent: Bootstrapping LLM , ABot-Earth 0.5: Generative 3D ...",
+    "audio_file": "2026-06-10.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想先从一个更大的观察说起。过去几个月啊，我们看到大模型领域有一个很明显的趋势，就是大家开始从“刷榜”转向“构建能力”。什么意思呢？不再只是追求某个 benchmark 上的分数，而是开始系统性地构建模型的基础能力——长上下文、多模态理解、具身智能、世界模型。那这些能力构建，跟我们AI for Science有什么关系呢？其实是密切相关的。因为科学问题的本质就是理解物理世界、建模复杂系统，而这些基础能力恰恰是通往更强大的科学计算工具的必经之路。今天这几篇论文，虽然不是直接做PDE求解或者神经算子，但我觉得对于我们理解这个趋势很重要。\n\n第一篇是快手的Keye-VL-2.0，这是一个针对超长视频理解的多模态大模型。他们提出了一个很实际的问题：小时级的视频怎么处理？传统的注意力机制在这么长的上下文上计算量爆炸，但他们首次把DeepSeek的稀疏注意力机制adapt到了多模态架构上，实现了无损的25万token上下文处理。这个技术细节本身很有价值，但我更想指出的是，他们做这件事的动机是“agentic intelligence”——让模型能...",
+    "papers": [
+      {
+        "title": "Kwai Keye-VL-2.0 Technical Report",
+        "url": "https://arxiv.org/abs/2606.10651",
+        "arxiv_id": "2606.10651"
+      },
+      {
+        "title": "Role-Agent: Bootstrapping LLM Agents via Dual-Role Evolution",
+        "url": "https://arxiv.org/abs/2606.10917",
+        "arxiv_id": "2606.10917"
+      },
+      {
+        "title": "ABot-Earth 0.5: Generative 3D Earth Model",
+        "url": "https://arxiv.org/abs/2606.09967",
+        "arxiv_id": "2606.09967"
+      },
+      {
+        "title": "Retrospective Harness Optimization: Improving LLM Agents via Self-Preference over Trajectory Rollouts",
+        "url": "https://arxiv.org/abs/2606.05922",
+        "arxiv_id": "2606.05922"
+      },
+      {
+        "title": "WorldOlympiad: Can Your World Model Survive a Triathlon?",
+        "url": "https://arxiv.org/abs/2606.11129",
+        "arxiv_id": "2606.11129"
+      }
+    ],
+    "published_at": "2026-06-10T23:57:45.682976Z"
+  },
+  {
     "date": "2026-06-09",
     "title": "Paper Morning 2026-06-09",
     "description": "今日学术播报: Agents' Last Exam, LatentSkill: From In-Context T, FlashMemory-DeepSeek-V4: Light...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-11T23:31:26.369505Z"
-  },
-  {
-    "date": "2026-05-10",
-    "title": "Paper Morning 2026-05-10",
-    "description": "今日学术播报: Beyond Semantic Similarity: Re, Continuous Latent Diffusion La, Skill1: Unified Evolution of S...",
-    "audio_file": "2026-05-10.mp3",
-    "script": "各位早上好，周日的Paper Morning又跟各位见面了。今天想聊一个稍微有点发散的话题——最近大语言模型和Agent领域的一些新进展，它们或许在方法论层面能给AI for Science一些启发。\n\n先来看第一篇工作，叫《Beyond Semantic Similarity》，作者来自微软亚研院。这篇论文试图解决的问题很有意思：现在的检索系统，无论是基于关键词还是语义相似度，都把整个语料库“压缩”成一个固定的接口，开发者只能调用一个top-k检索，然后交给下游推理。但作者指出，对于真正需要多步推理的Agent任务来说，这种设计成了瓶颈——Agent需要发现中间实体、组合弱线索、根据部分证据修正计划，而这些能力在早期检索阶段丢失的信息后面是找不回来的。这让我想到，我们在做科学问题求解的时候不也经常这样吗？早期的特征提取或者粗粒度离散化可能会丢失一些微妙的结构信息，后面的精排或者求解阶段想补救就很困难。作者提出的思路是让Agent直接与原始语库交互，而不是通过一个固定的相似度接口。这个方向值得注意，因为它可能在科学文献检索、代码检索这些场景中有直接的应用价值。\n\n接下来看一篇架构层面的...",
-    "papers": [
-      {
-        "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
-        "url": "https://arxiv.org/abs/2605.05242",
-        "arxiv_id": "2605.05242"
-      },
-      {
-        "title": "Continuous Latent Diffusion Language Model",
-        "url": "https://arxiv.org/abs/2605.06548",
-        "arxiv_id": "2605.06548"
-      },
-      {
-        "title": "Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2605.06130",
-        "arxiv_id": "2605.06130"
-      },
-      {
-        "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
-        "url": "https://arxiv.org/abs/2604.27393",
-        "arxiv_id": "2604.27393"
-      },
-      {
-        "title": "MiA-Signature: Approximating Global Activation for Long-Context Understanding",
-        "url": "https://arxiv.org/abs/2605.06416",
-        "arxiv_id": "2605.06416"
-      }
-    ],
-    "published_at": "2026-05-10T23:27:24.183570Z"
   }
 ]
