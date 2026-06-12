@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-12",
+    "title": "Paper Morning 2026-06-12",
+    "description": "今日学术播报: Redesign Mixture-of-Experts Ro, Claw-SWE-Bench: A Benchmark fo, Toward Generalist Autonomous R...",
+    "audio_file": "2026-06-12.mp3",
+    "script": "各位早上好，今天周五，Paper Morning开播了。\n\n今天的几篇论文看起来主题分散，但我发现它们其实在回答一个共同的问题：AI agent如何从简单的执行工具，进化成真正能帮助我们做研究的智能伙伴。这个线索值得展开聊聊。\n\n先说第一篇，关于MoE路由器的新设计。研究者发现，路由器的每一行本质上是在用专家矩阵的一个向量来代表这个专家，但之前没有明确的数学原理来约束这个表示应该是什么。他们提出，让路由器的每一行对齐到对应专家矩阵的主奇异方向，这是矩阵最具表达力的方向。方法叫做Manifold Power Iteration，简单说就是迭代地强化这个主方向。这个工作技术细节扎实，但我更关心的是它背后的趋势：MoE正在从\"堆专家\"的粗放模式，进化到对每个组件有更精细的理论指导。这对构建更强大的agent基础模型很重要。\n\n第二篇关于编程agent的benchmark很有意思。现在通用agent越来越厉害，但我们很难公平地比较它们写代码的能力，因为各自的接口、环境、评测标准都不一样。Claw-SWE-Bench提供了350个跨8种语言的GitHub问题修复任务，用统一的协议约束所有agen...",
+    "papers": [
+      {
+        "title": "Redesign Mixture-of-Experts Routers with Manifold Power Iteration",
+        "url": "https://arxiv.org/abs/2606.12397",
+        "arxiv_id": "2606.12397"
+      },
+      {
+        "title": "Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks",
+        "url": "https://arxiv.org/abs/2606.12344",
+        "arxiv_id": "2606.12344"
+      },
+      {
+        "title": "Toward Generalist Autonomous Research via Hypothesis-Tree Refinement",
+        "url": "https://arxiv.org/abs/2606.11926",
+        "arxiv_id": "2606.11926"
+      },
+      {
+        "title": "Beyond Scalar Rewards by Internalizing Reasoning into Score Distributions",
+        "url": "https://arxiv.org/abs/2606.09076",
+        "arxiv_id": "2606.09076"
+      },
+      {
+        "title": "Agentic Environment Engineering for Large Language Models: A Survey of Environment Modeling, Synthesis, Evaluation, and Application",
+        "url": "https://arxiv.org/abs/2606.12191",
+        "arxiv_id": "2606.12191"
+      }
+    ],
+    "published_at": "2026-06-12T00:04:01.047486Z"
+  },
+  {
     "date": "2026-06-10",
     "title": "Paper Morning 2026-06-10",
     "description": "今日学术播报: Kwai Keye-VL-2.0 Technical Rep, Role-Agent: Bootstrapping LLM , ABot-Earth 0.5: Generative 3D ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-12T23:37:40.252988Z"
-  },
-  {
-    "date": "2026-05-11",
-    "title": "Paper Morning 2026-05-11",
-    "description": "今日学术播报: MACE-Dance: Motion-Appearance , Mean Mode Screaming: Mean--Var, HyperEyes: Dual-Grained Effici...",
-    "audio_file": "2026-05-11.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家可能都关心的问题聊起：这两年我们见证了扩散模型从实验室走向千行百业，但当我们把模型做得越来越大、越来越深的时候，是否真的理解了训练过程中会发生什么？第一篇论文就给了我们一个值得警惕的答案。\n\n来自Pengqi Lu的工作研究了深层 Diffusion Transformer 的训练稳定性问题。他们发现，当把DiT扩展到数百层时，网络会悄然进入一种“沉默”状态，论文称之为Mean Mode Screaming。听起来有点戏剧化，但机制本身很有意思：网络在训练表面稳定的情况下，梯度中会累积一种“均值相干”的反向冲击，它打开深层残差分支，让整个网络的表示趋于同质化，最终抑制了token之间的差异化表达。更关键的是，这个过程不是突然发生的，而是Softmax Jacobian的零空间在值同质化后逐步抑制注意力logit梯度导致的。作者通过梯度的精确分解验证了这一机制。这项工作给我们的启示很清楚：扩展不只是堆层数，架构中那些看似优雅的设计——比如残差连接、Softmax——在极端深度下可能成为隐蔽的脆弱点。对我们做科学计...",
-    "papers": [
-      {
-        "title": "MACE-Dance: Motion-Appearance Cascaded Experts for Music-Driven Dance Video Generation",
-        "url": "https://arxiv.org/abs/2512.18181",
-        "arxiv_id": "2512.18181"
-      },
-      {
-        "title": "Mean Mode Screaming: Mean--Variance Split Residuals for 1000-Layer Diffusion Transformers",
-        "url": "https://arxiv.org/abs/2605.06169",
-        "arxiv_id": "2605.06169"
-      },
-      {
-        "title": "HyperEyes: Dual-Grained Efficiency-Aware Reinforcement Learning for Parallel Multimodal Search Agents",
-        "url": "https://arxiv.org/abs/2605.07177",
-        "arxiv_id": "2605.07177"
-      },
-      {
-        "title": "Flow-OPD: On-Policy Distillation for Flow Matching Models",
-        "url": "https://arxiv.org/abs/2605.08063",
-        "arxiv_id": "2605.08063"
-      },
-      {
-        "title": "HumanNet: Scaling Human-centric Video Learning to One Million Hours",
-        "url": "https://arxiv.org/abs/2605.06747",
-        "arxiv_id": "2605.06747"
-      }
-    ],
-    "published_at": "2026-05-11T23:31:26.369505Z"
   }
 ]

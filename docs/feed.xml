@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-12</title>
+      <description>今日学术播报: Redesign Mixture-of-Experts Ro, Claw-SWE-Bench: A Benchmark fo, Toward Generalist Autonomous R...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-12.mp3" length="7553402" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-12.mp3</guid>
+      <pubDate>2026-06-12T00:04:01.047486Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-10</title>
       <description>今日学术播报: Kwai Keye-VL-2.0 Technical Rep, Role-Agent: Bootstrapping LLM , ABot-Earth 0.5: Generative 3D ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-10.mp3" length="10378388" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-12.mp3" length="7360932" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-12.mp3</guid>
       <pubDate>2026-05-12T23:37:40.252988Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-11</title>
-      <description>今日学术播报: MACE-Dance: Motion-Appearance , Mean Mode Screaming: Mean--Var, HyperEyes: Dual-Grained Effici...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-11.mp3" length="9501928" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-11.mp3</guid>
-      <pubDate>2026-05-11T23:31:26.369505Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

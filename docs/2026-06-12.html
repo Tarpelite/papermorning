@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-12</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-12</h1>
+    <p class="date">2026-06-12</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-12.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周五，Paper Morning开播了。
+
+今天的几篇论文看起来主题分散，但我发现它们其实在回答一个共同的问题：AI agent如何从简单的执行工具，进化成真正能帮助我们做研究的智能伙伴。这个线索值得展开聊聊。
+
+先说第一篇，关于MoE路由器的新设计。研究者发现，路由器的每一行本质上是在用专家矩阵的一个向量来代表这个专家，但之前没有明确的数学原理来约束这个表示应该是什么。他们提出，让路由器的每一行对齐到对应专家矩阵的主奇异方向，这是矩阵最具表达力的方向。方法叫做Manifold Power Iteration，简单说就是迭代地强化这个主方向。这个工作技术细节扎实，但我更关心的是它背后的趋势：MoE正在从"堆专家"的粗放模式，进化到对每个组件有更精细的理论指导。这对构建更强大的agent基础模型很重要。
+
+第二篇关于编程agent的benchmark很有意思。现在通用agent越来越厉害，但我们很难公平地比较它们写代码的能力，因为各自的接口、环境、评测标准都不一样。Claw-SWE-Bench提供了350个跨8种语言的GitHub问题修复任务，用统一的协议约束所有agent的输入输出。这让我想到早年没有标准代码评测时，大家各说各的好，现在终于有了可比较的竞技场。对我们做AI4S的人来说，这个benchmark也提醒我们：agent的能力不能只靠"感觉"，要有扎实的评测。
+
+第三篇Arbor框架是我今天最想重点聊的。它试图让AI agent真正做科学研究，而不只是执行指令。大家知道，科研是一个循环：提出假设、做实验、解释结果、调整方向。传统agent大多是这个样子的：给一个任务，执行，结束。Arbor引入了Hypothesis Tree和长期记忆机制，让agent能够跨很长时间尺度积累洞见、调整研究方向。这其实是在模拟人类研究者最核心的能力：不是会做实验，而是知道为什么做这个实验。 coordinator像PI一样管战略，executor像研究生做具体实验，Hypothesis Tree记录整个研究过程的逻辑。这种"agent as researcher"的思路，可能是AI for Science最有想象力的方向之一。
+
+第四篇Z-Reward工作在图像生成领域，但它的思想对整个agent训练范式有启示。研究者认为，人类的审美偏好本质上是一个分布，而不是一个确定的分数。他们让大模型先推理出评分分布，再把这个分布"蒸馏"成高效的reward signal。这让我想到，如果连"这张图好不好"都不能简化为一个数字，那复杂的研究任务更应该用多维度的评估体系。实际上Arbor框架也在做类似的事——不是简单判断成功失败，而是追踪整个思维过程。
+
+最后一篇是关于agent环境的系统综述，覆盖8个属性维度、8个应用领域。这让我想到一个类比：培养一个研究者，需要给他课题、实验室、同行讨论的环境；培养一个agent，同样需要精心设计的环境来暴露它的能力边界。这篇综述梳理了当前环境工程的四种范式，对我们构建AI4S的实验平台很有参考价值。
+
+今天的五篇论文，表面上关于MoE、benchmark、框架、reward和环境，但它们共同描绘了一条线索：AI agent正在从"执行单一任务的工具"，向"能进行复杂自主研究的智能系统"进化。这个进化需要几个条件的配合：更强大的基础模型能力、更可靠的评测体系、更系统的研究框架、更精细的反馈机制，以及更完善的环境支持。
+
+我时常想，当AI不仅能执行指令，还能规划、反思、调整研究方向的时候，科学研究本身会变成什么样？也许不久的将来，我们每个研究者都会有一个AI co-worker，我们早上喝咖啡的时候，它已经帮我们筛完文献、跑完预实验、列好今天值得尝试的方向。这可能是我
+
+们这代人最值得期待的变化之一。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.12397" target="_blank">Redesign Mixture-of-Experts Routers with Manifold Power Iteration</a></li>
+<li><a href="https://arxiv.org/abs/2606.12344" target="_blank">Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks</a></li>
+<li><a href="https://arxiv.org/abs/2606.11926" target="_blank">Toward Generalist Autonomous Research via Hypothesis-Tree Refinement</a></li>
+<li><a href="https://arxiv.org/abs/2606.09076" target="_blank">Beyond Scalar Rewards by Internalizing Reasoning into Score Distributions</a></li>
+<li><a href="https://arxiv.org/abs/2606.12191" target="_blank">Agentic Environment Engineering for Large Language Models: A Survey of Environment Modeling, Synthesis, Evaluation, and Application</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
