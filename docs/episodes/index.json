@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-13",
+    "title": "Paper Morning 2026-06-13",
+    "description": "今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...",
+    "audio_file": "2026-06-13.mp3",
+    "script": "各位早上好，周末的清晨，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域的人都在感受的趋势聊起：LLM正在从“回答问题”走向“完成任务”，而这背后有一系列基础设施问题亟待解决。今天的几篇论文正好从不同角度触及了这个大主题。\n\n第一篇是MiniMax Sparse Attention，讲的是如何让LLM处理超长上下文。现在前沿模型要同时处理几十万的token，传统的softmax注意力成本太高了。这篇工作提出的方案很简洁：用一个轻量的索引分支来打分key-value块，然后为每个GQA组独立选出top-k的块，再在主分支做精确的块稀疏注意力。听起来是不是很像信息检索里的近似最近邻搜索？它本质上把长上下文问题转化成了一个检索问题，而且这种块级稀疏设计在工程上也更容易实现。这个方向其实反映了一个很现实的问题：我们都在谈百万token上下文，但如果没有高效的稀疏机制，这些能力在部署层面是跑不动的。所以这篇的工作不只是算法上的改进，更是在为长上下文模型的落地铺路。\n\n第二篇 Robust-U1 讨论了一个很本质的问题：多模态大模型在面对真实世界的视觉退化时，能否自己“恢复”图...",
+    "papers": [
+      {
+        "title": "MiniMax Sparse Attention",
+        "url": "https://arxiv.org/abs/2606.13392",
+        "arxiv_id": "2606.13392"
+      },
+      {
+        "title": "Robust-U1: Can MLLMs Self-Recover Corrupted Visual Content for Robust Understanding?",
+        "url": "https://arxiv.org/abs/2606.08063",
+        "arxiv_id": "2606.08063"
+      },
+      {
+        "title": "EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments",
+        "url": "https://arxiv.org/abs/2606.13681",
+        "arxiv_id": "2606.13681"
+      },
+      {
+        "title": "WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces",
+        "url": "https://arxiv.org/abs/2606.09426",
+        "arxiv_id": "2606.09426"
+      },
+      {
+        "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+        "url": "https://arxiv.org/abs/2606.13679",
+        "arxiv_id": "2606.13679"
+      }
+    ],
+    "published_at": "2026-06-13T00:01:55.544057Z"
+  },
+  {
     "date": "2026-06-12",
     "title": "Paper Morning 2026-06-12",
     "description": "今日学术播报: Redesign Mixture-of-Experts Ro, Claw-SWE-Bench: A Benchmark fo, Toward Generalist Autonomous R...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-13T23:38:26.902007Z"
-  },
-  {
-    "date": "2026-05-12",
-    "title": "Paper Morning 2026-05-12",
-    "description": "今日学术播报: Qwen-Image-2.0 Technical Repor, CollabVR: Collaborative Video , TMAS: Scaling Test-Time Comput...",
-    "audio_file": "2026-05-12.mp3",
-    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想和大家聊几篇最近热度比较高的论文，但我的视角可能和单纯看标题不太一样。我关注的不是这些模型本身有多强，而是它们背后展现出来的范式，对我们AI for Science领域可能有什么启发。\n\n第一篇是Qwen-Image-2.0，一个统一了图像生成和编辑的多模态基础模型。它用Qwen3-VL作为条件编码器，配合一个多模态扩散Transformer，来实现高质量的文本渲染、多语言排版和高分辨率的照片级生成。这篇论文的技术细节很扎实，但我更在意的是它传递出来的一个信号：多模态理解正在成为生成模型的底层能力，而不是一个附加功能。这让我想到我们在科学计算里常说的\"先理解后预测\"——当你有一个强大的视觉-语言联合编码器，很多下游任务会变得更可控。这对做PDE求解或者实验数据可视化的同志来说，是一个值得关注的趋势。\n\n第二篇叫CollabVR，讲的是视频生成模型和视觉语言模型如何协同做推理。它提出了一个VLM-VGM的闭环框架，在每个生成步骤上都让VLM介入，避免长程漂移和误差累积。这让我特别感兴趣，因为它本质上是在解决\"生成过程中的实时...",
-    "papers": [
-      {
-        "title": "Qwen-Image-2.0 Technical Report",
-        "url": "https://arxiv.org/abs/2605.10730",
-        "arxiv_id": "2605.10730"
-      },
-      {
-        "title": "CollabVR: Collaborative Video Reasoning with Vision-Language and Video Generation Models",
-        "url": "https://arxiv.org/abs/2605.08735",
-        "arxiv_id": "2605.08735"
-      },
-      {
-        "title": "TMAS: Scaling Test-Time Compute via Multi-Agent Synergy",
-        "url": "https://arxiv.org/abs/2605.10344",
-        "arxiv_id": "2605.10344"
-      },
-      {
-        "title": "PaperFit: Vision-in-the-Loop Typesetting Optimization for Scientific Documents",
-        "url": "https://arxiv.org/abs/2605.10341",
-        "arxiv_id": "2605.10341"
-      },
-      {
-        "title": "SEIF: Self-Evolving Reinforcement Learning for Instruction Following",
-        "url": "https://arxiv.org/abs/2605.07465",
-        "arxiv_id": "2605.07465"
-      }
-    ],
-    "published_at": "2026-05-12T23:37:40.252988Z"
   }
 ]

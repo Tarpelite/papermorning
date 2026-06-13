@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-13</title>
+      <description>今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-13.mp3" length="8861823" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-13.mp3</guid>
+      <pubDate>2026-06-13T00:01:55.544057Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-12</title>
       <description>今日学术播报: Redesign Mixture-of-Experts Ro, Claw-SWE-Bench: A Benchmark fo, Toward Generalist Autonomous R...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-12.mp3" length="7553402" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-13.mp3" length="10431051" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-13.mp3</guid>
       <pubDate>2026-05-13T23:38:26.902007Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-12</title>
-      <description>今日学术播报: Qwen-Image-2.0 Technical Repor, CollabVR: Collaborative Video , TMAS: Scaling Test-Time Comput...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-12.mp3" length="7360932" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-12.mp3</guid>
-      <pubDate>2026-05-12T23:37:40.252988Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
