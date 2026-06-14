@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-14",
+    "title": "Paper Morning 2026-06-14",
+    "description": "今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...",
+    "audio_file": "2026-06-14.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。今天是周末，清晨的时光很适合聊聊最近学术界都在关心什么。\n\n先来看第一篇工作，MiniMax Sparse Attention。这是针对长上下文LLM的稀疏注意力机制。核心思路很直接：用分组查询注意力配合一个轻量级的索引分支，让模型能够在上百万token的上下文中高效地检索相关信息。传统softmax注意力的平方复杂度在大规模部署时确实是个瓶颈，这篇工作用块级稀疏的方法绕了过去。这里有个值得注意的点，他们没有追求复杂的稀疏模式，而是强调简洁和可扩展性，这种务实的设计思路其实很值得咱们AI4S领域借鉴。我们在做PDE求解器的时候，经常面对大规模时空网格，同样需要在计算效率和精度之间找平衡，有时候简单粗暴的方案反而比精巧的近似更可靠。\n\n第二篇 Robust-U1 探讨了一个很有意思的问题：多模态大模型能不能自己“看见”并修复被破坏的视觉输入。这篇工作提出了一个三阶段的框架，先做监督微调让模型具备初步重建能力，然后用强化学习结合像素级SSIM奖励和语义级奖励进一步提升。他们试图回答的是模型能否在像素层面恢复细节，这和我们做物理仿真时处理...",
+    "papers": [
+      {
+        "title": "MiniMax Sparse Attention",
+        "url": "https://arxiv.org/abs/2606.13392",
+        "arxiv_id": "2606.13392"
+      },
+      {
+        "title": "Robust-U1: Can MLLMs Self-Recover Corrupted Visual Content for Robust Understanding?",
+        "url": "https://arxiv.org/abs/2606.08063",
+        "arxiv_id": "2606.08063"
+      },
+      {
+        "title": "EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments",
+        "url": "https://arxiv.org/abs/2606.13681",
+        "arxiv_id": "2606.13681"
+      },
+      {
+        "title": "WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces",
+        "url": "https://arxiv.org/abs/2606.09426",
+        "arxiv_id": "2606.09426"
+      },
+      {
+        "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+        "url": "https://arxiv.org/abs/2606.13679",
+        "arxiv_id": "2606.13679"
+      }
+    ],
+    "published_at": "2026-06-14T23:47:57.586481Z"
+  },
+  {
     "date": "2026-06-13",
     "title": "Paper Morning 2026-06-13",
     "description": "今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-14T23:30:25.136655Z"
-  },
-  {
-    "date": "2026-05-13",
-    "title": "Paper Morning 2026-05-13",
-    "description": "今日学术播报: World Action Models: The Next , MCP-Cosmos: World Model-Augmen, World Model for Robot Learning...",
-    "audio_file": "2026-05-13.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想跟大家聊一个正在悄然改变具身智能研究范式的话题——World Model，也就是世界模型。可能不少朋友已经注意到，近几个月来arXiv上关于世界模型的论文突然多了起来，而今天我们要讨论的几篇论文，恰好勾勒出了这个方向正在发生的几个关键转变。\n\n先来看这篇World Action Models，把这个概念叫做WAM。大家知道，传统的VLA模型，也就是视觉语言动作模型，在语义泛化方面已经做得很不错了，但它们本质上还是一种反应式的映射——看到什么就输出什么动作，中间并没有显式建模物理世界在干预下会如何演化。这篇工作的核心贡献，就是提出把预测性的世界模型嵌入到动作生成管道中，让模型同时建模未来状态和动作的联合分布，而不仅仅是条件分布。作者把这种新范式叫做World Action Models。这个思路让我想起我们在PDE求解里常说的“预测-校正”机制——先有对系统演化的预测，再基于预测来做决策，只不过这里预测的不是物理量而是智能体与环境交互的轨迹。当然，现在WAM的定义还比较宽泛，不同工作在架构、学习目标上各有侧重，这也引出了我们接...",
-    "papers": [
-      {
-        "title": "World Action Models: The Next Frontier in Embodied AI",
-        "url": "https://arxiv.org/abs/2605.12090",
-        "arxiv_id": "2605.12090"
-      },
-      {
-        "title": "MCP-Cosmos: World Model-Augmented Agents for Complex Task Execution in MCP Environments",
-        "url": "https://arxiv.org/abs/2605.09131",
-        "arxiv_id": "2605.09131"
-      },
-      {
-        "title": "World Model for Robot Learning: A Comprehensive Survey",
-        "url": "https://arxiv.org/abs/2605.00080",
-        "arxiv_id": "2605.00080"
-      },
-      {
-        "title": "L2P: Unlocking Latent Potential for Pixel Generation",
-        "url": "https://arxiv.org/abs/2605.12013",
-        "arxiv_id": "2605.12013"
-      },
-      {
-        "title": "Efficient Pre-Training with Token Superposition",
-        "url": "https://arxiv.org/abs/2605.06546",
-        "arxiv_id": "2605.06546"
-      }
-    ],
-    "published_at": "2026-05-13T23:38:26.902007Z"
   }
 ]

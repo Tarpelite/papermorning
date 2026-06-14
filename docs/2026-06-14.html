@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-14</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-14</h1>
+    <p class="date">2026-06-14</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-14.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。今天是周末，清晨的时光很适合聊聊最近学术界都在关心什么。
+
+先来看第一篇工作，MiniMax Sparse Attention。这是针对长上下文LLM的稀疏注意力机制。核心思路很直接：用分组查询注意力配合一个轻量级的索引分支，让模型能够在上百万token的上下文中高效地检索相关信息。传统softmax注意力的平方复杂度在大规模部署时确实是个瓶颈，这篇工作用块级稀疏的方法绕了过去。这里有个值得注意的点，他们没有追求复杂的稀疏模式，而是强调简洁和可扩展性，这种务实的设计思路其实很值得咱们AI4S领域借鉴。我们在做PDE求解器的时候，经常面对大规模时空网格，同样需要在计算效率和精度之间找平衡，有时候简单粗暴的方案反而比精巧的近似更可靠。
+
+第二篇 Robust-U1 探讨了一个很有意思的问题：多模态大模型能不能自己“看见”并修复被破坏的视觉输入。这篇工作提出了一个三阶段的框架，先做监督微调让模型具备初步重建能力，然后用强化学习结合像素级SSIM奖励和语义级奖励进一步提升。他们试图回答的是模型能否在像素层面恢复细节，这和我们做物理仿真时处理噪声数据有相通之处。不过我持谨慎态度，多模态模型的“自我修复”到底是真的理解了底层物理规律，还是只是在统计层面做了一些看起来合理的填补，这个边界还需要更多验证。
+
+第三篇 EvoArena 把目光投向了动态环境中的LLM agent。他们构建了一个基准测试，模拟终端、软件、社会环境的变化，要求agent能够持续适应。更关键的是提出了EvoMem这种基于补丁的记忆范式，把记忆演化记录为结构化的更新历史。这里我看到一个很重要的趋势：agent不再是一次性完成任务，而是需要具备长期记忆和持续学习的能力。这其实和科学发现的过程非常类似，科研工作者也是在不断更新的知识环境和实验条件下推进研究，如果能把这种记忆演化的机制引入到AI辅助科学发现中，或许能帮助我们构建更有“科研直觉”的系统。
+
+第四篇 WeaveBench 是一个面向电脑使用agent的长视野混合界面基准。现在很多agent评测都是把各种能力拆开来做，但真实场景中往往需要同时处理GUI、命令行、代码编辑等多种界面。这篇工作设计了114个跨8个实际工作领域的任务，要求agent在单一轨迹中完成跨界面编排。很有意思的是他们在真实的Ubuntu桌面环境中测试，用CLI-agent运行时加上桌面控制插件。这种评测思路很务实，也提醒我们思考：当agent需要操作复杂计算环境时，我们现有的benchmark是否真的衡量了它在实际科研工作中的可用性？
+
+最后来看 InterleaveThinker，这是首个让图像生成器具备交错生成能力的multi-agent管道。用一个规划agent来组织文本图像输入序列，然后指挥图像生成器逐步执行。虽然这篇工作主要是面向视觉叙事和具身操作，但它背后的multi-agent协作思路其实和科学模拟中的多模块系统设计有异曲同工之处。把复杂任务拆解成多个专业agent协作，这种范式未来可能会出现在科学计算的pipeline中。
+
+今天的这五篇论文看起来方向各异，但如果我们把它们放在一起看，会发现一个共同的脉络：无论是大模型处理长上下文、agent适应动态环境、还是多模态模型的鲁棒性，本质上都在回答同一个问题——如何在有限计算资源下实现更强的智能。这和我们在AI4S中追求的“用更少的计算得到更精确的物理预测”其实是相通的。科学计算领域的很多思路，或许正在成为通用AI发展的下一个灵感来源。好，今天的播报就到这里，我们下期再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.13392" target="_blank">MiniMax Sparse Attention</a></li>
+<li><a href="https://arxiv.org/abs/2606.08063" target="_blank">Robust-U1: Can MLLMs Self-Recover Corrupted Visual Content for Robust Understanding?</a></li>
+<li><a href="https://arxiv.org/abs/2606.13681" target="_blank">EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments</a></li>
+<li><a href="https://arxiv.org/abs/2606.09426" target="_blank">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</a></li>
+<li><a href="https://arxiv.org/abs/2606.13679" target="_blank">InterleaveThinker: Reinforcing Agentic Interleaved Generation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-14</title>
+      <description>今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-14.mp3" length="7438045" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-14.mp3</guid>
+      <pubDate>2026-06-14T23:47:57.586481Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-13</title>
       <description>今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-13.mp3" length="8747093" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-14.mp3" length="9363374" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-14.mp3</guid>
       <pubDate>2026-05-14T23:30:25.136655Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-13</title>
-      <description>今日学术播报: World Action Models: The Next , MCP-Cosmos: World Model-Augmen, World Model for Robot Learning...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-13.mp3" length="10431051" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-13.mp3</guid>
-      <pubDate>2026-05-13T23:38:26.902007Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
