@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-16</title>
+      <description>今日学术播报: APPO: Agentic Procedural Polic, OmniDirector: General Multi-Sh, Memory is Reconstructed, Not R...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-16.mp3" length="7454346" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-16.mp3</guid>
+      <pubDate>2026-06-16T00:13:01.322636Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-14</title>
       <description>今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-14.mp3" length="7438045" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-15.mp3" length="6499518" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-15.mp3</guid>
       <pubDate>2026-05-15T23:29:07.450096Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-14</title>
-      <description>今日学术播报: AnyFlow: Any-Step Video Diffus, MulTaBench: Benchmarking Multi, Predicting Decisions of AI Age...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-14.mp3" length="9363374" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-14.mp3</guid>
-      <pubDate>2026-05-14T23:30:25.136655Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

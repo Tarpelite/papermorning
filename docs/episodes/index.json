@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-16",
+    "title": "Paper Morning 2026-06-16",
+    "description": "今日学术播报: APPO: Agentic Procedural Polic, OmniDirector: General Multi-Sh, Memory is Reconstructed, Not R...",
+    "audio_file": "2026-06-16.mp3",
+    "script": "各位早上好，新的一周开始了。\n\n今天的五篇论文表面上主题分散，但我读下来觉得它们其实都在讨论同一个深层趋势——AI agent正在从“执行单一指令的工具”，向“能够推理、协作、持续工作的数字同事”演进。这个判断可能比任何单篇论文的贡献都更值得分享。\n\n先来看第一篇，APPO，研究的是agentic RL里的信用分配问题。这是一个根本性的难题：多轮交互中，哪些中间决策真正影响了最终结果？过去的方法要么在工具调用边界给奖励，要么按固定工作流切分，但作者通过分析发现，影响最终效果的决策点其实分布在整个动作序列里，而不是集中在工具调用处，token熵也不能可靠反映影响力。APPO的贡献在于同时回答了两个问题：何时分支，以及分支后如何分配信用。这个工作让我想到科学计算中类似的问题——我们训练PDE求解器时，究竟哪些中间层的表示决定了最终的预测质量？这篇文章提供的分析思路值得借鉴。\n\n第二篇是关于视频生成的OmniDirector，讲多镜头相机控制。现在的困境是，现有方法要么用参数化表示处理单镜头生成，要么用交叉配对数据但数据稀缺。作者提出一个很直觉的方案：把相机参数编码成网格运动视频，这样不同轨...",
+    "papers": [
+      {
+        "title": "APPO: Agentic Procedural Policy Optimization",
+        "url": "https://arxiv.org/abs/2606.12384",
+        "arxiv_id": "2606.12384"
+      },
+      {
+        "title": "OmniDirector: General Multi-Shot Camera Cloning without Cross-Paired Data",
+        "url": "https://arxiv.org/abs/2606.13432",
+        "arxiv_id": "2606.13432"
+      },
+      {
+        "title": "Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents",
+        "url": "https://arxiv.org/abs/2606.06036",
+        "arxiv_id": "2606.06036"
+      },
+      {
+        "title": "From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI",
+        "url": "https://arxiv.org/abs/2606.14502",
+        "arxiv_id": "2606.14502"
+      },
+      {
+        "title": "Orchestra-o1: Omnimodal Agent Orchestration",
+        "url": "https://arxiv.org/abs/2606.13707",
+        "arxiv_id": "2606.13707"
+      }
+    ],
+    "published_at": "2026-06-16T00:13:01.322636Z"
+  },
+  {
     "date": "2026-06-14",
     "title": "Paper Morning 2026-06-14",
     "description": "今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-15T23:29:07.450096Z"
-  },
-  {
-    "date": "2026-05-14",
-    "title": "Paper Morning 2026-05-14",
-    "description": "今日学术播报: AnyFlow: Any-Step Video Diffus, MulTaBench: Benchmarking Multi, Predicting Decisions of AI Age...",
-    "audio_file": "2026-05-14.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊一个我最近反复思考的问题：AI for Science的基础设施和benchmark，正在经历什么样的范式变迁？过去我们总说做好AI4S需要好的数据、好的模型、好的平台，但最近一系列工作让我觉得，这个故事可能正在被重新书写。\n\n先看AnyFlow这篇关于视频生成的工作。它提出了第一个any-step的流图蒸馏框架，解决了一个很有意思的矛盾：consistency distillation虽然能大幅减少采样步数，但代价是牺牲了ODE轨迹本身的优势——也就是说，当你想用更多推理步数来提升质量时，模型反而会掉链子。AnyFlow的思路是直接优化完整的ODE采样轨迹，而不是只盯着少步数这个单一目标。这让我想到我们在做PDE求解器或者物理模拟时，也常常面临类似的权衡：是追求单次推理的效率，还是追求累积的精度？any-step diffusion这个思路，某种程度上也是在回答一个更本质的问题：如何在推理阶段获得真正的scaling behavior。这个思想，或许值得我们在科学计算的推理优化中借鉴。\n\n然后看MulTaBench，这个...",
-    "papers": [
-      {
-        "title": "AnyFlow: Any-Step Video Diffusion Model with On-Policy Flow Map Distillation",
-        "url": "https://arxiv.org/abs/2605.13724",
-        "arxiv_id": "2605.13724"
-      },
-      {
-        "title": "MulTaBench: Benchmarking Multimodal Tabular Learning with Text and Image",
-        "url": "https://arxiv.org/abs/2605.10616",
-        "arxiv_id": "2605.10616"
-      },
-      {
-        "title": "Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling",
-        "url": "https://arxiv.org/abs/2605.12411",
-        "arxiv_id": "2605.12411"
-      },
-      {
-        "title": "EVA-Bench: A New End-to-end Framework for Evaluating Voice Agents",
-        "url": "https://arxiv.org/abs/2605.13841",
-        "arxiv_id": "2605.13841"
-      },
-      {
-        "title": "MinT: Managed Infrastructure for Training and Serving Millions of LLMs",
-        "url": "https://arxiv.org/abs/2605.13779",
-        "arxiv_id": "2605.13779"
-      }
-    ],
-    "published_at": "2026-05-14T23:30:25.136655Z"
   }
 ]
