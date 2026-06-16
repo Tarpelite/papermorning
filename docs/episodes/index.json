@@ -2,37 +2,37 @@
   {
     "date": "2026-06-16",
     "title": "Paper Morning 2026-06-16",
-    "description": "今日学术播报: APPO: Agentic Procedural Polic, OmniDirector: General Multi-Sh, Memory is Reconstructed, Not R...",
+    "description": "今日学术播报: DreamX-World 1.0: A General-Pu, Geometric Action Model for Rob, JoyAI-VL-Interaction: Real-Tim...",
     "audio_file": "2026-06-16.mp3",
-    "script": "各位早上好，新的一周开始了。\n\n今天的五篇论文表面上主题分散，但我读下来觉得它们其实都在讨论同一个深层趋势——AI agent正在从“执行单一指令的工具”，向“能够推理、协作、持续工作的数字同事”演进。这个判断可能比任何单篇论文的贡献都更值得分享。\n\n先来看第一篇，APPO，研究的是agentic RL里的信用分配问题。这是一个根本性的难题：多轮交互中，哪些中间决策真正影响了最终结果？过去的方法要么在工具调用边界给奖励，要么按固定工作流切分，但作者通过分析发现，影响最终效果的决策点其实分布在整个动作序列里，而不是集中在工具调用处，token熵也不能可靠反映影响力。APPO的贡献在于同时回答了两个问题：何时分支，以及分支后如何分配信用。这个工作让我想到科学计算中类似的问题——我们训练PDE求解器时，究竟哪些中间层的表示决定了最终的预测质量？这篇文章提供的分析思路值得借鉴。\n\n第二篇是关于视频生成的OmniDirector，讲多镜头相机控制。现在的困境是，现有方法要么用参数化表示处理单镜头生成，要么用交叉配对数据但数据稀缺。作者提出一个很直觉的方案：把相机参数编码成网格运动视频，这样不同轨...",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们一直在聊AI for Science里foundation model的进展，但可能忽略了一个很重要的问题：这些模型到底能不能真的理解物理世界？这里说的理解，不是说能预测一个方程的解，而是能像人一样，在3D空间里推理因果关系。今天这几篇论文，恰恰从不同角度触碰了这个问题。\n\n第一篇是DreamX-World 1.0，这是一个通用的交互式世界模型。它能从文字或图像生成可控的长时序视频，而且支持相机导航、回到之前观察过的区域、以及根据提示触发事件。作者用Unreal Engine渲染数据、游戏录像和真实世界视频来构建数据引擎，提出了一个叫E-PRoPE的轻量级相机位置编码，把双向视频生成器通过因果强制和长 rollout训练改造成了自回归的世界模型。这篇工作的意义不在于又做了一个视频生成器，而在于它试图让模型学会理解3D空间的连续性。一个模型如果能在虚拟环境里导航、记住之前见过的东西、预测动作的长期后果，这其实就是在构建一种对物理世界的隐式理解。当然，现在它主要还是在游戏和渲染数据上训练，离真正的物...",
     "papers": [
       {
-        "title": "APPO: Agentic Procedural Policy Optimization",
-        "url": "https://arxiv.org/abs/2606.12384",
-        "arxiv_id": "2606.12384"
+        "title": "DreamX-World 1.0: A General-Purpose Interactive World Model",
+        "url": "https://arxiv.org/abs/2606.16993",
+        "arxiv_id": "2606.16993"
       },
       {
-        "title": "OmniDirector: General Multi-Shot Camera Cloning without Cross-Paired Data",
-        "url": "https://arxiv.org/abs/2606.13432",
-        "arxiv_id": "2606.13432"
+        "title": "Geometric Action Model for Robot Policy Learning",
+        "url": "https://arxiv.org/abs/2606.17046",
+        "arxiv_id": "2606.17046"
       },
       {
-        "title": "Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents",
-        "url": "https://arxiv.org/abs/2606.06036",
-        "arxiv_id": "2606.06036"
+        "title": "JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence",
+        "url": "https://arxiv.org/abs/2606.14777",
+        "arxiv_id": "2606.14777"
       },
       {
-        "title": "From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI",
-        "url": "https://arxiv.org/abs/2606.14502",
-        "arxiv_id": "2606.14502"
+        "title": "Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories",
+        "url": "https://arxiv.org/abs/2606.11176",
+        "arxiv_id": "2606.11176"
       },
       {
-        "title": "Orchestra-o1: Omnimodal Agent Orchestration",
-        "url": "https://arxiv.org/abs/2606.13707",
-        "arxiv_id": "2606.13707"
+        "title": "VibeThinker-3B: Exploring the Frontier of Verifiable Reasoning in Small Language Models",
+        "url": "https://arxiv.org/abs/2606.16140",
+        "arxiv_id": "2606.16140"
       }
     ],
-    "published_at": "2026-06-16T00:13:01.322636Z"
+    "published_at": "2026-06-16T23:57:31.726426Z"
   },
   {
     "date": "2026-06-14",
