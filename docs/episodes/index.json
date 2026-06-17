@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-17",
+    "title": "Paper Morning 2026-06-17",
+    "description": "今日学术播报: DreamX-World 1.0: A General-Pu, LoopCoder-v2: Only Loop Once f, Ling and Ring 2.6 Technical Re...",
+    "audio_file": "2026-06-17.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想和大家聊一聊一个我最近反复思考的问题：当我们谈论AI for Science的时候，我们到底在期待什么？是说要训练一个能解所有PDE的超级模型，还是说用深度学习的思路去重构科学计算的工具链？这个问题的答案，可能就藏在今天要聊的几篇论文里。\n\n先来看一篇来自arXiv最新、让我觉得眼前一亮的论文。标题是“用凸拟线性化方法求解非线性PDEs”，作者是来自尼日利亚的Awojinrin等人。这篇工作的核心贡献很直接：他们把物理信息神经网络训练中那个让人头疼的非凸优化问题，给转换成了一系列凸的线性最小二乘问题。熟悉PINNs的朋友应该知道，传统PINNs的训练本质上是在解一个高度非凸的梯度下降问题，局部极小、梯度消失这些麻烦一个都跑不掉。而这篇文章的思路很巧妙：用Bellman-Kalaba拟线性化把非线性PDE逐次线性化，每一步都变成一个线性的最小二乘问题，然后用一次QR分解就求出闭式解。训练样本也不再是通常的那些神经网络，而是换成了随机特征极限学习机、光谱多项式基和三角展开这些“线性可学习的”函数空间。我个人认为，这是一个值得重视...",
+    "papers": [
+      {
+        "title": "DreamX-World 1.0: A General-Purpose Interactive World Model",
+        "url": "https://arxiv.org/abs/2606.16993",
+        "arxiv_id": "2606.16993"
+      },
+      {
+        "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
+        "url": "https://arxiv.org/abs/2606.18023",
+        "arxiv_id": "2606.18023"
+      },
+      {
+        "title": "Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale",
+        "url": "https://arxiv.org/abs/2606.15079",
+        "arxiv_id": "2606.15079"
+      },
+      {
+        "title": "A Convex Quasilinearization Method for Solving Nonlinear PDEs with Physics-Informed Neural Networks",
+        "url": "https://arxiv.org/abs/2606.18175v1",
+        "arxiv_id": "2606.18175v1"
+      },
+      {
+        "title": "ACE-Ego-0: Unifying Egocentric Human and Robotic Data for VLA Pretraining",
+        "url": "https://arxiv.org/abs/2606.17200",
+        "arxiv_id": "2606.17200"
+      }
+    ],
+    "published_at": "2026-06-17T23:58:43.206459Z"
+  },
+  {
     "date": "2026-06-16",
     "title": "Paper Morning 2026-06-16",
     "description": "今日学术播报: DreamX-World 1.0: A General-Pu, Geometric Action Model for Rob, JoyAI-VL-Interaction: Real-Tim...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-16T23:28:14.970875Z"
-  },
-  {
-    "date": "2026-05-15",
-    "title": "Paper Morning 2026-05-15",
-    "description": "今日学术播报: SANA-WM: Efficient Minute-Scal, Causal Forcing++: Scalable Few, Eradicating Negative Transfer ...",
-    "audio_file": "2026-05-15.mp3",
-    "script": "各位早上好，周五的Paper Morning来了。\n\n今天想先从一篇特别应景的论文开始聊。最近大家都在谈foundation model，但真正把它应用到多物理场问题上，挑战可不小。论文3就直面这个问题——他们发现，当你想用一个大一统的模型同时处理比如开放河道流体和孔隙介质流这两种完全不同的物理过程时，训练会变得极不稳定，梯度冲突严重，最后模型反而学不好任何一种。他们管这个叫“负迁移”。\n\n有意思的是，他们提出的解决方案用的是稀疏激活的MoE架构，但不只是简单加expert gating。他们设计了一个非常巧妙的物理信息自编码器，把状态空间压缩到16的三次方个物理潜在变量，然后用Helmholtz速度参数化来保证解码后的速度场是散度自由的。这样一来，不同物理 regime 的需求被巧妙地“解耦”了，模型可以在不同expert分支里各学各的，而不必在同一个参数空间里互相拉扯。这让我想到，其实我们以前在dense neural operator上勉强做多任务学习，本质上是在让一个模型做不可能的事——现在MoE提供了另一种思路，可能比单纯增大模型参数量更有针对性。\n\n然后我想聊聊论文4，这个...",
-    "papers": [
-      {
-        "title": "SANA-WM: Efficient Minute-Scale World Modeling with Hybrid Linear Diffusion Transformer",
-        "url": "https://arxiv.org/abs/2605.15178",
-        "arxiv_id": "2605.15178"
-      },
-      {
-        "title": "Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation",
-        "url": "https://arxiv.org/abs/2605.15141",
-        "arxiv_id": "2605.15141"
-      },
-      {
-        "title": "Eradicating Negative Transfer in Multi-Physics Foundation Models via Sparse Mixture-of-Experts Routing",
-        "url": "https://arxiv.org/abs/2605.15179v1",
-        "arxiv_id": "2605.15179v1"
-      },
-      {
-        "title": "Darwin Family: MRI-Trust-Weighted Evolutionary Merging for Training-Free Scaling of Language-Model Reasoning",
-        "url": "https://arxiv.org/abs/2605.14386",
-        "arxiv_id": "2605.14386"
-      },
-      {
-        "title": "MemLens: Benchmarking Multimodal Long-Term Memory in Large Vision-Language Models",
-        "url": "https://arxiv.org/abs/2605.14906",
-        "arxiv_id": "2605.14906"
-      }
-    ],
-    "published_at": "2026-05-15T23:29:07.450096Z"
   }
 ]
