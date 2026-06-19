@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-19",
+    "title": "Paper Morning 2026-06-19",
+    "description": "今日学术播报: Learning from the Self-future:, Beyond the Current Observation, Kairos: A Native World Model S...",
+    "audio_file": "2026-06-19.mp3",
+    "script": "各位早上好，又到了周五的Paper Morning时间。\n\n今天想和大家聊几篇很有意思的工作，它们不约而同地指向同一个趋势：无论是大语言模型、世界模型还是科学模型，都在寻找更高效的知识表示和迁移方式。\n\n先看第一篇，关于扩散语言模型的自我蒸馏。熟悉大语言模型训练的朋友可能知道，on-policy自我蒸馏是一种很有效的后训练技术，它让模型从自己生成的回答中学习，从而持续提升能力。但问题在于，现有的方法都是为自回归模型设计的，用的是从左到右的前缀条件， token级别的监督信号，这和扩散模型任意顺序生成的特性是根本冲突的。这篇文章提出了d-OPSD框架，第一次把自我蒸馏适配到扩散语言模型。他们的核心思路很有意思：不再让学生学习“前缀引导的未来”，而是让学生学习“自己生成的未来作为后缀条件”。这相当于让模型从自己已经完成的工作中提炼经验，而不是依赖特权信息做引导。同时他们把监督粒度从token级别提升到step级别，这更符合扩散模型的生成机制。我看到这篇工作的时候，第一反应是这会不会也为PDE求解器的知识迁移提供新的思路？比如能否让一个训练好的扩散求解器，通过自我蒸馏来提升对复杂边界的处理能...",
+    "papers": [
+      {
+        "title": "Learning from the Self-future: On-policy Self-distillation for dLLMs",
+        "url": "https://arxiv.org/abs/2606.18195",
+        "arxiv_id": "2606.18195"
+      },
+      {
+        "title": "Beyond the Current Observation: Evaluating Multimodal Large Language Models in Controllable Non-Markov Games",
+        "url": "https://arxiv.org/abs/2606.19338",
+        "arxiv_id": "2606.19338"
+      },
+      {
+        "title": "Kairos: A Native World Model Stack for Physical AI",
+        "url": "https://arxiv.org/abs/2606.16533",
+        "arxiv_id": "2606.16533"
+      },
+      {
+        "title": "PAIWorld: A 3D-Consistent World Foundation Model for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2606.18375",
+        "arxiv_id": "2606.18375"
+      },
+      {
+        "title": "Speaking the Language of Science: Toward a General-Purpose Generative Foundation Model for the Natural Sciences",
+        "url": "https://arxiv.org/abs/2606.16905",
+        "arxiv_id": "2606.16905"
+      }
+    ],
+    "published_at": "2026-06-19T00:10:35.864595Z"
+  },
+  {
     "date": "2026-06-17",
     "title": "Paper Morning 2026-06-17",
     "description": "今日学术播报: DreamX-World 1.0: A General-Pu, LoopCoder-v2: Only Loop Once f, Ling and Ring 2.6 Technical Re...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-17T23:31:10.225191Z"
-  },
-  {
-    "date": "2026-05-16",
-    "title": "Paper Morning 2026-05-16",
-    "description": "今日学术播报: SANA-WM: Efficient Minute-Scal, Causal Forcing++: Scalable Few, Darwin Family: MRI-Trust-Weigh...",
-    "audio_file": "2026-05-16.mp3",
-    "script": "各位早上好，周六的早晨，Paper Morning又和大家见面了。\n\n今天想和大家聊几篇有意思的论文，核心主题是：在科学计算和智能体建模领域，我们正在看到一些范式层面的新尝试。\n\n先说一篇和咱们AI4S直接相关的文章。Scaling Scientific Machine Learning towards universal foundation model是很多人关心的话题，但这两年大家也逐渐意识到一个核心瓶颈：negative transfer。简单讲，就是把不同物理机制的PDE放在一个模型里训练，梯度冲突、训练不稳定、plasticity loss这些问题就来了。这篇叫Shodh-MoE的工作，提出了用稀疏MoE的思路来解决这个问题。它用的是一种latent transformer架构，先通过physics-informed autoencoder把状态压缩到16的三次方个物理latent，然后用Helmholtz风格的velocity参数化保证divergence-free。核心创新是sparse mixture-of-experts routing，让不同物理机制走不同的exp...",
-    "papers": [
-      {
-        "title": "SANA-WM: Efficient Minute-Scale World Modeling with Hybrid Linear Diffusion Transformer",
-        "url": "https://arxiv.org/abs/2605.15178",
-        "arxiv_id": "2605.15178"
-      },
-      {
-        "title": "Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation",
-        "url": "https://arxiv.org/abs/2605.15141",
-        "arxiv_id": "2605.15141"
-      },
-      {
-        "title": "Darwin Family: MRI-Trust-Weighted Evolutionary Merging for Training-Free Scaling of Language-Model Reasoning",
-        "url": "https://arxiv.org/abs/2605.14386",
-        "arxiv_id": "2605.14386"
-      },
-      {
-        "title": "Eradicating Negative Transfer in Multi-Physics Foundation Models via Sparse Mixture-of-Experts Routing",
-        "url": "https://arxiv.org/abs/2605.15179v1",
-        "arxiv_id": "2605.15179v1"
-      },
-      {
-        "title": "MemLens: Benchmarking Multimodal Long-Term Memory in Large Vision-Language Models",
-        "url": "https://arxiv.org/abs/2605.14906",
-        "arxiv_id": "2605.14906"
-      }
-    ],
-    "published_at": "2026-05-16T23:28:14.970875Z"
   }
 ]
