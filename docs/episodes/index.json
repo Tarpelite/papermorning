@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-20",
+    "title": "Paper Morning 2026-06-20",
+    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...",
+    "audio_file": "2026-06-20.mp3",
+    "script": "各位早上好，周末的Paper Morning又跟各位见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，这两年AI for Science里最火的方向之一是预训练范式向科学计算的迁移——大家都在讨论PDE foundation model、operator learning的scaling law。但今天我看到的几篇论文，反而让我觉得另一个趋势值得关注：那就是物理交互智能的进步，或者说，AI系统在物理世界里的“具身智能”正在快速迭代。这个方向虽然不直接是PDE求解，但它底层的思想——如何用神经网络建模接触动力学、如何预测物体在3D空间里的运动轨迹——其实和我们在意的问题有很深的呼应。\n\n先看DragMesh-2这篇工作，它研究的是灵巧手怎么去操作有铰链的物体，比如开门、抽屉这种日常场景。听起来是机器人领域的常规问题，但细看会发现它的难点所在：当你用手指去拨动一个门把手的时候，门不是直接被“命令”打开的，而是通过持续的手指-把手接触，产生物理力，然后运动才发生。这个过程涉及接触力学的非平滑优化，传统上需要精确的物理建模和接触力估计。DragMesh-2的核心贡献在于，它不再依赖预先设计...",
+    "papers": [
+      {
+        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
+        "url": "https://arxiv.org/abs/2606.19195",
+        "arxiv_id": "2606.19195"
+      },
+      {
+        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
+        "url": "https://arxiv.org/abs/2606.15133",
+        "arxiv_id": "2606.15133"
+      },
+      {
+        "title": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
+        "url": "https://arxiv.org/abs/2606.18558",
+        "arxiv_id": "2606.18558"
+      },
+      {
+        "title": "Playful Agentic Robot Learning",
+        "url": "https://arxiv.org/abs/2606.19419",
+        "arxiv_id": "2606.19419"
+      },
+      {
+        "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
+        "url": "https://arxiv.org/abs/2606.20517",
+        "arxiv_id": "2606.20517"
+      }
+    ],
+    "published_at": "2026-06-20T23:47:07.452510Z"
+  },
+  {
     "date": "2026-06-19",
     "title": "Paper Morning 2026-06-19",
     "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-18T23:37:20.875665Z"
-  },
-  {
-    "date": "2026-05-17",
-    "title": "Paper Morning 2026-05-17",
-    "description": "今日学术播报: SANA-WM: Efficient Minute-Scal, Causal Forcing++: Scalable Few, Darwin Family: MRI-Trust-Weigh...",
-    "audio_file": "2026-05-17.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们AI4S社区特别熟悉的问题聊起：训练一个能同时搞定流体力学、固体力学、热传导的统一基础模型，为什么这么难？上周刚挂到arxiv的Shodh-MoE就专门针对这个痛点发力。他们发现，当你在一个dense神经网络里同时学宽带开放流道和边界主导的多孔介质流动时，梯度冲突会特别严重，因为这两种物理现象对网络参数的需求是光谱级别的矛盾。Shodh-MoE的做法很直接：用稀疏MoE的路由机制，让不同物理 regime走不同的expert paths，本质上是在模型层面做了“分而治之”。更有意思的是，他们用了一个Helmholtz风格的velocity parameterization来保证解的散度自由性，这在多物理问题里是个很物理的归纳偏置。这篇工作让我觉得真正有价值的地方在于，它不是简单地堆参数，而是从物理问题的结构性冲突出发，用架构创新来回避负迁移。\n\n聊完多物理基础模型，我们把目光转向更通用的模型能力建设。Darwin Family这个工作最近在HuggingFace上热度很高，它提出了一个训练free的思路：不靠额...",
-    "papers": [
-      {
-        "title": "SANA-WM: Efficient Minute-Scale World Modeling with Hybrid Linear Diffusion Transformer",
-        "url": "https://arxiv.org/abs/2605.15178",
-        "arxiv_id": "2605.15178"
-      },
-      {
-        "title": "Causal Forcing++: Scalable Few-Step Autoregressive Diffusion Distillation for Real-Time Interactive Video Generation",
-        "url": "https://arxiv.org/abs/2605.15141",
-        "arxiv_id": "2605.15141"
-      },
-      {
-        "title": "Darwin Family: MRI-Trust-Weighted Evolutionary Merging for Training-Free Scaling of Language-Model Reasoning",
-        "url": "https://arxiv.org/abs/2605.14386",
-        "arxiv_id": "2605.14386"
-      },
-      {
-        "title": "Eradicating Negative Transfer in Multi-Physics Foundation Models via Sparse Mixture-of-Experts Routing",
-        "url": "https://arxiv.org/abs/2605.15179v1",
-        "arxiv_id": "2605.15179v1"
-      },
-      {
-        "title": "MemLens: Benchmarking Multimodal Long-Term Memory in Large Vision-Language Models",
-        "url": "https://arxiv.org/abs/2605.14906",
-        "arxiv_id": "2605.14906"
-      }
-    ],
-    "published_at": "2026-05-17T23:31:10.225191Z"
   }
 ]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-20</h1>
+    <p class="date">2026-06-20</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-20.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周末的Paper Morning又跟各位见面了。
+
+今天想先从一个更大的话题聊起。我们都知道，这两年AI for Science里最火的方向之一是预训练范式向科学计算的迁移——大家都在讨论PDE foundation model、operator learning的scaling law。但今天我看到的几篇论文，反而让我觉得另一个趋势值得关注：那就是物理交互智能的进步，或者说，AI系统在物理世界里的“具身智能”正在快速迭代。这个方向虽然不直接是PDE求解，但它底层的思想——如何用神经网络建模接触动力学、如何预测物体在3D空间里的运动轨迹——其实和我们在意的问题有很深的呼应。
+
+先看DragMesh-2这篇工作，它研究的是灵巧手怎么去操作有铰链的物体，比如开门、抽屉这种日常场景。听起来是机器人领域的常规问题，但细看会发现它的难点所在：当你用手指去拨动一个门把手的时候，门不是直接被“命令”打开的，而是通过持续的手指-把手接触，产生物理力，然后运动才发生。这个过程涉及接触力学的非平滑优化，传统上需要精确的物理建模和接触力估计。DragMesh-2的核心贡献在于，它不再依赖预先设计好的几何轨迹，而是让策略通过强化学习在模拟器里自己学会处理这些接触动力学。论文里特别提到，他们发现只训练任务完成而不考虑接触力建模的话，策略会过拟合到 nominal contact loads 上，换句话说，它学会了在理想条件下完成任务，但稍微有点扰动就失效了。这其实和我们做PDE求解时遇到的问题很像——一个在训练分布上表现好的模型，一旦遇到分布外的输入，精度就急剧下降。他们怎么解决的呢？通过引入物理约束和接触力感知的学习目标。这让我想到，这两年大家在operator learning里讨论的physics-informed prior，可能不仅仅是往loss里加一项PDE residual那么简单，而是要在模型架构层面就融入对物理结构的感知。
+
+如果说DragMesh-2关注的是“手和物体怎么接触”，那MolmoMotion关注的就是“物体未来怎么动”。这篇论文提出了一个任务：给定一段视觉历史、物体上的一些3D查询点，以及一段语言指令，预测这些点未来的3D轨迹。比如你说“把杯子推倒”，模型需要预测杯子各个点的运动轨迹。他们的核心观点很有意思：3D点云是一种view-stable、class-agnostic的表示，比传统的物体中心坐标更适合做运动预测。这让我想到，我们在做PDE求解的时候，其实也在寻找一种“好用”的表示——既能捕捉物理场的本质特征，又对各种几何形状具有泛化能力。MolmoMotion用了一个大规模的语料库MolmoMotion-1M来做训练，里面有一百多万条带语言标注的3D点轨迹数据。这又是一个“数据驱动+物理直觉”的例子。我注意到他们特别强调了goal-conditioned这个设定——也就是说，预测不是无条件的，而是conditioned on一个语言描述的目标。这和我们做PDE求解时给定边界条件、初始条件的思路是完全一致的。某种程度上，这篇工作可以被理解为：用语言作为condition，用3D点轨迹作为预测目标，训练一个类似于 neural operator 的东西，只是这里的operator把视觉+语言映射到物理轨迹。
+
+今天的第三篇想简单提一下Playful Agentic Robot Learning。这篇的思路很新颖：与其让机器人只学任务，不如让它先“玩”。通过self-directed play，机器人可以自主探索、积累技能，然后在新任务来的时候复用已有的skill library。这其实有点像是foundation model的预训练+微调范式在机器人领域的迁移——先广泛学习通用技能，再针对具体任务做适配。有趣的是，他们让agent自己提出“novel yet learnable”的探索任务，这让我想到，如果把这个思路放到科学计算里，是不是可以让AI系统自主探索物理规律、发现新的pde形式？最后一个是Multi-LCB，这个主要是把代码评测基准扩展到十二种编程语言，和我们AI4S方向关系不大，但它的思路很清晰——评估LLM在真实软件工程场景下的跨语言泛化能力。
+
+好了，今天的整体观察是什么呢？我想说，今天这几篇论文虽然不直接是PDE求解或者neural operator，但它们都指向同一个核心挑战：如何在数据驱动和物理约束之间找到好的平衡。DragMesh-2用物理感知的强化学习处理接触动力学，MolmoMotion用大规模数据和语言condition来预测物理轨迹，Playful Agentic Robot Learning用自主玩耍来积累物理交互经验。这让我觉得，AI for Science的下一波突破，可能不仅仅是把transformer架构套用在PDE求解上，而是要更深入地思考：怎么让模型真正“理解”物理世界的结构和约束，然后这种理解能够泛化到新的任务、新的场景。这和我们一直追求的operator learning的泛化能力，其实是一体两面。
+
+好了，今天的播报就到这里，祝各位周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.19195" target="_blank">Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance</a></li>
+<li><a href="https://arxiv.org/abs/2606.15133" target="_blank">DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects</a></li>
+<li><a href="https://arxiv.org/abs/2606.18558" target="_blank">MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction</a></li>
+<li><a href="https://arxiv.org/abs/2606.19419" target="_blank">Playful Agentic Robot Learning</a></li>
+<li><a href="https://arxiv.org/abs/2606.20517" target="_blank">Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

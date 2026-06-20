@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-20</title>
+      <description>今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-20.mp3" length="9451146" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-20.mp3</guid>
+      <pubDate>2026-06-20T23:47:07.452510Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-19</title>
       <description>今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-19.mp3" length="6605471" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-18.mp3" length="8006052" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-18.mp3</guid>
       <pubDate>2026-05-18T23:37:20.875665Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-17</title>
-      <description>今日学术播报: SANA-WM: Efficient Minute-Scal, Causal Forcing++: Scalable Few, Darwin Family: MRI-Trust-Weigh...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-17.mp3" length="8131440" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-17.mp3</guid>
-      <pubDate>2026-05-17T23:31:10.225191Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
