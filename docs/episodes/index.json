@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-21",
+    "title": "Paper Morning 2026-06-21",
+    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, Multi-LCB: Extending LiveCodeB...",
+    "audio_file": "2026-06-21.mp3",
+    "script": "各位早上好，周末的Paper Morning如约而至。周末是沉淀思考的好时机，今天想和大家聊几篇有意思的论文，它们看似分散，但背后其实都指向同一个趋势——我们正在从“完成任务”走向“理解物理世界”。\n\n先来看一篇机器人操作的工作。DragMesh-2研究的是灵巧手如何与关节物体交互，比如打开一个抽屉或者拧开瓶盖。这个问题比抓取静态物体要困难得多，因为关节物体的运动不是直接可控的，你只能通过手与把手的持续接触来间接驱动它。传统方法往往依赖开环的轨迹重放，但这种方式无法建模接触力学的动态变化。这篇工作提出了一个物理可行的策略学习方法，让多指手能够在交互过程中感知并调整接触力。这个方向对家用机器人和人形机器人非常重要，因为我们生活的环境里到处是门、抽屉、开关这些关节物体。灵巧操作的进步，本质上是在为未来的通用机器人构建物理交互的基础能力。\n\n如果说DragMesh-2关注的是“如何动手”，那MolmoMotion关注的就是“如何预判运动”。它提出了一个叫goal-conditioned 3D点运动预测的任务：给出一段视觉历史、物体上的三维查询点，以及自然语言描述的目标，让模型预测每个点未来的...",
+    "papers": [
+      {
+        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
+        "url": "https://arxiv.org/abs/2606.19195",
+        "arxiv_id": "2606.19195"
+      },
+      {
+        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
+        "url": "https://arxiv.org/abs/2606.15133",
+        "arxiv_id": "2606.15133"
+      },
+      {
+        "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
+        "url": "https://arxiv.org/abs/2606.20517",
+        "arxiv_id": "2606.20517"
+      },
+      {
+        "title": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
+        "url": "https://arxiv.org/abs/2606.18558",
+        "arxiv_id": "2606.18558"
+      },
+      {
+        "title": "Playful Agentic Robot Learning",
+        "url": "https://arxiv.org/abs/2606.19419",
+        "arxiv_id": "2606.19419"
+      }
+    ],
+    "published_at": "2026-06-21T23:52:59.878200Z"
+  },
+  {
     "date": "2026-06-20",
     "title": "Paper Morning 2026-06-20",
     "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-19T23:42:26.375767Z"
-  },
-  {
-    "date": "2026-05-18",
-    "title": "Paper Morning 2026-05-18",
-    "description": "今日学术播报: CiteVQA: Benchmarking Evidence, PhysBrain 1.0 Technical Report, FashionChameleon: Towards Real...",
-    "audio_file": "2026-05-18.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想和大家聊一个很有意思的趋势，我把它叫做“AI的下半场：从会答题到会举证”。为什么这么说呢？我们来看几篇论文。\n\n第一篇是CiteVQA，讲的是文档智能中的证据归属问题。我们知道现在的多模态大模型已经能很好地理解文档、回答问题了，但这里有个很隐蔽的陷阱：模型可能给出正确答案，却用的是错误的证据。在法律、医疗、金融这些高风险领域，这种“答案对但过程错”的问题其实是致命的。CiteVQA这个 benchmark 最大的价值在于，它要求模型不仅给出答案，还要返回支持答案的具体区域，也就是element-level的引用。这样就能同时评估答案的正确性和证据的可靠性。这个思路其实和我们做科学计算时强调的可解释性、PDE求解过程的可追溯性是一脉相承的。当我们用AI来辅助科学研究时光有结果是不够的，我们需要知道这个结果是怎么来的、依据是什么。\n\n第二篇 PhysBrain 1.0 很有趣，它研究的是如何让机器人获得物理常识。传统上机器人是通过模仿轨迹来学习的，但这种方法覆盖面太窄。PhysBrain的思路很巧妙：把大量的人类第一人称视频转换...",
-    "papers": [
-      {
-        "title": "CiteVQA: Benchmarking Evidence Attribution for Trustworthy Document Intelligence",
-        "url": "https://arxiv.org/abs/2605.12882",
-        "arxiv_id": "2605.12882"
-      },
-      {
-        "title": "PhysBrain 1.0 Technical Report",
-        "url": "https://arxiv.org/abs/2605.15298",
-        "arxiv_id": "2605.15298"
-      },
-      {
-        "title": "FashionChameleon: Towards Real-Time and Interactive Human-Garment Video Customization",
-        "url": "https://arxiv.org/abs/2605.15824",
-        "arxiv_id": "2605.15824"
-      },
-      {
-        "title": "MMSkills: Towards Multimodal Skills for General Visual Agents",
-        "url": "https://arxiv.org/abs/2605.13527",
-        "arxiv_id": "2605.13527"
-      },
-      {
-        "title": "Learning to Foresee: Unveiling the Unlocking Efficiency of On-Policy Distillation",
-        "url": "https://arxiv.org/abs/2605.11739",
-        "arxiv_id": "2605.11739"
-      }
-    ],
-    "published_at": "2026-05-18T23:37:20.875665Z"
   }
 ]

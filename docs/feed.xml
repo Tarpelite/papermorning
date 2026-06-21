@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-21</title>
+      <description>今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, Multi-LCB: Extending LiveCodeB...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-21.mp3" length="8166548" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-21.mp3</guid>
+      <pubDate>2026-06-21T23:52:59.878200Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-20</title>
       <description>今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-20.mp3" length="9451146" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-19.mp3" length="5794212" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-19.mp3</guid>
       <pubDate>2026-05-19T23:42:26.375767Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-18</title>
-      <description>今日学术播报: CiteVQA: Benchmarking Evidence, PhysBrain 1.0 Technical Report, FashionChameleon: Towards Real...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-18.mp3" length="8006052" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-18.mp3</guid>
-      <pubDate>2026-05-18T23:37:20.875665Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
