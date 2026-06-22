@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-22",
+    "title": "Paper Morning 2026-06-22",
+    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, PerceptionDLM: Parallel Region, Multi-LCB: Extending LiveCodeB...",
+    "audio_file": "2026-06-22.mp3",
+    "script": "各位早上好，周一的Paper Morning开播了。上周我刚跟一位做科学计算的朋友聊，他说现在工业界都在卷大模型，但他们实验室更关心怎么用小模型解决实际问题。今天这几篇论文恰好都指向同一个趋势：与其堆算力，不如在架构和范式上找效率。\n\n先看第一篇，Moebius，一篇关于轻量级图像修复的工作。现在工业界的图像修复模型动辄十亿参数，效果确实好，但部署成本太高。这篇文章的思路是与其在十亿参数的大模型上做压缩，不如从头设计一个针对修复任务的专用架构。他们提出了一个叫Local-λ Mix Interaction的模块，核心想法是把空间上下文和全局语义压缩到固定大小的矩阵里，既保留了复杂的潜在交互，又大幅减少了参数量。两百兆的模型，达到十亿级模型的性能。这让我想起我们AI4S社区讨论的一个话题：做PDE求解器的时候，是不是也要考虑从通用架构走向任务专用的高效设计？Foundation Model固然好，但如果我们能把神经算子的结构先验更精细地嵌入进去，也许能跑出同样效果但小得多的模型。\n\n第二篇 PerceptionDLM 关注的是多模态大模型在视觉理解任务中的效率问题。大家知道现在的多模态模...",
+    "papers": [
+      {
+        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
+        "url": "https://arxiv.org/abs/2606.19195",
+        "arxiv_id": "2606.19195"
+      },
+      {
+        "title": "PerceptionDLM: Parallel Region Perception with Multimodal Diffusion Language Models",
+        "url": "https://arxiv.org/abs/2606.19534",
+        "arxiv_id": "2606.19534"
+      },
+      {
+        "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
+        "url": "https://arxiv.org/abs/2606.20517",
+        "arxiv_id": "2606.20517"
+      },
+      {
+        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
+        "url": "https://arxiv.org/abs/2606.15133",
+        "arxiv_id": "2606.15133"
+      },
+      {
+        "title": "Playful Agentic Robot Learning",
+        "url": "https://arxiv.org/abs/2606.19419",
+        "arxiv_id": "2606.19419"
+      }
+    ],
+    "published_at": "2026-06-22T23:52:02.555891Z"
+  },
+  {
     "date": "2026-06-21",
     "title": "Paper Morning 2026-06-21",
     "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, Multi-LCB: Extending LiveCodeB...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-20T23:50:17.599952Z"
-  },
-  {
-    "date": "2026-05-19",
-    "title": "Paper Morning 2026-05-19",
-    "description": "今日学术播报: LongLive-2.0: An NVFP4 Paralle, SkillsVote: Lifecycle Governan, Code as Agent Harness...",
-    "audio_file": "2026-05-19.mp3",
-    "script": "各位早上好，Paper Morning今天开播了。\n\n我们先来看一篇关于AI辅助研究的综述。AI for Auto-Research这篇论文很有意思，它把AI在科研全流程的应用梳理成了四个认识论阶段：从想法产生、代码实验，到论文写作、同行评审，再到成果传播。作者指出一个很现实的问题：即使是最前沿的大模型，在科研压力下仍然会编造结果、遗漏隐藏的错误、对创新性判断不可靠。这其实给我们提了个醒，当我们用AI来做科研的时候，AI的可靠性验证本身就是一个还没解决的基础问题。这篇论文对AI4S的意义在于，它让我们思考：在科学计算这个对精确性要求极高的领域，我们该如何在拥抱AI生产力的同时，守住科学诚信的底线？\n\n说完AI辅助研究，我们来看看Agent系统的发展。SkillsVote这篇文章关注的是Agent技能的生命周期治理。它把Agent的轨迹数据做成了可复用的技能单元，包含可执行的脚本和不可执行的程序性指导。这对AI4S有什么启发呢？想象一下，当我们的科学模拟Agent能够积累和复用解决特定PDE的经验，或者能够共享成功的参数调优策略，这将大大加速科学发现的效率。治理的意思不仅仅是积累，还要筛...",
-    "papers": [
-      {
-        "title": "LongLive-2.0: An NVFP4 Parallel Infrastructure for Long Video Generation",
-        "url": "https://arxiv.org/abs/2605.18739",
-        "arxiv_id": "2605.18739"
-      },
-      {
-        "title": "SkillsVote: Lifecycle Governance of Agent Skills from Collection, Recommendation to Evolution",
-        "url": "https://arxiv.org/abs/2605.18401",
-        "arxiv_id": "2605.18401"
-      },
-      {
-        "title": "Code as Agent Harness",
-        "url": "https://arxiv.org/abs/2605.18747",
-        "arxiv_id": "2605.18747"
-      },
-      {
-        "title": "Lance: Unified Multimodal Modeling by Multi-Task Synergy",
-        "url": "https://arxiv.org/abs/2605.18678",
-        "arxiv_id": "2605.18678"
-      },
-      {
-        "title": "AI for Auto-Research: Roadmap & User Guide",
-        "url": "https://arxiv.org/abs/2605.18661",
-        "arxiv_id": "2605.18661"
-      }
-    ],
-    "published_at": "2026-05-19T23:42:26.375767Z"
   }
 ]
