@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-23</title>
+      <description>今日学术播报: DataClaw0: Agentic Tailoring M, EnterpriseClawBench: Benchmark, OpenRath: Session-Centered Run...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-23.mp3" length="8586597" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-23.mp3</guid>
+      <pubDate>2026-06-23T23:36:56.795913Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-22</title>
       <description>今日学术播报: Moebius: 0.2B Lightweight Imag, PerceptionDLM: Parallel Region, Multi-LCB: Extending LiveCodeB...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-22.mp3" length="8858062" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-21.mp3" length="9837967" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-21.mp3</guid>
       <pubDate>2026-05-21T23:36:51.243703Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-20</title>
-      <description>今日学术播报: Active Learners as Efficient P, When Vision Speaks for Sound, GoLongRL: Capability-Oriented ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-20.mp3" length="7417983" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-20.mp3</guid>
-      <pubDate>2026-05-20T23:50:17.599952Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

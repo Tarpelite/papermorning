@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-23</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-23</h1>
+    <p class="date">2026-06-23</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-23.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天是周二，Paper Morning如约而至。
+
+先说说第一篇，DataClaw0，关注的是多模态数据处理的问题。大家知道，现在很多领域都面临数据“熵”很高的情况，原始数据量大、结构混乱，传统的人工标注成本太高。这篇文章提出了一个“智能数据裁剪”的思路，让AI agent来主动分析和处理数据流，根据下游任务需求自动提取有价值的内容。这个思路让我想到科学计算中同样面临的数据预处理挑战——我们实验室里有大量模拟产生的高维时空数据，如何自动筛选出有物理意义的样本、过滤噪声、提取关键特征，其实是一个还没被很好解决的问题。DataClaw0展示的自动化pipeline，或许能为科学数据的智能化处理提供参考。
+
+接下来看EnterpriseClawBench，这是一个企业场景下的agent基准测试。现在AI agent很火，但很多评测还是在玩具数据集上做的。这篇文章从真实的企业工作会话中构建了852个任务，覆盖了阅读文件、调用工具、生成业务文档等场景。有意思的是，他们发现即使是最强的配置，也只能达到0.663的准确率。这说明什么？说明从模型能力到真实任务的鸿沟还非常大。我们在AI4S中也经常遇到类似的问题——实验室里跑的demo效果不错，但一到真实的科学问题就捉襟见肘。这个benchmark的价值在于，它提醒我们不要过于乐观。
+
+第三篇OpenRath解决的是一个很实际的问题：多智能体系统的运行时状态怎么管理。大家可能都有体会，当一个复杂系统里有多个agent协同工作，产生大量的对话历史、工具调用记录、中间状态，这些信息分散在不同地方，到后面想回溯、调试或者重放就变得非常困难。OpenRath提出了一个类似PyTorch编程模型的思路，把Session作为核心抽象，统一管理所有运行时信息。这让我想到科学计算中的工作流系统——当我们做大规模物理模拟时，同样需要管理参数配置、中间结果、检查点、并行通信状态等复杂状态。或许这种统一抽象的思路可以借鉴到科学计算的工作流管理中。
+
+第四篇PlanBench-XL关注的是LLM agent在大型工具生态系统中的长程规划能力。他们构建了一个包含1655个工具的零售场景任务集，测试agent能否在有限的工具可见性下，自主检索相关工具、通过多次调用逐步推理出最终答案。结果发现，即使加上可选的阻塞机制来模拟真实世界的不可预测性，agent的表现也远不尽如人意。这篇论文让我思考一个问题：我们做科学计算的时候，是否也需要类似的工具检索和规划能力？比如给定一个物理问题，agent能否自动检索相关的求解器、库函数，甚至组合多个工具来完成一个复杂的计算任务？目前看来，这个能力还需要很大提升。
+
+最后是一篇survey，World Action Models。世界动作模型是具身智能里的一个重要方向，它让模型不仅能理解世界，还能对未来进行预测并据此做出行动。这篇survey很好地梳理了.rendered futures、latent futures、video-generation-free action reasoning三条技术路线。关于这个方向和科学计算的关系，我觉得很有意思的一点是：物理模拟本质上就是一个“world model”——给定当前状态，预测未来演化。那么世界动作模型的进展，能否反过来启发我们构建更准确的物理预测模型？特别是现在diffusion model在生成式建模上进展很快，把它和物理约束结合，会产生什么样的可能性？这是值得关注的交叉点。
+
+好，总结一下今天的观察。这五篇论文其实都指向同一个趋势：AI agent正在从“能做什么”向“怎么做”深入。之前我们关心的是模型本身的推理能力、上下文长度这些单点指标，但现在大家越来越关注完整的系统问题——怎么评估真实场景下的表现、怎么管理复杂系统的状态、怎么做长程的工具规划和执行。这些基础设施建设层面的工作，短期内可能不如刷出一个新SOTA吸引眼球，但它们才是真正让agent从demo走向落地的关键。科学计算领域其实也面临类似的阶段：我们不缺好的模型和算法，但缺一整套让这些模型真正用起来的工具链和生态。今天的论文或许能给AI4S的从业者一些启示——不要只盯着模型本身，系统层面的工作同样重要。
+
+好了，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.21337" target="_blank">DataClaw0: Agentic Tailoring Multimodal Data from Raw Streams</a></li>
+<li><a href="https://arxiv.org/abs/2606.23654" target="_blank">EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions</a></li>
+<li><a href="https://arxiv.org/abs/2606.19409" target="_blank">OpenRath: Session-Centered Runtime State for Agent Systems</a></li>
+<li><a href="https://arxiv.org/abs/2606.22388" target="_blank">PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems</a></li>
+<li><a href="https://arxiv.org/abs/2606.20781" target="_blank">World Action Models: A Survey</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
