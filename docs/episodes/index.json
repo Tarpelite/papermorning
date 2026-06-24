@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-24",
+    "title": "Paper Morning 2026-06-24",
+    "description": "今日学术播报: Qwen-AgentWorld: Language Worl, Grouped Query Experts: Mixture, NatureBench: Can Coding Agents...",
+    "audio_file": "2026-06-24.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一篇神经算子的论文聊起，因为这和我们做PDE求解器的同事最近在讨论的问题很相关。Hartley Neural Operator（HNO）这篇文章提出了一个非常简洁但我觉得很有趣的改进：他们用实数的Hartley变换替代了Fourier Neural Operator里的复数FFT。我们知道PDE的解通常是实值的，而复数FFT因为共轭对称性会浪费一半的频率信息。HNO保留了完整的实数频谱，等参数量下实际学到的频率模式翻倍了。作者的central thesis是光谱基的选择会影响算子学习Green函数的能力，这让我想到我们在处理椭圆型PDE时，对Green函数的显式或隐式建模确实是个微妙的东西。这篇工作增量但务实，如果你在用FNO，可以顺手换成HNO试试。\n\n说完算子，我们来看看基础模型层面最近在发生什么。BioMatrix这个工作很有意思，它是第一个把分子和蛋白质的序列、结构、自然语言整合到单一decoder架构里的多模态基础模型。过去我们看到要么是多模态但只覆盖单一实体类型，比如只做分子或只做蛋白质，要么是覆盖多种实体...",
+    "papers": [
+      {
+        "title": "Qwen-AgentWorld: Language World Models for General Agents",
+        "url": "https://arxiv.org/abs/2606.24597",
+        "arxiv_id": "2606.24597"
+      },
+      {
+        "title": "Grouped Query Experts: Mixture-of-Experts on GQA Self-Attention",
+        "url": "https://arxiv.org/abs/2606.20945",
+        "arxiv_id": "2606.20945"
+      },
+      {
+        "title": "NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?",
+        "url": "https://arxiv.org/abs/2606.24530",
+        "arxiv_id": "2606.24530"
+      },
+      {
+        "title": "BioMatrix: Towards a Comprehensive Biological Foundation Model Spanning the Modality Matrix of Sequences, Structures, and Language",
+        "url": "https://arxiv.org/abs/2606.22138",
+        "arxiv_id": "2606.22138"
+      },
+      {
+        "title": "Real vs. Complex Spectral Bases for Neural Operators: The Role of Green's Function Alignment",
+        "url": "https://arxiv.org/abs/2606.24851v1",
+        "arxiv_id": "2606.24851v1"
+      }
+    ],
+    "published_at": "2026-06-24T23:44:57.077323Z"
+  },
+  {
     "date": "2026-06-23",
     "title": "Paper Morning 2026-06-23",
     "description": "今日学术播报: DataClaw0: Agentic Tailoring M, EnterpriseClawBench: Benchmark, OpenRath: Session-Centered Run...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-22T23:40:38.479220Z"
-  },
-  {
-    "date": "2026-05-21",
-    "title": "Paper Morning 2026-05-21",
-    "description": "今日学术播报: Enhancing Train-Free Infinite-, Mega-ASR: Towards In-the-wild^, Video2GUI: Synthesizing Large-...",
-    "audio_file": "2026-05-21.mp3",
-    "script": "各位早上好，又到了周四的Paper Morning时间。\n\n今天想先从一个观察聊起。大家有没有觉得，这两年我们谈AI for Science，常常在讨论“模型怎么学”，但其实“模型怎么用”同样关键。今天这几篇论文刚好从不同角度触及了这个话题——从强化学习的参数轨迹，到GUI agent的训练范式，再到语音识别在真实环境里的挑战，背后其实都指向同一个趋势：我们在从“训练”走向“使用”，而这个过程里出现了很多新的问题需要解决。\n\n先看第五篇，You Only Need Minimal RLVR Training。这篇工作很有意思，它研究的是用强化学习微调大语言模型时的参数变化几何。我们知道RLVR现在已经是提升模型推理能力的标配方法了，但这篇论文发现，这些微调带来的参数改变居然是极度低秩的——用一个简单的rank-1近似就能捕捉大部分性能提升，而且这个一维子空间的幅度随训练步骤几乎是线性变化的。这意味着什么？意味着我们可以只跑一小段训练，观察参数变化的趋势，然后直接外推就能预测后续的模型表现。他们把这个方法叫做RELEX，计算效率非常高。\n\n这个发现让我想到我们在做neural opera...",
-    "papers": [
-      {
-        "title": "Enhancing Train-Free Infinite-Frame Generation for Consistent Long Videos",
-        "url": "https://arxiv.org/abs/2605.18233",
-        "arxiv_id": "2605.18233"
-      },
-      {
-        "title": "Mega-ASR: Towards In-the-wild^2 Speech Recognition via Scaling up Real-world Acoustic Simulation",
-        "url": "https://arxiv.org/abs/2605.19833",
-        "arxiv_id": "2605.19833"
-      },
-      {
-        "title": "Video2GUI: Synthesizing Large-Scale Interaction Trajectories for Generalized GUI Agent Pretraining",
-        "url": "https://arxiv.org/abs/2605.14747",
-        "arxiv_id": "2605.14747"
-      },
-      {
-        "title": "IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agentic Tools",
-        "url": "https://arxiv.org/abs/2605.20682",
-        "arxiv_id": "2605.20682"
-      },
-      {
-        "title": "You Only Need Minimal RLVR Training: Extrapolating LLMs via Rank-1 Trajectories",
-        "url": "https://arxiv.org/abs/2605.21468",
-        "arxiv_id": "2605.21468"
-      }
-    ],
-    "published_at": "2026-05-21T23:36:51.243703Z"
   }
 ]

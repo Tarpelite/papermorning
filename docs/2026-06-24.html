@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-24</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-24</h1>
+    <p class="date">2026-06-24</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-24.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一篇神经算子的论文聊起，因为这和我们做PDE求解器的同事最近在讨论的问题很相关。Hartley Neural Operator（HNO）这篇文章提出了一个非常简洁但我觉得很有趣的改进：他们用实数的Hartley变换替代了Fourier Neural Operator里的复数FFT。我们知道PDE的解通常是实值的，而复数FFT因为共轭对称性会浪费一半的频率信息。HNO保留了完整的实数频谱，等参数量下实际学到的频率模式翻倍了。作者的central thesis是光谱基的选择会影响算子学习Green函数的能力，这让我想到我们在处理椭圆型PDE时，对Green函数的显式或隐式建模确实是个微妙的东西。这篇工作增量但务实，如果你在用FNO，可以顺手换成HNO试试。
+
+说完算子，我们来看看基础模型层面最近在发生什么。BioMatrix这个工作很有意思，它是第一个把分子和蛋白质的序列、结构、自然语言整合到单一decoder架构里的多模态基础模型。过去我们看到要么是多模态但只覆盖单一实体类型，比如只做分子或只做蛋白质，要么是覆盖多种实体但依赖adapter而非原生多模态。BioMatrix用统一的目标函数和共享的tokenizer实现了真正的原生多模态，这让我想到去年我们讨论过的foundation modelScaling Law在科学领域能不能复现的问题。生物数据的多模态整合其实比NLP的Scaling更复杂，因为不同模态的信息密度和噪声结构差异巨大。这篇工作算是给"生物基础模型应该长什么样"提供了一个有说服力的答案。
+
+接下来这篇NatureBench很有意思，但读完之后我有点五味杂陈。他们构建了一个包含90个任务的benchmark，用来检验AI coding agents能否真正超越"复现"而走向"发现"。在禁用网络搜索的严格协议下，最强的模型也只在17.8%的任务上超过了SOTA。这说明什么？说明即便在已经发表的论文上复现实验，AI agent的能力也还很有限。更值得玩味的是分析发现，agent的成功主要靠"方法翻译"——把论文里的方法适配到新的代码环境——而不是原创性的科学洞察。这和我们期待AI能帮我们做科学发现还有相当距离。但另一个角度想，这也给AI4S社区提了个醒：我们 Benchmarks的设计本身是不是太侧重于"执行已知方法"而不是"探索未知问题"？
+
+然后是Qwen-AgentWorld，这个工作构建了基于语言模型的世界模型，用于通用agent的环境模拟。他们用了超过1000万条真实环境的交互轨迹，涵盖7个领域，通过三阶段训练pipeline得到了35B参数但只激活3B的Qwen-AgentWorld-35B-A3B。这和三阶段训练让我想到去年开始流行的pretrain+fine-tuning+RLHF范式正在向agent场景迁移。这里有个有趣的跨领域联系：世界模型在强化学习里本来就是核心概念，而现在NLP背景的研究者用LLM重新定义了它。反过来想，我们做科学模拟的是不是也可以借鉴这种思路——不是直接预测物理系统的下一帧，而是建模一个"物理世界的语言"？
+
+最后Grouped Query Experts是篇工程性更强的文章，针对长上下文下attention计算成本过高的问题。他们在GQA的基础上又加了一层mixture-of-experts，router在每个query group里选择k个expert，而KV保持dense。这本质上是把"不同token应该用不同计算量"这个直觉产品化。GQA已经开源了，推理时确实能显著降低KV cache和计算量。如果你关心如何在有限显存下跑更长序列的PDE求解，这篇值得一读。
+
+好了，今天的论文跨度挺大的，从神经算子的理论改进到生物多模态基础模型，从AI agent的科学能力评估到世界模型的构建，再到Transformer的效率优化。如果要我提炼一个观察的话，我觉得今天的论文共同指向了一个趋势：AI for Science正在从"把现有AI方法套用到科学问题"，慢慢走向"为科学问题定制AI架构和训练范式"。HNO是为PDE频谱特性设计的，BioMatrix是为生物多模态设计的，GQE是为长序列科学计算设计的。这种针对性会是我们接下来几年最值得期待的方向。咱们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.24597" target="_blank">Qwen-AgentWorld: Language World Models for General Agents</a></li>
+<li><a href="https://arxiv.org/abs/2606.20945" target="_blank">Grouped Query Experts: Mixture-of-Experts on GQA Self-Attention</a></li>
+<li><a href="https://arxiv.org/abs/2606.24530" target="_blank">NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?</a></li>
+<li><a href="https://arxiv.org/abs/2606.22138" target="_blank">BioMatrix: Towards a Comprehensive Biological Foundation Model Spanning the Modality Matrix of Sequences, Structures, and Language</a></li>
+<li><a href="https://arxiv.org/abs/2606.24851v1" target="_blank">Real vs. Complex Spectral Bases for Neural Operators: The Role of Green's Function Alignment</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

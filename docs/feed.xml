@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-24</title>
+      <description>今日学术播报: Qwen-AgentWorld: Language Worl, Grouped Query Experts: Mixture, NatureBench: Can Coding Agents...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-24.mp3" length="8306982" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-24.mp3</guid>
+      <pubDate>2026-06-24T23:44:57.077323Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-23</title>
       <description>今日学术播报: DataClaw0: Agentic Tailoring M, EnterpriseClawBench: Benchmark, OpenRath: Session-Centered Run...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-23.mp3" length="8586597" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-22.mp3" length="8249304" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-22.mp3</guid>
       <pubDate>2026-05-22T23:40:38.479220Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-21</title>
-      <description>今日学术播报: Enhancing Train-Free Infinite-, Mega-ASR: Towards In-the-wild^, Video2GUI: Synthesizing Large-...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-21.mp3" length="9837967" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-21.mp3</guid>
-      <pubDate>2026-05-21T23:36:51.243703Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
