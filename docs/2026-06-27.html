@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-27</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-27</h1>
+    <p class="date">2026-06-27</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-27.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了周末的Paper Morning时间。
+
+今天想先从一篇机器人控制的论文聊起。Siyin Wang他们提出的In-Context World Modeling，解决的是一个很本质的问题：现在的视觉语言动作模型，在训练时见到的总是固定的相机视角或者固定的机器人形态，一旦换个环境，它的性能就塌了。传统做法是收集大量新数据再微调，但成本太高。他们把系统识别本身变成了一种in-context adaptation问题——让机器人通过一小段自己生成的、跟任务无关的交互历史，就能推断出关键的系统参数。这有点像是给机器人配备了一面“自我认知的镜子”，它不需要重新训练，只需要“看”一会儿就能理解自己当前的身体状态。这个思路其实和咱们AI4S里强调的“模型要有领域自适应能力”是一脉相承的。
+
+聊完机器人，咱们把视角转到生成模型那边。Wei Zhou他们的DanceOPD处理的是一个很实际的问题：现在的图像生成模型要同时具备文生图、局部编辑、全局编辑等多种能力，但这些能力之间其实是互相干扰的——加强编辑能力，文生图质量就下降；局部和全局编辑也会掐架。他们的做法很有意思，把每种能力定义成一个速度场，然后用一种on-policy的路由机制，让每个样本去调用最适合的那个能力场。这就好比一个交响乐团，不同乐器不是同时演奏，而是根据乐谱需要动态调配。我觉得这个思路对于咱们训练PDE求解器也有启发：当一个模型需要同时捕获不同物理机制的时候，也许不应该让所有机制一直在“竞争资源”，而是让它们在需要时各司其职。
+
+接下来这篇热度很高的论文，是关于LLM agent的内存系统。Wei Zhou他们做了一个很系统性的研究，把agent memory从简单的检索增强，扩展到persistent storage、retrieval、update、consolidation、dynamic governance这五个维度。他们发现现有的评估方式只看最终任务成功率，其实掩盖了很多系统层面的问题，比如运营成本、不同内存模块之间的架构权衡、知识动态更新时的鲁棒性等等。这让我想到咱们科学计算里的数据管理——同样一套实验数据，既要能快速检索，又要能长期存档，还要能处理新数据的不断涌入，如何在这些需求之间做trade-off，其实是一个非常工程但又极其关键的问题。
+
+然后是视频生成领域的DomainShuttle。Nan Chen他们关注的是一个很有挑战性的场景：开放域主体驱动的视频生成，既要保持主体的核心特征不变，又要允许主体无关的属性跟着文本提示灵活变化。现有方法要么过于保守，只能在训练见过的域内保持高保真度；要么过于激进，一开放就丢失主体特征。他们的方案是让模型能在“域内”和“跨域”两种模式之间自由切换，就像一个穿梭于不同世界的旅行者。这其实呼应了咱们AI4S里的一个核心诉求：一个好的物理模拟模型，既要在已知工况下精确可靠，又要在未见过的工况下保持合理的泛化。
+
+最后聊聊这篇关于编码agent奖励验证的论文。Binghai Wang他们提出了一个很犀利的观点：经典直觉里“验证比生成容易”正在被颠覆——现在生成复杂代码已经不是瓶颈了，真正困难的是可靠地验证代码是否实现了人的意图。而且这个验证难题是双重的：人的意图本身往往就是模糊的，而且在模型训练过程中，优化器会不断放大“验证代理”和“真正意图”之间的差距，导致reward hacking或者signal saturation。这对于咱们构建科学计算的评估体系也很有警示意义：当我们在训练一个PDE求解器的时候，用什么指标来衡量它的“好”？仅仅是L2误差够吗？会不会也存在类似的“验证代理”和“真实目标”之间的gap？
+
+好，咱们把这五篇论文串起来看，会发现一个共同的脉络：今天的AI系统正在从“静态能力”走向“动态适应”。机器人要能自适应新环境，生成模型要能灵活组合多种能力，agent要有完整的记忆生命周期，视频生成要在不同域之间穿梭，甚至验证机制也要能跟上意图的演化。这其实呼应了咱们AI4S领域正在发生的事——咱们不再满足于一个在固定数据集上表现最好的模型，而是追求一个能够在变化的环境中持续学习、适应、可靠运行的系统。这个趋势值得咱们在接下来一段时间里持续关注。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.26025" target="_blank">In-Context World Modeling for Robotic Control</a></li>
+<li><a href="https://arxiv.org/abs/2606.27377" target="_blank">DanceOPD: On-Policy Generative Field Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2606.24775" target="_blank">Are We Ready For An Agent-Native Memory System?</a></li>
+<li><a href="https://arxiv.org/abs/2606.26058" target="_blank">DomainShuttle: Freeform Open Domain Subject-driven Text-to-video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2606.26300" target="_blank">The Verification Horizon: No Silver Bullet for Coding Agent Rewards</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

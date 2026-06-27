@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-27</title>
+      <description>今日学术播报: In-Context World Modeling for , DanceOPD: On-Policy Generative, Are We Ready For An Agent-Nati...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-27.mp3" length="8283159" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-27.mp3</guid>
+      <pubDate>2026-06-27T23:35:51.857864Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-26</title>
       <description>今日学术播报: DanceOPD: On-Policy Generative, Are We Ready For An Agent-Nati, DomainShuttle: Freeform Open D...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-26.mp3" length="7535848" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-25.mp3" length="9781542" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-25.mp3</guid>
       <pubDate>2026-05-25T23:41:56.936573Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-24</title>
-      <description>今日学术播报: TransitLM: A Large-Scale Datas, Full Attention Strikes Back: T, DelTA: Discriminative Token Cr...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-24.mp3" length="10883074" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-24.mp3</guid>
-      <pubDate>2026-05-24T23:34:59.315725Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
