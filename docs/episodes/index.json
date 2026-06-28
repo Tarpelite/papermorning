@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-28",
+    "title": "Paper Morning 2026-06-28",
+    "description": "今日学术播报: In-Context World Modeling for , The Verification Horizon: No S, DanceOPD: On-Policy Generative...",
+    "audio_file": "2026-06-28.mp3",
+    "script": "各位早上好，周日的Paper Morning如约而至。\n\n今天想先从一篇机器人控制的工作聊起。Siyin Wang他们提出的In-Context World Modeling，解决的是一个很本质的问题：现在的VLA模型训练时见过的机器人形态和视角是固定的，遇到新环境就不灵了。传统做法是针对新环境再收集数据微调，但他们换了个思路，把系统辨识本身变成一个in-context adaptation问题。也就是说，机器人通过一小段自己与环境交互的历史，就能推断出关键的系统参数。这让我想到我们在PDE求解中经常说的\"系统识别\"，以前我们是用优化方法显式地去拟合参数，而这里把它藏在了context里面，让模型自己从交互数据中隐式地学到。这种思路其实和foundation model的in-context learning一脉相承——不改变模型参数，而是在输入的上下文中注入任务相关信息。区别在于，这里上下文不是人类给的prompt，而是机器人自己生成的交互轨迹。这个工作会不会给物理模拟中的系统辨识带来启发？比如，我们能不能让一个控制器在运行过程中自己\"意识到\"自己面对的是不同的动力学环境，从而自适应...",
+    "papers": [
+      {
+        "title": "In-Context World Modeling for Robotic Control",
+        "url": "https://arxiv.org/abs/2606.26025",
+        "arxiv_id": "2606.26025"
+      },
+      {
+        "title": "The Verification Horizon: No Silver Bullet for Coding Agent Rewards",
+        "url": "https://arxiv.org/abs/2606.26300",
+        "arxiv_id": "2606.26300"
+      },
+      {
+        "title": "DanceOPD: On-Policy Generative Field Distillation",
+        "url": "https://arxiv.org/abs/2606.27377",
+        "arxiv_id": "2606.27377"
+      },
+      {
+        "title": "Are We Ready For An Agent-Native Memory System?",
+        "url": "https://arxiv.org/abs/2606.24775",
+        "arxiv_id": "2606.24775"
+      },
+      {
+        "title": "DomainShuttle: Freeform Open Domain Subject-driven Text-to-video Generation",
+        "url": "https://arxiv.org/abs/2606.26058",
+        "arxiv_id": "2606.26058"
+      }
+    ],
+    "published_at": "2026-06-28T23:40:29.731446Z"
+  },
+  {
     "date": "2026-06-27",
     "title": "Paper Morning 2026-06-27",
     "description": "今日学术播报: In-Context World Modeling for , DanceOPD: On-Policy Generative, Are We Ready For An Agent-Nati...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-26T23:42:53.106252Z"
-  },
-  {
-    "date": "2026-05-25",
-    "title": "Paper Morning 2026-05-25",
-    "description": "今日学术播报: Rethinking Cross-Layer Informa, Lens: Rethinking Training Effi, SkillOpt: Executive Strategy f...",
-    "audio_file": "2026-05-25.mp3",
-    "script": "各位早上好，周一的Paper Morning又和大家见面了。\n\n今天想先从一个观察说起。这两年我们看AI for Science的进展，常常觉得基础模型的思路已经从NLP和视觉领域渗透进来了，但反过来，视觉和语言模型那边最近发生的一些方法论变化，其实也值得我们关注。今天聊的几篇论文，看起来跟科学计算没有直接关系，但它们背后反映的某些趋势，其实在悄悄塑造整个AI研究的面貌。\n\n先说第一篇，关于Diffusion Transformers的跨层信息路由问题。这两年DiT已经成为图像生成的主流架构，但它的层级信息流动方式几乎是直接沿用原始Transformer的残差连接。这篇文章作者做了非常系统的诊断，发现传统残差加法存在三个症状：前向传播时幅度单调膨胀，反向传播时梯度急剧衰减，以及层间存在明显的冗余。这让我想起我们在做神经算子时，也经常遇到信息在不同层之间传递效率不高的问题。他们提出的DAR方法本质上是在做跨层的自适应路由，让模型自己决定哪些信息该保留、哪些该更新。这种思路其实跟我们在PDE求解里希望不同尺度信息高效融合的目标是一致的，只是这里处理的是diffusion过程的时间步和模型深...",
-    "papers": [
-      {
-        "title": "Rethinking Cross-Layer Information Routing in Diffusion Transformers",
-        "url": "https://arxiv.org/abs/2605.20708",
-        "arxiv_id": "2605.20708"
-      },
-      {
-        "title": "Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models",
-        "url": "https://arxiv.org/abs/2605.21573",
-        "arxiv_id": "2605.21573"
-      },
-      {
-        "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-        "url": "https://arxiv.org/abs/2605.23904",
-        "arxiv_id": "2605.23904"
-      },
-      {
-        "title": "TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation",
-        "url": "https://arxiv.org/abs/2605.22355",
-        "arxiv_id": "2605.22355"
-      },
-      {
-        "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
-        "url": "https://arxiv.org/abs/2605.16928",
-        "arxiv_id": "2605.16928"
-      }
-    ],
-    "published_at": "2026-05-25T23:41:56.936573Z"
   }
 ]
