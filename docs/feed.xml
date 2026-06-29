@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-29</title>
+      <description>今日学术播报: In-Context World Modeling for , The Verification Horizon: No S, PhysisForcing: Physics Reinfor...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-29.mp3" length="7241186" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-29.mp3</guid>
+      <pubDate>2026-06-29T23:35:50.801568Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-28</title>
       <description>今日学术播报: In-Context World Modeling for , The Verification Horizon: No S, DanceOPD: On-Policy Generative...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-28.mp3" length="8159652" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-27.mp3" length="6631175" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-27.mp3</guid>
       <pubDate>2026-05-27T23:46:29.418137Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-26</title>
-      <description>今日学术播报: WBench: A Comprehensive Multi-, Foundation Protocol: A Coordin, Macaron-A2UI: A Model for Gene...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-26.mp3" length="9174039" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-26.mp3</guid>
-      <pubDate>2026-05-26T23:42:53.106252Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

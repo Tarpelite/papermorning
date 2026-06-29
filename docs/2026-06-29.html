@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-29</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-29</h1>
+    <p class="date">2026-06-29</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-29.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，新的一周开始了，Paper Morning准时开播。
+
+今天想先从一篇关于机器人智能的论文聊起。近几年Vision-Language-Action模型在机器人领域火得不行，但大家有没有注意到一个问题：这些模型换个摄像头角度或者换台机器人，就不好使了。Siyin Wang他们提出的In-Context World Modeling就是来解决这个问题的——它让机器人自己从一小段交互历史里推断出“我在哪、我是谁”这样的系统变量。这本质上把系统辨识变成了一个上下文学习问题，思路很直接，但我觉得它点出了一个很本质的东西：以前我们把机器人当作固定环境下的执行器，现在我们开始把机器人本身当作一个需要在运行时识别的变量。这个转变可能会催生一批更通用的机器人基础模型。
+
+顺着机器人世界模型这个话题往下走，PhysisForcing这篇文章很有意思。它用物理知识来给视频生成模型加约束，让机器人的世界模拟器更可靠。研究者发现现在视频生成模型经常画出不可能的物理场景——比如物体突然断开、运动轨迹不连续——根本原因在于模型没有学到物体交互时的时空相关性。PhysisForcing的解决方案很巧妙：它不盲目监督整个画面，而是精准定位那些“物理信息丰富”的区域进行监督。这个思路其实很像我们做PDE求解时强调的“关注关键区域”——不是所有像素都同等重要，物理约束应该加在真正有意义的地方。
+
+接下来聊聊强化学习的训练范式。OPID这篇文章处理的是一个很实际的问题：outcome-based RL给的奖励很稀疏，模型不知道中间每一步哪些决策做对了、哪些做错了。他们提出的方法是从已经完成的轨迹中提取“技能监督信号”，用层次化的方式——episode级别的技能描述整体工作流，step级别的技能监督每一步决策。这让我想到大语言模型里的chain-of-thought，两者都是在用更细粒度的中间信号来引导学习。不过我更关心的是：这个方法能不能推广到科学计算场景？比如我们在训练一个流体求解器的时候，是不是也可以从成功 simulation 里提取“物理直觉”作为监督？
+
+然后是那篇关于coding agent奖励验证的文章。它提出了一个很犀利的观察：以前我们觉得验证一个解法比生成它容易，但现在这个假设正在被颠覆。当模型生成能力越来越强时，如何可靠地验证反而成了瓶颈。更深刻的是，作者指出任何verifier都只是人类意图的代理，而意图本身是模糊的；训练过程中模型会不断 exploited 这个差距。这就是我们常说的reward hacking。但这篇文章不是来给问题画句号的，它更多是在敲警钟——我们在设计AI for Science的评估体系时，是否也犯了同样的错误？当我们在benchmark上刷分时，有没有想过那些分数真的在衡量我们关心的科学能力吗？
+
+最后回到我自己的老本行，电池领域的PINN工作。用物理信息神经网络来估计锂离子电池状态，这个方向其实已经有一段时间了。但这回他们加了迁移学习——用少量目标电池的数据来微调预训练模型。这其实呼应了我们前面聊到的foundation model思路：先在大规模通用数据上学物理规律，再在特定任务上快速适应。很有意思的是，NLP领域的预训练-微调范式正在被各个领域借鉴，从机器人到电池，不一而足。
+
+总结一下今天的观察：本周的论文不约而同地指向一个趋势——不管是机器人世界建模、RL训练范式还是物理信息学习，大家都在做同一件事：把“通用能力”和“特定任务”解耦，再想办法高效地组合它们。这可能预示着AI4S正在从“做一个个具体模型”走向“构建可组合的智能系统”。好了各位，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.26025" target="_blank">In-Context World Modeling for Robotic Control</a></li>
+<li><a href="https://arxiv.org/abs/2606.26300" target="_blank">The Verification Horizon: No Silver Bullet for Coding Agent Rewards</a></li>
+<li><a href="https://arxiv.org/abs/2606.28128" target="_blank">PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2606.26790" target="_blank">OPID: On-Policy Skill Distillation for Agentic Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2606.28220v1" target="_blank">Physics-Informed Neural Network with Transfer Learning for State Estimation in Lithium-Ion Batteries using the Single Particle Model with Electrolyte</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
