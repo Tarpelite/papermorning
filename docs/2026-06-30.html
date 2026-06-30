@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-06-30</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-06-30</h1>
+    <p class="date">2026-06-30</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-06-30.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning 又和大家见面了。
+
+今天想和大家聊几篇很有意思的论文，它们看似分布在不同领域，但背后其实贯穿着一条主线——我们怎么让 AI 系统更好地应对真实世界的复杂性。
+
+先从一篇视频编辑的工作说起。LiveEdit 解决的是一个很实际的问题：能不能用扩散模型实现实时的流式视频编辑？过去的视频生成模型大多是做从头合成，而编辑需要更精细的控制——不仅要保持背景和未编辑区域的稳定性，还要达到交互式场景的低延迟要求。这篇文章的核心贡献是提出了一个三阶段蒸馏 pipeline，把一个强大的双向基础模型的能力，逐步迁移到一个高效的单向模型里，实现因果的、逐帧编辑。我觉得这个工作的价值不在于单纯快了多少钱，而在于它展示了如何把预训练大模型的能力蒸馏到实时场景，这对科学计算中的实时 PDE 求解也有启示——我们是不是也可以把复杂物理模型的推理能力，通过某种蒸馏机制压缩到可交互的响应时间？
+
+然后我想把大家的目光引向一个更基础的问题：模型到底有多强的泛化能力？Beyond IID 这篇论文批判了当前表格数据基础模型评估中的一个问题——大家都在 IID（独立同分布）数据上刷榜，但真正考验模型实力的分布外场景反而被忽视了。作者提出了 BeyondA 基准，专门用来测试模型在更广泛、更苛刻挑战下的表现。这让我想到科学计算中的经典困境：我们训练一个 PDE 求解器，往往在特定参数配置下效果很好，但一旦边界条件或物理参数发生变化，性能就大幅下降。这种"分布漂移"问题，可能比在标准 benchmark 上提升一两个点更有研究价值。
+
+顺着泛化能力这个话题，Tailor-Bench 这篇论文提出了一个更具体的挑战：现在的视觉世界模型在常见物理交互上表现惊人，但对于罕见且不规则的物理交互，它们的推理能力如何？作者设计了 Tailor-Bench 基准，通过三种递进难度的场景来系统评估模型对物理原则的内化和泛化能力。这里有一个很深刻的洞察——物理交互本身是长尾分布的，我们不能只满足于模拟"常识"物理，AI 要真正理解世界，就需要处理那些罕见的边缘情况。这对于科学计算意味着什么？我们训练的神经网络求解器，会不会也犯了同样的毛病——只会解"典型"问题，一遇到非平衡态、极端参数就失效？
+
+接下来聊一篇关于 LLM agent 本领的论文——Agentic Abstention。这篇文章提出了一个很本质的问题：当目标不确定或环境无法支持任务完成时，智能体应该懂得"放弃"，而不是盲目地继续调用工具。这听起来简单，但实际上是当前 agent 研究的大盲区。传统 LLM 的 abstention 只是单轮的是否回答决策，而 agentic abstention 是序贯决策——智能体需要通过多轮交互逐渐判断任务是否可行。这让我想到科学模拟中的一个实际问题：当我们用神经网络近似 PDE 解时，模型在某些区域可能根本不可靠，这时候与其硬着头皮给出结果，不如主动"承认不确定"，这其实是一种更负责任的建模态度。
+
+最后分享一篇很有野心的论文——Scaling the Horizon, Not the Parameters。作者提出一个核心观点：达到万亿参数级别的性能，不一定非要 Scale 模型参数，他们做出了 Agents-A1，一个 35B 的模型，通过扩展 agent 的 horizon——也就是更长的推理轨迹和更多样化的 agent 能力——达到了万亿参数级别的表现。这可以理解为一种新型的 scaling law，不再是堆参数，而是堆推理长度和经验多样性。这让我想到科学计算中的类似思路：与其追求更大的神经网络，不如设计更长的物理模拟 horizon，让模型通过更深的推理链条来逼近精确解。
+
+今天的播报到这里。我观察到一个趋势：无论是视频编辑、表格数据、视觉世界模型还是 LLM agent，大家都在问同一个问题——如何从"做得快"走向"想得深"、从"特定任务"走向"真实复杂场景"。这或许是 AI for Science 下一阶段的核心命题：不只是更准更快，而是更懂自己在什么时候该做什么。早上好各位。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.26740" target="_blank">LiveEdit: Towards Real-Time Diffusion-Based Streaming Video Editing</a></li>
+<li><a href="https://arxiv.org/abs/2606.30410" target="_blank">Beyond IID: How General Are Tabular Foundation Models, Really?</a></li>
+<li><a href="https://arxiv.org/abs/2606.24256" target="_blank">Trimming the Long-Tail of Visual World Modeling Evaluation</a></li>
+<li><a href="https://arxiv.org/abs/2606.28733" target="_blank">Agentic Abstention: Do Agents Know When to Stop Instead of Act?</a></li>
+<li><a href="https://arxiv.org/abs/2606.30616" target="_blank">Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

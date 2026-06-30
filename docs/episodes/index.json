@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-06-30",
+    "title": "Paper Morning 2026-06-30",
+    "description": "今日学术播报: LiveEdit: Towards Real-Time Di, Beyond IID: How General Are Ta, Trimming the Long-Tail of Visu...",
+    "audio_file": "2026-06-30.mp3",
+    "script": "各位早上好，Paper Morning 又和大家见面了。\n\n今天想和大家聊几篇很有意思的论文，它们看似分布在不同领域，但背后其实贯穿着一条主线——我们怎么让 AI 系统更好地应对真实世界的复杂性。\n\n先从一篇视频编辑的工作说起。LiveEdit 解决的是一个很实际的问题：能不能用扩散模型实现实时的流式视频编辑？过去的视频生成模型大多是做从头合成，而编辑需要更精细的控制——不仅要保持背景和未编辑区域的稳定性，还要达到交互式场景的低延迟要求。这篇文章的核心贡献是提出了一个三阶段蒸馏 pipeline，把一个强大的双向基础模型的能力，逐步迁移到一个高效的单向模型里，实现因果的、逐帧编辑。我觉得这个工作的价值不在于单纯快了多少钱，而在于它展示了如何把预训练大模型的能力蒸馏到实时场景，这对科学计算中的实时 PDE 求解也有启示——我们是不是也可以把复杂物理模型的推理能力，通过某种蒸馏机制压缩到可交互的响应时间？\n\n然后我想把大家的目光引向一个更基础的问题：模型到底有多强的泛化能力？Beyond IID 这篇论文批判了当前表格数据基础模型评估中的一个问题——大家都在 IID（独立同分布）数据上刷榜...",
+    "papers": [
+      {
+        "title": "LiveEdit: Towards Real-Time Diffusion-Based Streaming Video Editing",
+        "url": "https://arxiv.org/abs/2606.26740",
+        "arxiv_id": "2606.26740"
+      },
+      {
+        "title": "Beyond IID: How General Are Tabular Foundation Models, Really?",
+        "url": "https://arxiv.org/abs/2606.30410",
+        "arxiv_id": "2606.30410"
+      },
+      {
+        "title": "Trimming the Long-Tail of Visual World Modeling Evaluation",
+        "url": "https://arxiv.org/abs/2606.24256",
+        "arxiv_id": "2606.24256"
+      },
+      {
+        "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
+        "url": "https://arxiv.org/abs/2606.28733",
+        "arxiv_id": "2606.28733"
+      },
+      {
+        "title": "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent",
+        "url": "https://arxiv.org/abs/2606.30616",
+        "arxiv_id": "2606.30616"
+      }
+    ],
+    "published_at": "2026-06-30T23:46:43.190133Z"
+  },
+  {
     "date": "2026-06-29",
     "title": "Paper Morning 2026-06-29",
     "description": "今日学术播报: In-Context World Modeling for , The Verification Horizon: No S, PhysisForcing: Physics Reinfor...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-28T23:52:28.886995Z"
-  },
-  {
-    "date": "2026-05-27",
-    "title": "Paper Morning 2026-05-27",
-    "description": "今日学术播报: SpatialBench: Is Your Spatial , EvalVerse: Pipeline-Aware and , LocateAnything: Fast and High-...",
-    "audio_file": "2026-05-27.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个我们领域常常忽略的问题聊起：做benchmark这件事本身，到底是在推动进步，还是在悄悄限制我们的想象力？最近几篇很有意思的文章都指向了同一个方向——评估范式本身正在发生一些微妙但深远的转变。\n\n先来看一篇关于3D重建的工作。几何感知表示去噪，名字听起来有点绕，但它做的事情其实非常直接。我们知道，现在的feed-forward 3D重建模型已经很强了，但它们基本都是在“理想条件”下训练和评估的——也就是说，输入的图像都是干净的。可现实应用中，图像总会有各种退化。这篇工作提出的方法很巧妙：它不直接在像素层面去噪，而是利用3D重建模型已经学到的几何感知特征，在特征空间里做diffusion去噪。这样做的好处是什么呢？它能更好地保留场景的几何结构，而不只是让图像看起来更干净。这是一个很典型的“领域交叉”思路——把diffusion model这个生成工具，用在了重建任务里，而且用在了最合适的位置。某种程度上，这也在回答一个更大的问题：当我们有了强大的基础模型之后，如何让它在不那么理想的真实场景中保持鲁棒？\n\n接下来这个工作...",
-    "papers": [
-      {
-        "title": "SpatialBench: Is Your Spatial Foundation Model an All-Round Player?",
-        "url": "https://arxiv.org/abs/2605.27367",
-        "arxiv_id": "2605.27367"
-      },
-      {
-        "title": "EvalVerse: Pipeline-Aware and Expert-Calibrated Benchmarking for Professional Cinematic Video Generation",
-        "url": "https://arxiv.org/abs/2605.23271",
-        "arxiv_id": "2605.23271"
-      },
-      {
-        "title": "LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding",
-        "url": "https://arxiv.org/abs/2605.27365",
-        "arxiv_id": "2605.27365"
-      },
-      {
-        "title": "MobileGym: A Verifiable and Highly Parallel Simulation Platform for Mobile GUI Agent Research",
-        "url": "https://arxiv.org/abs/2605.26114",
-        "arxiv_id": "2605.26114"
-      },
-      {
-        "title": "Geometry-Aware Representation Denoising for Robust Multi-view 3D Reconstruction",
-        "url": "https://arxiv.org/abs/2605.26230",
-        "arxiv_id": "2605.26230"
-      }
-    ],
-    "published_at": "2026-05-27T23:46:29.418137Z"
   }
 ]

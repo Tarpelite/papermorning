@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-06-30</title>
+      <description>今日学术播报: LiveEdit: Towards Real-Time Di, Beyond IID: How General Are Ta, Trimming the Long-Tail of Visu...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-30.mp3" length="7920788" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-06-30.mp3</guid>
+      <pubDate>2026-06-30T23:46:43.190133Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-06-29</title>
       <description>今日学术播报: In-Context World Modeling for , The Verification Horizon: No S, PhysisForcing: Physics Reinfor...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-29.mp3" length="7241186" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-28.mp3" length="10559573" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-28.mp3</guid>
       <pubDate>2026-05-28T23:52:28.886995Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-27</title>
-      <description>今日学术播报: SpatialBench: Is Your Spatial , EvalVerse: Pipeline-Aware and , LocateAnything: Fast and High-...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-27.mp3" length="6631175" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-27.mp3</guid>
-      <pubDate>2026-05-27T23:46:29.418137Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
