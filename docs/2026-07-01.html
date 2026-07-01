@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-01</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-01</h1>
+    <p class="date">2026-07-01</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-01.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。
+
+今天想先从一个更大的话题聊起。我们一直在关注AI for Science的进展，但最近业界有些讨论在反思：基础模型到底应该学什么？对于我们做科学计算的人来说，这个问题其实很关键——我们期望模型学到的是可迁移的物理规律，还是仅仅是对训练数据的记忆？
+
+Orca这篇论文给出了一个很有意思的答案。它提出了一个世界基础模型的概念，但不像传统的视觉语言动作模型那样强调下一步预测，而是把焦点放在下一状态预测上。什么意思呢？它不是让模型预测下一个token、下一帧画面或下一个动作，而是让模型理解世界如何从一种状态演变到另一种状态。这个视角我觉得很有趣，因为它实际上是在说，智能体应该理解的是世界演化的规律，而不只是下一个输出是什么。
+
+为了实现这个目标，Orca采用了双通道学习策略：无意识学习从连续视频中捕捉密集的自然状态转换，有意识学习则通过语言描述的事件和视觉问答监督来建模稀疏但有意义的状态转换。这个设计让我想到我们做PDE求解时的思路——既需要数据驱动来捕捉系统的整体行为，也需要物理约束来保证解的合理性。Orca用125K小时的视频进行预训练，虽然是通用领域的尝试，但它提出的统一状态转移建模方向，对我们构建科学计算领域的世界模型很有启发。如果我们能把物理规律编码进状态转移的先验里，或许能真正学到可解释、可泛化的物理知识。
+
+说完了大框架，我们来看看具体的技术进展。
+
+BlockPilot做的是扩散模型解码的优化。大家知道，扩散模型在生成质量上很有优势，但推理速度慢是个大问题。这篇论文发现了一个很有趣的现象：之前的方法都用固定的块大小来生成多个token，但实际上不同样本需要不同的块大小才能达到最优效果。这就好像我们在解PDE时，固定的网格分辨率往往不是最优的，自适应网格才能提高效率。BlockPilot通过实例自适应的策略学习，让模型在推理时能够动态决定每个样本用多大的块，结果在不影响生成质量的前提下显著提升了推理速度。
+
+这个思路其实和我们做科学计算时的自适应方法论是相通的。
+
+接下来是DOPD，这篇做的是知识蒸馏。我们知道模型压缩是个大趋势，但蒸馏过程中学生模型到底应该学什么，一直有争议。DOPD的贡献在于，它提出了一种新的蒸馏范式：让学生用自己的采样轨迹来提供监督信号，而不仅仅是用教师模型的输出。这样做的好处是，学生能获得更丰富、更多样化的学习信号。论文还提到了一个很有意思的问题，叫做特权幻觉——当教师模型使用了额外的信息时，学生可能学到一些无法迁移的模式。这让我想到我们训练物理信息神经网络时的一个常见挑战：损失函数设计既要保证数据拟合，又要满足物理约束，两者之间的平衡很关键。
+
+现在看一个非常实际的工作。Dockerless解决的是训练代码agent时的一个痛点：我们需要验证生成的代码是否正确，但标准做法是在Docker环境里跑测试，搭建环境非常耗时。Dockerless的思路很巧妙——它不需要执行代码，而是通过"阅读理解"代码来判断patch是否正确。具体来说，它让模型像人类审查代码一样去分析代码仓库的结构，收集证据，然后判断这个修改是否合理。这让我想到我们做PDE解的验证时，也经常用残差来检查解是否满足方程，而不是每 次都跑一遍仿真。Dockerless在测试中比最强的开源验证器高出14.3个AUC点，效果相当可观。
+
+最后这篇文章非常有意思，它问了一个看似简单但很重要的问题：视觉语言动作模型在学习了机器人数据之后，还保留了多少常识？这篇论文发现，很多VLA模型在常识问答上表现得很差。更关键的是，论文设计了一个很巧妙的实验方法——让agent通过在桌面上放置物体来回答问题，这样就能把视觉语言知识和机器人控制分离开。这个工作提醒我们，在做端到端机器人学习时，不能假设预训练学到的知识会完整保留下来。对于我们做科学计算的人来说，这也是一个警示——当我们把通用模型适配到物理仿真任务时，之前积累的世界知识和物理直觉，是否也同样在流失？
+
+好，让我们来做今天的总结。今天这几篇论文有一个共同的暗线：它们都在追问同一个问题——我们的模型到底学到了什么？Orca在重新思考学习的目标，Dockerless和DOPD在重新审视评估和蒸馏的方式，而VLA这篇文章则在检验知识是否真的被保留。这些工作都在推动我们更深入地思考模型的能力边界和可靠性问题。在AI for Science领域，我们最终想要的是能真正理解物理规律、可以进行推理的模型，而这些论文正在帮助我们看清实现这个目标还需要跨越哪些障碍。好了，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.30534" target="_blank">Orca: The World is in Your Mind</a></li>
+<li><a href="https://arxiv.org/abs/2606.31315" target="_blank">BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding</a></li>
+<li><a href="https://arxiv.org/abs/2606.30626" target="_blank">DOPD: Dual On-policy Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2606.28436" target="_blank">Dockerless: Environment-Free Program Verifier for Coding Agents</a></li>
+<li><a href="https://arxiv.org/abs/2606.19297" target="_blank">Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

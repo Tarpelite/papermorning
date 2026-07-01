@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-01",
+    "title": "Paper Morning 2026-07-01",
+    "description": "今日学术播报: Orca: The World is in Your Min, BlockPilot: Instance-Adaptive , DOPD: Dual On-policy Distillat...",
+    "audio_file": "2026-07-01.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个更大的话题聊起。我们一直在关注AI for Science的进展，但最近业界有些讨论在反思：基础模型到底应该学什么？对于我们做科学计算的人来说，这个问题其实很关键——我们期望模型学到的是可迁移的物理规律，还是仅仅是对训练数据的记忆？\n\nOrca这篇论文给出了一个很有意思的答案。它提出了一个世界基础模型的概念，但不像传统的视觉语言动作模型那样强调下一步预测，而是把焦点放在下一状态预测上。什么意思呢？它不是让模型预测下一个token、下一帧画面或下一个动作，而是让模型理解世界如何从一种状态演变到另一种状态。这个视角我觉得很有趣，因为它实际上是在说，智能体应该理解的是世界演化的规律，而不只是下一个输出是什么。\n\n为了实现这个目标，Orca采用了双通道学习策略：无意识学习从连续视频中捕捉密集的自然状态转换，有意识学习则通过语言描述的事件和视觉问答监督来建模稀疏但有意义的状态转换。这个设计让我想到我们做PDE求解时的思路——既需要数据驱动来捕捉系统的整体行为，也需要物理约束来保证解的合理性。Orca用125K小时的视频进行预训...",
+    "papers": [
+      {
+        "title": "Orca: The World is in Your Mind",
+        "url": "https://arxiv.org/abs/2606.30534",
+        "arxiv_id": "2606.30534"
+      },
+      {
+        "title": "BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding",
+        "url": "https://arxiv.org/abs/2606.31315",
+        "arxiv_id": "2606.31315"
+      },
+      {
+        "title": "DOPD: Dual On-policy Distillation",
+        "url": "https://arxiv.org/abs/2606.30626",
+        "arxiv_id": "2606.30626"
+      },
+      {
+        "title": "Dockerless: Environment-Free Program Verifier for Coding Agents",
+        "url": "https://arxiv.org/abs/2606.28436",
+        "arxiv_id": "2606.28436"
+      },
+      {
+        "title": "Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2606.19297",
+        "arxiv_id": "2606.19297"
+      }
+    ],
+    "published_at": "2026-07-01T23:53:43.965456Z"
+  },
+  {
     "date": "2026-06-30",
     "title": "Paper Morning 2026-06-30",
     "description": "今日学术播报: LiveEdit: Towards Real-Time Di, Beyond IID: How General Are Ta, Trimming the Long-Tail of Visu...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-29T23:50:50.238495Z"
-  },
-  {
-    "date": "2026-05-28",
-    "title": "Paper Morning 2026-05-28",
-    "description": "今日学术播报: ProRL: Effective Reinforcement, Agent Explorative Policy Optim, Self-Improving Language Models...",
-    "audio_file": "2026-05-28.mp3",
-    "script": "各位早上好，周四的Paper Morning准时开播了。\n\n今天想先从一个更大的话题聊起。最近RL，也就是强化学习，在大语言模型里火得不行，从DeepSeek到OpenAI的o1系列，都在强调RL训练带来的推理能力跃升。但今天这几篇论文，其实把RL的边界往更远推了一步——不只是让模型更会推理，还在解决实际部署中的问题。\n\n第一篇叫ProRL，讲的是推荐系统里的主动推荐。大家知道传统推荐是用户主动去搜，但主动推荐是系统主动给用户“铺路”，通过一系列中间商品，最终引导到目标商品。这本质上是一个路径规划问题，用RL是很自然的思路。但作者发现直接用policy gradient有个致命问题：路径一长，梯度估计就偏向于延伸路径，而不是真正有价值的探索。这个发现很本质，因为它揭示了长程决策中梯度估计的普遍困境。大家做AI4S的同事可能联想到——当我们用RL控制机器人、模拟物理系统时，是不是也常常遇到这个问题？路径越长，信号越稀释。这篇文章提出的校正方法，本质上是对梯度做方差约减，但更值得关注的是它把“路径级奖励分解成步级奖励”这个结构显式建模了，这个思路其实和我们在科学计算里做时间离散化时的某些思...",
-    "papers": [
-      {
-        "title": "ProRL: Effective Reinforcement Learning for Proactive Recommendation via Rectified Policy Gradient Estimation",
-        "url": "https://arxiv.org/abs/2605.28293",
-        "arxiv_id": "2605.28293"
-      },
-      {
-        "title": "Agent Explorative Policy Optimization for Multimodal Agentic Reasoning",
-        "url": "https://arxiv.org/abs/2605.28774",
-        "arxiv_id": "2605.28774"
-      },
-      {
-        "title": "Self-Improving Language Models with Bidirectional Evolutionary Search",
-        "url": "https://arxiv.org/abs/2605.28814",
-        "arxiv_id": "2605.28814"
-      },
-      {
-        "title": "DenoiseRL: Bootstrapping Reasoning Models to Recover from Noisy Prefixes",
-        "url": "https://arxiv.org/abs/2605.28421",
-        "arxiv_id": "2605.28421"
-      },
-      {
-        "title": "GEM: Generative Supervision Helps Embodied Intelligence",
-        "url": "https://arxiv.org/abs/2605.28548",
-        "arxiv_id": "2605.28548"
-      }
-    ],
-    "published_at": "2026-05-28T23:52:28.886995Z"
   }
 ]
