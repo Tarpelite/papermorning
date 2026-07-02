@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-02</title>
+      <description>今日学术播报: Does VLA Even Know the Basics?, GAIA: Geometry-Adaptive Operat, Valdi: Value Diffusion World M...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-02.mp3" length="9893137" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-02.mp3</guid>
+      <pubDate>2026-07-02T23:40:00.054546Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-01</title>
       <description>今日学术播报: Orca: The World is in Your Min, BlockPilot: Instance-Adaptive , DOPD: Dual On-policy Distillat...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-01.mp3" length="9641735" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-05-30.mp3" length="6853111" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-05-30.mp3</guid>
       <pubDate>2026-05-30T23:35:43.658070Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-29</title>
-      <description>今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-29.mp3" length="7902607" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-29.mp3</guid>
-      <pubDate>2026-05-29T23:50:50.238495Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

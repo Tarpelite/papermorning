@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-02",
+    "title": "Paper Morning 2026-07-02",
+    "description": "今日学术播报: Does VLA Even Know the Basics?, GAIA: Geometry-Adaptive Operat, Valdi: Value Diffusion World M...",
+    "audio_file": "2026-07-02.mp3",
+    "script": "各位早上好，周四的Paper Morning如约而至。\n\n今天想先聊一篇让我思考了很久的论文——关于VLA模型到底保留了多少常识。这篇标题是Does VLA Even Know the Basics?来自HuggingFace热榜。它提出了一个很有意思的问题：我们现在训练机器人做动作，是从强大的视觉语言模型微调来的，但微调之后，它原来学到的那些常识知识、世界知识还剩多少？这确实是个很实际的问题。以前我们可能看到机器人fail了，搞不清到底是它“不知道”还是它“知道了但做不好”。这篇文章的做法很聪明，叫做Act2Answer——不让它直接回答问题，而是让它通过选择一个物体的摆放位置来“投票”。这样就把“控制能力”和“知识水平”给解耦了。这是一个增量改进，但它提醒我们一个重要的问题：foundation model的能力在迁移到具体任务时，是否存在我们以为已经解决但其实并未解决的损耗？这在我们AI4S领域 тоже适用——当我们在PDE求解器里嵌入一个预训练的视觉或语言组件时，它的知识真的能被有效利用吗？\n\n聊完VLA，我们来 看一篇和我们核心方向直接相关的论文——GAIA: Geomet...",
+    "papers": [
+      {
+        "title": "Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models",
+        "url": "https://arxiv.org/abs/2606.19297",
+        "arxiv_id": "2606.19297"
+      },
+      {
+        "title": "GAIA: Geometry-Adaptive Operator Learning for Forward and Inverse Problems",
+        "url": "https://arxiv.org/abs/2607.01128v1",
+        "arxiv_id": "2607.01128v1"
+      },
+      {
+        "title": "Valdi: Value Diffusion World Models",
+        "url": "https://arxiv.org/abs/2607.00917",
+        "arxiv_id": "2607.00917"
+      },
+      {
+        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
+        "url": "https://arxiv.org/abs/2606.28322",
+        "arxiv_id": "2606.28322"
+      },
+      {
+        "title": "SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History",
+        "url": "https://arxiv.org/abs/2606.08671",
+        "arxiv_id": "2606.08671"
+      }
+    ],
+    "published_at": "2026-07-02T23:40:00.054546Z"
+  },
+  {
     "date": "2026-07-01",
     "title": "Paper Morning 2026-07-01",
     "description": "今日学术播报: Orca: The World is in Your Min, BlockPilot: Instance-Adaptive , DOPD: Dual On-policy Distillat...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-30T23:35:43.658070Z"
-  },
-  {
-    "date": "2026-05-29",
-    "title": "Paper Morning 2026-05-29",
-    "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
-    "audio_file": "2026-05-29.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一篇有点特殊的论文聊起。minWM这个工作关注的是怎么把视频生成模型变成实时的交互式世界模型。大家知道，这两年视频扩散模型进展很快，但真要让模型能够实时交互、控制相机视角、还要保证低延迟，这里涉及的是一个完整的系统工程：从数据构建、可控微调、自回归训练、几步蒸馏到流式推理。minWM提供了这样一个端到端的pipeline，能把现有的双向视频生成模型转换成少步自回归的世界模型。\n\n我为什么想聊这个？因为它触及到了一个我们领域很关心的问题——世界模型到底能不能真的用在物理模拟里。我们当然希望有一个模型能根据当前状态预测未来，而且要快、要可控。但现实是大多数视频生成模型都是双向的、一次生成一整段的，要改成自回归、实时交互，这里面的工程挑战和思路，对我们做科学模拟的人是很有启发的。毕竟，如果我们要用神经网络来预测 PDE 的解，同样面临如何让模型自回归起来、如何保证长期稳定性这些问题。\n\n第二篇论文 YoCausal 很有意思，它问了一个更根本的问题：现在的视频生成模型到底是真的理解了因果关系，还是只是统计上学会了时间序列的规...",
-    "papers": [
-      {
-        "title": "minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models",
-        "url": "https://arxiv.org/abs/2605.30263",
-        "arxiv_id": "2605.30263"
-      },
-      {
-        "title": "YoCausal: How Far is Video Generation from World Model? A Causality Perspective",
-        "url": "https://arxiv.org/abs/2605.30346",
-        "arxiv_id": "2605.30346"
-      },
-      {
-        "title": "CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation",
-        "url": "https://arxiv.org/abs/2605.25378",
-        "arxiv_id": "2605.25378"
-      },
-      {
-        "title": "OmniRetrieval: Unified Retrieval across Heterogeneous Knowledge Sources",
-        "url": "https://arxiv.org/abs/2605.29250",
-        "arxiv_id": "2605.29250"
-      },
-      {
-        "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
-        "url": "https://arxiv.org/abs/2605.29801",
-        "arxiv_id": "2605.29801"
-      }
-    ],
-    "published_at": "2026-05-29T23:50:50.238495Z"
   }
 ]

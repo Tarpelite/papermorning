@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-02</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-02</h1>
+    <p class="date">2026-07-02</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-02.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周四的Paper Morning如约而至。
+
+今天想先聊一篇让我思考了很久的论文——关于VLA模型到底保留了多少常识。这篇标题是Does VLA Even Know the Basics?来自HuggingFace热榜。它提出了一个很有意思的问题：我们现在训练机器人做动作，是从强大的视觉语言模型微调来的，但微调之后，它原来学到的那些常识知识、世界知识还剩多少？这确实是个很实际的问题。以前我们可能看到机器人fail了，搞不清到底是它“不知道”还是它“知道了但做不好”。这篇文章的做法很聪明，叫做Act2Answer——不让它直接回答问题，而是让它通过选择一个物体的摆放位置来“投票”。这样就把“控制能力”和“知识水平”给解耦了。这是一个增量改进，但它提醒我们一个重要的问题：foundation model的能力在迁移到具体任务时，是否存在我们以为已经解决但其实并未解决的损耗？这在我们AI4S领域 тоже适用——当我们在PDE求解器里嵌入一个预训练的视觉或语言组件时，它的知识真的能被有效利用吗？
+
+聊完VLA，我们来 看一篇和我们核心方向直接相关的论文——GAIA: Geometry-Adaptive Operator Learning for Forward and Inverse Problems。这篇论文关注的是神经算子在几何自适应方面的进展。大家知道，这几年geometry-adaptive neural operator进展很快，但大多数方法只能处理前向问题，也就是输入输出在同一个空间域上。但真实的科学计算中，大量问题是边界值问题或者逆问题，输入和输出domain可能完全不同。比如，给定边界条件求内部场，和给定部分观测求整个系统参数，这是两类非常不同的问题。这篇GAIA引入了Geometry-Adaptive Integral Autoencoder，用几何token来编码边界和内部场分布，然后通过cross-attention让积分核自适应局部几何特征。这在我看来是一个真正的推进——它把算子学习从“同一个domain上的前向映射”拓展到了“不同domain之间的前向和逆向映射”。这对我们的意义在于，它让神经算子更接近真实物理问题的需求了。当然，具体效果怎么样，还需要看它在复杂几何上的泛化能力。
+
+接下来这篇Valdi: Value Diffusion World Models，标题里把diffusion和world model连在一起，挺有意思。它想解决的问题是：world model需要同时满足两个要求——够快，能在线上做模型预测控制；够 expressive，能建模不确定的未来。Diffusion本身是很expressive的，但它的迭代推理太慢了。这篇的思路是把diffusion放到latent space去做，然后在训练和推理时都只用一个diffusion step，这样就兼顾了速度和多模态。在CarRacing环境上的实验显示，单步diffusion能达到deterministic MLP baseline的水平。但有趣的是，实验暴露了一个trade-off：预测的多模样性和控制性能之间存在冲突。这其实是一个挺深刻的观察——在很多物理模拟场景里，我们也需要建模不确定性，但过度的不确定性反而会降低控制的稳健性。这篇工作还在初步阶段，但它指向的方向值得关注。
+
+然后是一篇评估相关的论文PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception。它指出一个我们都很熟悉但很少深究的问题：benchmark分数已经饱和了，但实际应用中还是各种拉胯。原因是评估方式和人类感知之间存在gap。这篇提出了一个基于rubric的评估框架，把整体语义匹配拆解成原子级别的审计，并且区分了Must-Right（必须正确的核心事实）和Easy-Wrong（容易被忽略的细节）。更重要的是，它引入了Gated Scoring机制——如果核心事实错了，不管其他部分多好，直接判定失败。这其实是一种更严格的评估范式。它揭示的 Reliability Gap 对我们AI4S也有启发：当我们在PDE求解、分子生成这些任务上刷指标的时候，有没有问过自己，这些指标真的对应了人类关心的物理正确性吗？
+
+最后一篇SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History，讲的是怎么让智能体的技能持续进化。它指出了一个很实际的问题：以前的方法只保留最终artifact，但中间那些诊断、修订、评估的决策过程全丢了。后来者没法从中学到“为什么这个版本被否了”。SkillHone的做法是保留完整的决策历史，让智能体在每次修订时都能看到之前的诊断和评估证据。这其实是一种“持续学习”的思路，但它强调的是“决策过程的可追溯性”。这个思想对科学计算的模型迭代 тоже有价值——我们在训练PDE求解器时，能不能也保留每次失败的诊断记录，让后续的改进更有方向？
+
+好，今天的五篇论文就聊到这里。我有一个整体的观察：这一周的论文其实在回答同一个隐含问题——当我们把AI的能力从泛化的foundation model迁移到具体任务时，到底丢失了什么？VLA丢失了常识，标准算子丢失了跨domain的能力，diffusion丢失了速度，多模态评估丢失了可靠性，而技能演化丢失了决策过程。这五篇论文从不同角度给出了“诊断”，而诊断之后，下一个阶段就是“治疗”了。今天的Paper Morning就到这里，我们明天继续。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2606.19297" target="_blank">Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models</a></li>
+<li><a href="https://arxiv.org/abs/2607.01128v1" target="_blank">GAIA: Geometry-Adaptive Operator Learning for Forward and Inverse Problems</a></li>
+<li><a href="https://arxiv.org/abs/2607.00917" target="_blank">Valdi: Value Diffusion World Models</a></li>
+<li><a href="https://arxiv.org/abs/2606.28322" target="_blank">PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception</a></li>
+<li><a href="https://arxiv.org/abs/2606.08671" target="_blank">SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
