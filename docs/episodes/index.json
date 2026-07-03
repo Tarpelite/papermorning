@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-03",
+    "title": "Paper Morning 2026-07-03",
+    "description": "今日学术播报: Program-as-Weights: A Programm, EvoPolicyGym: Evaluating Auton, AgenticSTS: A Bounded-Memory T...",
+    "audio_file": "2026-07-03.mp3",
+    "script": "各位早上好，又到了周五，Paper Morning开播的时间了。\n\n今天想先从一个大家可能都有感受的现象说起。现在做AI for Science的大家，多多少少都在用大语言模型帮自己写代码、查文献、或者设计实验。但你有没有觉得，这个过程总有点“别扭”——你把一个任务描述给LLM，它给你一个回复，但你不知道这个“程序”到底是不是真的在你的控制之下。它可能随机应变，也可能一本正经地胡说八道。今天有几篇论文其实都在回答一个类似的问题：怎么让AI agent的行为变得更可预测、更可控、甚至可编译。\n\n第一篇 Program-as-Weights 提出了一种挺有意思的思路。他们把自然语言描述的模糊函数——比如“帮我标记重要的日志行”或者“修复格式错误的JSON”——编译成一个本地可执行的神经工件。核心做法是用一个4B参数的compiler，在10M规模的FuzzyBench数据集上训练，然后为冻结的轻量级解释器发射参数高效的adapters。听起来是不是有点像是把prompt固化成了一个小型模型？他们报告说，一个0.6B的Qwen3解释器执行PAW程序，性能可以和直接调用Qwen3-32B相匹配...",
+    "papers": [
+      {
+        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
+        "url": "https://arxiv.org/abs/2607.02512",
+        "arxiv_id": "2607.02512"
+      },
+      {
+        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
+        "url": "https://arxiv.org/abs/2607.02440",
+        "arxiv_id": "2607.02440"
+      },
+      {
+        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
+        "url": "https://arxiv.org/abs/2607.02255",
+        "arxiv_id": "2607.02255"
+      },
+      {
+        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
+        "url": "https://arxiv.org/abs/2606.28322",
+        "arxiv_id": "2606.28322"
+      },
+      {
+        "title": "Morphing into Hybrid Attention Models",
+        "url": "https://arxiv.org/abs/2606.30562",
+        "arxiv_id": "2606.30562"
+      }
+    ],
+    "published_at": "2026-07-03T23:37:08.983337Z"
+  },
+  {
     "date": "2026-07-02",
     "title": "Paper Morning 2026-07-02",
     "description": "今日学术播报: Does VLA Even Know the Basics?, GAIA: Geometry-Adaptive Operat, Valdi: Value Diffusion World M...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-05-31T23:39:43.381473Z"
-  },
-  {
-    "date": "2026-05-30",
-    "title": "Paper Morning 2026-05-30",
-    "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
-    "audio_file": "2026-05-30.mp3",
-    "script": "各位早上好，今天是周末，Paper Morning准时开播。\n\n最近AI领域有几个很有意思的动向，我想跟大家聊聊。首先是视频生成和世界模型这个方向，大家知道过去一年视频扩散模型进展很快，但现在大家开始关心一个问题：这些模型真的理解物理世界的因果关系吗，还是只是学到了一些统计上的时间相关性？这其实是个很根本的问题，因为我们做科学计算、做物理模拟，最终要的是能够因果地推演未来，而不是简单地播放一段看起来合理的视频。\n\nYoCausal这篇工作就试图回答这个问题。作者提出了一个很有意思的思路：用时间反转的真实视频作为自然反事实样本，然后设计了两个指标，一个叫RSI，衡量模型能否感知时间的方向，另一个叫CCI，用VLM来分层判断因果认知。这个工作的巧妙之处在于，它不需要人工构造合成数据，而是利用現成的真实视频，成本很低。我觉得这个思路对于我们做科学模拟的人很有启发——我们在评估一个物理模型的时候，其实也应该问同样的问题：模型是在真正理解物理规律，还是只是在拟合数据中的统计关联？\n\n顺着这个思路，另一篇minWM的工作就更偏向工程实现了。它试图把双向的视频扩散模型变成可交互的、低延迟的世界模型，...",
-    "papers": [
-      {
-        "title": "minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models",
-        "url": "https://arxiv.org/abs/2605.30263",
-        "arxiv_id": "2605.30263"
-      },
-      {
-        "title": "YoCausal: How Far is Video Generation from World Model? A Causality Perspective",
-        "url": "https://arxiv.org/abs/2605.30346",
-        "arxiv_id": "2605.30346"
-      },
-      {
-        "title": "CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation",
-        "url": "https://arxiv.org/abs/2605.25378",
-        "arxiv_id": "2605.25378"
-      },
-      {
-        "title": "OmniRetrieval: Unified Retrieval across Heterogeneous Knowledge Sources",
-        "url": "https://arxiv.org/abs/2605.29250",
-        "arxiv_id": "2605.29250"
-      },
-      {
-        "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
-        "url": "https://arxiv.org/abs/2605.29801",
-        "arxiv_id": "2605.29801"
-      }
-    ],
-    "published_at": "2026-05-30T23:35:43.658070Z"
   }
 ]

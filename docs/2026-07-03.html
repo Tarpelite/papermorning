@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-03</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-03</h1>
+    <p class="date">2026-07-03</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-03.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了周五，Paper Morning开播的时间了。
+
+今天想先从一个大家可能都有感受的现象说起。现在做AI for Science的大家，多多少少都在用大语言模型帮自己写代码、查文献、或者设计实验。但你有没有觉得，这个过程总有点“别扭”——你把一个任务描述给LLM，它给你一个回复，但你不知道这个“程序”到底是不是真的在你的控制之下。它可能随机应变，也可能一本正经地胡说八道。今天有几篇论文其实都在回答一个类似的问题：怎么让AI agent的行为变得更可预测、更可控、甚至可编译。
+
+第一篇 Program-as-Weights 提出了一种挺有意思的思路。他们把自然语言描述的模糊函数——比如“帮我标记重要的日志行”或者“修复格式错误的JSON”——编译成一个本地可执行的神经工件。核心做法是用一个4B参数的compiler，在10M规模的FuzzyBench数据集上训练，然后为冻结的轻量级解释器发射参数高效的adapters。听起来是不是有点像是把prompt固化成了一个小型模型？他们报告说，一个0.6B的Qwen3解释器执行PAW程序，性能可以和直接调用Qwen3-32B相匹配，但参数量只有大约五十分之一。这里有个很值得思考的问题：当我们要让AI在科学计算场景中执行精确操作时——比如从大量模拟数据中筛选符合某种物理规律的case——我们到底应该依赖prompt的灵活性，还是把这种“模糊函数”编译成更可控的形态？这篇工作给了一个中间的答案。
+
+第二篇 EvoPolicyGym 则是在评估自主策略演化这个更根本的问题。他们定义了一个叫做“autonomous policy evolution”的设置：让一个harness-model agent在固定交互预算下反复修改一个可执行策略系统。这和我们现在关心的“AI for Science”中的闭环实验非常接近——你给AI一个科学假设，让它设计实验、运行模拟、分析结果、然后根据反馈迭代改进。EvoPolicyGym构建了一套紧凑的交互式强化学习环境来做这件事。在他们的benchmark上，GPT-5.5取得了最强的综合排名。更有意思的是，他们提供了轨迹级别的诊断能力，这意味不只是看最终分数，还能看到策略是怎么一步步演进的。这对于科学发现的AI agent来说非常重要，因为我们往往不只是想知道AI做对了什么，更想知道它是怎么想到的。
+
+第三篇 AgenticSTS 提出了一个bounded-memory的测试平台，用的是Slay the Spire 2这个游戏。他们认为，传统的把过去所有观察、工具调用、反思都append到prompt里的做法，会把所有东西混成一团，难以分析单个记忆组件的作用。他们的做法是给每个决策一个fresh user message，通过typed retrieval来组装，prompt在任意长度的运行中保持bounded。这对于我们设计长程科研agent有直接启发——当你让AI帮你做多步骤的科学推理时，你不能把所有中间结果都塞进context然后祈祷它能分清楚，你需要更结构化的记忆机制。
+
+第四篇 PerceptionRubrics 关注的是多模态评估。他们指出现在很多benchmark分数已经饱和了，但真实应用时还是很脆弱。他们构建了一套基于rubric的评估框架，把评价从整体语义匹配转向原子级别的审计。特别有趣的是他们提出的Gated Scoring机制：对于必须正确的关键视觉事实，如果失败会触发二元惩罚，而不是线性的分数衰减。这个设计思想其实很值得借鉴到科学计算的评估中——我们评估一个PDE求解器，不能只看一个综合指标，有些物理约束是必须满足的，违反了就该一票否决。
+
+最后一篇 Morphing into Hybrid Attention Models 关注的是如何把标准Transformer转换成混合注意力模型，核心问题是在预算约束下选择哪些层保留full attention、哪些层换成线性注意力。他们把这个选择问题形式化为预算约束的子集优化，提出了FlashMorph方法。这个方向和科学计算有啥关系呢？你可能知道，现在很多科学模拟的瓶颈就在于长程相互作用的计算——比如分子动力学里远程库仑力，或者气候模型里的大气环流。混合注意力本质上就是在用更高效的方式处理长程依赖，这对科学计算中的大规模模拟很有意义。而且这篇的方法论本身也是一种“scaling law”思维——在固定计算预算下最优分配资源。
+
+好，让我总结一下今天的整体观察。今天这几篇论文，表面上看没有直接讨论neural operator或者PDE foundation model，但实际上都指向了一个共同的趋势：AI agent正在从“灵活的对话者”向“可控的、可编译的、可诊断的系统”演进。无论是把模糊函数编译成神经工件，还是设计结构化的记忆机制，或者建立带门控的评估rubric，大家都在回答同一个问题——怎么让AI在科学研究中不仅能帮忙，而且帮得明白、帮得可靠。对于我们做AI for Science的人来说，这其实比单纯讨论某个具体模型架构更有底层意义。因为最终，科学发现需要的是可信赖的自动化，而不是一个聪明的随机应变者。
+
+今天的分享就到这里，祝大家周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.02512" target="_blank">Program-as-Weights: A Programming Paradigm for Fuzzy Functions</a></li>
+<li><a href="https://arxiv.org/abs/2607.02440" target="_blank">EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments</a></li>
+<li><a href="https://arxiv.org/abs/2607.02255" target="_blank">AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents</a></li>
+<li><a href="https://arxiv.org/abs/2606.28322" target="_blank">PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception</a></li>
+<li><a href="https://arxiv.org/abs/2606.30562" target="_blank">Morphing into Hybrid Attention Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
