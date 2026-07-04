@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-04",
+    "title": "Paper Morning 2026-07-04",
+    "description": "今日学术播报: Program-as-Weights: A Programm, AgenticSTS: A Bounded-Memory T, EvoPolicyGym: Evaluating Auton...",
+    "audio_file": "2026-07-04.mp3",
+    "script": "各位早上好，今天是周末，Paper Morning照常开播。\n\n我们先来看第一篇，Program-as-Weights，标题本身就很耐人寻味——用权重来编程。这篇文章提出了一个叫做fuzzy-function programming的新范式，专门处理那些难以用规则实现的任务，比如从日志里挑出重要信息、修复格式错误的JSON，或者按照用户意图排序搜索结果。这些任务以前只能调用大模型API，但API调用有三个痛点：缺乏本地性、不可复现、成本不稳定。PAW的思路是把自然语言描述的函数“编译”成一个紧凑的神经工件，也就是针对一个轻量级解释器的参数高效适配器。他们训练了一个4B规模的编译器，在10M规模的FuzzyBench数据集上学习，然后让一个0.6B的Qwen3解释器来执行这些程序。效果很有意思：一个0.6B的模型执行PAW程序能达到32B模型直接提示的效果，但推理成本只有五十分之一。这让我想到一个问题，我们做科学计算的时候也有很多“模糊”的函数——比如怎么判断一个分子构象是不是合理、怎么评估一条轨迹是不是收敛以前我们倾向于写复杂的规则或者调用大API，但PAW提醒我们，或许可以用小模型加...",
+    "papers": [
+      {
+        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
+        "url": "https://arxiv.org/abs/2607.02512",
+        "arxiv_id": "2607.02512"
+      },
+      {
+        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
+        "url": "https://arxiv.org/abs/2607.02255",
+        "arxiv_id": "2607.02255"
+      },
+      {
+        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
+        "url": "https://arxiv.org/abs/2607.02440",
+        "arxiv_id": "2607.02440"
+      },
+      {
+        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
+        "url": "https://arxiv.org/abs/2606.28322",
+        "arxiv_id": "2606.28322"
+      },
+      {
+        "title": "Morphing into Hybrid Attention Models",
+        "url": "https://arxiv.org/abs/2606.30562",
+        "arxiv_id": "2606.30562"
+      }
+    ],
+    "published_at": "2026-07-04T23:34:12.740980Z"
+  },
+  {
     "date": "2026-07-03",
     "title": "Paper Morning 2026-07-03",
     "description": "今日学术播报: Program-as-Weights: A Programm, EvoPolicyGym: Evaluating Auton, AgenticSTS: A Bounded-Memory T...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-01T23:52:15.691262Z"
-  },
-  {
-    "date": "2026-05-31",
-    "title": "Paper Morning 2026-05-31",
-    "description": "今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...",
-    "audio_file": "2026-05-31.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们一直在关注AI for Science里那些直接和物理方程、分子模拟相关的工作，但最近我注意到一个有趣的汇合点：视频生成模型正在试图理解因果律，而这恰恰是科学计算最底层的东西。今天的几篇论文虽然来自不同的方向，但都在叩问同一个问题：模型到底是在拟合统计规律，还是真的理解了世界的因果结构？\n\n先看第一篇minWM，它提出了一个构建实时交互式视频世界模型的全栈开源框架。大家知道，这两年视频扩散模型进展很快，但把它们变成可控、低延迟、可交互的世界模型，难度不在生成质量本身，而在于需要把双向的生成模型改造成自回归的推理模型，同时还要支持相机控制。minWM的思路很务实，它不从头训练，而是对现有的T2V/TI2V模型做可控微调，再加上少步蒸馏和流式推理流水线。我感兴趣的是它展示的可能性：当我们能够在几十毫秒内生成交互式视频时，这种能力能不能迁移到科学问题的可视化上？比如让我们对复杂系统的演化进行实时交互探索，这其实和我们在意的事有微妙的联系。\n\n第二篇YoCausal很有意思，它从因果推理的角度重新审视视...",
-    "papers": [
-      {
-        "title": "minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models",
-        "url": "https://arxiv.org/abs/2605.30263",
-        "arxiv_id": "2605.30263"
-      },
-      {
-        "title": "YoCausal: How Far is Video Generation from World Model? A Causality Perspective",
-        "url": "https://arxiv.org/abs/2605.30346",
-        "arxiv_id": "2605.30346"
-      },
-      {
-        "title": "CollectionLoRA: Collecting 50 Effects in 1 LoRA via Multi-Teacher On-Policy Distillation",
-        "url": "https://arxiv.org/abs/2605.25378",
-        "arxiv_id": "2605.25378"
-      },
-      {
-        "title": "OmniRetrieval: Unified Retrieval across Heterogeneous Knowledge Sources",
-        "url": "https://arxiv.org/abs/2605.29250",
-        "arxiv_id": "2605.29250"
-      },
-      {
-        "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
-        "url": "https://arxiv.org/abs/2605.29801",
-        "arxiv_id": "2605.29801"
-      }
-    ],
-    "published_at": "2026-05-31T23:39:43.381473Z"
   }
 ]

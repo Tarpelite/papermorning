@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-04</title>
+      <description>今日学术播报: Program-as-Weights: A Programm, AgenticSTS: A Bounded-Memory T, EvoPolicyGym: Evaluating Auton...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-04.mp3" length="9981536" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-04.mp3</guid>
+      <pubDate>2026-07-04T23:34:12.740980Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-03</title>
       <description>今日学术播报: Program-as-Weights: A Programm, EvoPolicyGym: Evaluating Auton, AgenticSTS: A Bounded-Memory T...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-03.mp3" length="9779035" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-01.mp3" length="7527697" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-01.mp3</guid>
       <pubDate>2026-06-01T23:52:15.691262Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-05-31</title>
-      <description>今日学术播报: minWM: A Full-Stack Open-Sourc, YoCausal: How Far is Video Gen, CollectionLoRA: Collecting 50 ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-05-31.mp3" length="8481271" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-05-31.mp3</guid>
-      <pubDate>2026-05-31T23:39:43.381473Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
