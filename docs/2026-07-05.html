@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-05</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-05</h1>
+    <p class="date">2026-07-05</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-05.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天是周日，Paper Morning如约而至。
+
+先聊聊第一篇，Program-as-Weights，中文可以叫“权重即程序”。这个工作的核心是提出了一种新的模糊函数编程范式，把自然语言描述的模糊规则编译成一个小巧的神经网络模块，而不是每次都去调用大模型API。这让我想到一个类比：就像我们以前用规则写编译器，现在用神经网络来“编译”模糊规则。他们训练了一个40亿参数的编译器，在1000万条数据上学习，最后用一个6亿的小模型就能达到原来320亿大模型的效果。这件事为什么现在出现呢？因为大家越来越依赖大模型API来做日志告警、JSON修复这些日常任务，但成本高、不可控。这篇工作的价值在于展示了“小模型加专用适配器”的可行路径，有点像我们做neural operator时用小网络编码复杂映射的思路——用参数高效的adapter来完成特定任务，而不是让大模型事必亲恭。
+
+接下来这篇AgenticSTS挺有意思，它构建了一个基于“ slay the spire 2”（杀戮尖塔2）的测试环境，专门用来评估长程记忆的LLM agent。作者提出一个很有意思的洞见：传统做法是把所有历史对话都塞进prompt，结果变成了大杂烩，单个记忆组件的作用难以分离。他们改成了一种“有边界的合约”：每次决策都是从用户消息中通过类型化检索重新组装的，这样prompt长度在整个交互过程中保持稳定，任何单层都可以独立 ablation。这让我想到科学计算中类似的问题——我们在做PDE求解时，也经常需要把长期依赖的信息压缩到有限上下文中，这种类型化检索的思路或许能给物理模拟中的记忆机制设计一些启发。
+
+第三篇EvoPolicyGym研究的是自主策略演进，核心是让agent在固定交互预算内反复修改可执行策略系统。他们在16个紧凑的交互式强化学习环境中测试，发现GPT-5.5综合表现最好。更值得关注的是，他们不仅看最终分数，还提供了轨迹级别的诊断信息。这让我想到一个跨领域的联系：传统科学实验中，我们也是通过反复调整实验条件（相当于修改策略）来逼近最优解，而这个工作把这种“试错-改进”的过程本身做成了可量化的benchmark。如果把这个思路迁移到AI4S，比如让agent自动设计实验参数、自动搜索物理模型的超参数，会不会很有意思？
+
+然后是Morphing into Hybrid Attention Models，中文可以叫“蜕变为混合注意力模型”。核心贡献是提出FlashMorph方法，解决Transformer到混合注意力转换时“哪些层保留全注意力”的选择问题。他们把这个问题形式化为预算约束的子集优化，而不是用启发式规则。这其实触及了当前大模型效率优化的一个核心痛点：长上下文处理越来越重要，但全注意力计算成本太高。我注意到他们强调要全局考虑各层之间的相互依赖，而不是孤立地评估每层的重要性。这让我想到做PDE求解时的自适应网格选择——也是要在全局约束下做局部决策，两者的问题结构有相通之处。
+
+最后一篇PerceptionRubrics提出了一套基于评分规则的多模态评估框架，非常击中当前AI评估的痛点。现在很多 benchmark 分数已经饱和了，但实际应用中还是经常翻车。他们构建了1038张信息密集的图片配上12000多条具体规则，用“必须正确”的事实性规则和“容易出错”的细节性规则构成双流系统。更关键的是实现了“门控评分”：如果关键视觉事实失败，会触发严厉的二进制惩罚，而不是简单的线性平均。这让我想到物理模拟中的约束满足问题——有时候一个约束不满足，整个解就失效了，线性平均反而会掩盖这种关键失败。他们揭示的“可靠性缺口”确实值得警惕：高分不一定代表可靠，这在科学应用中尤为重要。
+
+好，以上就是今天播报的全部内容。我整体观察到一个趋势：今天的几篇工作不约而同地在关注“边界”问题——内存的边界、评估的边界、计算资源的边界、可靠性的边界。这或许反映了当前大模型发展进入新阶段后，我们不再只是追求更强的能力，而是开始更精细地管理能力与效率、通用性与可靠性之间的trade-off。这和科学计算中我们一直在处理的精度与速度、泛化与保真度的平衡，本质上是同一个问题的不同面向。好了各位，今天的晨间播报就到这里，我们明天再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.02512" target="_blank">Program-as-Weights: A Programming Paradigm for Fuzzy Functions</a></li>
+<li><a href="https://arxiv.org/abs/2607.02255" target="_blank">AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents</a></li>
+<li><a href="https://arxiv.org/abs/2607.02440" target="_blank">EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments</a></li>
+<li><a href="https://arxiv.org/abs/2606.30562" target="_blank">Morphing into Hybrid Attention Models</a></li>
+<li><a href="https://arxiv.org/abs/2606.28322" target="_blank">PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
