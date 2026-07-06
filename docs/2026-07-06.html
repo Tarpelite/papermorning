@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-06</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-06</h1>
+    <p class="date">2026-07-06</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-06.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周一，Paper Morning开播了。
+
+先说第一篇，Program-as-Weights，做的是一个很有意思的范式转换：把自然语言规范直接“编译”成神经网络的权重参数。大家知道，现在很多日常编程任务，比如日志告警、JSON修复、意图排序，这些模糊的、难以用规则精确描述的函数，很多同学就直接调用大模型API了。但调用API有代价——延迟、不可控、费用高。这篇工作提出“模糊函数编程”，用4B参数的编译器在10M条数据上微调，然后把编译出的参数高效适配器挂在一个0.6B的小模型上执行。效果很有意思：一个0.6B的Qwen3加上PAW程序，性能可以直接对标32B Qwen3的直接调用，但推理成本只有五十分之一。这件事为什么值得关注？它其实在回答一个很根本的问题——当我们谈“模型作为API”和“模型本地部署”时，有没有中间路线？PAW给出了一个思路：用编译的思路把大模型的能力“萃取”到小模型里。对我们做科学计算的人来说，这种参数高效适配的思路，其实和我们在做物理先验注入、知识蒸馏时的动机是一样的——怎么把复杂知识压缩到一个可部署的 artifact 里。
+
+第二篇工作，Monotonic Inference Policies，直接指出了当前LLM强化学习训练中的一个隐蔽但致命的问题：训练和推理使用不同的引擎，导致同一段文本在两边算出来的概率不一致。这种训练-推理不匹配会产生一种特殊的off-policyness，让训练很不稳定甚至崩溃。作者的洞察很锐利：之前大家都在努力弥合引擎差异，但真正的问题在于目标函数本身——我们训练时优化的是策略梯度目标，但实际使用时关心的是推理时的单调性。所以他们提出，应该把“单调推理策略”作为 RL 的真实优化目标。这篇工作让我想到一件事：我们做物理仿真的时候，是不是也经常遇到类似的问题？训练时用的数值精度、求解器配置，和部署时完全不一样，导致“训练-部署”鸿沟。这个工作提醒我们，有时候在目标层面做反思，比在工程层面修修补补更治本。
+
+第三篇是 AgenticSTS，用 Slay the Spire 2 这款卡牌构建游戏来测试 LLM agent 的长程记忆。他们提出一种“有界合约”的设计：每个决策只从一次检索构建的用户消息出发，不再把跨决策的历史上下文全部塞进 prompt。这样 prompt 长度是bounded的，而且每个记忆组件可以独立 ablation。这对评估 agent 的记忆机制设计非常有价值。大家知道，我们做科学模拟的时候，经常需要 agent 做长程规划——比如分子动力学模拟中的路径采样、材料设计中的多步优化。传统做法是把所有历史堆进 context window，但效果往往像这篇工作说的，变成“一团混乱的混合物”。有界记忆的设计可能给我们的 AI4S agent 提供一个新的架构思路。
+
+第四篇，EvoPolicyGym，做的是自主策略演化的评估框架。它把 agent 改进策略的过程从“最终得分”这样粗糙的指标中解放出来，提供轨迹层面的诊断。更有意思的是，GPT-5.5 在这个 benchmark 上取得了最强的综合排名。这让我想到一个问题：当我们在说“AI for Science”的时候，我们到底在评估什么？很多时候我们只看最终结果——收敛快不快、误差低不低。但策略演化的过程本身，包含了很多有价值的信息。这篇工作给我们的启发是：也许我们也需要为科学计算任务设计类似的诊断工具，不仅看模型跑出什么结果，还要看它是怎么迭代改进的。
+
+最后一篇，FlashMorph，关于混合注意力模型中层选择的问题。大家知道，混合注意力——也就是部分层用全注意力、部分层用线性注意力——是处理长上下文的一个有效方案。但哪些层该保留全注意力、哪些层换成线性注意力，这不是一个简单的问题，之前的方法要么靠启发式规则，要么靠逐层打分。这篇工作把它正式定义为一个“预算约束的子集优化”问题，然后提出了 FlashMorph 来高效求解。对我们做科学计算的人来说，这其实是一个很好的例子：怎么处理效率和质量之间的权衡？当资源有限时，怎么找到最优的层分配？这不仅对 LLM 架构有意义，对我们设计 PDE 求解器、处理大规模网格的时候同样适用。
+
+好，总结一下今天的观察。这五篇论文看起来是 LLM 和 agent 的方法论进展，但如果我们跳出具体领域，会发现它们其实在回答几个共性的问题：怎么把大模型能力低成本地萃取到小模型里、怎么在目标层面解决训练-推理鸿沟、怎么设计有界但有效的记忆机制、怎么评估迭代改进的过程、怎么在资源约束下做最优分配。这几个问题，恰恰也是我们在构建 AI4S 基础模型、科学计算智能体时早晚要面对的。好的，今天就到这里，各位开始一周的工作吧。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.02512" target="_blank">Program-as-Weights: A Programming Paradigm for Fuzzy Functions</a></li>
+<li><a href="https://arxiv.org/abs/2606.29526" target="_blank">The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2607.02255" target="_blank">AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents</a></li>
+<li><a href="https://arxiv.org/abs/2607.02440" target="_blank">EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments</a></li>
+<li><a href="https://arxiv.org/abs/2606.30562" target="_blank">Morphing into Hybrid Attention Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

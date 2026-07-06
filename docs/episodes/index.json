@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-06",
+    "title": "Paper Morning 2026-07-06",
+    "description": "今日学术播报: Program-as-Weights: A Programm, The Mirage of Optimizing Train, AgenticSTS: A Bounded-Memory T...",
+    "audio_file": "2026-07-06.mp3",
+    "script": "各位早上好，今天周一，Paper Morning开播了。\n\n先说第一篇，Program-as-Weights，做的是一个很有意思的范式转换：把自然语言规范直接“编译”成神经网络的权重参数。大家知道，现在很多日常编程任务，比如日志告警、JSON修复、意图排序，这些模糊的、难以用规则精确描述的函数，很多同学就直接调用大模型API了。但调用API有代价——延迟、不可控、费用高。这篇工作提出“模糊函数编程”，用4B参数的编译器在10M条数据上微调，然后把编译出的参数高效适配器挂在一个0.6B的小模型上执行。效果很有意思：一个0.6B的Qwen3加上PAW程序，性能可以直接对标32B Qwen3的直接调用，但推理成本只有五十分之一。这件事为什么值得关注？它其实在回答一个很根本的问题——当我们谈“模型作为API”和“模型本地部署”时，有没有中间路线？PAW给出了一个思路：用编译的思路把大模型的能力“萃取”到小模型里。对我们做科学计算的人来说，这种参数高效适配的思路，其实和我们在做物理先验注入、知识蒸馏时的动机是一样的——怎么把复杂知识压缩到一个可部署的 artifact 里。\n\n第二篇工作，Mon...",
+    "papers": [
+      {
+        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
+        "url": "https://arxiv.org/abs/2607.02512",
+        "arxiv_id": "2607.02512"
+      },
+      {
+        "title": "The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2606.29526",
+        "arxiv_id": "2606.29526"
+      },
+      {
+        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
+        "url": "https://arxiv.org/abs/2607.02255",
+        "arxiv_id": "2607.02255"
+      },
+      {
+        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
+        "url": "https://arxiv.org/abs/2607.02440",
+        "arxiv_id": "2607.02440"
+      },
+      {
+        "title": "Morphing into Hybrid Attention Models",
+        "url": "https://arxiv.org/abs/2606.30562",
+        "arxiv_id": "2606.30562"
+      }
+    ],
+    "published_at": "2026-07-06T23:39:50.661172Z"
+  },
+  {
     "date": "2026-07-05",
     "title": "Paper Morning 2026-07-05",
     "description": "今日学术播报: Program-as-Weights: A Programm, AgenticSTS: A Bounded-Memory T, EvoPolicyGym: Evaluating Auton...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-04T23:48:26.543799Z"
-  },
-  {
-    "date": "2026-06-03",
-    "title": "Paper Morning 2026-06-03",
-    "description": "今日学术播报: A Matter of TASTE: Improving C, Harness-1: Reinforcement Learn, Policy and World Modeling Co-T...",
-    "audio_file": "2026-06-03.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们做研究的人都绕不开的话题聊起：怎么评价一个agent做得好不好？最近这两三年，agent的能力可以说是一路狂飙，但 benchmarks 饱和的速度也快得惊人。过去我们建一个benchmark，往往是先写一段自然语言描述的任务，再想办法把它映射成工具调用的序列。但这种方法有个根本问题：它只能覆盖到一小部分工具使用的模式，大量的实际场景被漏掉了。\n\n今天第一篇论文叫 TASTE，TASTE 的思路非常有意思，它是反过来的：不是从任务到工具，而是从工具序列本身出发，去反推什么样的任务是合理的、可执行的。它用了一个基于对比学习的 n-gram 模型，加上 LLM 来判断生成的任务是否有效，这样就能大规模地采样出覆盖范围非常广的工具组合，然后用这些组合再去构造任务。这个思路我觉得值得做 AI4S 的同学想一想：我们现在用的那些科学任务的 benchmark，是不是也有类似的问题？可能我们预设的任务形式本身就限制了模型的发挥空间，有时候从数据本身出发反过来推任务，反而能打开新的局面。\n\n那么有了更全面的 benchmar...",
-    "papers": [
-      {
-        "title": "A Matter of TASTE: Improving Coverage and Difficulty of Agent Benchmarks",
-        "url": "https://arxiv.org/abs/2605.28556",
-        "arxiv_id": "2605.28556"
-      },
-      {
-        "title": "Harness-1: Reinforcement Learning for Search Agents with State-Externalizing Harnesses",
-        "url": "https://arxiv.org/abs/2606.02373",
-        "arxiv_id": "2606.02373"
-      },
-      {
-        "title": "Policy and World Modeling Co-Training for Language Agents",
-        "url": "https://arxiv.org/abs/2606.02388",
-        "arxiv_id": "2606.02388"
-      },
-      {
-        "title": "AFUN: Towards an Affordance Foundation Model for Functionality Understanding",
-        "url": "https://arxiv.org/abs/2606.02551",
-        "arxiv_id": "2606.02551"
-      },
-      {
-        "title": "Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding",
-        "url": "https://arxiv.org/abs/2605.29707",
-        "arxiv_id": "2605.29707"
-      }
-    ],
-    "published_at": "2026-06-03T00:13:17.412491Z"
   }
 ]

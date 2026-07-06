@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-06</title>
+      <description>今日学术播报: Program-as-Weights: A Programm, The Mirage of Optimizing Train, AgenticSTS: A Bounded-Memory T...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-06.mp3" length="9347074" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-06.mp3</guid>
+      <pubDate>2026-07-06T23:39:50.661172Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-05</title>
       <description>今日学术播报: Program-as-Weights: A Programm, AgenticSTS: A Bounded-Memory T, EvoPolicyGym: Evaluating Auton...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-05.mp3" length="8488795" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-04.mp3" length="10871789" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-04.mp3</guid>
       <pubDate>2026-06-04T23:48:26.543799Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-03</title>
-      <description>今日学术播报: A Matter of TASTE: Improving C, Harness-1: Reinforcement Learn, Policy and World Modeling Co-T...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-03.mp3" length="9733895" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-03.mp3</guid>
-      <pubDate>2026-06-03T00:13:17.412491Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
