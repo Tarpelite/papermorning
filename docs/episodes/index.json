@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-07",
+    "title": "Paper Morning 2026-07-07",
+    "description": "今日学术播报: GigaWorld-1: A Roadmap to Buil, UI-MOPD: Multi-Platform On-Pol, PixWorld: Unifying 3D Scene Ge...",
+    "audio_file": "2026-07-07.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。今天我想先从一个我们都很熟悉但很少深想的问题开始：基础模型时代，什么才算是真正的“可用”？\n\n这个问题听起来有点抽象，但它正悄悄成为AI4S和具身智能领域的分水岭。我们有了越来越强大的模型，但怎么验证它们？怎么让它们在真实场景里工作？怎么高效地把研究成果传播出去？今天这几篇论文，刚好从不同角度回应了同一个命题——基础模型从论文到实际应用的“最后一公里”到底该怎么修。\n\n先看第一篇，GigaWorld-1，讲的是机器人基础模型的评估问题。这个问题其实很紧迫，大家都知道语言模型可以通过benchmark快速打分，但机器人policy，你得真的让机器动起来才能验货，这个成本实在太高了。所以研究者很自然地把目光投向了世界模型，用它来代替真实机器人做策略评估。但关键来了：什么样的世界模型才可靠？这篇工作做了件非常扎实的事情——他们构建了WMBench，一个基于真实机器人遥操作数据和匹配policy rollouts的benchmark，覆盖了各种操作任务。这样一来，他们就能在同一个标准下比较不同模型家族、不同action encoding、不同...",
+    "papers": [
+      {
+        "title": "GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation",
+        "url": "https://arxiv.org/abs/2607.02642",
+        "arxiv_id": "2607.02642"
+      },
+      {
+        "title": "UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning",
+        "url": "https://arxiv.org/abs/2607.04425",
+        "arxiv_id": "2607.04425"
+      },
+      {
+        "title": "PixWorld: Unifying 3D Scene Generation and Reconstruction in Pixel Space",
+        "url": "https://arxiv.org/abs/2607.05373",
+        "arxiv_id": "2607.05373"
+      },
+      {
+        "title": "OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers",
+        "url": "https://arxiv.org/abs/2607.04033",
+        "arxiv_id": "2607.04033"
+      },
+      {
+        "title": "ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog",
+        "url": "https://arxiv.org/abs/2607.04438",
+        "arxiv_id": "2607.04438"
+      }
+    ],
+    "published_at": "2026-07-07T23:32:22.192327Z"
+  },
+  {
     "date": "2026-07-06",
     "title": "Paper Morning 2026-07-06",
     "description": "今日学术播报: Program-as-Weights: A Programm, The Mirage of Optimizing Train, AgenticSTS: A Bounded-Memory T...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-05T23:47:01.416175Z"
-  },
-  {
-    "date": "2026-06-04",
-    "title": "Paper Morning 2026-06-04",
-    "description": "今日学术播报: Cosmos 3: Omnimodal World Mode, Audio Interaction Model, Where Do Deep-Research Agents ...",
-    "audio_file": "2026-06-04.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个更大的视角切入。大家有没有注意到，最近AI圈子里有一个特别有意思的趋势：模型正在从“离线思考”走向“实时感知”。这个词可能听起来有点抽象，但放到具体的研究里，你会发现它正在改变很多领域的游戏规则。\n\n先来看一篇挺有野心的论文，Cosmos 3，omnimodal world models for Physical AI。它试图用一个统一的混合transformer架构，同时处理语言、图像、视频、音频和动作序列。这个工作的核心贡献一句话说，就是把视觉语言模型、视频生成器、世界模拟器和动作模型整合到了一个框架里。但我觉得它更值得关注的地方在于，它在回答一个根本性的问题：Physical AI需要什么样的基础模型？过去我们做具身智能，往往是把感知、规划、控制拆成几个独立的模块，每个模块单独优化。但Cosmos 3告诉你，也许一个足够强大的omnimodal模型，可以把所有这些能力统一起来。它在多个理解与生成任务上刷新了开源模型的最高水平。这背后反映的其实是AI for Science里我们也在思考的问题：当我们要用模型去理...",
-    "papers": [
-      {
-        "title": "Cosmos 3: Omnimodal World Models for Physical AI",
-        "url": "https://arxiv.org/abs/2606.02800",
-        "arxiv_id": "2606.02800"
-      },
-      {
-        "title": "Audio Interaction Model",
-        "url": "https://arxiv.org/abs/2606.05121",
-        "arxiv_id": "2606.05121"
-      },
-      {
-        "title": "Where Do Deep-Research Agents Go Wrong? Span-Level Error Localization in Agent Trajectories",
-        "url": "https://arxiv.org/abs/2606.02060",
-        "arxiv_id": "2606.02060"
-      },
-      {
-        "title": "Reproducing, Analyzing, and Detecting Reward Hacking in Rubric-Based Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2606.04923",
-        "arxiv_id": "2606.04923"
-      },
-      {
-        "title": "OVO-S-Bench: A Hierarchical Benchmark for Streaming Spatial Intelligence in Multimodal LLMs",
-        "url": "https://arxiv.org/abs/2606.03890",
-        "arxiv_id": "2606.03890"
-      }
-    ],
-    "published_at": "2026-06-04T23:48:26.543799Z"
   }
 ]

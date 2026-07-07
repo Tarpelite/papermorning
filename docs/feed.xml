@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-07</title>
+      <description>今日学术播报: GigaWorld-1: A Roadmap to Buil, UI-MOPD: Multi-Platform On-Pol, PixWorld: Unifying 3D Scene Ge...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-07.mp3" length="9609761" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-07.mp3</guid>
+      <pubDate>2026-07-07T23:32:22.192327Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-06</title>
       <description>今日学术播报: Program-as-Weights: A Programm, The Mirage of Optimizing Train, AgenticSTS: A Bounded-Memory T...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-06.mp3" length="9347074" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-05.mp3" length="10073696" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-05.mp3</guid>
       <pubDate>2026-06-05T23:47:01.416175Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-04</title>
-      <description>今日学术播报: Cosmos 3: Omnimodal World Mode, Audio Interaction Model, Where Do Deep-Research Agents ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-04.mp3" length="10871789" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-04.mp3</guid>
-      <pubDate>2026-06-04T23:48:26.543799Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

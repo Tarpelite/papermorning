@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-07</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-07</h1>
+    <p class="date">2026-07-07</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-07.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。今天我想先从一个我们都很熟悉但很少深想的问题开始：基础模型时代，什么才算是真正的“可用”？
+
+这个问题听起来有点抽象，但它正悄悄成为AI4S和具身智能领域的分水岭。我们有了越来越强大的模型，但怎么验证它们？怎么让它们在真实场景里工作？怎么高效地把研究成果传播出去？今天这几篇论文，刚好从不同角度回应了同一个命题——基础模型从论文到实际应用的“最后一公里”到底该怎么修。
+
+先看第一篇，GigaWorld-1，讲的是机器人基础模型的评估问题。这个问题其实很紧迫，大家都知道语言模型可以通过benchmark快速打分，但机器人policy，你得真的让机器动起来才能验货，这个成本实在太高了。所以研究者很自然地把目光投向了世界模型，用它来代替真实机器人做策略评估。但关键来了：什么样的世界模型才可靠？这篇工作做了件非常扎实的事情——他们构建了WMBench，一个基于真实机器人遥操作数据和匹配policy rollouts的benchmark，覆盖了各种操作任务。这样一来，他们就能在同一个标准下比较不同模型家族、不同action encoding、不同 rollout horizon 的效果差异。这个工作的价值不只是提供了一个数据集，而是第一次系统性地回答了“世界模型到底能不能替真实机器人说话”这个问题。对于我们AI4S领域的人来说，这其实是个很熟悉的场景——我们用神经网络替代求解PDE，不也在问同样的事情吗：替代品到底有多可信？
+
+接下来第二篇，UI-MOPD，讲的是跨平台GUI智能体的持续学习。这个问题很有趣，因为它暴露了一个很现实矛盾：现在的大模型什么平台都想管，但不同平台的交互习惯完全不同，放在一起训练反而会打架。这篇工作提出了Uni-GUI，一个高质量的跨平台GUI交互数据集，然后用一种叫做on-policy distillation的方法，让多个“老师”分别教不同平台的“学生”，同时避免灾难性遗忘。我特别感兴趣的是他们处理平台差异的方式——不是强行抹平，而是承认差异，让模型学会在统一表示和平台特定行为之间做切换。这其实和我们在科学计算里遇到的问题挺像的：当我们要处理不同物理工况、不同时空尺度的时候，是否也需要这种“统一框架下的多模态适应”能力？
+
+然后第三篇，PixWorld，这是一个很优雅的工作。它把3D重建和生成这两个通常被分开处理的任务，用一个统一的像素空间扩散框架解决了。过去的方法往往要在latent space里做diffusion，但这样会丢失信息，而且依赖预训练的VAE。PixWorld的思路很直接——直接在渲染图像上监督diffusion，反而把这些问题绕过去了。一个模型同时搞定重建和生成，而且不需要那些额外的组件。这个工作让我想到一件事：有时候绕远路加各种辅助模块，反而不如回到最直接的信号源来解决问题。当我们在设计neural operator的时候，是否也常常陷入“加更多组件”的陷阱？
+
+第四篇，OmniOpt，这个题目听起来有点硬，但我建议大家耐心听一下，因为它可能会改变你接下来选优化器的方式。团队调研了一百多种优化器，把它们拆解成五个阶段的元pipeline，然后发现大多数方法其实只动了其中一到两个阶段。这个视角非常清晰——它把看似杂乱的优化器版图整理成了一张地图。更实际的是，他们还给出了基于norm-constrained linear minimization oracle的统一视角，以及一个双维度分类法，既按机制家族分类，又记录每种方法适配的场景。对于我们训练大模型或者做科学计算的人来说，这相当于一本选型指南。我自己读完的感受是：与其盲目追新，不如先搞明白自己到底需要优化器的哪个特性。
+
+最后一篇，ResearchStudio-Reel，讲的是把科研传播本身自动化。从论文到poster、视频、博客，这个“最后一公里”以前完全是手工活。这篇工作把整个流程拆成了五个skill，每个skill有明确的输入输出和退出条件，用一种measured-fill loop的方式来保证质量，最后用hard pass/fail render gate来把控最终效果。它不是那种“给个论文PDF就给你吐出一个poster”的玩具，而是真正考虑到了可编辑性、可扩展性。我看到这个工作的时候，第一反应是：有没有可能下一步就是自动生成实验代码、甚至自动写论文本身？AI辅助科研的闭环，可能比我们想象的来得更快。
+
+好，总结一下今天的整体观察。我发现这五篇论文其实都在回答一个共同的问题：基础模型时代，我们怎么从“能做什么”走到“用什么来做”。评估基准帮我们建立信任，统一框架帮我们简化问题，优化器帮我们高效执行，而自动化工具帮我们快速迭代。这四个环节连成一条线，恰好构成了一个完整的研究到落地的闭环。可能未来的AI4S发展，不只是模型本身的进步，更是整个链条的协同进化。
+
+好了，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.02642" target="_blank">GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation</a></li>
+<li><a href="https://arxiv.org/abs/2607.04425" target="_blank">UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning</a></li>
+<li><a href="https://arxiv.org/abs/2607.05373" target="_blank">PixWorld: Unifying 3D Scene Generation and Reconstruction in Pixel Space</a></li>
+<li><a href="https://arxiv.org/abs/2607.04033" target="_blank">OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers</a></li>
+<li><a href="https://arxiv.org/abs/2607.04438" target="_blank">ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
