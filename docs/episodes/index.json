@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-08",
+    "title": "Paper Morning 2026-07-08",
+    "description": "今日学术播报: RynnWorld-Teleop: An Action-Co, RynnWorld-4D: 4D Embodied Worl, AlayaWorld: Long-Horizon and P...",
+    "audio_file": "2026-07-08.mp3",
+    "script": "各位早上好，今天Paper Morning来聊几篇关于世界模型的新工作。\n\n先说第一篇，RynnWorld-Teleop，提出一个很有野心的概念叫“数字遥操作”。我们知道机器人学习现在最大的瓶颈就是数据，需要大量真实的示范轨迹，但靠人一件一件去操作机器人收集数据实在太慢了。这篇工作的思路很有意思：用一个生成式的世界模型来替代真实机器人，操作员的动作不再直接控制真实机器人，而是驱动这个虚拟世界模型，生成第一人称视角的高保真视频。这样记录下来的动作信号就变成了“ embodiment-agnostic”的——它不绑定任何特定机器人，可以迁移到任何目标机械臂上。它的核心贡献是证明了可以通过世界模型来解耦数据收集和物理硬件的约束，这对扩大数据规模是个很实际的思路。但我们也要看到，这里生成的视频质量决定了数据的可用性，如果世界模型本身有幻觉或物理不合理的地方，学出的策略可能也会有问题。\n\n第二篇 RynnWorld-4D 紧接着回答了一个问题：世界模型应该预测什么来表示未来？他们认为仅靠RGB视频是不够的，RGB、深度、光流三者的同步预测，也就是RGB-DF，才能捕捉场景的4D动态。深度信息提供...",
+    "papers": [
+      {
+        "title": "RynnWorld-Teleop: An Action-Conditioned World Model for Digital Teleoperation",
+        "url": "https://arxiv.org/abs/2607.06558",
+        "arxiv_id": "2607.06558"
+      },
+      {
+        "title": "RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2607.06559",
+        "arxiv_id": "2607.06559"
+      },
+      {
+        "title": "AlayaWorld: Long-Horizon and Playable Video World Generation",
+        "url": "https://arxiv.org/abs/2607.06291",
+        "arxiv_id": "2607.06291"
+      },
+      {
+        "title": "Vision as Unified Multimodal Generation",
+        "url": "https://arxiv.org/abs/2607.06560",
+        "arxiv_id": "2607.06560"
+      },
+      {
+        "title": "Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling",
+        "url": "https://arxiv.org/abs/2607.02980",
+        "arxiv_id": "2607.02980"
+      }
+    ],
+    "published_at": "2026-07-08T23:38:33.178756Z"
+  },
+  {
     "date": "2026-07-07",
     "title": "Paper Morning 2026-07-07",
     "description": "今日学术播报: GigaWorld-1: A Roadmap to Buil, UI-MOPD: Multi-Platform On-Pol, PixWorld: Unifying 3D Scene Ge...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-06T23:37:10.086796Z"
-  },
-  {
-    "date": "2026-06-05",
-    "title": "Paper Morning 2026-06-05",
-    "description": "今日学术播报: The Post-GCN Decade Revisited:, TailLoR: Protecting Principal , HANDOFF: Humanoid Agentic Task...",
-    "audio_file": "2026-06-05.mp3",
-    "script": "各位早上好，又到了周五，Paper Morning开播的日子了。\n\n今天想先从一个我们日常科研中都会遇到的现象聊起。你有没有发现，当我们在评估一个新模型的时候，往往喜欢看一个汇总的榜单，一个数字从上往下排。但今天第一篇论文就告诉我们，这个做法可能正在掩盖一些重要的信息。\n\n这篇论文叫《后GCN时代的重新审视：基于曲率的分层评估》。作者指出，现在 relational learning 的评估总是用一张flat leaderboard，把性能 Across 不同的数据集做一个平均。但这背后其实隐含了一个假设，认为所有数据有着统一的结构。作者告诉我们，这个假设是有问题的。他们发现，数据的内在几何性质其实是决定模型效果的一个关键隐变量。传统的聚合指标会掩盖掉很多性能权衡，这些权衡只有在按几何属性对数据集进行分层之后才能显现出来。所以他们提出了一个基于曲率的评估框架，把数据集按正曲率、负曲率和近零曲率来分组。这个工作其实给我们的提醒是：在评估模型的时候，不能只看一个总分，要看模型在什么样的结构上擅长，在什么样的结构上不行，这对做应用的人来说其实非常重要。\n\n说完评估的问题，我们来看一个方法层面...",
-    "papers": [
-      {
-        "title": "The Post-GCN Decade Revisited: Curvature-Stratified Evaluation of Relational Learning",
-        "url": "https://arxiv.org/abs/2606.06397v1",
-        "arxiv_id": "2606.06397v1"
-      },
-      {
-        "title": "TailLoR: Protecting Principal Components in Parameter-Efficient Continual Learning",
-        "url": "https://arxiv.org/abs/2606.06494v1",
-        "arxiv_id": "2606.06494v1"
-      },
-      {
-        "title": "HANDOFF: Humanoid Agentic Task-Space Whole-Body Control via Distilled Complementary Teachers",
-        "url": "https://arxiv.org/abs/2606.06493v1",
-        "arxiv_id": "2606.06493v1"
-      },
-      {
-        "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
-        "url": "https://arxiv.org/abs/2606.06492v1",
-        "arxiv_id": "2606.06492v1"
-      },
-      {
-        "title": "TempoVLA: Learning Speed-Controllable Vision-Language-Action Policies",
-        "url": "https://arxiv.org/abs/2606.06491v1",
-        "arxiv_id": "2606.06491v1"
-      }
-    ],
-    "published_at": "2026-06-05T23:47:01.416175Z"
   }
 ]
