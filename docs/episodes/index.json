@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-09",
+    "title": "Paper Morning 2026-07-09",
+    "description": "今日学术播报: Accurate, Interdisciplinary an, Hierarchical Sparse Attention , Neural Operator-enabled Topolo...",
+    "audio_file": "2026-07-09.mp3",
+    "script": "各位早上好，又到了Paper Morning时间。\n\n今天想先从一组有意思的对比聊起。上周我参加了一个AI4S的研讨会，会上大家讨论得很热烈的一个问题是：为什么大语言模型的推理能力已经很强了，但在真正的科学发现任务上，我们还是觉得差那么一口气？有的老师说得挺直接——模型能写代码、能解方程，但它不懂物理。这话虽然有点绝对，但确实点出了一个关键痛点：科学推理需要的是什么？是把符号化的知识和空间化的结构能够统一起来的能力。这直接关系到今天第一篇论文想解决的问题。\n\n这篇论文叫SciReasoner，来自一个想做“native structural reasoning”的团队。他们提出了一个多模态的科学基础模型，专门针对蛋白质这样的三维生物大分子结构做推理。大家知道，结构-性质关系是生物、化学、材料科学里的基础问题——一个分子的三维构型决定了它的功能、反应性和物理响应。但传统AI模型在处理这类问题时，往往是把结构信息压缩成一些统计特征，丢失了那些物理化学的约束信息，比如立体化学、成键模式、对称性、周期性秩序等等。SciReasoner的思路是保留这些domain-native的结构信息，同时让...",
+    "papers": [
+      {
+        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
+        "url": "https://arxiv.org/abs/2607.07708",
+        "arxiv_id": "2607.07708"
+      },
+      {
+        "title": "Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling",
+        "url": "https://arxiv.org/abs/2607.02980",
+        "arxiv_id": "2607.02980"
+      },
+      {
+        "title": "Neural Operator-enabled Topology-informed Evolutionary Strategy for PDE-Constrained Optimization",
+        "url": "https://arxiv.org/abs/2607.07682v1",
+        "arxiv_id": "2607.07682v1"
+      },
+      {
+        "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
+        "url": "https://arxiv.org/abs/2607.07675",
+        "arxiv_id": "2607.07675"
+      },
+      {
+        "title": "Vision as Unified Multimodal Generation",
+        "url": "https://arxiv.org/abs/2607.06560",
+        "arxiv_id": "2607.06560"
+      }
+    ],
+    "published_at": "2026-07-09T23:48:20.643620Z"
+  },
+  {
     "date": "2026-07-08",
     "title": "Paper Morning 2026-07-08",
     "description": "今日学术播报: RynnWorld-Teleop: An Action-Co, RynnWorld-4D: 4D Embodied Worl, AlayaWorld: Long-Horizon and P...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-07T23:37:48.716194Z"
-  },
-  {
-    "date": "2026-06-06",
-    "title": "Paper Morning 2026-06-06",
-    "description": "今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...",
-    "audio_file": "2026-06-06.mp3",
-    "script": "各位早上好，周六的早晨，Paper Morning又和大家见面了。\n\n今天想和大家分享几篇最近在社区引发讨论的工作，不过我坦率地说，这几篇文章和我们一直关注的AI for Science方向关联度并不算高，更像是LLM agent和code模型的一场“内部消化”。但有意思的是，如果我们把视野稍微放宽一点，这些工作其实触及了一些我们不得不面对的基础性问题——比如怎么让模型真正理解持续演化的上下文，怎么在交互中动态调整计划，以及怎么把语言理解和物理世界建模统一起来。这些问题，某种程度上也是科学智能未来需要回答的。\n\n先看Code2LoRA，这个工作来自一个很实际的痛点：代码大模型在做代码补全或者理解一个项目的时候，往往缺乏足够的仓库级上下文。传统的做法要么是把大量代码塞进输入窗口，要么是对每个仓库单独做微调——前者太贵，后者太笨重，一旦代码库更新就失效了。Code2LoRA的思路是用一个超网络直接生成针对特定仓库的LoRA适配器，这样既不需要改变推理时的输入长度，又能动态注入仓库知识。更妙的是它区分了两种场景：静态版本适合已经相对稳定的代码库，演化版本则用GRU隐藏状态来追踪代码的diff...",
-    "papers": [
-      {
-        "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
-        "url": "https://arxiv.org/abs/2606.06492",
-        "arxiv_id": "2606.06492"
-      },
-      {
-        "title": "ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?",
-        "url": "https://arxiv.org/abs/2606.05553",
-        "arxiv_id": "2606.05553"
-      },
-      {
-        "title": "TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration",
-        "url": "https://arxiv.org/abs/2606.04743",
-        "arxiv_id": "2606.04743"
-      },
-      {
-        "title": "AdaPlanBench: Evaluating Adaptive Planning in Large Language Model Agents under World and User Constraints",
-        "url": "https://arxiv.org/abs/2606.05622",
-        "arxiv_id": "2606.05622"
-      },
-      {
-        "title": "World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis",
-        "url": "https://arxiv.org/abs/2606.05979",
-        "arxiv_id": "2606.05979"
-      }
-    ],
-    "published_at": "2026-06-06T23:37:10.086796Z"
   }
 ]
