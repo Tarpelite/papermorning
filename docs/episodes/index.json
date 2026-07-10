@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-10",
+    "title": "Paper Morning 2026-07-10",
+    "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Vidu S1: A Real-Time Interacti...",
+    "audio_file": "2026-07-10.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个特别有意思的现象，不知道你们有没有注意到，最近视频理解和具身智能这个方向突然变得非常热闹，好像整个社区都在往这个方向冲。那我今天就挑了几篇这个方向最近的论文，我们来看看这一波进展到底在讲什么。\n\n先来看第一篇，SciReasoner。这个工作很有意思，它提出了一个多模态的科学基础模型，专门做分子和蛋白质结构的原生推理。核心贡献一句话说清就是：它能够保留领域原生的结构信息，同时展示具体证据如何支持预测。听起来好像就是一个多模态模型，但它背后的思路其实很值得品味。大家知道，传统AI做分子预测的时候，往往是把结构信息编码成某种向量，然后丢给黑箱模型。但这里它强调的是“native structural reasoning”，也就是说模型要能够像化学家一样，理解化学键的空间取向、对称性、周期性这些domain-native的概念，然后把推理过程暴露出来。这其实呼应了我们一直在聊的一个话题：科学AI到底应该学什么？是学习数据的统计规律，还是学习领域本身的structure和constraint？SciReasoner在这...",
+    "papers": [
+      {
+        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
+        "url": "https://arxiv.org/abs/2607.07708",
+        "arxiv_id": "2607.07708"
+      },
+      {
+        "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
+        "url": "https://arxiv.org/abs/2607.07675",
+        "arxiv_id": "2607.07675"
+      },
+      {
+        "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
+        "url": "https://arxiv.org/abs/2607.03118",
+        "arxiv_id": "2607.03118"
+      },
+      {
+        "title": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2607.07608",
+        "arxiv_id": "2607.07608"
+      },
+      {
+        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
+        "url": "https://arxiv.org/abs/2603.29616",
+        "arxiv_id": "2603.29616"
+      }
+    ],
+    "published_at": "2026-07-10T23:32:07.578627Z"
+  },
+  {
     "date": "2026-07-09",
     "title": "Paper Morning 2026-07-09",
     "description": "今日学术播报: Accurate, Interdisciplinary an, Hierarchical Sparse Attention , Neural Operator-enabled Topolo...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-08T23:48:59.986539Z"
-  },
-  {
-    "date": "2026-06-07",
-    "title": "Paper Morning 2026-06-07",
-    "description": "今日学术播报: Code2LoRA: Hypernetwork-Genera, ArcANE: Do Role-Playing Langua, TIDE: Proactive Multi-Problem ...",
-    "audio_file": "2026-06-07.mp3",
-    "script": "各位早上好，又到了周末的Paper Morning时间。今天想跟大家聊一个可能有点意外的主题——最近我花了不少时间看大语言模型和Agent领域的几篇新论文，倒不是因为它们直接解决了我们关心的PDE求解或者科学模拟问题，而是我觉得这些工作在方法论层面正在积累一些值得警惕的东西，也許能给我们AI for Science的思路一些启发。\n\n先来看第一篇，Code2LoRA，这工作解决的是一个很实际的问题：代码模型需要在仓库级别理解上下文才能正确处理import、API和项目规范。传统做法要么通过RAG把大量上下文塞进输入，要么对每个仓库做微调，成本都很高。Code2LoRA的思路是用一个超网络直接生成仓库专用的LoRA适配器，零token开销就能注入仓库知识。这里有个细节值得注意，它区分了两种场景：静态快照场景和持续演化场景，后者用GRU的隐藏状态随着代码diff更新适配器。我觉得这个设计很有意思，它其实在问一个更根本的问题：我们能不能在模型参数层面而不是输入层面来编码特定任务的知识？这和我们做operator learning时思考的问题有某种相似性——到底是设计一个universal的架...",
-    "papers": [
-      {
-        "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
-        "url": "https://arxiv.org/abs/2606.06492",
-        "arxiv_id": "2606.06492"
-      },
-      {
-        "title": "ArcANE: Do Role-Playing Language Agents Stay in Character at the Right Time?",
-        "url": "https://arxiv.org/abs/2606.05553",
-        "arxiv_id": "2606.05553"
-      },
-      {
-        "title": "TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration",
-        "url": "https://arxiv.org/abs/2606.04743",
-        "arxiv_id": "2606.04743"
-      },
-      {
-        "title": "AdaPlanBench: Evaluating Adaptive Planning in Large Language Model Agents under World and User Constraints",
-        "url": "https://arxiv.org/abs/2606.05622",
-        "arxiv_id": "2606.05622"
-      },
-      {
-        "title": "World-Language-Action Model for Unified World Modeling, Language Reasoning, and Action Synthesis",
-        "url": "https://arxiv.org/abs/2606.05979",
-        "arxiv_id": "2606.05979"
-      }
-    ],
-    "published_at": "2026-06-07T23:37:48.716194Z"
   }
 ]

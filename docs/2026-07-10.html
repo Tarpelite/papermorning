@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-10</h1>
+    <p class="date">2026-07-10</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-10.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想和大家聊一个特别有意思的现象，不知道你们有没有注意到，最近视频理解和具身智能这个方向突然变得非常热闹，好像整个社区都在往这个方向冲。那我今天就挑了几篇这个方向最近的论文，我们来看看这一波进展到底在讲什么。
+
+先来看第一篇，SciReasoner。这个工作很有意思，它提出了一个多模态的科学基础模型，专门做分子和蛋白质结构的原生推理。核心贡献一句话说清就是：它能够保留领域原生的结构信息，同时展示具体证据如何支持预测。听起来好像就是一个多模态模型，但它背后的思路其实很值得品味。大家知道，传统AI做分子预测的时候，往往是把结构信息编码成某种向量，然后丢给黑箱模型。但这里它强调的是“native structural reasoning”，也就是说模型要能够像化学家一样，理解化学键的空间取向、对称性、周期性这些domain-native的概念，然后把推理过程暴露出来。这其实呼应了我们一直在聊的一个话题：科学AI到底应该学什么？是学习数据的统计规律，还是学习领域本身的structure和constraint？SciReasoner在这个方向上迈了一步，虽然效果还有待更大规模的验证，但它至少表明了，domain-native的表示和推理是一个值得投入的方向。
+
+接下来这篇，Scaling Mixture-of-Experts Video Pretrain for Embodied Intelligence。这里作者提出了一个叫LingBot-Video的视频预训练模型，专门面向具身智能的应用。核心的架构创新是用了MoE而不是dense的DiT，来平衡模型容量和推理效率。我看到这篇文章的时候，第一个反应是：这两年视频生成领域真是把大模型训练的套路学了个遍。Scaling law、MoE、预训练数据profiling，这些NLP和CV领域的成熟方法，现在都被搬到了视频模型上。但这里有一个关键的点需要我们思考：视频生成模型的训练目标天然就比文本模型更复杂，它不仅要考虑视觉质量，还要考虑物理 realism 和 computational efficiency。LingBot-Video用MoE来解决这个问题，本质上是在用架构创新来换取推理速度，这在具身智能的应用场景下是合理的，因为机器人控制对实时性要求很高。不过我比较好奇的是，这种面向机器人数据 tuning 过的视频模型，它的泛化能力到底怎么样？互联网视频和机器人操作视频之间的domain gap，是否真的能被一个数据profiling engine解决？这可能需要看看后续更大规模的验证。
+
+然后第三篇，Vidu S1，一个实时交互视频生成模型，支持语音控制数字人，输出540p实时视频达到42帧。这篇的技术含量当然有，但它更像是工程化的成果展示。TurboDiffusion和TurboServe这两个技术听起来像是推理加速的trick，核心的创新点其实在于把交互性和实时性做进了视频生成pipeline。这里我想说的是，我们看待这类工作的时候，需要区分“技术突破”和“工程化落地”。Vidu S1在实时性上做得很好，但它解决的问题更像是“怎样让视频生成跑得足够快”，而不是“怎样让视频生成更有物理一致性”。对于我们做科学计算的人来说，这个方向可能没那么直接相关，但它提醒我们一点：AI模型的推理效率，正在从“nice to have”变成“must have”，尤其是在需要实时反馈的场景下。
+
+第四篇很有意思，Dual Latent Memory in Vision-Language-Action Models。叫LaMem-VLA，提出在VLA模型中加入潜在记忆机制。大家知道，现在主流的VLA模型基本上都是Markovian的，就是只根据当前观测来预测动作。但这在长程任务中显然是不够的，因为很多任务需要跨时间步的推理和经验复用。之前的做法要么是扩大observation window，要么是从memory bank里检索历史。但LaMem-VLA的思路很巧妙，它把历史经验重建到模型的潜在空间里，让记忆token直接参与到多模态推理和动作生成中。这相当于把memory从外部的工具变成了模型内在的推理资源。我看到这篇的时候第一印象是：这不就是把LLM里上下文学习的思路，搬到了机器人控制上吗？确实，LLM通过prompt里的示例来引导推理，LaMem-VLA通过latent memory token来引导动作，它们在方法论上是相通的。这种跨领域的迁移，其实正是我们最乐意看到的：NLP和RL训练出来的范式，怎样在机器人控制里产生新的可能性。
+
+最后一篇，Video-Oasis，一个视频理解评估的诊断框架。它的核心发现很有意思：现有55%的视频理解benchmark样本，其实不需要看视频本身就能解决——光靠语言推理和先验知识就能答对。这说明我们之前可能在过度估计视频理解模型的真实能力。这篇工作的价值不在于提出一个新的benchmark，而在于重新审视评估标准。它让我想到一句话：有时候看清自己比提升自己更重要。video-native的挑战到底是什么，这个问题如果不澄清，整个社区可能都在一个虚假的繁荣里自嗨。
+
+好，那今天的整体观察是什么呢？我把这五篇论文放在一起看，发现一个很清晰的趋势：视频理解、具身智能、多模态推理这个方向，正在从“能生成”走向“会推理”、从“单帧理解”走向“时序建模”、从“黑箱预测”走向“可解释的推理”。不管是SciReasoner强调的原生结构推理，LaMem-VLA的潜在记忆机制，还是Video-Oasis对评估标准的反思，其实都在做同一件事：让模型不仅能做对题，还能讲清楚为什么。这个趋势其实和我们AI4S社区关心的问题是相通的——我们要的不仅是预测准确，更是理解深刻。今天的Paper Morning就到这里，我们下周再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.07708" target="_blank">Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2607.07675" target="_blank">Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2607.03118" target="_blank">Vidu S1: A Real-Time Interactive Video Generation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.07608" target="_blank">Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2603.29616" target="_blank">Video-Oasis: Rethinking Evaluation of Video Understanding</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
