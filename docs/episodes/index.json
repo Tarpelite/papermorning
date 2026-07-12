@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-12",
+    "title": "Paper Morning 2026-07-12",
+    "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...",
+    "audio_file": "2026-07-12.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域里反复出现的痛点聊起：很多AI模型在科学任务上表现不错，但你问它“为什么”，它就答不上来。它能预测蛋白质性质，但说不清是哪些结构特征起了作用。这种“可解释性”的缺失，其实在限制我们把AI真正融入科学发现流程。SciReasoner这篇工作就试图解决这个根本问题。\n\n作者提出一个多模态科学基础模型，能够进行所谓的“原生结构推理”。它的核心思路是，既保留领域原生的结构信息——比如立体化学、成键模式、对称性、周期性——同时让模型能够追溯到具体证据来支撑预测。换个说法，这是一个能“讲道理”的科学AI，而不是只给答案的black box。我觉得这个方向特别值得关注，因为当我们谈论AI辅助科学发现时，最大的信任障碍其实不是准确率，而是我们能不能理解模型到底学到了什么。这篇工作算是往这个方向迈出的扎实一步。\n\n接下来想聊聊视频理解这个领域最近的一个有趣现象。Video-Oasis这篇论文很有意思，作者没有再堆一个新的benchmark，而是反过来审视了现有的大量视频理解评测。他们发现一个惊人的统计：55%的现有bench...",
+    "papers": [
+      {
+        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
+        "url": "https://arxiv.org/abs/2607.07708",
+        "arxiv_id": "2607.07708"
+      },
+      {
+        "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
+        "url": "https://arxiv.org/abs/2607.07675",
+        "arxiv_id": "2607.07675"
+      },
+      {
+        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
+        "url": "https://arxiv.org/abs/2603.29616",
+        "arxiv_id": "2603.29616"
+      },
+      {
+        "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
+        "url": "https://arxiv.org/abs/2607.03118",
+        "arxiv_id": "2607.03118"
+      },
+      {
+        "title": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2607.07608",
+        "arxiv_id": "2607.07608"
+      }
+    ],
+    "published_at": "2026-07-12T23:28:42.116009Z"
+  },
+  {
     "date": "2026-07-11",
     "title": "Paper Morning 2026-07-11",
     "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-10T23:57:45.682976Z"
-  },
-  {
-    "date": "2026-06-09",
-    "title": "Paper Morning 2026-06-09",
-    "description": "今日学术播报: Agents' Last Exam, LatentSkill: From In-Context T, FlashMemory-DeepSeek-V4: Light...",
-    "audio_file": "2026-06-09.mp3",
-    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想先从一个我们领域内外都在热议的话题聊起：AI agent到底有没有真正的能力提升？还是说我们现有的评测方式已经不足以衡量它的进步了？\n\n第一篇论文 Agents' Last Exam 提出的正是这个问题。作者认为，现在很多基准测试已经不能反映AI在实际经济价值任务中的表现了。他们与250多位行业专家合作，构建了一个关注长期任务、经济价值可验证的新评测框架ALE，覆盖55个子领域、13个行业集群。这让我想到我们在科学计算中经常讨论的“ 真问题”——到底什么样的任务才是有意义的？是解一个PDE，还是真正融入科研工作流？agent领域现在面临的评估困境，其实跟科学计算benchmark的问题很像：我们需要的是能够衡量“解决实际问题”能力的测试，而不是刷榜用的玩具数据。\n\n接下来这篇 LatentSkill 有意思的地方在于，它把agent的“技能”从prompt里搬到了模型权重里。具体做法是用一个预训练的超网络把文本技能转换成即插即用的LoRA适配器，这样技能知识就存储在权重空间而不是上下文空间。实验结果很亮眼，在ALFWorl...",
-    "papers": [
-      {
-        "title": "Agents' Last Exam",
-        "url": "https://arxiv.org/abs/2606.05405",
-        "arxiv_id": "2606.05405"
-      },
-      {
-        "title": "LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents",
-        "url": "https://arxiv.org/abs/2606.06087",
-        "arxiv_id": "2606.06087"
-      },
-      {
-        "title": "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention",
-        "url": "https://arxiv.org/abs/2606.09079",
-        "arxiv_id": "2606.09079"
-      },
-      {
-        "title": "Topological Neural Operators",
-        "url": "https://arxiv.org/abs/2606.09806v1",
-        "arxiv_id": "2606.09806v1"
-      },
-      {
-        "title": "WorldCraft: From Camera Navigation to Object Manipulation in Interactive Video World Models",
-        "url": "https://arxiv.org/abs/2605.25077",
-        "arxiv_id": "2605.25077"
-      }
-    ],
-    "published_at": "2026-06-09T23:52:32.670817Z"
   }
 ]
