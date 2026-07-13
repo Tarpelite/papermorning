@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-13</title>
+      <description>今日学术播报: Accurate, Interdisciplinary an, Long-Horizon-Terminal-Bench: T, Scalable Visual Pretraining fo...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-13.mp3" length="7954016" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-13.mp3</guid>
+      <pubDate>2026-07-13T23:28:43.505494Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-12</title>
       <description>今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-12.mp3" length="6309555" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-12.mp3" length="7553402" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-12.mp3</guid>
       <pubDate>2026-06-12T00:04:01.047486Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-10</title>
-      <description>今日学术播报: Kwai Keye-VL-2.0 Technical Rep, Role-Agent: Bootstrapping LLM , ABot-Earth 0.5: Generative 3D ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-10.mp3" length="10378388" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-10.mp3</guid>
-      <pubDate>2026-06-10T23:57:45.682976Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

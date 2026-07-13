@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-13",
+    "title": "Paper Morning 2026-07-13",
+    "description": "今日学术播报: Accurate, Interdisciplinary an, Long-Horizon-Terminal-Bench: T, Scalable Visual Pretraining fo...",
+    "audio_file": "2026-07-13.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家可能都有感受的话题聊起：这两年foundation model火遍AI圈，但我们做科学计算的人一直在想一个问题——这种预训练+泛化的思路，到底能不能真正帮到我们理解物理世界？今天的几篇论文刚好从不同角度触及了这个大问题。\n\n第一篇想聊SciReasoner，它试图解决一个很根本的问题：我们能不能用AI来“推理”化学结构背后的物理原理？大家知道，结构-性质关系是材料科学和生物化学的核心，但过去的方法往往停留在端到端的预测上——给一个结构，输出一个性质，但说不清为什么。SciReasoner这个工作想要做得更深：它是一个多模态的基础模型，能够保留“领域原生”的结构信息，同时展示具体的结构证据是如何支撑预测的。听起来有点像是给模型装上了“科学解释”的能力。这让我想到我们在PDE求解里常说的“物理约束”——不只是拟合数据，还要符合物理规律。这个思路如果能扩展到更复杂的分子体系，或许能为材料设计提供更有解释性的工具。\n\n然后第二篇Long-Horizon-Terminal-Bench很有意思，它提出了一个关于AI age...",
+    "papers": [
+      {
+        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
+        "url": "https://arxiv.org/abs/2607.07708",
+        "arxiv_id": "2607.07708"
+      },
+      {
+        "title": "Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading",
+        "url": "https://arxiv.org/abs/2607.08964",
+        "arxiv_id": "2607.08964"
+      },
+      {
+        "title": "Scalable Visual Pretraining for Language Intelligence",
+        "url": "https://arxiv.org/abs/2607.09657",
+        "arxiv_id": "2607.09657"
+      },
+      {
+        "title": "Video Generation Models are General-Purpose Vision Learners",
+        "url": "https://arxiv.org/abs/2607.09024",
+        "arxiv_id": "2607.09024"
+      },
+      {
+        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
+        "url": "https://arxiv.org/abs/2603.29616",
+        "arxiv_id": "2603.29616"
+      }
+    ],
+    "published_at": "2026-07-13T23:28:43.505494Z"
+  },
+  {
     "date": "2026-07-12",
     "title": "Paper Morning 2026-07-12",
     "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-12T00:04:01.047486Z"
-  },
-  {
-    "date": "2026-06-10",
-    "title": "Paper Morning 2026-06-10",
-    "description": "今日学术播报: Kwai Keye-VL-2.0 Technical Rep, Role-Agent: Bootstrapping LLM , ABot-Earth 0.5: Generative 3D ...",
-    "audio_file": "2026-06-10.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想先从一个更大的观察说起。过去几个月啊，我们看到大模型领域有一个很明显的趋势，就是大家开始从“刷榜”转向“构建能力”。什么意思呢？不再只是追求某个 benchmark 上的分数，而是开始系统性地构建模型的基础能力——长上下文、多模态理解、具身智能、世界模型。那这些能力构建，跟我们AI for Science有什么关系呢？其实是密切相关的。因为科学问题的本质就是理解物理世界、建模复杂系统，而这些基础能力恰恰是通往更强大的科学计算工具的必经之路。今天这几篇论文，虽然不是直接做PDE求解或者神经算子，但我觉得对于我们理解这个趋势很重要。\n\n第一篇是快手的Keye-VL-2.0，这是一个针对超长视频理解的多模态大模型。他们提出了一个很实际的问题：小时级的视频怎么处理？传统的注意力机制在这么长的上下文上计算量爆炸，但他们首次把DeepSeek的稀疏注意力机制adapt到了多模态架构上，实现了无损的25万token上下文处理。这个技术细节本身很有价值，但我更想指出的是，他们做这件事的动机是“agentic intelligence”——让模型能...",
-    "papers": [
-      {
-        "title": "Kwai Keye-VL-2.0 Technical Report",
-        "url": "https://arxiv.org/abs/2606.10651",
-        "arxiv_id": "2606.10651"
-      },
-      {
-        "title": "Role-Agent: Bootstrapping LLM Agents via Dual-Role Evolution",
-        "url": "https://arxiv.org/abs/2606.10917",
-        "arxiv_id": "2606.10917"
-      },
-      {
-        "title": "ABot-Earth 0.5: Generative 3D Earth Model",
-        "url": "https://arxiv.org/abs/2606.09967",
-        "arxiv_id": "2606.09967"
-      },
-      {
-        "title": "Retrospective Harness Optimization: Improving LLM Agents via Self-Preference over Trajectory Rollouts",
-        "url": "https://arxiv.org/abs/2606.05922",
-        "arxiv_id": "2606.05922"
-      },
-      {
-        "title": "WorldOlympiad: Can Your World Model Survive a Triathlon?",
-        "url": "https://arxiv.org/abs/2606.11129",
-        "arxiv_id": "2606.11129"
-      }
-    ],
-    "published_at": "2026-06-10T23:57:45.682976Z"
   }
 ]
