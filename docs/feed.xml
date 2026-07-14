@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-14</title>
+      <description>今日学术播报: ABot-N1: Toward a General Visu, Long-Horizon-Terminal-Bench: T, Video Generation Models are Ge...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-14.mp3" length="10144540" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-14.mp3</guid>
+      <pubDate>2026-07-14T23:27:57.173228Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-13</title>
       <description>今日学术播报: Accurate, Interdisciplinary an, Long-Horizon-Terminal-Bench: T, Scalable Visual Pretraining fo...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-13.mp3" length="7954016" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-13.mp3" length="8747093" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-13.mp3</guid>
       <pubDate>2026-06-13T23:42:10.882752Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-12</title>
-      <description>今日学术播报: Redesign Mixture-of-Experts Ro, Claw-SWE-Bench: A Benchmark fo, Toward Generalist Autonomous R...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-12.mp3" length="7553402" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-12.mp3</guid>
-      <pubDate>2026-06-12T00:04:01.047486Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

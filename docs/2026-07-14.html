@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-14</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-14</h1>
+    <p class="date">2026-07-14</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-14.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。
+
+今天想和大家聊一个很有意思的话题，就是基础模型这个范式，它从NLP那边火起来以后，是怎么一步步渗透到我们关心的各个领域的。我选了几篇最近热度很高的论文，它们虽然看起来分布在视觉、导航、agent这些看似不相关的方向，但我会觉得它们其实在回答一个共同的问题：什么是通往通用智能的新路径？
+
+先看第一篇，ABot-N1，这是一个视觉语言导航的基础模型。大家知道，视觉语言导航VLN这个任务，传统做法是端到端的policy，直接把观测映射到动作。但这种方法有个根本问题，就是坐标漂移，而且缺乏可解释性。ABot-N1的思路很有意思，它引入了一个慢Fast的双系统架构，慢系统负责推理Fast系统负责控制，用语言信号来引导视觉推理。这其实有点像是把系统一和系统二的概念引入到了具身智能里。但我更关心的是，它为什么现在出现？实际上，这反映了我们整个领域对基础模型的一个期待，就是能不能用预训练的语义理解能力，来解决具身智能中那些需要长期规划的问题。这个思路其实和我们在PDE求解里追求的长期一致性，是有相通之处的。
+
+然后是第二篇，Long-Horizon-Terminal-Bench。这个工作很有意思，它提出了一个针对长视野任务的benchmark。大家知道现在AI agent很火，但大部分agent benchmark都是短任务，几分钟就能完成。这篇论文设计了46个长视野任务，涵盖实验复现、软件工程、多模态分析、科学计算等等，而且它用的是细粒度的评分机制，而不是只看最终结果。这件事为什么重要？因为它开始暴露了一个根本问题：我们的agent评估体系实际上是稀疏reward的环境，这和科学发现过程中那种需要不断试错、积累中间进展的场景非常不一样。我会觉得这个工作其实在问一个我们AI4S领域也很关心的问题：当任务变得复杂且长期的时候，现有的训练范式还够不够用？
+
+接下来这篇我觉得是今天最值得关注的一篇，Video Generation Models are General-Purpose Vision Learners，GenCeption。这篇论文的核心观点非常大胆，它说大规模的视频生成预训练，可能就是视觉领域的next-token prediction时刻。什么意思呢，就是NLP那边是因为有了next-token prediction，才能从任务-specific的模型变成foundation model。视觉领域要想达到同样的通用性，可能也需要一个类似的pretext task，而视频生成就是这个task。它的做法是用一个预训练好的视频生成扩散模型，作为backbone，然后freeze掉，去掉time step的输入，变成了一个前馈的感知模型，在各种视觉任务上做zero-shot。实验结果很惊艳，在很多任务上达到了state-of-the-art。
+
+这个工作让我特别兴奋，因为它其实在回答一个我们AI4S领域一直在思考的问题：到底什么样的pre-training task，能够让模型学到物理世界的规律？视频生成本质上是在建模时空连续性，而这种时空先验，恰恰是科学计算模拟所需要的。你看，现在已经有一些工作开始用视频生成来做物理仿真了，那下一步是不是可以用这种预训练范式，来构建科学计算的基础模型？我觉得这是一个非常值得关注的方向。
+
+第四篇，Scalable Visual Pretraining for Language Intelligence。这篇论文提出了一个挑战默认假设的观点：语言模型的预训练要不要只停留在文本上？它认为很多知识其实是通过视觉形式传达的，比如文档里的图表、公式、页面布局，这些信息在转成纯文本的时候会丢失。所以它研究了视觉预训练对语言智能的影响。这篇工作让我想到一个跨领域的联系：我们科学计算领域其实也面临类似的问题，物理规律往往是通过方程、图形、实验装置的视觉结构来传达的，那能不能用视觉预训练来捕捉这些结构化的物理知识？虽然这篇论文主要是从NLP的角度出发，但它打开了一个很有趣的可能性。
+
+最后是StudioRecon，关于低重叠度相机下的人体四维重建。这是一个很具体的计算机视觉问题，但它的方法挺有意思，用视频扩散模型来合成新视角，填补观测不足的区域。这让我想到，其实在科学模拟中我们也经常面临类似的问题：观测数据稀疏的时候，怎么去补全和推断？这篇论文提供了一个思路，就是用生成模型来补充观测。虽然它是针对人体捕捉的，但这种思路能不能迁移到科学数据的重建上？
+
+好了，今天的播报差不多到这里。我总的观察是什么呢，我觉得这几篇论文其实在告诉我们一个趋势：基础模型的范式正在从纯语言向更广泛的模态延伸，而且这种延伸不是简单的能力扩展，而是在重新定义什么叫“通用”。视频生成可能是视觉领域的next-token prediction时刻，视觉预训练可能在重新定义语言智能的边界，而长视野agent的评估则在暴露我们对于复杂推理的认知还有多少盲区。这些变化对于我们AI4S领域的意义在于：当基础模型变得更通用、更能捕捉时空规律的时候，它能不能成为我们构建科学计算foundation model的基石？这是我未来会持续关注的问题。
+
+今天的分享就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.10383" target="_blank">ABot-N1: Toward a General Visual Language Navigation Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.08964" target="_blank">Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading</a></li>
+<li><a href="https://arxiv.org/abs/2607.09024" target="_blank">Video Generation Models are General-Purpose Vision Learners</a></li>
+<li><a href="https://arxiv.org/abs/2607.09657" target="_blank">Scalable Visual Pretraining for Language Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2607.09125" target="_blank">4D Human-Scene Reconstruction from Low-Overlap Captures</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
