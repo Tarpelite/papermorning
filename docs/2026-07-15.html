@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-15</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-15</h1>
+    <p class="date">2026-07-15</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-15.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，欢迎来到Paper Morning。
+
+今天想先从一个更大的图景聊起。我们都知道，大模型这两年最热闹的进展集中在语言和多模态领域，但如果你稍微把目光往旁边偏一偏，会发现一些很有意思的东西正在悄悄改变我们做科学智能的方式。
+
+先看第一篇，ABot-N1，这是视觉语言导航领域的工作。猛一看好像跟科学计算没什么关系，但我建议你注意它背后的设计思路。它用了一个slow-fast的双系统架构，慢系统负责推理，快系统负责控制，把认知和执行解耦开来。这其实回应了一个很本质的问题：怎么让一个通用智能体既能做复杂的推理，又能保持实时响应的能力。你回头想想，我们在做科学模拟的时候，是不是也经常面临类似的困境？比如解一个PDE，我们既需要高保真的物理建模，又需要实时的推理能力。这个slow-fast的思路，说不定能为我们设计科学计算的foundation model提供一些启发。
+
+再看第二篇，Xiaomi-Robotics-U0，这个工作很有意思。它把具身智能看成是image和video generation的自然延伸，用一个380亿参数的多模态模型统一了图像生成、场景生成、还有机器人控制。这背后其实反映了一个趋势：当生成模型足够强大以后，它不仅可以“想象”画面，还可以“想象”物理世界。这让我想到，如果我们的PDE求解器也能具备这种生成式的能力，是不是可以从“求解”转向“想象”物理演化的过程？特别是对那些缺乏解析解或者实验数据昂贵的复杂系统，这种生成式的世界观可能很有意思。
+
+第三篇，Long-Horizon-Terminal-Bench，这是一个关于AI agent的长程任务benchmark。它特别强调了一个我们做研究的人可能都有感受的问题：现有的benchmark太关注最终结果，而忽视了中间的思考过程。它引入了细粒度的dense reward，来更全面地评估agent的能力。这个设计理念其实很值得我们借鉴。大家知道，做科学计算的时候，我们往往也是只看最终误差，但中间推理路径的正确性同样重要，甚至有时候更重要。这个工作提醒我们，是不是也该为科学智能体设计更细粒度的评估方式？
+
+第四篇，Video Generation Models are General-Purpose Vision Learners，这个工作提出了一个很犀利的观点：视频生成可以作为视觉智能的预训练范式，就像next-token预测之于语言模型。他们用视频生成模型作为backbone，在各种视觉任务上取得了很好的效果。这个思路其实跟我们现在在探索的PDE foundation model有异曲同工之妙：我们也是希望通过大规模的科学数据预训练，让模型学到物理世界的基本规律。不过这里有一个有趣的差别：视频生成学的是表象的时间演化，而我们要学的可能是更底层的物理法则。这两者能不能结合起来？也许是值得思考的问题。
+
+最后一篇，Scalable Visual Pretraining for Language Intelligence，这个工作挑战了一个我们习以为常的假设：训练语言模型一定要用纯文本吗？它证明了视觉信息可以为语言智能提供独特的价值，特别是对于那些包含图表、公式、版式的文档。这让我想到，其实在科学领域，我们有大量的实验数据、模拟结果，都是以图像、波形图这种视觉形式存在的。我们是不是也可以用类似的思路，让语言模型通过视觉的方式来理解科学数据？这样也许能解锁一些纯文本无法捕捉的物理直觉。
+
+好，让我们回到今天这些论文的整体观察。我会发现一个有意思的共同点：大家都 在探索“通用性”和“专业性”之间的平衡。无论 是视觉语言导航、机器人控制、还是视频生成，大家都在尝试用foundation model的思路来统一更多的任务。但同时又都在各自的场景里加入了专门的约束和设计。这其实也正是我们AI4S领域正在面对的核心问题：我们到底需要多通用的科学智能体？通用性要强到什么程度才不会牺牲物理保真度？这个问题可能还没有标准答案，但今天这些工作至少给我们提供了不少值得参考的思路。
+
+好了，今天的播报就到这里，我们明天早上继续聊。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.10383" target="_blank">ABot-N1: Toward a General Visual Language Navigation Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.11643" target="_blank">Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.08964" target="_blank">Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading</a></li>
+<li><a href="https://arxiv.org/abs/2607.09024" target="_blank">Video Generation Models are General-Purpose Vision Learners</a></li>
+<li><a href="https://arxiv.org/abs/2607.09657" target="_blank">Scalable Visual Pretraining for Language Intelligence</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-15</title>
+      <description>今日学术播报: ABot-N1: Toward a General Visu, Xiaomi-Robotics-U0: Unified Em, Long-Horizon-Terminal-Bench: T...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-15.mp3" length="7910757" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-15.mp3</guid>
+      <pubDate>2026-07-15T23:32:11.281129Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-14</title>
       <description>今日学术播报: ABot-N1: Toward a General Visu, Long-Horizon-Terminal-Bench: T, Video Generation Models are Ge...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-14.mp3" length="10144540" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-14.mp3" length="7438045" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-14.mp3</guid>
       <pubDate>2026-06-14T23:47:57.586481Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-13</title>
-      <description>今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-13.mp3" length="8747093" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-13.mp3</guid>
-      <pubDate>2026-06-13T23:42:10.882752Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

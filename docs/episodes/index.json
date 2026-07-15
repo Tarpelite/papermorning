@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-15",
+    "title": "Paper Morning 2026-07-15",
+    "description": "今日学术播报: ABot-N1: Toward a General Visu, Xiaomi-Robotics-U0: Unified Em, Long-Horizon-Terminal-Bench: T...",
+    "audio_file": "2026-07-15.mp3",
+    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想先从一个更大的图景聊起。我们都知道，大模型这两年最热闹的进展集中在语言和多模态领域，但如果你稍微把目光往旁边偏一偏，会发现一些很有意思的东西正在悄悄改变我们做科学智能的方式。\n\n先看第一篇，ABot-N1，这是视觉语言导航领域的工作。猛一看好像跟科学计算没什么关系，但我建议你注意它背后的设计思路。它用了一个slow-fast的双系统架构，慢系统负责推理，快系统负责控制，把认知和执行解耦开来。这其实回应了一个很本质的问题：怎么让一个通用智能体既能做复杂的推理，又能保持实时响应的能力。你回头想想，我们在做科学模拟的时候，是不是也经常面临类似的困境？比如解一个PDE，我们既需要高保真的物理建模，又需要实时的推理能力。这个slow-fast的思路，说不定能为我们设计科学计算的foundation model提供一些启发。\n\n再看第二篇，Xiaomi-Robotics-U0，这个工作很有意思。它把具身智能看成是image和video generation的自然延伸，用一个380亿参数的多模态模型统一了图像生成、场景生成、还有机器人控制。这...",
+    "papers": [
+      {
+        "title": "ABot-N1: Toward a General Visual Language Navigation Foundation Model",
+        "url": "https://arxiv.org/abs/2607.10383",
+        "arxiv_id": "2607.10383"
+      },
+      {
+        "title": "Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model",
+        "url": "https://arxiv.org/abs/2607.11643",
+        "arxiv_id": "2607.11643"
+      },
+      {
+        "title": "Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading",
+        "url": "https://arxiv.org/abs/2607.08964",
+        "arxiv_id": "2607.08964"
+      },
+      {
+        "title": "Video Generation Models are General-Purpose Vision Learners",
+        "url": "https://arxiv.org/abs/2607.09024",
+        "arxiv_id": "2607.09024"
+      },
+      {
+        "title": "Scalable Visual Pretraining for Language Intelligence",
+        "url": "https://arxiv.org/abs/2607.09657",
+        "arxiv_id": "2607.09657"
+      }
+    ],
+    "published_at": "2026-07-15T23:32:11.281129Z"
+  },
+  {
     "date": "2026-07-14",
     "title": "Paper Morning 2026-07-14",
     "description": "今日学术播报: ABot-N1: Toward a General Visu, Long-Horizon-Terminal-Bench: T, Video Generation Models are Ge...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-14T23:47:57.586481Z"
-  },
-  {
-    "date": "2026-06-13",
-    "title": "Paper Morning 2026-06-13",
-    "description": "今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...",
-    "audio_file": "2026-06-13.mp3",
-    "script": "各位早上好，周末的Paper Morning又和大家见面了。\n\n今天想先从一个观察说起。这两年我们见证了基础模型能力的飞速提升，但从研究重心来看，有一个趋势越来越明显：大家的关注点正在从“模型本身有多强”，逐渐转向“系统在实际场景中能不能用”。今天要聊的几篇论文，恰好都指向这个方向。\n\n第一篇是MiniMax Sparse Attention，解决的是长上下文模型的实际部署难题。我们知道，现在LLM要处理代码仓库、agent的工作记忆、持久化上下文，这些场景都要求模型能一次处理几十万甚至上百万个token。但标准softmax注意力的二次复杂度让这在部署层面几乎不可行。MiniMax的方案很直接：用轻量级的索引分支给KV块打分组分数，然后每个GQA组独立选出Top-k的块，最后在主分支做精确的块稀疏注意力。这个设计的好处是保持了group-level的稀疏检索灵活性，同时利用块级执行保证效率。我觉得最值得注意的不是技术细节，而是它体现的思路：当模型规模和能力已经足够的时候，工程上的稀疏化成了让能力真正落地的关键杠杆。\n\n第二篇 Robust-U1 提出了一个很有趣的问题：多模态大模型能...",
-    "papers": [
-      {
-        "title": "MiniMax Sparse Attention",
-        "url": "https://arxiv.org/abs/2606.13392",
-        "arxiv_id": "2606.13392"
-      },
-      {
-        "title": "Robust-U1: Can MLLMs Self-Recover Corrupted Visual Content for Robust Understanding?",
-        "url": "https://arxiv.org/abs/2606.08063",
-        "arxiv_id": "2606.08063"
-      },
-      {
-        "title": "EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments",
-        "url": "https://arxiv.org/abs/2606.13681",
-        "arxiv_id": "2606.13681"
-      },
-      {
-        "title": "WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces",
-        "url": "https://arxiv.org/abs/2606.09426",
-        "arxiv_id": "2606.09426"
-      },
-      {
-        "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
-        "url": "https://arxiv.org/abs/2606.13679",
-        "arxiv_id": "2606.13679"
-      }
-    ],
-    "published_at": "2026-06-13T23:42:10.882752Z"
   }
 ]
