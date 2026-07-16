@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-16",
+    "title": "Paper Morning 2026-07-16",
+    "description": "今日学术播报: Function-Aware Fill-in-the-Mid, Xiaomi-Robotics-U0: Unified Em, Harness Handbook: Making Evolv...",
+    "audio_file": "2026-07-16.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想先从一篇代码智能体的论文聊起，因为它触及了一个我觉得很重要但容易被忽视的问题：现在的代码模型训练，都是从左往右生成，但实际用起来，智能体得不断接收外部工具的返回值，再继续推理，这两种能力的方向其实是不一致的。Function-Aware Fill-in-the-Middle这篇工作就抓住了这个gap。他们把智能体的action-observation循环类比成函数调用：调用者绑定参数，被调用者返回结果，下游代码消费这个值。这个结构在普通代码里到处可见，作者用程序依赖图筛选函数，做了一个中间填充的预训练目标，在代码数据上做继续预训练。7B到8B规模的模型在代码补全任务上有明显提升。这个工作不算惊天的突破，但它指出了一个很实际的问题：基础模型的训练目标和智能体的实际使用场景之间，缺的不仅是能力，还有行为模式的对齐。中间填充这个思路，之前在代码补全里有人做过，用在智能体训练上算是自然的迁移，不过用程序分析来选函数这个细节，显得比较工程化，算不算方法论上的创新，大家可以自己判断。\n\n然后第二篇，小米的具身智能工作 Xiaomi-Robot...",
+    "papers": [
+      {
+        "title": "Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models",
+        "url": "https://arxiv.org/abs/2607.12463",
+        "arxiv_id": "2607.12463"
+      },
+      {
+        "title": "Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model",
+        "url": "https://arxiv.org/abs/2607.11643",
+        "arxiv_id": "2607.11643"
+      },
+      {
+        "title": "Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable",
+        "url": "https://arxiv.org/abs/2607.13285",
+        "arxiv_id": "2607.13285"
+      },
+      {
+        "title": "Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation",
+        "url": "https://arxiv.org/abs/2607.11886",
+        "arxiv_id": "2607.11886"
+      },
+      {
+        "title": "4D Human-Scene Reconstruction from Low-Overlap Captures",
+        "url": "https://arxiv.org/abs/2607.09125",
+        "arxiv_id": "2607.09125"
+      }
+    ],
+    "published_at": "2026-07-16T23:28:00.466560Z"
+  },
+  {
     "date": "2026-07-15",
     "title": "Paper Morning 2026-07-15",
     "description": "今日学术播报: ABot-N1: Toward a General Visu, Xiaomi-Robotics-U0: Unified Em, Long-Horizon-Terminal-Bench: T...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-16T23:57:31.726426Z"
-  },
-  {
-    "date": "2026-06-14",
-    "title": "Paper Morning 2026-06-14",
-    "description": "今日学术播报: MiniMax Sparse Attention, Robust-U1: Can MLLMs Self-Reco, EvoArena: Tracking Memory Evol...",
-    "audio_file": "2026-06-14.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。今天是周末，清晨的时光很适合聊聊最近学术界都在关心什么。\n\n先来看第一篇工作，MiniMax Sparse Attention。这是针对长上下文LLM的稀疏注意力机制。核心思路很直接：用分组查询注意力配合一个轻量级的索引分支，让模型能够在上百万token的上下文中高效地检索相关信息。传统softmax注意力的平方复杂度在大规模部署时确实是个瓶颈，这篇工作用块级稀疏的方法绕了过去。这里有个值得注意的点，他们没有追求复杂的稀疏模式，而是强调简洁和可扩展性，这种务实的设计思路其实很值得咱们AI4S领域借鉴。我们在做PDE求解器的时候，经常面对大规模时空网格，同样需要在计算效率和精度之间找平衡，有时候简单粗暴的方案反而比精巧的近似更可靠。\n\n第二篇 Robust-U1 探讨了一个很有意思的问题：多模态大模型能不能自己“看见”并修复被破坏的视觉输入。这篇工作提出了一个三阶段的框架，先做监督微调让模型具备初步重建能力，然后用强化学习结合像素级SSIM奖励和语义级奖励进一步提升。他们试图回答的是模型能否在像素层面恢复细节，这和我们做物理仿真时处理...",
-    "papers": [
-      {
-        "title": "MiniMax Sparse Attention",
-        "url": "https://arxiv.org/abs/2606.13392",
-        "arxiv_id": "2606.13392"
-      },
-      {
-        "title": "Robust-U1: Can MLLMs Self-Recover Corrupted Visual Content for Robust Understanding?",
-        "url": "https://arxiv.org/abs/2606.08063",
-        "arxiv_id": "2606.08063"
-      },
-      {
-        "title": "EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments",
-        "url": "https://arxiv.org/abs/2606.13681",
-        "arxiv_id": "2606.13681"
-      },
-      {
-        "title": "WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces",
-        "url": "https://arxiv.org/abs/2606.09426",
-        "arxiv_id": "2606.09426"
-      },
-      {
-        "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
-        "url": "https://arxiv.org/abs/2606.13679",
-        "arxiv_id": "2606.13679"
-      }
-    ],
-    "published_at": "2026-06-14T23:47:57.586481Z"
   }
 ]

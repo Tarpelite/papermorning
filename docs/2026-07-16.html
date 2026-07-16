@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-16</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-16</h1>
+    <p class="date">2026-07-16</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-16.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想先从一篇代码智能体的论文聊起，因为它触及了一个我觉得很重要但容易被忽视的问题：现在的代码模型训练，都是从左往右生成，但实际用起来，智能体得不断接收外部工具的返回值，再继续推理，这两种能力的方向其实是不一致的。Function-Aware Fill-in-the-Middle这篇工作就抓住了这个gap。他们把智能体的action-observation循环类比成函数调用：调用者绑定参数，被调用者返回结果，下游代码消费这个值。这个结构在普通代码里到处可见，作者用程序依赖图筛选函数，做了一个中间填充的预训练目标，在代码数据上做继续预训练。7B到8B规模的模型在代码补全任务上有明显提升。这个工作不算惊天的突破，但它指出了一个很实际的问题：基础模型的训练目标和智能体的实际使用场景之间，缺的不仅是能力，还有行为模式的对齐。中间填充这个思路，之前在代码补全里有人做过，用在智能体训练上算是自然的迁移，不过用程序分析来选函数这个细节，显得比较工程化，算不算方法论上的创新，大家可以自己判断。
+
+然后第二篇，小米的具身智能工作 Xiaomi-Robotics-U0，38B参数的多模态模型，看起来是要做一个统一的具身生成框架。他们把具身场景的生成当成图像视频生成的自然延伸，联合优化文生图、图像编辑、场景生成、姿态迁移和视频生成。这个思路让我想到之前VISTA那类工作，但小米这里强调的是保留大规模预训练学到的视觉知识，而不是用有限的机器人数据去微调从而灾难性遗忘。38B的参数量确实很大，但我觉得更值得关注的是“统一”这个词背后的问题：过去具身智能的各个子任务往往是各自为政，用不同的模型不同的数据，现在试图用一个大一统的框架来handle，这个愿景是好的，不过具体效果怎么样，论文里展示的demo能不能打，还有待开源后社区的验证。现在具身智能领域确实很卷，大厂都在推自己的foundation model，咱们拭目以待吧。
+
+第三篇 Harness Handbook 很有意思，它研究的是AI智能体的harness——也就是那个构建prompt、管理状态、调用工具、协调执行的系统架构。作者说了一个很现实的问题：当模型、API、环境、需求都不断变化的时候，harness也得跟着改，但生产级的harness代码量大、耦合紧、行为分散，开发者想改一个功能，得满世界找相关的代码位置。这篇工作提出了让harness变得可读、可导航、可编辑的方法，做了一个行为定位的工具。163个upvotes说明大家对这个问题的共鸣很强。我觉得这反映了AI领域一个正在浮现的痛点：以前我们只关心模型本身好不好，但现在整个系统里，基础设施和工具链的复杂度正在成为瓶颈。特别是Agent火起来之后，harness的设计和演化会变成一个很实际的问题，甚至可能催生出一个专门的工程化方向。
+
+第四篇 Read It Back 很有创意，它问了一个问题：能不能不用额外的奖励模型，直接用预训练的多模态大模型来做文生图的强化学习？他们的做法很巧妙：让模型生成图像后，再“读回去”，看能不能从图像恢复出原始的prompt，用这个重建概率作为reward。这相当于把MLLM预训练时学到的图像-文本对齐能力直接再利用。他们把这个叫做SpectraReward，还搞了个Self-SpectraReward，用模型自己的理解分支做reward。这个想法让我想起之前有些工作用CLIP来做image reward，但这里更进一步，直接利用了生成模型本身的理解能力。关键是不需要额外的reward model训练，也不需要偏好数据，对于算力有限的团队来说很有吸引力。不过我有点好奇，这个“读回去”的操作，具体实现起来对模型架构有没有什么特殊要求，不是所有MLLM都能直接这么用吧。
+
+最后是一篇4D人体场景重建的论文，StudioRecon，针对的是低重叠度相机采集这个现实约束。传统的高质量动态人体捕捉需要密集相机阵列，但实际场景里往往只有少数几个低重叠相机，导致重建质量下降、大面积区域无法观测。他们的做法是把背景和人体解耦，用视频扩散模型合成大量新相机视角来增强背景监督，再做人体重建。这个思路不算全新的方法创新，但在低重叠4D重建这个具体问题上，把 diffusion model 用来做数据增强而不是直接做重建，可能是个更务实的选择。直接用video diffusion做4D重建容易有几何不一致的问题，这里用它来补充监督信号，思路挺巧妙的。
+
+好，今天的五篇聊完了。我有一个整体的感受：今天的几篇工作，虽然领域各异，但都指向一个共同的主题——怎么让已经预训练好的大模型能力，在实际使用场景中被更好地激发出来。代码模型要适应智能体的交互模式，具身智能要保留预训练的视觉知识，harness要让系统的演化更可控，图像生成要把预训练的对齐能力转成reward，4D重建要用diffusion来补充数据。每篇工作的具体做法不同，但背后都是“在有限资源下最大化预训练红利”这个实用主义的命题。这可能是当下AI研究一个很典型的状态：模型已经很大了，怎么用好它，比怎么炼一个更大的模型，往往更有空间。咱们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.12463" target="_blank">Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models</a></li>
+<li><a href="https://arxiv.org/abs/2607.11643" target="_blank">Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.13285" target="_blank">Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable</a></li>
+<li><a href="https://arxiv.org/abs/2607.11886" target="_blank">Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation</a></li>
+<li><a href="https://arxiv.org/abs/2607.09125" target="_blank">4D Human-Scene Reconstruction from Low-Overlap Captures</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
