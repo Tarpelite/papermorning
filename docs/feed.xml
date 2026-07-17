@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-17</title>
+      <description>今日学术播报: Harness Handbook: Making Evolv, VideoChat3: Fully Open Video M, SEED: Self-Evolving On-Policy ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-17.mp3" length="8144605" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-17.mp3</guid>
+      <pubDate>2026-07-17T23:27:19.000502Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-16</title>
       <description>今日学术播报: Function-Aware Fill-in-the-Mid, Xiaomi-Robotics-U0: Unified Em, Harness Handbook: Making Evolv...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-16.mp3" length="10252373" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-17.mp3" length="12135071" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-17.mp3</guid>
       <pubDate>2026-06-17T23:58:43.206459Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-16</title>
-      <description>今日学术播报: DreamX-World 1.0: A General-Pu, Geometric Action Model for Rob, JoyAI-VL-Interaction: Real-Tim...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-16.mp3" length="9951443" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-16.mp3</guid>
-      <pubDate>2026-06-16T23:57:31.726426Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
