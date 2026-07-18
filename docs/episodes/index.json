@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-18",
+    "title": "Paper Morning 2026-07-18",
+    "description": "今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...",
+    "audio_file": "2026-07-18.mp3",
+    "script": "各位早上好，今天是周末，Paper Morning又和大家见面了。\n\n今天想和大家聊聊一个我觉得很有意思的趋势：不管是做基础模型的还是做应用的，大家似乎都在往同一个方向努力——怎么让AI agent真正具备长期规划、持续推理的能力。这个线索其实贯穿了今天要聊的五篇论文。\n\n先看第一篇，RxBrain，做的是具身智能的基础模型。传统上，我们做视觉语言模型，要么强调理解场景，要么强调生成未来状态，但这两者是割裂的。RxBrain的思路是把语言和视觉想象放在同一个规划序列里：语言提供抽象的任务分解和决策逻辑，视觉想象则把这种抽象结构落地到具体的世界状态预测。听起来是不是有点像我们做PDE求解时的思路？把偏微分方程的解析结构和数值离散结合起来，才能既保证物理一致性又有计算效率。这篇工作的核心贡献在于，它让agent的规划过程不再是一个黑箱，而是语言推理和视觉推理交替进行的可解释过程。\n\n接下来这篇LongStraw很有意思，它解决的是一个非常实际的问题：我们现在能做的推理上下文已经到百万token了，但强化学习训练的时候往往还卡在256K token以下，训练和推理的上下文长度差距越来越大。L...",
+    "papers": [
+      {
+        "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
+        "url": "https://arxiv.org/abs/2607.14187",
+        "arxiv_id": "2607.14187"
+      },
+      {
+        "title": "LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget",
+        "url": "https://arxiv.org/abs/2607.14952",
+        "arxiv_id": "2607.14952"
+      },
+      {
+        "title": "VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding",
+        "url": "https://arxiv.org/abs/2607.14935",
+        "arxiv_id": "2607.14935"
+      },
+      {
+        "title": "SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration",
+        "url": "https://arxiv.org/abs/2607.15257",
+        "arxiv_id": "2607.15257"
+      },
+      {
+        "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2607.14777",
+        "arxiv_id": "2607.14777"
+      }
+    ],
+    "published_at": "2026-07-18T23:28:55.442274Z"
+  },
+  {
     "date": "2026-07-17",
     "title": "Paper Morning 2026-07-17",
     "description": "今日学术播报: Harness Handbook: Making Evolv, VideoChat3: Fully Open Video M, SEED: Self-Evolving On-Policy ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-19T23:37:30.154097Z"
-  },
-  {
-    "date": "2026-06-17",
-    "title": "Paper Morning 2026-06-17",
-    "description": "今日学术播报: DreamX-World 1.0: A General-Pu, LoopCoder-v2: Only Loop Once f, Ling and Ring 2.6 Technical Re...",
-    "audio_file": "2026-06-17.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想和大家聊一聊一个我最近反复思考的问题：当我们谈论AI for Science的时候，我们到底在期待什么？是说要训练一个能解所有PDE的超级模型，还是说用深度学习的思路去重构科学计算的工具链？这个问题的答案，可能就藏在今天要聊的几篇论文里。\n\n先来看一篇来自arXiv最新、让我觉得眼前一亮的论文。标题是“用凸拟线性化方法求解非线性PDEs”，作者是来自尼日利亚的Awojinrin等人。这篇工作的核心贡献很直接：他们把物理信息神经网络训练中那个让人头疼的非凸优化问题，给转换成了一系列凸的线性最小二乘问题。熟悉PINNs的朋友应该知道，传统PINNs的训练本质上是在解一个高度非凸的梯度下降问题，局部极小、梯度消失这些麻烦一个都跑不掉。而这篇文章的思路很巧妙：用Bellman-Kalaba拟线性化把非线性PDE逐次线性化，每一步都变成一个线性的最小二乘问题，然后用一次QR分解就求出闭式解。训练样本也不再是通常的那些神经网络，而是换成了随机特征极限学习机、光谱多项式基和三角展开这些“线性可学习的”函数空间。我个人认为，这是一个值得重视...",
-    "papers": [
-      {
-        "title": "DreamX-World 1.0: A General-Purpose Interactive World Model",
-        "url": "https://arxiv.org/abs/2606.16993",
-        "arxiv_id": "2606.16993"
-      },
-      {
-        "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-        "url": "https://arxiv.org/abs/2606.18023",
-        "arxiv_id": "2606.18023"
-      },
-      {
-        "title": "Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale",
-        "url": "https://arxiv.org/abs/2606.15079",
-        "arxiv_id": "2606.15079"
-      },
-      {
-        "title": "A Convex Quasilinearization Method for Solving Nonlinear PDEs with Physics-Informed Neural Networks",
-        "url": "https://arxiv.org/abs/2606.18175v1",
-        "arxiv_id": "2606.18175v1"
-      },
-      {
-        "title": "ACE-Ego-0: Unifying Egocentric Human and Robotic Data for VLA Pretraining",
-        "url": "https://arxiv.org/abs/2606.17200",
-        "arxiv_id": "2606.17200"
-      }
-    ],
-    "published_at": "2026-06-17T23:58:43.206459Z"
   }
 ]

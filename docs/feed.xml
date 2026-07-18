@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-18</title>
+      <description>今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-18.mp3" length="8091315" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-18.mp3</guid>
+      <pubDate>2026-07-18T23:28:55.442274Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-17</title>
       <description>今日学术播报: Harness Handbook: Making Evolv, VideoChat3: Fully Open Video M, SEED: Self-Evolving On-Policy ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-17.mp3" length="8144605" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-19.mp3" length="6605471" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-19.mp3</guid>
       <pubDate>2026-06-19T23:37:30.154097Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-17</title>
-      <description>今日学术播报: DreamX-World 1.0: A General-Pu, LoopCoder-v2: Only Loop Once f, Ling and Ring 2.6 Technical Re...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-17.mp3" length="12135071" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-17.mp3</guid>
-      <pubDate>2026-06-17T23:58:43.206459Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

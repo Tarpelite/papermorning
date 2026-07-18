@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-18</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-18</h1>
+    <p class="date">2026-07-18</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-18.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天是周末，Paper Morning又和大家见面了。
+
+今天想和大家聊聊一个我觉得很有意思的趋势：不管是做基础模型的还是做应用的，大家似乎都在往同一个方向努力——怎么让AI agent真正具备长期规划、持续推理的能力。这个线索其实贯穿了今天要聊的五篇论文。
+
+先看第一篇，RxBrain，做的是具身智能的基础模型。传统上，我们做视觉语言模型，要么强调理解场景，要么强调生成未来状态，但这两者是割裂的。RxBrain的思路是把语言和视觉想象放在同一个规划序列里：语言提供抽象的任务分解和决策逻辑，视觉想象则把这种抽象结构落地到具体的世界状态预测。听起来是不是有点像我们做PDE求解时的思路？把偏微分方程的解析结构和数值离散结合起来，才能既保证物理一致性又有计算效率。这篇工作的核心贡献在于，它让agent的规划过程不再是一个黑箱，而是语言推理和视觉推理交替进行的可解释过程。
+
+接下来这篇LongStraw很有意思，它解决的是一个非常实际的问题：我们现在能做的推理上下文已经到百万token了，但强化学习训练的时候往往还卡在256K token以下，训练和推理的上下文长度差距越来越大。LongStraw的方案很工程化但很有效：共享的prompt不用算梯度，只保留后续token需要的状态，短回复分支单独replay，这样就在固定GPU预算下实现了百万token级别的RL训练。这让我想到我们AI for Science里训练大规模 PDE模型的时候，其实也面临类似的挑战——如何在有限算力下处理超长的物理轨迹。RL训练范式正在成为agent训练的主流，这个趋势值得我们关注。
+
+第三篇VideoChat3是一个视频理解的多模态模型。它主打的是“完全开源”加“高效通用”两个特性。现在开源社区做视频理解的模型不少，但大多要么只擅长特定领域，要么就是关键组件不开放。VideoChat3的设计思路其实很有启发性：它没有追求在某一项指标上刷到最高，而是把通用性和效率作为第一优先级。这让我想到我们做科学计算基础模型时的困境——到底是要一个在特定PDE上效果拔群的模型，还是一个能覆盖各种物理问题的通用框架？答案可能取决于你的应用场景，但VideoChat3至少证明了这三条路线可以兼顾。
+
+第四篇SearchOS做的是信息检索agent。现在的agent在搜索失败后容易陷入重复循环，浪费搜索预算。SearchOS的解决办法很有意思：它把开放域信息检索建模为关系模式的补全问题，把搜索进度变成显式持久的状态。这样多个agent可以共享进度，避免重复劳动。这篇工作让我想到我们做科学发现agent的时候，如何让agent记住之前的探索历史、避免重复实验，是一个非常实际的问题。SearchOS至少在信息检索这个维度上给出了一个不错的答案。
+
+最后这篇SEED，关注的是agent的强化学习训练问题。大家知道outcome-based RL的reward是稀疏的，只在episode结束后才给信号，这让中间每一步的决策都缺乏监督。SEED的思路很巧妙：它把已完成的轨迹 hindsight 地转换成自然语言skill，然后再把这些skill蒸馏回policy模型。这样就在稀疏的episode-level reward和密集的token-level policy learning之间架起了桥梁。我觉得这个思路和我们在AI for Science里做physics-informed learning时的某些想法是相通的——都是想办法把全局目标的信息注入到局部决策过程中。
+
+好，让我总结一下今天的观察。今天这几篇论文看似分散，但其实都指向同一个核心问题：如何让AI agent具备长期规划和持续推理的能力。从具身认知到超长上下文训练，从视频理解到信息检索，再到强化学习训练范式，大家在从不同角度围攻这个问题。这可能预示着AI agent正在从“单次响应”走向“持续交互”的新阶段。这可能也是我们AI for Science研究者需要关注的范式转移——当我们训练 PDE基础模型的时候，是否也应该开始考虑如何让模型具备多步推理、持续学习的能力？好了，周末愉快，我们下周再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.14187" target="_blank">RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination</a></li>
+<li><a href="https://arxiv.org/abs/2607.14952" target="_blank">LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</a></li>
+<li><a href="https://arxiv.org/abs/2607.14935" target="_blank">VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding</a></li>
+<li><a href="https://arxiv.org/abs/2607.15257" target="_blank">SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration</a></li>
+<li><a href="https://arxiv.org/abs/2607.14777" target="_blank">SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
