@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-19",
+    "title": "Paper Morning 2026-07-19",
+    "description": "今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...",
+    "audio_file": "2026-07-19.mp3",
+    "script": "各位早上好，周日的Paper Morning如约而至。\n\n今天想和大家聊的，是一组关于大模型Agent训练和系统优化的最新工作。它们看起来可能和我们熟悉的PDE求解、神经算子有些距离，但我覺得里面有些趋势值得我们留心。\n\n第一篇是RxBrain，关于具身认知的基础模型。简单说，它把语言推理和视觉想象整合到一个规划序列里，语言负责给出抽象的任务分解和约束条件，而视觉想象则负责预测未来的世界状态，帮助生成子目标。这让我想到一个问题：我们做科学计算的时候，是不是也常常需要这种“双重表征”？比如我们在设计一个物理模拟的agent时，既需要形式化的方程来表达物理约束，也需要某种“直觉”来预判数值解的行为。这篇工作的核心贡献在于，它让语言和视觉在同一个规划框架下互补，而不是割裂成两个独立模块。这对我们在AI4S里设计“物理推理Agent”有不错的启发——怎么让符号化的物理知识和基于感知的世界模型协同工作，而不是各跑各的。\n\n然后是LongStraw，这篇解决的是一个很实际的问题：RL训练时的上下文长度和推理时的上下文长度之间有个巨大的鸿沟。它提出了一个针对百万token级别RL训练的执行栈，通过复...",
+    "papers": [
+      {
+        "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
+        "url": "https://arxiv.org/abs/2607.14187",
+        "arxiv_id": "2607.14187"
+      },
+      {
+        "title": "LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget",
+        "url": "https://arxiv.org/abs/2607.14952",
+        "arxiv_id": "2607.14952"
+      },
+      {
+        "title": "VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding",
+        "url": "https://arxiv.org/abs/2607.14935",
+        "arxiv_id": "2607.14935"
+      },
+      {
+        "title": "SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration",
+        "url": "https://arxiv.org/abs/2607.15257",
+        "arxiv_id": "2607.15257"
+      },
+      {
+        "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2607.14777",
+        "arxiv_id": "2607.14777"
+      }
+    ],
+    "published_at": "2026-07-19T23:32:00.947296Z"
+  },
+  {
     "date": "2026-07-18",
     "title": "Paper Morning 2026-07-18",
     "description": "今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-20T23:47:07.452510Z"
-  },
-  {
-    "date": "2026-06-19",
-    "title": "Paper Morning 2026-06-19",
-    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...",
-    "audio_file": "2026-06-19.mp3",
-    "script": "各位早上好，周五的Paper Morning又和大家见面了。\n\n今天想先和大家聊一个现象，最近CV和robotics的工作特别火，很多人问我说，你一个做AI4S的，怎么关注起这些了。其实啊，我觉得做科学计算的人，特别需要保持开放的视野，因为方法论上的突破往往来自意想不到的方向。你看NLP的scaling law，RL的自我博弈范式，哪个不是从别的领域启发过来的？所以今天我挑了几篇有意思的论文，咱们一起来看看它们能不能给AI4S的研究带来什么启发。\n\n第一篇是Moebius，讲的是轻量级图像修复。一个参数量只有0.2B的模型，达到了10B级工业模型的性能。它用了一个叫Local-λ Mix Interaction的模块，把空间上下文和全局语义压缩到固定大小的线性矩阵里，同时保留了复杂的潜在交互。这让我想到什么了呢？咱们做PDE求解器的时候，经常要在精度和效率之间做权衡，Moebius这种思路其实和神经算子里的模型压缩有相通之处——不是堆参数，而是精巧地设计信息交互的方式。它证明了即便在视觉领域，高效的表示学习依然是核心问题，这和我们追求的PDE foundation model的高效推理...",
-    "papers": [
-      {
-        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
-        "url": "https://arxiv.org/abs/2606.19195",
-        "arxiv_id": "2606.19195"
-      },
-      {
-        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
-        "url": "https://arxiv.org/abs/2606.15133",
-        "arxiv_id": "2606.15133"
-      },
-      {
-        "title": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
-        "url": "https://arxiv.org/abs/2606.18558",
-        "arxiv_id": "2606.18558"
-      },
-      {
-        "title": "Playful Agentic Robot Learning",
-        "url": "https://arxiv.org/abs/2606.19419",
-        "arxiv_id": "2606.19419"
-      },
-      {
-        "title": "MaineCoon: Pursuing A Real-Time Audio-Visual Social World Model",
-        "url": "https://arxiv.org/abs/2606.17800",
-        "arxiv_id": "2606.17800"
-      }
-    ],
-    "published_at": "2026-06-19T23:37:30.154097Z"
   }
 ]

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-19</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-19</h1>
+    <p class="date">2026-07-19</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-19.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周日的Paper Morning如约而至。
+
+今天想和大家聊的，是一组关于大模型Agent训练和系统优化的最新工作。它们看起来可能和我们熟悉的PDE求解、神经算子有些距离，但我覺得里面有些趋势值得我们留心。
+
+第一篇是RxBrain，关于具身认知的基础模型。简单说，它把语言推理和视觉想象整合到一个规划序列里，语言负责给出抽象的任务分解和约束条件，而视觉想象则负责预测未来的世界状态，帮助生成子目标。这让我想到一个问题：我们做科学计算的时候，是不是也常常需要这种“双重表征”？比如我们在设计一个物理模拟的agent时，既需要形式化的方程来表达物理约束，也需要某种“直觉”来预判数值解的行为。这篇工作的核心贡献在于，它让语言和视觉在同一个规划框架下互补，而不是割裂成两个独立模块。这对我们在AI4S里设计“物理推理Agent”有不错的启发——怎么让符号化的物理知识和基于感知的世界模型协同工作，而不是各跑各的。
+
+然后是LongStraw，这篇解决的是一个很实际的问题：RL训练时的上下文长度和推理时的上下文长度之间有个巨大的鸿沟。它提出了一个针对百万token级别RL训练的执行栈，通过复用共享prompt、只保留后续token需要的特定状态、以及单条回放短响应分支等方式，大幅降低了训练时的显存开销。这个工作之所以值得关注，是因为它展示了“架构感知的系统优化”如何在有限预算下撬动更大规模的训练。对我们做AI4S的人来说，这其实是一个提醒：当科学基础模型的参数量和训练数据量持续增长时，训练系统的效率会变成真正的瓶颈，而不仅仅是模型结构本身。LongStraw的做法本质上是在做“计算资源的精细化管理”，这个思路迁移到科学计算场景下，比如训练PDE神经算子时的长序列时间步或复杂边界条件的处理，应该很有价值。
+
+接下来是VideoChat3，一个号称全开源的视频多模态模型。它的重点其实不在视频本身，而在于“通用性”和“效率”——作者试图让一个模型同时处理运动理解、长视频理解、流式交互等多种场景，而不是针对每个子任务单独微调。这让我想到科学计算里的一个老问题：能不能有一个“通用科学视觉模型”，既看懂显微镜下的细胞运动，又处理得了卫星云图，还能在工业缺陷检测里用？VideoChat3在开放域视频上的尝试，或许能为“通用科学视觉”提供一个参照。不过实事求是地说，这篇工作的技术增量不算太大，更像是一个工程化的集大成者。
+
+然后是SearchOS，它做的是开放域信息检索Agent的协作框架。核心思想是把信息搜索任务建模为“关系schema补全”，让多个Agent共享搜索进度、避免重复搜索。这个方向其实挺有意思的，因为它触及了AI Agent在长轨迹任务中的状态管理问题。我们做AI4S的都知道，科研本身就是一种长程信息检索和分析的过程——从文献调研到假设生成，从实验设计到结果分析，每一步都涉及大量的信息整合。SearchOS把“搜索进度”变成一种显式的、可持续的共享状态，这个设计思路其实可以延伸到科学发现的Agent系统里，让多个专业化的Agent（比如文献Agent、代码Agent、实验规划Agent）能够协同工作，而不至于各自为战。
+
+最后是SEED，这篇提出了一个“自我进化的策略蒸馏”框架。它把已经完成的轨迹分析成自然语言技能，然后再把这些技能蒸馏回策略模型，本质上是在用“ hindsight skill”的方式来弥合稀疏奖励和token级策略学习之间的鸿沟。这是一个很巧妙的想法，它解决了RL中“结果反馈延迟”的老问题。对我们做AI4S的人来说，这个框架的迁移潜力在于：科学发现本身就是一个典型的高回报延迟任务——假设验证往往需要很长时间才能得到反馈。SEED的思路或许可以帮助我们设计更好的“科学发现Agent”，让它们能够从已完成的长程科研任务中提取可复用的工作流模式，而不是每次都从零开始探索。
+
+好了，今天的五篇论文就聊到这里。整体来看，它们虽然不是直接关于神经算子或PDE求解，但共同指向了一个我认为是核心的趋势：大模型Agent正在从“单点能力”走向“系统协作”和“高效训练”。无论是LongStraw的显存优化、SearchOS的多Agent状态管理、SEED的自我进化机制，还是RxBrain的跨模态推理，它们都在解决同一个根本问题：如何在长程、复杂、真实世界的任务中，让模型不仅能推理，还能高效地持续学习和协同工作。这个趋势对AI4S的启示是明确的——我们需要的可能不只是更好的PDE求解器，而是一个能够“持续学习、协同推理、自我进化”的科学智能系统。今天的观察就到这里，我们下周再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.14187" target="_blank">RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination</a></li>
+<li><a href="https://arxiv.org/abs/2607.14952" target="_blank">LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</a></li>
+<li><a href="https://arxiv.org/abs/2607.14935" target="_blank">VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding</a></li>
+<li><a href="https://arxiv.org/abs/2607.15257" target="_blank">SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration</a></li>
+<li><a href="https://arxiv.org/abs/2607.14777" target="_blank">SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
