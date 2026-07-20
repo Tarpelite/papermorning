@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-20",
+    "title": "Paper Morning 2026-07-20",
+    "description": "今日学术播报: RxBrain: Embodied Cognition Fo, From Pixels to States: Rethink, RESOURCE2SKILL: Distilling Exe...",
+    "audio_file": "2026-07-20.mp3",
+    "script": "各位早上好，周一的Paper Morning如约而至。周末的学术圈可没闲着，有几篇挺有意思的工作值得我们聊聊。今天我挑了五篇论文，涉及具身智能、世界模型、知识图谱和机器人学习，它们看似分散，但背后有一条清晰的暗线，我们一会儿再展开。\n\n先来看第一篇，RxBrain，具身认知基础模型。听起来又是一个VLA模型，但它想解决的问题其实挺深刻的：现在的视觉语言模型擅长理解场景、做个决策，但真正落到机器人身上，你得把高层任务推理和物理世界的具体状态连接起来对吧？RxBrain的思路是把语言和视觉想象放在同一个规划序列里协同工作。语言负责抽象结构——任务怎么分解、有哪些 planning primitives、约束条件、时间顺序、决策逻辑，这些是语言擅长表达的东西。但光有抽象规划不行，你得知道每个子目标对应的世界状态长什么样，这时候视觉想象就派上用场了，它负责预测具体的状态演变，帮你验证这个计划在物理世界能不能落地。我觉得这个设计挺有意思，它其实回应了一个根本问题：具身智能到底需要什么样的世界模型？不是那种只管生成下一帧画面的世界模型，而是能同时承载抽象推理和具体预测的双轨系统。\n\n接下来这篇 F...",
+    "papers": [
+      {
+        "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
+        "url": "https://arxiv.org/abs/2607.14187",
+        "arxiv_id": "2607.14187"
+      },
+      {
+        "title": "From Pixels to States: Rethinking Interactive World Models as Game Engines",
+        "url": "https://arxiv.org/abs/2607.14076",
+        "arxiv_id": "2607.14076"
+      },
+      {
+        "title": "RESOURCE2SKILL: Distilling Executable Agent Skills from Human-Created Multimodal Resources",
+        "url": "https://arxiv.org/abs/2606.29538",
+        "arxiv_id": "2606.29538"
+      },
+      {
+        "title": "RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM",
+        "url": "https://arxiv.org/abs/2607.11683",
+        "arxiv_id": "2607.11683"
+      },
+      {
+        "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
+        "url": "https://arxiv.org/abs/2607.15330",
+        "arxiv_id": "2607.15330"
+      }
+    ],
+    "published_at": "2026-07-20T23:34:17.763709Z"
+  },
+  {
     "date": "2026-07-19",
     "title": "Paper Morning 2026-07-19",
     "description": "今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-21T23:52:59.878200Z"
-  },
-  {
-    "date": "2026-06-20",
-    "title": "Paper Morning 2026-06-20",
-    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, MolmoMotion: Forecasting Point...",
-    "audio_file": "2026-06-20.mp3",
-    "script": "各位早上好，周末的Paper Morning又跟各位见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，这两年AI for Science里最火的方向之一是预训练范式向科学计算的迁移——大家都在讨论PDE foundation model、operator learning的scaling law。但今天我看到的几篇论文，反而让我觉得另一个趋势值得关注：那就是物理交互智能的进步，或者说，AI系统在物理世界里的“具身智能”正在快速迭代。这个方向虽然不直接是PDE求解，但它底层的思想——如何用神经网络建模接触动力学、如何预测物体在3D空间里的运动轨迹——其实和我们在意的问题有很深的呼应。\n\n先看DragMesh-2这篇工作，它研究的是灵巧手怎么去操作有铰链的物体，比如开门、抽屉这种日常场景。听起来是机器人领域的常规问题，但细看会发现它的难点所在：当你用手指去拨动一个门把手的时候，门不是直接被“命令”打开的，而是通过持续的手指-把手接触，产生物理力，然后运动才发生。这个过程涉及接触力学的非平滑优化，传统上需要精确的物理建模和接触力估计。DragMesh-2的核心贡献在于，它不再依赖预先设计...",
-    "papers": [
-      {
-        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
-        "url": "https://arxiv.org/abs/2606.19195",
-        "arxiv_id": "2606.19195"
-      },
-      {
-        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
-        "url": "https://arxiv.org/abs/2606.15133",
-        "arxiv_id": "2606.15133"
-      },
-      {
-        "title": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
-        "url": "https://arxiv.org/abs/2606.18558",
-        "arxiv_id": "2606.18558"
-      },
-      {
-        "title": "Playful Agentic Robot Learning",
-        "url": "https://arxiv.org/abs/2606.19419",
-        "arxiv_id": "2606.19419"
-      },
-      {
-        "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
-        "url": "https://arxiv.org/abs/2606.20517",
-        "arxiv_id": "2606.20517"
-      }
-    ],
-    "published_at": "2026-06-20T23:47:07.452510Z"
   }
 ]

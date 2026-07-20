@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-20</h1>
+    <p class="date">2026-07-20</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-20.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周一的Paper Morning如约而至。周末的学术圈可没闲着，有几篇挺有意思的工作值得我们聊聊。今天我挑了五篇论文，涉及具身智能、世界模型、知识图谱和机器人学习，它们看似分散，但背后有一条清晰的暗线，我们一会儿再展开。
+
+先来看第一篇，RxBrain，具身认知基础模型。听起来又是一个VLA模型，但它想解决的问题其实挺深刻的：现在的视觉语言模型擅长理解场景、做个决策，但真正落到机器人身上，你得把高层任务推理和物理世界的具体状态连接起来对吧？RxBrain的思路是把语言和视觉想象放在同一个规划序列里协同工作。语言负责抽象结构——任务怎么分解、有哪些 planning primitives、约束条件、时间顺序、决策逻辑，这些是语言擅长表达的东西。但光有抽象规划不行，你得知道每个子目标对应的世界状态长什么样，这时候视觉想象就派上用场了，它负责预测具体的状态演变，帮你验证这个计划在物理世界能不能落地。我觉得这个设计挺有意思，它其实回应了一个根本问题：具身智能到底需要什么样的世界模型？不是那种只管生成下一帧画面的世界模型，而是能同时承载抽象推理和具体预测的双轨系统。
+
+接下来这篇 From Pixels to States，标题就直接亮出观点了：别把交互式世界模型只当成视频生成模型，它们本质上是下一代游戏引擎。作者指出，现在很多视频生成模型可以 conditioned on user actions 预测未来帧，看着挺炫酷，但要成为一个真正可用的游戏世界，有三个硬骨头要啃：交互结果要符合游戏规则、后果要在长时间尺度上持续、要能实时运行。传统游戏引擎怎么解决这个问题的呢？它有个 recurrent action-state-observation loop，玩家动作更新显式的游戏状态，状态再生成观测，这个循环是实时的、确定性的。作者认为单纯靠预测像素的视频生成模型走不通，核心矛盾在于，你没法用生成模型完全建模规则系统。这篇文章的价值不在于给出了完整方案，而在于它重新定义了问题：世界模型到底应该预测状态还是预测像素？这是一个根本性的路线选择。
+
+第三篇 RESOURCE2SKILL，这个工作解决的问题特别实际：我们都知道技能库对智能体很重要，但现在大部分技能是人工写的文本规则，或者从智能体轨迹里事后提取。那人类创建的丰富多模态资源——教程视频、代码仓库、技术文章——这些难道不能直接变成智能体可执行的技能吗？RESOURCE2SKILL 就是干这个的：它从各种多模态资源里提取技能，然后组织成一个层级化的多模态 Skill Wiki。每个技能条目不只是文字说明，而是把结构化文本、代码、视觉示例、元数据和溯源信息都打包在一起。为什么这样做？因为不同模态互补嘛，视频擅长展示时序操作和视觉效果，代码擅长表达精确的执行逻辑。这种思路其实是在做一件事：把人类积累的巨量多模态知识，转化为智能体可以直接使用的工具。
+
+然后是 RAGU，一个 GraphRAG 引擎。这里有个挺有意思的洞察：现在的 GraphRAG 系统大多是在单次提取中构建知识图谱，结果就是实体噪声大、检索脆弱。RAGU 的做法是把提取和整合分开，用两阶段 typed extraction、DBSCAN 去重、LLM 摘要、Leiden 社区检测，一套组合拳下来让知识图谱更干净。但更让我感兴趣的是他们训练模型的方式：他们认为 pipeline 里的 LLM 需要的能力是理解上下文、提取信息、推理关系，这些是语言能力，而不是模型规模越大越好的世界知识。所以他们训了一个 7B 的 Meno-Lite-0.1，专门优化语言技能，反而比大模型效果更好。这个洞察其实和我们在 AI for Science 里的某些观察是相通的：不一定是越大越好，关键是能力匹配任务需求。
+
+最后这篇 Xiaomi-Robotics-1，标题就写着 100K 小时真实世界轨迹，挺吓人的数据量。这是一个 VLA 模型，能在未见过的环境里直接执行各种语言指令的移动操作任务，也能用很少的微调数据快速适应新任务。他们的训练配方是两阶段的：预训练阶段用海量轨迹数据让模型获得泛化的动作生成能力；然后通过一个自动标注 pipeline，用自然语言描述场景状态转换，给动作学习提供丰富的条件信号。这个工作的意义不在于模型架构有多新，而在于它展示了一条可扩展的 VLA 训练路径：真实机器人数据配合好的标注策略，确实能解锁很强的 zero-shot 泛化能力。
+
+好，五篇论文过完了。回头看，你会发现今天聊的所有工作其实都指向同一个趋势：AI 智能体正在从“能说会道”走向“能干会做”。无论是 RxBrain 的具身规划、RAGU 的结构化知识、RESOURCE2SKILL 的技能提取，还是小米机器人的百小时数据，它们都在解决一个核心问题——怎么让语言模型不只是停留在文字层面，而是真正介入物理世界的运作。当你把语言理解、视觉感知、动作执行、知识组织这些能力拼图合在一起的时候，一个更完整的智能体图景就慢慢浮现出来了。这可能是比单纯刷某个 benchmark 更有意义的事情。
+
+好了，周一的早上就聊到这儿，祝各位一周实验顺利，代码少 bug。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.14187" target="_blank">RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination</a></li>
+<li><a href="https://arxiv.org/abs/2607.14076" target="_blank">From Pixels to States: Rethinking Interactive World Models as Game Engines</a></li>
+<li><a href="https://arxiv.org/abs/2606.29538" target="_blank">RESOURCE2SKILL: Distilling Executable Agent Skills from Human-Created Multimodal Resources</a></li>
+<li><a href="https://arxiv.org/abs/2607.11683" target="_blank">RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM</a></li>
+<li><a href="https://arxiv.org/abs/2607.15330" target="_blank">Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
