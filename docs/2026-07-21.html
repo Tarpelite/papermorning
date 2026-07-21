@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-21</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-21</h1>
+    <p class="date">2026-07-21</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-21.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天Paper Morning开播。
+
+先说一篇让我觉得挺有意思的工作，RynnBrain 1.1，这是一个具身基础模型家族，从2B到122B-A10B的多个规模。它的核心思路是用一个统一的时空和物理接地框架来训练，让模型同时支持具身感知、空间推理、定位和规划。特别值得关注的是，它引入了接触点预测和原生3D接地，而且针对不同机器人平台设计了跨具身动作空间。这两年具身智能火起来以后，大家都在讨论“物理世界的基础模型”应该长什么样，RynnBrain 1.1给出了一个比较完整的答案，不过122B-A10B这种规模的模型能不能真正部署到机器人上运行，可能还需要观察。
+
+说完具身智能，接下来看另一个热点方向，agent的自我进化。DeepSearch-World构建了一个可验证的搜索环境，有42万道多跳问答任务，然后基于这个环境提出了自蒸馏框架DeepSearch-Evolve。关键点在于，它不是单纯靠人类标注的轨迹来微调，而是让agent自己在环境中尝试、反思、恢复失败，然后从这些经验中学习。这其实跟我们在科学计算中追求的目标有点像——让求解器能够自我纠错、持续改进。只是这里是在web搜索场景下做的，离真正帮我们做科研还有距离，但思路值得借鉴。
+
+然后是视频理解的工作，TimeLens2。它研究的是视频时序定位问题，也就是说，给定一个关于视频的问题，模型要能准确指出答案对应的具体时间段。这个任务看起来简单，但实际上很难，因为现有训练方法跟这种“多区间预测”的任务形式根本不匹配。TimeLens2的解决办法是把时序证据看成区间集合，从头到尾用集合监督来做训练和优化。这个思路其实很像我们在PDE求解中遇到的问题——有时候不是模型能力不够，而是任务形式和训练目标之间的对齐出了问题。方法本身很简洁，但这种task-formulation层面的思考很有价值。
+
+接下来是一个效率导向的工作，SWE-Pruner Pro。它解决的问题是：代码agent的上下文窗口很长，但很多内容其实不需要全部保留。它发现agent自己内部已经编码了哪些代码是相关的，于是让agent用一个小型头来预测每行代码要不要保留，最多能节省39%的token，同时不损失任务质量。这让我想到，在科学计算中我们也经常面临类似问题——比如处理大规模网格数据或者长时间序列，是不是也可以让模型自己学会“忽略”不重要的部分？
+
+最后简单提一下EvolvingWorld，它研究的是角色和世界的共同演化，用开放schema框架来支持不同文学世界中的角色扮演。这个方向本身偏娱乐和NLP，但它提出的“长期演化”视角，其实跟科学模拟中追求的“动态系统建模”有异曲同工之处。
+
+好，今天的播报就到这里。回头看这几篇论文，有一个共同的线索在浮现：不管是具身智能、agent自进化、视频理解还是代码效率，大家都在从“预训练一个万能模型”转向“让模型在特定任务形式中学会自我调整”。这种从“能力本身”转向“任务对齐”的思路，或许也是科学计算基础模型需要思考的问题。咱们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.17250" target="_blank">EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World</a></li>
+<li><a href="https://arxiv.org/abs/2607.17977" target="_blank">RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.07820" target="_blank">DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment</a></li>
+<li><a href="https://arxiv.org/abs/2607.17423" target="_blank">TimeLens2: Generalist Video Temporal Grounding with Multimodal LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2607.18213" target="_blank">SWE-Pruner Pro: The Coder LLM Already Knows What to Prune</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

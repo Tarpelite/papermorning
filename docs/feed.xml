@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-21</title>
+      <description>今日学术播报: EvolvingWorld: An Open-Schema , RynnBrain 1.1: Towards More Ca, DeepSearch-World: Self-Distill...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-21.mp3" length="6182914" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-21.mp3</guid>
+      <pubDate>2026-07-21T23:31:26.379602Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-20</title>
       <description>今日学术播报: RxBrain: Embodied Cognition Fo, From Pixels to States: Rethink, RESOURCE2SKILL: Distilling Exe...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-20.mp3" length="10262404" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-22.mp3" length="8858062" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-22.mp3</guid>
       <pubDate>2026-06-22T23:52:02.555891Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-21</title>
-      <description>今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, Multi-LCB: Extending LiveCodeB...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-21.mp3" length="8166548" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-21.mp3</guid>
-      <pubDate>2026-06-21T23:52:59.878200Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

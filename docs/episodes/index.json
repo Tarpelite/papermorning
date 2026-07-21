@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-21",
+    "title": "Paper Morning 2026-07-21",
+    "description": "今日学术播报: EvolvingWorld: An Open-Schema , RynnBrain 1.1: Towards More Ca, DeepSearch-World: Self-Distill...",
+    "audio_file": "2026-07-21.mp3",
+    "script": "各位早上好，今天Paper Morning开播。\n\n先说一篇让我觉得挺有意思的工作，RynnBrain 1.1，这是一个具身基础模型家族，从2B到122B-A10B的多个规模。它的核心思路是用一个统一的时空和物理接地框架来训练，让模型同时支持具身感知、空间推理、定位和规划。特别值得关注的是，它引入了接触点预测和原生3D接地，而且针对不同机器人平台设计了跨具身动作空间。这两年具身智能火起来以后，大家都在讨论“物理世界的基础模型”应该长什么样，RynnBrain 1.1给出了一个比较完整的答案，不过122B-A10B这种规模的模型能不能真正部署到机器人上运行，可能还需要观察。\n\n说完具身智能，接下来看另一个热点方向，agent的自我进化。DeepSearch-World构建了一个可验证的搜索环境，有42万道多跳问答任务，然后基于这个环境提出了自蒸馏框架DeepSearch-Evolve。关键点在于，它不是单纯靠人类标注的轨迹来微调，而是让agent自己在环境中尝试、反思、恢复失败，然后从这些经验中学习。这其实跟我们在科学计算中追求的目标有点像——让求解器能够自我纠错、持续改进。只是这里是在...",
+    "papers": [
+      {
+        "title": "EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World",
+        "url": "https://arxiv.org/abs/2607.17250",
+        "arxiv_id": "2607.17250"
+      },
+      {
+        "title": "RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model",
+        "url": "https://arxiv.org/abs/2607.17977",
+        "arxiv_id": "2607.17977"
+      },
+      {
+        "title": "DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment",
+        "url": "https://arxiv.org/abs/2607.07820",
+        "arxiv_id": "2607.07820"
+      },
+      {
+        "title": "TimeLens2: Generalist Video Temporal Grounding with Multimodal LLMs",
+        "url": "https://arxiv.org/abs/2607.17423",
+        "arxiv_id": "2607.17423"
+      },
+      {
+        "title": "SWE-Pruner Pro: The Coder LLM Already Knows What to Prune",
+        "url": "https://arxiv.org/abs/2607.18213",
+        "arxiv_id": "2607.18213"
+      }
+    ],
+    "published_at": "2026-07-21T23:31:26.379602Z"
+  },
+  {
     "date": "2026-07-20",
     "title": "Paper Morning 2026-07-20",
     "description": "今日学术播报: RxBrain: Embodied Cognition Fo, From Pixels to States: Rethink, RESOURCE2SKILL: Distilling Exe...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-22T23:52:02.555891Z"
-  },
-  {
-    "date": "2026-06-21",
-    "title": "Paper Morning 2026-06-21",
-    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, DragMesh-2: Physically Plausib, Multi-LCB: Extending LiveCodeB...",
-    "audio_file": "2026-06-21.mp3",
-    "script": "各位早上好，周末的Paper Morning如约而至。周末是沉淀思考的好时机，今天想和大家聊几篇有意思的论文，它们看似分散，但背后其实都指向同一个趋势——我们正在从“完成任务”走向“理解物理世界”。\n\n先来看一篇机器人操作的工作。DragMesh-2研究的是灵巧手如何与关节物体交互，比如打开一个抽屉或者拧开瓶盖。这个问题比抓取静态物体要困难得多，因为关节物体的运动不是直接可控的，你只能通过手与把手的持续接触来间接驱动它。传统方法往往依赖开环的轨迹重放，但这种方式无法建模接触力学的动态变化。这篇工作提出了一个物理可行的策略学习方法，让多指手能够在交互过程中感知并调整接触力。这个方向对家用机器人和人形机器人非常重要，因为我们生活的环境里到处是门、抽屉、开关这些关节物体。灵巧操作的进步，本质上是在为未来的通用机器人构建物理交互的基础能力。\n\n如果说DragMesh-2关注的是“如何动手”，那MolmoMotion关注的就是“如何预判运动”。它提出了一个叫goal-conditioned 3D点运动预测的任务：给出一段视觉历史、物体上的三维查询点，以及自然语言描述的目标，让模型预测每个点未来的...",
-    "papers": [
-      {
-        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
-        "url": "https://arxiv.org/abs/2606.19195",
-        "arxiv_id": "2606.19195"
-      },
-      {
-        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
-        "url": "https://arxiv.org/abs/2606.15133",
-        "arxiv_id": "2606.15133"
-      },
-      {
-        "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
-        "url": "https://arxiv.org/abs/2606.20517",
-        "arxiv_id": "2606.20517"
-      },
-      {
-        "title": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
-        "url": "https://arxiv.org/abs/2606.18558",
-        "arxiv_id": "2606.18558"
-      },
-      {
-        "title": "Playful Agentic Robot Learning",
-        "url": "https://arxiv.org/abs/2606.19419",
-        "arxiv_id": "2606.19419"
-      }
-    ],
-    "published_at": "2026-06-21T23:52:59.878200Z"
   }
 ]
