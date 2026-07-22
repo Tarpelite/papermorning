@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-22",
+    "title": "Paper Morning 2026-07-22",
+    "description": "今日学术播报: Mage-Flow: An Efficient Native, EvolvingWorld: An Open-Schema , AlayaWorld: Interactive Long-H...",
+    "audio_file": "2026-07-22.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊的话题，可能乍一看和咱们AI4S领域距离有点远——我选了五篇最近在HuggingFace上热度很高的论文，但它们都指向一个共同的技术趋势，这个趋势其实和我们正在做的事情有深刻的联系。先卖个关子，看完你就明白了。\n\n第一篇是Mage-Flow，一个用于图像生成和编辑的紧凑型foundation model，4B参数规模。这篇工作的核心贡献不在于它又刷新了什么评测分数，而在于它展示了一种高效做foundation model的新思路。它用了一个叫做Mage-VAE的轻量级latent tokenizer，用一步diffusion风格的编码和解码，再加上anchor-latent正则化，在大幅降低tokenization成本的同时保持了重建质量。配合原生分辨率的packing和CUDA kernel fusion，整个stack可以灵活支持不同分辨率的训练和推理。这让我想到的是什么？咱们做科学计算的都知道，现在很多PDE求解的neural operator动辄就是大模型、大数据，但实际部署时计算资源是有限的。Mage-F...",
+    "papers": [
+      {
+        "title": "Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing",
+        "url": "https://arxiv.org/abs/2607.19064",
+        "arxiv_id": "2607.19064"
+      },
+      {
+        "title": "EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World",
+        "url": "https://arxiv.org/abs/2607.17250",
+        "arxiv_id": "2607.17250"
+      },
+      {
+        "title": "AlayaWorld: Interactive Long-Horizon World Modeling -- Full Technical Report",
+        "url": "https://arxiv.org/abs/2607.18367",
+        "arxiv_id": "2607.18367"
+      },
+      {
+        "title": "Generative World Renderer at the Speed of Play",
+        "url": "https://arxiv.org/abs/2607.18703",
+        "arxiv_id": "2607.18703"
+      },
+      {
+        "title": "ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU",
+        "url": "https://arxiv.org/abs/2607.19191",
+        "arxiv_id": "2607.19191"
+      }
+    ],
+    "published_at": "2026-07-22T23:33:19.192219Z"
+  },
+  {
     "date": "2026-07-21",
     "title": "Paper Morning 2026-07-21",
     "description": "今日学术播报: EvolvingWorld: An Open-Schema , RynnBrain 1.1: Towards More Ca, DeepSearch-World: Self-Distill...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-23T23:36:56.795913Z"
-  },
-  {
-    "date": "2026-06-22",
-    "title": "Paper Morning 2026-06-22",
-    "description": "今日学术播报: Moebius: 0.2B Lightweight Imag, PerceptionDLM: Parallel Region, Multi-LCB: Extending LiveCodeB...",
-    "audio_file": "2026-06-22.mp3",
-    "script": "各位早上好，周一的Paper Morning开播了。上周我刚跟一位做科学计算的朋友聊，他说现在工业界都在卷大模型，但他们实验室更关心怎么用小模型解决实际问题。今天这几篇论文恰好都指向同一个趋势：与其堆算力，不如在架构和范式上找效率。\n\n先看第一篇，Moebius，一篇关于轻量级图像修复的工作。现在工业界的图像修复模型动辄十亿参数，效果确实好，但部署成本太高。这篇文章的思路是与其在十亿参数的大模型上做压缩，不如从头设计一个针对修复任务的专用架构。他们提出了一个叫Local-λ Mix Interaction的模块，核心想法是把空间上下文和全局语义压缩到固定大小的矩阵里，既保留了复杂的潜在交互，又大幅减少了参数量。两百兆的模型，达到十亿级模型的性能。这让我想起我们AI4S社区讨论的一个话题：做PDE求解器的时候，是不是也要考虑从通用架构走向任务专用的高效设计？Foundation Model固然好，但如果我们能把神经算子的结构先验更精细地嵌入进去，也许能跑出同样效果但小得多的模型。\n\n第二篇 PerceptionDLM 关注的是多模态大模型在视觉理解任务中的效率问题。大家知道现在的多模态模...",
-    "papers": [
-      {
-        "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
-        "url": "https://arxiv.org/abs/2606.19195",
-        "arxiv_id": "2606.19195"
-      },
-      {
-        "title": "PerceptionDLM: Parallel Region Perception with Multimodal Diffusion Language Models",
-        "url": "https://arxiv.org/abs/2606.19534",
-        "arxiv_id": "2606.19534"
-      },
-      {
-        "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
-        "url": "https://arxiv.org/abs/2606.20517",
-        "arxiv_id": "2606.20517"
-      },
-      {
-        "title": "DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects",
-        "url": "https://arxiv.org/abs/2606.15133",
-        "arxiv_id": "2606.15133"
-      },
-      {
-        "title": "Playful Agentic Robot Learning",
-        "url": "https://arxiv.org/abs/2606.19419",
-        "arxiv_id": "2606.19419"
-      }
-    ],
-    "published_at": "2026-06-22T23:52:02.555891Z"
   }
 ]
