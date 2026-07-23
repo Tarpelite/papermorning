@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-23</title>
+      <description>今日学术播报: Mage-Flow: An Efficient Native, AlayaWorld: Interactive Long-H, Generative World Renderer at t...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-23.mp3" length="10174633" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-23.mp3</guid>
+      <pubDate>2026-07-23T23:29:54.810295Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-22</title>
       <description>今日学术播报: Mage-Flow: An Efficient Native, EvolvingWorld: An Open-Schema , AlayaWorld: Interactive Long-H...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-22.mp3" length="10445471" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-24.mp3" length="8306982" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-24.mp3</guid>
       <pubDate>2026-06-24T23:44:57.077323Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-23</title>
-      <description>今日学术播报: DataClaw0: Agentic Tailoring M, EnterpriseClawBench: Benchmark, OpenRath: Session-Centered Run...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-23.mp3" length="8586597" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-23.mp3</guid>
-      <pubDate>2026-06-23T23:36:56.795913Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

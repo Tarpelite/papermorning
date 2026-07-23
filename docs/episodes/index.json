@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-23",
+    "title": "Paper Morning 2026-07-23",
+    "description": "今日学术播报: Mage-Flow: An Efficient Native, AlayaWorld: Interactive Long-H, Generative World Renderer at t...",
+    "audio_file": "2026-07-23.mp3",
+    "script": "各位早上好，今天周四，Paper Morning如约而至。\n\n今天想和大家聊一个我觉得特别有意思的趋势，就是世界模型这个概念，最近在计算机视觉那边火得不行，但我觉得它的思路其实和我们科学计算领域正在探索的方向有很多可以对话的地方。\n\n先来看第一篇，Mage-Flow，一个高效的原生的4B规模的图像生成基础模型。这篇工作的核心贡献是提出了一个协同设计的生成堆栈，包括一个轻量级高保真的潜在tokenizer Mage-VAE，以及一个使用 rectified flow matching 训练的原分辨率多模态扩散Transformer。作者特别强调了一个叫做anchor-latent regularization的技术，使得VAE的重建质量和公开的强VAEs相当，但是tokenization的成本降低了一个数量级以上。我看这篇论文的视角是，它其实在解决一个foundation model的老大难问题：如何在效率和能力之间取得平衡。对于我们做科学计算的人来说，这个问题特别眼熟——我们要训一个PDE的foundation model，数据量、模型规模、推理速度，这三者之间的tradeoff也是天...",
+    "papers": [
+      {
+        "title": "Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing",
+        "url": "https://arxiv.org/abs/2607.19064",
+        "arxiv_id": "2607.19064"
+      },
+      {
+        "title": "AlayaWorld: Interactive Long-Horizon World Modeling -- Full Technical Report",
+        "url": "https://arxiv.org/abs/2607.18367",
+        "arxiv_id": "2607.18367"
+      },
+      {
+        "title": "Generative World Renderer at the Speed of Play",
+        "url": "https://arxiv.org/abs/2607.18703",
+        "arxiv_id": "2607.18703"
+      },
+      {
+        "title": "ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU",
+        "url": "https://arxiv.org/abs/2607.19191",
+        "arxiv_id": "2607.19191"
+      },
+      {
+        "title": "Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers",
+        "url": "https://arxiv.org/abs/2607.19139",
+        "arxiv_id": "2607.19139"
+      }
+    ],
+    "published_at": "2026-07-23T23:29:54.810295Z"
+  },
+  {
     "date": "2026-07-22",
     "title": "Paper Morning 2026-07-22",
     "description": "今日学术播报: Mage-Flow: An Efficient Native, EvolvingWorld: An Open-Schema , AlayaWorld: Interactive Long-H...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-24T23:44:57.077323Z"
-  },
-  {
-    "date": "2026-06-23",
-    "title": "Paper Morning 2026-06-23",
-    "description": "今日学术播报: DataClaw0: Agentic Tailoring M, EnterpriseClawBench: Benchmark, OpenRath: Session-Centered Run...",
-    "audio_file": "2026-06-23.mp3",
-    "script": "各位早上好，今天是周二，Paper Morning如约而至。\n\n先说说第一篇，DataClaw0，关注的是多模态数据处理的问题。大家知道，现在很多领域都面临数据“熵”很高的情况，原始数据量大、结构混乱，传统的人工标注成本太高。这篇文章提出了一个“智能数据裁剪”的思路，让AI agent来主动分析和处理数据流，根据下游任务需求自动提取有价值的内容。这个思路让我想到科学计算中同样面临的数据预处理挑战——我们实验室里有大量模拟产生的高维时空数据，如何自动筛选出有物理意义的样本、过滤噪声、提取关键特征，其实是一个还没被很好解决的问题。DataClaw0展示的自动化pipeline，或许能为科学数据的智能化处理提供参考。\n\n接下来看EnterpriseClawBench，这是一个企业场景下的agent基准测试。现在AI agent很火，但很多评测还是在玩具数据集上做的。这篇文章从真实的企业工作会话中构建了852个任务，覆盖了阅读文件、调用工具、生成业务文档等场景。有意思的是，他们发现即使是最强的配置，也只能达到0.663的准确率。这说明什么？说明从模型能力到真实任务的鸿沟还非常大。我们在AI4S...",
-    "papers": [
-      {
-        "title": "DataClaw0: Agentic Tailoring Multimodal Data from Raw Streams",
-        "url": "https://arxiv.org/abs/2606.21337",
-        "arxiv_id": "2606.21337"
-      },
-      {
-        "title": "EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions",
-        "url": "https://arxiv.org/abs/2606.23654",
-        "arxiv_id": "2606.23654"
-      },
-      {
-        "title": "OpenRath: Session-Centered Runtime State for Agent Systems",
-        "url": "https://arxiv.org/abs/2606.19409",
-        "arxiv_id": "2606.19409"
-      },
-      {
-        "title": "PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems",
-        "url": "https://arxiv.org/abs/2606.22388",
-        "arxiv_id": "2606.22388"
-      },
-      {
-        "title": "World Action Models: A Survey",
-        "url": "https://arxiv.org/abs/2606.20781",
-        "arxiv_id": "2606.20781"
-      }
-    ],
-    "published_at": "2026-06-23T23:36:56.795913Z"
   }
 ]
