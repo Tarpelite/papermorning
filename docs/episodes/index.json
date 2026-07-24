@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-24",
+    "title": "Paper Morning 2026-07-24",
+    "description": "今日学术播报: AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos, ReferTrack: Referring Then Tra...",
+    "audio_file": "2026-07-24.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。今天想先从一个观察说起。这两年我们见证了基础模型从“变大”走向“变聪明”的过程，从简单的next-token prediction到思维链，从被动应答到主动工具使用。但今天想聊的论文，它们呈现的其实是一个更根本的转向：怎么让模型不仅能回答问题，还能递归地改进自己的答案，怎么让庞大的模型不仅能训起来，还能训得高效。\n\n先看AREX这篇工作。它提出了一个非常有意思的想法，叫做“发现-验证不对称性”。简单说就是找到一个好答案很难，但验证一个答案对不对往往容易得多，特别是当答案可以拆解成多个独立的约束条件时。这个洞察其实很贴近我们做研究的日常，搭一个实验框架可能很费时间，但跑通之后调整参数、验证想法其实相对快。AREX正是利用这个不对称性，构造了一个递归自我改进的智能体，内层循环负责搜集证据、搭建临时答案，外层循环负责逐条检验约束、找出没被满足的部分，然后针对性补充。整个过程像是一个研究者不断自我审稿、迭代改进的过程，不是简单地搜索更久，而是有策略地利用已验证的状态来指导后续探索。这个思路对于AI for Science的启示在于，我们能不能...",
+    "papers": [
+      {
+        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
+        "url": "https://arxiv.org/abs/2607.21461",
+        "arxiv_id": "2607.21461"
+      },
+      {
+        "title": "SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
+        "url": "https://arxiv.org/abs/2607.20145",
+        "arxiv_id": "2607.20145"
+      },
+      {
+        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
+        "url": "https://arxiv.org/abs/2607.20061",
+        "arxiv_id": "2607.20061"
+      },
+      {
+        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+        "url": "https://arxiv.org/abs/2605.09635",
+        "arxiv_id": "2605.09635"
+      },
+      {
+        "title": "Visual Contrastive Self-Distillation",
+        "url": "https://arxiv.org/abs/2607.21556",
+        "arxiv_id": "2607.21556"
+      }
+    ],
+    "published_at": "2026-07-24T23:34:52.635457Z"
+  },
+  {
     "date": "2026-07-23",
     "title": "Paper Morning 2026-07-23",
     "description": "今日学术播报: Mage-Flow: An Efficient Native, AlayaWorld: Interactive Long-H, Generative World Renderer at t...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-25T23:54:16.977480Z"
-  },
-  {
-    "date": "2026-06-24",
-    "title": "Paper Morning 2026-06-24",
-    "description": "今日学术播报: Qwen-AgentWorld: Language Worl, Grouped Query Experts: Mixture, NatureBench: Can Coding Agents...",
-    "audio_file": "2026-06-24.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一篇神经算子的论文聊起，因为这和我们做PDE求解器的同事最近在讨论的问题很相关。Hartley Neural Operator（HNO）这篇文章提出了一个非常简洁但我觉得很有趣的改进：他们用实数的Hartley变换替代了Fourier Neural Operator里的复数FFT。我们知道PDE的解通常是实值的，而复数FFT因为共轭对称性会浪费一半的频率信息。HNO保留了完整的实数频谱，等参数量下实际学到的频率模式翻倍了。作者的central thesis是光谱基的选择会影响算子学习Green函数的能力，这让我想到我们在处理椭圆型PDE时，对Green函数的显式或隐式建模确实是个微妙的东西。这篇工作增量但务实，如果你在用FNO，可以顺手换成HNO试试。\n\n说完算子，我们来看看基础模型层面最近在发生什么。BioMatrix这个工作很有意思，它是第一个把分子和蛋白质的序列、结构、自然语言整合到单一decoder架构里的多模态基础模型。过去我们看到要么是多模态但只覆盖单一实体类型，比如只做分子或只做蛋白质，要么是覆盖多种实体...",
-    "papers": [
-      {
-        "title": "Qwen-AgentWorld: Language World Models for General Agents",
-        "url": "https://arxiv.org/abs/2606.24597",
-        "arxiv_id": "2606.24597"
-      },
-      {
-        "title": "Grouped Query Experts: Mixture-of-Experts on GQA Self-Attention",
-        "url": "https://arxiv.org/abs/2606.20945",
-        "arxiv_id": "2606.20945"
-      },
-      {
-        "title": "NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?",
-        "url": "https://arxiv.org/abs/2606.24530",
-        "arxiv_id": "2606.24530"
-      },
-      {
-        "title": "BioMatrix: Towards a Comprehensive Biological Foundation Model Spanning the Modality Matrix of Sequences, Structures, and Language",
-        "url": "https://arxiv.org/abs/2606.22138",
-        "arxiv_id": "2606.22138"
-      },
-      {
-        "title": "Real vs. Complex Spectral Bases for Neural Operators: The Role of Green's Function Alignment",
-        "url": "https://arxiv.org/abs/2606.24851v1",
-        "arxiv_id": "2606.24851v1"
-      }
-    ],
-    "published_at": "2026-06-24T23:44:57.077323Z"
   }
 ]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-24</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-24</h1>
+    <p class="date">2026-07-24</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-24.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。今天想先从一个观察说起。这两年我们见证了基础模型从“变大”走向“变聪明”的过程，从简单的next-token prediction到思维链，从被动应答到主动工具使用。但今天想聊的论文，它们呈现的其实是一个更根本的转向：怎么让模型不仅能回答问题，还能递归地改进自己的答案，怎么让庞大的模型不仅能训起来，还能训得高效。
+
+先看AREX这篇工作。它提出了一个非常有意思的想法，叫做“发现-验证不对称性”。简单说就是找到一个好答案很难，但验证一个答案对不对往往容易得多，特别是当答案可以拆解成多个独立的约束条件时。这个洞察其实很贴近我们做研究的日常，搭一个实验框架可能很费时间，但跑通之后调整参数、验证想法其实相对快。AREX正是利用这个不对称性，构造了一个递归自我改进的智能体，内层循环负责搜集证据、搭建临时答案，外层循环负责逐条检验约束、找出没被满足的部分，然后针对性补充。整个过程像是一个研究者不断自我审稿、迭代改进的过程，不是简单地搜索更久，而是有策略地利用已验证的状态来指导后续探索。这个思路对于AI for Science的启示在于，我们能不能让AI不仅帮我们做计算，还能帮我们设计实验、分析结果、甚至自我修正错误？这是个很有想象力的方向。
+
+然后看一篇基础设施的工作。SLAI T-Rex是在华为昇腾NPU上做万亿参数MoE模型全参数后训练的实践。训一个trillion级别的模型本身就是系统工程难题，而他们要在国产NPU上做，难度可想而知。这篇工作从模型并行、通信编排、底层算子优化三个层面做了分层优化，最后达到了34.22%的MFU，这是Model FLOPs Utilization的指标，比开源基线提升了2.93倍。可能大家会问，这和AI for Science有什么关系？其实关系很大。我们训PDE求解器、训神经算子，模型规模也在往大里走，未来要训真正的Foundation Model for Science，这种大规模训练基础设施的经验就会变得非常宝贵。而且华为昇腾是非GPU架构，他们的经验对于构建国产AI4S生态链有直接参考价值。
+
+接下来看一篇具身智能的工作。ReferTrack提出了一个“先指再跟”的范式来做视觉跟踪。现在的VLA模型倾向于把目标识别和轨迹规划统一在一个黑盒里做，思维链推理在抽象的空间latent里进行，很难监督，也和显式的图像空间检测对不上。ReferTrack的思路很直接，先用边界框选目标，再基于这个图像层面的决策来解码跟踪航点。同时用滑动窗口队列保留目标的运动线索。这样就把隐式的推理过程和显式的检测对齐了。这让我想到科学计算里的一个类似挑战，我们训练神经网络解PDE时，网络中间层的表示到底学到了什么物理？这种可解释性和可监督性之间的张力，是视觉语言模型和科学AI共同面对的问题。
+
+然后是一个很有教育意义的工作。K12-KGraph构建了一个从中国中小学教材提取的知识图谱，覆盖数学、物理、化学、生物，包含了九种节点类型和十四种关系类型。更有趣的是他们提出的“课程认知”能力，这不只考核答对考试题，而是理解知识在课程中是怎么组织的，先行条件链是什么，概念之间的层级关系，实验和概念的关联，甚至视觉表征在教学中的作用。基于这个图谱他们还构建了一个有两万三千多道题的benchmark。这个工作的价值在于揭示了一个常被忽视的问题，现有LLM评测往往只考知识储备，而忽略了认知结构。这个洞察对科学教育场景的AI应用特别重要。
+
+最后是一篇方法论的工作。VCSD提出了一个非常简洁的视觉对比自蒸馏方法。它的核心思想是把图像内容移除这件事本身变成自监督信号。你把图像的一部分遮挡或擦除，然后让模型预测被移除的内容，这个预测和完整图像预测之间的差异就是学习信号。这种方法不需要传统的teacher-student之间的信息不对称，不需要privileged答案来创造不对称，就纯粹靠输入条件的改变来生成学习信号。方法很优雅，也让我们重新思考知识蒸馏的本质到底是什么，不一定是知识的传递，也可能是对什么信息被移除了的学习。这个思想其实和科学计算中的一些想法是相通的，比如我们训练PDE求解器时，残差本身就是一种“移除信号”。
+
+今天这几篇论文看起来分散，但我觉得它们在回答一个共同的问题，基础模型的能力已经很强了，但怎么让它更强、更高效、更可控。AREX从智能体的自我改进切入，SLAI T-Rex从训练基础设施切入，ReferTrack从视觉推理的可解释性切入，K12-KGraph从认知结构切入，VCSD从自监督信号的本质切入，本质上都在做同一件事，不是在模型里堆更多参数，而是在模型之外、任务之上、认知层面寻找新的优化空间。这可能标志着一个新阶段的开始。好，以上就是今天早间的分享，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.21461" target="_blank">AREX: Towards a Recursively Self-Improving Agent for Deep Research</a></li>
+<li><a href="https://arxiv.org/abs/2607.20145" target="_blank">SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</a></li>
+<li><a href="https://arxiv.org/abs/2607.20061" target="_blank">ReferTrack: Referring Then Tracking for Embodied Visual Tracking</a></li>
+<li><a href="https://arxiv.org/abs/2605.09635" target="_blank">K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2607.21556" target="_blank">Visual Contrastive Self-Distillation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
