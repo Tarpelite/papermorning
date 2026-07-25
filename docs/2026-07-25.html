@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-25</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-25</h1>
+    <p class="date">2026-07-25</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-25.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周六的Paper Morning如约而至。
+
+今天想先从一个更大的话题聊起。我们都知道AI领域现在特别火的一句话是“一切皆可foundation model”，但真正把这个思想落地的，可不只是在NLP或者视觉圈子里打转。今天这几篇论文虽然来自不同方向，但我觉得它们共同指向了一个趋势：AI正在从“解决单一任务”走向“构建可扩展的系统能力”，这个转变其实和我们做AI for Science的人关心的东西高度相关。
+
+先看第一篇，K12-KGraph，做的是K12教育领域的知识图谱。表面上是个教育AI的工作，但我感兴趣的不是它做了什么题目、考了多少钱，而是它提出的一个概念：curriculum cognition，课程认知能力。作者认为现在的教育大模型主要测的是答题能力，但真正重要的是理解知识之间的结构关系——先修链条、概念分类、实验与概念的连接、视觉 grounded 的理解等等。这让我想到什么？我们做PDE求解器的时候，经常说网络要学会“物理直觉”，但这个直觉从哪来？不就是系统性地理解方程之间的结构关系、不同物理 regime 之间的联系吗？这篇工作用知识图谱显式化了这种结构化认知，我觉得这个思路比单纯刷题有意思。
+
+第二篇AREX就很直接了，它研究的是如何让一个研究智能体递归地自我改进。核心洞察很有意思：发现答案的成本很高，但验证答案是不是对的往往便宜得多。所以它设计了内外两个循环——内循环收集证据、构建临时答案，外循环逐条审计答案、找出还没被证实的claim，然后有针对性地继续探索。这不就是科学研究中“假设-验证-修正”的过程吗？我甚至觉得这个框架比现在很多所谓的“agent”要更接近真正的科研思维。我们做AI4S的时候，经常讨论如何让模型做“科学发现”，这篇文章至少给了一个可操作的框架。
+
+第三篇SLAI T-Rex是工程味比较重的工作，讲的是在华为Ascend NPU上做DeepSeek-V4这种万亿参数MoE模型的全参数后训练。34.22%的MFU，2.93倍于开源基线的提升，这些数字本身很枯燥，但我关心的是背后的系统级优化思路：模型并行、计算-通信编排、低级别kernel执行，这些经验对我们在异构计算平台上训练科学计算模型有直接参考价值。现在很多人关心PDE foundation model怎么训练、怎么 scaling，这篇工作提供了一个可行的工程范本。
+
+第四篇ReferTrack做的是具身视觉跟踪，让一个移动智能体用单目相机持续跟随语言描述的目标。它提出了一个“referring-then-tracking”的两阶段范式，先从 bounding box 候选里选出目标，然后根据这个决定去解码跟踪路径。这个工作最让我触动的不是跟踪精度又提升了百分之几，而是它对chain-of-thought推理的可解释性的关注——作者认为很多VLA模型的CoT在抽象的空间latent里运作，难以监督、和显式的图像空间检测对齐不好。这其实点出了一个很根本的问题：我们训练的科学计算模型，它们的中间表示到底在学什么？有没有办法让模型的推理过程更可审计、更和物理规律对齐？
+
+最后一篇Visual Contrastive Self-Distillation做的是自蒸馏，但非常巧妙：它不需要外部teacher，也不依赖privileged信息，而是利用图像内容删除操作本身来创造teacher-student之间的不对称信号。每次学生生成一个token，EMA teacher在同一个prompt和prefix下，分别在原图和被删除内容的图上生成两个分布，这个差异就成了训练信号。是不是听起来有点绕？但这个思路其实揭示了一个很本质的问题：信息不对称从哪来？不一定非要一个更大的模型，数据的augmentation本身就创造了学习信号。这对我们在有限数据下训练科学模型很有启发。
+
+好，总结一下今天的整体观察。我发现这五篇论文虽然领域分散，但都在回答一个共同的问题：如何让AI系统不仅“能答题”，而是真正具备“可扩展的结构化能力”。无论是显式化知识结构、递归自我改进、异构训练优化、还是可解释的推理过程，本质上都是在为更复杂的智能系统打基础。而这恰恰也是AI for Science正在经历的范式转变——从“针对特定PDE训练一个网络”，走向“构建具备物理直觉的可扩展foundation”。这两条线，未来一定会交汇。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.09635" target="_blank">K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2607.21461" target="_blank">AREX: Towards a Recursively Self-Improving Agent for Deep Research</a></li>
+<li><a href="https://arxiv.org/abs/2607.20145" target="_blank">SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</a></li>
+<li><a href="https://arxiv.org/abs/2607.20061" target="_blank">ReferTrack: Referring Then Tracking for Embodied Visual Tracking</a></li>
+<li><a href="https://arxiv.org/abs/2607.21556" target="_blank">Visual Contrastive Self-Distillation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

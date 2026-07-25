@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-25",
+    "title": "Paper Morning 2026-07-25",
+    "description": "今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...",
+    "audio_file": "2026-07-25.mp3",
+    "script": "各位早上好，周六的Paper Morning如约而至。\n\n今天想先从一个更大的话题聊起。我们都知道AI领域现在特别火的一句话是“一切皆可foundation model”，但真正把这个思想落地的，可不只是在NLP或者视觉圈子里打转。今天这几篇论文虽然来自不同方向，但我觉得它们共同指向了一个趋势：AI正在从“解决单一任务”走向“构建可扩展的系统能力”，这个转变其实和我们做AI for Science的人关心的东西高度相关。\n\n先看第一篇，K12-KGraph，做的是K12教育领域的知识图谱。表面上是个教育AI的工作，但我感兴趣的不是它做了什么题目、考了多少钱，而是它提出的一个概念：curriculum cognition，课程认知能力。作者认为现在的教育大模型主要测的是答题能力，但真正重要的是理解知识之间的结构关系——先修链条、概念分类、实验与概念的连接、视觉 grounded 的理解等等。这让我想到什么？我们做PDE求解器的时候，经常说网络要学会“物理直觉”，但这个直觉从哪来？不就是系统性地理解方程之间的结构关系、不同物理 regime 之间的联系吗？这篇工作用知识图谱显式化了这种结构...",
+    "papers": [
+      {
+        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+        "url": "https://arxiv.org/abs/2605.09635",
+        "arxiv_id": "2605.09635"
+      },
+      {
+        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
+        "url": "https://arxiv.org/abs/2607.21461",
+        "arxiv_id": "2607.21461"
+      },
+      {
+        "title": "SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
+        "url": "https://arxiv.org/abs/2607.20145",
+        "arxiv_id": "2607.20145"
+      },
+      {
+        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
+        "url": "https://arxiv.org/abs/2607.20061",
+        "arxiv_id": "2607.20061"
+      },
+      {
+        "title": "Visual Contrastive Self-Distillation",
+        "url": "https://arxiv.org/abs/2607.21556",
+        "arxiv_id": "2607.21556"
+      }
+    ],
+    "published_at": "2026-07-25T23:32:08.773224Z"
+  },
+  {
     "date": "2026-07-24",
     "title": "Paper Morning 2026-07-24",
     "description": "今日学术播报: AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos, ReferTrack: Referring Then Tra...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-26T23:44:34.356717Z"
-  },
-  {
-    "date": "2026-06-25",
-    "title": "Paper Morning 2026-06-25",
-    "description": "今日学术播报: Wan-Streamer v0.1: End-to-end , Are We Ready For An Agent-Nati, DomainShuttle: Freeform Open D...",
-    "audio_file": "2026-06-25.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察说起。上周参加一个研讨会，大家还在讨论foundation model怎么迁移到科学计算，结果转头一看工业界已经跑得没影了。今天这几篇论文虽说不在我们熟悉的neural operator赛道上，但它们透露的信号其实和我们关心的AI for Science范式演进高度相关。\n\n先看Wan-Streamer。这篇文章提出了一个端到端的实时交互foundation model，把语言、音频、视频都统一到一个Transformer里做流式处理。听起来像是做虚拟主播或者陪伴机器人，但它真正有意思的地方在于彻底消解了传统级联系统的延迟——过去做语音交互要分VAD、ASR、LLM、TTS、Avatar好几棒，现在一棒子直接递进下去。这让我想到一个问题：我们做科学计算的时候，是不是也经常陷入这种模块化解耦的思维？ PDE求解器和神经网络之间、数据处理和模型推理之间，是否存在类似的冗余和延迟？如果未来我们要实现真正的实时科学推理，这种原生流式的架构思想或许值得借鉴。\n\n第二篇关于Agent记忆系统的论文很有意思。它指出当前评估a...",
-    "papers": [
-      {
-        "title": "Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models",
-        "url": "https://arxiv.org/abs/2606.25041",
-        "arxiv_id": "2606.25041"
-      },
-      {
-        "title": "Are We Ready For An Agent-Native Memory System?",
-        "url": "https://arxiv.org/abs/2606.24775",
-        "arxiv_id": "2606.24775"
-      },
-      {
-        "title": "DomainShuttle: Freeform Open Domain Subject-driven Text-to-video Generation",
-        "url": "https://arxiv.org/abs/2606.26058",
-        "arxiv_id": "2606.26058"
-      },
-      {
-        "title": "Improved Large Language Diffusion Models",
-        "url": "https://arxiv.org/abs/2606.25331",
-        "arxiv_id": "2606.25331"
-      },
-      {
-        "title": "NatureBench: Can Coding Agents Match the Published SOTA of Nature-Family Papers?",
-        "url": "https://arxiv.org/abs/2606.24530",
-        "arxiv_id": "2606.24530"
-      }
-    ],
-    "published_at": "2026-06-25T23:54:16.977480Z"
   }
 ]
