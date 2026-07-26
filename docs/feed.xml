@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-07-26</title>
+      <description>今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-26.mp3" length="7257487" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-07-26.mp3</guid>
+      <pubDate>2026-07-26T23:30:49.040667Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-25</title>
       <description>今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-25.mp3" length="8426728" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-06-27.mp3" length="8283159" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-06-27.mp3</guid>
       <pubDate>2026-06-27T23:35:51.857864Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-06-26</title>
-      <description>今日学术播报: DanceOPD: On-Policy Generative, Are We Ready For An Agent-Nati, DomainShuttle: Freeform Open D...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-06-26.mp3" length="7535848" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-06-26.mp3</guid>
-      <pubDate>2026-06-26T23:44:34.356717Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

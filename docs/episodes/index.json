@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-26",
+    "title": "Paper Morning 2026-07-26",
+    "description": "今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...",
+    "audio_file": "2026-07-26.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察说起，大家有没有觉得最近AI领域出现了一种很有意思的分化：一方面我们在追求更大的模型、更强的推理能力，另一方面越来越多的工作开始关注如何让AI系统能够真正“反省”自己的工作。今天第一篇论文AREX就是这方面的尝试。\n\nAREX提出了一种递归自我改进的深度研究代理。它的核心洞察是：发现答案往往很贵，但验证答案却可以分解为多个可独立检查的约束。那么与其让代理简单地搜索更久，不如让它在搜索过程中不断验证中间结果，用部分验证的状态来指导后续的精炼。简单说就是一个“边想边检查”的循环，代理会不断审计自己的答案，找出哪些claim还没被验证，然后针对性地继续搜集证据。这个思路其实和我们做科学实验时“假设-验证-修正”的循环非常像。AREX在多个研究任务上显著超越了传统的搜索增强方法。这篇工作让我想到，它其实触及了一个更深层的问题：当我们把AI当作研究助手时，它能不能像人类研究者一样，对自己的结论保持一种健康的怀疑态度？\n\n说完了研究代理，我们来看看基础设施方面的进展。SLAI T-Rex这篇文章很有意思，它不是在GPU上做...",
+    "papers": [
+      {
+        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+        "url": "https://arxiv.org/abs/2605.09635",
+        "arxiv_id": "2605.09635"
+      },
+      {
+        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
+        "url": "https://arxiv.org/abs/2607.21461",
+        "arxiv_id": "2607.21461"
+      },
+      {
+        "title": "SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
+        "url": "https://arxiv.org/abs/2607.20145",
+        "arxiv_id": "2607.20145"
+      },
+      {
+        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
+        "url": "https://arxiv.org/abs/2607.20061",
+        "arxiv_id": "2607.20061"
+      },
+      {
+        "title": "Visual Contrastive Self-Distillation",
+        "url": "https://arxiv.org/abs/2607.21556",
+        "arxiv_id": "2607.21556"
+      }
+    ],
+    "published_at": "2026-07-26T23:30:49.040667Z"
+  },
+  {
     "date": "2026-07-25",
     "title": "Paper Morning 2026-07-25",
     "description": "今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-27T23:35:51.857864Z"
-  },
-  {
-    "date": "2026-06-26",
-    "title": "Paper Morning 2026-06-26",
-    "description": "今日学术播报: DanceOPD: On-Policy Generative, Are We Ready For An Agent-Nati, DomainShuttle: Freeform Open D...",
-    "audio_file": "2026-06-26.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊几篇近期很有意思的论文，涉及生成模型、智能体记忆系统和视频生成这几个方向。我觉得它们共同反映了一个趋势，就是我们越来越关注如何在模型能力不断增强的同时，真正解决系统层面的工程问题。\n\n先看第一篇DanceOPD，讲的是图像生成模型的能力统一问题。大家知道现在的文生图模型已经具备了多种能力，比如文本到图像生成、局部编辑、全局编辑等等，但这些能力之间往往存在冲突——你想做编辑的时候，生成质量会下降；局部编辑和全局编辑会互相干扰。这其实是一个很有代表性的“能力融合”难题。DanceOPD提出了一个叫做“生成场蒸馏”的框架，它的核心思想很有意思：不试图让一个模型同时具备所有能力，而是为每种能力构建一个独立的“能力场”，然后通过一种叫做“低噪声学生诱导状态”的机制来路由样本。这让我想到我们做科学计算模型时，也经常面临类似的选择——到底是做一个大而全的模型，还是针对不同任务做专门的模块化设计。\n\n第二篇是关于Agent记忆系统的研究。这个工作很有意思，它指出了一个我们容易忽视的问题：现在评估Agent的记忆能力，主要看任务成功...",
-    "papers": [
-      {
-        "title": "DanceOPD: On-Policy Generative Field Distillation",
-        "url": "https://arxiv.org/abs/2606.27377",
-        "arxiv_id": "2606.27377"
-      },
-      {
-        "title": "Are We Ready For An Agent-Native Memory System?",
-        "url": "https://arxiv.org/abs/2606.24775",
-        "arxiv_id": "2606.24775"
-      },
-      {
-        "title": "DomainShuttle: Freeform Open Domain Subject-driven Text-to-video Generation",
-        "url": "https://arxiv.org/abs/2606.26058",
-        "arxiv_id": "2606.26058"
-      },
-      {
-        "title": "MVTrack4Gen: Multi-View Point Tracking as Geometric Supervision for 4D Video Generation",
-        "url": "https://arxiv.org/abs/2606.26087",
-        "arxiv_id": "2606.26087"
-      },
-      {
-        "title": "The Verification Horizon: No Silver Bullet for Coding Agent Rewards",
-        "url": "https://arxiv.org/abs/2606.26300",
-        "arxiv_id": "2606.26300"
-      }
-    ],
-    "published_at": "2026-06-26T23:44:34.356717Z"
   }
 ]

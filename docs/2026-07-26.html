@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-26</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-26</h1>
+    <p class="date">2026-07-26</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-26.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个观察说起，大家有没有觉得最近AI领域出现了一种很有意思的分化：一方面我们在追求更大的模型、更强的推理能力，另一方面越来越多的工作开始关注如何让AI系统能够真正“反省”自己的工作。今天第一篇论文AREX就是这方面的尝试。
+
+AREX提出了一种递归自我改进的深度研究代理。它的核心洞察是：发现答案往往很贵，但验证答案却可以分解为多个可独立检查的约束。那么与其让代理简单地搜索更久，不如让它在搜索过程中不断验证中间结果，用部分验证的状态来指导后续的精炼。简单说就是一个“边想边检查”的循环，代理会不断审计自己的答案，找出哪些claim还没被验证，然后针对性地继续搜集证据。这个思路其实和我们做科学实验时“假设-验证-修正”的循环非常像。AREX在多个研究任务上显著超越了传统的搜索增强方法。这篇工作让我想到，它其实触及了一个更深层的问题：当我们把AI当作研究助手时，它能不能像人类研究者一样，对自己的结论保持一种健康的怀疑态度？
+
+说完了研究代理，我们来看看基础设施方面的进展。SLAI T-Rex这篇文章很有意思，它不是在GPU上做训练，而是在华为的Ascend NPU上完成了DeepSeek-V4这种万亿参数MoE模型的全参数后训练。大家知道大模型训练的系统优化本身就是个巨大的挑战，非GPU平台上更是如此。这篇工作从模型并行、计算通信调度、底层kernel执行等多个层面做了系统级的优化，最终达到了34.22%的Model FLOPs Utilization。34%这个数字可能听起来不高，但如果你了解MoE模型在异构集群上的训练难度，就会知道这是一个相当扎实的结果。这也提醒我们，算力自主可控不仅仅是硬件的问题，软件栈的成熟度同样关键。
+
+接下来看一篇视觉和具身智能的工作。ReferTrack提出了一种“先指再跟”的具身视觉跟踪范式。传统的视觉语言动作模型往往在抽象的空间latent里做推理，难以监督。ReferTrack的思路很直接：先用bounding box选出目标，然后在图像空间里解码跟踪路标。它维护一个滑动窗口队列来保留目标的运动信息。这样做的好处是把一个复杂的连续跟踪问题分解为两个相对独立的子问题，让模型的可解释性和可控性都更强。这让我想到，其实物理模拟中也常常用这种分解思路，比如把流体模拟分解为速度场和压力场的求解。
+
+最后一篇Visual Contrastive Self-Distillation关注的是模型蒸馏。它提出了VCSD方法，利用图像内容删除来生成自蒸馏信号。简单说就是让模型在看到部分图像信息和完整图像信息时，分别预测下一个token，然后让前者向后者学习。这项工作有意思的地方在于，它试图去掉传统自蒸馏方法中需要的不对称信息——不管是特权答案还是视觉证据——完全靠输入条件的差异来驱动学习。这种“做减法”的思路往往能让方法的通用性变得更强。
+
+好了，今天的论文都聊完了。我有一个整体的观察：今天的五篇论文虽然领域分散，但从根本上都在回答一个问题——如何让AI系统更好地“理解”自己正在做什么。无论是AREX让代理审计自己的答案，ReferTrack把推理过程显式化，还是VCSD去掉蒸馏中的隐藏假设，其实都在往同一个方向走：当模型能力越来越强的时候，我们不仅仅要问它能做什么，更要问它能不能知道自己做了什么、做得怎么样。这种self-awareness的能力，可能会是下一代AI系统的关键特征。
+
+好了，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.09635" target="_blank">K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2607.21461" target="_blank">AREX: Towards a Recursively Self-Improving Agent for Deep Research</a></li>
+<li><a href="https://arxiv.org/abs/2607.20145" target="_blank">SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</a></li>
+<li><a href="https://arxiv.org/abs/2607.20061" target="_blank">ReferTrack: Referring Then Tracking for Embodied Visual Tracking</a></li>
+<li><a href="https://arxiv.org/abs/2607.21556" target="_blank">Visual Contrastive Self-Distillation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
