@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-27",
+    "title": "Paper Morning 2026-07-27",
+    "description": "今日学术播报: K12-KGraph: A Curriculum-Align, ReferTrack: Referring Then Tra, AREX: Towards a Recursively Se...",
+    "audio_file": "2026-07-27.mp3",
+    "script": "各位早上好，新的一周开始了。\n\n今天想跟大家聊几篇挺有意思的论文，它们虽然来自不同方向，但背后其实有一条共同的线索，我们后面再说。\n\n先看第一篇，K12-KGraph，这是一个面向K12教育的知识图谱。我看到很多朋友可能会想，这跟咱们搞AI for Science有什么关系？但仔细想想，它提出的“课程认知”概念很有意思——它不只是考学生会做多少题，而是考察模型对知识结构的理解：先修链条、概念之间的层级关系、实验和概念的连接方式。这其实触及了一个我们在科学计算里也在面对的问题：怎么让模型真正理解“物理世界里的因果结构”，而不是仅仅拟合输入输出。K12-KGraph从教材里提取了九种节点类型和十四种关系，构建了一个挺完整的结构化体系。它衍生出的K12-Bench有23000多道题，这个规模对于训练和评估教育LLM来说是很可观的。\n\n说完知识结构，我们来看一个更“具身”的方向。ReferTrack这篇工作研究的是 embodied visual tracking，就是让一个智能体跟着语言描述的目标走。它的一个核心贡献是把任务拆成了两步：先 referring——从一组bounding box...",
+    "papers": [
+      {
+        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
+        "url": "https://arxiv.org/abs/2605.09635",
+        "arxiv_id": "2605.09635"
+      },
+      {
+        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
+        "url": "https://arxiv.org/abs/2607.20061",
+        "arxiv_id": "2607.20061"
+      },
+      {
+        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
+        "url": "https://arxiv.org/abs/2607.21461",
+        "arxiv_id": "2607.21461"
+      },
+      {
+        "title": "Visual Contrastive Self-Distillation",
+        "url": "https://arxiv.org/abs/2607.21556",
+        "arxiv_id": "2607.21556"
+      },
+      {
+        "title": "Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers",
+        "url": "https://arxiv.org/abs/2607.21594",
+        "arxiv_id": "2607.21594"
+      }
+    ],
+    "published_at": "2026-07-27T23:35:58.764011Z"
+  },
+  {
     "date": "2026-07-26",
     "title": "Paper Morning 2026-07-26",
     "description": "今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-28T23:40:29.731446Z"
-  },
-  {
-    "date": "2026-06-27",
-    "title": "Paper Morning 2026-06-27",
-    "description": "今日学术播报: In-Context World Modeling for , DanceOPD: On-Policy Generative, Are We Ready For An Agent-Nati...",
-    "audio_file": "2026-06-27.mp3",
-    "script": "各位早上好，又到了周末的Paper Morning时间。\n\n今天想先从一篇机器人控制的论文聊起。Siyin Wang他们提出的In-Context World Modeling，解决的是一个很本质的问题：现在的视觉语言动作模型，在训练时见到的总是固定的相机视角或者固定的机器人形态，一旦换个环境，它的性能就塌了。传统做法是收集大量新数据再微调，但成本太高。他们把系统识别本身变成了一种in-context adaptation问题——让机器人通过一小段自己生成的、跟任务无关的交互历史，就能推断出关键的系统参数。这有点像是给机器人配备了一面“自我认知的镜子”，它不需要重新训练，只需要“看”一会儿就能理解自己当前的身体状态。这个思路其实和咱们AI4S里强调的“模型要有领域自适应能力”是一脉相承的。\n\n聊完机器人，咱们把视角转到生成模型那边。Wei Zhou他们的DanceOPD处理的是一个很实际的问题：现在的图像生成模型要同时具备文生图、局部编辑、全局编辑等多种能力，但这些能力之间其实是互相干扰的——加强编辑能力，文生图质量就下降；局部和全局编辑也会掐架。他们的做法很有意思，把每种能力定义成一...",
-    "papers": [
-      {
-        "title": "In-Context World Modeling for Robotic Control",
-        "url": "https://arxiv.org/abs/2606.26025",
-        "arxiv_id": "2606.26025"
-      },
-      {
-        "title": "DanceOPD: On-Policy Generative Field Distillation",
-        "url": "https://arxiv.org/abs/2606.27377",
-        "arxiv_id": "2606.27377"
-      },
-      {
-        "title": "Are We Ready For An Agent-Native Memory System?",
-        "url": "https://arxiv.org/abs/2606.24775",
-        "arxiv_id": "2606.24775"
-      },
-      {
-        "title": "DomainShuttle: Freeform Open Domain Subject-driven Text-to-video Generation",
-        "url": "https://arxiv.org/abs/2606.26058",
-        "arxiv_id": "2606.26058"
-      },
-      {
-        "title": "The Verification Horizon: No Silver Bullet for Coding Agent Rewards",
-        "url": "https://arxiv.org/abs/2606.26300",
-        "arxiv_id": "2606.26300"
-      }
-    ],
-    "published_at": "2026-06-27T23:35:51.857864Z"
   }
 ]

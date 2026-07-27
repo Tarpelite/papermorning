@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-27</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-27</h1>
+    <p class="date">2026-07-27</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-27.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，新的一周开始了。
+
+今天想跟大家聊几篇挺有意思的论文，它们虽然来自不同方向，但背后其实有一条共同的线索，我们后面再说。
+
+先看第一篇，K12-KGraph，这是一个面向K12教育的知识图谱。我看到很多朋友可能会想，这跟咱们搞AI for Science有什么关系？但仔细想想，它提出的“课程认知”概念很有意思——它不只是考学生会做多少题，而是考察模型对知识结构的理解：先修链条、概念之间的层级关系、实验和概念的连接方式。这其实触及了一个我们在科学计算里也在面对的问题：怎么让模型真正理解“物理世界里的因果结构”，而不是仅仅拟合输入输出。K12-KGraph从教材里提取了九种节点类型和十四种关系，构建了一个挺完整的结构化体系。它衍生出的K12-Bench有23000多道题，这个规模对于训练和评估教育LLM来说是很可观的。
+
+说完知识结构，我们来看一个更“具身”的方向。ReferTrack这篇工作研究的是 embodied visual tracking，就是让一个智能体跟着语言描述的目标走。它的一个核心贡献是把任务拆成了两步：先 referring——从一组bounding box里选出目标，然后tracking——根据这个选择来解码跟踪路径。这个设计其实挺直观的，但它解决了VLA模型里一个实际痛点：chain-of-thought的推理往往在抽象的latent空间里进行，跟图像空间的检测对不上。ReferTrack用一种“referring-then-tracking”的范式，让这个过程变得可解释了。我个人挺喜欢这种把复杂任务解耦的思路，它让我们能更清楚地看到模型到底在学什么。
+
+接下来这篇 AREX 就更有意思了，它是关于递归自我改进的研究agent。Deep research需要找到一个同时满足多个约束条件的答案，发现答案很贵，但验证答案往往可以分解成若干容易检查的约束。AREX正是利用了这个“发现-验证不对称性”：它交替进行内层的研究循环——收集证据、构建临时答案，以及外层的自我改进循环——逐个约束审计答案，找出未解决的claim，然后针对性地继续探索。这其实有点像我们做科学假设时的迭代过程：提出猜想、设计实验、验证、修正。AREX把这个过程自动化了，而且它不是简单地让agent搜索更久，而是让它学会“根据部分验证的状态来引导后续改进”。这个思路对于我们构建AI辅助的科学发现系统应该有不少启发。
+
+然后是VCSD，Visual Contrastive Self-Distillation。它研究的是on-policy self-distillation这个方向。传统的self-distillation需要teacher和student之间的信息不对称，比如privileged答案或者视觉证据。VCSD问了一个更本质的问题：能不能完全去掉这些不对称，让self-teacher纯粹通过输入条件来提供学习信号？它的做法很巧妙：把“图像内容移除”本身变成一个self-distillation信号。在学生生成的每个response prefix处，EMA teacher会在同一个prompt下产生两个next-token分布——一个基于原始图像，一个基于被移除的图像，然后让学生的输出同时逼近两者。这个设计非常简洁，而且它把视觉信息的“存在 vs 不存在”本身变成了监督信号。我个人很喜欢这种“做减法”的研究风格——把复杂的机制拆掉，看还能不能work，往往能揭示更本质的东西。
+
+最后是WorldWeaver，这篇研究的是多智能体的交互式世界模型。它要解决的问题是：多智能体视频生成不仅要产生一致的观测，还要维护一个跨智能体、跨视角持续演化的世界状态。现有的autoregressive video diffusion模型会把观测历史作为conditioning context，这使得在多智能体、多视角设置下共享状态变得困难。WorldWeaver引入了一种叫world state registers的东西——一些可学习的token，用来存储共享的世界信息、追踪各个智能体的状态，并且在每个生成的chunk之后动态更新。这些registers通过几种supervision signal来ground：单个智能体状态、全局状态（比如鸟瞰图）、以及场景文本。这是一个把“显式状态维护”引入diffusion model的尝试，值得看看它最终效果怎么样。
+
+好，几篇论文过完了。我今天的整体观察是什么呢？我们回头看看今天聊的这几篇工作——无论是教育知识图谱的课程结构提取、embodied tracking的任务解耦、递归自我改进agent的“发现-验证”循环、还是VCSD的“存在vs不存在”作为信号，以及WorldWeaver的显式状态寄存器——它们其实都在做同一件事：怎么让模型学会“结构化地表示和操作知识”。这个结构可以是知识图谱里的因果链条，可以是tracking里的refer-then-track流程，可以是验证-改进的迭代循环，可以是图像内容的“有无”对比，也可以是跨智能体的共享状态。看起来，AI正在从“学习直接映射”走向“学习构建和操作中间结构”，这或许是比单纯scale更大的范式转变。
+
+好了，今天的分享就到这里，我们明天早上见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2605.09635" target="_blank">K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2607.20061" target="_blank">ReferTrack: Referring Then Tracking for Embodied Visual Tracking</a></li>
+<li><a href="https://arxiv.org/abs/2607.21461" target="_blank">AREX: Towards a Recursively Self-Improving Agent for Deep Research</a></li>
+<li><a href="https://arxiv.org/abs/2607.21556" target="_blank">Visual Contrastive Self-Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2607.21594" target="_blank">Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
