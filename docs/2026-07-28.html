@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-28</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-28</h1>
+    <p class="date">2026-07-28</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-28.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天是周二，Paper Morning如约而至。
+
+今天想和大家分享一个观察：最近AI社区的很多进展，虽然表面上看去跟科学计算没什么直接关系，但背后的一些方法论突破，其实正在悄悄改变我们做科学发现的方式。
+
+先看第一篇，关于扩散模型蒸馏的工作。标题是"Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation"。这篇文章研究了一个很实际的问题：当我们用on-policy的方式来做扩散模型蒸馏的时候，怎么处理CFClassifier-Free Guidance这个组件。作者发现直接匹配teacher和student的guided velocity其实存在一个欠定问题，就是正负分支的误差可以在guided prediction里相互抵消。不过他们也指出，当负分支conditioning在teacher和student之间共享的时候，这种naive matching仍然很有效。
+
+为什么这件事值得我们关注呢？因为on-policy distillation这个思路，其实在科学计算里非常有潜力。我们完全可以想象，一个强大的PDE求解器作为teacher，一个轻量的神经网络作为student，通过在student生成的trajectory上不断query teacher来实现知识迁移。这篇文章厘清了一个容易出错的技术细节，让我们将来在科学计算场景里设计这类蒸馏 pipeline 的时候可以少走弯路。
+
+第二篇是Kimi团队发布的Kimi K3，一个2.8T参数的MoE大模型，有1百万token的上下文窗口，并且在general、agentic和coding等多个域上都做了强化学习训练。
+
+这篇文章让我特别感兴趣的不是它的scale本身，而是它展示的一种趋势：大模型正在变得越来越像「agent」，能够进行长期规划并执行复杂任务。如果把这个趋势投射到科学计算上，一个拥有超长上下文、能够调用工具、具备推理能力的模型，意味着什么？它可能能够阅读一整本物理手册，然后在需要的时候调用数值求解器；它可能能够理解一个复杂装置的全部设计文档，然后给出优化建议。Kimi K3在agentic能力上的探索，其实为我们描绘了一个「科学发现agent」的雏形。
+
+第三篇是JarvisHub，一个面向多模态创意生产的agent框架。
+
+现在的生成模型已经能生成高质量的图片、视频、音频、UI元素、故事板、幻灯片等等，但真正的创意工作远不止单个prompt- output的交互。JarvisHub试图构建一个系统，能够管理整个创作项目的状态，包括参考资料、草稿、备选方案、修改历史、版本关系、工具操作、评估信号和人类反馈等等。
+
+这让我想到，其实在科学研究中也是如此。我们需要的不是一个只会回答问题的chatbot，而是一个能够管理整个研究项目的「科研agent」。它需要追踪实验的版本关系，理解哪些假设被验证了、哪些被推翻了，整合来自不同工具和实验的反馈。JarvisHub在创意领域做的这件事，某种程度上也是在为科研agent打样。
+
+第四篇关于agentic search的蒸馏。标题是"From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search"。
+
+现在的LLM agent在解决知识密集型任务时，往往需要多步推理和检索的交替。传统的outcome-based RL只给一个稀疏的最终信号，而如果能从一个强大的 proprietary model 那里学到推理过程，监督信号会密集得多。但问题在于，我们拿不到 proprietary model 的logits，也没办法做直接的logit matching。这篇文章提出了一种叫做 Multi-Agent Protocol Distillation 的方法来解决这个异构蒸馏问题。
+
+这个消息对科学计算的AI研究者来说其实挺振奋的。因为我们一直在思考的一个问题是：DeepMind的AlphaFold、Mathematical GPT这些强大的科学领域模型，它们的推理能力能不能迁移到更小的开源模型上？这篇文章提供了一种思路，不追求表面的风格模仿，而是试图捕获核心的推理能力。虽然它目前展示的还是偏NLP的任务，但我相信类似的思路很快会被用到科学推理的蒸馏上。
+
+最后，第五篇是一篇survey，关于机器人学习中的progress reward modeling。
+
+传统的机器人学习往往只给一个terminal success signal告诉你任务最终是成了还是失败了，但这无法告诉你过程中的每一步是在进步、原地踏步还是在开倒车。这篇survey系统性地梳理了现在各种progress reward的方法，从不同的observation、goal specification、output signal到supervision source和evaluation protocol，给出了一个统一的框架。
+
+为什么我觉得这篇survey值得我们特别注意呢？因为它触及了一个非常根本的问题：如何评估中间过程的进步。这个问题在科学计算中其实一模一样存在。当我们训练一个PDE求解器的时候，我们怎么知道当前的迭代是在收敛还是在发散？我们怎么给一个强化学习agent设计reward，让它能够学习长期的控制策略而不仅仅是最终的成功？progress reward这个概念，给我们提供了一种统一的视角来看待这些问题。
+
+好，让我们来总结一下今天的整体观察。今天的五篇文章，从表面上看去横跨了扩散模型、大模型、agent系统、蒸馏技术和机器人学习，似乎非常分散。但如果仔细审视，它们其实在回答一个共同的问题：如何在更高层面上构建更强大的AI系统，让它能够进行长期规划、执行复杂多步骤任务，并在过程中获得有效的反馈和监督。这个趋势从Kimi K3的agentic训练，到JarvisHub的项目管理能力，到蒸馏技术对推理能力的迁移，再到progress reward对过程监督的重视，一脉相承。而这些能力的增强，最终都会汇入我们真正关心的事情：让AI成为科学发现的强大助手，而不是仅仅停留在生成图片或者回答问题的工具。
+
+好，今天的播报就到这里，我们明天早上继续聊。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.24731" target="_blank">Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2607.24653" target="_blank">Kimi K3: Open Frontier Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2607.23588" target="_blank">JarvisHub: An Open Harness for Canvas-Native Multimodal Creative Agents</a></li>
+<li><a href="https://arxiv.org/abs/2607.24280" target="_blank">From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search</a></li>
+<li><a href="https://arxiv.org/abs/2607.21655" target="_blank">Progress Reward Modeling for Robotic Learning: A Comprehensive Survey</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
