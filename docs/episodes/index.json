@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-29",
+    "title": "Paper Morning 2026-07-29",
+    "description": "今日学术播报: Rethinking Classifier-Free Gui, ReDesign: Recovering Editable , A New Role for Relevance: Guid...",
+    "audio_file": "2026-07-29.mp3",
+    "script": "各位早上好，今天周三，Paper Morning开播。\n\n先聊一篇扩散模型基础方法的工作。Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation——这篇文章表面上讲的是知识蒸馏，但背后其实触及了一个很根本的问题：我们对CFG这个已经成为 diffusion 标配的机制，理解到底有多深。作者发现，在用on-policy方式做蒸馏时，直接匹配教师和学生的引导速度其实存在一个识别问题：正向分支和负向分支的错误可以在引导预测里相互抵消。这就好比你考试时选择题和填空题都错了，但总分反而看起来还行，你根本不知道哪里出了问题。文章通过两个对比案例说明，当使用共享的负向条件时，两分支的错误会同步下降，简单的匹配目标依然有效；但如果负向分支独立学习，模型就会丢失教师那边保留的特权信息。我觉得这个发现对做diffusion科学的同学特别有价值，因为它提醒我们，CFG不只是加一个引导项那么简单，它实际上重构了模型的表征空间。至于这算不算突破，我觉得更像是给我们过去一些习以为常的做法敲了个警钟。\n\n然后从生成模型跳到另一个...",
+    "papers": [
+      {
+        "title": "Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation",
+        "url": "https://arxiv.org/abs/2607.24731",
+        "arxiv_id": "2607.24731"
+      },
+      {
+        "title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
+        "url": "https://arxiv.org/abs/2607.25565",
+        "arxiv_id": "2607.25565"
+      },
+      {
+        "title": "A New Role for Relevance: Guiding Corpus Interaction in Agentic Search",
+        "url": "https://arxiv.org/abs/2607.24223",
+        "arxiv_id": "2607.24223"
+      },
+      {
+        "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
+        "url": "https://arxiv.org/abs/2607.25895",
+        "arxiv_id": "2607.25895"
+      },
+      {
+        "title": "Oxygen-TryOn: Fashion-Native Foundation Model for Any-item Virtual Try-On",
+        "url": "https://arxiv.org/abs/2607.21694",
+        "arxiv_id": "2607.21694"
+      }
+    ],
+    "published_at": "2026-07-29T23:32:45.708969Z"
+  },
+  {
     "date": "2026-07-28",
     "title": "Paper Morning 2026-07-28",
     "description": "今日学术播报: Rethinking Classifier-Free Gui, Kimi K3: Open Frontier Intelli, JarvisHub: An Open Harness for...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-06-30T23:46:43.190133Z"
-  },
-  {
-    "date": "2026-06-29",
-    "title": "Paper Morning 2026-06-29",
-    "description": "今日学术播报: In-Context World Modeling for , The Verification Horizon: No S, PhysisForcing: Physics Reinfor...",
-    "audio_file": "2026-06-29.mp3",
-    "script": "各位早上好，新的一周开始了，Paper Morning准时开播。\n\n今天想先从一篇关于机器人智能的论文聊起。近几年Vision-Language-Action模型在机器人领域火得不行，但大家有没有注意到一个问题：这些模型换个摄像头角度或者换台机器人，就不好使了。Siyin Wang他们提出的In-Context World Modeling就是来解决这个问题的——它让机器人自己从一小段交互历史里推断出“我在哪、我是谁”这样的系统变量。这本质上把系统辨识变成了一个上下文学习问题，思路很直接，但我觉得它点出了一个很本质的东西：以前我们把机器人当作固定环境下的执行器，现在我们开始把机器人本身当作一个需要在运行时识别的变量。这个转变可能会催生一批更通用的机器人基础模型。\n\n顺着机器人世界模型这个话题往下走，PhysisForcing这篇文章很有意思。它用物理知识来给视频生成模型加约束，让机器人的世界模拟器更可靠。研究者发现现在视频生成模型经常画出不可能的物理场景——比如物体突然断开、运动轨迹不连续——根本原因在于模型没有学到物体交互时的时空相关性。PhysisForcing的解决方案很巧妙：它...",
-    "papers": [
-      {
-        "title": "In-Context World Modeling for Robotic Control",
-        "url": "https://arxiv.org/abs/2606.26025",
-        "arxiv_id": "2606.26025"
-      },
-      {
-        "title": "The Verification Horizon: No Silver Bullet for Coding Agent Rewards",
-        "url": "https://arxiv.org/abs/2606.26300",
-        "arxiv_id": "2606.26300"
-      },
-      {
-        "title": "PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2606.28128",
-        "arxiv_id": "2606.28128"
-      },
-      {
-        "title": "OPID: On-Policy Skill Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2606.26790",
-        "arxiv_id": "2606.26790"
-      },
-      {
-        "title": "Physics-Informed Neural Network with Transfer Learning for State Estimation in Lithium-Ion Batteries using the Single Particle Model with Electrolyte",
-        "url": "https://arxiv.org/abs/2606.28220v1",
-        "arxiv_id": "2606.28220v1"
-      }
-    ],
-    "published_at": "2026-06-29T23:35:50.801568Z"
   }
 ]

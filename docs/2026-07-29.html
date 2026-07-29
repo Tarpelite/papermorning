@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-29</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-29</h1>
+    <p class="date">2026-07-29</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-29.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周三，Paper Morning开播。
+
+先聊一篇扩散模型基础方法的工作。Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation——这篇文章表面上讲的是知识蒸馏，但背后其实触及了一个很根本的问题：我们对CFG这个已经成为 diffusion 标配的机制，理解到底有多深。作者发现，在用on-policy方式做蒸馏时，直接匹配教师和学生的引导速度其实存在一个识别问题：正向分支和负向分支的错误可以在引导预测里相互抵消。这就好比你考试时选择题和填空题都错了，但总分反而看起来还行，你根本不知道哪里出了问题。文章通过两个对比案例说明，当使用共享的负向条件时，两分支的错误会同步下降，简单的匹配目标依然有效；但如果负向分支独立学习，模型就会丢失教师那边保留的特权信息。我觉得这个发现对做diffusion科学的同学特别有价值，因为它提醒我们，CFG不只是加一个引导项那么简单，它实际上重构了模型的表征空间。至于这算不算突破，我觉得更像是给我们过去一些习以为常的做法敲了个警钟。
+
+然后从生成模型跳到另一个正在快速变化的领域，design agent。这篇ReDesign做的是从图像恢复可编辑的设计文件。听起来好像是个工程问题，但让我感兴趣的其实是它的方法论：用一个agentic的框架，通过选择和组合跨模态的专业工具来逐步构建可编辑的层级结构。这里面最关键的设计是graceful verification——在每个扩展步骤都给出局部的接受、剪枝或重试反馈，防止错误累积。想想我们做科学计算时，是不是也经常面对类似困境：一个复杂的pipeline，中间某个环节出了错，最后结果完全不可用，但定位问题又特别困难。这篇文章用分层验证的思路提供了一种可能的解法。当然，它目前针对的是设计场景，但它验证的思想我觉得可以迁移到更广义的自动化科研流程里。
+
+接下来看一篇关于检索增强的新思考。A New Role for Relevance: Guiding Corpus Interaction in Agentic Search——这篇文章指出了一个很实际的问题：现有的 retrieval agent 用相关性来选 top-k 文档，但这只是粗粒度的筛选。当需要回答复杂问题的时候，你不仅需要找到相关文档，还需要定位具体段落、组合证据、甚至验证推理过程。作者把这个问题描述为“相关性是查询依赖的，但一旦进入交互阶段，它就退出了”。他们提出的方案是让相关性引导 grep 搜索的顺序，帮助模型优先看到信息量最大的片段。这让我想到我们在做科学文献综述时其实也面临类似困境：搜到一百篇相关论文，但真正有价值的信息可能只分散在其中的几段话里。如何让检索系统从“找到相关文档”进化到“找到确切答案”，这个方向值得关注。
+
+最后看两篇偏应用层的工作。HiFi-UMI 是做机器人 manipulation policy 的数据采集系统，用的是便携式的 UMI——就是那种不需要真实机器人就能捕捉操作轨迹的方案。之前大家普遍的做法是用少量真实机器人数据做“锚点”，但这篇文章问了一个很有意思的问题：能不能通过提高无机器人数据的保真度来取消这个锚点？他们的做法是 co-design 了从硬件到算法的一整套系统，包括立体惯性 SLAM、原生相对位姿、微秒级 GPIO 触发等等。这其实呼应了我一直想强调的一个趋势：数据瓶颈是 AI for Science 的核心挑战，而解决这个瓶颈不一定只能靠堆人力，还可以靠把数据采集本身变成一个智能化的系统工程。
+
+Oxygen-TryOn 则是一个虚拟试穿的 foundation model，专门针对时尚领域设计。跟之前那些只能处理单一品类的方法不同，它支持任意数量的参考物品、任意时尚品类，还能做多物品组合。它不是拿通用的图像编辑模型来凑合用，而是专门为试穿任务打造的数据引擎和训练方案。这篇文章的方法论其实很值得做科学计算的朋友们思考：当我们谈 foundation model 的时候，是不是一定追求通用性？针对特定领域做深度定制，可能比追求全面覆盖更实用？
+
+今天的论文整体看下来，我有一个感觉：AI 社区正在从“模型即一切”逐步转向“系统即一切”。不管是 diffusion 蒸馏里对训练动态的精细分析，design agent 里的验证框架设计，检索里的交互式搜索策略，还是机器人数据的端到端优化，大家都在从模型的参数空间里走出来，去关注整个系统的可靠性、可控性和实际可用性。这其实也呼应了我们 AI for Science 领域一直在说的：想把 AI 真正用于科学发现，不能只训练一个模型就够了，需要考虑整个数据和算法的闭环。今天的分享就到这里，我们明天早上继续。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.24731" target="_blank">Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2607.25565" target="_blank">ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition</a></li>
+<li><a href="https://arxiv.org/abs/2607.24223" target="_blank">A New Role for Relevance: Guiding Corpus Interaction in Agentic Search</a></li>
+<li><a href="https://arxiv.org/abs/2607.25895" target="_blank">HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone</a></li>
+<li><a href="https://arxiv.org/abs/2607.21694" target="_blank">Oxygen-TryOn: Fashion-Native Foundation Model for Any-item Virtual Try-On</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
