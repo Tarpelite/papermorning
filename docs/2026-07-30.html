@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-30</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-30</h1>
+    <p class="date">2026-07-30</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-30.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周四，Paper Morning继续开播。
+
+先来看两篇关于大语言模型训练方法的工作。CoRT这篇论文关注的是如何让基于规则（rubric）的强化学习更精细化。传统GRPO方法会把整个回答视为一个整体来分配奖励，但当规则本身对应不同文本片段时，这种粗糙的奖励分配就丢失了信息。CoRT的思路很巧妙：它不需要额外训练一个token级别的评分模型，而是用“反事实重放”——把同一个回答分别在有rubric引导和无rubric引导的条件下重新评分，两者相减就得到了每个token的真实贡献。这个设计让我想到科学计算里类似的问题：当我们要优化一个PDE求解器时，某个组件的贡献往往也被整体损失掩盖了，如果能设计出类似的“反事实”机制，也许能更精准地定位问题。
+
+第二篇DecoEvo则从另一个角度切入，它研究的是当优化目标和评估标准本身也需要演化时怎么办。传统的text-space优化会让求解器不断提升，但评估rubric是固定的，这就会导致“钻空子”——模型找到取巧满足规则但不真正解决问题的方法。DecoEvo的解决方案是让solver skill和rubric-generator skill解耦演化，双方在各自的目标下独立进步。这个思想其实和AI4S中“求解器与误差估计器协同训练”的探索有异曲同工之处，当我们想要让一个神经网络PDE求解器不断进化时，如何防止它在某些 benchmark上过拟合的同时真正提升泛化能力，这个问题值得深思。
+
+接下来两篇都和机器人视觉语言动作模型有关，但角度很不一样。TurboVLA解决的是一个工程难题：VLA模型通常需要庞大的语言模型作为中间桥梁，计算和内存开销太大。TurboVLA把传统的"V到L再到A"改成了直接的"V加L到A"，用轻量级的双向视觉语言交互替代了大模型做中介，而且在RTX 4090上实现了32Hz、不到1GB显存的表现。这个工作最的价值不在于某个具体技术细节，而在于它展示了“高效推理”和“高性能”并不矛盾——这对于我们做科学计算的模型部署其实很有启发，当一个神经算子需要在边缘设备上实时运行时，哪些计算可以省、哪些信息必须保留，这篇文章给出了很好的参考。
+
+HumanCLAW则是一个评估框架，它要回答一个更根本的问题：一个视觉语言模型能否“具身”思考？这里的难点在于，当一个任务失败时，你很难分清是模型决策错误还是执行机构失控。HumanCLAW的解法是用外骨骼设备让VLM发出指令，然后立刻转化为物理世界的真实动作，这样就隔离了“决策”和“执行”两个环节。这个工作让我联想到科学模拟中的一个经典困境：我们训练一个代理模型来预测复杂系统的行为，但当预测失败时，我们怎么知道是模型本身不行，还是它给出的建议在真实系统中根本无法实现？这种“解耦”的思路值得借鉴。
+
+最后是一篇系统论文CodeNib，它为编码智能体构建了多视图的数据架构。现在的coding agent需要在不断变化的代码仓库中搜索、导航、保持上下文，但现有的工具是割裂的——索引、语言服务器、本地历史各自为政。CodeNib为每个代码提交构建了可复用的词法、稠密和结构化视图，并且能追踪这些视图在编辑过程中的变化，在100个代码快照上的实验显示，它的图结构和向量更新分别快了8.7倍和25.4倍。这篇论文提醒我们，AI能力的上限往往受限于基础设施的下限，当我们在谈论更大的模型、更强的推理时，往往忽略了数据管道和工具链的优化空间。
+
+今天的五篇论文横跨了LLM训练方法、具身智能和系统基础设施，表面上看比较分散，但如果我们把它们放在一起看，会发现一条隐含的线索：都是在回答“如何让AI系统更精细、更可控、更可靠”的问题。CoRT在token级别做精细化奖励分配，DecoEvo在优化目标层面做精细化控制，TurboVLA在推理效率上做精细化裁剪，HumanCLAW在评估维度上做精细化解耦，CodeNib在数据供给上做精细化组织。这种从“粗放”到“精细”的趋势，也许正是LLM进入深水区后的必然选择——当模型规模带来的红利逐渐见顶，我们能做的就是在每一个环节上挤压出更多的效率和质量。这对于AI4S领域的启示是：与其盲目追求更大的预训练模型，不如在数据、训练、推理的每个阶段都引入更精细的设计。好的，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.25659" target="_blank">CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization</a></li>
+<li><a href="https://arxiv.org/abs/2607.25675" target="_blank">DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space</a></li>
+<li><a href="https://arxiv.org/abs/2607.27205" target="_blank">TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM</a></li>
+<li><a href="https://arxiv.org/abs/2607.27180" target="_blank">HumanCLAW: Can Vision-Language Models Act Through a Body?</a></li>
+<li><a href="https://arxiv.org/abs/2607.25431" target="_blank">CodeNib: A Multi-View Data System for Serving Repository Context to Coding Agents</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

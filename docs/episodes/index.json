@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-30",
+    "title": "Paper Morning 2026-07-30",
+    "description": "今日学术播报: CoRT: Counterfactual Replay fo, DecoEvo: Score-Decoupled Co-Ev, TurboVLA: Real-Time Vision-Lan...",
+    "audio_file": "2026-07-30.mp3",
+    "script": "各位早上好，今天周四，Paper Morning继续开播。\n\n先来看两篇关于大语言模型训练方法的工作。CoRT这篇论文关注的是如何让基于规则（rubric）的强化学习更精细化。传统GRPO方法会把整个回答视为一个整体来分配奖励，但当规则本身对应不同文本片段时，这种粗糙的奖励分配就丢失了信息。CoRT的思路很巧妙：它不需要额外训练一个token级别的评分模型，而是用“反事实重放”——把同一个回答分别在有rubric引导和无rubric引导的条件下重新评分，两者相减就得到了每个token的真实贡献。这个设计让我想到科学计算里类似的问题：当我们要优化一个PDE求解器时，某个组件的贡献往往也被整体损失掩盖了，如果能设计出类似的“反事实”机制，也许能更精准地定位问题。\n\n第二篇DecoEvo则从另一个角度切入，它研究的是当优化目标和评估标准本身也需要演化时怎么办。传统的text-space优化会让求解器不断提升，但评估rubric是固定的，这就会导致“钻空子”——模型找到取巧满足规则但不真正解决问题的方法。DecoEvo的解决方案是让solver skill和rubric-generator s...",
+    "papers": [
+      {
+        "title": "CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization",
+        "url": "https://arxiv.org/abs/2607.25659",
+        "arxiv_id": "2607.25659"
+      },
+      {
+        "title": "DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space",
+        "url": "https://arxiv.org/abs/2607.25675",
+        "arxiv_id": "2607.25675"
+      },
+      {
+        "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
+        "url": "https://arxiv.org/abs/2607.27205",
+        "arxiv_id": "2607.27205"
+      },
+      {
+        "title": "HumanCLAW: Can Vision-Language Models Act Through a Body?",
+        "url": "https://arxiv.org/abs/2607.27180",
+        "arxiv_id": "2607.27180"
+      },
+      {
+        "title": "CodeNib: A Multi-View Data System for Serving Repository Context to Coding Agents",
+        "url": "https://arxiv.org/abs/2607.25431",
+        "arxiv_id": "2607.25431"
+      }
+    ],
+    "published_at": "2026-07-30T23:36:10.295380Z"
+  },
+  {
     "date": "2026-07-29",
     "title": "Paper Morning 2026-07-29",
     "description": "今日学术播报: Rethinking Classifier-Free Gui, ReDesign: Recovering Editable , A New Role for Relevance: Guid...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-01T23:53:43.965456Z"
-  },
-  {
-    "date": "2026-06-30",
-    "title": "Paper Morning 2026-06-30",
-    "description": "今日学术播报: LiveEdit: Towards Real-Time Di, Beyond IID: How General Are Ta, Trimming the Long-Tail of Visu...",
-    "audio_file": "2026-06-30.mp3",
-    "script": "各位早上好，Paper Morning 又和大家见面了。\n\n今天想和大家聊几篇很有意思的论文，它们看似分布在不同领域，但背后其实贯穿着一条主线——我们怎么让 AI 系统更好地应对真实世界的复杂性。\n\n先从一篇视频编辑的工作说起。LiveEdit 解决的是一个很实际的问题：能不能用扩散模型实现实时的流式视频编辑？过去的视频生成模型大多是做从头合成，而编辑需要更精细的控制——不仅要保持背景和未编辑区域的稳定性，还要达到交互式场景的低延迟要求。这篇文章的核心贡献是提出了一个三阶段蒸馏 pipeline，把一个强大的双向基础模型的能力，逐步迁移到一个高效的单向模型里，实现因果的、逐帧编辑。我觉得这个工作的价值不在于单纯快了多少钱，而在于它展示了如何把预训练大模型的能力蒸馏到实时场景，这对科学计算中的实时 PDE 求解也有启示——我们是不是也可以把复杂物理模型的推理能力，通过某种蒸馏机制压缩到可交互的响应时间？\n\n然后我想把大家的目光引向一个更基础的问题：模型到底有多强的泛化能力？Beyond IID 这篇论文批判了当前表格数据基础模型评估中的一个问题——大家都在 IID（独立同分布）数据上刷榜...",
-    "papers": [
-      {
-        "title": "LiveEdit: Towards Real-Time Diffusion-Based Streaming Video Editing",
-        "url": "https://arxiv.org/abs/2606.26740",
-        "arxiv_id": "2606.26740"
-      },
-      {
-        "title": "Beyond IID: How General Are Tabular Foundation Models, Really?",
-        "url": "https://arxiv.org/abs/2606.30410",
-        "arxiv_id": "2606.30410"
-      },
-      {
-        "title": "Trimming the Long-Tail of Visual World Modeling Evaluation",
-        "url": "https://arxiv.org/abs/2606.24256",
-        "arxiv_id": "2606.24256"
-      },
-      {
-        "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
-        "url": "https://arxiv.org/abs/2606.28733",
-        "arxiv_id": "2606.28733"
-      },
-      {
-        "title": "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent",
-        "url": "https://arxiv.org/abs/2606.30616",
-        "arxiv_id": "2606.30616"
-      }
-    ],
-    "published_at": "2026-06-30T23:46:43.190133Z"
   }
 ]
