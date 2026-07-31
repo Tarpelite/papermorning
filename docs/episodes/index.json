@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-31",
+    "title": "Paper Morning 2026-07-31",
+    "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
+    "audio_file": "2026-07-31.mp3",
+    "script": "各位早上好，周五的Paper Morning又和大家见面了。今天想聊一个特别有意思的现象，我发现最近基础模型的研究正在悄悄发生一种范式转变，这个转变和我们做AI for Science的人其实息息相关。\n\n先看第一篇，Metis：记忆基础模型。这篇工作提出了一个非常根本的问题：现在的多模态大模型已经能\"看\"能\"听\"能\"推理\"了，但它们的记忆能力却仍然是外置的。什么意思呢？就像一个学者，虽然脑子里装了很多知识，但每次遇到新问题都需要翻箱倒柜找资料，而不能像人一样把相关信息自然地\"想起来\"。Metis尝试在模型内部引入持久且动态演化的记忆状态，让基础模型具备原生记忆能力。这个想法让我想到，我们在做科学发现的时候，经常需要跨越很长时间尺度做推理，比如从假设生成到实验设计再到结果分析，如果模型能像人一样有\"工作记忆\"，那科学推理的连续性会大大增强。\n\n接下来这篇PhiZero非常有意思，它提出了\"物理语言\"的概念。我们知道，现在的世界模型基本上是在像素空间里预测下一帧画面，但这就像让一个学生死记硬背物理题目的答案一样，虽然能做得不错，但完全无法解释背后的物理规律。PhiZero的思路是，先从视...",
+    "papers": [
+      {
+        "title": "Metis: Memory Foundation Model",
+        "url": "https://arxiv.org/abs/2607.26760",
+        "arxiv_id": "2607.26760"
+      },
+      {
+        "title": "PhiZero: A World Model Built Around Physical Language",
+        "url": "https://arxiv.org/abs/2607.28624",
+        "arxiv_id": "2607.28624"
+      },
+      {
+        "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+        "url": "https://arxiv.org/abs/2607.28568",
+        "arxiv_id": "2607.28568"
+      },
+      {
+        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
+        "url": "https://arxiv.org/abs/2607.28227",
+        "arxiv_id": "2607.28227"
+      },
+      {
+        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
+        "url": "https://arxiv.org/abs/2607.28618",
+        "arxiv_id": "2607.28618"
+      }
+    ],
+    "published_at": "2026-07-31T23:32:15.874587Z"
+  },
+  {
     "date": "2026-07-30",
     "title": "Paper Morning 2026-07-30",
     "description": "今日学术播报: CoRT: Counterfactual Replay fo, DecoEvo: Score-Decoupled Co-Ev, TurboVLA: Real-Time Vision-Lan...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-02T23:40:00.054546Z"
-  },
-  {
-    "date": "2026-07-01",
-    "title": "Paper Morning 2026-07-01",
-    "description": "今日学术播报: Orca: The World is in Your Min, BlockPilot: Instance-Adaptive , DOPD: Dual On-policy Distillat...",
-    "audio_file": "2026-07-01.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先从一个更大的话题聊起。我们一直在关注AI for Science的进展，但最近业界有些讨论在反思：基础模型到底应该学什么？对于我们做科学计算的人来说，这个问题其实很关键——我们期望模型学到的是可迁移的物理规律，还是仅仅是对训练数据的记忆？\n\nOrca这篇论文给出了一个很有意思的答案。它提出了一个世界基础模型的概念，但不像传统的视觉语言动作模型那样强调下一步预测，而是把焦点放在下一状态预测上。什么意思呢？它不是让模型预测下一个token、下一帧画面或下一个动作，而是让模型理解世界如何从一种状态演变到另一种状态。这个视角我觉得很有趣，因为它实际上是在说，智能体应该理解的是世界演化的规律，而不只是下一个输出是什么。\n\n为了实现这个目标，Orca采用了双通道学习策略：无意识学习从连续视频中捕捉密集的自然状态转换，有意识学习则通过语言描述的事件和视觉问答监督来建模稀疏但有意义的状态转换。这个设计让我想到我们做PDE求解时的思路——既需要数据驱动来捕捉系统的整体行为，也需要物理约束来保证解的合理性。Orca用125K小时的视频进行预训...",
-    "papers": [
-      {
-        "title": "Orca: The World is in Your Mind",
-        "url": "https://arxiv.org/abs/2606.30534",
-        "arxiv_id": "2606.30534"
-      },
-      {
-        "title": "BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding",
-        "url": "https://arxiv.org/abs/2606.31315",
-        "arxiv_id": "2606.31315"
-      },
-      {
-        "title": "DOPD: Dual On-policy Distillation",
-        "url": "https://arxiv.org/abs/2606.30626",
-        "arxiv_id": "2606.30626"
-      },
-      {
-        "title": "Dockerless: Environment-Free Program Verifier for Coding Agents",
-        "url": "https://arxiv.org/abs/2606.28436",
-        "arxiv_id": "2606.28436"
-      },
-      {
-        "title": "Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models",
-        "url": "https://arxiv.org/abs/2606.19297",
-        "arxiv_id": "2606.19297"
-      }
-    ],
-    "published_at": "2026-07-01T23:53:43.965456Z"
   }
 ]

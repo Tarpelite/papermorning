@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-07-31</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-07-31</h1>
+    <p class="date">2026-07-31</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-07-31.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周五的Paper Morning又和大家见面了。今天想聊一个特别有意思的现象，我发现最近基础模型的研究正在悄悄发生一种范式转变，这个转变和我们做AI for Science的人其实息息相关。
+
+先看第一篇，Metis：记忆基础模型。这篇工作提出了一个非常根本的问题：现在的多模态大模型已经能"看"能"听"能"推理"了，但它们的记忆能力却仍然是外置的。什么意思呢？就像一个学者，虽然脑子里装了很多知识，但每次遇到新问题都需要翻箱倒柜找资料，而不能像人一样把相关信息自然地"想起来"。Metis尝试在模型内部引入持久且动态演化的记忆状态，让基础模型具备原生记忆能力。这个想法让我想到，我们在做科学发现的时候，经常需要跨越很长时间尺度做推理，比如从假设生成到实验设计再到结果分析，如果模型能像人一样有"工作记忆"，那科学推理的连续性会大大增强。
+
+接下来这篇PhiZero非常有意思，它提出了"物理语言"的概念。我们知道，现在的世界模型基本上是在像素空间里预测下一帧画面，但这就像让一个学生死记硬背物理题目的答案一样，虽然能做得不错，但完全无法解释背后的物理规律。PhiZero的思路是，先从视频里学习一种紧凑的离散表示，叫做物理语言，然后用这种语言来推理世界的演变，最后再渲染成视频。这相当于让模型先"理解"了物理，再去"预测"现象。这让我想到，我们做PDE求解或者物理模拟的时候，其实也是在寻找一种紧凑的"物理语言"来描述自然规律。如果大模型也能学会这种语言，那它可能就不只是一个拟合数据的黑箱，而是一个真正懂得物理原理的智能体。
+
+第三篇Frontis-MA1非常激进，它试图构建一个能够"自己改进自己"的AI系统。这篇工作提出了一个完整的栈：OpenMLE，包含可验证的任务环境、强化学习训练和长程搜索算法。然后在这个基础上训练了一个35B的模型作为机器学习工程的"元进化"agent。这个工作的野心很大，它想让AI学会如何改进AI的代码。各位，这其实和我们AI4S社区正在探索的"AI辅助科学发现"高度相关。我们能不能也让AI学会如何改进科学实验的设计？如何自动搜索更好的模型架构？如果这条路径走通了，那科研的自动化程度会往前迈出一大步。
+
+然后是Qwen-UI-Agent，这个工作试图构建一个真正能在真实世界里"干活"的GUI agent。它不只是在某个特定平台上操作，而是能横跨手机、电脑、网页等多种环境完成复杂任务。大家可以想象一下，如果这样一个agent能帮我们操作各种科研工具，比如运行模拟软件、管理实验数据、调用API，那将大大降低科研工作流中的繁琐操作。
+
+最后这篇AskChem虽然看起来不那么"AI"，但我覺得它戳中了一个非常实际的问题。做化学研究的人都知道，一个有用的发现往往散落在很多篇论文里，而且不同论文用的表述方式可能完全不同。AskChem把检索的单位从"论文"变成了"声明"，每篇论文被拆解成多个带有来源信息的原子化声明。这样不仅便于检索，还能帮助AI系统更好地综合跨论文的知识。这其实给AI4S提供了一个重要的基础设施思路：想把大模型用在科学发现上，首先得让模型能准确定位和理解科学知识。
+
+好了，今天的论文看完了，我有一个整体的感受：这些工作虽然各自独立，但都在做同一件事情，就是让AI系统从"能回答问题"向"能完成任务"转变。无论是内置记忆、学习物理语言、自我改进，还是操作真实设备、综合科学文献，核心都是让AI具备更强的行动能力。对我们做AI4S的人来说，这波发展其实带来了一个明确的信号：基础模型的能力正在溢出到科学研究的各种环节，科研范式可能被重塑的空间比我们想象的要大。好，今天就到这里，祝大家周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.26760" target="_blank">Metis: Memory Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2607.28624" target="_blank">PhiZero: A World Model Built Around Physical Language</a></li>
+<li><a href="https://arxiv.org/abs/2607.28568" target="_blank">Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering</a></li>
+<li><a href="https://arxiv.org/abs/2607.28227" target="_blank">Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents</a></li>
+<li><a href="https://arxiv.org/abs/2607.28618" target="_blank">AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
