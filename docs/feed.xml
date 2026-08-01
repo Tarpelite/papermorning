@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-01</title>
+      <description>今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-01.mp3" length="7938342" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-01.mp3</guid>
+      <pubDate>2026-08-01T23:31:25.273729Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-07-31</title>
       <description>今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-31.mp3" length="7688194" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-03.mp3" length="9779035" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-03.mp3</guid>
       <pubDate>2026-07-03T23:37:08.983337Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-02</title>
-      <description>今日学术播报: Does VLA Even Know the Basics?, GAIA: Geometry-Adaptive Operat, Valdi: Value Diffusion World M...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-02.mp3" length="9893137" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-02.mp3</guid>
-      <pubDate>2026-07-02T23:40:00.054546Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

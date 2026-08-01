@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-01",
+    "title": "Paper Morning 2026-08-01",
+    "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
+    "audio_file": "2026-08-01.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊几篇最近很有意思的论文，它们有一个共同的主题：AI agent正在从“工具”向“能力”演进，而这个演进正在深刻改变我们做科学的方式。\n\n先说第一篇，Metis: Memory Foundation Model。这篇工作提出了一个很根本的问题：为什么agent的记忆能力还要依赖外部模块？作者认为，记忆应该是模型内部的一种原生能力，而不是外挂的数据库。他们把原生记忆定义为两个东西：一是模型主干内持久且动态演化的记忆状态，二是通过模型计算自主存储和调用信息的原生记忆过程。这个思路其实和我们在neural operator里讨论的“状态保持”很像——过去我们用RNN或者隐式层来记住历史信息，现在他们要把这种能力进一步体系化。做完之后，agent就可以在更长的上下文里保持一致性和连续推理能力。我觉得这为未来构建“科研agent”打了一个很重要的架构基础。\n\n说完记忆，我们来看看物理世界建模。PhiZero: A World Model Built Around Physical Language 这篇很有意思，它不走预测像素...",
+    "papers": [
+      {
+        "title": "Metis: Memory Foundation Model",
+        "url": "https://arxiv.org/abs/2607.26760",
+        "arxiv_id": "2607.26760"
+      },
+      {
+        "title": "PhiZero: A World Model Built Around Physical Language",
+        "url": "https://arxiv.org/abs/2607.28624",
+        "arxiv_id": "2607.28624"
+      },
+      {
+        "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+        "url": "https://arxiv.org/abs/2607.28568",
+        "arxiv_id": "2607.28568"
+      },
+      {
+        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
+        "url": "https://arxiv.org/abs/2607.28227",
+        "arxiv_id": "2607.28227"
+      },
+      {
+        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
+        "url": "https://arxiv.org/abs/2607.28618",
+        "arxiv_id": "2607.28618"
+      }
+    ],
+    "published_at": "2026-08-01T23:31:25.273729Z"
+  },
+  {
     "date": "2026-07-31",
     "title": "Paper Morning 2026-07-31",
     "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-03T23:37:08.983337Z"
-  },
-  {
-    "date": "2026-07-02",
-    "title": "Paper Morning 2026-07-02",
-    "description": "今日学术播报: Does VLA Even Know the Basics?, GAIA: Geometry-Adaptive Operat, Valdi: Value Diffusion World M...",
-    "audio_file": "2026-07-02.mp3",
-    "script": "各位早上好，周四的Paper Morning如约而至。\n\n今天想先聊一篇让我思考了很久的论文——关于VLA模型到底保留了多少常识。这篇标题是Does VLA Even Know the Basics?来自HuggingFace热榜。它提出了一个很有意思的问题：我们现在训练机器人做动作，是从强大的视觉语言模型微调来的，但微调之后，它原来学到的那些常识知识、世界知识还剩多少？这确实是个很实际的问题。以前我们可能看到机器人fail了，搞不清到底是它“不知道”还是它“知道了但做不好”。这篇文章的做法很聪明，叫做Act2Answer——不让它直接回答问题，而是让它通过选择一个物体的摆放位置来“投票”。这样就把“控制能力”和“知识水平”给解耦了。这是一个增量改进，但它提醒我们一个重要的问题：foundation model的能力在迁移到具体任务时，是否存在我们以为已经解决但其实并未解决的损耗？这在我们AI4S领域 тоже适用——当我们在PDE求解器里嵌入一个预训练的视觉或语言组件时，它的知识真的能被有效利用吗？\n\n聊完VLA，我们来 看一篇和我们核心方向直接相关的论文——GAIA: Geomet...",
-    "papers": [
-      {
-        "title": "Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models",
-        "url": "https://arxiv.org/abs/2606.19297",
-        "arxiv_id": "2606.19297"
-      },
-      {
-        "title": "GAIA: Geometry-Adaptive Operator Learning for Forward and Inverse Problems",
-        "url": "https://arxiv.org/abs/2607.01128v1",
-        "arxiv_id": "2607.01128v1"
-      },
-      {
-        "title": "Valdi: Value Diffusion World Models",
-        "url": "https://arxiv.org/abs/2607.00917",
-        "arxiv_id": "2607.00917"
-      },
-      {
-        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
-        "url": "https://arxiv.org/abs/2606.28322",
-        "arxiv_id": "2606.28322"
-      },
-      {
-        "title": "SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History",
-        "url": "https://arxiv.org/abs/2606.08671",
-        "arxiv_id": "2606.08671"
-      }
-    ],
-    "published_at": "2026-07-02T23:40:00.054546Z"
   }
 ]
