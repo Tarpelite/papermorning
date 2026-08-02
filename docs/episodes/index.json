@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-02",
+    "title": "Paper Morning 2026-08-02",
+    "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
+    "audio_file": "2026-08-02.mp3",
+    "script": "各位早上好，今天是周日，Paper Morning准时开播。\n\n先从一篇挺有野心的文章说起。Metis这个工作想解决一个问题：现在的AI Agent依赖外部记忆模块，但这些记忆其实是\"外挂\"的，跟模型本身是割裂的。作者提出\"记忆foundation model\"的概念，让模型拥有原生记忆能力——模型内部有一个持久且动态变化的记忆状态，同时具备自主存储和利用信息的原生记忆过程。这不是简单增加一个context window，而是让记忆成为模型架构的一部分。想想看，这其实呼应了我们之前聊过的\"agent memory\"这个被长期忽视的角落。当模型能够 endogenous 地记住和检索信息，它和外部世界的交互方式会发生根本变化。\n\n顺着这个思路，第二篇论文 PhiZero 提出了一个很有趣的观察：现有的物理世界模型直接在像素空间预测未来，但这种隐式表达让底层物理规律变得难以捉摸。PhiZero的思路是，先让模型从视频里学习一种\"物理语言\"——对世界状态转换的紧凑离散表示，然后用这种语言去推理未来会怎样，最后再渲染成视频。这相当于在感知和生成之间加了一层\"物理推理层\"。这个设计让我想起人是怎...",
+    "papers": [
+      {
+        "title": "Metis: Memory Foundation Model",
+        "url": "https://arxiv.org/abs/2607.26760",
+        "arxiv_id": "2607.26760"
+      },
+      {
+        "title": "PhiZero: A World Model Built Around Physical Language",
+        "url": "https://arxiv.org/abs/2607.28624",
+        "arxiv_id": "2607.28624"
+      },
+      {
+        "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+        "url": "https://arxiv.org/abs/2607.28568",
+        "arxiv_id": "2607.28568"
+      },
+      {
+        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
+        "url": "https://arxiv.org/abs/2607.28227",
+        "arxiv_id": "2607.28227"
+      },
+      {
+        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
+        "url": "https://arxiv.org/abs/2607.28618",
+        "arxiv_id": "2607.28618"
+      }
+    ],
+    "published_at": "2026-08-02T23:30:51.342182Z"
+  },
+  {
     "date": "2026-08-01",
     "title": "Paper Morning 2026-08-01",
     "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-04T23:34:12.740980Z"
-  },
-  {
-    "date": "2026-07-03",
-    "title": "Paper Morning 2026-07-03",
-    "description": "今日学术播报: Program-as-Weights: A Programm, EvoPolicyGym: Evaluating Auton, AgenticSTS: A Bounded-Memory T...",
-    "audio_file": "2026-07-03.mp3",
-    "script": "各位早上好，又到了周五，Paper Morning开播的时间了。\n\n今天想先从一个大家可能都有感受的现象说起。现在做AI for Science的大家，多多少少都在用大语言模型帮自己写代码、查文献、或者设计实验。但你有没有觉得，这个过程总有点“别扭”——你把一个任务描述给LLM，它给你一个回复，但你不知道这个“程序”到底是不是真的在你的控制之下。它可能随机应变，也可能一本正经地胡说八道。今天有几篇论文其实都在回答一个类似的问题：怎么让AI agent的行为变得更可预测、更可控、甚至可编译。\n\n第一篇 Program-as-Weights 提出了一种挺有意思的思路。他们把自然语言描述的模糊函数——比如“帮我标记重要的日志行”或者“修复格式错误的JSON”——编译成一个本地可执行的神经工件。核心做法是用一个4B参数的compiler，在10M规模的FuzzyBench数据集上训练，然后为冻结的轻量级解释器发射参数高效的adapters。听起来是不是有点像是把prompt固化成了一个小型模型？他们报告说，一个0.6B的Qwen3解释器执行PAW程序，性能可以和直接调用Qwen3-32B相匹配...",
-    "papers": [
-      {
-        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
-        "url": "https://arxiv.org/abs/2607.02512",
-        "arxiv_id": "2607.02512"
-      },
-      {
-        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
-        "url": "https://arxiv.org/abs/2607.02440",
-        "arxiv_id": "2607.02440"
-      },
-      {
-        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
-        "url": "https://arxiv.org/abs/2607.02255",
-        "arxiv_id": "2607.02255"
-      },
-      {
-        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
-        "url": "https://arxiv.org/abs/2606.28322",
-        "arxiv_id": "2606.28322"
-      },
-      {
-        "title": "Morphing into Hybrid Attention Models",
-        "url": "https://arxiv.org/abs/2606.30562",
-        "arxiv_id": "2606.30562"
-      }
-    ],
-    "published_at": "2026-07-03T23:37:08.983337Z"
   }
 ]
