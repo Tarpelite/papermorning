@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-03",
+    "title": "Paper Morning 2026-08-03",
+    "description": "今日学术播报: Mental World Modeling, N_0-VTLA: Scaling Vision-Tacti, From RLVR to RLSVR: Task Trans...",
+    "audio_file": "2026-08-03.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊一个很有意思的趋势：最近AI圈子里出现了一批工作，都在探讨同一个问题——怎么让模型不仅能“看见”物理世界，还能“理解”背后的人是怎么想的，以及怎么让模型记住更多东西、在更开放的任务里自我提升。这几个方向看似独立，但背后其实有一条主线，我们一会儿再展开。\n\n先来看第一篇 Mental World Modeling，作者是来自新加坡国立大学的Hao Fei和Yiran Zhao。这篇工作的核心贡献，是提出了一个叫心理世界建模的通用理论框架。大家知道，传统的世界模型解决的是物理问题——物体在哪里、接下来会怎么动。但人和人交互的时候，每个人做的事情不仅取决于物理场景，还取决于他心里怎么想——他相信什么、他想要什么、他觉得什么行为是合适的。举个例子，你看到一个人伸手去拿桌子上的水杯，传统世界模型可能会预测他下一步要喝水，但如果你知道他对这杯水有疑虑或者不渴，预测就会完全不同。所以这篇工作的核心思路，是把心理状态变成世界模型的核心组件，而不是事后才加上的解释。这样模型就能同时维护一个物理状态和一个心理状态，去模拟不同的动作会同时改变这...",
+    "papers": [
+      {
+        "title": "Mental World Modeling",
+        "url": "https://arxiv.org/abs/2607.27201",
+        "arxiv_id": "2607.27201"
+      },
+      {
+        "title": "N_0-VTLA: Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens",
+        "url": "https://arxiv.org/abs/2607.23782",
+        "arxiv_id": "2607.23782"
+      },
+      {
+        "title": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement",
+        "url": "https://arxiv.org/abs/2607.23802",
+        "arxiv_id": "2607.23802"
+      },
+      {
+        "title": "Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory",
+        "url": "https://arxiv.org/abs/2607.27919",
+        "arxiv_id": "2607.27919"
+      },
+      {
+        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
+        "url": "https://arxiv.org/abs/2607.28227",
+        "arxiv_id": "2607.28227"
+      }
+    ],
+    "published_at": "2026-08-03T23:38:49.820550Z"
+  },
+  {
     "date": "2026-08-02",
     "title": "Paper Morning 2026-08-02",
     "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-05T23:37:17.001972Z"
-  },
-  {
-    "date": "2026-07-04",
-    "title": "Paper Morning 2026-07-04",
-    "description": "今日学术播报: Program-as-Weights: A Programm, AgenticSTS: A Bounded-Memory T, EvoPolicyGym: Evaluating Auton...",
-    "audio_file": "2026-07-04.mp3",
-    "script": "各位早上好，今天是周末，Paper Morning照常开播。\n\n我们先来看第一篇，Program-as-Weights，标题本身就很耐人寻味——用权重来编程。这篇文章提出了一个叫做fuzzy-function programming的新范式，专门处理那些难以用规则实现的任务，比如从日志里挑出重要信息、修复格式错误的JSON，或者按照用户意图排序搜索结果。这些任务以前只能调用大模型API，但API调用有三个痛点：缺乏本地性、不可复现、成本不稳定。PAW的思路是把自然语言描述的函数“编译”成一个紧凑的神经工件，也就是针对一个轻量级解释器的参数高效适配器。他们训练了一个4B规模的编译器，在10M规模的FuzzyBench数据集上学习，然后让一个0.6B的Qwen3解释器来执行这些程序。效果很有意思：一个0.6B的模型执行PAW程序能达到32B模型直接提示的效果，但推理成本只有五十分之一。这让我想到一个问题，我们做科学计算的时候也有很多“模糊”的函数——比如怎么判断一个分子构象是不是合理、怎么评估一条轨迹是不是收敛以前我们倾向于写复杂的规则或者调用大API，但PAW提醒我们，或许可以用小模型加...",
-    "papers": [
-      {
-        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
-        "url": "https://arxiv.org/abs/2607.02512",
-        "arxiv_id": "2607.02512"
-      },
-      {
-        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
-        "url": "https://arxiv.org/abs/2607.02255",
-        "arxiv_id": "2607.02255"
-      },
-      {
-        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
-        "url": "https://arxiv.org/abs/2607.02440",
-        "arxiv_id": "2607.02440"
-      },
-      {
-        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
-        "url": "https://arxiv.org/abs/2606.28322",
-        "arxiv_id": "2606.28322"
-      },
-      {
-        "title": "Morphing into Hybrid Attention Models",
-        "url": "https://arxiv.org/abs/2606.30562",
-        "arxiv_id": "2606.30562"
-      }
-    ],
-    "published_at": "2026-07-04T23:34:12.740980Z"
   }
 ]

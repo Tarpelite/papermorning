@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-03</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-03</h1>
+    <p class="date">2026-08-03</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-03.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想和大家聊一个很有意思的趋势：最近AI圈子里出现了一批工作，都在探讨同一个问题——怎么让模型不仅能“看见”物理世界，还能“理解”背后的人是怎么想的，以及怎么让模型记住更多东西、在更开放的任务里自我提升。这几个方向看似独立，但背后其实有一条主线，我们一会儿再展开。
+
+先来看第一篇 Mental World Modeling，作者是来自新加坡国立大学的Hao Fei和Yiran Zhao。这篇工作的核心贡献，是提出了一个叫心理世界建模的通用理论框架。大家知道，传统的世界模型解决的是物理问题——物体在哪里、接下来会怎么动。但人和人交互的时候，每个人做的事情不仅取决于物理场景，还取决于他心里怎么想——他相信什么、他想要什么、他觉得什么行为是合适的。举个例子，你看到一个人伸手去拿桌子上的水杯，传统世界模型可能会预测他下一步要喝水，但如果你知道他对这杯水有疑虑或者不渴，预测就会完全不同。所以这篇工作的核心思路，是把心理状态变成世界模型的核心组件，而不是事后才加上的解释。这样模型就能同时维护一个物理状态和一个心理状态，去模拟不同的动作会同时改变这两个状态。这篇工作的理论框架很有意思，我个人很欣赏它把认知科学里的心智理论融进去的做法。当然，现在还只是一个理论框架，具体的物理场景建模能力有待验证，但它提醒我们，真正智能的agent，可能不仅要懂物理，还要懂人。
+
+接下来这篇 N_0-VTLA，是一个视觉-触觉-语言-动作模型，来自NeoteAI团队和复旦大学的TEAI团队。这篇工作的核心贡献，是第一个在大规模触觉数据上进行预训练的VTLA模型。大家可能知道，这两年视觉-语言-动作模型在机器人领域火得很快，但主流方案都是靠视觉来感知环境，触觉往往被忽略。触觉信息的优势在于，它能直接感知接触力、摩擦力、材质软硬这些物理属性，对精细操作至关重要。比如你要拧螺丝、剥鸡蛋、感受布料的张力，没有触觉是很困难的。这篇工作提出了一个三阶段的训练方案：先做视觉-触觉的预训练，学到广泛的接触先验；然后分阶段把触觉通路整合进来；最后用一种叫advantage-conditioned的离线策略提升方法来做后训练。他们还构建了一个大规模的视觉-触觉机器人数据集NeoData。这篇工作的价值在于，它证明了触觉感知可以成为多模态foundation model的一部分，而且规模化之后确实能提升contact-rich manipulation的能力。对于我们做AI for Science的人来说，这篇工作也提供了一个有趣的视角：物理世界里的很多现象，恰恰是通过接触力来体现的，如果模型不理解接触，就很难真正模拟物理过程。
+
+第三篇是关于强化学习的新进展，叫 From RLVR to RLSVR，作者来自多所大学。这篇工作的核心贡献，是提出了一种把 RLVR 扩展到开放域任务的方法。大家知道，RLVR，也就是带可验证奖励的强化学习，在数学和代码这些有确定性答案的领域效果很好，OpenAI的o系列模型、DeepSeek的R1都用这个思路。但问题在于，开放域任务没有标准答案，比如写一篇营销文案、做一个设计决策，这些该怎么定义奖励？这篇工作的核心思路很巧妙：它把开放域任务转换成一种可以自我验证的形式。具体来说，他们让模型自己生成验证标准，然后根据这个标准来给自己打分。这本质上是一种任务转换，把“评价一个开放域输出”这个问题，变成“让模型自己定义评价标准并执行”。这个思路有点类似于self-supervised learning的哲学——从数据本身构造监督信号。不过我也有一个疑问：模型自己定义的验证标准靠谱吗？会不会形成循环论证？这个可能需要更多实验来验证。但不管怎样，这篇工作为开放域的AI agent训练提供了一个新的训练范式，意义很大。
+
+然后是第四篇 Memory Decoder at Scale，来自北大的研究团队。这篇工作的核心贡献，是把记忆模块的参数量规模做到了6.9B，并且在300B tokens上做了预训练。大家知道，decoder-only的语言模型把记忆和推理混在一个参数集合里，记忆容量受限于参数规模。这篇工作想做的是，把记忆模块独立出来，单独扩展它的容量。他们遇到的一个核心瓶颈是：当数据规模到了300B tokens的时候，标准的Faiss索引和检索就变得不可行了，因为索引和搜索的成本太高。于是他们设计了一套分布式的Faiss索引 pipeline，再加上一种稀疏的、batch-wise的kNN分布加载方法，来解决这个问题。实验结果很有趣：他们发现，把更多参数分配给记忆模块，比简单地放大基础模型，能获得更好的参数-性能 trade-off。这篇工作给我们的一个启发是：或许未来的AI系统不应该是单一的大模型，而是一个“基础模型 + 可扩展记忆模块”的架构。这对于需要长期上下文处理的场景，比如文献综述、代码库理解，会很有价值。
+
+最后这篇是今天的热度之王，Qwen-UI-Agent，有将近300个点赞，来自阿里巴巴。这篇工作的核心贡献，是构建了一个面向真实世界的通用GUI agent，能够在手机、电脑、Web等多个平台上操作，并且能把GUI交互和命令行执行结合起来。这篇工作的亮点在于几个方面：首先是统一的动作空间，把不同平台的交互操作抽象成一套统一的表示；其次是大规模的真实设备手机runtime；还有长程任务的执行能力，以及模型自主提升能力的探索。作者的目标很宏大：让这个agent成为通用的人工智能 executor，能够操作现有的数字设备。更值得注意的是，他们已经开源了技术报告和部分资源，这在商业公司中是不多见的。
+
+好，我们来总结一下今天的整体观察。今天这几篇论文看似方向各异，但背后有一条隐含的主线：AI agent正在从“执行特定任务的工具”，向“具有通用能力、能在开放世界中自主推理和学习的智能体”演进。无论是心理世界模型对心智理论的引入，触觉模态对物理理解的增强，RLSVR对开放域学习边界的扩展，记忆模块的独立规模化，还是GUI agent向真实数字世界的渗透，都在指向同一个方向：更懂物理、更懂人、记得更多、能处理更开放的任务。这不正是我们理想的科研助手应该具备的能力吗？好了，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.27201" target="_blank">Mental World Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2607.23782" target="_blank">N_0-VTLA: Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens</a></li>
+<li><a href="https://arxiv.org/abs/2607.23802" target="_blank">From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement</a></li>
+<li><a href="https://arxiv.org/abs/2607.27919" target="_blank">Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory</a></li>
+<li><a href="https://arxiv.org/abs/2607.28227" target="_blank">Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
