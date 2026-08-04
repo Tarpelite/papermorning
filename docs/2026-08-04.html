@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-04</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-04</h1>
+    <p class="date">2026-08-04</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-04.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周二的Paper Morning如约而至。
+
+今天想先从一篇很有意思的理论工作聊起。Mental World Modeling这个词听起来有点抽象，但它回答了一个很根本的问题：我们在构建世界模型的时候，到底该建模什么？过去的模型关注的是物理状态——物体在哪里、接下来会怎么动。但人类行为背后其实有一层更隐蔽的东西——每个人的信念、意图、情感，还有对社会规范的理解。这篇工作提出了一个耦合的物理-mental状态框架，让模型能够模拟“每个人脑子里在想什么”会如何影响他的行动。这个思路其实挺刷新我的认知的，它提醒我们，世界模型不只是物理模拟器，还是一个社会认知系统。各位做AI4S的朋友可能觉得这个离自己有点远，但想想看，当我们在构建物理世界的预测模型时，是不是也常常忽略了“观察者”这个角色本身具有的先验和意图？这或许是个值得警惕的盲点。
+
+聊完理论，我们来看一个很实际的问题。语言模型的后训练现在普遍用on-policy distillation，让模型从自己的输出中学习。但这里有个陷阱：训练时模型能看到privileged信息，推理时却看不到，这就导致模型学到了一些“特权依赖”的行为，推理时根本复制不了，最终性能反而下降。这篇工作提出了Dual-Anchored Policy Distillation，用双路径锚定的办法来弥合训练和推理之间的信息不对称。这个问题其实不仅存在于语言模型，在任何需要从teacher蒸馏到student的场景里都可能出现。各位做AI4S的同事，当我们在用teacher-student架构做PDE求解器的知识蒸馏时，是否也遇到过类似的privilege illusion？或许可以从这个工作里找找答案。
+
+接下来看一篇关于LLM agent的长程推理。现在的大模型agent要完成复杂任务，往往需要跨很多步的推理、工具调用和自我修正。但现有的框架把任务执行、状态跟踪和完成评估都塞进一个越来越长的context里，这就导致状态变得不可追踪，而且早期的错误判断会一路传播到后面。这篇工作提出了LongHorizon-Harness，用一个显式管理在context外部维护任务状态的机制，配合一个Manage-Execute-Audit的循环，让每一步的验证都独立进行。这个设计思想其实很值得借鉴。我们在处理长时间跨度的物理模拟或者多尺度PDE求解时，是否也需要类似的状态管理架构？把“执行”和“状态跟踪”分离，或许能让复杂系统的建模更可控。
+
+然后我们来看一个评估基准。现在很多人在用可控视频生成模型作为世界模型，但现有的benchmark主要看两件事：视觉质量怎么样、以及指令有没有被执行。但世界模型真正核心的能力其实是“内在反应性”——给定一个场景状态，能否推理出世界应该怎么反应，即使这个反应没有被显式描述。这篇工作WorldExam提出了一个分层诊断框架，从视觉质量、控制对齐、空间一致性到世界反应性，四个层次来评估。1400多个case，覆盖八个领域。这个工作让我想到一个问题：我们在评估PDE求解器或者物理神经网络的时候，是不是也过于关注预测精度，而忽略了模型对物理因果结构的把握？精度高不代表物理理解正确，这点值得警惕。
+
+最后来看一个语音和音频生成的工作。SwanTale要解决的问题很实际：动画配音、影视广告、游戏制作这些场景，需要设计完全不存在参考的语音，需要用自然语言控制说话人风格，还需要支持各种声学环境和音效。这篇工作从数据和模型两端入手，提出了SwanData-Caption清洗数据，并构建了一个统一的多说话人语音和音频生成框架，能同时支持instruct和zero-shot两种模式。这个应用导向的工作让我想到，AI4S领域其实也很需要类似的能力——能不能用自然语言描述一个物理场景，然后让模型生成符合物理规律的仿真结果？instruct和zero-shot的结合，或许是科学计算民主化的一个方向。
+
+好了，今天的播报接近尾声。我观察到这一组论文有个共同的底层主题：无论是在世界建模、知识蒸馏、agent架构还是生成模型里，研究者们都在面对一个核心挑战——如何在“训练时的完备信息”和“推理时的有限条件”之间架起桥梁。Mental World Modeling引入了mental state作为隐性信息的载体，DAPD用双锚定来对齐训练和推理，LongHorizon-Harness把状态管理移出context来解决长程依赖，WorldExam定义了“内在反应性”作为不可见维度的评估，SwanTale则在生成侧实现了instruct到zero-shot的灵活切换。这背后反映的是一个趋势：我们要建模的不只是显性的数据和行为，还有隐性的条件、状态和能力。这种从“显式建模”到“隐性推理”的范式迁移，或许也值得AI4S的同行们思考——当我们构建PDE的基础模型时，是否也应该考虑模型在“少样本”、“零样本”场景下对物理规律的泛化能力？
+
+好了，今天的分享就到这里，祝各位科研顺利。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2607.27201" target="_blank">Mental World Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2608.01735" target="_blank">DAPD: Dual-Anchored Policy Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2608.01964" target="_blank">LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks</a></li>
+<li><a href="https://arxiv.org/abs/2608.02603" target="_blank">WorldExam: Benchmarking World Models from Apparent Appearance to Inherent Reactivity</a></li>
+<li><a href="https://arxiv.org/abs/2608.02023" target="_blank">SwanTale: Unified Multi-Speaker Speech and Audio Generation for Instruct and Zero-Shot Tasks</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

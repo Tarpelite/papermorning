@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-04",
+    "title": "Paper Morning 2026-08-04",
+    "description": "今日学术播报: Mental World Modeling, DAPD: Dual-Anchored Policy Dis, LongHorizon-Harness: Advancing...",
+    "audio_file": "2026-08-04.mp3",
+    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想先从一篇很有意思的理论工作聊起。Mental World Modeling这个词听起来有点抽象，但它回答了一个很根本的问题：我们在构建世界模型的时候，到底该建模什么？过去的模型关注的是物理状态——物体在哪里、接下来会怎么动。但人类行为背后其实有一层更隐蔽的东西——每个人的信念、意图、情感，还有对社会规范的理解。这篇工作提出了一个耦合的物理-mental状态框架，让模型能够模拟“每个人脑子里在想什么”会如何影响他的行动。这个思路其实挺刷新我的认知的，它提醒我们，世界模型不只是物理模拟器，还是一个社会认知系统。各位做AI4S的朋友可能觉得这个离自己有点远，但想想看，当我们在构建物理世界的预测模型时，是不是也常常忽略了“观察者”这个角色本身具有的先验和意图？这或许是个值得警惕的盲点。\n\n聊完理论，我们来看一个很实际的问题。语言模型的后训练现在普遍用on-policy distillation，让模型从自己的输出中学习。但这里有个陷阱：训练时模型能看到privileged信息，推理时却看不到，这就导致模型学到了一些“特权依赖”的行...",
+    "papers": [
+      {
+        "title": "Mental World Modeling",
+        "url": "https://arxiv.org/abs/2607.27201",
+        "arxiv_id": "2607.27201"
+      },
+      {
+        "title": "DAPD: Dual-Anchored Policy Distillation",
+        "url": "https://arxiv.org/abs/2608.01735",
+        "arxiv_id": "2608.01735"
+      },
+      {
+        "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
+        "url": "https://arxiv.org/abs/2608.01964",
+        "arxiv_id": "2608.01964"
+      },
+      {
+        "title": "WorldExam: Benchmarking World Models from Apparent Appearance to Inherent Reactivity",
+        "url": "https://arxiv.org/abs/2608.02603",
+        "arxiv_id": "2608.02603"
+      },
+      {
+        "title": "SwanTale: Unified Multi-Speaker Speech and Audio Generation for Instruct and Zero-Shot Tasks",
+        "url": "https://arxiv.org/abs/2608.02023",
+        "arxiv_id": "2608.02023"
+      }
+    ],
+    "published_at": "2026-08-04T23:34:39.062444Z"
+  },
+  {
     "date": "2026-08-03",
     "title": "Paper Morning 2026-08-03",
     "description": "今日学术播报: Mental World Modeling, N_0-VTLA: Scaling Vision-Tacti, From RLVR to RLSVR: Task Trans...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-06T23:39:50.661172Z"
-  },
-  {
-    "date": "2026-07-05",
-    "title": "Paper Morning 2026-07-05",
-    "description": "今日学术播报: Program-as-Weights: A Programm, AgenticSTS: A Bounded-Memory T, EvoPolicyGym: Evaluating Auton...",
-    "audio_file": "2026-07-05.mp3",
-    "script": "各位早上好，今天是周日，Paper Morning如约而至。\n\n先聊聊第一篇，Program-as-Weights，中文可以叫“权重即程序”。这个工作的核心是提出了一种新的模糊函数编程范式，把自然语言描述的模糊规则编译成一个小巧的神经网络模块，而不是每次都去调用大模型API。这让我想到一个类比：就像我们以前用规则写编译器，现在用神经网络来“编译”模糊规则。他们训练了一个40亿参数的编译器，在1000万条数据上学习，最后用一个6亿的小模型就能达到原来320亿大模型的效果。这件事为什么现在出现呢？因为大家越来越依赖大模型API来做日志告警、JSON修复这些日常任务，但成本高、不可控。这篇工作的价值在于展示了“小模型加专用适配器”的可行路径，有点像我们做neural operator时用小网络编码复杂映射的思路——用参数高效的adapter来完成特定任务，而不是让大模型事必亲恭。\n\n接下来这篇AgenticSTS挺有意思，它构建了一个基于“ slay the spire 2”（杀戮尖塔2）的测试环境，专门用来评估长程记忆的LLM agent。作者提出一个很有意思的洞见：传统做法是把所有历史对...",
-    "papers": [
-      {
-        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
-        "url": "https://arxiv.org/abs/2607.02512",
-        "arxiv_id": "2607.02512"
-      },
-      {
-        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
-        "url": "https://arxiv.org/abs/2607.02255",
-        "arxiv_id": "2607.02255"
-      },
-      {
-        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
-        "url": "https://arxiv.org/abs/2607.02440",
-        "arxiv_id": "2607.02440"
-      },
-      {
-        "title": "Morphing into Hybrid Attention Models",
-        "url": "https://arxiv.org/abs/2606.30562",
-        "arxiv_id": "2606.30562"
-      },
-      {
-        "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
-        "url": "https://arxiv.org/abs/2606.28322",
-        "arxiv_id": "2606.28322"
-      }
-    ],
-    "published_at": "2026-07-05T23:37:17.001972Z"
   }
 ]
