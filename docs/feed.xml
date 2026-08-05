@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-05</title>
+      <description>今日学术播报: AURORA-LM: Autoencoding Unifie, JoyAI-Video-Edit: Real-Time Op, Hunyuan3D-Buffalo 1.0: A Unifi...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-05.mp3" length="10627283" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-05.mp3</guid>
+      <pubDate>2026-08-05T23:32:29.734020Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-04</title>
       <description>今日学术播报: Mental World Modeling, DAPD: Dual-Anchored Policy Dis, LongHorizon-Harness: Advancing...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-04.mp3" length="9650512" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-07.mp3" length="9609761" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-07.mp3</guid>
       <pubDate>2026-07-07T23:32:22.192327Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-06</title>
-      <description>今日学术播报: Program-as-Weights: A Programm, The Mirage of Optimizing Train, AgenticSTS: A Bounded-Memory T...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-06.mp3" length="9347074" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-06.mp3</guid>
-      <pubDate>2026-07-06T23:39:50.661172Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-05</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-05</h1>
+    <p class="date">2026-08-05</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-05.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周三的Paper Morning又和各位见面了。
+
+今天想先和大家聊一个我最近反复思考的问题：我们做科学计算的人，常常觉得生成模型离自己很远，毕竟 diffusion model 在图像、视频里玩得再热闹，跟解 PDE 似乎没什么直接关系。但如果我们把视角拉高一点，看这些方法在“表示”这个根本问题上做了什么，可能会发现一些意想不到的启发。
+
+先看 AURORA-LM 这篇工作。它在做的事情一句话概括就是：用连续潜空间来做语言生成，而不是像传统那样用离散 token。这听起来好像只是生成模型领域的技术细节，但我觉得它触碰到了一个很根本的问题——什么样的表示适合用来做扩散？我们知道，扩散模型在图像、音频上已经非常成功了，但语言本质上还是离散的。之前的做法要么是强行把连续表示压缩成离散 token，要么就是放弃 token 级别的精度。AURORA-LM 的思路是，我不简化表示来迁就模型，而是反过来设计一个足够好的可解码表示，然后让扩散模型直接去学它的分布。这里面有一个很值得咱们思考的设计哲学：不是让任务去将就工具，而是为任务专门设计更合适的工具，再让工具去适应它。这个思路其实和我们在科学计算里强调的“问题导向的表示”是一致的。什么样的 PDE 表示最适合神经网络去学？也许不是简单地把网格点数值喂进去，而是要找到一种“更可学”的结构化表示。这方面的工作其实已经有很多人在做了，但 AURORA-LM 给我一个感觉是，生成模型那边对“表示”这个问题的思考，可能比咱们走得更远一点。
+
+说完语言生成，咱们再看一个视觉方向的进展。Hunyuan3D-Buffalo 这篇是腾讯做的统一多模态 3D 模型，支持理解、文本到 3D 生成、编辑和部件生成。它的核心贡献不只是做了一个大模型，而是构建了一个 87M 规模的 3D 多模态语料库，其中包含了 25M 理解样本、50M 文本到 3D 对和 12M 编辑对。这个规模在 3D 领域是前所未有的。我想特别指出的是这个“编辑对”的价值。之前的 3D 生成数据大多是对应的文本描述和 3D 模型，但编辑数据几乎没有。他们用 Nano3D-v2 生成了 12M 的编辑对，这相当于给模型提供了“如何修改 3D 物体”的监督信号。这让我想到咱们 AI4S 里的一个痛点：科学数据，尤其是带有标注的高质量物理数据，太少了。很多时候我们不是没有物理问题的解，而是没有成对的“输入-扰动-输出”数据。如果我们也用这种生成式的方法来构建物理数据的增强集，会不会是一个突破口？
+
+接下来聊聊 JoyAI-Video-Edit。这篇是做实时视频编辑的，用了 16B 参数的自主归扩散框架。它提出了几个技术点，包括分块自主归适应、源锚定分布匹配蒸馏和长期自主归蒸馏，用来解决实时性、源保真度和时间一致性这三个相互制约的问题。这篇的技术细节我不展开，但我觉得它反映出了一个趋势：生成模型正在从“能生成”走向“能可控地实时生成”。这对科学计算意味着什么？想象一下，如果我们可以实时地根据当前的物理状态生成未来的演化结果，而且还能编辑约束条件，这不就是一种实时物理模拟吗？虽然它针对的是视频，但它解决的核心问题——如何在有限计算资源下做可控的生成——其实是一个普遍问题。
+
+然后是 MerchantBench。这篇提出了一个新的 benchmark，专门评估 LLM agent 在电商场景下的长期一致性。它定义了四个核心能力：产品采购、列表定价、现金流管理和混合延迟反馈适应。这个 benchmark 的设计很有意思，它强调的是“跨长时间跨度保持目的性行为”的能力，而不仅仅是单步决策的准确性。这个问题在科学研究中其实很常见：一个实验方案执行三个月，中途遇到意外数据，要不要调整？怎么调整才能保持最终目标的连贯性？这本质上也是一个长期一致性问题。虽然 MerchantBench 面向的是电商，但它提出的评估框架——持久环境、行动约束未来选择、延迟反馈——其实很适合迁移到科研 agent 的评估上。
+
+最后看一下 InfiniSplat。这是做单目视图合成的，用的是前馈 3D Gaussian Splatting。它主要解决的是大视角变化下的结构一致性问题。之前的 pixel-aligned 方法在视角偏移大的时候效果会下降，InfiniSplat 通过几何引导采样将表示从 pixel-aligned 转向 surface-aligned。这篇技术性比较强，但它让我想到一个更宽泛的问题：在科学可视化中，我们常常需要从稀疏观测重建完整的 3D 结构。比如从几个切面图像重建医学器官，或者从有限的卫星观测重构地球物理场。这种从 2D 到 3D 的重建，本身就是一个 view synthesis 问题。InfiniSplat 的思路——先学表面结构再学细节——可能对我们的稀疏数据重建方法有启发。
+
+好了，今天的五篇论文都过了一遍。表面上看，它们跟咱们熟悉的 neural operator、PDE foundation model 直接关系不大。但如果咱们稍微跳出来看，会发现它们都在处理一些很根本的问题：什么样的表示更适合扩散模型来学？如何大规模构建高质量的科学训练数据？如何实现可控的实时生成？这些问题的答案，可能比某篇具体论文的方法更能帮我们打开思路。科学计算的范式转变，往往不是发生在本领域，而是发生在那些看似“无关”的交叉地带。好了，各位今天也辛苦了，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.02602" target="_blank">AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2608.03974" target="_blank">JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion</a></li>
+<li><a href="https://arxiv.org/abs/2608.02711" target="_blank">Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing</a></li>
+<li><a href="https://arxiv.org/abs/2607.28956" target="_blank">MerchantBench: Benchmarking LLM Agents for Long-Term Coherence in E-Commerce Operations</a></li>
+<li><a href="https://arxiv.org/abs/2608.02437" target="_blank">InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

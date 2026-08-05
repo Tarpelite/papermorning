@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-05",
+    "title": "Paper Morning 2026-08-05",
+    "description": "今日学术播报: AURORA-LM: Autoencoding Unifie, JoyAI-Video-Edit: Real-Time Op, Hunyuan3D-Buffalo 1.0: A Unifi...",
+    "audio_file": "2026-08-05.mp3",
+    "script": "各位早上好，周三的Paper Morning又和各位见面了。\n\n今天想先和大家聊一个我最近反复思考的问题：我们做科学计算的人，常常觉得生成模型离自己很远，毕竟 diffusion model 在图像、视频里玩得再热闹，跟解 PDE 似乎没什么直接关系。但如果我们把视角拉高一点，看这些方法在“表示”这个根本问题上做了什么，可能会发现一些意想不到的启发。\n\n先看 AURORA-LM 这篇工作。它在做的事情一句话概括就是：用连续潜空间来做语言生成，而不是像传统那样用离散 token。这听起来好像只是生成模型领域的技术细节，但我觉得它触碰到了一个很根本的问题——什么样的表示适合用来做扩散？我们知道，扩散模型在图像、音频上已经非常成功了，但语言本质上还是离散的。之前的做法要么是强行把连续表示压缩成离散 token，要么就是放弃 token 级别的精度。AURORA-LM 的思路是，我不简化表示来迁就模型，而是反过来设计一个足够好的可解码表示，然后让扩散模型直接去学它的分布。这里面有一个很值得咱们思考的设计哲学：不是让任务去将就工具，而是为任务专门设计更合适的工具，再让工具去适应它。这个思路其实和...",
+    "papers": [
+      {
+        "title": "AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling",
+        "url": "https://arxiv.org/abs/2608.02602",
+        "arxiv_id": "2608.02602"
+      },
+      {
+        "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
+        "url": "https://arxiv.org/abs/2608.03974",
+        "arxiv_id": "2608.03974"
+      },
+      {
+        "title": "Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing",
+        "url": "https://arxiv.org/abs/2608.02711",
+        "arxiv_id": "2608.02711"
+      },
+      {
+        "title": "MerchantBench: Benchmarking LLM Agents for Long-Term Coherence in E-Commerce Operations",
+        "url": "https://arxiv.org/abs/2607.28956",
+        "arxiv_id": "2607.28956"
+      },
+      {
+        "title": "InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis",
+        "url": "https://arxiv.org/abs/2608.02437",
+        "arxiv_id": "2608.02437"
+      }
+    ],
+    "published_at": "2026-08-05T23:32:29.734020Z"
+  },
+  {
     "date": "2026-08-04",
     "title": "Paper Morning 2026-08-04",
     "description": "今日学术播报: Mental World Modeling, DAPD: Dual-Anchored Policy Dis, LongHorizon-Harness: Advancing...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-07T23:32:22.192327Z"
-  },
-  {
-    "date": "2026-07-06",
-    "title": "Paper Morning 2026-07-06",
-    "description": "今日学术播报: Program-as-Weights: A Programm, The Mirage of Optimizing Train, AgenticSTS: A Bounded-Memory T...",
-    "audio_file": "2026-07-06.mp3",
-    "script": "各位早上好，今天周一，Paper Morning开播了。\n\n先说第一篇，Program-as-Weights，做的是一个很有意思的范式转换：把自然语言规范直接“编译”成神经网络的权重参数。大家知道，现在很多日常编程任务，比如日志告警、JSON修复、意图排序，这些模糊的、难以用规则精确描述的函数，很多同学就直接调用大模型API了。但调用API有代价——延迟、不可控、费用高。这篇工作提出“模糊函数编程”，用4B参数的编译器在10M条数据上微调，然后把编译出的参数高效适配器挂在一个0.6B的小模型上执行。效果很有意思：一个0.6B的Qwen3加上PAW程序，性能可以直接对标32B Qwen3的直接调用，但推理成本只有五十分之一。这件事为什么值得关注？它其实在回答一个很根本的问题——当我们谈“模型作为API”和“模型本地部署”时，有没有中间路线？PAW给出了一个思路：用编译的思路把大模型的能力“萃取”到小模型里。对我们做科学计算的人来说，这种参数高效适配的思路，其实和我们在做物理先验注入、知识蒸馏时的动机是一样的——怎么把复杂知识压缩到一个可部署的 artifact 里。\n\n第二篇工作，Mon...",
-    "papers": [
-      {
-        "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
-        "url": "https://arxiv.org/abs/2607.02512",
-        "arxiv_id": "2607.02512"
-      },
-      {
-        "title": "The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2606.29526",
-        "arxiv_id": "2606.29526"
-      },
-      {
-        "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
-        "url": "https://arxiv.org/abs/2607.02255",
-        "arxiv_id": "2607.02255"
-      },
-      {
-        "title": "EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments",
-        "url": "https://arxiv.org/abs/2607.02440",
-        "arxiv_id": "2607.02440"
-      },
-      {
-        "title": "Morphing into Hybrid Attention Models",
-        "url": "https://arxiv.org/abs/2606.30562",
-        "arxiv_id": "2606.30562"
-      }
-    ],
-    "published_at": "2026-07-06T23:39:50.661172Z"
   }
 ]
