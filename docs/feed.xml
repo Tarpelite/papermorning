@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-07</title>
+      <description>今日学术播报: Towards Physics of Multimodal , ABSeeker: Training Long-Horizo, ToolArtist: Tool-Using Unified...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-07.mp3" length="8183475" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-07.mp3</guid>
+      <pubDate>2026-08-07T01:38:17.545833Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-05</title>
       <description>今日学术播报: AURORA-LM: Autoencoding Unifie, JoyAI-Video-Edit: Real-Time Op, Hunyuan3D-Buffalo 1.0: A Unifi...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-05.mp3" length="10627283" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-08.mp3" length="5890760" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-08.mp3</guid>
       <pubDate>2026-07-08T23:38:33.178756Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-07</title>
-      <description>今日学术播报: GigaWorld-1: A Roadmap to Buil, UI-MOPD: Multi-Platform On-Pol, PixWorld: Unifying 3D Scene Ge...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-07.mp3" length="9609761" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-07.mp3</guid>
-      <pubDate>2026-07-07T23:32:22.192327Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
