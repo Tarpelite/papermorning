@@ -2,14 +2,24 @@
   {
     "date": "2026-08-07",
     "title": "Paper Morning 2026-08-07",
-    "description": "今日学术播报: Towards Physics of Multimodal , ABSeeker: Training Long-Horizo, ToolArtist: Tool-Using Unified...",
+    "description": "今日学术播报: OSReward: Instituting Standard, AgentOPSD: Recursive Self-Dist, Recursive Synthesis for Long-H...",
     "audio_file": "2026-08-07.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域特别关心的话题聊起，就是foundation model的预训练范式正在发生什么样的变化。过去一年里，大家都在谈“统一模型”，从视觉到语言再到多模态，但真正的问题是：当我们把不同模态放在一起训练时，它们到底在怎样交换信息？这直接关系到我们怎么设计AI4S的预训练策略。\n\n第一篇论文就深入探讨了这个“物理机制”。作者在合成数据和真实大规模数据上做了系统实验，发现了一些挺有意思的现象。知识流动并不是对称的，语言、视觉理解、视觉生成这三个方向的知识迁移模式差异很大。更关键的是，数据复杂度决定了模态之间是协同还是竞争关系——当数据足够复杂时，模态会相互促进；而当数据变得稀疏或者任务过于简单，模态之间反而会“抢资源”。这个发现对我们做科学数据的预训练特别有意义，因为我们经常面临的数据挑战就是：某些物理模态的数据量远少于另一些，怎么让它们协同而不是竞争，可能是设计PDE foundation model的关键。\n\n那么，沿着agent这个方向，今天有两篇论文都很有意思。第二篇叫ABSeeker，做的是长程搜索agent...",
+    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想和大家聊聊一个正在深刻改变AI研究格局的主题——Agent训练范式的演进。如果你过去一年关注过LLM Agent的发展，会发现一个有趣的现象：模型能力在快速提升，但训练方法却似乎有些跟不上。我们有了强大的基座模型，却常常在“如何让Agent真正学会长程推理”这个问题上卡住。那今天的几篇论文，正好从不同角度回应了这个挑战。\n\n先看第一篇OSReward，它提出的问题非常根本：当我们用VLM作为Agent轨迹的评判者时，这个评判到底可不可靠？这篇工作构建了一个系统性的benchmark，发现目前主流的VLM judge存在显著的偏差，而且这个偏差在不同平台、不同任务上很不一致。这个发现很重要，因为现在很多Agent的RL训练和数据筛选都依赖VLM作为奖励信号，如果评判本身不可靠，那整个训练框架的可靠性都要打个问号。这篇工作不是要否定VLM judge的价值，而是提醒我们：在把Agent训练交给自动化评估之前，我们需要先校准这些“裁判”。\n\n那么，既然评判这么重要，我们该怎样给Agent的学习过程提供有效的监督信号呢？这就引出了...",
     "papers": [
       {
-        "title": "Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes",
-        "url": "https://arxiv.org/abs/2608.05000",
-        "arxiv_id": "2608.05000"
+        "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
+        "url": "https://arxiv.org/abs/2607.28609",
+        "arxiv_id": "2607.28609"
+      },
+      {
+        "title": "AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2608.05987",
+        "arxiv_id": "2608.05987"
+      },
+      {
+        "title": "Recursive Synthesis for Long-Horizon Terminal Tasks",
+        "url": "https://arxiv.org/abs/2608.05466",
+        "arxiv_id": "2608.05466"
       },
       {
         "title": "ABSeeker: Training Long-Horizon Search Agents via Answer-Backtracked Credit Assignment",
@@ -17,22 +27,12 @@
         "arxiv_id": "2608.05102"
       },
       {
-        "title": "ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation",
-        "url": "https://arxiv.org/abs/2608.04436",
-        "arxiv_id": "2608.04436"
-      },
-      {
-        "title": "The Personalization Mirage: How LLMs Fabricate User Profiles, and Why Self-Monitoring Misleads",
-        "url": "https://arxiv.org/abs/2608.04570",
-        "arxiv_id": "2608.04570"
-      },
-      {
-        "title": "HelloWorld: Enabling Socially Interactive Characters in Video World Models",
-        "url": "https://arxiv.org/abs/2608.05070",
-        "arxiv_id": "2608.05070"
+        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
+        "url": "https://arxiv.org/abs/2608.01481",
+        "arxiv_id": "2608.01481"
       }
     ],
-    "published_at": "2026-08-07T01:38:17.545833Z"
+    "published_at": "2026-08-07T23:08:26.526447Z"
   },
   {
     "date": "2026-08-05",
