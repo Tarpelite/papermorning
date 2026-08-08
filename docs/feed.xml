@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-08</title>
+      <description>今日学术播报: Interpretable MEG Decoding of , OSReward: Instituting Standard, AgentOPSD: Recursive Self-Dist...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-08.mp3" length="9375286" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-08.mp3</guid>
+      <pubDate>2026-08-08T23:00:10.527559Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-07</title>
       <description>今日学术播报: OSReward: Instituting Standard, AgentOPSD: Recursive Self-Dist, Recursive Synthesis for Long-H...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-07.mp3" length="9039874" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-09.mp3" length="9920723" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-09.mp3</guid>
       <pubDate>2026-07-09T23:48:20.643620Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-08</title>
-      <description>今日学术播报: RynnWorld-Teleop: An Action-Co, RynnWorld-4D: 4D Embodied Worl, AlayaWorld: Long-Horizon and P...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-08.mp3" length="5890760" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-08.mp3</guid>
-      <pubDate>2026-07-08T23:38:33.178756Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

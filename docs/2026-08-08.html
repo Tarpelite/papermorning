@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-08</h1>
+    <p class="date">2026-08-08</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-08.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周末的Paper Morning又和各位见面了。今天想和大家聊一个最近特别热闹的方向，就是AI Agent的训练、评估和数据合成。我们几篇看似不相关的论文，背后其实藏着一条清晰的主线。
+
+先来看一篇神经科学和AI交叉的工作。研究者试图从脑磁图信号中重建人听到的语音。他们用CLIP的对比学习框架，把MEG信号和wav2vec 2.0的音频嵌入对齐。关键改进在于把原来扁平传感器布局的空间注意力换成了基于三维头盔几何的球谐函数，这样能更好地利用脑磁图的物理拓扑结构。同时把subject-specific的分支从270个压缩到25个，并且给每个分支加了时间滤波器来匹配神经源的时空特性。这篇文章的贡献更多是工程上的优化，让可解释性更好，但说实话，从方法论角度看增量居多。不过它提醒我们一件事：当我们在做多模态对齐的时候，底层的几何结构其实还没有被充分挖掘，这可能是未来一个有趣的方向。
+
+如果说第一篇是“单人作战”，那接下来两篇就是“团队协作”的评估问题了。现在AI Agent火到什么程度呢？各平台都在训练能操作电脑的Agent，但怎么评价它们做得好不好？之前大家用人写验证器，或者让人来标注，但这显然无法规模化。于是大家开始用视觉语言模型VLM来做评判者。OSReward这个工作就问了一个问题：这些VLM评判者真的靠谱吗？他们构建了一个非常真实的benchmark，用不同架构的Agent在多个平台上执行人类验证过的指令，然后让VLM来判断轨迹是否成功。结果发现，现有VLM在判断Agent行为这件事上存在系统性的偏差。这个发现很重要，因为它暴露了当前Agent评估流水线中的一个薄弱环节。
+
+那么有了可靠的评估反馈之后，怎么让Agent学会做长期的、复杂决策呢？第三篇论文AgentOPSD就处理了这个问题。大家知道，强化学习在长程多轮任务中常常遇到信用分配的困难——到底是哪一步决策决定了最终成败？之前的工作用特权自蒸馏提供更密集的监督，但怎么把token级别的信号聚合到turn级别，一直没有好的方法。AgentOPSD的思路很有意思：他们把token级别的师生概率差距聚合为turn级别的证据，然后在log-odds空间里递归更新贝叶斯信念状态。这样就能把稀疏的最终结果监督，转化为每一步的信用分配。这个方法理论上很优雅，实际效果也需要更多验证，但思路本身值得重视。
+
+接下来这个工作就有一种“大干一场”的感觉了。WorldClaw想要解决的是从文本提示生成大规模、可探索的三维开放世界。以往的系统很难同时保证全局空间一致性、局部内容丰富度，以及资产的可编辑可复用性。WorldClaw用了一套完全Agent化的粗到细框架：规划Agent把文本prompt翻译成区域、地形、资产、材质和空间关系的结构化规范；然后基于语义布局构建全球一致的地形，生成可复用的资产和程序化材质；最后对细节要求高的区域，生成地形条件化的组合，重建可编辑的带纹理网格，并完成Placement。听起来很像一个完整的3D世界生产流水线，而且确实体现了一个趋势：Agent正在从“执行单一任务”变成“编排复杂系统”。
+
+最后一篇Recursive Synthesis和WorldClaw在精神上很像，不过它解决的是另一个痛点：高质量长期任务训练数据的稀缺。以往靠人一条条写指令、参考解决方案和验证器，成本极高。他们提出了递归验证合成框架RST：从已验证的种子任务开始，递归扩展参考解决方案、重新对齐验证器和指令、在新沙盒中验证、把通过的任务再作为种子进入下一轮。十五轮递归下来，任务复杂度显著提升，而且保持指令、解决方案、验证器三者的一致性。这个思路其实和WorldClaw的规划-执行-验证循环异曲同工，只是应用场景不同。
+
+好，我们把今天的五篇论文串起来看。它们看似分散，但实际上都指向同一个趋势：当Agent系统变得越来越复杂，我们对评估方法、信用分配机制、训练数据规模化的要求也在快速提升。OSReward暴露了VLM作为评判者的局限性，AgentOPSD试图解决信用分配的难题，WorldClaw和RST则从生成端展示了如何用Agent自身来扩充能力边界。这几篇文章合在一起，描绘了一个正在快速成熟的Agent生态：从怎么训练、怎么评估、怎么生成数据，到怎么构建越来越复杂的数字世界。当然，这里还有很多问题没有解决，比如VLM评判的偏差能不能通过微调消除，递归合成的数据质量会不会逐级衰减，这些都值得我们继续观察。好，今天的播报就到这里，祝各位周末愉快。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.01481" target="_blank">Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval</a></li>
+<li><a href="https://arxiv.org/abs/2607.28609" target="_blank">OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models</a></li>
+<li><a href="https://arxiv.org/abs/2608.05987" target="_blank">AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning</a></li>
+<li><a href="https://arxiv.org/abs/2608.05248" target="_blank">WorldClaw: Agentic 3D Open-World Generation at Scale</a></li>
+<li><a href="https://arxiv.org/abs/2608.05466" target="_blank">Recursive Synthesis for Long-Horizon Terminal Tasks</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
