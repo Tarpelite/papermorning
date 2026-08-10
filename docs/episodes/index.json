@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-10",
+    "title": "Paper Morning 2026-08-10",
+    "description": "今日学术播报: From Economic Agents to Agenti, Interpretable MEG Decoding of , Round-Trip Consistency: Bidire...",
+    "audio_file": "2026-08-10.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，这两年AI领域最热闹的词是“agent”和\"world model\"，但我们关心的科学计算世界里，也在悄悄发生类似的事情——我们也开始想要构建“物理世界的模型”，让它能够自主推理、交互、甚至自我纠错。今天收录的几篇论文，虽然主题各异，但都指向了一个共同趋势：AI模型正在从“被动预测”走向“主动理解”和“自我监管”。\n\n第一篇讲经济世界模型。研究者提出了一个六层能力阶梯，从基于固定规则的多智能体系统，一直上升到能够自我进化、与真实经济数据对齐的“经济数字孪生”。这个工作的野心很大——他们不想只做一个单点预测工具，而是想构建一个能够模拟经济系统内部演化机理的“引擎”。有意思的是，他们特别强调了异质性agent的信念和行动如何通过市场和制度机制产生集体涌现。这让我想到我们做PDE求解时，其实也在处理类似的问题：微观单元的相互作用如何涌现出宏观的连续介质行为。如果把经济系统看作一个复杂动力系统，那这篇工作和我们关注的neural operator其实分享了同一个根本目标：用数据驱动的模型去捕捉涌...",
+    "papers": [
+      {
+        "title": "From Economic Agents to Agentic Economies: A Systems Blueprint for Economic World Models",
+        "url": "https://arxiv.org/abs/2608.06020",
+        "arxiv_id": "2608.06020"
+      },
+      {
+        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
+        "url": "https://arxiv.org/abs/2608.01481",
+        "arxiv_id": "2608.01481"
+      },
+      {
+        "title": "Round-Trip Consistency: Bidirectional Diffusion Models Can Predict Their Own Rollout Errors",
+        "url": "https://arxiv.org/abs/2608.00675",
+        "arxiv_id": "2608.00675"
+      },
+      {
+        "title": "MASS: Multiplayer World Models with Authoritative Shared State",
+        "url": "https://arxiv.org/abs/2608.06257",
+        "arxiv_id": "2608.06257"
+      },
+      {
+        "title": "SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs",
+        "url": "https://arxiv.org/abs/2608.03573",
+        "arxiv_id": "2608.03573"
+      }
+    ],
+    "published_at": "2026-08-10T23:09:19.286166Z"
+  },
+  {
     "date": "2026-08-09",
     "title": "Paper Morning 2026-08-09",
     "description": "今日学术播报: From Economic Agents to Agenti, Interpretable MEG Decoding of , OSReward: Instituting Standard...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-11T23:30:03.829938Z"
-  },
-  {
-    "date": "2026-07-10",
-    "title": "Paper Morning 2026-07-10",
-    "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Vidu S1: A Real-Time Interacti...",
-    "audio_file": "2026-07-10.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个特别有意思的现象，不知道你们有没有注意到，最近视频理解和具身智能这个方向突然变得非常热闹，好像整个社区都在往这个方向冲。那我今天就挑了几篇这个方向最近的论文，我们来看看这一波进展到底在讲什么。\n\n先来看第一篇，SciReasoner。这个工作很有意思，它提出了一个多模态的科学基础模型，专门做分子和蛋白质结构的原生推理。核心贡献一句话说清就是：它能够保留领域原生的结构信息，同时展示具体证据如何支持预测。听起来好像就是一个多模态模型，但它背后的思路其实很值得品味。大家知道，传统AI做分子预测的时候，往往是把结构信息编码成某种向量，然后丢给黑箱模型。但这里它强调的是“native structural reasoning”，也就是说模型要能够像化学家一样，理解化学键的空间取向、对称性、周期性这些domain-native的概念，然后把推理过程暴露出来。这其实呼应了我们一直在聊的一个话题：科学AI到底应该学什么？是学习数据的统计规律，还是学习领域本身的structure和constraint？SciReasoner在这...",
-    "papers": [
-      {
-        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
-        "url": "https://arxiv.org/abs/2607.07708",
-        "arxiv_id": "2607.07708"
-      },
-      {
-        "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
-        "url": "https://arxiv.org/abs/2607.07675",
-        "arxiv_id": "2607.07675"
-      },
-      {
-        "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
-        "url": "https://arxiv.org/abs/2607.03118",
-        "arxiv_id": "2607.03118"
-      },
-      {
-        "title": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2607.07608",
-        "arxiv_id": "2607.07608"
-      },
-      {
-        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
-        "url": "https://arxiv.org/abs/2603.29616",
-        "arxiv_id": "2603.29616"
-      }
-    ],
-    "published_at": "2026-07-10T23:32:07.578627Z"
   }
 ]

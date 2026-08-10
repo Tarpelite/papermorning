@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-10</h1>
+    <p class="date">2026-08-10</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-10.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个更大的话题聊起。我们都知道，这两年AI领域最热闹的词是“agent”和"world model"，但我们关心的科学计算世界里，也在悄悄发生类似的事情——我们也开始想要构建“物理世界的模型”，让它能够自主推理、交互、甚至自我纠错。今天收录的几篇论文，虽然主题各异，但都指向了一个共同趋势：AI模型正在从“被动预测”走向“主动理解”和“自我监管”。
+
+第一篇讲经济世界模型。研究者提出了一个六层能力阶梯，从基于固定规则的多智能体系统，一直上升到能够自我进化、与真实经济数据对齐的“经济数字孪生”。这个工作的野心很大——他们不想只做一个单点预测工具，而是想构建一个能够模拟经济系统内部演化机理的“引擎”。有意思的是，他们特别强调了异质性agent的信念和行动如何通过市场和制度机制产生集体涌现。这让我想到我们做PDE求解时，其实也在处理类似的问题：微观单元的相互作用如何涌现出宏观的连续介质行为。如果把经济系统看作一个复杂动力系统，那这篇工作和我们关注的neural operator其实分享了同一个根本目标：用数据驱动的模型去捕捉涌现。
+
+第二篇关于MEG脑磁图解码感知语音的工作很吸引我。研究者用CLIP-style的对比学习训练了一个网络，能够从大脑活动记录中恢复出被试听到的语音。更重要的是，他们重新设计了空间注意力的机制——不再是用扁平的传感器布局，而是引入了球面调和函数来处理三维MEG头盔的几何结构。这一个小改变，让模型能够更好地利用物理先验。我常说的一个观点是：AI for Science里，真正有效的创新往往不是堆砌网络结构，而是把领域的几何或物理结构巧妙地嵌入到学习框架中。这篇工作就是一个很好的例子。
+
+第三篇非常有意思。研究者训练了一个双向扩散模型，可以 forward 也可以 backward 地演进动态系统。然后他们发现了一个巧妙的自监督信号：如果你 forward 走 i 步再 backward 走 i 步，理论上应该回到原点，那么这个往返误差就是一个免费的、不需要 ground truth 的测试时误差估计。这对于我们做长期物理模拟的人来说太有意义了。我们都知道长期rollout会积累误差，但以前只能靠ensemble或者额外的数据来评估，而这篇工作告诉我们：模型自身的双向结构就能提供误差信号。我个人非常欣赏这个想法，这不是在模型容量上内卷，而是在使用模型的方式上找到了一个优雅的解。
+
+第四篇关于多人世界模型的工作提出了一个架构上的改进：把世界状态和视角渲染解耦。逻辑引擎负责推进全局的权威状态，渲染引擎从这个共享状态出发，为任意摄像机视角独立生成一致的视觉输出。这让我想到我们做科学模拟时也经常遇到的困境：同一个物理过程，在不同观测方式下需要一致的描述。如果把这套思路迁移到科学计算，比如同一个流体模拟能不能同时支持多个不同角度的可视化，同时保证物理一致性？这篇工作提供了一种可能的解法。
+
+最后一篇从理论和实验两个角度分析了SFT和RL在多任务学习中的差异。他们发现SFT在多阶段训练中会遭遇严重的任务冲突，而RL能够稳定共存。进一步追溯到参数层面，RL诱导的是稀疏且近似正交的参数更新。这篇工作的理论分析很有意思：SFT的梯度干扰来自梯度范数本身，而RL的干扰来自梯度方差，是方差受限的。这个发现对于我们构建多任务的科学基础模型也有启发——如果我们想让一个模型同时处理多种PDE、多种物理工况，或许RL的训练范式比传统的监督学习更合适？
+
+好了，今天的播报就到这里。我最后想留给大家一个思考：这一组论文虽然主题分散，但共同的主题词其实是“自主性”——经济世界模型要自主演进，扩散模型要自我评估误差，世界模型要自主处理多视角，SFT和RL也在争辩哪种训练范式能让模型更自主地处理多任务。这种“让模型拥有更多自我管理能力”的趋势，会不会也是科学计算基础模型下一步演进的方向呢？我们下周见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.06020" target="_blank">From Economic Agents to Agentic Economies: A Systems Blueprint for Economic World Models</a></li>
+<li><a href="https://arxiv.org/abs/2608.01481" target="_blank">Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval</a></li>
+<li><a href="https://arxiv.org/abs/2608.00675" target="_blank">Round-Trip Consistency: Bidirectional Diffusion Models Can Predict Their Own Rollout Errors</a></li>
+<li><a href="https://arxiv.org/abs/2608.06257" target="_blank">MASS: Multiplayer World Models with Authoritative Shared State</a></li>
+<li><a href="https://arxiv.org/abs/2608.03573" target="_blank">SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
