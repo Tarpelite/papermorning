@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-11",
+    "title": "Paper Morning 2026-08-11",
+    "description": "今日学术播报: On-Policy Self-Distillation wi, BDH-CQ: In-Context Learning wi, Ouroboros: A Self-Developing F...",
+    "audio_file": "2026-08-11.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家都在思考的问题开始：当我们谈论大模型能力的时候，究竟在谈论什么？最近有几篇论文很有意思，它们不约而同地在回答一个更根本的问题——模型怎么才能自己变强？\n\n第一篇关于无监督自我蒸馏。各位可能知道，蒸馏一直是让小模型学习大模型能力的有效手段，但这篇工作问了一个更激进的问题：能不能只靠模型自己就完成蒸馏？他们的方法叫做U-OPSD，简单说就是让模型生成多个回答，然后用一个“自我一致性”的阈值来筛选出多数认同的答案，再让模型去学习那些和多数答案不一致的样本。整个过程不依赖任何外部标签或者更大模型的监督。这件事为什么重要呢？它其实在逼近一个理想状态：模型能不能像人一样，通过自我反思来修正自己的想法？这让我想到我们在做PDE求解器的时候，也在追求类似的目标——能不能让求解器自己发现并修正错误，而不是依赖标注数据来告诉它什么是对。\n\n第二篇BDH-CQ是一个很有野心的尝试。他们想要在in-context learning的基础上加入“隐式推理”。具体做法是用一个 recurrent memory 来持续更新模型的内部状态，然...",
+    "papers": [
+      {
+        "title": "On-Policy Self-Distillation without Any Supervision",
+        "url": "https://arxiv.org/abs/2608.06296",
+        "arxiv_id": "2608.06296"
+      },
+      {
+        "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
+        "url": "https://arxiv.org/abs/2608.09888",
+        "arxiv_id": "2608.09888"
+      },
+      {
+        "title": "Ouroboros: A Self-Developing Frontier Coding Agent with Reviewed Core Evolution",
+        "url": "https://arxiv.org/abs/2608.08311",
+        "arxiv_id": "2608.08311"
+      },
+      {
+        "title": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
+        "url": "https://arxiv.org/abs/2608.09819",
+        "arxiv_id": "2608.09819"
+      },
+      {
+        "title": "SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring",
+        "url": "https://arxiv.org/abs/2608.09802",
+        "arxiv_id": "2608.09802"
+      }
+    ],
+    "published_at": "2026-08-11T23:14:12.086060Z"
+  },
+  {
     "date": "2026-08-10",
     "title": "Paper Morning 2026-08-10",
     "description": "今日学术播报: From Economic Agents to Agenti, Interpretable MEG Decoding of , Round-Trip Consistency: Bidire...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-12T23:28:42.116009Z"
-  },
-  {
-    "date": "2026-07-11",
-    "title": "Paper Morning 2026-07-11",
-    "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...",
-    "audio_file": "2026-07-11.mp3",
-    "script": "各位早上好，又到了周末的Paper Morning时间。\n\n今天想先从一篇把基础模型思路带到科学发现领域的文章开始。SciReasoner这个名字很有意思，它试图解决一个根本问题：怎么让AI真正“懂”分子结构，而不只是从数据中统计出相关性。作者认为，结构-性质关系是生物、化学和材料科学的基础，但现有AI方法往往丢失了领域原生的结构信息——比如化学键的对称性、晶体的周期序、立体化学的约束。SciReasoner作为一个多模态科学基础模型，它的核心创新在于保留了这些物理约束，并能够追溯到具体证据来解释预测。这是一个把预训练范式引入科学推理的有趣尝试，虽然目前展示的主要是蛋白质和材料领域，但它提出的“native structural reasoning”思路，可能对整个AI4S社区思考如何构建科学领域的基础模型有启发。\n\n接下来一篇很有意思，是关于视频理解评估的反思性工作。Video-Oasis这个名字取得很妙—— oasis是沙漠中的绿洲，他们用这个词是想说，现有视频理解benchmark里其实充满了“捷径”，他们的审计发现，55%的现有样本居然不用看视频、不用理解时间信息就能答对。这件...",
-    "papers": [
-      {
-        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
-        "url": "https://arxiv.org/abs/2607.07708",
-        "arxiv_id": "2607.07708"
-      },
-      {
-        "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
-        "url": "https://arxiv.org/abs/2607.07675",
-        "arxiv_id": "2607.07675"
-      },
-      {
-        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
-        "url": "https://arxiv.org/abs/2603.29616",
-        "arxiv_id": "2603.29616"
-      },
-      {
-        "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
-        "url": "https://arxiv.org/abs/2607.03118",
-        "arxiv_id": "2607.03118"
-      },
-      {
-        "title": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2607.07608",
-        "arxiv_id": "2607.07608"
-      }
-    ],
-    "published_at": "2026-07-11T23:30:03.829938Z"
   }
 ]
