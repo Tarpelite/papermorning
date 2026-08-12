@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-12",
+    "title": "Paper Morning 2026-08-12",
+    "description": "今日学术播报: ComBodied Agents: a New Paradi, Co-Evolution in Agentic System, Beyond Pixels: From Video Prio...",
+    "audio_file": "2026-08-12.mp3",
+    "script": "各位早上好，今天Paper Morning开播。\n\n最近agent领域特别热闹，咱们聊聊几篇有意思的工作。\n\n先说第四篇，On-Policy Self-Distillation without Any Supervision，这篇提出了无监督的on-policy自蒸馏。传统上蒸馏需要外源监督信号，但这篇工作让模型自己当老师，用多数投票构建伪标签，然后在\"不一致\"的地方做知识蒸馏。这个思路让我想到科学计算里的一个老问题：我们训练PDE求解器的时候，是否也需要这种自我一致性来约束解的物理合理性？比如流体模拟中，模型输出的速度场是否满足连续性方程，或许也可以用类似的自洽性来约束。\n\n第三篇Beyond Pixels讲的是从视频先验到4D世界的生成。这篇的核心贡献是提出了latent-to-4D的方法，不再依赖RGB重建，而是直接利用视频模型的latent space。这让我想到最近AI4S里一个很火的思路：我们能不能把预训练视频模型学到的物理先验，直接迁移到科学问题的时空建模上？比如流体力学里的湍流、液滴演化，这些现象在视频数据里已经学到了大量时空相关性。\n\n第二篇Co-Evolution是...",
+    "papers": [
+      {
+        "title": "ComBodied Agents: a New Paradigm of Human-Centric Agentic AI",
+        "url": "https://arxiv.org/abs/2608.10915",
+        "arxiv_id": "2608.10915"
+      },
+      {
+        "title": "Co-Evolution in Agentic Systems: Toward Self-Directed Evolution Beyond Human Design",
+        "url": "https://arxiv.org/abs/2608.10299",
+        "arxiv_id": "2608.10299"
+      },
+      {
+        "title": "Beyond Pixels: From Video Priors to 4D Worlds",
+        "url": "https://arxiv.org/abs/2608.10744",
+        "arxiv_id": "2608.10744"
+      },
+      {
+        "title": "On-Policy Self-Distillation without Any Supervision",
+        "url": "https://arxiv.org/abs/2608.06296",
+        "arxiv_id": "2608.06296"
+      },
+      {
+        "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
+        "url": "https://arxiv.org/abs/2608.09888",
+        "arxiv_id": "2608.09888"
+      }
+    ],
+    "published_at": "2026-08-12T23:13:05.501237Z"
+  },
+  {
     "date": "2026-08-11",
     "title": "Paper Morning 2026-08-11",
     "description": "今日学术播报: On-Policy Self-Distillation wi, BDH-CQ: In-Context Learning wi, Ouroboros: A Self-Developing F...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-13T23:28:43.505494Z"
-  },
-  {
-    "date": "2026-07-12",
-    "title": "Paper Morning 2026-07-12",
-    "description": "今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...",
-    "audio_file": "2026-07-12.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域里反复出现的痛点聊起：很多AI模型在科学任务上表现不错，但你问它“为什么”，它就答不上来。它能预测蛋白质性质，但说不清是哪些结构特征起了作用。这种“可解释性”的缺失，其实在限制我们把AI真正融入科学发现流程。SciReasoner这篇工作就试图解决这个根本问题。\n\n作者提出一个多模态科学基础模型，能够进行所谓的“原生结构推理”。它的核心思路是，既保留领域原生的结构信息——比如立体化学、成键模式、对称性、周期性——同时让模型能够追溯到具体证据来支撑预测。换个说法，这是一个能“讲道理”的科学AI，而不是只给答案的black box。我觉得这个方向特别值得关注，因为当我们谈论AI辅助科学发现时，最大的信任障碍其实不是准确率，而是我们能不能理解模型到底学到了什么。这篇工作算是往这个方向迈出的扎实一步。\n\n接下来想聊聊视频理解这个领域最近的一个有趣现象。Video-Oasis这篇论文很有意思，作者没有再堆一个新的benchmark，而是反过来审视了现有的大量视频理解评测。他们发现一个惊人的统计：55%的现有bench...",
-    "papers": [
-      {
-        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
-        "url": "https://arxiv.org/abs/2607.07708",
-        "arxiv_id": "2607.07708"
-      },
-      {
-        "title": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
-        "url": "https://arxiv.org/abs/2607.07675",
-        "arxiv_id": "2607.07675"
-      },
-      {
-        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
-        "url": "https://arxiv.org/abs/2603.29616",
-        "arxiv_id": "2603.29616"
-      },
-      {
-        "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
-        "url": "https://arxiv.org/abs/2607.03118",
-        "arxiv_id": "2607.03118"
-      },
-      {
-        "title": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2607.07608",
-        "arxiv_id": "2607.07608"
-      }
-    ],
-    "published_at": "2026-07-12T23:28:42.116009Z"
   }
 ]

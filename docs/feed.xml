@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-12</title>
+      <description>今日学术播报: ComBodied Agents: a New Paradi, Co-Evolution in Agentic System, Beyond Pixels: From Video Prio...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-12.mp3" length="5803616" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-12.mp3</guid>
+      <pubDate>2026-08-12T23:13:05.501237Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-11</title>
       <description>今日学术播报: On-Policy Self-Distillation wi, BDH-CQ: In-Context Learning wi, Ouroboros: A Self-Developing F...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-11.mp3" length="8429862" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-13.mp3" length="7954016" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-13.mp3</guid>
       <pubDate>2026-07-13T23:28:43.505494Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-12</title>
-      <description>今日学术播报: Accurate, Interdisciplinary an, Scaling Mixture-of-Experts Vid, Video-Oasis: Rethinking Evalua...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-12.mp3" length="6309555" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-12.mp3</guid>
-      <pubDate>2026-07-12T23:28:42.116009Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
