@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-13",
+    "title": "Paper Morning 2026-08-13",
+    "description": "今日学术播报: Mechanist: AI as a Scientific , ComBodied Agents: a New Paradi, Articulated Object Reconstruct...",
+    "audio_file": "2026-08-13.mp3",
+    "script": "各位早上好，周四的Paper Morning如约而至。\n\n今天想先从一个更大的话题聊起。我们一直在跟踪AI for Science的进展，但今天这几篇论文其实都在回答一个更根本的问题：当AI变得越来越强大，我们怎么才能真正理解和掌控它？这个线索贯穿着今天的所有内容。\n\n先看第一篇，Mechanist。它提出了一个很有意思的思路：用AI本身作为科学仪器，去发现智能的机制。大家知道，现在的大模型能力已经很强了，但我们对它们为什么能做到这些事情往往知其然不知其所以然。传统的可解释性研究大多是人工手动去做，效率很低。Mechanist构建了一个包含约13000篇可解释性论文的知识图谱，又整合了一个跨26个领域、4300万篇论文的多学科数据库，然后让AI系统自主地去探索模型能力背后的机制。这其实是一种元认知的思路——让AI学会研究自己。联想到我们做科学计算的时候，也经常需要理解复杂模型的内部行为，这个方向或许能为我们提供新的工具。\n\n第二篇ComBodied Agents提出了一个很有洞见的批评。它说现在的智能体有两个极端：数字智能体只处理软件状态的变化，实体智能体只改变物理状态，但它们都忽略了...",
+    "papers": [
+      {
+        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
+        "url": "https://arxiv.org/abs/2608.12036",
+        "arxiv_id": "2608.12036"
+      },
+      {
+        "title": "ComBodied Agents: a New Paradigm of Human-Centric Agentic AI",
+        "url": "https://arxiv.org/abs/2608.10915",
+        "arxiv_id": "2608.10915"
+      },
+      {
+        "title": "Articulated Object Reconstruction from Rest-State Observation",
+        "url": "https://arxiv.org/abs/2607.27749",
+        "arxiv_id": "2607.27749"
+      },
+      {
+        "title": "SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries",
+        "url": "https://arxiv.org/abs/2608.05604",
+        "arxiv_id": "2608.05604"
+      },
+      {
+        "title": "OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution",
+        "url": "https://arxiv.org/abs/2608.00677",
+        "arxiv_id": "2608.00677"
+      }
+    ],
+    "published_at": "2026-08-13T23:13:58.771502Z"
+  },
+  {
     "date": "2026-08-12",
     "title": "Paper Morning 2026-08-12",
     "description": "今日学术播报: ComBodied Agents: a New Paradi, Co-Evolution in Agentic System, Beyond Pixels: From Video Prio...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-14T23:27:57.173228Z"
-  },
-  {
-    "date": "2026-07-13",
-    "title": "Paper Morning 2026-07-13",
-    "description": "今日学术播报: Accurate, Interdisciplinary an, Long-Horizon-Terminal-Bench: T, Scalable Visual Pretraining fo...",
-    "audio_file": "2026-07-13.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家可能都有感受的话题聊起：这两年foundation model火遍AI圈，但我们做科学计算的人一直在想一个问题——这种预训练+泛化的思路，到底能不能真正帮到我们理解物理世界？今天的几篇论文刚好从不同角度触及了这个大问题。\n\n第一篇想聊SciReasoner，它试图解决一个很根本的问题：我们能不能用AI来“推理”化学结构背后的物理原理？大家知道，结构-性质关系是材料科学和生物化学的核心，但过去的方法往往停留在端到端的预测上——给一个结构，输出一个性质，但说不清为什么。SciReasoner这个工作想要做得更深：它是一个多模态的基础模型，能够保留“领域原生”的结构信息，同时展示具体的结构证据是如何支撑预测的。听起来有点像是给模型装上了“科学解释”的能力。这让我想到我们在PDE求解里常说的“物理约束”——不只是拟合数据，还要符合物理规律。这个思路如果能扩展到更复杂的分子体系，或许能为材料设计提供更有解释性的工具。\n\n然后第二篇Long-Horizon-Terminal-Bench很有意思，它提出了一个关于AI age...",
-    "papers": [
-      {
-        "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
-        "url": "https://arxiv.org/abs/2607.07708",
-        "arxiv_id": "2607.07708"
-      },
-      {
-        "title": "Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading",
-        "url": "https://arxiv.org/abs/2607.08964",
-        "arxiv_id": "2607.08964"
-      },
-      {
-        "title": "Scalable Visual Pretraining for Language Intelligence",
-        "url": "https://arxiv.org/abs/2607.09657",
-        "arxiv_id": "2607.09657"
-      },
-      {
-        "title": "Video Generation Models are General-Purpose Vision Learners",
-        "url": "https://arxiv.org/abs/2607.09024",
-        "arxiv_id": "2607.09024"
-      },
-      {
-        "title": "Video-Oasis: Rethinking Evaluation of Video Understanding",
-        "url": "https://arxiv.org/abs/2603.29616",
-        "arxiv_id": "2603.29616"
-      }
-    ],
-    "published_at": "2026-07-13T23:28:43.505494Z"
   }
 ]
