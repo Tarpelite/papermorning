@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-14</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-14</h1>
+    <p class="date">2026-08-14</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-14.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想和大家聊一个我最近特别关注的趋势——AI正在从“被动理解”走向“主动交互”。这个转变在好几篇论文里都能看到影子，咱们一篇一篇来看。
+
+先看第一篇，DreamX-Phi 1.0，这是个做机器人操作的世界模型。简单说，它能根据当前画面、语音指令和机械臂的动作序列，预测未来的观测结果。但这里有个很有意思的细节：光让画面逼真还不够，如果机械臂该往左动却往右动了，或者物体该被抓起来却掉了，这种“逼真的错误”其实更危险。作者的做法是把每个机械臂的SE(3)变换注入到注意力机制里，用他们称为PRoPE的编码方式，这样模型就能保持对机械臂身份和刚体运动结构的感知。同时他们还加了一个轻量级的深度分支来处理场景几何，以及集成了SAM3做物体级别的分割。这篇工作的亮点在于它不是单纯追求生成质量，而是把“动作一致性”这件事从数据层面搬到了架构设计层面。我觉得这个思路值得咱们做PDE求解器的同行借鉴——咱们训练模型的时候，有没有把物理约束真正编码进模型结构，而不只是靠数据去学？
+
+第二篇，Intern-S2-Preview，名字里带Preview但其实是个很严肃的工作——他们想做一个“科学智能体基础模型”。这个模型的野心很大：它要能处理科学证据的多模态理解，能调用科学工具，能在很长的任务周期里持续推进研究。训练 pipeline 也很全面，从多模态预训练开始，然后混合了监督微调、可扩展的多任务强化学习、黑白盒智能体强化学习，以及在线蒸馏。这篇论文让我想到一个更大的图景：以前我们做科学AI，往往是针对特定问题训特定模型，但基础模型的思路是要做一个“通才”。现在他们把这个思路搬到了科学智能体上，而且特别强调了“长程任务”这一点。我很好奇他们在科学场景下怎么做RL——总不能像下围棋那样自我对弈吧？科学任务的奖励函数怎么设计？这篇论文可能还没完全回答这个问题，但这个方向本身就很值得跟踪。
+
+第三篇，Alaya-EVOKE，标题很醒目——“从线性监督到无限世界”。他们想解决的是交互式世界模型的两个核心矛盾：既要持久记忆又要低延迟响应。传统做法是在去噪器的上下文或KV缓存里存历史，但随着会话变长，计算成本会线性增长。他们做了两件事：一个是外部化的世界状态银行，按相机索引存储场景几何，只检索当前视角相关的信息，这样去噪器上下文始终保持有界；另一个是重新设计教师模型，不再依赖少步生成的能力上限，而是为长程交互生成专门训练。这个思路让我想到咱们做PDE求解时常见的“长期记忆”挑战——怎么在有限的上下文窗口里保持对整个系统演化的感知？他们的外部状态银行或许能给咱们一些启发。
+
+第四篇，Mechanist，这个标题本身就很有意思——“AI as a Scientific Instrument”。他们想用AI去发现AI智能的机制。具体做法是构建了一个以可解释性为中心的知识图谱，包含约13000篇论文，还整合了一个跨26个领域、4300万篇论文的多学科数据库。然后用这个系统去做智能体的自主机制发现。这篇论文让我特别有感触的是，它把AI本身当成了科学研究的对象，而不是工具。这其实呼应了我一直强调的“AI for Science”的深层含义——咱们用AI做科学是第一步，但第二步是理解AI本身是怎么工作的。它构建的知识库规模也很惊人，13000篇可解释性论文加上4300万篇跨领域论文，这个底座本身可能就是一种“科学数据基础设施”。
+
+第五篇，PlayWorld，这个工作的切入点我特别喜欢。他们说，现在世界模型做评估，一般是用固定的动作序列去测，但实际使用中，人类玩家是通过追求长程目标来评估模型的——比如转身360度看环境是否一致，或者走进水里看波纹是否真实。同一目标，不同模型可能需要不同的动作序列来完成，所以固定动作的评估方式不公平。他们的解决办法是用多模态大模型作为“AI玩家”，让它们自主规划动作序列，然后用统一的目标去比较不同模型的表现。这个思路其实很本质——咱们评估PDE求解器的时候，是不是也常常只看固定输入下的误差，而忽略了实际应用中模型能否自主选择合适的求解策略？
+
+好，这五篇论文咱们过完了。我BATch起来看，有一个很清晰的共同趋势：AI正在从“单步预测”走向“长程交互”，从“被动生成”走向“主动规划”。无论是机器人操作、科学发现还是世界模型，都在强调三件事——持久记忆能力、自主规划能力和可解释性。这其实和咱们AI4S领域正在发生的事情一模一样：以前咱们训一个模型解一个方程，现在咱们想要的是一个“科学智能体”，它能记住上下文、能调用工具、能自主选择策略。这条路当然还很长，但今天这几篇论文，至少让我们看到了不同方向的探索。最后我想说，无论是用AI做科学，还是把AI本身变成科学研究的对象，最终的核心问题都是一样的——我们怎么才能真正理解并掌控这些越来越强大的系统？这个问题值得咱们一直问下去。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.13489" target="_blank">DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2608.13505" target="_blank">Intern-S2-Preview: Scientific Agentic Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2608.13546" target="_blank">Alaya-EVOKE: From Linear-Scaling Supervision to Endless World</a></li>
+<li><a href="https://arxiv.org/abs/2608.12036" target="_blank">Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2608.13552" target="_blank">PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

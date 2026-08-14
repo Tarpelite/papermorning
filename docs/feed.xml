@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-14</title>
+      <description>今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-14.mp3" length="10244850" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-14.mp3</guid>
+      <pubDate>2026-08-14T22:53:39.951952Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-13</title>
       <description>今日学术播报: Mechanist: AI as a Scientific , ComBodied Agents: a New Paradi, Articulated Object Reconstruct...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-13.mp3" length="8675622" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-15.mp3" length="7910757" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-15.mp3</guid>
       <pubDate>2026-07-15T23:32:11.281129Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-14</title>
-      <description>今日学术播报: ABot-N1: Toward a General Visu, Long-Horizon-Terminal-Bench: T, Video Generation Models are Ge...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-14.mp3" length="10144540" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-14.mp3</guid>
-      <pubDate>2026-07-14T23:27:57.173228Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
