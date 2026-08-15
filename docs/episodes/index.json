@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-15",
+    "title": "Paper Morning 2026-08-15",
+    "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
+    "audio_file": "2026-08-15.mp3",
+    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想先从一篇让我觉得有点“野心勃勃”的论文聊起。Intern-S2-Preview，中文可以叫它“科学智能体基础模型”。大家知道，这两年基础模型的预训练范式从NLP、CV一路火到科学计算，但我们做的多是PDE求解器、分子property预测这类单一任务。这篇工作想要更进一步——他们训练了一个能够“通吃”科学问题的智能体基础模型。具体来说，这个模型先在渲染过的科学文档、交错图像文本数据、以及各种科学语料上做多模态预训练，然后在之上套了一层统一的后训练流程，包括监督微调、可扩展的多任务强化学习、黑白盒智能体强化学习，以及策略蒸馏。也就是说，它不仅要有科学理解能力，还要能调用工具、能在长程任务中保持推理连贯性。这其实回应了我们一直关心的问题：foundation model的预训练范式，能不能真正迁移到科学发现的全流程？过去我们谈AI for Science，往往是针对某个特定PDE、某个特定分子任务训练一个模型，但真正的科学发现需要的是能跨任务、跨模态、持续推理的系统性能力。Intern-S2-Preview算是往这个方向迈出的有意思的...",
+    "papers": [
+      {
+        "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2608.13489",
+        "arxiv_id": "2608.13489"
+      },
+      {
+        "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
+        "url": "https://arxiv.org/abs/2608.13505",
+        "arxiv_id": "2608.13505"
+      },
+      {
+        "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
+        "url": "https://arxiv.org/abs/2608.13546",
+        "arxiv_id": "2608.13546"
+      },
+      {
+        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
+        "url": "https://arxiv.org/abs/2608.12036",
+        "arxiv_id": "2608.12036"
+      },
+      {
+        "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
+        "url": "https://arxiv.org/abs/2608.13552",
+        "arxiv_id": "2608.13552"
+      }
+    ],
+    "published_at": "2026-08-15T22:50:08.855931Z"
+  },
+  {
     "date": "2026-08-14",
     "title": "Paper Morning 2026-08-14",
     "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-16T23:28:00.466560Z"
-  },
-  {
-    "date": "2026-07-15",
-    "title": "Paper Morning 2026-07-15",
-    "description": "今日学术播报: ABot-N1: Toward a General Visu, Xiaomi-Robotics-U0: Unified Em, Long-Horizon-Terminal-Bench: T...",
-    "audio_file": "2026-07-15.mp3",
-    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想先从一个更大的图景聊起。我们都知道，大模型这两年最热闹的进展集中在语言和多模态领域，但如果你稍微把目光往旁边偏一偏，会发现一些很有意思的东西正在悄悄改变我们做科学智能的方式。\n\n先看第一篇，ABot-N1，这是视觉语言导航领域的工作。猛一看好像跟科学计算没什么关系，但我建议你注意它背后的设计思路。它用了一个slow-fast的双系统架构，慢系统负责推理，快系统负责控制，把认知和执行解耦开来。这其实回应了一个很本质的问题：怎么让一个通用智能体既能做复杂的推理，又能保持实时响应的能力。你回头想想，我们在做科学模拟的时候，是不是也经常面临类似的困境？比如解一个PDE，我们既需要高保真的物理建模，又需要实时的推理能力。这个slow-fast的思路，说不定能为我们设计科学计算的foundation model提供一些启发。\n\n再看第二篇，Xiaomi-Robotics-U0，这个工作很有意思。它把具身智能看成是image和video generation的自然延伸，用一个380亿参数的多模态模型统一了图像生成、场景生成、还有机器人控制。这...",
-    "papers": [
-      {
-        "title": "ABot-N1: Toward a General Visual Language Navigation Foundation Model",
-        "url": "https://arxiv.org/abs/2607.10383",
-        "arxiv_id": "2607.10383"
-      },
-      {
-        "title": "Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model",
-        "url": "https://arxiv.org/abs/2607.11643",
-        "arxiv_id": "2607.11643"
-      },
-      {
-        "title": "Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading",
-        "url": "https://arxiv.org/abs/2607.08964",
-        "arxiv_id": "2607.08964"
-      },
-      {
-        "title": "Video Generation Models are General-Purpose Vision Learners",
-        "url": "https://arxiv.org/abs/2607.09024",
-        "arxiv_id": "2607.09024"
-      },
-      {
-        "title": "Scalable Visual Pretraining for Language Intelligence",
-        "url": "https://arxiv.org/abs/2607.09657",
-        "arxiv_id": "2607.09657"
-      }
-    ],
-    "published_at": "2026-07-15T23:32:11.281129Z"
   }
 ]
