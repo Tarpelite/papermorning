@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-16</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-16</h1>
+    <p class="date">2026-08-16</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-16.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，新的一周开始了。
+
+今天想和大家聊几篇很有意思的论文，它们不直接做PDE求解器或者神经算子，但我觉得它们触及的东西和我们关心的事情是相通的。
+
+先说Intern-S2-Preview，这是智谱他们做的科学代理基础模型。简单说，它想让AI能够读懂科学文献、做科学推理、调用工具、还能完成长的科研任务。这两年我们看到很多做科学大模型的工作，但大多停留在“问答”层面。Intern-S2-Preview的野心的确更大，它想做一个能“干活”的科研助手。不过我更感兴趣的是它的训练范式——它用了多任务强化学习，还有黑盒和白盒两种代理强化学习。这里有个很本质的问题：我们怎么评估一个科学代理做得好不好？总不能只靠人的主观打分吧。这可能需要我们AI4S社区好好想想。
+
+说到评估，PlayWorld这篇就很有意思了。它提出了一个很实际的问题：视频世界模型现在都能生成很连贯的长序列了，但怎么比较不同模型的好坏？固定动作序列的评估显然不够，因为同一个目标可以用很不同的动作序列达成。他们用多模态代理玩家来做评估，让代理自己去找完成长期目标的最优路径。这个思路其实很接近我们做科学模拟时的验证——你不能只问模型预测对不对，还要问它能不能完成一个完整的任务。我觉得这个评估框架对世界模型在科学模拟中的应用也会有启发。
+
+然后是Mechanist，这个工作很有野心。它想做的是把AI变成一个科学仪器，去发现智能本身的机制。具体来说，它构建了一个包含约13000篇可解释性论文的知识图谱，还整合了43个million论文、覆盖26个领域的数据库。然后用AI agent去自动发现AI模型能力的来源。这让我想到一个问题：我们在做神经算子、做PDE求解器的时候，是否也應該問一問：模型到底学到了什么物理？是真正理解了偏微分方程的结构，还是只是在拟合数据中的统计规律？Mechanist提供了一套工具来系统性地回答这类问题，我觉得这对我们理解AI4S模型的泛化能力会很有帮助。
+
+还有两篇偏应用方向的。DreamX-Phi是机器人操纵的世界模型，它把每条臂的SE(3)变换注入到注意力中，保证预测的时候不会把左臂的动作安到右臂上。这其实是一个很工程化的技巧，但背后反映的问题是：怎么让生成模型尊重物理约束？这和我们在物理 Informed Learning里关心的东西是一致的。Alaya-EVOKE则是解决世界模型的持久记忆问题，它把场景几何存在外部状态银行里，然后用的时候只取视角相关信息，这样就不需要让模型自己记住所有历史。
+
+好，说回整体观察。今天这几篇论文有一个共同的脉络：它们都在回答一个本质问题——怎么让AI真正“理解”物理世界，而不是仅仅“生成”看起来像物理的像素？无论是通过强化学习训练代理、用评估框架倒逼模型能力、还是构建可解释性知识图谱，目标都是让模型的行为更可控、更可靠。这个趋势其实和我们在AI4S里强调的“物理一致性”是一回事，只是发生在不同的子领域。我想说的是，别人的进展可能给我们很多启发，跨领域的思路有时候比本领域的技术迭代更有价值。
+
+好了，今天早上就聊到这里，我们明天继续。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.13489" target="_blank">DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2608.13505" target="_blank">Intern-S2-Preview: Scientific Agentic Foundation Model</a></li>
+<li><a href="https://arxiv.org/abs/2608.13546" target="_blank">Alaya-EVOKE: From Linear-Scaling Supervision to Endless World</a></li>
+<li><a href="https://arxiv.org/abs/2608.12036" target="_blank">Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2608.13552" target="_blank">PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

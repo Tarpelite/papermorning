@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-16",
+    "title": "Paper Morning 2026-08-16",
+    "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
+    "audio_file": "2026-08-16.mp3",
+    "script": "各位早上好，新的一周开始了。\n\n今天想和大家聊几篇很有意思的论文，它们不直接做PDE求解器或者神经算子，但我觉得它们触及的东西和我们关心的事情是相通的。\n\n先说Intern-S2-Preview，这是智谱他们做的科学代理基础模型。简单说，它想让AI能够读懂科学文献、做科学推理、调用工具、还能完成长的科研任务。这两年我们看到很多做科学大模型的工作，但大多停留在“问答”层面。Intern-S2-Preview的野心的确更大，它想做一个能“干活”的科研助手。不过我更感兴趣的是它的训练范式——它用了多任务强化学习，还有黑盒和白盒两种代理强化学习。这里有个很本质的问题：我们怎么评估一个科学代理做得好不好？总不能只靠人的主观打分吧。这可能需要我们AI4S社区好好想想。\n\n说到评估，PlayWorld这篇就很有意思了。它提出了一个很实际的问题：视频世界模型现在都能生成很连贯的长序列了，但怎么比较不同模型的好坏？固定动作序列的评估显然不够，因为同一个目标可以用很不同的动作序列达成。他们用多模态代理玩家来做评估，让代理自己去找完成长期目标的最优路径。这个思路其实很接近我们做科学模拟时的验证——你不能只问...",
+    "papers": [
+      {
+        "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
+        "url": "https://arxiv.org/abs/2608.13489",
+        "arxiv_id": "2608.13489"
+      },
+      {
+        "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
+        "url": "https://arxiv.org/abs/2608.13505",
+        "arxiv_id": "2608.13505"
+      },
+      {
+        "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
+        "url": "https://arxiv.org/abs/2608.13546",
+        "arxiv_id": "2608.13546"
+      },
+      {
+        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
+        "url": "https://arxiv.org/abs/2608.12036",
+        "arxiv_id": "2608.12036"
+      },
+      {
+        "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
+        "url": "https://arxiv.org/abs/2608.13552",
+        "arxiv_id": "2608.13552"
+      }
+    ],
+    "published_at": "2026-08-16T22:49:12.607389Z"
+  },
+  {
     "date": "2026-08-15",
     "title": "Paper Morning 2026-08-15",
     "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-17T23:27:19.000502Z"
-  },
-  {
-    "date": "2026-07-16",
-    "title": "Paper Morning 2026-07-16",
-    "description": "今日学术播报: Function-Aware Fill-in-the-Mid, Xiaomi-Robotics-U0: Unified Em, Harness Handbook: Making Evolv...",
-    "audio_file": "2026-07-16.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想先从一篇代码智能体的论文聊起，因为它触及了一个我觉得很重要但容易被忽视的问题：现在的代码模型训练，都是从左往右生成，但实际用起来，智能体得不断接收外部工具的返回值，再继续推理，这两种能力的方向其实是不一致的。Function-Aware Fill-in-the-Middle这篇工作就抓住了这个gap。他们把智能体的action-observation循环类比成函数调用：调用者绑定参数，被调用者返回结果，下游代码消费这个值。这个结构在普通代码里到处可见，作者用程序依赖图筛选函数，做了一个中间填充的预训练目标，在代码数据上做继续预训练。7B到8B规模的模型在代码补全任务上有明显提升。这个工作不算惊天的突破，但它指出了一个很实际的问题：基础模型的训练目标和智能体的实际使用场景之间，缺的不仅是能力，还有行为模式的对齐。中间填充这个思路，之前在代码补全里有人做过，用在智能体训练上算是自然的迁移，不过用程序分析来选函数这个细节，显得比较工程化，算不算方法论上的创新，大家可以自己判断。\n\n然后第二篇，小米的具身智能工作 Xiaomi-Robot...",
-    "papers": [
-      {
-        "title": "Function-Aware Fill-in-the-Middle as Mid-Training for Coding Agent Foundation Models",
-        "url": "https://arxiv.org/abs/2607.12463",
-        "arxiv_id": "2607.12463"
-      },
-      {
-        "title": "Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model",
-        "url": "https://arxiv.org/abs/2607.11643",
-        "arxiv_id": "2607.11643"
-      },
-      {
-        "title": "Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable",
-        "url": "https://arxiv.org/abs/2607.13285",
-        "arxiv_id": "2607.13285"
-      },
-      {
-        "title": "Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation",
-        "url": "https://arxiv.org/abs/2607.11886",
-        "arxiv_id": "2607.11886"
-      },
-      {
-        "title": "4D Human-Scene Reconstruction from Low-Overlap Captures",
-        "url": "https://arxiv.org/abs/2607.09125",
-        "arxiv_id": "2607.09125"
-      }
-    ],
-    "published_at": "2026-07-16T23:28:00.466560Z"
   }
 ]
