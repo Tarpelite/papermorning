@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-17",
+    "title": "Paper Morning 2026-08-17",
+    "description": "今日学术播报: Intern-S2-Mobius: Foundation M, Self-Supervised Visual On-Poli, Can We Defend Against AI-Gener...",
+    "audio_file": "2026-08-17.mp3",
+    "script": "各位早上好，周一的Paper Morning如约而至。\n\n今天想先从一篇架构创新聊起。Intern-S2-Mobius这个工作提出了一个很有意思的思路：把知识存储和推理能力分开。它用一个全局共享的内存模块存储知识向量，多个推理器通过迭代查询这个内存来完成推理任务。这本质上是在回答一个很根本的问题：大语言模型里到底哪些参数负责记忆事实，哪些负责进行逻辑推演？Mobius用架构层面的解耦给出了自己的回答。从实验结果看，它的7B模型用62.6%的训练数据就能达到baseline的性能，这说明知识-推理分离确实改善了知识压缩效率。不过我更感兴趣的是这个思路对科学计算 foundation model的启发：我们能不能把物理先验知识也做类似的解耦，把物理定律存成一个独立的知识库，让不同的推理模块去调用？这样foundation model在面对新任务时，可能就不需要从头学习物理规律，而是直接检索已有的物理知识。\n\n聊完架构，我们把视线转向一个更基础的问题：视觉学习中的非对称性。Self-Supervised Visual On-Policy Distillation这篇文章提出了一个很巧妙的想法...",
+    "papers": [
+      {
+        "title": "Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning",
+        "url": "https://arxiv.org/abs/2608.14290",
+        "arxiv_id": "2608.14290"
+      },
+      {
+        "title": "Self-Supervised Visual On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2608.14144",
+        "arxiv_id": "2608.14144"
+      },
+      {
+        "title": "Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination",
+        "url": "https://arxiv.org/abs/2608.14391",
+        "arxiv_id": "2608.14391"
+      },
+      {
+        "title": "Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development",
+        "url": "https://arxiv.org/abs/2608.13417",
+        "arxiv_id": "2608.13417"
+      },
+      {
+        "title": "H2R-Bench: Benchmarking Human-to-Robot Manipulation Video Generation in World Models",
+        "url": "https://arxiv.org/abs/2608.13049",
+        "arxiv_id": "2608.13049"
+      }
+    ],
+    "published_at": "2026-08-17T22:53:20.002612Z"
+  },
+  {
     "date": "2026-08-16",
     "title": "Paper Morning 2026-08-16",
     "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-18T23:28:55.442274Z"
-  },
-  {
-    "date": "2026-07-17",
-    "title": "Paper Morning 2026-07-17",
-    "description": "今日学术播报: Harness Handbook: Making Evolv, VideoChat3: Fully Open Video M, SEED: Self-Evolving On-Policy ...",
-    "audio_file": "2026-07-17.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我最近反复思考的问题开始：咱们做AI for Science的人，常常关心的是模型怎么学物理、怎么解方程，但另一条线其实正在悄悄改变整个科研的工作方式，那就是AI agent本身的能力演进。今天这几篇论文，恰好从不同角度展示了agent生态的最新进展，我觉得挺值得拿出来聊聊。\n\n第一篇叫Harness Handbook，讲的是怎么让那些维护AI agent系统的人不要那么头疼。大家知道，一个现代agent背后不仅仅是一个大模型，还有一套复杂的harness系统，用来构造prompt、管理状态、调用工具、协调执行。这套东西会随着模型更新、API变化、需求迭代而不断修改。但问题在于，修改请求描述的是“系统应该做什么”，而代码库是按文件模块组织的，行为和代码之间的映射需要开发者手动去恢复。这篇工作提出了一个框架，让行为到代码的映射变得可读、可导航、可编辑。说实话，这个方向可能不如训练一个大模型那么光鲜，但它解决的是一个非常实际的工程问题。随着agent系统越来越复杂，这类基础设施工具的价值会越来越大。\n\n接下来看Vide...",
-    "papers": [
-      {
-        "title": "Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable",
-        "url": "https://arxiv.org/abs/2607.13285",
-        "arxiv_id": "2607.13285"
-      },
-      {
-        "title": "VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding",
-        "url": "https://arxiv.org/abs/2607.14935",
-        "arxiv_id": "2607.14935"
-      },
-      {
-        "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2607.14777",
-        "arxiv_id": "2607.14777"
-      },
-      {
-        "title": "Boogu-Image-0.1: Boosting Open-Source Unified Multimodal Understanding and Generation",
-        "url": "https://arxiv.org/abs/2607.13125",
-        "arxiv_id": "2607.13125"
-      },
-      {
-        "title": "Ring-Zero: Scaling Zero RL to a Trillion Parameters for Emergent Reasoning",
-        "url": "https://arxiv.org/abs/2607.12395",
-        "arxiv_id": "2607.12395"
-      }
-    ],
-    "published_at": "2026-07-17T23:27:19.000502Z"
   }
 ]

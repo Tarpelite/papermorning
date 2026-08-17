@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-17</title>
+      <description>今日学术播报: Intern-S2-Mobius: Foundation M, Self-Supervised Visual On-Poli, Can We Defend Against AI-Gener...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-17.mp3" length="8630483" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-17.mp3</guid>
+      <pubDate>2026-08-17T22:53:20.002612Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-16</title>
       <description>今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-16.mp3" length="6488233" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-18.mp3" length="8091315" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-18.mp3</guid>
       <pubDate>2026-07-18T23:28:55.442274Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-17</title>
-      <description>今日学术播报: Harness Handbook: Making Evolv, VideoChat3: Fully Open Video M, SEED: Self-Evolving On-Policy ...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-17.mp3" length="8144605" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-17.mp3</guid>
-      <pubDate>2026-07-17T23:27:19.000502Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
