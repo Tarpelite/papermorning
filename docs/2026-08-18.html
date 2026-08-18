@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-18</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-18</h1>
+    <p class="date">2026-08-18</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-18.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，新的一周开始了。
+
+今天想和大家聊聊一个我最近特别有感的趋势，就是AI Agent正在从“能做什么”走向“怎么做更可靠”。这个转变看似是系统工程的问题，但其实和我们做AI for Science的人关心的东西高度相关——毕竟如果我们要让AI帮我们做科学发现，总得先相信它的推理过程吧。
+
+先看第一篇论文，HarnessEval-W。这个工作的核心想法很有意思：过去我们评估一个世界模型好不好，往往就是跑一把rollout，然后算个成功率分数。但这种方法其实忽略了一个关键问题——模型到底是怎么得出这个分数的？有没有可能模型的物理推理其实是错的，但因为最后状态碰巧对了，就蒙混过关了？HarnessEval-W的做法是把评估本身变成一个Agent任务，让评估器能够理解每个case的上下文，把“这个世界模型是否正确”这个问题拆解成可测量的子问题，然后生成可检查的推理链。这个思路其实和我们做科学计算时强调的“可解释性”很像——不仅要给答案，还要给理由。
+
+顺着这个思路，第二篇论文StateM就更直接了。它研究的问题是：为什么一个强大的语言模型，在作为Agent执行长序列任务时还是会犯低级错误？比如突然忘记之前学到的教训，或者状态追踪出现混乱。StateM的解法很有意思，它不是去改模型权重，而是重新设计了一套agent原生的运行时系统。他们引入了“持久状态”、“阶段局部上下文”、“可恢复的操作手册”这些概念，让Agent的执行过程变得可检查、可追溯。在Terminal-Bench 2.1这个基准上，他们把GPT-5.6的准确率从83.1%提升到了95.3%。这个提升幅度非常可观，而且关键在于它不依赖更强的模型，而是让现有模型发挥得更稳定。这让我想到我们在做PDE求解的时候，有时候与其追求更复杂的模型结构，不如想想怎么让训练和推理的流程更robust。
+
+第三篇论文VibeWorlding则把Agent的能力往外推了一步——能不能让多模态Agent从零开始构建一个3D开放世界？用户给一个query，Agent要能理解意图、规划场景布局、调用3D工具、还要能根据多模态反馈进行反思。这里面最难的部分我认为是“理解用户意图”和“多轮交互中的推理一致性”，因为3D世界的构建本身就是一个高度结构化的任务，中间任何一步走偏了，最后的输出就会很奇怪。VWE-BENCH这个benchmark提供了2600多个高质量3D资产和323个人类标注的种子世界，应该是目前这个方向最系统的数据集了。
+
+说完了Agent基础设施和评估，我们来换一个视角。第四篇论文Large Discovery Model直接把我们拉回了AI for Science的核心战场——科学发现。科学发现本质上是一个在巨大结构化空间里做优化的问题，比如搜索新分子、新蛋白序列或者新程序。现有的方法要么依赖模型输出的概率，要么靠模型的自我评估，但这些信号对于真正 novelty 的候选物往往不可靠。LDM的做法是把生成模型和一个贝叶斯非参数奖励代理模型耦合起来——生成模型负责提出和优化候选设计，代理模型预测性能并量化不确定性。这种组合我觉得很有启发性，因为它实际上是在给“AI生成的候选到底靠不靠谱”这件事提供一个校准过的置信度，而不只是盲目相信模型的输出。
+
+最后一篇论文SA-MRPO讲的是多奖励强化学习中的一个实际问题。当我们同时优化多个奖励目标时，传统做法是把它们加权求和，但这样做会导致一个问题：已经学得很好的那些奖励仍然会占用梯度预算，而那些还没学好的奖励反而被忽视了。SA-MRPO引入了“饱和感知”的优势重加权，根据每个目标的当前学习程度动态调整优化优先级。这让我想到做多任务学习时常见的“灾难性遗忘”或者“任务不平衡”问题，本质上都是资源分配的优化问题。
+
+好，让我们回到今天的整体观察。我注意到这五篇论文其实暗含了一条线索：从Agent的评估可靠性、到执行系统的稳定性、到能力边界的拓展、到科学发现的实际应用、再到训练方法的精细化。这其实反映了一个更宏观的趋势——AI Agent正在从“展示能力”转向“建立信任”。不管是评估时需要可解释的推理链，还是执行时需要可追溯的状态管理，核心都是一件事：我们要能理解和验证Agent的行为。在这个基础上，科学发现、多模态交互、多目标优化这些应用才有真正落地的可能。早上就聊到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.16859" target="_blank">HarnessEval-W: Agentifying the Evaluation of Visual Worlds</a></li>
+<li><a href="https://arxiv.org/abs/2608.15089" target="_blank">StateM: Reaching 95.3% Raw Accuracy, or a \$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling</a></li>
+<li><a href="https://arxiv.org/abs/2608.15265" target="_blank">VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?</a></li>
+<li><a href="https://arxiv.org/abs/2608.15669" target="_blank">Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search</a></li>
+<li><a href="https://arxiv.org/abs/2608.16072" target="_blank">Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

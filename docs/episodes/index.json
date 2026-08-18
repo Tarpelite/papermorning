@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-18",
+    "title": "Paper Morning 2026-08-18",
+    "description": "今日学术播报: HarnessEval-W: Agentifying the, StateM: Reaching 95.3% Raw Acc, VibeWorlding: Can Multimodal A...",
+    "audio_file": "2026-08-18.mp3",
+    "script": "各位早上好，新的一周开始了。\n\n今天想和大家聊聊一个我最近特别有感的趋势，就是AI Agent正在从“能做什么”走向“怎么做更可靠”。这个转变看似是系统工程的问题，但其实和我们做AI for Science的人关心的东西高度相关——毕竟如果我们要让AI帮我们做科学发现，总得先相信它的推理过程吧。\n\n先看第一篇论文，HarnessEval-W。这个工作的核心想法很有意思：过去我们评估一个世界模型好不好，往往就是跑一把rollout，然后算个成功率分数。但这种方法其实忽略了一个关键问题——模型到底是怎么得出这个分数的？有没有可能模型的物理推理其实是错的，但因为最后状态碰巧对了，就蒙混过关了？HarnessEval-W的做法是把评估本身变成一个Agent任务，让评估器能够理解每个case的上下文，把“这个世界模型是否正确”这个问题拆解成可测量的子问题，然后生成可检查的推理链。这个思路其实和我们做科学计算时强调的“可解释性”很像——不仅要给答案，还要给理由。\n\n顺着这个思路，第二篇论文StateM就更直接了。它研究的问题是：为什么一个强大的语言模型，在作为Agent执行长序列任务时还是会犯低级...",
+    "papers": [
+      {
+        "title": "HarnessEval-W: Agentifying the Evaluation of Visual Worlds",
+        "url": "https://arxiv.org/abs/2608.16859",
+        "arxiv_id": "2608.16859"
+      },
+      {
+        "title": "StateM: Reaching 95.3% Raw Accuracy, or a \\$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling",
+        "url": "https://arxiv.org/abs/2608.15089",
+        "arxiv_id": "2608.15089"
+      },
+      {
+        "title": "VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?",
+        "url": "https://arxiv.org/abs/2608.15265",
+        "arxiv_id": "2608.15265"
+      },
+      {
+        "title": "Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search",
+        "url": "https://arxiv.org/abs/2608.15669",
+        "arxiv_id": "2608.15669"
+      },
+      {
+        "title": "Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization",
+        "url": "https://arxiv.org/abs/2608.16072",
+        "arxiv_id": "2608.16072"
+      }
+    ],
+    "published_at": "2026-08-18T22:53:45.600972Z"
+  },
+  {
     "date": "2026-08-17",
     "title": "Paper Morning 2026-08-17",
     "description": "今日学术播报: Intern-S2-Mobius: Foundation M, Self-Supervised Visual On-Poli, Can We Defend Against AI-Gener...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-19T23:32:00.947296Z"
-  },
-  {
-    "date": "2026-07-18",
-    "title": "Paper Morning 2026-07-18",
-    "description": "今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...",
-    "audio_file": "2026-07-18.mp3",
-    "script": "各位早上好，今天是周末，Paper Morning又和大家见面了。\n\n今天想和大家聊聊一个我觉得很有意思的趋势：不管是做基础模型的还是做应用的，大家似乎都在往同一个方向努力——怎么让AI agent真正具备长期规划、持续推理的能力。这个线索其实贯穿了今天要聊的五篇论文。\n\n先看第一篇，RxBrain，做的是具身智能的基础模型。传统上，我们做视觉语言模型，要么强调理解场景，要么强调生成未来状态，但这两者是割裂的。RxBrain的思路是把语言和视觉想象放在同一个规划序列里：语言提供抽象的任务分解和决策逻辑，视觉想象则把这种抽象结构落地到具体的世界状态预测。听起来是不是有点像我们做PDE求解时的思路？把偏微分方程的解析结构和数值离散结合起来，才能既保证物理一致性又有计算效率。这篇工作的核心贡献在于，它让agent的规划过程不再是一个黑箱，而是语言推理和视觉推理交替进行的可解释过程。\n\n接下来这篇LongStraw很有意思，它解决的是一个非常实际的问题：我们现在能做的推理上下文已经到百万token了，但强化学习训练的时候往往还卡在256K token以下，训练和推理的上下文长度差距越来越大。L...",
-    "papers": [
-      {
-        "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
-        "url": "https://arxiv.org/abs/2607.14187",
-        "arxiv_id": "2607.14187"
-      },
-      {
-        "title": "LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget",
-        "url": "https://arxiv.org/abs/2607.14952",
-        "arxiv_id": "2607.14952"
-      },
-      {
-        "title": "VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding",
-        "url": "https://arxiv.org/abs/2607.14935",
-        "arxiv_id": "2607.14935"
-      },
-      {
-        "title": "SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration",
-        "url": "https://arxiv.org/abs/2607.15257",
-        "arxiv_id": "2607.15257"
-      },
-      {
-        "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2607.14777",
-        "arxiv_id": "2607.14777"
-      }
-    ],
-    "published_at": "2026-07-18T23:28:55.442274Z"
   }
 ]
