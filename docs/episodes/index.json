@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-19",
+    "title": "Paper Morning 2026-08-19",
+    "description": "今日学术播报: Demystifying Agent Skills: Why, FreeToken: Efficient Edge-Nati, ASI-Bench: At the Dawn of Arti...",
+    "audio_file": "2026-08-19.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊聊一个正在悄悄发生的变化，你会发现最近AI agent领域出现了一波从“模型能力”转向“系统能力”的研究浪潮。换句话说，大家不再只卷模型参数，转而在训练范式、部署方式、执行架构这些工程层面下功夫了。我们今天聊的几篇论文，恰好折射出这个趋势。\n\n第一篇是关于agent skill机制的系统性研究。Skill可以理解为把一些常用知识打包成现成的技能包，让agent在推理时直接调用，而不是临时学习。这几年大家用得很多，但它到底什么时候有效、为什么有效、什么时候会失灵，其实一直没被好好研究过。这篇论文就做了这么一件事：设计了大量对照实验，分离出representation、outcome annotation、retrieval difficulty、cross-framework robustness这些因素对skill效果的影响。然后又做了一个对比研究，把定量实验和轨迹分析结合起来。最后他们清洗了8135条实验记录，保留了238条有效的未配对记录来分析。得出的结论很有意思：skill在大多数情况下能提升任务成功率，但它的有效性...",
+    "papers": [
+      {
+        "title": "Demystifying Agent Skills: Why They Work-Until They Don't",
+        "url": "https://arxiv.org/abs/2608.14036",
+        "arxiv_id": "2608.14036"
+      },
+      {
+        "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+        "url": "https://arxiv.org/abs/2608.16157",
+        "arxiv_id": "2608.16157"
+      },
+      {
+        "title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
+        "url": "https://arxiv.org/abs/2608.17271",
+        "arxiv_id": "2608.17271"
+      },
+      {
+        "title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
+        "url": "https://arxiv.org/abs/2608.17310",
+        "arxiv_id": "2608.17310"
+      },
+      {
+        "title": "StateM: Reaching 95.3% Raw Accuracy, or a \\$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling",
+        "url": "https://arxiv.org/abs/2608.15089",
+        "arxiv_id": "2608.15089"
+      }
+    ],
+    "published_at": "2026-08-19T22:54:11.557593Z"
+  },
+  {
     "date": "2026-08-18",
     "title": "Paper Morning 2026-08-18",
     "description": "今日学术播报: HarnessEval-W: Agentifying the, StateM: Reaching 95.3% Raw Acc, VibeWorlding: Can Multimodal A...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-20T23:34:17.763709Z"
-  },
-  {
-    "date": "2026-07-19",
-    "title": "Paper Morning 2026-07-19",
-    "description": "今日学术播报: RxBrain: Embodied Cognition Fo, LongStraw: Long-Context RL Bey, VideoChat3: Fully Open Video M...",
-    "audio_file": "2026-07-19.mp3",
-    "script": "各位早上好，周日的Paper Morning如约而至。\n\n今天想和大家聊的，是一组关于大模型Agent训练和系统优化的最新工作。它们看起来可能和我们熟悉的PDE求解、神经算子有些距离，但我覺得里面有些趋势值得我们留心。\n\n第一篇是RxBrain，关于具身认知的基础模型。简单说，它把语言推理和视觉想象整合到一个规划序列里，语言负责给出抽象的任务分解和约束条件，而视觉想象则负责预测未来的世界状态，帮助生成子目标。这让我想到一个问题：我们做科学计算的时候，是不是也常常需要这种“双重表征”？比如我们在设计一个物理模拟的agent时，既需要形式化的方程来表达物理约束，也需要某种“直觉”来预判数值解的行为。这篇工作的核心贡献在于，它让语言和视觉在同一个规划框架下互补，而不是割裂成两个独立模块。这对我们在AI4S里设计“物理推理Agent”有不错的启发——怎么让符号化的物理知识和基于感知的世界模型协同工作，而不是各跑各的。\n\n然后是LongStraw，这篇解决的是一个很实际的问题：RL训练时的上下文长度和推理时的上下文长度之间有个巨大的鸿沟。它提出了一个针对百万token级别RL训练的执行栈，通过复...",
-    "papers": [
-      {
-        "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
-        "url": "https://arxiv.org/abs/2607.14187",
-        "arxiv_id": "2607.14187"
-      },
-      {
-        "title": "LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget",
-        "url": "https://arxiv.org/abs/2607.14952",
-        "arxiv_id": "2607.14952"
-      },
-      {
-        "title": "VideoChat3: Fully Open Video MLLM for Efficient and Generalist Video Understanding",
-        "url": "https://arxiv.org/abs/2607.14935",
-        "arxiv_id": "2607.14935"
-      },
-      {
-        "title": "SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration",
-        "url": "https://arxiv.org/abs/2607.15257",
-        "arxiv_id": "2607.15257"
-      },
-      {
-        "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2607.14777",
-        "arxiv_id": "2607.14777"
-      }
-    ],
-    "published_at": "2026-07-19T23:32:00.947296Z"
   }
 ]
