@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-20</title>
+      <description>今日学术播报: OmniScientist: An Omni-Modal O, Co-RL: Unsupervised Reasoning , Zetta ζ: An Efficient Closed-L...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-20.mp3" length="6874427" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-20.mp3</guid>
+      <pubDate>2026-08-20T22:57:30.612350Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-19</title>
       <description>今日学术播报: Demystifying Agent Skills: Why, FreeToken: Efficient Edge-Nati, ASI-Bench: At the Dawn of Arti...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-19.mp3" length="12494306" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-21.mp3" length="6182914" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-21.mp3</guid>
       <pubDate>2026-07-21T23:31:26.379602Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-20</title>
-      <description>今日学术播报: RxBrain: Embodied Cognition Fo, From Pixels to States: Rethink, RESOURCE2SKILL: Distilling Exe...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-20.mp3" length="10262404" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-20.mp3</guid>
-      <pubDate>2026-07-20T23:34:17.763709Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

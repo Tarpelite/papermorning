@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-20",
+    "title": "Paper Morning 2026-08-20",
+    "description": "今日学术播报: OmniScientist: An Omni-Modal O, Co-RL: Unsupervised Reasoning , Zetta ζ: An Efficient Closed-L...",
+    "audio_file": "2026-08-20.mp3",
+    "script": "各位早上好，周四的Paper Morning又和大家见面了。\n\n今天想先和大家聊一篇关于AI科学家的论文，叫OmniScientist。现在很多AI系统已经能做假设生成、代码执行到论文写作的全流程，但这些系统大多停留在文本、代码和标签层面，那些对科学发现至关重要的空间关系、时间过程、跨模态信息往往被忽略了。OmniScientist的亮点在于它能直接处理异构的原始证据——图片、实验数据、视频等等——然后在一个确定性的pipeline里完成从 ideation 到实验再到写作的全过程。我觉得这其实反映了一个趋势：AI4S正从“辅助工具”向“真正的研究伙伴”演进，未来我们可能会看到更多能够自主设计实验、分析多模态数据的AI系统。\n\n接下来这篇Co-RL很有意思，它研究的是如何在没有人工标注奖励的情况下让多智能体系统涌现出推理能力。我们知道强化学习在语言模型上已经取得了不错的进展，但最成功的例子还是依赖可验证的ground-truth reward，自己生成反馈又容易陷入同质化。Co-RR提出让多个智能体在合作中相互提供反馈信号，这样就能在无需人工标注的情况下学到推理能力。这让我想到，这和我...",
+    "papers": [
+      {
+        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+        "url": "https://arxiv.org/abs/2608.13558",
+        "arxiv_id": "2608.13558"
+      },
+      {
+        "title": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
+        "url": "https://arxiv.org/abs/2608.17253",
+        "arxiv_id": "2608.17253"
+      },
+      {
+        "title": "Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence",
+        "url": "https://arxiv.org/abs/2608.16590",
+        "arxiv_id": "2608.16590"
+      },
+      {
+        "title": "SemComp-Bench: Benchmarking Semantic Task Completion in Video Generation",
+        "url": "https://arxiv.org/abs/2608.17426",
+        "arxiv_id": "2608.17426"
+      },
+      {
+        "title": "SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation",
+        "url": "https://arxiv.org/abs/2608.18565",
+        "arxiv_id": "2608.18565"
+      }
+    ],
+    "published_at": "2026-08-20T22:57:30.612350Z"
+  },
+  {
     "date": "2026-08-19",
     "title": "Paper Morning 2026-08-19",
     "description": "今日学术播报: Demystifying Agent Skills: Why, FreeToken: Efficient Edge-Nati, ASI-Bench: At the Dawn of Arti...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-21T23:31:26.379602Z"
-  },
-  {
-    "date": "2026-07-20",
-    "title": "Paper Morning 2026-07-20",
-    "description": "今日学术播报: RxBrain: Embodied Cognition Fo, From Pixels to States: Rethink, RESOURCE2SKILL: Distilling Exe...",
-    "audio_file": "2026-07-20.mp3",
-    "script": "各位早上好，周一的Paper Morning如约而至。周末的学术圈可没闲着，有几篇挺有意思的工作值得我们聊聊。今天我挑了五篇论文，涉及具身智能、世界模型、知识图谱和机器人学习，它们看似分散，但背后有一条清晰的暗线，我们一会儿再展开。\n\n先来看第一篇，RxBrain，具身认知基础模型。听起来又是一个VLA模型，但它想解决的问题其实挺深刻的：现在的视觉语言模型擅长理解场景、做个决策，但真正落到机器人身上，你得把高层任务推理和物理世界的具体状态连接起来对吧？RxBrain的思路是把语言和视觉想象放在同一个规划序列里协同工作。语言负责抽象结构——任务怎么分解、有哪些 planning primitives、约束条件、时间顺序、决策逻辑，这些是语言擅长表达的东西。但光有抽象规划不行，你得知道每个子目标对应的世界状态长什么样，这时候视觉想象就派上用场了，它负责预测具体的状态演变，帮你验证这个计划在物理世界能不能落地。我觉得这个设计挺有意思，它其实回应了一个根本问题：具身智能到底需要什么样的世界模型？不是那种只管生成下一帧画面的世界模型，而是能同时承载抽象推理和具体预测的双轨系统。\n\n接下来这篇 F...",
-    "papers": [
-      {
-        "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
-        "url": "https://arxiv.org/abs/2607.14187",
-        "arxiv_id": "2607.14187"
-      },
-      {
-        "title": "From Pixels to States: Rethinking Interactive World Models as Game Engines",
-        "url": "https://arxiv.org/abs/2607.14076",
-        "arxiv_id": "2607.14076"
-      },
-      {
-        "title": "RESOURCE2SKILL: Distilling Executable Agent Skills from Human-Created Multimodal Resources",
-        "url": "https://arxiv.org/abs/2606.29538",
-        "arxiv_id": "2606.29538"
-      },
-      {
-        "title": "RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM",
-        "url": "https://arxiv.org/abs/2607.11683",
-        "arxiv_id": "2607.11683"
-      },
-      {
-        "title": "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories",
-        "url": "https://arxiv.org/abs/2607.15330",
-        "arxiv_id": "2607.15330"
-      }
-    ],
-    "published_at": "2026-07-20T23:34:17.763709Z"
   }
 ]

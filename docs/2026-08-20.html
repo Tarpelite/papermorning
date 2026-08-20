@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-20</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-20</h1>
+    <p class="date">2026-08-20</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-20.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周四的Paper Morning又和大家见面了。
+
+今天想先和大家聊一篇关于AI科学家的论文，叫OmniScientist。现在很多AI系统已经能做假设生成、代码执行到论文写作的全流程，但这些系统大多停留在文本、代码和标签层面，那些对科学发现至关重要的空间关系、时间过程、跨模态信息往往被忽略了。OmniScientist的亮点在于它能直接处理异构的原始证据——图片、实验数据、视频等等——然后在一个确定性的pipeline里完成从 ideation 到实验再到写作的全过程。我觉得这其实反映了一个趋势：AI4S正从“辅助工具”向“真正的研究伙伴”演进，未来我们可能会看到更多能够自主设计实验、分析多模态数据的AI系统。
+
+接下来这篇Co-RL很有意思，它研究的是如何在没有人工标注奖励的情况下让多智能体系统涌现出推理能力。我们知道强化学习在语言模型上已经取得了不错的进展，但最成功的例子还是依赖可验证的ground-truth reward，自己生成反馈又容易陷入同质化。Co-RR提出让多个智能体在合作中相互提供反馈信号，这样就能在无需人工标注的情况下学到推理能力。这让我想到，这和我们做operator learning时遇到的数据稀缺问题其实很类似——与其依赖昂贵的标注数据，是不是也可以让多个模型或多个模态之间形成某种“协作学习”的关系？
+
+然后想说说Zetta这篇，它提出了一个闭环的 embodied harness，专门用于物理智能体的在线演化。传统的方法通常是开环的——跑完一圈再回头反思，但物理世界变化太快，等你反思完环境早就变了。Zetta的思路是在运行时同时运行多个时间尺度的循环：动作级别的实时决策 rollout 级别的critic-recovery，还有更长周期的策略演化。这其实给了一个很好的启示：做物理模拟和强化学习时，我们能不能也引入这种多层级的闭环反馈，而不仅仅是在离线数据上训一个静态的模型？
+
+再来看SemComp-Bench，它定义了视频生成中的一个新任务——语义任务完成。简单说就是不仅要生成一段视频，还要确保视频的结果和参考图片在高层语义上是一致的。这个任务很有趣，因为它把生成的质量评估从传统的appearance consistency转向了outcome-oriented的语义对齐。我觉得这和科学计算中的一些问题有相通之处——比如我们在做PDE求解时，往往更关心解的物理意义是否正确，而不是数值误差的细节。
+
+最后聊聊SemaPLC，它是一个面向工业控制代码生成的agent harness。传统的LLM生成代码后，往往是自己判断能不能跑，但SemaPLC要求必须通过外部验证——包括编译检查和运行时行为验证——才算真正完成。这个思路我觉得很值得借鉴到科学计算工具链上：与其让模型自己说“我觉得我的求解结果是对的”，不如强制它通过某种形式化的验证流程。这其实也是我们一直在说的“可信AI”在这个细分领域的具体体现。
+
+好，今天的五篇论文都聊完了。大家有没有发现一个共同的主题？今天的论文虽然各有侧重，但几乎都在回答同一个问题：如何让AI系统不仅能生成看起来对的结果，还要能够被验证、能够闭环、能够真正融入到物理世界或科学发现的过程中。从这个角度看，AI4S的下一阶段，可能不在于模型能拟合多复杂的函数，而在于我们能否构建出真正可验证、可交互、可持续演化的系统。好了，周四早上就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.13558" target="_blank">OmniScientist: An Omni-Modal Omni-Discipline AI Scientist</a></li>
+<li><a href="https://arxiv.org/abs/2608.17253" target="_blank">Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL</a></li>
+<li><a href="https://arxiv.org/abs/2608.16590" target="_blank">Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2608.17426" target="_blank">SemComp-Bench: Benchmarking Semantic Task Completion in Video Generation</a></li>
+<li><a href="https://arxiv.org/abs/2608.18565" target="_blank">SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
