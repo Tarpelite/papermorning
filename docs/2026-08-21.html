@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-21</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-21</h1>
+    <p class="date">2026-08-21</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-21.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周五的Paper Morning如约而至。
+
+今天想先和大家聊一个很有意思的观察：过去一周HuggingFace上最热门的论文，几乎清一色都指向同一个方向——AI Agent。无论是任务规划、环境构建还是代码执行，Agent正在从研究热点变成实实在在的工具链。几篇论文虽然具体问题不同，但都指向一个核心命题：怎样让AI Agent更好地「落地」，真正帮上科研工作者的忙。
+
+先看这篇OmniScientist，它试图回答一个很根本的问题：AI科学家到底能「看」什么？过去我们觉得大模型能读论文、写代码就够了，但OmniScientist告诉我们，真正的科学发现需要的远不止这些。它构建了一个端到端的全模态AI系统，感知层可以直接处理图像、表格、代码等异构原始证据，然后通过三个自主代理分别负责 ideation、experiment 和 writeup。注意这里的关键词是「raw evidence」——它不只是处理文本和标签，而是能「看到」科学数据本身的空间关系、时间演化、跨通道信息。这让我想到我们在AI4S里常说的「多模态感知」，以前我们觉得这是数据可视化的需求，现在看来，它可能是科学智能体的必备能力。
+
+但光有感知不够，Agent还得能干活。接下来的SWE-bench Science关注的是一个很实际的问题：coding agent能不能修好科学软件？这个 benchmark 收集了119个来自98个真实科学代码库的任务，涵盖20个领域。结果很有意思：目前最强的 Claude Code Opus-5 在这个测试集上的 pass@1 还不到50%。这个数字告诉我们什么？科学软件和普通工程代码不一样——它往往和物理模型、数值方法紧密耦合，一个看似微小的修改可能影响整个计算流程。Agent在通用编程上很厉害，但在科学这个垂直领域，还有很长的路要走。这里有一个值得深思的问题：我们缺的到底是更好的编码能力，还是对科学问题本身的理解？
+
+如果说SWE-bench Science测的是Agent的「执行力」，那么FACET和EnvHarness就是在解决更底层的问题：怎样让训练任务本身变得更可靠、更高效。FACET关注的是任务合成中的信息丢失问题——当你从代码库、文档、issue里提取任务时，指令、环境、参考解、可执行验证器这些工件之间很容易产生不一致，导致任务不可解或评估错误。它的做法是重建相关代理技能，形成连贯的信息丰富场景，然后实现并修复可执行任务。这个思路其实很像我们在做neural operator时对数据一致性的要求——没有高质量、可验证的训练信号，再好的模型也白搭。
+
+EnvHarness则更激进一些。它提出了一个很有趣的比喻：现在的环境对Agent来说是「盲」的——环境不知道Agent的弱点，Agent变强了环境还是老样子。EnvHarness的解决方案是在静态环境上盖一层可编程的插件，通过标准接口来改变环境行为，而不需要重写底层逻辑。更关键的是，它还能自动化这个「重塑」过程，根据Agent的表现动态调整环境难度。这让我想到RL里的curriculum learning，但EnvHarness把它搬到了环境层面，而且不需要针对每个领域单独设计pipeline。如果这个思路能扩展到科学计算环境会怎样？想象一下，一个物理模拟环境能根据Agent的解题水平自动调节难度——这或许是我们想要的「活」的科研环境。
+
+最后插一篇看似不相关的论文4DAnyone，它提出了一个bounded-attention-context的问题：当你需要生成几十个目标视图时，模型单次前向能处理的上下文是有限的，超出部分会被分组处理，导致视图之间的一致性崩溃。这个问题在3D/4D重建里很具体，但它反映的其实是scaling的一个普遍困境：怎么在有限计算资源下保持长程一致性？不管是用在视频生成还是科学模拟，这个问题的本质是一样的。
+
+好了，今天的播报接近尾声。我有一个整体的感受：这一周最热的论文虽然各有侧重，但都在回答同一个母题——怎样让AI Agent从「能说会道」变成「能工巧匠」。无论是更丰富的感知、更可靠的训练数据、更灵活的环境，还是更一致的生成能力，这些工作都在为Agent走向真正的科研实践铺路。我们离「AI辅助科学发现」这个目标，或许又近了一小步。祝大家周末愉快，科研顺利。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.20335" target="_blank">4DAnyone: Create Anyone in 4D from a Casual Monocular Video</a></li>
+<li><a href="https://arxiv.org/abs/2608.13558" target="_blank">OmniScientist: An Omni-Modal Omni-Discipline AI Scientist</a></li>
+<li><a href="https://arxiv.org/abs/2608.19799" target="_blank">SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?</a></li>
+<li><a href="https://arxiv.org/abs/2608.18580" target="_blank">FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis</a></li>
+<li><a href="https://arxiv.org/abs/2608.19880" target="_blank">EnvHarness: Awakening Static Worlds for Agent Learning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

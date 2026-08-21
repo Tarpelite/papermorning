@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-21",
+    "title": "Paper Morning 2026-08-21",
+    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
+    "audio_file": "2026-08-21.mp3",
+    "script": "各位早上好，周五的Paper Morning如约而至。\n\n今天想先和大家聊一个很有意思的观察：过去一周HuggingFace上最热门的论文，几乎清一色都指向同一个方向——AI Agent。无论是任务规划、环境构建还是代码执行，Agent正在从研究热点变成实实在在的工具链。几篇论文虽然具体问题不同，但都指向一个核心命题：怎样让AI Agent更好地「落地」，真正帮上科研工作者的忙。\n\n先看这篇OmniScientist，它试图回答一个很根本的问题：AI科学家到底能「看」什么？过去我们觉得大模型能读论文、写代码就够了，但OmniScientist告诉我们，真正的科学发现需要的远不止这些。它构建了一个端到端的全模态AI系统，感知层可以直接处理图像、表格、代码等异构原始证据，然后通过三个自主代理分别负责 ideation、experiment 和 writeup。注意这里的关键词是「raw evidence」——它不只是处理文本和标签，而是能「看到」科学数据本身的空间关系、时间演化、跨通道信息。这让我想到我们在AI4S里常说的「多模态感知」，以前我们觉得这是数据可视化的需求，现在看来，它可能是...",
+    "papers": [
+      {
+        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
+        "url": "https://arxiv.org/abs/2608.20335",
+        "arxiv_id": "2608.20335"
+      },
+      {
+        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+        "url": "https://arxiv.org/abs/2608.13558",
+        "arxiv_id": "2608.13558"
+      },
+      {
+        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
+        "url": "https://arxiv.org/abs/2608.19799",
+        "arxiv_id": "2608.19799"
+      },
+      {
+        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
+        "url": "https://arxiv.org/abs/2608.18580",
+        "arxiv_id": "2608.18580"
+      },
+      {
+        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+        "url": "https://arxiv.org/abs/2608.19880",
+        "arxiv_id": "2608.19880"
+      }
+    ],
+    "published_at": "2026-08-21T22:54:13.730198Z"
+  },
+  {
     "date": "2026-08-20",
     "title": "Paper Morning 2026-08-20",
     "description": "今日学术播报: OmniScientist: An Omni-Modal O, Co-RL: Unsupervised Reasoning , Zetta ζ: An Efficient Closed-L...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-22T23:33:19.192219Z"
-  },
-  {
-    "date": "2026-07-21",
-    "title": "Paper Morning 2026-07-21",
-    "description": "今日学术播报: EvolvingWorld: An Open-Schema , RynnBrain 1.1: Towards More Ca, DeepSearch-World: Self-Distill...",
-    "audio_file": "2026-07-21.mp3",
-    "script": "各位早上好，今天Paper Morning开播。\n\n先说一篇让我觉得挺有意思的工作，RynnBrain 1.1，这是一个具身基础模型家族，从2B到122B-A10B的多个规模。它的核心思路是用一个统一的时空和物理接地框架来训练，让模型同时支持具身感知、空间推理、定位和规划。特别值得关注的是，它引入了接触点预测和原生3D接地，而且针对不同机器人平台设计了跨具身动作空间。这两年具身智能火起来以后，大家都在讨论“物理世界的基础模型”应该长什么样，RynnBrain 1.1给出了一个比较完整的答案，不过122B-A10B这种规模的模型能不能真正部署到机器人上运行，可能还需要观察。\n\n说完具身智能，接下来看另一个热点方向，agent的自我进化。DeepSearch-World构建了一个可验证的搜索环境，有42万道多跳问答任务，然后基于这个环境提出了自蒸馏框架DeepSearch-Evolve。关键点在于，它不是单纯靠人类标注的轨迹来微调，而是让agent自己在环境中尝试、反思、恢复失败，然后从这些经验中学习。这其实跟我们在科学计算中追求的目标有点像——让求解器能够自我纠错、持续改进。只是这里是在...",
-    "papers": [
-      {
-        "title": "EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World",
-        "url": "https://arxiv.org/abs/2607.17250",
-        "arxiv_id": "2607.17250"
-      },
-      {
-        "title": "RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model",
-        "url": "https://arxiv.org/abs/2607.17977",
-        "arxiv_id": "2607.17977"
-      },
-      {
-        "title": "DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment",
-        "url": "https://arxiv.org/abs/2607.07820",
-        "arxiv_id": "2607.07820"
-      },
-      {
-        "title": "TimeLens2: Generalist Video Temporal Grounding with Multimodal LLMs",
-        "url": "https://arxiv.org/abs/2607.17423",
-        "arxiv_id": "2607.17423"
-      },
-      {
-        "title": "SWE-Pruner Pro: The Coder LLM Already Knows What to Prune",
-        "url": "https://arxiv.org/abs/2607.18213",
-        "arxiv_id": "2607.18213"
-      }
-    ],
-    "published_at": "2026-07-21T23:31:26.379602Z"
   }
 ]
