@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-22</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-22</h1>
+    <p class="date">2026-08-22</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-22.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个更大的话题聊起。我们一直在追踪AI for Science里neural operator和基础模型的进展，但最近行业有一个很明显的趋势：AI Agent正在从“工具”变成“科研伙伴”。今天带来的几篇论文，正好从不同角度触及了这个变化。
+
+第一篇叫OmniScientist，名字很有野心——它是试图做一个“全模态全学科”的AI科学家。过去的AI科学家大多在文本、代码、预计算结果上做推理，但它直接从原始的多模态证据出发，包括图像、时序数据、跨通道的信息。系统里有感知层，有三个自主Agent分别负责 ideation、实验和写作。更关键的是，它有一个deterministic pipeline来确保整个研究过程的连贯性。我看到这篇工作的时候，第一个想法是：它能不能帮我们解决实验物理中那种“数据在手里但不知道怎么建模”的困境？当实验数据是多模态的时候，传统的pipeline往往要把数据硬塞进某个固定表征，但OmniScientist的思路是让Agent自己从原始证据里发现关系。这和我们在neural operator里追求的“端到端从数据学operator”其实有某种思想上的呼应——只不过它发生在更高的研究任务层级。
+
+但紧接着的问题也很实际：这些Agent到底能不能干实事？第二篇论文SWE-b Science就是来检验这个的。它构建了一个benchmark，专门测试coding agents在修复科学软件工程任务上的表现。科学代码和普通代码不一样——它往往和物理模型、数值方法紧耦合，一个bug可能直接影响科学结论的正确性。结果出来了，即使是目前最强的Claude Code，在科学软件任务上的pass@1还不到50%。这个数字挺说明问题的。它告诉我们两件事：第一，通用coding agent在专业领域还有明显短板；第二，科学软件的特殊性——比如依赖复杂的科学计算库、需要理解物理约束——还没有被现有评估覆盖。顺着这个话题，第三篇论文FACET其实在解决一个更底层的问题：怎么合成高质量的终端任务来训练Agent。它特别强调source intent的保留和executable state的一致性，因为如果任务生成时的假设不一致，Agent可能训练半天学的却是错误的东西。这对咱们做AI4S平台的人来说很重要——我们要给Agent提供什么样的环境、什么样的任务定义，才算是有效的训练数据？
+
+这就引出了第四篇EnvHarness。它的想法很有意思：与其从头搭建动态环境，不如给静态环境加一个“可编程的外壳”，让环境能够“感知”到Agent的弱点并自适应调整。打个比方，就像给一个老旧的物理模拟器装上一个智能适配层，Agent变强了，环境也跟着变。这篇工作拿到了246个upvotes，是今天热度最高的，说明社区对“环境生成”这个问题确实有强烈需求。
+
+好了，把这几篇串起来看，我有一个整体的感受：AI for Science正在经历一个范式转移——从“AI作为工具帮助人做科学”，到“AI作为Agent参与科学研究的全过程”。OmniScientist代表了愿景，证明了多模态AI可以覆盖从假设到写作的全流程；SWE-b Science泼了点冷水，提醒我们通用Agent在科学任务上的能力还有限；FACET和EnvHarness则在基础设施建设上补位，告诉我们好的训练数据和环境对Agent有多重要。
+
+但我更想指出的是，这种范式转移对咱们AI4S社区意味着什么。当Agent能够自主做实验、写代码、修bug的时候，我们还需要手工设计neural operator的架构吗？可能更需要的是让Agent能够理解物理问题、调用科学计算库、验证数值结果的能力。换句话说，AI4S的下一个战场，也许不在模型架构本身，而在Agent对科学问题的“理解深度”上。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.20335" target="_blank">4DAnyone: Create Anyone in 4D from a Casual Monocular Video</a></li>
+<li><a href="https://arxiv.org/abs/2608.13558" target="_blank">OmniScientist: An Omni-Modal Omni-Discipline AI Scientist</a></li>
+<li><a href="https://arxiv.org/abs/2608.19799" target="_blank">SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?</a></li>
+<li><a href="https://arxiv.org/abs/2608.18580" target="_blank">FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis</a></li>
+<li><a href="https://arxiv.org/abs/2608.19880" target="_blank">EnvHarness: Awakening Static Worlds for Agent Learning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

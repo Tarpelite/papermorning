@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-22</title>
+      <description>今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-22.mp3" length="7371590" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-22.mp3</guid>
+      <pubDate>2026-08-22T22:51:11.710507Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-21</title>
       <description>今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-21.mp3" length="8384723" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-23.mp3" length="10174633" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-23.mp3</guid>
       <pubDate>2026-07-23T23:29:54.810295Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-22</title>
-      <description>今日学术播报: Mage-Flow: An Efficient Native, EvolvingWorld: An Open-Schema , AlayaWorld: Interactive Long-H...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-22.mp3" length="10445471" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-22.mp3</guid>
-      <pubDate>2026-07-22T23:33:19.192219Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
