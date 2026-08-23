@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-23",
+    "title": "Paper Morning 2026-08-23",
+    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
+    "audio_file": "2026-08-23.mp3",
+    "script": "各位早上好，周末的Paper Morning如约而至。\n\n今天想先和大家聊一个趋势，就是AI for Science正在从“做计算”走向“做研究”。这不是说偏微分方程求解不重要了，而是我们开始看到一种更整体的智能在介入科研流程。刚好今天有几篇论文从不同角度触及了这个转变，我很乐意和大家分享我的观察。\n\n先看这篇OmniScientist。现在的AI Scientist大多还是在文本、代码、标签或者预计算的摘要上做推理，但科学发现依赖的证据远不止这些。作者提出了一个端到端的全模态AI科学家，能够直接从异构的原始证据出发做研究。它有一个感知层加上三个自主Agent分别负责 ideation、experiment和writeup，在确定性pipeline里协作。读到这我想到一个类比：过去的AI Scientist像是一个只看文献综述做研究的科学家，而OmniScientist像是真的走进了实验室，看到了原始数据、仪器输出、甚至实验过程中的Procedural信息。这其实解决了一个根本问题——我们怎么让AI不仅仅复现论文的结论，而是真正像研究者一样处理原始证据？这对AI4S的意义在于，当模型能...",
+    "papers": [
+      {
+        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
+        "url": "https://arxiv.org/abs/2608.20335",
+        "arxiv_id": "2608.20335"
+      },
+      {
+        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+        "url": "https://arxiv.org/abs/2608.13558",
+        "arxiv_id": "2608.13558"
+      },
+      {
+        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
+        "url": "https://arxiv.org/abs/2608.19799",
+        "arxiv_id": "2608.19799"
+      },
+      {
+        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
+        "url": "https://arxiv.org/abs/2608.18580",
+        "arxiv_id": "2608.18580"
+      },
+      {
+        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+        "url": "https://arxiv.org/abs/2608.19880",
+        "arxiv_id": "2608.19880"
+      }
+    ],
+    "published_at": "2026-08-23T22:51:09.782680Z"
+  },
+  {
     "date": "2026-08-22",
     "title": "Paper Morning 2026-08-22",
     "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-24T23:34:52.635457Z"
-  },
-  {
-    "date": "2026-07-23",
-    "title": "Paper Morning 2026-07-23",
-    "description": "今日学术播报: Mage-Flow: An Efficient Native, AlayaWorld: Interactive Long-H, Generative World Renderer at t...",
-    "audio_file": "2026-07-23.mp3",
-    "script": "各位早上好，今天周四，Paper Morning如约而至。\n\n今天想和大家聊一个我觉得特别有意思的趋势，就是世界模型这个概念，最近在计算机视觉那边火得不行，但我觉得它的思路其实和我们科学计算领域正在探索的方向有很多可以对话的地方。\n\n先来看第一篇，Mage-Flow，一个高效的原生的4B规模的图像生成基础模型。这篇工作的核心贡献是提出了一个协同设计的生成堆栈，包括一个轻量级高保真的潜在tokenizer Mage-VAE，以及一个使用 rectified flow matching 训练的原分辨率多模态扩散Transformer。作者特别强调了一个叫做anchor-latent regularization的技术，使得VAE的重建质量和公开的强VAEs相当，但是tokenization的成本降低了一个数量级以上。我看这篇论文的视角是，它其实在解决一个foundation model的老大难问题：如何在效率和能力之间取得平衡。对于我们做科学计算的人来说，这个问题特别眼熟——我们要训一个PDE的foundation model，数据量、模型规模、推理速度，这三者之间的tradeoff也是天...",
-    "papers": [
-      {
-        "title": "Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing",
-        "url": "https://arxiv.org/abs/2607.19064",
-        "arxiv_id": "2607.19064"
-      },
-      {
-        "title": "AlayaWorld: Interactive Long-Horizon World Modeling -- Full Technical Report",
-        "url": "https://arxiv.org/abs/2607.18367",
-        "arxiv_id": "2607.18367"
-      },
-      {
-        "title": "Generative World Renderer at the Speed of Play",
-        "url": "https://arxiv.org/abs/2607.18703",
-        "arxiv_id": "2607.18703"
-      },
-      {
-        "title": "ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU",
-        "url": "https://arxiv.org/abs/2607.19191",
-        "arxiv_id": "2607.19191"
-      },
-      {
-        "title": "Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers",
-        "url": "https://arxiv.org/abs/2607.19139",
-        "arxiv_id": "2607.19139"
-      }
-    ],
-    "published_at": "2026-07-23T23:29:54.810295Z"
   }
 ]
