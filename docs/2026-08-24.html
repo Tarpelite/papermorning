@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-24</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-24</h1>
+    <p class="date">2026-08-24</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-24.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，欢迎来到Paper Morning。
+
+今天想和大家聊一个可能比较意外的话题：我从HuggingFaceTrending上挑了几篇最近的论文，但它们和咱们平时关注的neural operator、PDE求解器这些AI4S核心方向不太一样。反过来想，这些论文其实从另一个角度提醒我们：AI工具链在科研流程中的渗透，可能比模型本身更值得关注。
+
+第一篇是4DAnyone，做的是从单目视频重建4D人体。这项工作解决的核心问题是：现有的视频扩散模型在生成少量新视角时效果不错，但要生成几十个视角来支撑4D高斯溅射重建，就会出现视角间不一致。他们把这个问题归因于bounded-attention-context——当目标视角数量超过单次前向传播的容量时，不得不分批处理，导致之前生成的视角信息被稀释。这让我想到，我们在做PDE求解的neural operator时其实也经常遇到类似问题：处理长时间序列或者大空间域时，如何保持信息的一致传递？这篇工作在计算机图形学领域是很好的进展，但方法论上的洞察其实可以延伸到其他需要一致性生成的场景。
+
+第二篇是SWE-benchScience，关注的是编程Agent在科学软件维护中的表现。他们构建了一个包含119个任务、覆盖20个科学领域的基准测试，重点不在于Agent能解决多少问题，而在于分析它们为什么会失败。结果很有意思：即使是最强的ClaudeCodeOpus-5，pass@1也不到50%。这让我想到，我们训练AI4S模型时，是否也经常只关注最终指标，而忽略了失败模式的分析？科学软件和普通工程软件不同，bug可能直接影响科学结论的可靠性，这篇工作提醒我们，AI辅助科研工具的可靠性验证还有很长的路要走。
+
+第三篇和第四篇其实可以放在一起看。FACET解决的是终端Agent训练中任务合成的一致性问题——指令、环境、参考解和验证器这些构件如果来源不一致，任务可能根本无法求解。EnvHarness则更激进，它们不想每次都从头搭建环境，而是加一层可编程的外壳来动态改造环境行为，让环境能够适应Agent的成长。这两篇工作加起来，我看到的一个趋势是：Agent训练正在从“预设任务”向“动态环境”演进。联想到AI4S，我们是不是也可以让PDE求解环境变得更动态？比如根据当前模型的弱点自动生成更有挑战性的算例？
+
+最后想重点说说ForgeWM，这是今天这几篇里和我们领域最相关的一篇。它做的是动作条件化的视频世界模型，核心贡献是把双向视频生成器通过渐进式训练变成少步骤的世界模型。这里的关键技术点包括因果蒸馏、领域适配和策略分布匹配。视频世界模型和物理模拟的交叉其实越来越热——用diffusion model生成物理过程、用世界模型预测环境演化，本质上都是在学习物理规律的隐式表示。ForgeWM的渐进式训练思路或许也能启发我们：与其直接训练一个长时间PDE求解器，不如分阶段、分目标地逐步扩展模型能力。
+
+今天的整体观察是：这五篇论文虽然不直接属于AI4S的核心技术栈，但它们揭示了一个更底层的问题——AI科研工具的工程化基础设施正在快速成熟，从数据生成、环境构建到任务评测都有了更系统的方法。而这些基础设施的成熟，恰恰是foundation model能够在科学计算领域发挥威力的前提。换句话说，模型能力的爆发固然令人兴奋，但真正决定AI4S能不能做深的，可能是我们搭建工具链的耐心和精细度。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.20335" target="_blank">4DAnyone: Create Anyone in 4D from a Casual Monocular Video</a></li>
+<li><a href="https://arxiv.org/abs/2608.19799" target="_blank">SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?</a></li>
+<li><a href="https://arxiv.org/abs/2608.18580" target="_blank">FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis</a></li>
+<li><a href="https://arxiv.org/abs/2608.19880" target="_blank">EnvHarness: Awakening Static Worlds for Agent Learning</a></li>
+<li><a href="https://arxiv.org/abs/2608.14022" target="_blank">ForgeWM: Progressive Causal Training for Few-Step Action-Conditioned Video World Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

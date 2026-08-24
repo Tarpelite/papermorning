@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-24",
+    "title": "Paper Morning 2026-08-24",
+    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , SWE-bench Science: Can Coding , FACET: Preserving Source Inten...",
+    "audio_file": "2026-08-24.mp3",
+    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想和大家聊一个可能比较意外的话题：我从HuggingFaceTrending上挑了几篇最近的论文，但它们和咱们平时关注的neural operator、PDE求解器这些AI4S核心方向不太一样。反过来想，这些论文其实从另一个角度提醒我们：AI工具链在科研流程中的渗透，可能比模型本身更值得关注。\n\n第一篇是4DAnyone，做的是从单目视频重建4D人体。这项工作解决的核心问题是：现有的视频扩散模型在生成少量新视角时效果不错，但要生成几十个视角来支撑4D高斯溅射重建，就会出现视角间不一致。他们把这个问题归因于bounded-attention-context——当目标视角数量超过单次前向传播的容量时，不得不分批处理，导致之前生成的视角信息被稀释。这让我想到，我们在做PDE求解的neural operator时其实也经常遇到类似问题：处理长时间序列或者大空间域时，如何保持信息的一致传递？这篇工作在计算机图形学领域是很好的进展，但方法论上的洞察其实可以延伸到其他需要一致性生成的场景。\n\n第二篇是SWE-benchScience，关注的是编...",
+    "papers": [
+      {
+        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
+        "url": "https://arxiv.org/abs/2608.20335",
+        "arxiv_id": "2608.20335"
+      },
+      {
+        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
+        "url": "https://arxiv.org/abs/2608.19799",
+        "arxiv_id": "2608.19799"
+      },
+      {
+        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
+        "url": "https://arxiv.org/abs/2608.18580",
+        "arxiv_id": "2608.18580"
+      },
+      {
+        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+        "url": "https://arxiv.org/abs/2608.19880",
+        "arxiv_id": "2608.19880"
+      },
+      {
+        "title": "ForgeWM: Progressive Causal Training for Few-Step Action-Conditioned Video World Models",
+        "url": "https://arxiv.org/abs/2608.14022",
+        "arxiv_id": "2608.14022"
+      }
+    ],
+    "published_at": "2026-08-24T22:56:25.222048Z"
+  },
+  {
     "date": "2026-08-23",
     "title": "Paper Morning 2026-08-23",
     "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-25T23:32:08.773224Z"
-  },
-  {
-    "date": "2026-07-24",
-    "title": "Paper Morning 2026-07-24",
-    "description": "今日学术播报: AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos, ReferTrack: Referring Then Tra...",
-    "audio_file": "2026-07-24.mp3",
-    "script": "各位早上好，又到了Paper Morning的时间。今天想先从一个观察说起。这两年我们见证了基础模型从“变大”走向“变聪明”的过程，从简单的next-token prediction到思维链，从被动应答到主动工具使用。但今天想聊的论文，它们呈现的其实是一个更根本的转向：怎么让模型不仅能回答问题，还能递归地改进自己的答案，怎么让庞大的模型不仅能训起来，还能训得高效。\n\n先看AREX这篇工作。它提出了一个非常有意思的想法，叫做“发现-验证不对称性”。简单说就是找到一个好答案很难，但验证一个答案对不对往往容易得多，特别是当答案可以拆解成多个独立的约束条件时。这个洞察其实很贴近我们做研究的日常，搭一个实验框架可能很费时间，但跑通之后调整参数、验证想法其实相对快。AREX正是利用这个不对称性，构造了一个递归自我改进的智能体，内层循环负责搜集证据、搭建临时答案，外层循环负责逐条检验约束、找出没被满足的部分，然后针对性补充。整个过程像是一个研究者不断自我审稿、迭代改进的过程，不是简单地搜索更久，而是有策略地利用已验证的状态来指导后续探索。这个思路对于AI for Science的启示在于，我们能不能...",
-    "papers": [
-      {
-        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
-        "url": "https://arxiv.org/abs/2607.21461",
-        "arxiv_id": "2607.21461"
-      },
-      {
-        "title": "SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
-        "url": "https://arxiv.org/abs/2607.20145",
-        "arxiv_id": "2607.20145"
-      },
-      {
-        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
-        "url": "https://arxiv.org/abs/2607.20061",
-        "arxiv_id": "2607.20061"
-      },
-      {
-        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
-        "url": "https://arxiv.org/abs/2605.09635",
-        "arxiv_id": "2605.09635"
-      },
-      {
-        "title": "Visual Contrastive Self-Distillation",
-        "url": "https://arxiv.org/abs/2607.21556",
-        "arxiv_id": "2607.21556"
-      }
-    ],
-    "published_at": "2026-07-24T23:34:52.635457Z"
   }
 ]

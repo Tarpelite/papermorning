@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-24</title>
+      <description>今日学术播报: 4DAnyone: Create Anyone in 4D , SWE-bench Science: Can Coding , FACET: Preserving Source Inten...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-24.mp3" length="7051224" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-24.mp3</guid>
+      <pubDate>2026-08-24T22:56:25.222048Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-23</title>
       <description>今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-23.mp3" length="9202251" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-25.mp3" length="8426728" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-25.mp3</guid>
       <pubDate>2026-07-25T23:32:08.773224Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-24</title>
-      <description>今日学术播报: AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos, ReferTrack: Referring Then Tra...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-24.mp3" length="10046737" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-24.mp3</guid>
-      <pubDate>2026-07-24T23:34:52.635457Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
