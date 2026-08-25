@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-25",
+    "title": "Paper Morning 2026-08-25",
+    "description": "今日学术播报: EchoWM: Open and Enterable Omn, Unlocking the Potential of Ima, Apodex 1.1: Scaling Agentic In...",
+    "audio_file": "2026-08-25.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，基础模型在自然语言处理和计算机视觉领域已经展现了惊人的 scaling 能力，但当我们把目光投向科学计算领域时，一个核心问题始终在叩问我们：这种预训练范式能不能真正迁移到物理世界的建模上？这不只是一个技术问题，更关乎我们如何理解“智能”这件事——是从数据中压缩规律，还是从第一性原理出发构建可解释的结构。今天的几篇论文恰好从不同角度触碰了这个问题。\n\n先来看第一篇，EchoWM，全称是“可进入的多模态世界模型”。这篇工作来自一个我很关注的团队，他们试图构建一个能同时生成视频、声音、音乐和语音的统一世界模型，并且响应连续的导航操作。听起来很像是为具身智能量身打造的“虚拟试验场”。但我更在意的是它背后的方法论：他们把离散的指令和连续的姿态映射到一个共享的度量尺度的六自由度轨迹上，然后在数据层面做校准，保证不同来源的数据在运动幅度上保持一致。这其实回应了一个很实际的问题——当我们想把互联网视频、3D模拟数据、甚至真实机器人数据混在一起训练时，如何让模型理解“移动一米”这件事在不同语境下到底意味着...",
+    "papers": [
+      {
+        "title": "EchoWM: Open and Enterable Omnimodal World Models",
+        "url": "https://arxiv.org/abs/2608.23189",
+        "arxiv_id": "2608.23189"
+      },
+      {
+        "title": "Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision",
+        "url": "https://arxiv.org/abs/2608.16812",
+        "arxiv_id": "2608.16812"
+      },
+      {
+        "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
+        "url": "https://arxiv.org/abs/2608.23283",
+        "arxiv_id": "2608.23283"
+      },
+      {
+        "title": "TLive-Omni: An Omni-Modal Understanding Model for E-Commerce Live Streaming",
+        "url": "https://arxiv.org/abs/2608.20958",
+        "arxiv_id": "2608.20958"
+      },
+      {
+        "title": "Inertial Manifold Neural Operator for Dissipative Time-Dependent Partial Differential Equations",
+        "url": "https://arxiv.org/abs/2608.23546v1",
+        "arxiv_id": "2608.23546v1"
+      }
+    ],
+    "published_at": "2026-08-25T22:58:40.287690Z"
+  },
+  {
     "date": "2026-08-24",
     "title": "Paper Morning 2026-08-24",
     "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , SWE-bench Science: Can Coding , FACET: Preserving Source Inten...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-26T23:30:49.040667Z"
-  },
-  {
-    "date": "2026-07-25",
-    "title": "Paper Morning 2026-07-25",
-    "description": "今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...",
-    "audio_file": "2026-07-25.mp3",
-    "script": "各位早上好，周六的Paper Morning如约而至。\n\n今天想先从一个更大的话题聊起。我们都知道AI领域现在特别火的一句话是“一切皆可foundation model”，但真正把这个思想落地的，可不只是在NLP或者视觉圈子里打转。今天这几篇论文虽然来自不同方向，但我觉得它们共同指向了一个趋势：AI正在从“解决单一任务”走向“构建可扩展的系统能力”，这个转变其实和我们做AI for Science的人关心的东西高度相关。\n\n先看第一篇，K12-KGraph，做的是K12教育领域的知识图谱。表面上是个教育AI的工作，但我感兴趣的不是它做了什么题目、考了多少钱，而是它提出的一个概念：curriculum cognition，课程认知能力。作者认为现在的教育大模型主要测的是答题能力，但真正重要的是理解知识之间的结构关系——先修链条、概念分类、实验与概念的连接、视觉 grounded 的理解等等。这让我想到什么？我们做PDE求解器的时候，经常说网络要学会“物理直觉”，但这个直觉从哪来？不就是系统性地理解方程之间的结构关系、不同物理 regime 之间的联系吗？这篇工作用知识图谱显式化了这种结构...",
-    "papers": [
-      {
-        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
-        "url": "https://arxiv.org/abs/2605.09635",
-        "arxiv_id": "2605.09635"
-      },
-      {
-        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
-        "url": "https://arxiv.org/abs/2607.21461",
-        "arxiv_id": "2607.21461"
-      },
-      {
-        "title": "SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
-        "url": "https://arxiv.org/abs/2607.20145",
-        "arxiv_id": "2607.20145"
-      },
-      {
-        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
-        "url": "https://arxiv.org/abs/2607.20061",
-        "arxiv_id": "2607.20061"
-      },
-      {
-        "title": "Visual Contrastive Self-Distillation",
-        "url": "https://arxiv.org/abs/2607.21556",
-        "arxiv_id": "2607.21556"
-      }
-    ],
-    "published_at": "2026-07-25T23:32:08.773224Z"
   }
 ]
