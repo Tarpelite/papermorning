@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-27</title>
+      <description>今日学术播报: GigaBrain-0.7: Scaling Embodie, On-Policy Self-Distillation in, Annotations as Rollouts: Effic...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-27.mp3" length="7512651" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-27.mp3</guid>
+      <pubDate>2026-08-27T03:30:48.916883Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-25</title>
       <description>今日学术播报: EchoWM: Open and Enterable Omn, Unlocking the Potential of Ima, Apodex 1.1: Scaling Agentic In...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-25.mp3" length="10758940" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-27.mp3" length="9476850" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-27.mp3</guid>
       <pubDate>2026-07-27T23:35:58.764011Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-26</title>
-      <description>今日学术播报: K12-KGraph: A Curriculum-Align, AREX: Towards a Recursively Se, SLAI T-Rex: Full-Parameter Pos...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-26.mp3" length="7257487" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-26.mp3</guid>
-      <pubDate>2026-07-26T23:30:49.040667Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

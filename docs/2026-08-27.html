@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-27</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-27</h1>
+    <p class="date">2026-08-27</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-27.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想先和大家聊一篇具身智能方向的论文，然后再谈几篇生成模型和多模态的工作。
+
+GigaBrain-0.7提出了一个三系统架构来构建具身foundation model，把理解、预测和动作统一在一个框架里。它用超过37000小时的机器人数据做预训练，在不同机器人形态上展示了不错的泛化能力。这篇工作的亮点在于它的架构设计思路：用独立的模块分别处理感知理解、未来预测和动作执行，然后用一种统一的方式把它们协调起来。这让我想到科学计算里类似的思想——我们能不能把物理建模、状态预测和系统控制也用类似的三系统架构来组织？尤其是当我们要处理多物理场耦合、跨尺度建模这种复杂任务时，一个清晰的三系统划分可能比端到端的黑盒模型更容易解释和调试。当然，这是我的一个初步联想，具体能不能迁移过去，还要看后续的研究。
+
+接下来看DiffusionOPSD，这篇工作关注的是怎么用强化学习来训练扩散模型。它提出了一个on-policy self-distillation的框架，把图像层面的reward信号转化为对中间去噪步骤的显式监督。简单来说，它不只是告诉模型最终生成的图像好不好，而是告诉模型在去噪的每一步应该往哪个方向调整。这个思路其实很有意思——它相当于在扩散模型的生成过程中引入了一种细粒度的引导机制。我在想，这种对中间状态进行监督的思想，是不是也能用到科学模拟中？比如在数值求解PDE的时候，我们能不能不只是监督最终结果，而是对求解路径上的每一步都给出反馈？这可能是一个值得探索的方向。
+
+然后是OraRL，它研究的是视频多模态大模型的强化学习训练。它发现一个很有意思的现象：标注数据不只是可以用来打分，还可以直接作为正样本放进训练里。但直接这么做会导致advantage inversion的问题，也就是高reward的oracle反而会降低模型的训练效果。它提出了一个巧妙的解决办法来处理这个问题。这篇工作让我想到，科学数据的高质量标注其实也很稀缺，如果我们能把专家标注和模型生成的数据更有机地结合起来，可能能缓解数据不足的问题。
+
+WeMM-Embedding是微信团队的多模态embedding模型，支持文本、图像、视频等多种模态的联合表示。它用两阶段训练，先做大范围的模态对齐，再做精细化的相关性监督。这篇工作更多是工程意义上的进展，但它展示的pipeline——大规模粗对齐加小规模精调——可能也对科学数据的处理有参考价值。我们在做科学数据预处理的时候，是不是也可以先用大规模无监督方法做粗对齐，然后再用高质量的科学标注做精调？
+
+最后是AutoSaddler，它提出了一个自动优化LLM agent harness的框架。Harness可以理解为给agent加的护栏，用来提高agent在长程任务中的鲁棒性。它把harness优化问题建模成离线学习问题，用失败信号来迭代更新。这个思路其实很有启发——我们能不能把科学计算中的numerical harness也自动化？比如自动检测数值模拟中的不稳定步骤并给出修复建议？这可能是一个有趣的AI for Science的新应用场景。
+
+好，总结一下今天的观察。今天的几篇论文其实有一个共同的隐形线索：无论是对扩散模型中间状态的监督、把标注数据直接用作训练目标、还是用失败信号来迭代优化harness，大家都在做同一件事——试图更精细地利用训练信号，不再满足于只在最终输出层面给反馈，而是把监督信号渗透到过程的每一步。这种“过程监督”的思路，我觉得可能是影响科学计算的一个潜在方向。因为科学计算本身就是一个迭代求解的过程，我们是不是也应该更多关注中间状态的质量，而不是只盯着最终结果？好了，各位今天辛苦了，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.15875" target="_blank">GigaBrain-0.7: Scaling Embodied Foundation Models to Emergent Capabilities with a Three-System Architecture</a></li>
+<li><a href="https://arxiv.org/abs/2608.24646" target="_blank">On-Policy Self-Distillation in Diffusion Models</a></li>
+<li><a href="https://arxiv.org/abs/2608.20492" target="_blank">Annotations as Rollouts: Efficient and Scalable Reinforcement Learning for Video MLLMs</a></li>
+<li><a href="https://arxiv.org/abs/2608.24053" target="_blank">WeMM-Embedding: WeChat Multi-Modal Embedding Technical Report</a></li>
+<li><a href="https://arxiv.org/abs/2608.23041" target="_blank">AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
