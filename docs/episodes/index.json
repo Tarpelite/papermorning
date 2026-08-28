@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-28",
+    "title": "Paper Morning 2026-08-28",
+    "description": "今日学术播报: PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int, VoiceMem: Streaming Dual-Brain...",
+    "audio_file": "2026-08-28.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个我们领域的人可能也在思考的问题聊起：视频生成模型到底能不能“理解”物理？这两年扩散模型在图像、视频生成上取得了惊人的进展，很多人开始把它们叫做世界模型。但我们做科学计算的都清楚，一个真正有用的世界模型，不是生成几帧看起来逼真的画面就够了，它得能捕捉到物理过程本身的随机性和多变性。\n\n今天第一篇论文PAWBench就在系统地检验这件事。作者提出了一个叫做“概率对齐”的概念，说的是一个好的世界模型不仅要能生成一条合理的轨迹，还要在同样的初始条件下，多次生成能够恢复出正确的行为分布。这个要求其实很本质，因为物理世界本身就是概率性的——量子涨落、湍流、随机力，都是我们在模拟时必须处理的。于是他们做了一个benchmark，来测现在这些视频生成模型到底能不能做到这一点。结果可能会让一些人清醒一下：目前的模型在分布层面的对齐上还差得很远。这对我们意味着什么？如果我们想用视频生成作为科学模拟的降噪器或者快速预筛工具，这件事可能没我们想的那么乐观。\n\n不过好消息是，视频模型确实在学到一些视觉推理的能力。VGI-bench这个工作很...",
+    "papers": [
+      {
+        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+        "url": "https://arxiv.org/abs/2608.27345",
+        "arxiv_id": "2608.27345"
+      },
+      {
+        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+        "url": "https://arxiv.org/abs/2608.25593",
+        "arxiv_id": "2608.25593"
+      },
+      {
+        "title": "VoiceMem: Streaming Dual-Brain Memory for Real-Time Interaction",
+        "url": "https://arxiv.org/abs/2608.26005",
+        "arxiv_id": "2608.26005"
+      },
+      {
+        "title": "WarpSAC: Towards the Pinnacle of Scalable Off-policy RL by Rethinking Exploration and Exploitation",
+        "url": "https://arxiv.org/abs/2608.24479",
+        "arxiv_id": "2608.24479"
+      },
+      {
+        "title": "VGI-Bench: Probing Visual Intelligence in Video Generation Models",
+        "url": "https://arxiv.org/abs/2608.19583",
+        "arxiv_id": "2608.19583"
+      }
+    ],
+    "published_at": "2026-08-28T06:17:31.560544Z"
+  },
+  {
     "date": "2026-08-27",
     "title": "Paper Morning 2026-08-27",
     "description": "今日学术播报: GigaBrain-0.7: Scaling Embodie, On-Policy Self-Distillation in, Annotations as Rollouts: Effic...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-28T23:32:41.630202Z"
-  },
-  {
-    "date": "2026-07-27",
-    "title": "Paper Morning 2026-07-27",
-    "description": "今日学术播报: K12-KGraph: A Curriculum-Align, ReferTrack: Referring Then Tra, AREX: Towards a Recursively Se...",
-    "audio_file": "2026-07-27.mp3",
-    "script": "各位早上好，新的一周开始了。\n\n今天想跟大家聊几篇挺有意思的论文，它们虽然来自不同方向，但背后其实有一条共同的线索，我们后面再说。\n\n先看第一篇，K12-KGraph，这是一个面向K12教育的知识图谱。我看到很多朋友可能会想，这跟咱们搞AI for Science有什么关系？但仔细想想，它提出的“课程认知”概念很有意思——它不只是考学生会做多少题，而是考察模型对知识结构的理解：先修链条、概念之间的层级关系、实验和概念的连接方式。这其实触及了一个我们在科学计算里也在面对的问题：怎么让模型真正理解“物理世界里的因果结构”，而不是仅仅拟合输入输出。K12-KGraph从教材里提取了九种节点类型和十四种关系，构建了一个挺完整的结构化体系。它衍生出的K12-Bench有23000多道题，这个规模对于训练和评估教育LLM来说是很可观的。\n\n说完知识结构，我们来看一个更“具身”的方向。ReferTrack这篇工作研究的是 embodied visual tracking，就是让一个智能体跟着语言描述的目标走。它的一个核心贡献是把任务拆成了两步：先 referring——从一组bounding box...",
-    "papers": [
-      {
-        "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
-        "url": "https://arxiv.org/abs/2605.09635",
-        "arxiv_id": "2605.09635"
-      },
-      {
-        "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
-        "url": "https://arxiv.org/abs/2607.20061",
-        "arxiv_id": "2607.20061"
-      },
-      {
-        "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research",
-        "url": "https://arxiv.org/abs/2607.21461",
-        "arxiv_id": "2607.21461"
-      },
-      {
-        "title": "Visual Contrastive Self-Distillation",
-        "url": "https://arxiv.org/abs/2607.21556",
-        "arxiv_id": "2607.21556"
-      },
-      {
-        "title": "Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers",
-        "url": "https://arxiv.org/abs/2607.21594",
-        "arxiv_id": "2607.21594"
-      }
-    ],
-    "published_at": "2026-07-27T23:35:58.764011Z"
   }
 ]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-08-28</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-08-28</h1>
+    <p class="date">2026-08-28</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-08-28.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个我们领域的人可能也在思考的问题聊起：视频生成模型到底能不能“理解”物理？这两年扩散模型在图像、视频生成上取得了惊人的进展，很多人开始把它们叫做世界模型。但我们做科学计算的都清楚，一个真正有用的世界模型，不是生成几帧看起来逼真的画面就够了，它得能捕捉到物理过程本身的随机性和多变性。
+
+今天第一篇论文PAWBench就在系统地检验这件事。作者提出了一个叫做“概率对齐”的概念，说的是一个好的世界模型不仅要能生成一条合理的轨迹，还要在同样的初始条件下，多次生成能够恢复出正确的行为分布。这个要求其实很本质，因为物理世界本身就是概率性的——量子涨落、湍流、随机力，都是我们在模拟时必须处理的。于是他们做了一个benchmark，来测现在这些视频生成模型到底能不能做到这一点。结果可能会让一些人清醒一下：目前的模型在分布层面的对齐上还差得很远。这对我们意味着什么？如果我们想用视频生成作为科学模拟的降噪器或者快速预筛工具，这件事可能没我们想的那么乐观。
+
+不过好消息是，视频模型确实在学到一些视觉推理的能力。VGI-bench这个工作很有意思，它不只是看生成的视频有多逼真，而是设计了一套专门针对视觉推理的测试集，考察模型能不能理解物体间的空间关系、因果过程、还有物理量的守恒。结论是现有的模型确实能解决一部分这类任务，但远谈不上可靠。这让我想到一个类比：这就像是让一个学生背答案、背例题，他能模仿着做对一些，但你要真考他物理原理，他就露馅了。对于我们做AI4S的人来说，与其盲目追求生成效果的scaling，不如想想怎么让模型真正学到物理的inductive bias。
+
+说回到方法论，今天有一篇挺有意思的工作叫WarpSAC，讲的是怎么在大规模并行模拟的环境下训练off-policy强化学习。各位可能知道，现在做机器人、做游戏AI的团队都在用大规模的并行仿真来收集数据，但传统的RL算法那些stabilizer——比如参数归一化、双Q裁剪——都是为数据稀缺的场景设计的，一旦数据量上去了，反而成了瓶颈。作者通过系统的对比实验，发现这些技巧的效果其实是和数据 regime 强相关的。基于这个观察，他们提出了一套 regime-aware 的算法族。这个工作对我们做科学计算的启发是什么呢？我们现在也在用大规模并行实验来训练PDE求解器、分子力场，但我们的算法设计是否真的适应了这种数据充裕的新常态？还是说我们一直在用过去数据不够用时的思路？这是一个值得反思的问题。
+
+最后一篇JIT-Agent，它关注的是一个我们做AI研究的人都绕不开的话题：怎么让agent的系统设计也变成可学习、可自动化的。作者提出了一套四模块的harness协议，然后训练了一个模型来根据具体任务动态生成和修复agent的结构。这个思路其实和我们在AI4S里做的事情有呼应——我们也在尝试把科学工作流里的各个环节——数据处理、模型选择、超参调优——变得自动化、智能化。如果harness的设计本身能变成一个learnable的东西，那或许我们离真正的“AI for AI for Science”也不远了。
+
+好了，今天的播报差不多到这里。总结一下我的整体感受：这一期的几篇论文其实都在回答同一个趋势性的问题，那就是当我们的模型、数据、计算资源都变得极其充裕之后，很多之前习以为常的设计假设都需要重新审视。不管是视频生成要做概率对齐，还是RL要做regime-aware的算法，亦或是agent harness要做自动化设计，核心都是一句话：旧的范式已经不够用了。今天的观察就到这里，我们明天早上继续聊。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.27345" target="_blank">PAWBench: How Far Are We from Probabilistically Aligned World Modeling?</a></li>
+<li><a href="https://arxiv.org/abs/2608.25593" target="_blank">JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution</a></li>
+<li><a href="https://arxiv.org/abs/2608.26005" target="_blank">VoiceMem: Streaming Dual-Brain Memory for Real-Time Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2608.24479" target="_blank">WarpSAC: Towards the Pinnacle of Scalable Off-policy RL by Rethinking Exploration and Exploitation</a></li>
+<li><a href="https://arxiv.org/abs/2608.19583" target="_blank">VGI-Bench: Probing Visual Intelligence in Video Generation Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
