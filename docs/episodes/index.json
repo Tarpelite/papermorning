@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-29",
+    "title": "Paper Morning 2026-08-29",
+    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
+    "audio_file": "2026-08-29.mp3",
+    "script": "各位早上好，今天是周末，Paper Morning准时开播了。\n\n今天的几篇论文有一个共同的底层关切：怎样让AI agent在物理世界里更好地学习和推理。这个问题看起来像是传统的机器人或具身智能议题，但今天的几项工作把它推向了更本质的层面——从数据、评估到训练范式，都在重新思考agent的构建方式。\n\n第一篇关于游戏开发作为世界模型数据引擎的工作很有意思。作者指出，现在训练世界模型的主流思路是堆数据、堆算力，但这种思路其实漏掉了一个关键问题：数据质量。他们做了一个很妙的类比：代码agent为什么能快速进步？因为代码是可执行的，编译器和运行时可以提供高精度的reward信号。但空间生成领域呢？长期以来依赖的是CLIP分数这种模糊的代理信号，根本不足以支撑强化学习的训练。作者认为游戏开发恰恰填补了这个空白——游戏引擎里的场景本质上是一个可执行的世界规格，引擎本身就能给出精确的反馈。这样一来，就能在RL后训练中获得真正有信号的学习信号，而不是在模糊的相似度度量里打转。这个思路对做neural operator和PDE求解的朋友们其实很有启发：我们是不是也可以思考，在科学计算任务里，什么样的“...",
+    "papers": [
+      {
+        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
+        "url": "https://arxiv.org/abs/2608.25518",
+        "arxiv_id": "2608.25518"
+      },
+      {
+        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+        "url": "https://arxiv.org/abs/2608.27345",
+        "arxiv_id": "2608.27345"
+      },
+      {
+        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+        "url": "https://arxiv.org/abs/2608.25593",
+        "arxiv_id": "2608.25593"
+      },
+      {
+        "title": "TTPO: Test-Time Policy Optimization",
+        "url": "https://arxiv.org/abs/2608.27448",
+        "arxiv_id": "2608.27448"
+      },
+      {
+        "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
+        "url": "https://arxiv.org/abs/2608.27456",
+        "arxiv_id": "2608.27456"
+      }
+    ],
+    "published_at": "2026-08-29T03:50:59.903371Z"
+  },
+  {
     "date": "2026-08-28",
     "title": "Paper Morning 2026-08-28",
     "description": "今日学术播报: PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int, VoiceMem: Streaming Dual-Brain...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-29T23:32:45.708969Z"
-  },
-  {
-    "date": "2026-07-28",
-    "title": "Paper Morning 2026-07-28",
-    "description": "今日学术播报: Rethinking Classifier-Free Gui, Kimi K3: Open Frontier Intelli, JarvisHub: An Open Harness for...",
-    "audio_file": "2026-07-28.mp3",
-    "script": "各位早上好，今天是周二，Paper Morning如约而至。\n\n今天想和大家分享一个观察：最近AI社区的很多进展，虽然表面上看去跟科学计算没什么直接关系，但背后的一些方法论突破，其实正在悄悄改变我们做科学发现的方式。\n\n先看第一篇，关于扩散模型蒸馏的工作。标题是\"Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation\"。这篇文章研究了一个很实际的问题：当我们用on-policy的方式来做扩散模型蒸馏的时候，怎么处理CFClassifier-Free Guidance这个组件。作者发现直接匹配teacher和student的guided velocity其实存在一个欠定问题，就是正负分支的误差可以在guided prediction里相互抵消。不过他们也指出，当负分支conditioning在teacher和student之间共享的时候，这种naive matching仍然很有效。\n\n为什么这件事值得我们关注呢？因为on-policy distillation这个思路，其实在科学计算里非常有潜力。我们...",
-    "papers": [
-      {
-        "title": "Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation",
-        "url": "https://arxiv.org/abs/2607.24731",
-        "arxiv_id": "2607.24731"
-      },
-      {
-        "title": "Kimi K3: Open Frontier Intelligence",
-        "url": "https://arxiv.org/abs/2607.24653",
-        "arxiv_id": "2607.24653"
-      },
-      {
-        "title": "JarvisHub: An Open Harness for Canvas-Native Multimodal Creative Agents",
-        "url": "https://arxiv.org/abs/2607.23588",
-        "arxiv_id": "2607.23588"
-      },
-      {
-        "title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
-        "url": "https://arxiv.org/abs/2607.24280",
-        "arxiv_id": "2607.24280"
-      },
-      {
-        "title": "Progress Reward Modeling for Robotic Learning: A Comprehensive Survey",
-        "url": "https://arxiv.org/abs/2607.21655",
-        "arxiv_id": "2607.21655"
-      }
-    ],
-    "published_at": "2026-07-28T23:32:41.630202Z"
   }
 ]

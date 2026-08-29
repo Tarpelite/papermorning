@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-29</title>
+      <description>今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-29.mp3" length="9275603" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-29.mp3</guid>
+      <pubDate>2026-08-29T03:50:59.903371Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-28</title>
       <description>今日学术播报: PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int, VoiceMem: Streaming Dual-Brain...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-28.mp3" length="7401056" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-29.mp3" length="8999123" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-29.mp3</guid>
       <pubDate>2026-07-29T23:32:45.708969Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-28</title>
-      <description>今日学术播报: Rethinking Classifier-Free Gui, Kimi K3: Open Frontier Intelli, JarvisHub: An Open Harness for...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-28.mp3" length="11135103" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-28.mp3</guid>
-      <pubDate>2026-07-28T23:32:41.630202Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
