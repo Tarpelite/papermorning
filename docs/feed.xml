@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-08-30</title>
+      <description>今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-30.mp3" length="8091315" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-08-30.mp3</guid>
+      <pubDate>2026-08-30T00:36:53.521511Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-29</title>
       <description>今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-29.mp3" length="9275603" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-07-30.mp3" length="8785964" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-07-30.mp3</guid>
       <pubDate>2026-07-30T23:36:10.295380Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-29</title>
-      <description>今日学术播报: Rethinking Classifier-Free Gui, ReDesign: Recovering Editable , A New Role for Relevance: Guid...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-29.mp3" length="8999123" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-29.mp3</guid>
-      <pubDate>2026-07-29T23:32:45.708969Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

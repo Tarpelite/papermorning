@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-30",
+    "title": "Paper Morning 2026-08-30",
+    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
+    "audio_file": "2026-08-30.mp3",
+    "script": "各位早上好，今天是周末，Paper Morning准时开播。\n\n最近AI领域有一个很明显的趋势，就是大家对“世界模型”的关注度越来越高了，但真正做起来才发现困难重重。今天选的五篇论文，恰好从不同角度触及了构建世界模型面临的核心挑战。\n\n第一篇讲的是用游戏开发作为可验证的数据引擎。我们都知道训练世界模型需要大量数据，现在的思路是爬取更多视频、用更多算力。但这篇论文指出这样效率不高，因为空间生成领域还缺少像代码那样的“执行反馈”——你用CLIP分数来评估生成质量，这些信号太模糊了，而且无法为强化学习提供可靠的奖励信号。代码为什么能训出强大的code agent？因为编译器可以给出确定性的对错反馈。游戏引擎正好提供了类似的环境：场景是引擎生成的，引擎当然知道什么是对的、什么是错的，所以可以作为可验证的数据引擎来支撑世界模型的训练。这思路很直接，但确实点出了一个关键瓶颈：没有可执行的反馈信号，RL post-training就无从谈起。\n\n那么接下来一个问题就是，我们现在训出来的世界模型，到底能做到什么程度？第二篇论文就针对这个问题做了一个系统性的评估。他们提出一个概念叫“概率对齐”——物理世...",
+    "papers": [
+      {
+        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
+        "url": "https://arxiv.org/abs/2608.25518",
+        "arxiv_id": "2608.25518"
+      },
+      {
+        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+        "url": "https://arxiv.org/abs/2608.27345",
+        "arxiv_id": "2608.27345"
+      },
+      {
+        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+        "url": "https://arxiv.org/abs/2608.25593",
+        "arxiv_id": "2608.25593"
+      },
+      {
+        "title": "TTPO: Test-Time Policy Optimization",
+        "url": "https://arxiv.org/abs/2608.27448",
+        "arxiv_id": "2608.27448"
+      },
+      {
+        "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
+        "url": "https://arxiv.org/abs/2608.27456",
+        "arxiv_id": "2608.27456"
+      }
+    ],
+    "published_at": "2026-08-30T00:36:53.521511Z"
+  },
+  {
     "date": "2026-08-29",
     "title": "Paper Morning 2026-08-29",
     "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-30T23:36:10.295380Z"
-  },
-  {
-    "date": "2026-07-29",
-    "title": "Paper Morning 2026-07-29",
-    "description": "今日学术播报: Rethinking Classifier-Free Gui, ReDesign: Recovering Editable , A New Role for Relevance: Guid...",
-    "audio_file": "2026-07-29.mp3",
-    "script": "各位早上好，今天周三，Paper Morning开播。\n\n先聊一篇扩散模型基础方法的工作。Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation——这篇文章表面上讲的是知识蒸馏，但背后其实触及了一个很根本的问题：我们对CFG这个已经成为 diffusion 标配的机制，理解到底有多深。作者发现，在用on-policy方式做蒸馏时，直接匹配教师和学生的引导速度其实存在一个识别问题：正向分支和负向分支的错误可以在引导预测里相互抵消。这就好比你考试时选择题和填空题都错了，但总分反而看起来还行，你根本不知道哪里出了问题。文章通过两个对比案例说明，当使用共享的负向条件时，两分支的错误会同步下降，简单的匹配目标依然有效；但如果负向分支独立学习，模型就会丢失教师那边保留的特权信息。我觉得这个发现对做diffusion科学的同学特别有价值，因为它提醒我们，CFG不只是加一个引导项那么简单，它实际上重构了模型的表征空间。至于这算不算突破，我觉得更像是给我们过去一些习以为常的做法敲了个警钟。\n\n然后从生成模型跳到另一个...",
-    "papers": [
-      {
-        "title": "Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation",
-        "url": "https://arxiv.org/abs/2607.24731",
-        "arxiv_id": "2607.24731"
-      },
-      {
-        "title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
-        "url": "https://arxiv.org/abs/2607.25565",
-        "arxiv_id": "2607.25565"
-      },
-      {
-        "title": "A New Role for Relevance: Guiding Corpus Interaction in Agentic Search",
-        "url": "https://arxiv.org/abs/2607.24223",
-        "arxiv_id": "2607.24223"
-      },
-      {
-        "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
-        "url": "https://arxiv.org/abs/2607.25895",
-        "arxiv_id": "2607.25895"
-      },
-      {
-        "title": "Oxygen-TryOn: Fashion-Native Foundation Model for Any-item Virtual Try-On",
-        "url": "https://arxiv.org/abs/2607.21694",
-        "arxiv_id": "2607.21694"
-      }
-    ],
-    "published_at": "2026-07-29T23:32:45.708969Z"
   }
 ]
