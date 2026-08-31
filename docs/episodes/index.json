@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-08-31",
+    "title": "Paper Morning 2026-08-31",
+    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
+    "audio_file": "2026-08-31.mp3",
+    "script": "各位早上好，新的一周开始了，Paper Morning又和大家见面了。\n\n今天想先从一个更大的趋势聊起。最近一段时间，我注意到一种很有意思的范式正在兴起：不仅仅是做视频生成，而是在构建“世界模型”。这个词在计算机视觉和具身智能领域被讨论得很多，但今天我想看看这些工作和我们关心的科学计算、AI4S有什么潜在的关联。\n\n第一篇论文讲的是用游戏开发作为世界模型的可验证数据引擎。作者指出，当前Scaling世界模型主要靠堆更多视频数据和算力，但他们认为这个策略效率不高——关键在于需要一种能够提供“扎实奖励信号”的递归数据引擎。这让我想到一个很妙的类比：在代码生成领域，因为代码是可执行的，编译器和运行时可以提供高质量的奖励信号来做强化学习；但在空间生成领域，我们长期依赖CLIP分数这种模糊的代理信号，很难支持真正的RL后训练。作者提出，游戏开发恰恰提供了这个缺失的奖励环境——游戏引擎编码的场景是一个可执行的世界规范，可以高效地提供奖励。这篇工作给我的启发是，其实在科学模拟中，我们也有类似的可执行性：物理引擎、仿真器本身就是可验证的环境，那是否也可以构建类似的“科学数据引擎”，用可执行的物理规律来...",
+    "papers": [
+      {
+        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
+        "url": "https://arxiv.org/abs/2608.25518",
+        "arxiv_id": "2608.25518"
+      },
+      {
+        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+        "url": "https://arxiv.org/abs/2608.27345",
+        "arxiv_id": "2608.27345"
+      },
+      {
+        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+        "url": "https://arxiv.org/abs/2608.25593",
+        "arxiv_id": "2608.25593"
+      },
+      {
+        "title": "GameWAM: A World Action Model for Video Games",
+        "url": "https://arxiv.org/abs/2608.26200",
+        "arxiv_id": "2608.26200"
+      },
+      {
+        "title": "TTPO: Test-Time Policy Optimization",
+        "url": "https://arxiv.org/abs/2608.27448",
+        "arxiv_id": "2608.27448"
+      }
+    ],
+    "published_at": "2026-08-31T00:48:44.271316Z"
+  },
+  {
     "date": "2026-08-30",
     "title": "Paper Morning 2026-08-30",
     "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-07-31T23:32:15.874587Z"
-  },
-  {
-    "date": "2026-07-30",
-    "title": "Paper Morning 2026-07-30",
-    "description": "今日学术播报: CoRT: Counterfactual Replay fo, DecoEvo: Score-Decoupled Co-Ev, TurboVLA: Real-Time Vision-Lan...",
-    "audio_file": "2026-07-30.mp3",
-    "script": "各位早上好，今天周四，Paper Morning继续开播。\n\n先来看两篇关于大语言模型训练方法的工作。CoRT这篇论文关注的是如何让基于规则（rubric）的强化学习更精细化。传统GRPO方法会把整个回答视为一个整体来分配奖励，但当规则本身对应不同文本片段时，这种粗糙的奖励分配就丢失了信息。CoRT的思路很巧妙：它不需要额外训练一个token级别的评分模型，而是用“反事实重放”——把同一个回答分别在有rubric引导和无rubric引导的条件下重新评分，两者相减就得到了每个token的真实贡献。这个设计让我想到科学计算里类似的问题：当我们要优化一个PDE求解器时，某个组件的贡献往往也被整体损失掩盖了，如果能设计出类似的“反事实”机制，也许能更精准地定位问题。\n\n第二篇DecoEvo则从另一个角度切入，它研究的是当优化目标和评估标准本身也需要演化时怎么办。传统的text-space优化会让求解器不断提升，但评估rubric是固定的，这就会导致“钻空子”——模型找到取巧满足规则但不真正解决问题的方法。DecoEvo的解决方案是让solver skill和rubric-generator s...",
-    "papers": [
-      {
-        "title": "CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization",
-        "url": "https://arxiv.org/abs/2607.25659",
-        "arxiv_id": "2607.25659"
-      },
-      {
-        "title": "DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space",
-        "url": "https://arxiv.org/abs/2607.25675",
-        "arxiv_id": "2607.25675"
-      },
-      {
-        "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
-        "url": "https://arxiv.org/abs/2607.27205",
-        "arxiv_id": "2607.27205"
-      },
-      {
-        "title": "HumanCLAW: Can Vision-Language Models Act Through a Body?",
-        "url": "https://arxiv.org/abs/2607.27180",
-        "arxiv_id": "2607.27180"
-      },
-      {
-        "title": "CodeNib: A Multi-View Data System for Serving Repository Context to Coding Agents",
-        "url": "https://arxiv.org/abs/2607.25431",
-        "arxiv_id": "2607.25431"
-      }
-    ],
-    "published_at": "2026-07-30T23:36:10.295380Z"
   }
 ]
