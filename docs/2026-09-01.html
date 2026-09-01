@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-01</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-01</h1>
+    <p class="date">2026-09-01</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-01.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天Paper Morning开播了。
+
+最近AI领域有股热潮，大家都在谈world model，但很多讨论其实停留在“生成一段视频”这个层面。我们今天聊的几篇论文，恰好从不同角度戳破了一些幻觉。
+
+第一篇说了一个很根本的问题：现在训练world model都想着堆更多视频数据、堆更多算力，但作者认为这条路走不通，因为缺了一个关键东西——可验证的reward signal。他们拿code agents做类比，说代码为什么能训出来？因为代码是可执行的，编译器能告诉模型写对了还是写错了，这是高质量的反馈。但空间生成呢？大家还在用CLIP score这种模糊的、带有偏见的信号，完全撑不起RL post-training。游戏开发刚好能补上这个缺口，因为游戏引擎本身就是可执行的世界规格，引擎可以直接告诉模型这一步走对了没有。这篇文章的思路我觉得很值得AI4S的人想想——我们做PDE求解、做物理模拟，其实也是在构建可执行的世界规格，有没有可能也从中提炼出reward signal来反哺模型训练？
+
+那么下一个问题来了，即使有了数据，怎么才算训出了一个好的world model？第二篇论文就问了这个本质问题。他们提出一个概念叫probabilistic alignment，意思是说，一个世界模型不仅要能生成一条 plausible 的轨迹，还要能在相同初始条件下重复生成时，恢复出正确的行为分布。听起来很基本对不对？但作者指出，现有的评估全在问“这段视频看起来真不真”，没人测“反复生成能不能覆盖正确的概率分布”。于是他们做了PAWBench这个benchmark。我觉得这个工作最狠的地方在于，它把“预测”和“建模”区分开了——你预测一条确定的路径，和你真的在建模一个物理过程，这是两回事。
+
+第三篇正好是从另一个方向推进这个问题的。GameWAM提出了World-Action Model这个概念，要在视频游戏里同时做到两件事：预测给定动作后的未来视觉观察，以及直接生成可执行的键盘鼠标轨迹。他们是第一个在原生游戏闭环玩法和GUI控制上做这个的。之前的工作要么是看着画面直接飙操作，要么是预测未来但不当policy用。WAM把两者统一了，而且用了block-causal conditioning和flow matching这些技术手段。这篇和前两篇其实在呼应同一个趋势：world model不能只是个生成器，它必须和action、reward、execution形成闭环。
+
+说到闭环，第四篇研究的是coding agent里的loop控制。现在很多人用loop来组织agent工作——比如一个loop负责monitor进度、分配任务、做检查、决定下一步干什么。但即使agent能力很强，loop本身也会犯各种错误：信任过时的进度记录、跳过了需要的验证、花预算在错误方向上、任务还没安全就提交了。之前没有好办法评估loop本身做得好不好，因为一次run的成功或失败没法区分是loop的指导有问题还是agent执行能力有问题。LoopArena就是来解决这个问题的，它把模型当作controller来评估，看它能不能在长时间运行的任务中正确引导一个独立的coding agent。这实际上是在问：模型能不能成为那个负责任的“调度者”，而不只是的执行者？
+
+第五篇是一篇survey，讲agentic artifact creation，就是AI系统怎么把自然语言prompt变成真正可用的交付物。他们定义了stateful construction这个概念，说白了就是AI不仅生成内容，还要能够构建和修订这个内容的中间状态，并且根据反馈调整后续行动。他们看了259篇相关工作，230个系统和29个benchmark。这篇的价值在于，它给“AI能不能做工程”这件事画了个框框，什么叫真的在做东西，什么叫只是在生成碎片。
+
+好了，今天的播报差不多该收尾了。我整体的一个感受是，这几篇论文其实在说同一件事： AI正在从“生成内容”走向“构建可执行系统”。不管是world model需要可验证的reward signal，还是WAM要把生成和action绑在一起，或者是loop和artifact creation在讨论的“负责任的调度”，核心都是一样的——光生成是不够的，你得能闭环、验证、负责任地执行。这可能也是整个领域正在悄悄转弯的方向，从“为生成而生成”，走向“为执行而生成”。我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.25518" target="_blank">Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models</a></li>
+<li><a href="https://arxiv.org/abs/2608.27345" target="_blank">PAWBench: How Far Are We from Probabilistically Aligned World Modeling?</a></li>
+<li><a href="https://arxiv.org/abs/2608.26200" target="_blank">GameWAM: A World Action Model for Video Games</a></li>
+<li><a href="https://arxiv.org/abs/2608.28281" target="_blank">LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering</a></li>
+<li><a href="https://arxiv.org/abs/2608.28122" target="_blank">Agentic Artifact Creation: Systems, Evaluation, Principles, and Opportunities</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

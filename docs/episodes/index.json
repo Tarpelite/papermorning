@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-01",
+    "title": "Paper Morning 2026-09-01",
+    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , GameWAM: A World Action Model ...",
+    "audio_file": "2026-09-01.mp3",
+    "script": "各位早上好，今天Paper Morning开播了。\n\n最近AI领域有股热潮，大家都在谈world model，但很多讨论其实停留在“生成一段视频”这个层面。我们今天聊的几篇论文，恰好从不同角度戳破了一些幻觉。\n\n第一篇说了一个很根本的问题：现在训练world model都想着堆更多视频数据、堆更多算力，但作者认为这条路走不通，因为缺了一个关键东西——可验证的reward signal。他们拿code agents做类比，说代码为什么能训出来？因为代码是可执行的，编译器能告诉模型写对了还是写错了，这是高质量的反馈。但空间生成呢？大家还在用CLIP score这种模糊的、带有偏见的信号，完全撑不起RL post-training。游戏开发刚好能补上这个缺口，因为游戏引擎本身就是可执行的世界规格，引擎可以直接告诉模型这一步走对了没有。这篇文章的思路我觉得很值得AI4S的人想想——我们做PDE求解、做物理模拟，其实也是在构建可执行的世界规格，有没有可能也从中提炼出reward signal来反哺模型训练？\n\n那么下一个问题来了，即使有了数据，怎么才算训出了一个好的world model？第二篇...",
+    "papers": [
+      {
+        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
+        "url": "https://arxiv.org/abs/2608.25518",
+        "arxiv_id": "2608.25518"
+      },
+      {
+        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+        "url": "https://arxiv.org/abs/2608.27345",
+        "arxiv_id": "2608.27345"
+      },
+      {
+        "title": "GameWAM: A World Action Model for Video Games",
+        "url": "https://arxiv.org/abs/2608.26200",
+        "arxiv_id": "2608.26200"
+      },
+      {
+        "title": "LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering",
+        "url": "https://arxiv.org/abs/2608.28281",
+        "arxiv_id": "2608.28281"
+      },
+      {
+        "title": "Agentic Artifact Creation: Systems, Evaluation, Principles, and Opportunities",
+        "url": "https://arxiv.org/abs/2608.28122",
+        "arxiv_id": "2608.28122"
+      }
+    ],
+    "published_at": "2026-09-01T01:24:09.420815Z"
+  },
+  {
     "date": "2026-08-31",
     "title": "Paper Morning 2026-08-31",
     "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-01T23:31:25.273729Z"
-  },
-  {
-    "date": "2026-07-31",
-    "title": "Paper Morning 2026-07-31",
-    "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
-    "audio_file": "2026-07-31.mp3",
-    "script": "各位早上好，周五的Paper Morning又和大家见面了。今天想聊一个特别有意思的现象，我发现最近基础模型的研究正在悄悄发生一种范式转变，这个转变和我们做AI for Science的人其实息息相关。\n\n先看第一篇，Metis：记忆基础模型。这篇工作提出了一个非常根本的问题：现在的多模态大模型已经能\"看\"能\"听\"能\"推理\"了，但它们的记忆能力却仍然是外置的。什么意思呢？就像一个学者，虽然脑子里装了很多知识，但每次遇到新问题都需要翻箱倒柜找资料，而不能像人一样把相关信息自然地\"想起来\"。Metis尝试在模型内部引入持久且动态演化的记忆状态，让基础模型具备原生记忆能力。这个想法让我想到，我们在做科学发现的时候，经常需要跨越很长时间尺度做推理，比如从假设生成到实验设计再到结果分析，如果模型能像人一样有\"工作记忆\"，那科学推理的连续性会大大增强。\n\n接下来这篇PhiZero非常有意思，它提出了\"物理语言\"的概念。我们知道，现在的世界模型基本上是在像素空间里预测下一帧画面，但这就像让一个学生死记硬背物理题目的答案一样，虽然能做得不错，但完全无法解释背后的物理规律。PhiZero的思路是，先从视...",
-    "papers": [
-      {
-        "title": "Metis: Memory Foundation Model",
-        "url": "https://arxiv.org/abs/2607.26760",
-        "arxiv_id": "2607.26760"
-      },
-      {
-        "title": "PhiZero: A World Model Built Around Physical Language",
-        "url": "https://arxiv.org/abs/2607.28624",
-        "arxiv_id": "2607.28624"
-      },
-      {
-        "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
-        "url": "https://arxiv.org/abs/2607.28568",
-        "arxiv_id": "2607.28568"
-      },
-      {
-        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
-        "url": "https://arxiv.org/abs/2607.28227",
-        "arxiv_id": "2607.28227"
-      },
-      {
-        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
-        "url": "https://arxiv.org/abs/2607.28618",
-        "arxiv_id": "2607.28618"
-      }
-    ],
-    "published_at": "2026-07-31T23:32:15.874587Z"
   }
 ]

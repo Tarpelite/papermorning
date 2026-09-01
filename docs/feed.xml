@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-01</title>
+      <description>今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , GameWAM: A World Action Model ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-01.mp3" length="8238019" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-01.mp3</guid>
+      <pubDate>2026-09-01T01:24:09.420815Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-08-31</title>
       <description>今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-31.mp3" length="9329520" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-01.mp3" length="7938342" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-01.mp3</guid>
       <pubDate>2026-08-01T23:31:25.273729Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-07-31</title>
-      <description>今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-07-31.mp3" length="7688194" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-07-31.mp3</guid>
-      <pubDate>2026-07-31T23:32:15.874587Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
