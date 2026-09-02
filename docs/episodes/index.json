@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-02",
+    "title": "Paper Morning 2026-09-02",
+    "description": "今日学术播报: DreamX-Creator: Democratizing , Lucida: Parse, Generate, and P, GenFirst: Generation Before Re...",
+    "audio_file": "2026-09-02.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。今天是周三，我来和大家聊聊本周学术界有意思的几个新进展。\n\n先看一篇关于音视频联合生成的工作。DreamX-Creator提出了一个70亿参数的原生音视频生成模型，能够在2K分辨率下根据首帧图像和文本提示同时生成视频和音频流。这件事有意思的地方在于，它不是先生成视频再单独合成音频，而是让两个模态在模型内部联合去噪。关键创新是Gated Cross-Modal Attention机制，通过门控机制在网络后半程对跨模态注意力进行动态调制。我觉得这个设计很巧妙，因为它承认了一个基本事实：音视频之间的相关性是选择性的，不是所有帧都需要跨模态信息流动，用门控来控制这种流动比简单拼接要优雅。不过我们也要问一句，这对科学计算意味着什么？音视频生成和PDE求解看起来风马牛不相及，但联合去噪的思想其实和物理模拟中多物理场耦合求解异曲同工。不同模态之间的信息流动什么时候该强、什么时候该弱，这正是科学计算中耦合问题最难处理的地方。一个7B模型能在这种耦合机制上学到什么东西，值得我们关注。\n\n第二篇是Lucida，做的是从真实场景到仿真环境的场景重建。它把...",
+    "papers": [
+      {
+        "title": "DreamX-Creator: Democratizing Native Audio-Video Generation at 2K Resolution",
+        "url": "https://arxiv.org/abs/2608.31106",
+        "arxiv_id": "2608.31106"
+      },
+      {
+        "title": "Lucida: Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling",
+        "url": "https://arxiv.org/abs/2608.30821",
+        "arxiv_id": "2608.30821"
+      },
+      {
+        "title": "GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling",
+        "url": "https://arxiv.org/abs/2608.29335",
+        "arxiv_id": "2608.29335"
+      },
+      {
+        "title": "Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement",
+        "url": "https://arxiv.org/abs/2608.31046",
+        "arxiv_id": "2608.31046"
+      },
+      {
+        "title": "LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering",
+        "url": "https://arxiv.org/abs/2608.28281",
+        "arxiv_id": "2608.28281"
+      }
+    ],
+    "published_at": "2026-09-02T00:28:06.230034Z"
+  },
+  {
     "date": "2026-09-01",
     "title": "Paper Morning 2026-09-01",
     "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , GameWAM: A World Action Model ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-02T23:30:51.342182Z"
-  },
-  {
-    "date": "2026-08-01",
-    "title": "Paper Morning 2026-08-01",
-    "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
-    "audio_file": "2026-08-01.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊几篇最近很有意思的论文，它们有一个共同的主题：AI agent正在从“工具”向“能力”演进，而这个演进正在深刻改变我们做科学的方式。\n\n先说第一篇，Metis: Memory Foundation Model。这篇工作提出了一个很根本的问题：为什么agent的记忆能力还要依赖外部模块？作者认为，记忆应该是模型内部的一种原生能力，而不是外挂的数据库。他们把原生记忆定义为两个东西：一是模型主干内持久且动态演化的记忆状态，二是通过模型计算自主存储和调用信息的原生记忆过程。这个思路其实和我们在neural operator里讨论的“状态保持”很像——过去我们用RNN或者隐式层来记住历史信息，现在他们要把这种能力进一步体系化。做完之后，agent就可以在更长的上下文里保持一致性和连续推理能力。我觉得这为未来构建“科研agent”打了一个很重要的架构基础。\n\n说完记忆，我们来看看物理世界建模。PhiZero: A World Model Built Around Physical Language 这篇很有意思，它不走预测像素...",
-    "papers": [
-      {
-        "title": "Metis: Memory Foundation Model",
-        "url": "https://arxiv.org/abs/2607.26760",
-        "arxiv_id": "2607.26760"
-      },
-      {
-        "title": "PhiZero: A World Model Built Around Physical Language",
-        "url": "https://arxiv.org/abs/2607.28624",
-        "arxiv_id": "2607.28624"
-      },
-      {
-        "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
-        "url": "https://arxiv.org/abs/2607.28568",
-        "arxiv_id": "2607.28568"
-      },
-      {
-        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
-        "url": "https://arxiv.org/abs/2607.28227",
-        "arxiv_id": "2607.28227"
-      },
-      {
-        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
-        "url": "https://arxiv.org/abs/2607.28618",
-        "arxiv_id": "2607.28618"
-      }
-    ],
-    "published_at": "2026-08-01T23:31:25.273729Z"
   }
 ]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-02</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-02</h1>
+    <p class="date">2026-09-02</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-02.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。今天是周三，我来和大家聊聊本周学术界有意思的几个新进展。
+
+先看一篇关于音视频联合生成的工作。DreamX-Creator提出了一个70亿参数的原生音视频生成模型，能够在2K分辨率下根据首帧图像和文本提示同时生成视频和音频流。这件事有意思的地方在于，它不是先生成视频再单独合成音频，而是让两个模态在模型内部联合去噪。关键创新是Gated Cross-Modal Attention机制，通过门控机制在网络后半程对跨模态注意力进行动态调制。我觉得这个设计很巧妙，因为它承认了一个基本事实：音视频之间的相关性是选择性的，不是所有帧都需要跨模态信息流动，用门控来控制这种流动比简单拼接要优雅。不过我们也要问一句，这对科学计算意味着什么？音视频生成和PDE求解看起来风马牛不相及，但联合去噪的思想其实和物理模拟中多物理场耦合求解异曲同工。不同模态之间的信息流动什么时候该强、什么时候该弱，这正是科学计算中耦合问题最难处理的地方。一个7B模型能在这种耦合机制上学到什么东西，值得我们关注。
+
+第二篇是Lucida，做的是从真实场景到仿真环境的场景重建。它把场景建模分解为解析、生成、放置三个步骤，但核心洞察是真实采集数据往往无法提供完美的输入——比如被遮挡的视角、不完整的几何。传统pipeline在每一步都假设输入是完美的，而Lucida重新分配了这种精度要求，把精度累积到pipeline末端而不是在每步开头就要求完美。这让我想到科学计算中的一个常见困境：我们总是需要完美的边界条件和初始数据，但真实问题中这些条件永远是带噪声的、不完整的。Lucida的做法本质上是一种“延迟精确化”策略，先用粗糙但鲁棒的方式处理，再用后续步骤逐步提升精度。这种思想在很多逆问题求解中其实很常见，只是很少被明确说出来。
+
+第三篇GenFirst讨论的是潜空间生成模型的一个根本矛盾。我们训练VAE时优化重建质量，但得到的潜空间不一定适合后续的生成模型直接使用。直接端到端训练又容易陷入潜空间坍塌。作者的洞见很有意思：KL散度中的熵项是防止坍塌的关键——重建和先验拟合会收缩后验分布，而熵项保留了非退化的潜空间不确定性。这让我想到PDE求解中的一些正则化技术。我们常说正则化是为了让解更“光滑”，但更深层的理由是它帮我们在欠定问题上保持合理的解空间。生成模型的潜空间也是类似的欠定问题，熵项本质上就是一种正则化，让模型保留对不确定性的表达能力。这个视角对我们理解foundation model的预训练也很有启发：当我们说scaling law的时候，是不是也在说大数据集提供了某种类似熵项的“表达能力保持”机制？
+
+第四篇非常有意思，它直接质疑了on-policy distillation这个范式本身。研究者发现当用大模型作为老师来监督小模型时，老师对自己学生生成的轨迹给出的评分其实包含大量噪声，而且老师越大噪声越多。但惊人的是，学生模型对这种噪声完全不敏感——无论你是否清理这些噪声，学生最终的性能都差不多。这就有意思了：如果噪声不影响结果，那学生到底从中学到了什么？作者发现学习主要集中在低对数概率的区域——也就是说，学生主要学到了“不要做什么”，而不是“应该做什么”。这个发现对科学计算中的知识蒸馏很有警示意义。我们现在经常说要用大模型蒸馏小模型，但如果学生主要学到的是负向信号，那我们在设计蒸馏目标时是否应该重新思考？尤其是当我们在PDE求解、operator learning这些需要精确正向推理的任务上应用蒸馏时，这个发现尤其值得关注。
+
+最后来看LoopArena，它提出了一个很新的benchmark：评估模型作为“控制器”来指导编码agent完成长程任务的能力。这个场景其实很接近我们说的AI agent科研助手的形态。LoopArena关注的是：当一个模型要负责监控进度、分配任务、运行检查、决定下一步该做什么的时候，它的表现如何？这和我们关心的问题其实一脉相承——不只是模型本身能做什么，而是模型能否作为系统的一部分来组织复杂的工作流。LLM已经能写代码了，但如何让它成为一个可靠的“调度者”，这可能是下一步更关键的问题。
+
+好，我来总结一下今天的整体观察。这五篇论文看似分散，但从某个角度看，它们都在回答同一个问题：当我们有了强大的基础模型之后，下一层竞争力来自哪里？是对更大事物的建模能力，还是对模型行为的精细控制能力？音视频联合生成告诉我们耦合要靠门控调节，场景重建告诉我们精度可以延迟累积，潜空间学习告诉我们熵是保持表达力的关键，蒸馏实验告诉我们负向信号可能比正向信号更可靠，而loop engineering告诉我们模型需要学会“管理”而不是仅仅“执行”。这些洞见叠加在一起，指向的可能是一个共同趋势：在foundation model时代，真正的差异化和价值将越来越多地来自于如何组织、调度、引导模型的行为，而不是模型本身的架构设计。这对我们做AI for Science的启发是：别只盯着怎么训练一个更强的PDE求解器，也要想一想怎么让这个求解器在更大的系统里被更好地调用。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.31106" target="_blank">DreamX-Creator: Democratizing Native Audio-Video Generation at 2K Resolution</a></li>
+<li><a href="https://arxiv.org/abs/2608.30821" target="_blank">Lucida: Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2608.29335" target="_blank">GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling</a></li>
+<li><a href="https://arxiv.org/abs/2608.31046" target="_blank">Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement</a></li>
+<li><a href="https://arxiv.org/abs/2608.28281" target="_blank">LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
