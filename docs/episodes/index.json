@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-03",
+    "title": "Paper Morning 2026-09-03",
+    "description": "今日学术播报: Qwen-Drive-1.0: An Initial Ste, H3-World: Turning Language Und, SMELT: Scaling Laws for Comput...",
+    "audio_file": "2026-09-03.mp3",
+    "script": "各位早上好，今天Paper Morning来聊聊最近arXiv上几篇有意思的工作。\n\n先看Qwen-Drive-1.0，这是阿里把视觉语言模型做进自动驾驶的尝试。核心思路很直接：用预训练的VLM做基座，然后外挂一个BEV感知头和规划模块。BEV头同时做3D检测、语义占用和地图分割，规划头直接输出自车轨迹。这里有个设计我很欣赏：BEV头不只是输出结果，它本质上是一个探针，用来探测VLM的shared representation里到底学到了多少3D信息。这种inspectable interface的思路，其实在我们AI4S里也很重要——你要知道模型学到了什么，而不是只关心输出对不对。VLM在自动驾驶里火了一年多了，但大多数工作还停留在感知阶段，Qwen-Drive-1.0这一步迈到了planning，说明基础模型的推理能力确实在往更下游任务渗透。\n\n再看H3-World，这个工作很有趣。它把一个33B的视频生成模型MiniMax-H3变成了可交互的世界模型。关键洞察是：现在的视频生成模型已经能通过自然语言指令控制角色行为和相机运动了，但它只能做粗粒度控制。H3-World的做法是把动作...",
+    "papers": [
+      {
+        "title": "Qwen-Drive-1.0: An Initial Step towards a Vision-Language Foundation Model for Autonomous Driving",
+        "url": "https://arxiv.org/abs/2609.00111",
+        "arxiv_id": "2609.00111"
+      },
+      {
+        "title": "H3-World: Turning Language Understanding into World Control",
+        "url": "https://arxiv.org/abs/2609.01560",
+        "arxiv_id": "2609.01560"
+      },
+      {
+        "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
+        "url": "https://arxiv.org/abs/2609.01343",
+        "arxiv_id": "2609.01343"
+      },
+      {
+        "title": "UI-Venus-2 Technical Report",
+        "url": "https://arxiv.org/abs/2609.00028",
+        "arxiv_id": "2609.00028"
+      },
+      {
+        "title": "StudentSim: Training LLM-based Student Simulators",
+        "url": "https://arxiv.org/abs/2609.01591",
+        "arxiv_id": "2609.01591"
+      }
+    ],
+    "published_at": "2026-09-03T00:34:04.287412Z"
+  },
+  {
     "date": "2026-09-02",
     "title": "Paper Morning 2026-09-02",
     "description": "今日学术播报: DreamX-Creator: Democratizing , Lucida: Parse, Generate, and P, GenFirst: Generation Before Re...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-03T23:38:49.820550Z"
-  },
-  {
-    "date": "2026-08-02",
-    "title": "Paper Morning 2026-08-02",
-    "description": "今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...",
-    "audio_file": "2026-08-02.mp3",
-    "script": "各位早上好，今天是周日，Paper Morning准时开播。\n\n先从一篇挺有野心的文章说起。Metis这个工作想解决一个问题：现在的AI Agent依赖外部记忆模块，但这些记忆其实是\"外挂\"的，跟模型本身是割裂的。作者提出\"记忆foundation model\"的概念，让模型拥有原生记忆能力——模型内部有一个持久且动态变化的记忆状态，同时具备自主存储和利用信息的原生记忆过程。这不是简单增加一个context window，而是让记忆成为模型架构的一部分。想想看，这其实呼应了我们之前聊过的\"agent memory\"这个被长期忽视的角落。当模型能够 endogenous 地记住和检索信息，它和外部世界的交互方式会发生根本变化。\n\n顺着这个思路，第二篇论文 PhiZero 提出了一个很有趣的观察：现有的物理世界模型直接在像素空间预测未来，但这种隐式表达让底层物理规律变得难以捉摸。PhiZero的思路是，先让模型从视频里学习一种\"物理语言\"——对世界状态转换的紧凑离散表示，然后用这种语言去推理未来会怎样，最后再渲染成视频。这相当于在感知和生成之间加了一层\"物理推理层\"。这个设计让我想起人是怎...",
-    "papers": [
-      {
-        "title": "Metis: Memory Foundation Model",
-        "url": "https://arxiv.org/abs/2607.26760",
-        "arxiv_id": "2607.26760"
-      },
-      {
-        "title": "PhiZero: A World Model Built Around Physical Language",
-        "url": "https://arxiv.org/abs/2607.28624",
-        "arxiv_id": "2607.28624"
-      },
-      {
-        "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
-        "url": "https://arxiv.org/abs/2607.28568",
-        "arxiv_id": "2607.28568"
-      },
-      {
-        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
-        "url": "https://arxiv.org/abs/2607.28227",
-        "arxiv_id": "2607.28227"
-      },
-      {
-        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
-        "url": "https://arxiv.org/abs/2607.28618",
-        "arxiv_id": "2607.28618"
-      }
-    ],
-    "published_at": "2026-08-02T23:30:51.342182Z"
   }
 ]

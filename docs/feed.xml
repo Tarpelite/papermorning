@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-03</title>
+      <description>今日学术播报: Qwen-Drive-1.0: An Initial Ste, H3-World: Turning Language Und, SMELT: Scaling Laws for Comput...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-03.mp3" length="9006646" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-03.mp3</guid>
+      <pubDate>2026-09-03T00:34:04.287412Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-02</title>
       <description>今日学术播报: DreamX-Creator: Democratizing , Lucida: Parse, Generate, and P, GenFirst: Generation Before Re...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-02.mp3" length="10412243" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-03.mp3" length="12579570" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-03.mp3</guid>
       <pubDate>2026-08-03T23:38:49.820550Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-02</title>
-      <description>今日学术播报: Metis: Memory Foundation Model, PhiZero: A World Model Built A, Frontis-MA1: Training an AI4AI...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-02.mp3" length="6773490" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-02.mp3</guid>
-      <pubDate>2026-08-02T23:30:51.342182Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

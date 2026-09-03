@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-03</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-03</h1>
+    <p class="date">2026-09-03</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-03.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天Paper Morning来聊聊最近arXiv上几篇有意思的工作。
+
+先看Qwen-Drive-1.0，这是阿里把视觉语言模型做进自动驾驶的尝试。核心思路很直接：用预训练的VLM做基座，然后外挂一个BEV感知头和规划模块。BEV头同时做3D检测、语义占用和地图分割，规划头直接输出自车轨迹。这里有个设计我很欣赏：BEV头不只是输出结果，它本质上是一个探针，用来探测VLM的shared representation里到底学到了多少3D信息。这种inspectable interface的思路，其实在我们AI4S里也很重要——你要知道模型学到了什么，而不是只关心输出对不对。VLM在自动驾驶里火了一年多了，但大多数工作还停留在感知阶段，Qwen-Drive-1.0这一步迈到了planning，说明基础模型的推理能力确实在往更下游任务渗透。
+
+再看H3-World，这个工作很有趣。它把一个33B的视频生成模型MiniMax-H3变成了可交互的世界模型。关键洞察是：现在的视频生成模型已经能通过自然语言指令控制角色行为和相机运动了，但它只能做粗粒度控制。H3-World的做法是把动作拆解成结构化的角色指令和相机指令，然后和视频的temporal latents做对齐。这样一来，语言就从一种粗粒度的控制接口变成了精确的、世界内的操控语言。这个意义我觉得被低估了——它其实在说，语言不只是描述图像，而是可以成为物理世界的control token。这让我想到我们AI4S里常说的一句话：自然语言可能是描述物理规律最好的元语言。如果视频生成模型能理解这种控制，那离真正的物理世界模拟可能就近了一步。
+
+SMELT是今天最让我觉得“工程师精神”的工作。它研究的是Looped Transformer——就是重复使用同一组层来增加有效深度——但它做了一件很多研究没做到的事：严格控制变量。以前的比较都是在固定模型尺寸下做的，这样其实混淆了架构优势和额外的计算量。SMELT做了什么？它精确匹配了per-token FLOPs、总参数量和KV cache，然后在这个约束下比较looping和unlooped的差异。最终发现，在中间一半的层loop两次，能在计算最优的前沿上节省6.8%到18%的训练FLOPs。这个数字听起来不大，但你要知道，这是在已经高度优化的MoE架构上再抠出来的。而且它拟合了Chinchilla-style的scaling law，给出了定量的计算-性能权衡曲线。这种精细的架构探索，其实在我们科学计算里也很重要——模型不只要求对，还要讲效率。特别是在处理大规模PDE求解的时候，每一点计算节省都可能带来实际收益。
+
+UI-Venus-2是一个通用的GUI agent，能在手机、网页和桌面环境里操作。它做了我觉得最实在的一件事：把环境覆盖扩展到170多个多语言APP和原生桌面系统。这个数字背后是一个朴素但重要的道理：agent能不能落地，不取决于它在benchmark上多漂亮，而取决于它见过多少真实环境。UI-Venus-2用闭环的reasoning-action框架，加上deep-research pipeline做instruction generation，目标就是从“能做题”走向“能干活”。这和我们AI4S的一个趋势也很像：做基础模型最终还是要回到真实问题上去，不能只在合成数据里打转。
+
+最后是StudentSim，思路很巧妙：与其从真实学生那里慢悠悠收集反馈数据，不如用LLM来模拟学生。它先用一组学生的数据做pooled training，学到一个通用的学生模型，然后针对每个学生做specialization。这样既有了LLM的语言能力，又能个体化地模拟每个学生的学习行为和薄弱点。这个工作让我想到一个更大的图景：当基础模型足够强大的时候，它不仅可以模拟物理系统，还可以模拟认知系统。AI tutor这个场景其实很适合foundation model——学生是多样的，feedback是稀疏的，而LLM刚好擅长在有限信号下做泛化。
+
+今天这几篇论文看下来，一个很强烈的感受是：foundation model的范式正在从“更大的模型”走向“更精细的控制”和“更高效的架构”。Qwen-Drive-1.0和H3-World都在回答同一个问题：有了强大的预训练模型，怎么让它精确地、可控地去完成下游任务？SMELT在问另一个问题：有没有可能在不增加计算负担的情况下提升模型能力？而UI-Venus-2和StudentSim则在探索foundation model能渗透到多远的应用边界。这些问题凑在一起，其实都在指向一个方向：AI的通用能力已经准备好了，现在缺的是怎么把它精准地送到每一个具体场景里。这就是今天的Paper Morning，我们明天继续。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.00111" target="_blank">Qwen-Drive-1.0: An Initial Step towards a Vision-Language Foundation Model for Autonomous Driving</a></li>
+<li><a href="https://arxiv.org/abs/2609.01560" target="_blank">H3-World: Turning Language Understanding into World Control</a></li>
+<li><a href="https://arxiv.org/abs/2609.01343" target="_blank">SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers</a></li>
+<li><a href="https://arxiv.org/abs/2609.00028" target="_blank">UI-Venus-2 Technical Report</a></li>
+<li><a href="https://arxiv.org/abs/2609.01591" target="_blank">StudentSim: Training LLM-based Student Simulators</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
