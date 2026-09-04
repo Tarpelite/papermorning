@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-04</title>
+      <description>今日学术播报: SolarWM: Open Data and Scalabl, HarnessDev: Can LLMs Create an, Aspire: Can Models Self-Evolve...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-04.mp3" length="7270653" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-04.mp3</guid>
+      <pubDate>2026-09-04T00:19:55.707387Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-03</title>
       <description>今日学术播报: Qwen-Drive-1.0: An Initial Ste, H3-World: Turning Language Und, SMELT: Scaling Laws for Comput...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-03.mp3" length="9006646" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-04.mp3" length="9650512" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-04.mp3</guid>
       <pubDate>2026-08-04T23:34:39.062444Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-03</title>
-      <description>今日学术播报: Mental World Modeling, N_0-VTLA: Scaling Vision-Tacti, From RLVR to RLSVR: Task Trans...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-03.mp3" length="12579570" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-03.mp3</guid>
-      <pubDate>2026-08-03T23:38:49.820550Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

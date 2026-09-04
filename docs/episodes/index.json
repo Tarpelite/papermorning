@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-04",
+    "title": "Paper Morning 2026-09-04",
+    "description": "今日学术播报: SolarWM: Open Data and Scalabl, HarnessDev: Can LLMs Create an, Aspire: Can Models Self-Evolve...",
+    "audio_file": "2026-09-04.mp3",
+    "script": "各位早上好，今天周五，Paper Morning又和大家见面了。\n\n先说一篇很有意思的工作，SolarWM，做视频世界模型的。现在世界模型火得不行，但真正能打的开源方案很少。这篇工作最让我觉得实在的地方，是他们把数据pipeline和模型架构解耦了。你知道现在训练一个视频生成模型，数据来源五花八门，时间尺度、相机几何、视觉质量、运动模式都不一样，直接混在一起训效果肯定拉跨。SolarWM搞了一个可配置的多源数据引擎，把来自10个数据集的143万clip统一成了标准化的帧级标注。这个思路其实很像我们做科学计算数据清洗时的规范化流程，只是他们把它产品化了。 backbone-native adaptation framework也很关键，让不同架构的视频生成器都能复用这套数据。我觉得这件事的真正意义在于，它为世界模型的规模化训练扫清了工程障碍。过去我们老说缺数据、缺算力，但数据质量参差不齐、训练流程不稳定这些问题，往往比缺数据更致命。SolarWM至少在工程层面给出了解法。\n\n说完世界模型，再看一篇关于agent基础设施的工作，Repo-To-Skill。这个工作提出的问题我觉得特别本质：...",
+    "papers": [
+      {
+        "title": "SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models",
+        "url": "https://arxiv.org/abs/2609.02886",
+        "arxiv_id": "2609.02886"
+      },
+      {
+        "title": "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?",
+        "url": "https://arxiv.org/abs/2609.01437",
+        "arxiv_id": "2609.01437"
+      },
+      {
+        "title": "Aspire: Can Models Self-Evolve from Vague Goals?",
+        "url": "https://arxiv.org/abs/2608.31111",
+        "arxiv_id": "2608.31111"
+      },
+      {
+        "title": "Repo-To-Skill: Distilling GitHub Repositories Into AI4AI Skills",
+        "url": "https://arxiv.org/abs/2609.02749",
+        "arxiv_id": "2609.02749"
+      },
+      {
+        "title": "EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction",
+        "url": "https://arxiv.org/abs/2609.02783",
+        "arxiv_id": "2609.02783"
+      }
+    ],
+    "published_at": "2026-09-04T00:19:55.707387Z"
+  },
+  {
     "date": "2026-09-03",
     "title": "Paper Morning 2026-09-03",
     "description": "今日学术播报: Qwen-Drive-1.0: An Initial Ste, H3-World: Turning Language Und, SMELT: Scaling Laws for Comput...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-04T23:34:39.062444Z"
-  },
-  {
-    "date": "2026-08-03",
-    "title": "Paper Morning 2026-08-03",
-    "description": "今日学术播报: Mental World Modeling, N_0-VTLA: Scaling Vision-Tacti, From RLVR to RLSVR: Task Trans...",
-    "audio_file": "2026-08-03.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊一个很有意思的趋势：最近AI圈子里出现了一批工作，都在探讨同一个问题——怎么让模型不仅能“看见”物理世界，还能“理解”背后的人是怎么想的，以及怎么让模型记住更多东西、在更开放的任务里自我提升。这几个方向看似独立，但背后其实有一条主线，我们一会儿再展开。\n\n先来看第一篇 Mental World Modeling，作者是来自新加坡国立大学的Hao Fei和Yiran Zhao。这篇工作的核心贡献，是提出了一个叫心理世界建模的通用理论框架。大家知道，传统的世界模型解决的是物理问题——物体在哪里、接下来会怎么动。但人和人交互的时候，每个人做的事情不仅取决于物理场景，还取决于他心里怎么想——他相信什么、他想要什么、他觉得什么行为是合适的。举个例子，你看到一个人伸手去拿桌子上的水杯，传统世界模型可能会预测他下一步要喝水，但如果你知道他对这杯水有疑虑或者不渴，预测就会完全不同。所以这篇工作的核心思路，是把心理状态变成世界模型的核心组件，而不是事后才加上的解释。这样模型就能同时维护一个物理状态和一个心理状态，去模拟不同的动作会同时改变这...",
-    "papers": [
-      {
-        "title": "Mental World Modeling",
-        "url": "https://arxiv.org/abs/2607.27201",
-        "arxiv_id": "2607.27201"
-      },
-      {
-        "title": "N_0-VTLA: Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens",
-        "url": "https://arxiv.org/abs/2607.23782",
-        "arxiv_id": "2607.23782"
-      },
-      {
-        "title": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement",
-        "url": "https://arxiv.org/abs/2607.23802",
-        "arxiv_id": "2607.23802"
-      },
-      {
-        "title": "Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory",
-        "url": "https://arxiv.org/abs/2607.27919",
-        "arxiv_id": "2607.27919"
-      },
-      {
-        "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
-        "url": "https://arxiv.org/abs/2607.28227",
-        "arxiv_id": "2607.28227"
-      }
-    ],
-    "published_at": "2026-08-03T23:38:49.820550Z"
   }
 ]
