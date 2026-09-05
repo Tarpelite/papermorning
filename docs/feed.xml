@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-05</title>
+      <description>今日学术播报: Compile by Training: Turning N, Knowing When Not to Reuse: Con, Puffin-World: Scaling a Unifie...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-05.mp3" length="11167704" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-05.mp3</guid>
+      <pubDate>2026-09-05T00:24:22.896720Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-04</title>
       <description>今日学术播报: SolarWM: Open Data and Scalabl, HarnessDev: Can LLMs Create an, Aspire: Can Models Self-Evolve...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-04.mp3" length="7270653" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-05.mp3" length="10627283" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-05.mp3</guid>
       <pubDate>2026-08-05T23:32:29.734020Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-04</title>
-      <description>今日学术播报: Mental World Modeling, DAPD: Dual-Anchored Policy Dis, LongHorizon-Harness: Advancing...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-04.mp3" length="9650512" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-04.mp3</guid>
-      <pubDate>2026-08-04T23:34:39.062444Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-05",
+    "title": "Paper Morning 2026-09-05",
+    "description": "今日学术播报: Compile by Training: Turning N, Knowing When Not to Reuse: Con, Puffin-World: Scaling a Unifie...",
+    "audio_file": "2026-09-05.mp3",
+    "script": "各位早上好，周末的Paper Morning如约而至。\n\n今天想跟大家聊的话题，可能表面上看起来跟咱们熟悉的neural operator、PDE求解器关系不那么直接，但我认为它们揭示了一个更底层的趋势，这个趋势跟AI for Science正在发生的范式转变是高度相关的。\n\n第一篇论文叫做“Compile by Training”，作者来自哈佛团队。核心想法是把自然语言描述的文本函数，通过一个teacher-student的框架，编译成一个可复用的本地神经网络。这个思路很有意思，它实际上是在问一个问题：当我们需要把一个模糊的规范变成可靠的、可以部署的函数时，应该怎么做？传统的规则系统很难处理这种模糊性，而每次都调用远程大模型又太贵。这里他们提出的方案是，让teacher模型生成一批任务相关的样本，然后用这些样本去训练一个小型的adapter，最后得到的函数可以像普通软件一样存储、版本化和组合。我觉得这个思路跟我们在AI4S里讨论的operator learning有某种呼应——本质上都是在把“规范”变成“函数”，只是这里的规范是自然语言，而PDE的规范是物理方程。如果未来能把这两条路...",
+    "papers": [
+      {
+        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+        "url": "https://arxiv.org/abs/2609.04199",
+        "arxiv_id": "2609.04199"
+      },
+      {
+        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
+        "url": "https://arxiv.org/abs/2608.26730",
+        "arxiv_id": "2608.26730"
+      },
+      {
+        "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
+        "url": "https://arxiv.org/abs/2609.04196",
+        "arxiv_id": "2609.04196"
+      },
+      {
+        "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
+        "url": "https://arxiv.org/abs/2609.03430",
+        "arxiv_id": "2609.03430"
+      },
+      {
+        "title": "Rethinking On-Policy Distillation of Large Language Models II: One Training Example",
+        "url": "https://arxiv.org/abs/2609.04172",
+        "arxiv_id": "2609.04172"
+      }
+    ],
+    "published_at": "2026-09-05T00:24:22.896720Z"
+  },
+  {
     "date": "2026-09-04",
     "title": "Paper Morning 2026-09-04",
     "description": "今日学术播报: SolarWM: Open Data and Scalabl, HarnessDev: Can LLMs Create an, Aspire: Can Models Self-Evolve...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-05T23:32:29.734020Z"
-  },
-  {
-    "date": "2026-08-04",
-    "title": "Paper Morning 2026-08-04",
-    "description": "今日学术播报: Mental World Modeling, DAPD: Dual-Anchored Policy Dis, LongHorizon-Harness: Advancing...",
-    "audio_file": "2026-08-04.mp3",
-    "script": "各位早上好，周二的Paper Morning如约而至。\n\n今天想先从一篇很有意思的理论工作聊起。Mental World Modeling这个词听起来有点抽象，但它回答了一个很根本的问题：我们在构建世界模型的时候，到底该建模什么？过去的模型关注的是物理状态——物体在哪里、接下来会怎么动。但人类行为背后其实有一层更隐蔽的东西——每个人的信念、意图、情感，还有对社会规范的理解。这篇工作提出了一个耦合的物理-mental状态框架，让模型能够模拟“每个人脑子里在想什么”会如何影响他的行动。这个思路其实挺刷新我的认知的，它提醒我们，世界模型不只是物理模拟器，还是一个社会认知系统。各位做AI4S的朋友可能觉得这个离自己有点远，但想想看，当我们在构建物理世界的预测模型时，是不是也常常忽略了“观察者”这个角色本身具有的先验和意图？这或许是个值得警惕的盲点。\n\n聊完理论，我们来看一个很实际的问题。语言模型的后训练现在普遍用on-policy distillation，让模型从自己的输出中学习。但这里有个陷阱：训练时模型能看到privileged信息，推理时却看不到，这就导致模型学到了一些“特权依赖”的行...",
-    "papers": [
-      {
-        "title": "Mental World Modeling",
-        "url": "https://arxiv.org/abs/2607.27201",
-        "arxiv_id": "2607.27201"
-      },
-      {
-        "title": "DAPD: Dual-Anchored Policy Distillation",
-        "url": "https://arxiv.org/abs/2608.01735",
-        "arxiv_id": "2608.01735"
-      },
-      {
-        "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
-        "url": "https://arxiv.org/abs/2608.01964",
-        "arxiv_id": "2608.01964"
-      },
-      {
-        "title": "WorldExam: Benchmarking World Models from Apparent Appearance to Inherent Reactivity",
-        "url": "https://arxiv.org/abs/2608.02603",
-        "arxiv_id": "2608.02603"
-      },
-      {
-        "title": "SwanTale: Unified Multi-Speaker Speech and Audio Generation for Instruct and Zero-Shot Tasks",
-        "url": "https://arxiv.org/abs/2608.02023",
-        "arxiv_id": "2608.02023"
-      }
-    ],
-    "published_at": "2026-08-04T23:34:39.062444Z"
   }
 ]

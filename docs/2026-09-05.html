@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-05</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-05</h1>
+    <p class="date">2026-09-05</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-05.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周末的Paper Morning如约而至。
+
+今天想跟大家聊的话题，可能表面上看起来跟咱们熟悉的neural operator、PDE求解器关系不那么直接，但我认为它们揭示了一个更底层的趋势，这个趋势跟AI for Science正在发生的范式转变是高度相关的。
+
+第一篇论文叫做“Compile by Training”，作者来自哈佛团队。核心想法是把自然语言描述的文本函数，通过一个teacher-student的框架，编译成一个可复用的本地神经网络。这个思路很有意思，它实际上是在问一个问题：当我们需要把一个模糊的规范变成可靠的、可以部署的函数时，应该怎么做？传统的规则系统很难处理这种模糊性，而每次都调用远程大模型又太贵。这里他们提出的方案是，让teacher模型生成一批任务相关的样本，然后用这些样本去训练一个小型的adapter，最后得到的函数可以像普通软件一样存储、版本化和组合。我觉得这个思路跟我们在AI4S里讨论的operator learning有某种呼应——本质上都是在把“规范”变成“函数”，只是这里的规范是自然语言，而PDE的规范是物理方程。如果未来能把这两条路径打通，或许我们能够用自然语言直接描述一个物理问题，然后自动编译出一个求解这个问题的神经网络。这幅图景可能比我们现在用的physics-informed training还要更进一步。
+
+接下来这篇关于“条件经验迁移”的工作，提出的问题非常实际。大语言模型需要不断适应新的领域、新的工具和新的需求，这就需要持续的post-training。现有的自主系统能够自动提出更新建议、训练候选模型、并利用评估反馈来选择下一步的提案。但这里有一个核心难题：当模型经过多轮训练之后，之前积累的那些“成功经验”还有效吗？作者把它叫做条件经验传递问题——一个更新的效果取决于它的父模型、训练数据和训练阶段。如果把过去的成功当作无条件的许可，就是浪费算力；如果被提升的子模型污染了后续的训练轨迹，后果更严重。他们提出了一个叫做Boundary-Calibrated Intervention Transfer的方法来解决这个问题。这个问题让我想到咱们在训练科学计算模型时也会遇到的类似情况——当我们在已有的foundation model上做微调时，如何判断哪些中间层的表示还有用，哪些已经过时了？这篇工作给出的思路是值得借鉴的。
+
+第三篇Puffin-World提出了一个统一的多模态架构，试图在一个框架里整合物理理解、空间模拟和三维世界的生成与重建，而且不依赖外部的离线模块。他们定义了三个“原生世界状态”：物理状态包括重力场和纬度，几何状态是深度，外观状态是图像，还有一个统一的Omni-Camera表示来支持多种任务和灵活的运动。这篇工作的野心的确很大，但更值得关注的是他们处理物理动力学跨帧传播的方式，以及如何让绝对相机属性与现实世界对齐，从而实现物理一致且视觉稳定的世界生成。我个人认为，这篇工作最接近我们理想中的“物理世界模型”的形态，尽管它目前可能还只是一个原型。它和我们在AI4S里追求的、可泛化的物理模拟器之间，差的可能就是一个从视觉观测到物理规律的可靠映射。
+
+第四篇论文的标题非常直白——“Random Attention”。它要解决的是大语言模型在长链推理时面临的KV cache内存瓶颈问题。现有的方法都是先给每个缓存的token打分，预测它未来有多重要，然后保留得分最高的。但这篇工作做了一个非常反直觉的实验：他们发现，随机淘汰策略——在每个attention head内部均匀随机地驱逐token，不计算任何分数——在四个模型和六个推理任务上，效果居然和最强的prior evictor持平，而吞吐量还高出了32%到43%。controlled实验揭示了一个关键洞察：真正脆弱的是prompt部分，而淘汰策略之间的差异大部分来自于prompt的处理方式不同。这个发现对咱们做科学计算的同行来说非常有意思，因为我们经常要在有限的计算资源下运行大规模的模型，随机淘汰这种简单残暴的策略居然比复杂的评分机制更有效，这提醒我们，有时候增加模型复杂度不一定带来对应的收益，尤其是在我们已经对模型结构做了大量优化的情况下。
+
+最后一篇关于“单样本策略蒸馏”的工作，研究了一个很基础但重要的问题：在做模型蒸馏的时候，训练数据到底起了什么作用？他们的做法非常极端——只用一个query来训练学生模型。结果发现，单样本蒸馏能够持续改进数百步，并且能在多个任务域和模型家族中恢复出大部分全数据蒸馏的效果。关键在于，他们引入了一个叫做“状态覆盖”的概念——衡量单query的rollout能达到全数据蒸馏访达的状态的比例。结果显示，单个query就能达到71.5%的状态覆盖率，而且大部分在最初100步内就达成了。这个发现对我们理解模型的知识迁移非常有帮助——它说明学生模型可能不需要看到那么多数据，只需要覆盖到关键的状态空间就够了。这让我想到咱们在训练neural operator的时候，是否也需要重新思考数据效率和状态覆盖之间的关系？
+
+好了，今天的五篇论文聊完了。我把它们串起来的线索是什么呢？我认为是三个字：“可部署”。无论是把自然语言规范编译成可运行函数、还是解决经验迁移中的失效问题、还是构建能够本地运行的世界模型、抑或是用更简单的方式实现高效的推理、以及理解蒸馏中数据的最少需求——这些工作都在回答一个共同的问题：如何让大模型的能力真正落地，变成可靠、可控、可复用的工具，而不仅仅是停留在论文里的benchmark分数。这和我们AI4S社区正在思考的“foundation model如何真正服务于科学发现”这个问题，本质上是同一枚硬币的两面。好啦，周末愉快各位，我们下周见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.04199" target="_blank">Compile by Training: Turning Natural-Language Specifications into Local Neural Functions</a></li>
+<li><a href="https://arxiv.org/abs/2608.26730" target="_blank">Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training</a></li>
+<li><a href="https://arxiv.org/abs/2609.04196" target="_blank">Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States</a></li>
+<li><a href="https://arxiv.org/abs/2609.03430" target="_blank">Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning</a></li>
+<li><a href="https://arxiv.org/abs/2609.04172" target="_blank">Rethinking On-Policy Distillation of Large Language Models II: One Training Example</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
