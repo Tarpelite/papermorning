@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-06</title>
+      <description>今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-06.mp3" length="10275570" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-06.mp3</guid>
+      <pubDate>2026-09-06T00:11:41.258987Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-05</title>
       <description>今日学术播报: Compile by Training: Turning N, Knowing When Not to Reuse: Con, Puffin-World: Scaling a Unifie...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-05.mp3" length="11167704" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-07.mp3" length="9039874" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-07.mp3</guid>
       <pubDate>2026-08-07T23:08:26.526447Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-05</title>
-      <description>今日学术播报: AURORA-LM: Autoencoding Unifie, JoyAI-Video-Edit: Real-Time Op, Hunyuan3D-Buffalo 1.0: A Unifi...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-05.mp3" length="10627283" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-05.mp3</guid>
-      <pubDate>2026-08-05T23:32:29.734020Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

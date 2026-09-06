@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-06",
+    "title": "Paper Morning 2026-09-06",
+    "description": "今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...",
+    "audio_file": "2026-09-06.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我最近反复思考的问题：当我们把AI系统做得越来越强大的时候，怎么才能不让它们变成“吞金兽”？这个看似工程的问题，其实正在变成科学问题的核心。我们今天聊的几篇论文，表面上主题分散，但实际上都指向同一个趋势——怎么让昂贵的计算变得可以承受，甚至变得更聪明。\n\n先看第一篇，RoboTok。它做的事情是解决机器人学习的数据瓶颈问题。大家知道训练一个灵巧的机器人策略需要大量人类演示，但真人演示数据既贵又难覆盖真实场景的长尾分布。RoboTok的思路很直接：互联网上有海量的 Manipulation视频，能不能从中检索出有用的演示？它的核心贡献是学习了一个latent motion space，把3D手部轨迹表示在以演员为中心的参考系里。这样一来，不管摄像头视角怎么变、场景外观怎么变，甚至操作者被遮挡了，都能找到行为相似的演示用于训练。这篇工作让我想到一个问题：我们以前总觉得机器人数据必须自己采集，但互联网本身就是一个巨大的数据引擎，只是我们以前不知道怎么有效地“蒸馏”出有用的部分。\n\n接下来这篇Compile by Tr...",
+    "papers": [
+      {
+        "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
+        "url": "https://arxiv.org/abs/2609.03199",
+        "arxiv_id": "2609.03199"
+      },
+      {
+        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+        "url": "https://arxiv.org/abs/2609.04199",
+        "arxiv_id": "2609.04199"
+      },
+      {
+        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
+        "url": "https://arxiv.org/abs/2608.26730",
+        "arxiv_id": "2608.26730"
+      },
+      {
+        "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
+        "url": "https://arxiv.org/abs/2609.04196",
+        "arxiv_id": "2609.04196"
+      },
+      {
+        "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
+        "url": "https://arxiv.org/abs/2609.03430",
+        "arxiv_id": "2609.03430"
+      }
+    ],
+    "published_at": "2026-09-06T00:11:41.258987Z"
+  },
+  {
     "date": "2026-09-05",
     "title": "Paper Morning 2026-09-05",
     "description": "今日学术播报: Compile by Training: Turning N, Knowing When Not to Reuse: Con, Puffin-World: Scaling a Unifie...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-07T23:08:26.526447Z"
-  },
-  {
-    "date": "2026-08-05",
-    "title": "Paper Morning 2026-08-05",
-    "description": "今日学术播报: AURORA-LM: Autoencoding Unifie, JoyAI-Video-Edit: Real-Time Op, Hunyuan3D-Buffalo 1.0: A Unifi...",
-    "audio_file": "2026-08-05.mp3",
-    "script": "各位早上好，周三的Paper Morning又和各位见面了。\n\n今天想先和大家聊一个我最近反复思考的问题：我们做科学计算的人，常常觉得生成模型离自己很远，毕竟 diffusion model 在图像、视频里玩得再热闹，跟解 PDE 似乎没什么直接关系。但如果我们把视角拉高一点，看这些方法在“表示”这个根本问题上做了什么，可能会发现一些意想不到的启发。\n\n先看 AURORA-LM 这篇工作。它在做的事情一句话概括就是：用连续潜空间来做语言生成，而不是像传统那样用离散 token。这听起来好像只是生成模型领域的技术细节，但我觉得它触碰到了一个很根本的问题——什么样的表示适合用来做扩散？我们知道，扩散模型在图像、音频上已经非常成功了，但语言本质上还是离散的。之前的做法要么是强行把连续表示压缩成离散 token，要么就是放弃 token 级别的精度。AURORA-LM 的思路是，我不简化表示来迁就模型，而是反过来设计一个足够好的可解码表示，然后让扩散模型直接去学它的分布。这里面有一个很值得咱们思考的设计哲学：不是让任务去将就工具，而是为任务专门设计更合适的工具，再让工具去适应它。这个思路其实和...",
-    "papers": [
-      {
-        "title": "AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling",
-        "url": "https://arxiv.org/abs/2608.02602",
-        "arxiv_id": "2608.02602"
-      },
-      {
-        "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
-        "url": "https://arxiv.org/abs/2608.03974",
-        "arxiv_id": "2608.03974"
-      },
-      {
-        "title": "Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing",
-        "url": "https://arxiv.org/abs/2608.02711",
-        "arxiv_id": "2608.02711"
-      },
-      {
-        "title": "MerchantBench: Benchmarking LLM Agents for Long-Term Coherence in E-Commerce Operations",
-        "url": "https://arxiv.org/abs/2607.28956",
-        "arxiv_id": "2607.28956"
-      },
-      {
-        "title": "InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis",
-        "url": "https://arxiv.org/abs/2608.02437",
-        "arxiv_id": "2608.02437"
-      }
-    ],
-    "published_at": "2026-08-05T23:32:29.734020Z"
   }
 ]
