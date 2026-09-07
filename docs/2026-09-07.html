@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-07</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-07</h1>
+    <p class="date">2026-09-07</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-07.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想和大家聊一个我最近反复思考的问题：我们做科学计算的人，往往关注的是模型精度、收敛速度、是否满足物理定律，但有没有可能，我们其实忽视了一个同样根本的问题——当这些模型变大、推理变长的时候，我们怎么更聪明地管理它的计算资源？这也是我今天选这几篇论文的切入点。
+
+先来看一篇挺有意思的工作，Compile by Training。它做的事情用一句话说，就是把一段自然语言描述的功能需求，直接“编译”成一个可运行的神经函数。听起来是不是有点像我们做neural operator的思路？把一个输入输出关系学出来，但这里输入不是网格点，而是一段文本规范。这个工作的关键创新在于它的两阶段设计：用大模型作为“教师”在编译时生成任务相关的例子，然后用这些例子去训练一个小的适配器，这个适配器运行时就完全不需要教师模型了，可以独立部署、版本控制、像普通软件一样组合使用。这让我想到一件事，我们做PDE求解器的时候，经常面临精度和效率的取舍，有时不得不为每个新任务重新调用大模型，延迟和成本都很高。如果能把这些“推理能力”蒸馏到一个轻量级的执行器里，是不是就像有了一个专门针对科学计算任务的“专用芯片”？当然，83.6%的语义精度说明这条路还没到完美的程度，但这种“编译”思想或许值得AI4S的同行们想一想。
+
+如果说上一个工作是在模型部署层面做文章，那Puffin-World就更有野心了。它试图构建一个统一的多模态架构，同时建模物理、几何和 appearance 三个世界状态，并且用一种叫Omni-Camera的表示把它们统一起来。这里面我最感兴趣的不是它的架构细节，而是它对物理dynamics的跨帧传播策略。我们知道，在科学计算里，一个核心挑战就是如何在时间演化中保持物理一致性，很多方法要么依赖显式的数值格式，要么需要额外的约束项。Puffin-World尝试用学习的办法来做到这一点，而且不是为了某个特定的物理系统，是奔着通用物理理解去的。当然，这篇工作在不在我们直接关注的PDE求解、operator learning范畴内，但它的思路——用一个统一的模型同时理解物理、几何和视觉——其实和我们追求的“统一科学计算 foundation model”有异曲同工之处。区别在于他们的重点在3D视觉和机器人，我们重点在偏微分方程，但大家都想做“同一个世界模型的不同切片”。
+
+接下来这篇可能和很多人日常工作更相关一些，Random Attention，讲的是大语言模型推理时KV cache的压缩问题。核心发现非常反直觉：现有所有KV cache压缩方法都在绞尽脑汁预测哪个token未来会更重要，然后保留最重要的，丢弃最不重要的。但这篇文章告诉你，这个“重要性评分”机制几乎没什么用。他们提出的Random Attention就是随机丢弃，保持prompt完整，然后在每个attention head内部均匀随机地驱逐token。结果呢？在六个推理任务上，这种看起来完全“盲”的方法，和最强的基于评分的驱逐方法效果一样好，但吞吐量高出32%到43%。这个发现为什么重要？因为它揭示了一个很多人没意识到的事实：在长推理链中，prompt才是缓存的脆弱部分，模型真正需要记住的是输入指令和任务定义，而不是中间那些冗余的推理步骤。这个洞察对AI4S研究者有什么启发？我们训练科学计算模型的时候，是不是也经常执着于保存更多的中间状态信息，觉得每个时间步的隐变量都同样重要？或许我们应该重新思考，在哪些计算步骤上“记忆”是真正有价值的，哪些其实可以被大胆地遗忘。
+
+好了，今天聊的这几篇， Compile by Training 关注的是怎么把大模型的能力安全地“降级”到可部署的轻量级函数，Puffin-World 尝试用一个统一的架构同时理解物理、几何和视觉，Random Attention 则用极其简单的方法揭示了推理效率的深层规律。它们看似主题分散，但我感觉背后有一条共同的暗线：我们正处在从“追求更大的模型”向“更聪明地使用模型”的范式转变之中。过去几年我们见证了预训练Scaling的奇迹，但越来越多人开始意识到，仅仅把模型做大还不够，怎么在推理时更高效地分配计算资源、怎么把通用能力蒸馏到专用执行器里、怎么让模型有选择性地记住关键信息，这些问题可能在接下来几年变得和训练本身同等重要。好了，今天的播报就到这里，我们明天早餐时间再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.03199" target="_blank">RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning</a></li>
+<li><a href="https://arxiv.org/abs/2609.04199" target="_blank">Compile by Training: Turning Natural-Language Specifications into Local Neural Functions</a></li>
+<li><a href="https://arxiv.org/abs/2608.26730" target="_blank">Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training</a></li>
+<li><a href="https://arxiv.org/abs/2609.04196" target="_blank">Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States</a></li>
+<li><a href="https://arxiv.org/abs/2609.03430" target="_blank">Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

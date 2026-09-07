@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-07",
+    "title": "Paper Morning 2026-09-07",
+    "description": "今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...",
+    "audio_file": "2026-09-07.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我最近反复思考的问题：我们做科学计算的人，往往关注的是模型精度、收敛速度、是否满足物理定律，但有没有可能，我们其实忽视了一个同样根本的问题——当这些模型变大、推理变长的时候，我们怎么更聪明地管理它的计算资源？这也是我今天选这几篇论文的切入点。\n\n先来看一篇挺有意思的工作，Compile by Training。它做的事情用一句话说，就是把一段自然语言描述的功能需求，直接“编译”成一个可运行的神经函数。听起来是不是有点像我们做neural operator的思路？把一个输入输出关系学出来，但这里输入不是网格点，而是一段文本规范。这个工作的关键创新在于它的两阶段设计：用大模型作为“教师”在编译时生成任务相关的例子，然后用这些例子去训练一个小的适配器，这个适配器运行时就完全不需要教师模型了，可以独立部署、版本控制、像普通软件一样组合使用。这让我想到一件事，我们做PDE求解器的时候，经常面临精度和效率的取舍，有时不得不为每个新任务重新调用大模型，延迟和成本都很高。如果能把这些“推理能力”蒸馏到一个轻量级的执行器里，是不...",
+    "papers": [
+      {
+        "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
+        "url": "https://arxiv.org/abs/2609.03199",
+        "arxiv_id": "2609.03199"
+      },
+      {
+        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+        "url": "https://arxiv.org/abs/2609.04199",
+        "arxiv_id": "2609.04199"
+      },
+      {
+        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
+        "url": "https://arxiv.org/abs/2608.26730",
+        "arxiv_id": "2608.26730"
+      },
+      {
+        "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
+        "url": "https://arxiv.org/abs/2609.04196",
+        "arxiv_id": "2609.04196"
+      },
+      {
+        "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
+        "url": "https://arxiv.org/abs/2609.03430",
+        "arxiv_id": "2609.03430"
+      }
+    ],
+    "published_at": "2026-09-07T00:15:14.258155Z"
+  },
+  {
     "date": "2026-09-06",
     "title": "Paper Morning 2026-09-06",
     "description": "今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-08T23:00:10.527559Z"
-  },
-  {
-    "date": "2026-08-07",
-    "title": "Paper Morning 2026-08-07",
-    "description": "今日学术播报: OSReward: Instituting Standard, AgentOPSD: Recursive Self-Dist, Recursive Synthesis for Long-H...",
-    "audio_file": "2026-08-07.mp3",
-    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想和大家聊聊一个正在深刻改变AI研究格局的主题——Agent训练范式的演进。如果你过去一年关注过LLM Agent的发展，会发现一个有趣的现象：模型能力在快速提升，但训练方法却似乎有些跟不上。我们有了强大的基座模型，却常常在“如何让Agent真正学会长程推理”这个问题上卡住。那今天的几篇论文，正好从不同角度回应了这个挑战。\n\n先看第一篇OSReward，它提出的问题非常根本：当我们用VLM作为Agent轨迹的评判者时，这个评判到底可不可靠？这篇工作构建了一个系统性的benchmark，发现目前主流的VLM judge存在显著的偏差，而且这个偏差在不同平台、不同任务上很不一致。这个发现很重要，因为现在很多Agent的RL训练和数据筛选都依赖VLM作为奖励信号，如果评判本身不可靠，那整个训练框架的可靠性都要打个问号。这篇工作不是要否定VLM judge的价值，而是提醒我们：在把Agent训练交给自动化评估之前，我们需要先校准这些“裁判”。\n\n那么，既然评判这么重要，我们该怎样给Agent的学习过程提供有效的监督信号呢？这就引出了...",
-    "papers": [
-      {
-        "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
-        "url": "https://arxiv.org/abs/2607.28609",
-        "arxiv_id": "2607.28609"
-      },
-      {
-        "title": "AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2608.05987",
-        "arxiv_id": "2608.05987"
-      },
-      {
-        "title": "Recursive Synthesis for Long-Horizon Terminal Tasks",
-        "url": "https://arxiv.org/abs/2608.05466",
-        "arxiv_id": "2608.05466"
-      },
-      {
-        "title": "ABSeeker: Training Long-Horizon Search Agents via Answer-Backtracked Credit Assignment",
-        "url": "https://arxiv.org/abs/2608.05102",
-        "arxiv_id": "2608.05102"
-      },
-      {
-        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
-        "url": "https://arxiv.org/abs/2608.01481",
-        "arxiv_id": "2608.01481"
-      }
-    ],
-    "published_at": "2026-08-07T23:08:26.526447Z"
   }
 ]
