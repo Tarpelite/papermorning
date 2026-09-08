@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-08</h1>
+    <p class="date">2026-09-08</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-08.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个观察说起。大家有没有感觉到，最近我们聊AI的时候，单模型能力的提升当然重要，但一个更底层的问题正在浮出水面：怎么把多个模型、多个模块、甚至多个智能体有效地组合在一起，让它们协同工作？这个问题在工业界可能叫Agent编排，在学术圈则涉及到协调机制、训练范式和数据构建等多个层面。今天的几篇论文恰好从不同角度触及了这个方向，我们来逐一看看。
+
+第一篇叫Bilevel Coordinated Reflection，讲的是多智能体LLM系统的博弈理论分析。作者把orchestrator和worker之间的交互建模成一个双层协调博弈，这个视角我觉得很有意思。以前我们聊多智能体协作，多半是经验性地设计prompt、设计工作流，但这篇文章试图给出一个理论框架，告诉我们协调质量是有上界的，而这个上界取决于任务分解的质量。这个理论洞察对于我们设计多智能体系统有直接的指导意义——与其在反思机制上花太多心思，不如先把任务分解这一步做好。
+
+顺着这个思路，第二篇Iris就很有意思了，它做的是搜索智能体的训练。我们知道，让LLM学会使用搜索工具、甚至自己规划多跳推理，是一个很活跃的方向。但Iris的亮点在于它的数据构建方法——它不是让人工标注多跳问题，而是从网页的链接结构中反向构造问题，然后通过强化学习让智能体在真实搜索环境中训练。这其实回应了一个根本性的问题：我们怎么为这种新兴的能力生成训练数据？这不仅是数据工程，更是能力定义的问题。当我们想要"搜索推理"这种能力时，我们首先需要精确地定义什么样的行为算是成功的搜索推理，然后才能构建相应的数据。这篇论文给出的方法论值得关注。
+
+第三篇RoboTok做的事情表面上跟前面两篇不太一样——它是一个从互联网视频中检索人类演示的数据引擎。但如果我们把视角拉高，会发现它也在回答一个类似的问题：怎么获取高质量的训练数据？机器人学习的老大难问题就是数据稀缺，尤其是覆盖真实世界中那些长尾的灵巧操作。RoboTok的思路很直接但很有效——既然互联网上有大量人类操作的视频，能不能从中检索出与给定查询相关的片段？关键在于它提出了一个基于3D手部轨迹的潜在运动空间表示，这个表示能够跨视角、跨场景、跨遮挡进行匹配。这是一个很实用的工程方案，同时也反映了一个趋势：AI for Science的数据基础设施正在从"怎么算"转向"怎么找"。
+
+第四篇Compile by Training则把视角拉到了另一个方向——它不是训练一个模型，而是把自然语言规范"编译"成一个可重用的神经函数。简单说，就是用大模型作为teacher，为一个特定任务生成训练数据，然后用这些数据训练一个小的adapter。这个adapter之后可以独立运行，不再依赖大模型。在FuzzyBench-Hard这个基准上，它达到了83.6%的语义准确率，比之前的Program-as-Weights方法显著提升。这里有个很巧妙的思路：与其每次调用大模型承担延迟和成本，不如"一次性"地把知识蒸馏到一个专用的小函数里。这其实是一种新的模型部署思路，值得我们思考它的适用范围。
+
+第五篇Knowing When Not to Reuse关注的是LLM后训练中的一个实际痛点：当我们反复对模型进行微调时，之前积累的训练经验和反馈还能不能继续使用？作者把它形式化为"条件经验迁移"问题，指出如果盲目地把过去的成功经验当作通用的，往往会损害后续的训练轨迹。这个洞察很务实——我们现在训练大模型的时候，往往倾向于收集尽可能多的经验数据，但如果不加以区分地使用，反而可能成为包袱。这篇文章给出的Boundary-Calibrated Intervention Transfer方法，试图让模型学会判断什么时候该利用过去的经验，什么时候该丢弃。
+
+好，我们把这五篇论文放在一起看，会发现它们其实在回应一个共同的主题：AI系统正在从单点突破走向系统化构建。无论是多智能体协调、搜索推理、机器人技能获取，还是神经函数编译、经验迁移，核心问题都是怎么把分散的能力组装成更大的系统，并且让这个系统高效、可控。这背后有几个值得关注的大趋势：一是训练范式正在从"预训练+微调"的单模型逻辑走向"多智能体协作"的系统逻辑；二是数据构建从被动收集走向主动设计，尤其是通过大模型和逆向构造来生成训练信号；三是系统工程的方法论——怎么组合、怎么协调、怎么迁移——正在成为新的核心竞争力。
+
+好了，今天的播报就到这里。我们明天继续聊。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.02750" target="_blank">Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems</a></li>
+<li><a href="https://arxiv.org/abs/2609.04304" target="_blank">Iris: Climbing to the Search Frontier</a></li>
+<li><a href="https://arxiv.org/abs/2609.03199" target="_blank">RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning</a></li>
+<li><a href="https://arxiv.org/abs/2609.04199" target="_blank">Compile by Training: Turning Natural-Language Specifications into Local Neural Functions</a></li>
+<li><a href="https://arxiv.org/abs/2608.26730" target="_blank">Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

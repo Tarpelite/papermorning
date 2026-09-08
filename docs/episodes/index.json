@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-08",
+    "title": "Paper Morning 2026-09-08",
+    "description": "今日学术播报: Bilevel Coordinated Reflection, Iris: Climbing to the Search F, RoboTok: An Internet-Scale Dat...",
+    "audio_file": "2026-09-08.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察说起。大家有没有感觉到，最近我们聊AI的时候，单模型能力的提升当然重要，但一个更底层的问题正在浮出水面：怎么把多个模型、多个模块、甚至多个智能体有效地组合在一起，让它们协同工作？这个问题在工业界可能叫Agent编排，在学术圈则涉及到协调机制、训练范式和数据构建等多个层面。今天的几篇论文恰好从不同角度触及了这个方向，我们来逐一看看。\n\n第一篇叫Bilevel Coordinated Reflection，讲的是多智能体LLM系统的博弈理论分析。作者把orchestrator和worker之间的交互建模成一个双层协调博弈，这个视角我觉得很有意思。以前我们聊多智能体协作，多半是经验性地设计prompt、设计工作流，但这篇文章试图给出一个理论框架，告诉我们协调质量是有上界的，而这个上界取决于任务分解的质量。这个理论洞察对于我们设计多智能体系统有直接的指导意义——与其在反思机制上花太多心思，不如先把任务分解这一步做好。\n\n顺着这个思路，第二篇Iris就很有意思了，它做的是搜索智能体的训练。我们知道，让LLM学会使用搜索工...",
+    "papers": [
+      {
+        "title": "Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems",
+        "url": "https://arxiv.org/abs/2609.02750",
+        "arxiv_id": "2609.02750"
+      },
+      {
+        "title": "Iris: Climbing to the Search Frontier",
+        "url": "https://arxiv.org/abs/2609.04304",
+        "arxiv_id": "2609.04304"
+      },
+      {
+        "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
+        "url": "https://arxiv.org/abs/2609.03199",
+        "arxiv_id": "2609.03199"
+      },
+      {
+        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+        "url": "https://arxiv.org/abs/2609.04199",
+        "arxiv_id": "2609.04199"
+      },
+      {
+        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
+        "url": "https://arxiv.org/abs/2608.26730",
+        "arxiv_id": "2608.26730"
+      }
+    ],
+    "published_at": "2026-09-08T00:39:32.472215Z"
+  },
+  {
     "date": "2026-09-07",
     "title": "Paper Morning 2026-09-07",
     "description": "今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-09T23:02:03.372975Z"
-  },
-  {
-    "date": "2026-08-08",
-    "title": "Paper Morning 2026-08-08",
-    "description": "今日学术播报: Interpretable MEG Decoding of , OSReward: Instituting Standard, AgentOPSD: Recursive Self-Dist...",
-    "audio_file": "2026-08-08.mp3",
-    "script": "各位早上好，周末的Paper Morning又和各位见面了。今天想和大家聊一个最近特别热闹的方向，就是AI Agent的训练、评估和数据合成。我们几篇看似不相关的论文，背后其实藏着一条清晰的主线。\n\n先来看一篇神经科学和AI交叉的工作。研究者试图从脑磁图信号中重建人听到的语音。他们用CLIP的对比学习框架，把MEG信号和wav2vec 2.0的音频嵌入对齐。关键改进在于把原来扁平传感器布局的空间注意力换成了基于三维头盔几何的球谐函数，这样能更好地利用脑磁图的物理拓扑结构。同时把subject-specific的分支从270个压缩到25个，并且给每个分支加了时间滤波器来匹配神经源的时空特性。这篇文章的贡献更多是工程上的优化，让可解释性更好，但说实话，从方法论角度看增量居多。不过它提醒我们一件事：当我们在做多模态对齐的时候，底层的几何结构其实还没有被充分挖掘，这可能是未来一个有趣的方向。\n\n如果说第一篇是“单人作战”，那接下来两篇就是“团队协作”的评估问题了。现在AI Agent火到什么程度呢？各平台都在训练能操作电脑的Agent，但怎么评价它们做得好不好？之前大家用人写验证器，或者让人来...",
-    "papers": [
-      {
-        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
-        "url": "https://arxiv.org/abs/2608.01481",
-        "arxiv_id": "2608.01481"
-      },
-      {
-        "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
-        "url": "https://arxiv.org/abs/2607.28609",
-        "arxiv_id": "2607.28609"
-      },
-      {
-        "title": "AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2608.05987",
-        "arxiv_id": "2608.05987"
-      },
-      {
-        "title": "WorldClaw: Agentic 3D Open-World Generation at Scale",
-        "url": "https://arxiv.org/abs/2608.05248",
-        "arxiv_id": "2608.05248"
-      },
-      {
-        "title": "Recursive Synthesis for Long-Horizon Terminal Tasks",
-        "url": "https://arxiv.org/abs/2608.05466",
-        "arxiv_id": "2608.05466"
-      }
-    ],
-    "published_at": "2026-08-08T23:00:10.527559Z"
   }
 ]

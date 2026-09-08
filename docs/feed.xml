@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-08</title>
+      <description>今日学术播报: Bilevel Coordinated Reflection, Iris: Climbing to the Search F, RoboTok: An Internet-Scale Dat...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-08.mp3" length="9054293" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-08.mp3</guid>
+      <pubDate>2026-09-08T00:39:32.472215Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-07</title>
       <description>今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-07.mp3" length="8703208" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-09.mp3" length="8943952" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-09.mp3</guid>
       <pubDate>2026-08-09T23:02:03.372975Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-08</title>
-      <description>今日学术播报: Interpretable MEG Decoding of , OSReward: Instituting Standard, AgentOPSD: Recursive Self-Dist...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-08.mp3" length="9375286" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-08.mp3</guid>
-      <pubDate>2026-08-08T23:00:10.527559Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
