@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-09",
+    "title": "Paper Morning 2026-09-09",
+    "description": "今日学术播报: Unlocking Lossless Speedups in, FlowBalance: Verifier-Grounded, Dr. Claw: An AI Scientist Work...",
+    "audio_file": "2026-09-09.mp3",
+    "script": "各位早上好，今天周三，Paper Morning开播。\n\n先聊一篇很有意思的论文，它试图解决大语言模型生成速度的老大难问题。大家都知道了，自回归生成是LLM成功的基石，但它的顺序性也导致了推理成本居高不下。有没有办法既保留next-token prediction的优点，又能实现并行生成呢？这篇《Unlocking Lossless Speedups in LLMs via Discrete Diffusion》提出了一个很巧妙的思路：他们不追求用diffusion完全替代自回归，而是让diffusion作为“加速器”从已经训练好的自回归模型中采样多个token。作者把模型参数分成两部分，一部分是保持不变的自回归权重，用标准next-token预测训练，另一部分是轻量级的扩散权重，专门负责一次生成多个token。关键在于这个 Diffusion Distillation 过程，它几乎不增加训练开销，却能实现无损加速。这让我想到，这可能是未来大模型推理优化的一条中间路线——不必完全推翻自回归架构，而是在其基础上做增量的效率提升。\n\n说完生成加速，我们来看看模型自我提升这个更根本的问题。这...",
+    "papers": [
+      {
+        "title": "Unlocking Lossless Speedups in LLMs via Discrete Diffusion",
+        "url": "https://arxiv.org/abs/2609.04010",
+        "arxiv_id": "2609.04010"
+      },
+      {
+        "title": "FlowBalance: Verifier-Grounded Self-Improvement from On-Policy Reasoning Experience",
+        "url": "https://arxiv.org/abs/2609.03241",
+        "arxiv_id": "2609.03241"
+      },
+      {
+        "title": "Dr. Claw: An AI Scientist Workspace for Vibe Research",
+        "url": "https://arxiv.org/abs/2609.00365",
+        "arxiv_id": "2609.00365"
+      },
+      {
+        "title": "Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems",
+        "url": "https://arxiv.org/abs/2609.02750",
+        "arxiv_id": "2609.02750"
+      },
+      {
+        "title": "Iris: Climbing to the Search Frontier",
+        "url": "https://arxiv.org/abs/2609.04304",
+        "arxiv_id": "2609.04304"
+      }
+    ],
+    "published_at": "2026-09-09T00:32:24.380902Z"
+  },
+  {
     "date": "2026-09-08",
     "title": "Paper Morning 2026-09-08",
     "description": "今日学术播报: Bilevel Coordinated Reflection, Iris: Climbing to the Search F, RoboTok: An Internet-Scale Dat...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-10T23:09:19.286166Z"
-  },
-  {
-    "date": "2026-08-09",
-    "title": "Paper Morning 2026-08-09",
-    "description": "今日学术播报: From Economic Agents to Agenti, Interpretable MEG Decoding of , OSReward: Instituting Standard...",
-    "audio_file": "2026-08-09.mp3",
-    "script": "各位早上好，周日的Paper Morning开播了。今天我想聊一个特别有意思的现象：过去一周arXiv上热度最高的几篇论文，不约而同地都在讨论同一个主题——怎么让AI agent真正具备“经济”意义上的行动能力。不是那种键盘鼠标操作电脑的表层agent，而是能够自主做决策、承担后果、在复杂环境里自我进化的系统。这个趋势其实跟我们在AI4S领域关心的“foundation model”思路非常呼应，我们可以一起来看看。\n\n先看这篇《From Economic Agents to Agentic Economies》，作者给出了一个构建经济世界模型的系统路线图。他们把这类模型的能力分成六个层级，从最基础的规则驱动agent，一步步走到能够自适应、能够用LLM做推理、甚至能够自我进化的系统，最终目标是建成与真实经济数据对齐的数字孪生。这个六层阶梯最有趣的地方在于，它不是简单堆砌功能，而是把“制度演化”放进了系统设计的考量里——也就是说，agent不仅是个体决策者，它们所处的规则环境本身也是可以演化的。这让我想到我们做PDE求解器的时候，往往假设物理定律是不变的，但如果我们把物理环境本身也看成...",
-    "papers": [
-      {
-        "title": "From Economic Agents to Agentic Economies: A Systems Blueprint for Economic World Models",
-        "url": "https://arxiv.org/abs/2608.06020",
-        "arxiv_id": "2608.06020"
-      },
-      {
-        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
-        "url": "https://arxiv.org/abs/2608.01481",
-        "arxiv_id": "2608.01481"
-      },
-      {
-        "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
-        "url": "https://arxiv.org/abs/2607.28609",
-        "arxiv_id": "2607.28609"
-      },
-      {
-        "title": "AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning",
-        "url": "https://arxiv.org/abs/2608.05987",
-        "arxiv_id": "2608.05987"
-      },
-      {
-        "title": "WorldClaw: Agentic 3D Open-World Generation at Scale",
-        "url": "https://arxiv.org/abs/2608.05248",
-        "arxiv_id": "2608.05248"
-      }
-    ],
-    "published_at": "2026-08-09T23:02:03.372975Z"
   }
 ]

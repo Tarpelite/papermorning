@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-09</title>
+      <description>今日学术播报: Unlocking Lossless Speedups in, FlowBalance: Verifier-Grounded, Dr. Claw: An AI Scientist Work...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-09.mp3" length="8967149" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-09.mp3</guid>
+      <pubDate>2026-09-09T00:32:24.380902Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-08</title>
       <description>今日学术播报: Bilevel Coordinated Reflection, Iris: Climbing to the Search F, RoboTok: An Internet-Scale Dat...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-08.mp3" length="9054293" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-10.mp3" length="8148367" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-10.mp3</guid>
       <pubDate>2026-08-10T23:09:19.286166Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-09</title>
-      <description>今日学术播报: From Economic Agents to Agenti, Interpretable MEG Decoding of , OSReward: Instituting Standard...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-09.mp3" length="8943952" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-09.mp3</guid>
-      <pubDate>2026-08-09T23:02:03.372975Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

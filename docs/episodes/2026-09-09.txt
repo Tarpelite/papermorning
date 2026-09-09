@@ -1,0 +1,13 @@
+各位早上好，今天周三，Paper Morning开播。
+
+先聊一篇很有意思的论文，它试图解决大语言模型生成速度的老大难问题。大家都知道了，自回归生成是LLM成功的基石，但它的顺序性也导致了推理成本居高不下。有没有办法既保留next-token prediction的优点，又能实现并行生成呢？这篇《Unlocking Lossless Speedups in LLMs via Discrete Diffusion》提出了一个很巧妙的思路：他们不追求用diffusion完全替代自回归，而是让diffusion作为“加速器”从已经训练好的自回归模型中采样多个token。作者把模型参数分成两部分，一部分是保持不变的自回归权重，用标准next-token预测训练，另一部分是轻量级的扩散权重，专门负责一次生成多个token。关键在于这个 Diffusion Distillation 过程，它几乎不增加训练开销，却能实现无损加速。这让我想到，这可能是未来大模型推理优化的一条中间路线——不必完全推翻自回归架构，而是在其基础上做增量的效率提升。
+
+说完生成加速，我们来看看模型自我提升这个更根本的问题。这篇《FlowBalance: Verifier-Grounded Self-Improvement from On-Policy Reasoning Experience》研究的是推理模型怎么从自己的经验中学习。它指出了一个核心矛盾：terminal verifier给出的监督信号很可靠但太稀疏，而模型自己产生的dense guidance又容易强化错误自信。作者提出的FlowBalance方法很有意思，它让一个冻结的、训练时的策略版本作为“特权视角”，为每个on-policy轨迹生成token级别的log-probability增益，然后与verifier给出的group advantage做校准。正向优势的轨迹保留自引导，负向优势的轨迹反转自引导。这本质上是在用一种博弈式的设计来防止模型“自己骗自己”。我认为这给推理模型的持续迭代提供了一个很实用的框架，特别是对于需要严谨推理的数学和代码任务。
+
+接下来这篇《Dr. Claw: An AI Scientist Workspace for Vibe Research》非常应景，因为它直接回应了我们这些科研人员的工作流痛点。作者观察到，尽管命令行 coding agent 已经很强了，但端到端的科研过程仍然碎片化地分散在聊天工具、IDE、终端和写作环境之间，决策过程也很难追溯。Dr. Claw 做的事情是把现有的 coding agent 封装成一个可控制、可审计的人机协作工作流。它用持久化状态对象连接人类决策和AI执行，把规划、执行和写作变成一个可追踪、可恢复的循环。这篇工作让我想到，它其实在探索一个更根本的问题：当AI越来越强，我们到底应该把它放在科研流程的什么位置？是完全自主的agent，还是增强人类判断的工具？Dr. Claw 选择了后者，这种务实的设计理念值得思考。
+
+然后是一篇理论色彩更浓重的论文。《Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems》用博弈论来分析多Agent LLM系统的协调机制。作者把orchestrator-worker的交互建模成一个双层协调游戏：在bounded coupling条件下，worker之间的局部更新游戏近似于一个potential game，其均衡松弛度由分解质量控制。然后他们把reflection建模为语义记忆状态上的随机移动，并给出了有限时间上界和最坏情况紧度证明。这篇工作的价值在于，它为已经被广泛使用的多Agentreflection机制提供了理论解释框架。我们以前可能觉得多Agent讨论是“黑箱魔法”，现在至少有了数学工具来理解它的行为边界。
+
+最后聊聊这篇《Iris: Climbing to the Search Frontier》，它训练了两个搜索agent，Iris-mini和Iris-pro。背后的数据pipeline很有创意：他们从网页语料的 hyperlink 结构反向构造多跳问题，把非答案实体改写成描述性引用，这样就无法用字符串匹配来“作弊”，只有引入证据才能回答。这些问题再经过轨迹级和turn级的过滤，最后用 RL 对真实搜索结果做优化。让我感兴趣的是，这里用到了 live search 而非静态benchmark，这意味着模型需要真正在互联网上“干活”才能获得奖励。这可能代表着搜索agent评估的一个新方向。
+
+今天的五篇论文看起来主题分散，但实际上都指向同一个趋势：大语言模型正在从“能说会道”向“能于执行”转变。无论是生成加速、自我提升、多Agent协作、科研工作流自动化还是搜索agent，这些工作都在回答一个共同的问题：如何让LLM不仅仅停留在语言层面，而是真正成为可信赖的推理、执行和协作伙伴。这种从“能力展示”到“可靠系统”的转变，可能是接下来AI研究的一个重要方向。早上就聊到这，大家开始忙吧。
