@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-10",
+    "title": "Paper Morning 2026-09-10",
+    "description": "今日学术播报: DriveZero: End-to-End Driving , Miles v0.1: Production-Level P, Mask Forcing: Improving Autore...",
+    "audio_file": "2026-09-10.mp3",
+    "script": "各位早上好，今天周四，Paper Morning开播了。\n\n最近AI圈有个很有意思的现象：各个方向的研究者似乎都在做同一件事——让系统学会“自己教自己”，而不是完全依赖人类提供的数据或者标注。今天要聊的几篇论文，虽然 topic 看起来比较分散，有自动驾驶、有 RL 训练框架、有语音生成、有视频蒸馏，还有人机交互，但它们背后其实都贯穿着一条主线：如何在闭环环境里，让模型通过交互和反馈来获得超越人类演示的能力。\n\n先来看 DriveZero这篇工作。它做的是端到端自动驾驶，但有意思的是，作者们指出了一个很根本的问题：现在大多数端到端系统都是模仿学习，学的是人类司机的行车数据，这就意味着模型的表现永远被人类数据质量和覆盖范围所限制。DriveZero 尝试打破这个天花板，它把驾驶任务拆成感知模型和动作模型两部分来分别预训练，然后再组合成完整的 planner。这里有一个很值得我们关注的点：感知需要海量的多样化视觉数据来理解世界，而动作模型需要闭环反馈来学会与环境交互——这两者的学习范式天然就不同。作者在动作侧引入了 DriveRL，一个混合智能体的闭环强化学习框架，把真实驾驶场景的交互信号...",
+    "papers": [
+      {
+        "title": "DriveZero: End-to-End Driving Beyond Human Demonstrations",
+        "url": "https://arxiv.org/abs/2609.06055",
+        "arxiv_id": "2609.06055"
+      },
+      {
+        "title": "Miles v0.1: Production-Level Post-Training",
+        "url": "https://arxiv.org/abs/2609.08368",
+        "arxiv_id": "2609.08368"
+      },
+      {
+        "title": "Mask Forcing: Improving Autoregressive Video Diffusion Distillation via Dual-Noise Masking Rollout",
+        "url": "https://arxiv.org/abs/2609.09123",
+        "arxiv_id": "2609.09123"
+      },
+      {
+        "title": "AuK Technical Report: An Open-Source Foundational Model for Speech Generation and Editing",
+        "url": "https://arxiv.org/abs/2609.08936",
+        "arxiv_id": "2609.08936"
+      },
+      {
+        "title": "Omni Interaction Agent Technical Report",
+        "url": "https://arxiv.org/abs/2609.08977",
+        "arxiv_id": "2609.08977"
+      }
+    ],
+    "published_at": "2026-09-10T00:29:35.754324Z"
+  },
+  {
     "date": "2026-09-09",
     "title": "Paper Morning 2026-09-09",
     "description": "今日学术播报: Unlocking Lossless Speedups in, FlowBalance: Verifier-Grounded, Dr. Claw: An AI Scientist Work...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-11T23:14:12.086060Z"
-  },
-  {
-    "date": "2026-08-10",
-    "title": "Paper Morning 2026-08-10",
-    "description": "今日学术播报: From Economic Agents to Agenti, Interpretable MEG Decoding of , Round-Trip Consistency: Bidire...",
-    "audio_file": "2026-08-10.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，这两年AI领域最热闹的词是“agent”和\"world model\"，但我们关心的科学计算世界里，也在悄悄发生类似的事情——我们也开始想要构建“物理世界的模型”，让它能够自主推理、交互、甚至自我纠错。今天收录的几篇论文，虽然主题各异，但都指向了一个共同趋势：AI模型正在从“被动预测”走向“主动理解”和“自我监管”。\n\n第一篇讲经济世界模型。研究者提出了一个六层能力阶梯，从基于固定规则的多智能体系统，一直上升到能够自我进化、与真实经济数据对齐的“经济数字孪生”。这个工作的野心很大——他们不想只做一个单点预测工具，而是想构建一个能够模拟经济系统内部演化机理的“引擎”。有意思的是，他们特别强调了异质性agent的信念和行动如何通过市场和制度机制产生集体涌现。这让我想到我们做PDE求解时，其实也在处理类似的问题：微观单元的相互作用如何涌现出宏观的连续介质行为。如果把经济系统看作一个复杂动力系统，那这篇工作和我们关注的neural operator其实分享了同一个根本目标：用数据驱动的模型去捕捉涌...",
-    "papers": [
-      {
-        "title": "From Economic Agents to Agentic Economies: A Systems Blueprint for Economic World Models",
-        "url": "https://arxiv.org/abs/2608.06020",
-        "arxiv_id": "2608.06020"
-      },
-      {
-        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
-        "url": "https://arxiv.org/abs/2608.01481",
-        "arxiv_id": "2608.01481"
-      },
-      {
-        "title": "Round-Trip Consistency: Bidirectional Diffusion Models Can Predict Their Own Rollout Errors",
-        "url": "https://arxiv.org/abs/2608.00675",
-        "arxiv_id": "2608.00675"
-      },
-      {
-        "title": "MASS: Multiplayer World Models with Authoritative Shared State",
-        "url": "https://arxiv.org/abs/2608.06257",
-        "arxiv_id": "2608.06257"
-      },
-      {
-        "title": "SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning for LLMs",
-        "url": "https://arxiv.org/abs/2608.03573",
-        "arxiv_id": "2608.03573"
-      }
-    ],
-    "published_at": "2026-08-10T23:09:19.286166Z"
   }
 ]
