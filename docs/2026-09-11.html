@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-11</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-11</h1>
+    <p class="date">2026-09-11</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-11.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，今天周五，Paper Morning开播了。
+
+我想先从一个我们领域最近特别热闹的话题说起——怎么让AI真正理解物理世界？过去一年，大家都在讨论world model，但真正能用来做科学计算、能和物理模拟对接的world model其实还很少。今天这几篇论文刚好从不同角度触碰了这个问题。
+
+第一篇是Programmable World Model，作者是港中文的团队。他们提出了一个很有野心的想法：把world model分成两层，一层管世界状态的演化，一层管视觉生成。具体做法是用自然语言指令生成可执行程序，这些程序直接控制实体状态和状态转移规则，而不仅仅是生成像素。这意味着模型能维护一个显式的、持久的世界状态，哪怕物体不在画面里。这让我想到我们做PDE求解的时候，解的存在性本身就是对全局状态的某种保证。如果把这个思路迁移到科学计算，也许能让neural operator真正记住系统的长期行为，而不是只预测下一个时间步。
+
+第二篇AgentGrad关注的是多智能体系统的prompt优化。这个问题其实和我们训练neural operator时遇到的挑战很像——怎么让各个组件之间协调工作？之前的方法在提取梯度时没有验证修改是否真的能解决失败问题，在聚合梯度时又太随机。作者提出了一套更严谨的框架。我特别感兴趣的是他们怎么定义“文本梯度”，这其实和我们做物理信息神经网络时用的adjoint method有异曲同工之处，都是把反馈信号转化为参数更新。
+
+第三篇Show-Harness非常有意思，它让VLM直接控制机器人。作者设计了一个紧凑的语义接口，把意图翻译成离散的动作单元，然后由具体的解释器把这些单元落地成机器人的实际动作。这其实揭示了一个我们在AI4S里常常忽略的问题：foundation model再强，也需要一个可靠的“执行层”。你们看，这和我们在科学计算里常常讨论的“算子近似”是不是很像？无论模型预测多准，最后总需要一个数值求解器来落地。
+
+第四篇OpenWAM是一个模块化的world-action model研究框架。作者把过去那种 monolithic 的设计拆开了，研究到底哪些组件真正重要。这让我想起去年我们讨论scaling law时的情形——当时大家也在问，到底是数据重要还是架构重要？OpenWAM通过控制变量实验告诉我们，在world-action model这个新领域，可能信息流的设计才是关键。他们甚至开源了一整套训练推理部署的工具链，这点很值得称赞。
+
+最后一篇Marigold V2是用diffusion transformer做单目深度估计。这个方向本身很成熟了，但作者的一个做法让我觉得有意思：他们从预训练的多步flow-matching模型蒸馏出单步模型，保持了模型容量的同时大大降低了推理成本。这其实就是在践行test-time compute的思路嘛——不在训练时堆参数，而是在推理时想办法更高效。我之前说过，diffusion model在科学计算里最有潜力的方向之一就是做不确定性量化，Marigold V2这种对推理效率的执着追求，给我们提供了一个很好的参考。
+
+好了，今天这几篇论文看下来，我有一个整体的感受：大家都在从不同的方向逼近同一个目标——怎么让AI生成的“虚拟世界”真正可信、可控、可落地。无论是从状态持久化的角度、从prompt工程的角度、从语义接口的角度、还是从模块化设计的角度，核心问题都是一致的：当模型的能力越来越强，我们怎么建立它和物理世界之间的可靠连接？这可能也是我们做AI4S的人最需要思考的问题——foundation model再强大，如果不能和数值求解器、和物理规律、和实验数据形成闭环，价值就有限。
+
+今天的分享就到这里，我们明天早餐时间见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.10540" target="_blank">Programmable World Model</a></li>
+<li><a href="https://arxiv.org/abs/2609.08572" target="_blank">AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems</a></li>
+<li><a href="https://arxiv.org/abs/2609.10522" target="_blank">Show-Harness: Just a VLM Agent Can Play Robots</a></li>
+<li><a href="https://arxiv.org/abs/2609.07398" target="_blank">OpenWAM: An Open, Modular Exploration Towards Systematic World-Action Model Pretraining</a></li>
+<li><a href="https://arxiv.org/abs/2609.08084" target="_blank">Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

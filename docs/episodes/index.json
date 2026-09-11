@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-11",
+    "title": "Paper Morning 2026-09-11",
+    "description": "今日学术播报: Programmable World Model, AgentGrad: Intervention-guided, Show-Harness: Just a VLM Agent...",
+    "audio_file": "2026-09-11.mp3",
+    "script": "各位早上好，今天周五，Paper Morning开播了。\n\n我想先从一个我们领域最近特别热闹的话题说起——怎么让AI真正理解物理世界？过去一年，大家都在讨论world model，但真正能用来做科学计算、能和物理模拟对接的world model其实还很少。今天这几篇论文刚好从不同角度触碰了这个问题。\n\n第一篇是Programmable World Model，作者是港中文的团队。他们提出了一个很有野心的想法：把world model分成两层，一层管世界状态的演化，一层管视觉生成。具体做法是用自然语言指令生成可执行程序，这些程序直接控制实体状态和状态转移规则，而不仅仅是生成像素。这意味着模型能维护一个显式的、持久的世界状态，哪怕物体不在画面里。这让我想到我们做PDE求解的时候，解的存在性本身就是对全局状态的某种保证。如果把这个思路迁移到科学计算，也许能让neural operator真正记住系统的长期行为，而不是只预测下一个时间步。\n\n第二篇AgentGrad关注的是多智能体系统的prompt优化。这个问题其实和我们训练neural operator时遇到的挑战很像——怎么让各个组件之间...",
+    "papers": [
+      {
+        "title": "Programmable World Model",
+        "url": "https://arxiv.org/abs/2609.10540",
+        "arxiv_id": "2609.10540"
+      },
+      {
+        "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
+        "url": "https://arxiv.org/abs/2609.08572",
+        "arxiv_id": "2609.08572"
+      },
+      {
+        "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+        "url": "https://arxiv.org/abs/2609.10522",
+        "arxiv_id": "2609.10522"
+      },
+      {
+        "title": "OpenWAM: An Open, Modular Exploration Towards Systematic World-Action Model Pretraining",
+        "url": "https://arxiv.org/abs/2609.07398",
+        "arxiv_id": "2609.07398"
+      },
+      {
+        "title": "Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation",
+        "url": "https://arxiv.org/abs/2609.08084",
+        "arxiv_id": "2609.08084"
+      }
+    ],
+    "published_at": "2026-09-11T00:25:36.699853Z"
+  },
+  {
     "date": "2026-09-10",
     "title": "Paper Morning 2026-09-10",
     "description": "今日学术播报: DriveZero: End-to-End Driving , Miles v0.1: Production-Level P, Mask Forcing: Improving Autore...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-12T23:13:05.501237Z"
-  },
-  {
-    "date": "2026-08-11",
-    "title": "Paper Morning 2026-08-11",
-    "description": "今日学术播报: On-Policy Self-Distillation wi, BDH-CQ: In-Context Learning wi, Ouroboros: A Self-Developing F...",
-    "audio_file": "2026-08-11.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个大家都在思考的问题开始：当我们谈论大模型能力的时候，究竟在谈论什么？最近有几篇论文很有意思，它们不约而同地在回答一个更根本的问题——模型怎么才能自己变强？\n\n第一篇关于无监督自我蒸馏。各位可能知道，蒸馏一直是让小模型学习大模型能力的有效手段，但这篇工作问了一个更激进的问题：能不能只靠模型自己就完成蒸馏？他们的方法叫做U-OPSD，简单说就是让模型生成多个回答，然后用一个“自我一致性”的阈值来筛选出多数认同的答案，再让模型去学习那些和多数答案不一致的样本。整个过程不依赖任何外部标签或者更大模型的监督。这件事为什么重要呢？它其实在逼近一个理想状态：模型能不能像人一样，通过自我反思来修正自己的想法？这让我想到我们在做PDE求解器的时候，也在追求类似的目标——能不能让求解器自己发现并修正错误，而不是依赖标注数据来告诉它什么是对。\n\n第二篇BDH-CQ是一个很有野心的尝试。他们想要在in-context learning的基础上加入“隐式推理”。具体做法是用一个 recurrent memory 来持续更新模型的内部状态，然...",
-    "papers": [
-      {
-        "title": "On-Policy Self-Distillation without Any Supervision",
-        "url": "https://arxiv.org/abs/2608.06296",
-        "arxiv_id": "2608.06296"
-      },
-      {
-        "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
-        "url": "https://arxiv.org/abs/2608.09888",
-        "arxiv_id": "2608.09888"
-      },
-      {
-        "title": "Ouroboros: A Self-Developing Frontier Coding Agent with Reviewed Core Evolution",
-        "url": "https://arxiv.org/abs/2608.08311",
-        "arxiv_id": "2608.08311"
-      },
-      {
-        "title": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
-        "url": "https://arxiv.org/abs/2608.09819",
-        "arxiv_id": "2608.09819"
-      },
-      {
-        "title": "SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring",
-        "url": "https://arxiv.org/abs/2608.09802",
-        "arxiv_id": "2608.09802"
-      }
-    ],
-    "published_at": "2026-08-11T23:14:12.086060Z"
   }
 ]
