@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-12",
+    "title": "Paper Morning 2026-09-12",
+    "description": "今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...",
+    "audio_file": "2026-09-12.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想先聊一篇特别应景的论文，叫做《Scaling Automatic Research Agents via World Models》。它讨论的是一个非常根本的问题：当我们要用强化学习去训练AI科研代理人的时候，成本到底花在哪里？作者发现了一个结构性的矛盾：科研代理人的轨迹由两部分组成——生成动作和执行环境——这两部分的计算特性完全不同。生成可以批量并行，但执行必须占用独立的沙箱和真实时间。结果就是，随着轨迹变长，环境执行成为了真正的瓶颈。这让我想到咱们AI4S领域训练神经算子的时候，何尝不是这样？训练数据生成往往才是成本大头，而不是模型本身的前向传播。这篇工作提出用世界模型来模拟执行环境，从而把成本从环境执行转移到生成侧来做批量计算，思路有点像咱们用神经网络代理PDE求解器的思路——用可学习的近似替代昂贵的真实过程。\n\n接下来一篇很有意思，《NCP-ArchPreview》提出了一种全新的语言模型预训练目标，叫做Next Concept Prediction。传统的next-token预测是在离散token级别做自回归，这篇工作说...",
+    "papers": [
+      {
+        "title": "Scaling Automatic Research Agents via World Models",
+        "url": "https://arxiv.org/abs/2608.12564",
+        "arxiv_id": "2608.12564"
+      },
+      {
+        "title": "NCP-ArchPreview Technical Report: Moving towards Latent Space Language Models through Next Concept Prediction",
+        "url": "https://arxiv.org/abs/2609.10715",
+        "arxiv_id": "2609.10715"
+      },
+      {
+        "title": "SpatialBlock: Enhancing Spatial Intelligence in LVLMs via Synthetic Block-Stacking Problem",
+        "url": "https://arxiv.org/abs/2609.07064",
+        "arxiv_id": "2609.07064"
+      },
+      {
+        "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
+        "url": "https://arxiv.org/abs/2609.11929",
+        "arxiv_id": "2609.11929"
+      },
+      {
+        "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
+        "url": "https://arxiv.org/abs/2609.08572",
+        "arxiv_id": "2609.08572"
+      }
+    ],
+    "published_at": "2026-09-12T00:31:17.643134Z"
+  },
+  {
     "date": "2026-09-11",
     "title": "Paper Morning 2026-09-11",
     "description": "今日学术播报: Programmable World Model, AgentGrad: Intervention-guided, Show-Harness: Just a VLM Agent...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-13T23:13:58.771502Z"
-  },
-  {
-    "date": "2026-08-12",
-    "title": "Paper Morning 2026-08-12",
-    "description": "今日学术播报: ComBodied Agents: a New Paradi, Co-Evolution in Agentic System, Beyond Pixels: From Video Prio...",
-    "audio_file": "2026-08-12.mp3",
-    "script": "各位早上好，今天Paper Morning开播。\n\n最近agent领域特别热闹，咱们聊聊几篇有意思的工作。\n\n先说第四篇，On-Policy Self-Distillation without Any Supervision，这篇提出了无监督的on-policy自蒸馏。传统上蒸馏需要外源监督信号，但这篇工作让模型自己当老师，用多数投票构建伪标签，然后在\"不一致\"的地方做知识蒸馏。这个思路让我想到科学计算里的一个老问题：我们训练PDE求解器的时候，是否也需要这种自我一致性来约束解的物理合理性？比如流体模拟中，模型输出的速度场是否满足连续性方程，或许也可以用类似的自洽性来约束。\n\n第三篇Beyond Pixels讲的是从视频先验到4D世界的生成。这篇的核心贡献是提出了latent-to-4D的方法，不再依赖RGB重建，而是直接利用视频模型的latent space。这让我想到最近AI4S里一个很火的思路：我们能不能把预训练视频模型学到的物理先验，直接迁移到科学问题的时空建模上？比如流体力学里的湍流、液滴演化，这些现象在视频数据里已经学到了大量时空相关性。\n\n第二篇Co-Evolution是...",
-    "papers": [
-      {
-        "title": "ComBodied Agents: a New Paradigm of Human-Centric Agentic AI",
-        "url": "https://arxiv.org/abs/2608.10915",
-        "arxiv_id": "2608.10915"
-      },
-      {
-        "title": "Co-Evolution in Agentic Systems: Toward Self-Directed Evolution Beyond Human Design",
-        "url": "https://arxiv.org/abs/2608.10299",
-        "arxiv_id": "2608.10299"
-      },
-      {
-        "title": "Beyond Pixels: From Video Priors to 4D Worlds",
-        "url": "https://arxiv.org/abs/2608.10744",
-        "arxiv_id": "2608.10744"
-      },
-      {
-        "title": "On-Policy Self-Distillation without Any Supervision",
-        "url": "https://arxiv.org/abs/2608.06296",
-        "arxiv_id": "2608.06296"
-      },
-      {
-        "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
-        "url": "https://arxiv.org/abs/2608.09888",
-        "arxiv_id": "2608.09888"
-      }
-    ],
-    "published_at": "2026-08-12T23:13:05.501237Z"
   }
 ]

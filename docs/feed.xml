@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-12</title>
+      <description>今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-12.mp3" length="7772831" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-12.mp3</guid>
+      <pubDate>2026-09-12T00:31:17.643134Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-11</title>
       <description>今日学术播报: Programmable World Model, AgentGrad: Intervention-guided, Show-Harness: Just a VLM Agent...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-11.mp3" length="7240560" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-13.mp3" length="8675622" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-13.mp3</guid>
       <pubDate>2026-08-13T23:13:58.771502Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-12</title>
-      <description>今日学术播报: ComBodied Agents: a New Paradi, Co-Evolution in Agentic System, Beyond Pixels: From Video Prio...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-12.mp3" length="5803616" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-12.mp3</guid>
-      <pubDate>2026-08-12T23:13:05.501237Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
