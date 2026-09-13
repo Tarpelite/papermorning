@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-13</title>
+      <description>今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-13.mp3" length="10180902" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-13.mp3</guid>
+      <pubDate>2026-09-13T00:11:28.730046Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-12</title>
       <description>今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-12.mp3" length="7772831" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-14.mp3" length="10244850" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-14.mp3</guid>
       <pubDate>2026-08-14T22:53:39.951952Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-13</title>
-      <description>今日学术播报: Mechanist: AI as a Scientific , ComBodied Agents: a New Paradi, Articulated Object Reconstruct...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-13.mp3" length="8675622" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-13.mp3</guid>
-      <pubDate>2026-08-13T23:13:58.771502Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

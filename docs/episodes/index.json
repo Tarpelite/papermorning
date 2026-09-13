@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-13",
+    "title": "Paper Morning 2026-09-13",
+    "description": "今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...",
+    "audio_file": "2026-09-13.mp3",
+    "script": "各位早上好，周日的Paper Morning如约而至。\n\n今天想先从一篇关于AI辅助科研的文章聊起。最近大家可能都感受到了，自动研究代理这个方向火得很快，但真正做scale的时候会遇到什么本质困难？一篇叫Scaling Automatic Research Agents via World Models的工作给出了很有意思的洞察。它指出在用强化学习训练这些代理的时候，存在一个根本性的张力：agent生成和环境执行这两个环节的scale方式完全不同。生成可以通过batch共享计算资源，但环境执行每个任务都要独占一个沙箱和真实机器时间。结果就是环境执行成为瓶颈，训练成本被它主导。作者提出的解法是引入world model来模拟环境，这样可以把真实执行的成本降下来。这个问题其实和我们AI4S领域正在探索的PDE求解器、或者物理模拟的代理模型有异曲同工之妙——都是试图用更廉价的模拟替代昂贵的真实计算。不同在于，这篇文章是在科研工作流的层面做替换，而我们在做的往往是在物理方程的层面做替换。但背后的思路是通的：当真实评估太贵的时候，学一个代理模型来做评估信号的提供者，是一条很自然的路径。\n\n说完科...",
+    "papers": [
+      {
+        "title": "Scaling Automatic Research Agents via World Models",
+        "url": "https://arxiv.org/abs/2608.12564",
+        "arxiv_id": "2608.12564"
+      },
+      {
+        "title": "NCP-ArchPreview Technical Report: Moving towards Latent Space Language Models through Next Concept Prediction",
+        "url": "https://arxiv.org/abs/2609.10715",
+        "arxiv_id": "2609.10715"
+      },
+      {
+        "title": "SpatialBlock: Enhancing Spatial Intelligence in LVLMs via Synthetic Block-Stacking Problem",
+        "url": "https://arxiv.org/abs/2609.07064",
+        "arxiv_id": "2609.07064"
+      },
+      {
+        "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
+        "url": "https://arxiv.org/abs/2609.11929",
+        "arxiv_id": "2609.11929"
+      },
+      {
+        "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
+        "url": "https://arxiv.org/abs/2609.11042",
+        "arxiv_id": "2609.11042"
+      }
+    ],
+    "published_at": "2026-09-13T00:11:28.730046Z"
+  },
+  {
     "date": "2026-09-12",
     "title": "Paper Morning 2026-09-12",
     "description": "今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-14T22:53:39.951952Z"
-  },
-  {
-    "date": "2026-08-13",
-    "title": "Paper Morning 2026-08-13",
-    "description": "今日学术播报: Mechanist: AI as a Scientific , ComBodied Agents: a New Paradi, Articulated Object Reconstruct...",
-    "audio_file": "2026-08-13.mp3",
-    "script": "各位早上好，周四的Paper Morning如约而至。\n\n今天想先从一个更大的话题聊起。我们一直在跟踪AI for Science的进展，但今天这几篇论文其实都在回答一个更根本的问题：当AI变得越来越强大，我们怎么才能真正理解和掌控它？这个线索贯穿着今天的所有内容。\n\n先看第一篇，Mechanist。它提出了一个很有意思的思路：用AI本身作为科学仪器，去发现智能的机制。大家知道，现在的大模型能力已经很强了，但我们对它们为什么能做到这些事情往往知其然不知其所以然。传统的可解释性研究大多是人工手动去做，效率很低。Mechanist构建了一个包含约13000篇可解释性论文的知识图谱，又整合了一个跨26个领域、4300万篇论文的多学科数据库，然后让AI系统自主地去探索模型能力背后的机制。这其实是一种元认知的思路——让AI学会研究自己。联想到我们做科学计算的时候，也经常需要理解复杂模型的内部行为，这个方向或许能为我们提供新的工具。\n\n第二篇ComBodied Agents提出了一个很有洞见的批评。它说现在的智能体有两个极端：数字智能体只处理软件状态的变化，实体智能体只改变物理状态，但它们都忽略了...",
-    "papers": [
-      {
-        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
-        "url": "https://arxiv.org/abs/2608.12036",
-        "arxiv_id": "2608.12036"
-      },
-      {
-        "title": "ComBodied Agents: a New Paradigm of Human-Centric Agentic AI",
-        "url": "https://arxiv.org/abs/2608.10915",
-        "arxiv_id": "2608.10915"
-      },
-      {
-        "title": "Articulated Object Reconstruction from Rest-State Observation",
-        "url": "https://arxiv.org/abs/2607.27749",
-        "arxiv_id": "2607.27749"
-      },
-      {
-        "title": "SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries",
-        "url": "https://arxiv.org/abs/2608.05604",
-        "arxiv_id": "2608.05604"
-      },
-      {
-        "title": "OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution",
-        "url": "https://arxiv.org/abs/2608.00677",
-        "arxiv_id": "2608.00677"
-      }
-    ],
-    "published_at": "2026-08-13T23:13:58.771502Z"
   }
 ]

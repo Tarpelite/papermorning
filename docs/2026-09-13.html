@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-13</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-13</h1>
+    <p class="date">2026-09-13</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-13.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周日的Paper Morning如约而至。
+
+今天想先从一篇关于AI辅助科研的文章聊起。最近大家可能都感受到了，自动研究代理这个方向火得很快，但真正做scale的时候会遇到什么本质困难？一篇叫Scaling Automatic Research Agents via World Models的工作给出了很有意思的洞察。它指出在用强化学习训练这些代理的时候，存在一个根本性的张力：agent生成和环境执行这两个环节的scale方式完全不同。生成可以通过batch共享计算资源，但环境执行每个任务都要独占一个沙箱和真实机器时间。结果就是环境执行成为瓶颈，训练成本被它主导。作者提出的解法是引入world model来模拟环境，这样可以把真实执行的成本降下来。这个问题其实和我们AI4S领域正在探索的PDE求解器、或者物理模拟的代理模型有异曲同工之妙——都是试图用更廉价的模拟替代昂贵的真实计算。不同在于，这篇文章是在科研工作流的层面做替换，而我们在做的往往是在物理方程的层面做替换。但背后的思路是通的：当真实评估太贵的时候，学一个代理模型来做评估信号的提供者，是一条很自然的路径。
+
+说完科研自动化，让我们把目光转向基础模型架构的演进。NCP-ArchPreview这个工作提出了一个挺有意思的想法：除了传统的next-token prediction，再加一个next concept prediction的任务。概念在这里被定义为跨越多个token的离散单元，模型需要预测未来概念，然后再用这些概念反过来引导token级别的生成。他们构建了一个8.9B参数的模型，在隐藏状态上直接建立量化后的概念词表。这个设计让我想到我们在PDE求解里做的事情——有时候我们不只是预测下一个时间步的解，而是希望学到一个更高层的表示，能够捕捉系统的关键结构。也许概念预测这个范式可以为科学计算里的多尺度建模提供一些启发，毕竟从token到concept的跳跃，和从微观细节到宏观规律的抽象，本质上是类似的事情。
+
+接下来想说说空间智能这个话题。SpatialBlock这个工作很有意思，它提出了一个合成数据集叫SpatialBlock-15k，专门用来训练视觉语言模型做block stacking的3D推理。为什么这件事和我们AI4S有关系？我一直觉得，科学发现里很重要的一部分能力是空间推理——不管是分子对接、蛋白质折叠还是材料结构，都需要模型能够在三维空间里理解物体的相对位置关系。这篇文章指出，现有的空间问答数据标注成本太高，而且容易引入外部感知模块的噪声，所以他们选择用合成数据来绕过这个问题。这其实是一个挺聪明的策略：与其在真实数据上花大力气做标注，不如设计一个可控的合成环境来生成数据。这和我们做物理仿真的思路也很像——当真实实验数据稀缺或昂贵的时候，用模拟器生成数据是一个常见的做法。
+
+然后是视觉基础模型方面的进展。商汤的SenseNova-U1.5提出了一个原生统一的多模态模型，8B参数，采用无编码器、无VAE的架构，直接在像素空间做理解和生成。他们强调了空间连续的patch重建和高达4K的原生分辨率，还有针对视觉美学、双语文本、图表生成等专门任务的专家微调。这让我想到一个问题：我们在AI4S里经常需要处理高分辨率的 scientific visualization，比如气象图、CT影像、分子结构图，这些场景对细节的要求很高，传统的vision transformer那种patch化、然后做tokenization的pipeline会不会反而丢失了关键的空间连续性？商汤的工作也许给出了一个有参考价值的答案——端到端的pixel-level处理，配合专门的领域微调，可能比引入额外的tokenization瓶颈更合适。
+
+最后聊聊T1，这个工作训练了一个122B参数的Mixture-of-Experts模型，用强化学习驱动，在云沙箱里执行真实的shell命令，最长可以连续调用300多次工具来完成一个任务。它的奖励信号来自任务自身的verifier，训练稳定性则通过TITO等一系列技巧来保障。这个规模、这个执行长度，其实已经接近我们理想中的“AI科学家”能够做的事情了——自己写代码、自己跑实验、自己根据反馈调整。而且它用的是真实的编程和科学任务，不是那种玩具级别的benchmark。这让我觉得，AI辅助科学发现这个愿景，可能比我们想象的更快到来。当然，前提是这些代理能够可靠地工作，而不只是偶尔出一些惊艳的demo。
+
+好，让我稍微总结一下今天的观察。这五篇文章其实有一条暗线贯穿着：它们都在尝试把AI的能力边界往更复杂、更长程、更高分辨率的方向推进一步。不管是用world model降低训练成本，用概念预测提升表示层次，用合成数据绕过标注瓶颈，用原生架构保留空间连续性，还是用大规模RL实现长程任务执行，核心都是一样的——我们不再满足于简单的问答或生成，而是在追求能够真正介入复杂工作流的能力。这种趋势对AI4S意味着什么？我想，工具链会越来越成熟，数据会越来越丰富，模型会越来越强大，而我们需要思考的问题也会从“能不能做”变成“怎样做才可靠”。好了，今天的播报就到这里，我们下周再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.12564" target="_blank">Scaling Automatic Research Agents via World Models</a></li>
+<li><a href="https://arxiv.org/abs/2609.10715" target="_blank">NCP-ArchPreview Technical Report: Moving towards Latent Space Language Models through Next Concept Prediction</a></li>
+<li><a href="https://arxiv.org/abs/2609.07064" target="_blank">SpatialBlock: Enhancing Spatial Intelligence in LVLMs via Synthetic Block-Stacking Problem</a></li>
+<li><a href="https://arxiv.org/abs/2609.11929" target="_blank">SenseNova-U1.5: Towards Native Unified Visual Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2609.11042" target="_blank">T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
