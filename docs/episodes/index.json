@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-14",
+    "title": "Paper Morning 2026-09-14",
+    "description": "今日学术播报: Scaling Automatic Research Age, EvoSafeHarness: Evolving Model, NCP-ArchPreview Technical Repo...",
+    "audio_file": "2026-09-14.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。\n\n今天想先跟大家聊一个我最近特别有感而发的话题，就是AI agent正在从\"能说会道\"走向\"能干活\"。第一篇论文Scaling Automatic Research Agents via World Models就直面了这个转变中最现实的问题。作者发现了一个特别有意思的矛盾：当我们要用强化学习去训练这些科研agent的时候，agent生成内容和环境执行这两件事的算力消耗模式是完全不同的。所有生成过程可以通过批量计算共享算力，但每个环境执行都要独占一个沙箱和真实机器时间。结果就是环境执行成了训练成本的瓶颈，特别是当轨迹变长的时候。这让我想到咱们AI4S领域其实也面临类似的挑战——不管是做 PDE solver还是做物理仿真，最终都要回到和真实物理世界的交互，而这种交互的成本是降不下来的。作者提出的解法是通过world model来模拟环境执行，把真实交互的成本降下来。这其实跟咱们做neural operator的思路有异曲同工之妙：用数据驱动的模型替代昂贵的真实评估。至于这条路能不能走通，我觉得关键在于world model本身的泛化...",
+    "papers": [
+      {
+        "title": "Scaling Automatic Research Agents via World Models",
+        "url": "https://arxiv.org/abs/2608.12564",
+        "arxiv_id": "2608.12564"
+      },
+      {
+        "title": "EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents",
+        "url": "https://arxiv.org/abs/2609.05903",
+        "arxiv_id": "2609.05903"
+      },
+      {
+        "title": "NCP-ArchPreview Technical Report: Moving towards Latent Space Language Models through Next Concept Prediction",
+        "url": "https://arxiv.org/abs/2609.10715",
+        "arxiv_id": "2609.10715"
+      },
+      {
+        "title": "SpatialBlock: Enhancing Spatial Intelligence in LVLMs via Synthetic Block-Stacking Problem",
+        "url": "https://arxiv.org/abs/2609.07064",
+        "arxiv_id": "2609.07064"
+      },
+      {
+        "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
+        "url": "https://arxiv.org/abs/2609.11929",
+        "arxiv_id": "2609.11929"
+      }
+    ],
+    "published_at": "2026-09-14T00:23:42.375509Z"
+  },
+  {
     "date": "2026-09-13",
     "title": "Paper Morning 2026-09-13",
     "description": "今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-15T22:50:08.855931Z"
-  },
-  {
-    "date": "2026-08-14",
-    "title": "Paper Morning 2026-08-14",
-    "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
-    "audio_file": "2026-08-14.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊一个我最近特别关注的趋势——AI正在从“被动理解”走向“主动交互”。这个转变在好几篇论文里都能看到影子，咱们一篇一篇来看。\n\n先看第一篇，DreamX-Phi 1.0，这是个做机器人操作的世界模型。简单说，它能根据当前画面、语音指令和机械臂的动作序列，预测未来的观测结果。但这里有个很有意思的细节：光让画面逼真还不够，如果机械臂该往左动却往右动了，或者物体该被抓起来却掉了，这种“逼真的错误”其实更危险。作者的做法是把每个机械臂的SE(3)变换注入到注意力机制里，用他们称为PRoPE的编码方式，这样模型就能保持对机械臂身份和刚体运动结构的感知。同时他们还加了一个轻量级的深度分支来处理场景几何，以及集成了SAM3做物体级别的分割。这篇工作的亮点在于它不是单纯追求生成质量，而是把“动作一致性”这件事从数据层面搬到了架构设计层面。我觉得这个思路值得咱们做PDE求解器的同行借鉴——咱们训练模型的时候，有没有把物理约束真正编码进模型结构，而不只是靠数据去学？\n\n第二篇，Intern-S2-Preview，名字里带Preview但其实是个...",
-    "papers": [
-      {
-        "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2608.13489",
-        "arxiv_id": "2608.13489"
-      },
-      {
-        "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
-        "url": "https://arxiv.org/abs/2608.13505",
-        "arxiv_id": "2608.13505"
-      },
-      {
-        "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
-        "url": "https://arxiv.org/abs/2608.13546",
-        "arxiv_id": "2608.13546"
-      },
-      {
-        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
-        "url": "https://arxiv.org/abs/2608.12036",
-        "arxiv_id": "2608.12036"
-      },
-      {
-        "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
-        "url": "https://arxiv.org/abs/2608.13552",
-        "arxiv_id": "2608.13552"
-      }
-    ],
-    "published_at": "2026-08-14T22:53:39.951952Z"
   }
 ]

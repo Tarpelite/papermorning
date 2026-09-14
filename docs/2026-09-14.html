@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-14</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-14</h1>
+    <p class="date">2026-09-14</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-14.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了Paper Morning的时间。
+
+今天想先跟大家聊一个我最近特别有感而发的话题，就是AI agent正在从"能说会道"走向"能干活"。第一篇论文Scaling Automatic Research Agents via World Models就直面了这个转变中最现实的问题。作者发现了一个特别有意思的矛盾：当我们要用强化学习去训练这些科研agent的时候，agent生成内容和环境执行这两件事的算力消耗模式是完全不同的。所有生成过程可以通过批量计算共享算力，但每个环境执行都要独占一个沙箱和真实机器时间。结果就是环境执行成了训练成本的瓶颈，特别是当轨迹变长的时候。这让我想到咱们AI4S领域其实也面临类似的挑战——不管是做 PDE solver还是做物理仿真，最终都要回到和真实物理世界的交互，而这种交互的成本是降不下来的。作者提出的解法是通过world model来模拟环境执行，把真实交互的成本降下来。这其实跟咱们做neural operator的思路有异曲同工之妙：用数据驱动的模型替代昂贵的真实评估。至于这条路能不能走通，我觉得关键在于world model本身的泛化能力，如果它不能很好地覆盖真实科研环境中那些边界情况，那训练出来的agent可能就会"纸上谈兵"。
+
+说完能干活，咱们再来看看怎么安全地干活。第二篇EvoSafeHarness关注的是LLM agent的安全防护问题。作者指出了一个很实际的现象：现在的安全护栏都是专家设计一套标准，然后不管什么模型什么领域直接套用。但实际情况是，不同模型对安全干预的敏感度不一样，一个模型觉得刚刚好的安全策略换到另一个模型上可能就直接把可用性砍没了。作者提出了一个演化框架，让安全护栏本身也能跟着模型和应用场景一起进化。这让我想到咱们科学计算场景里其实也存在类似的问题——不同尺度的物理系统、不同类型的PDE，对数值稳定性的要求是不同的。也许未来咱们也需要类似的"自适应安全机制"，让模型知道自己什么时候该保守、什么时候可以激进。
+
+第三篇NCP-ArchPreview提出了一个挺有意思的预训练范式突破。他们没有停留在传统的next-token prediction，而是引入了next concept prediction——让模型预测跨越多个token的离散概念。这相当于在token-level的连续生成之外，引入了一个概念级别的离散语义层。模型通过构建产品量化的概念词表，然后用专门的concept module来预测未来概念，最后再把概念反馈到token级别指导生成。作者把这个架构扩展到了8.9B参数。我看到这篇论文的时候，第一反应是这会不会给咱们operator learning一点启发——咱们处理PDE解算子的时候，是不是也可以在函数空间的连续表示之外，引入一些离散的"概念"来帮助模型更好地捕捉物理结构？毕竟物理现象本身往往是由一些关键的离散事件驱动的。
+
+接下来这篇SpatialBlock就更有意思了。作者给LVLMs出了一道考题：通过看2D图片来理解3D空间结构，并且能够做block stacking的推理。他们没有用传统的带大量几何标注的真实场景数据，而是构造了一个合成的block-stacking数据集，让模型在15k个结构化的block堆叠问题中学习空间智能。作者的逻辑很有意思——人类婴儿就是这样通过玩积木来建立空间直觉的，为什么不让AI也这样学习呢？这让我想到咱们做几何深度学习的时候，其实也经常需要从结构化的几何对象出发，而不是从嘈杂的真实传感器数据出发。也许这种"toy but well-defined"的合成数据范式，会是提升AI空间推理能力的一个重要路径。
+
+最后这篇SenseNova-U1.5是商汤的原生统一多模态模型，8B参数的MoT架构。他们特别强调"原生"二字——不用encoder，也不用VAE，直接在像素空间进行patch级别的重建和生成。让我觉得值得关注的是他们在后训练阶段用的多专家on-policy蒸馏策略，把美学、文本渲染、信息图生成、图像编辑等多个专业能力整合到一个模型里。这其实呼应了我之前一直在说的一个趋势：AI4S的模型也需要这种"多专家整合"的能力——一个好的科学计算模型，可能需要同时擅长物理建模、数值求解、可视化交互等多个维度。
+
+今天的这几篇论文看下来，我最大的感受是：整个AI领域正在经历一个范式转换，从"更大的模型"转向"更深入地嵌入真实任务"。不管是用world model解决科研agent的训练效率问题，用概念预测突破自回归的上限，还是用合成数据建立空间智能，都在指向同一个方向——让AI不仅仅是"能回答问题"，而是"能真实地参与和理解物理世界"。这和咱们AI4S的终极目标其实是一致的。好，今天的播报就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2608.12564" target="_blank">Scaling Automatic Research Agents via World Models</a></li>
+<li><a href="https://arxiv.org/abs/2609.05903" target="_blank">EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents</a></li>
+<li><a href="https://arxiv.org/abs/2609.10715" target="_blank">NCP-ArchPreview Technical Report: Moving towards Latent Space Language Models through Next Concept Prediction</a></li>
+<li><a href="https://arxiv.org/abs/2609.07064" target="_blank">SpatialBlock: Enhancing Spatial Intelligence in LVLMs via Synthetic Block-Stacking Problem</a></li>
+<li><a href="https://arxiv.org/abs/2609.11929" target="_blank">SenseNova-U1.5: Towards Native Unified Visual Intelligence</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

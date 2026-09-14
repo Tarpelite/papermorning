@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-14</title>
+      <description>今日学术播报: Scaling Automatic Research Age, EvoSafeHarness: Evolving Model, NCP-ArchPreview Technical Repo...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-14.mp3" length="9209147" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-14.mp3</guid>
+      <pubDate>2026-09-14T00:23:42.375509Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-13</title>
       <description>今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-13.mp3" length="10180902" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-15.mp3" length="11634146" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-15.mp3</guid>
       <pubDate>2026-08-15T22:50:08.855931Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-14</title>
-      <description>今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-14.mp3" length="10244850" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-14.mp3</guid>
-      <pubDate>2026-08-14T22:53:39.951952Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
