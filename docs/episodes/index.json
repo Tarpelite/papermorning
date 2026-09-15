@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-15",
+    "title": "Paper Morning 2026-09-15",
+    "description": "今日学术播报: Breaking the Vision-Action Sho, DataFlex-RL: An Evaluation Pla, Feyospace-v1: How the Cyber Me...",
+    "audio_file": "2026-09-15.mp3",
+    "script": "各位早上好，又到了Paper Morning的时间。今天我想先从一个大家可能在工作中都遇到过的现象聊起：你训练了一个看起来很强的基础模型，把所有数据喂进去，效果也不错，但当你把它部署到一个新的环境，换了一套传感器或者调整了光照，它就开始犯低级错误。这种distribution shift带来的失效，几乎是所有基础模型的阿喀琉斯之踵。今天的几篇论文，正好从不同角度触碰了这个根本性的挑战。\n\n先看第一篇，关于机器人基础模型的视觉泛化问题。标题有点长，叫《Breaking the Vision-Action Shortcut》，作者来自多个机构。他们发现一个很有意思的现象：机器人模型在训练数据里往往学到的是一种“捷径”——比如演示视频里某个特定的桌面纹理总是跟抓取动作同时出现，模型就悄悄把这个纹理当成了动作的触发器，而不是真的理解“看到的东西”和“要做的动作”之间的关系。一旦换到别的桌子，那些纹理不见了，模型就失灵了。这个问题其实在很多视觉-动作任务里都存在，只是以前没被明确提出来。作者提出的方法叫LIT，Latent Interface Training，字面意思是潜在接口训练，核心思路很...",
+    "papers": [
+      {
+        "title": "Breaking the Vision-Action Shortcut: Latent Interface Training for Generalizable Robotics Foundation Models",
+        "url": "https://arxiv.org/abs/2609.12641",
+        "arxiv_id": "2609.12641"
+      },
+      {
+        "title": "DataFlex-RL: An Evaluation Platform for RLVR Data Policies",
+        "url": "https://arxiv.org/abs/2609.06107",
+        "arxiv_id": "2609.06107"
+      },
+      {
+        "title": "Feyospace-v1: How the Cyber Mercury Seven Trained Frontier Cyber Models",
+        "url": "https://arxiv.org/abs/2609.08418",
+        "arxiv_id": "2609.08418"
+      },
+      {
+        "title": "Benchmark Radar: A Living Database and Search Engine for AI Benchmarks and Evaluation",
+        "url": "https://arxiv.org/abs/2609.11115",
+        "arxiv_id": "2609.11115"
+      },
+      {
+        "title": "SAS: Simple Attention Sparsification via End-to-End Optimization of Context Ranking",
+        "url": "https://arxiv.org/abs/2609.13141",
+        "arxiv_id": "2609.13141"
+      }
+    ],
+    "published_at": "2026-09-15T00:51:32.493456Z"
+  },
+  {
     "date": "2026-09-14",
     "title": "Paper Morning 2026-09-14",
     "description": "今日学术播报: Scaling Automatic Research Age, EvoSafeHarness: Evolving Model, NCP-ArchPreview Technical Repo...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-16T22:49:12.607389Z"
-  },
-  {
-    "date": "2026-08-15",
-    "title": "Paper Morning 2026-08-15",
-    "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
-    "audio_file": "2026-08-15.mp3",
-    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想先从一篇让我觉得有点“野心勃勃”的论文聊起。Intern-S2-Preview，中文可以叫它“科学智能体基础模型”。大家知道，这两年基础模型的预训练范式从NLP、CV一路火到科学计算，但我们做的多是PDE求解器、分子property预测这类单一任务。这篇工作想要更进一步——他们训练了一个能够“通吃”科学问题的智能体基础模型。具体来说，这个模型先在渲染过的科学文档、交错图像文本数据、以及各种科学语料上做多模态预训练，然后在之上套了一层统一的后训练流程，包括监督微调、可扩展的多任务强化学习、黑白盒智能体强化学习，以及策略蒸馏。也就是说，它不仅要有科学理解能力，还要能调用工具、能在长程任务中保持推理连贯性。这其实回应了我们一直关心的问题：foundation model的预训练范式，能不能真正迁移到科学发现的全流程？过去我们谈AI for Science，往往是针对某个特定PDE、某个特定分子任务训练一个模型，但真正的科学发现需要的是能跨任务、跨模态、持续推理的系统性能力。Intern-S2-Preview算是往这个方向迈出的有意思的...",
-    "papers": [
-      {
-        "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2608.13489",
-        "arxiv_id": "2608.13489"
-      },
-      {
-        "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
-        "url": "https://arxiv.org/abs/2608.13505",
-        "arxiv_id": "2608.13505"
-      },
-      {
-        "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
-        "url": "https://arxiv.org/abs/2608.13546",
-        "arxiv_id": "2608.13546"
-      },
-      {
-        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
-        "url": "https://arxiv.org/abs/2608.12036",
-        "arxiv_id": "2608.12036"
-      },
-      {
-        "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
-        "url": "https://arxiv.org/abs/2608.13552",
-        "arxiv_id": "2608.13552"
-      }
-    ],
-    "published_at": "2026-08-15T22:50:08.855931Z"
   }
 ]
