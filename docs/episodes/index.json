@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-16",
+    "title": "Paper Morning 2026-09-16",
+    "description": "今日学术播报: ZGCM-1: A Fully Open and Extre, PhysBrain 1.5: From Vision-Lan, LynnReal-Omni: Native multi-mo...",
+    "audio_file": "2026-09-16.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。今天是周三，我们来聊几篇有意思的论文。\n\n先看第二篇，PhysBrain 1.5。这篇工作试图把视觉语言模型变成一个物理基础模型，可以理解物理环境、生成动作、预测未来状态。作者的思路很直接：把语言响应、末端执行器运动和密集的视觉目标都编码成离散序列，然后用自回归的next-token预测来联合优化。这其实是一种把物理智能“压缩”进统一框架的尝试。它的预训练完全来自人类交互视频，用任务为中心的episode把语义和空间上下文与恢复的运动和后续观察配对起来，然后再通过监督微调来适应。这个工作让我想到我们领域的问题：怎么让模型理解物理规律而不是仅仅拟合数据？他们的思路是用交互数据作为监督，这和我们在PDE求解中用物理方程作为约束有异曲同工之妙，只是这里用的是“身体化”的交互经验。PhysBrain 1.5代表了一种把foundation model思想延伸到物理世界的方向，虽然它目前还比较初步，但这个方向值得关注。\n\n再看第四篇，Grouped Value Attention。这是一篇关于推理效率的工作。大家知道KV cache是Tran...",
+    "papers": [
+      {
+        "title": "ZGCM-1: A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search",
+        "url": "https://arxiv.org/abs/2609.13356",
+        "arxiv_id": "2609.13356"
+      },
+      {
+        "title": "PhysBrain 1.5: From Vision-Language Models to Physical Foundation Models",
+        "url": "https://arxiv.org/abs/2609.14973",
+        "arxiv_id": "2609.14973"
+      },
+      {
+        "title": "LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows",
+        "url": "https://arxiv.org/abs/2609.15863",
+        "arxiv_id": "2609.15863"
+      },
+      {
+        "title": "Grouped Value Attention: Efficient KV Caching via On-Demand Key Reconstruction",
+        "url": "https://arxiv.org/abs/2609.13285",
+        "arxiv_id": "2609.13285"
+      },
+      {
+        "title": "RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments",
+        "url": "https://arxiv.org/abs/2609.15364",
+        "arxiv_id": "2609.15364"
+      }
+    ],
+    "published_at": "2026-09-16T00:43:36.077619Z"
+  },
+  {
     "date": "2026-09-15",
     "title": "Paper Morning 2026-09-15",
     "description": "今日学术播报: Breaking the Vision-Action Sho, DataFlex-RL: An Evaluation Pla, Feyospace-v1: How the Cyber Me...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-17T22:53:20.002612Z"
-  },
-  {
-    "date": "2026-08-16",
-    "title": "Paper Morning 2026-08-16",
-    "description": "今日学术播报: DreamX-Phi 1.0: Action-Conditi, Intern-S2-Preview: Scientific , Alaya-EVOKE: From Linear-Scali...",
-    "audio_file": "2026-08-16.mp3",
-    "script": "各位早上好，新的一周开始了。\n\n今天想和大家聊几篇很有意思的论文，它们不直接做PDE求解器或者神经算子，但我觉得它们触及的东西和我们关心的事情是相通的。\n\n先说Intern-S2-Preview，这是智谱他们做的科学代理基础模型。简单说，它想让AI能够读懂科学文献、做科学推理、调用工具、还能完成长的科研任务。这两年我们看到很多做科学大模型的工作，但大多停留在“问答”层面。Intern-S2-Preview的野心的确更大，它想做一个能“干活”的科研助手。不过我更感兴趣的是它的训练范式——它用了多任务强化学习，还有黑盒和白盒两种代理强化学习。这里有个很本质的问题：我们怎么评估一个科学代理做得好不好？总不能只靠人的主观打分吧。这可能需要我们AI4S社区好好想想。\n\n说到评估，PlayWorld这篇就很有意思了。它提出了一个很实际的问题：视频世界模型现在都能生成很连贯的长序列了，但怎么比较不同模型的好坏？固定动作序列的评估显然不够，因为同一个目标可以用很不同的动作序列达成。他们用多模态代理玩家来做评估，让代理自己去找完成长期目标的最优路径。这个思路其实很接近我们做科学模拟时的验证——你不能只问...",
-    "papers": [
-      {
-        "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
-        "url": "https://arxiv.org/abs/2608.13489",
-        "arxiv_id": "2608.13489"
-      },
-      {
-        "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
-        "url": "https://arxiv.org/abs/2608.13505",
-        "arxiv_id": "2608.13505"
-      },
-      {
-        "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
-        "url": "https://arxiv.org/abs/2608.13546",
-        "arxiv_id": "2608.13546"
-      },
-      {
-        "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
-        "url": "https://arxiv.org/abs/2608.12036",
-        "arxiv_id": "2608.12036"
-      },
-      {
-        "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
-        "url": "https://arxiv.org/abs/2608.13552",
-        "arxiv_id": "2608.13552"
-      }
-    ],
-    "published_at": "2026-08-16T22:49:12.607389Z"
   }
 ]
