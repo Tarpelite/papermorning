@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-17",
+    "title": "Paper Morning 2026-09-17",
+    "description": "今日学术播报: AI for Games in the Foundation, ZGCM-1: A Fully Open and Extre, StepAudio 3 Realtime Technical...",
+    "audio_file": "2026-09-17.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们做AI for Science的人，常常会把目光盯在PDE求解、分子模拟这些“硬核”任务上，但有时候需要抬头看看foundation model这口大锅现在都在煮什么。 今天这几篇论文，虽然看起来离科学计算有点距离，但它们其实在悄悄定义一种新的能力基线，这种基线早晚会影响我们做科学模拟的方式。\n\n先看第一篇，AI for Games in the Foundation Model Era。这篇综述把游戏AI分成了六个角色：玩游戏的角色、建模玩家和游戏的角色、设计游戏的角色、构建和维护游戏的角色、运行时生成和适配的角色，以及测试和评估的角色。表面上看是游戏领域的survey，但我读完最大的感受是：这其实就是在描述一个完整的“物理世界模拟系统”需要具备的能力。 游戏中建模玩家行为和游戏 dynamics，不就是我们做物理模拟时对系统演化规律的建模吗？设计游戏和构建游戏，对应到科学计算就是设计物理模型和构建求解器。运行时生成和适配，对应到我们想要的实时预测能力。所以这篇综述实际上是在用游戏作为载体，展...",
+    "papers": [
+      {
+        "title": "AI for Games in the Foundation Model Era",
+        "url": "https://arxiv.org/abs/2609.16679",
+        "arxiv_id": "2609.16679"
+      },
+      {
+        "title": "ZGCM-1: A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search",
+        "url": "https://arxiv.org/abs/2609.13356",
+        "arxiv_id": "2609.13356"
+      },
+      {
+        "title": "StepAudio 3 Realtime Technical Report",
+        "url": "https://arxiv.org/abs/2609.14005",
+        "arxiv_id": "2609.14005"
+      },
+      {
+        "title": "LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows",
+        "url": "https://arxiv.org/abs/2609.15863",
+        "arxiv_id": "2609.15863"
+      },
+      {
+        "title": "StepAudio 3 Music Technical Report",
+        "url": "https://arxiv.org/abs/2609.16034",
+        "arxiv_id": "2609.16034"
+      }
+    ],
+    "published_at": "2026-09-17T00:50:22.660354Z"
+  },
+  {
     "date": "2026-09-16",
     "title": "Paper Morning 2026-09-16",
     "description": "今日学术播报: ZGCM-1: A Fully Open and Extre, PhysBrain 1.5: From Vision-Lan, LynnReal-Omni: Native multi-mo...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-18T22:53:45.600972Z"
-  },
-  {
-    "date": "2026-08-17",
-    "title": "Paper Morning 2026-08-17",
-    "description": "今日学术播报: Intern-S2-Mobius: Foundation M, Self-Supervised Visual On-Poli, Can We Defend Against AI-Gener...",
-    "audio_file": "2026-08-17.mp3",
-    "script": "各位早上好，周一的Paper Morning如约而至。\n\n今天想先从一篇架构创新聊起。Intern-S2-Mobius这个工作提出了一个很有意思的思路：把知识存储和推理能力分开。它用一个全局共享的内存模块存储知识向量，多个推理器通过迭代查询这个内存来完成推理任务。这本质上是在回答一个很根本的问题：大语言模型里到底哪些参数负责记忆事实，哪些负责进行逻辑推演？Mobius用架构层面的解耦给出了自己的回答。从实验结果看，它的7B模型用62.6%的训练数据就能达到baseline的性能，这说明知识-推理分离确实改善了知识压缩效率。不过我更感兴趣的是这个思路对科学计算 foundation model的启发：我们能不能把物理先验知识也做类似的解耦，把物理定律存成一个独立的知识库，让不同的推理模块去调用？这样foundation model在面对新任务时，可能就不需要从头学习物理规律，而是直接检索已有的物理知识。\n\n聊完架构，我们把视线转向一个更基础的问题：视觉学习中的非对称性。Self-Supervised Visual On-Policy Distillation这篇文章提出了一个很巧妙的想法...",
-    "papers": [
-      {
-        "title": "Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning",
-        "url": "https://arxiv.org/abs/2608.14290",
-        "arxiv_id": "2608.14290"
-      },
-      {
-        "title": "Self-Supervised Visual On-Policy Distillation",
-        "url": "https://arxiv.org/abs/2608.14144",
-        "arxiv_id": "2608.14144"
-      },
-      {
-        "title": "Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination",
-        "url": "https://arxiv.org/abs/2608.14391",
-        "arxiv_id": "2608.14391"
-      },
-      {
-        "title": "Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development",
-        "url": "https://arxiv.org/abs/2608.13417",
-        "arxiv_id": "2608.13417"
-      },
-      {
-        "title": "H2R-Bench: Benchmarking Human-to-Robot Manipulation Video Generation in World Models",
-        "url": "https://arxiv.org/abs/2608.13049",
-        "arxiv_id": "2608.13049"
-      }
-    ],
-    "published_at": "2026-08-17T22:53:20.002612Z"
   }
 ]

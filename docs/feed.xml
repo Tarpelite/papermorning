@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-17</title>
+      <description>今日学术播报: AI for Games in the Foundation, ZGCM-1: A Fully Open and Extre, StepAudio 3 Realtime Technical...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-17.mp3" length="7318927" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-17.mp3</guid>
+      <pubDate>2026-09-17T00:50:22.660354Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-16</title>
       <description>今日学术播报: ZGCM-1: A Fully Open and Extre, PhysBrain 1.5: From Vision-Lan, LynnReal-Omni: Native multi-mo...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-16.mp3" length="8519515" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-18.mp3" length="8815430" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-18.mp3</guid>
       <pubDate>2026-08-18T22:53:45.600972Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-17</title>
-      <description>今日学术播报: Intern-S2-Mobius: Foundation M, Self-Supervised Visual On-Poli, Can We Defend Against AI-Gener...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-17.mp3" length="8630483" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-17.mp3</guid>
-      <pubDate>2026-08-17T22:53:20.002612Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
