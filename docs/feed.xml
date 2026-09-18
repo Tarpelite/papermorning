@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-18</title>
+      <description>今日学术播报: AI for Games in the Foundation, LimiX-2: A Contextual Mechanis, StepAudio 3 Realtime Technical...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-18.mp3" length="8194133" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-18.mp3</guid>
+      <pubDate>2026-09-18T00:42:38.921468Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-17</title>
       <description>今日学术播报: AI for Games in the Foundation, ZGCM-1: A Fully Open and Extre, StepAudio 3 Realtime Technical...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-17.mp3" length="7318927" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-19.mp3" length="12494306" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-19.mp3</guid>
       <pubDate>2026-08-19T22:54:11.557593Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-18</title>
-      <description>今日学术播报: HarnessEval-W: Agentifying the, StateM: Reaching 95.3% Raw Acc, VibeWorlding: Can Multimodal A...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-18.mp3" length="8815430" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-18.mp3</guid>
-      <pubDate>2026-08-18T22:53:45.600972Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

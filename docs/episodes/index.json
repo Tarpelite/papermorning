@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-18",
+    "title": "Paper Morning 2026-09-18",
+    "description": "今日学术播报: AI for Games in the Foundation, LimiX-2: A Contextual Mechanis, StepAudio 3 Realtime Technical...",
+    "audio_file": "2026-09-18.mp3",
+    "script": "各位早上好，Paper Morning开播了。\n\n今天想先从一个更大的图景说起。我们都知道过去一年多，foundation model从语言拓展到多模态、到代码、到语音，但如果你仔细看最近的arXiv，会有一个更微妙的趋势在浮现：这些通用能力正在“下沉”到具体的垂直领域，不只是简单套用，而是在重新定义那些领域的研究范式。\n\n先看游戏AI这篇。论文把AI在游戏里的角色分成了六种：从最直接的玩游戏，到建模玩家、设计游戏、构建游戏、运行时生成与适配，再到测试评估。作者的核心洞察是，foundation model和 learned game-world model 正在把游戏AI从“执行特定任务”变成“理解整个游戏生态”。这意味着什么？以前做游戏AI是每个子任务单独攻关，现在有了foundation model，一个模型可以同时处理玩家行为建模、关卡生成、动态难度调整这些原本割裂的能力。作者没有明说，但这个思路跟科学计算里“foundation model解决一切PDE”的野心是非常相似的。\n\n说到结构化数据，LimiX-2这篇文章很有意思。它提出了Contextual Mechanism ...",
+    "papers": [
+      {
+        "title": "AI for Games in the Foundation Model Era",
+        "url": "https://arxiv.org/abs/2609.16679",
+        "arxiv_id": "2609.16679"
+      },
+      {
+        "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+        "url": "https://arxiv.org/abs/2609.17488",
+        "arxiv_id": "2609.17488"
+      },
+      {
+        "title": "StepAudio 3 Realtime Technical Report",
+        "url": "https://arxiv.org/abs/2609.14005",
+        "arxiv_id": "2609.14005"
+      },
+      {
+        "title": "Rethinking Critic Learning in PPO: Understanding and Mitigating Value Flattening",
+        "url": "https://arxiv.org/abs/2609.18708",
+        "arxiv_id": "2609.18708"
+      },
+      {
+        "title": "ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments",
+        "url": "https://arxiv.org/abs/2609.19134",
+        "arxiv_id": "2609.19134"
+      }
+    ],
+    "published_at": "2026-09-18T00:42:38.921468Z"
+  },
+  {
     "date": "2026-09-17",
     "title": "Paper Morning 2026-09-17",
     "description": "今日学术播报: AI for Games in the Foundation, ZGCM-1: A Fully Open and Extre, StepAudio 3 Realtime Technical...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-19T22:54:11.557593Z"
-  },
-  {
-    "date": "2026-08-18",
-    "title": "Paper Morning 2026-08-18",
-    "description": "今日学术播报: HarnessEval-W: Agentifying the, StateM: Reaching 95.3% Raw Acc, VibeWorlding: Can Multimodal A...",
-    "audio_file": "2026-08-18.mp3",
-    "script": "各位早上好，新的一周开始了。\n\n今天想和大家聊聊一个我最近特别有感的趋势，就是AI Agent正在从“能做什么”走向“怎么做更可靠”。这个转变看似是系统工程的问题，但其实和我们做AI for Science的人关心的东西高度相关——毕竟如果我们要让AI帮我们做科学发现，总得先相信它的推理过程吧。\n\n先看第一篇论文，HarnessEval-W。这个工作的核心想法很有意思：过去我们评估一个世界模型好不好，往往就是跑一把rollout，然后算个成功率分数。但这种方法其实忽略了一个关键问题——模型到底是怎么得出这个分数的？有没有可能模型的物理推理其实是错的，但因为最后状态碰巧对了，就蒙混过关了？HarnessEval-W的做法是把评估本身变成一个Agent任务，让评估器能够理解每个case的上下文，把“这个世界模型是否正确”这个问题拆解成可测量的子问题，然后生成可检查的推理链。这个思路其实和我们做科学计算时强调的“可解释性”很像——不仅要给答案，还要给理由。\n\n顺着这个思路，第二篇论文StateM就更直接了。它研究的问题是：为什么一个强大的语言模型，在作为Agent执行长序列任务时还是会犯低级...",
-    "papers": [
-      {
-        "title": "HarnessEval-W: Agentifying the Evaluation of Visual Worlds",
-        "url": "https://arxiv.org/abs/2608.16859",
-        "arxiv_id": "2608.16859"
-      },
-      {
-        "title": "StateM: Reaching 95.3% Raw Accuracy, or a \\$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling",
-        "url": "https://arxiv.org/abs/2608.15089",
-        "arxiv_id": "2608.15089"
-      },
-      {
-        "title": "VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?",
-        "url": "https://arxiv.org/abs/2608.15265",
-        "arxiv_id": "2608.15265"
-      },
-      {
-        "title": "Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search",
-        "url": "https://arxiv.org/abs/2608.15669",
-        "arxiv_id": "2608.15669"
-      },
-      {
-        "title": "Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization",
-        "url": "https://arxiv.org/abs/2608.16072",
-        "arxiv_id": "2608.16072"
-      }
-    ],
-    "published_at": "2026-08-18T22:53:45.600972Z"
   }
 ]

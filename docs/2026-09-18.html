@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-18</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-18</h1>
+    <p class="date">2026-09-18</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-18.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning开播了。
+
+今天想先从一个更大的图景说起。我们都知道过去一年多，foundation model从语言拓展到多模态、到代码、到语音，但如果你仔细看最近的arXiv，会有一个更微妙的趋势在浮现：这些通用能力正在“下沉”到具体的垂直领域，不只是简单套用，而是在重新定义那些领域的研究范式。
+
+先看游戏AI这篇。论文把AI在游戏里的角色分成了六种：从最直接的玩游戏，到建模玩家、设计游戏、构建游戏、运行时生成与适配，再到测试评估。作者的核心洞察是，foundation model和 learned game-world model 正在把游戏AI从“执行特定任务”变成“理解整个游戏生态”。这意味着什么？以前做游戏AI是每个子任务单独攻关，现在有了foundation model，一个模型可以同时处理玩家行为建模、关卡生成、动态难度调整这些原本割裂的能力。作者没有明说，但这个思路跟科学计算里“foundation model解决一切PDE”的野心是非常相似的。
+
+说到结构化数据，LimiX-2这篇文章很有意思。它提出了Contextual Mechanism Networks，说白了就是不让你模型只学“给定上下文条件下的目标预测”，而是让你学“数据和标签在上下文条件下的联合结构”。这句话有点绕，但它的直觉是：传统的tabular foundation model只是学到一个条件分布，而LimiX-2想让你学到数据背后的因果机制。这样做的好处是，模型面对没见过的表格结构时，迁移能力会更强。这让我想到PDE求解里最近也在讨论的问题：我们到底是想让神经网络记住特定方程的解，还是让它学到“解方程”这个操作本身的机制？两边其实在往同一个方向走。
+
+然后是语音交互这篇。StepAudio 3 Realtime提出了一个“边说边想”的架构，这几年大模型普遍面临一个困境：深度推理和响应延迟是矛盾的。它用并行化的方式，让模型在输出的同时进行私有推理，绕过了一个工程上很棘手的问题。更值得注意的是，它不是只在语音上做优化，而是把“听-想-说-做”做成一个连续循环。这让我觉得，可能未来的AI系统都会变成这种持续交互的形态，而不是现在我们习惯的“问一句答一句”。
+
+聊到强化学习，PPO里的critic学习有个很隐蔽的问题，论文叫它Value Flattening。简单说就是critic在估计状态价值时，对中间状态的变化不敏感，导致它给出的value信号变得很平。这不只是算法上的小bug，作者追溯到了critic loss里的隐式方差惩罚，以及时间相关状态带来的冗余更新。这项工作提醒我们，当把RLHF这样的大规模训练技术嫁接到LLM时，很多在传统RL环境里不明显的理论问题会被放大。科学计算其实也面临类似的情况：当我们要用强化学习来训练物理模拟agent时，这些训练稳定性问题可能比算法本身更关键。
+
+最后，ScienceIDE是我觉得今天最值得关注的工作。它做的事情用一句话概括就是：把全世界现成的科学代码库变成agent可以交互、可以学习、可以验证的环境。这解决了一个根本性的痛点：我们有大量成熟的科学计算软件和开源实现，但它们没办法直接变成强化学习的训练场。ScienceIDE定义了专家级别的验收标准，让agent把代码转换成可执行环境，然后在这个环境里做微调、做RL、做评估。长远来看，这可能是AI for Science从“做出某个新模型”走向“构建完整研究基础设施”的标志性一步。它让科学发现本身变成了一种可以训练、可以迭代的能力。
+
+好，总结一下今天这五篇论文的观察。我看到一个共同脉络：foundation model的能力正在从“通用智能”向“垂直领域的完整研究范式”渗透。游戏AI在重新定义“游戏研究”，LimiX-2在重新定义“结构化数据研究”，StepAudio在重新定义“人机交互”，ScienceIDE则在重新定义“科学发现”的基础设施。RL理论的那篇则提醒我们，大规模迁移过程中还有许多基本问题需要重新审视。AI for Science的下一阶段，可能不在于又出了哪个更准的PDE求解器，而在于我们是否搭建起了能让AI真正“参与”科学研究的基础设施。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.16679" target="_blank">AI for Games in the Foundation Model Era</a></li>
+<li><a href="https://arxiv.org/abs/2609.17488" target="_blank">LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2609.14005" target="_blank">StepAudio 3 Realtime Technical Report</a></li>
+<li><a href="https://arxiv.org/abs/2609.18708" target="_blank">Rethinking Critic Learning in PPO: Understanding and Mitigating Value Flattening</a></li>
+<li><a href="https://arxiv.org/abs/2609.19134" target="_blank">ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
