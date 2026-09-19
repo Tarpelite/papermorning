@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-19",
+    "title": "Paper Morning 2026-09-19",
+    "description": "今日学术播报: LimiX-2: A Contextual Mechanis, DeepSeek-V4.1-Flash: Pushing t, Rethinking Critic Learning in ...",
+    "audio_file": "2026-09-19.mp3",
+    "script": "各位早上好，Paper Morning 又和大家见面了。\n\n今天想先从一个我们领域正在发生的大趋势聊起：过去几年，我们见证了 foundation model 在自然语言和图像领域的巨大成功，但现在，越来越多研究者开始把目光投向更广阔的场景——结构化数据、科学计算、乃至整个科研流程。这不，今天的几篇论文虽然没有直接挂上“AI4S”的标签，但细读之下，每一篇都在为科学智能添砖加瓦。\n\n先来看 LimiX-2，这是 Tabular Foundation Model 领域的一个新进展。作者来自清华大学和 HuggingFace，提出的核心问题是：NLP 中预训练-微调这套范式，能不能迁移到结构化表格数据上？他们之前已经建立了 scaling laws，这次则是把模型和数据规模都往上推了一把。关键创新在于他们提出的 Contextual Mechanism Networks，简单说就是不再只学习 p(y|x, D_context) 这个条件概率，而是学习 p(x, y|D_context) 的联合分布，让模型理解数据生成的因果机制。这对科学计算意味着什么呢？我们知道很多科学问题本质上是从观测推...",
+    "papers": [
+      {
+        "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+        "url": "https://arxiv.org/abs/2609.17488",
+        "arxiv_id": "2609.17488"
+      },
+      {
+        "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+        "url": "https://arxiv.org/abs/2609.19969",
+        "arxiv_id": "2609.19969"
+      },
+      {
+        "title": "Rethinking Critic Learning in PPO: Understanding and Mitigating Value Flattening",
+        "url": "https://arxiv.org/abs/2609.18708",
+        "arxiv_id": "2609.18708"
+      },
+      {
+        "title": "Confidence Comes from Experience: Experiential Confidence Estimation from Reasoning to Agents",
+        "url": "https://arxiv.org/abs/2609.17708",
+        "arxiv_id": "2609.17708"
+      },
+      {
+        "title": "ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments",
+        "url": "https://arxiv.org/abs/2609.19134",
+        "arxiv_id": "2609.19134"
+      }
+    ],
+    "published_at": "2026-09-19T00:33:42.603700Z"
+  },
+  {
     "date": "2026-09-18",
     "title": "Paper Morning 2026-09-18",
     "description": "今日学术播报: AI for Games in the Foundation, LimiX-2: A Contextual Mechanis, StepAudio 3 Realtime Technical...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-20T22:57:30.612350Z"
-  },
-  {
-    "date": "2026-08-19",
-    "title": "Paper Morning 2026-08-19",
-    "description": "今日学术播报: Demystifying Agent Skills: Why, FreeToken: Efficient Edge-Nati, ASI-Bench: At the Dawn of Arti...",
-    "audio_file": "2026-08-19.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想和大家聊聊一个正在悄悄发生的变化，你会发现最近AI agent领域出现了一波从“模型能力”转向“系统能力”的研究浪潮。换句话说，大家不再只卷模型参数，转而在训练范式、部署方式、执行架构这些工程层面下功夫了。我们今天聊的几篇论文，恰好折射出这个趋势。\n\n第一篇是关于agent skill机制的系统性研究。Skill可以理解为把一些常用知识打包成现成的技能包，让agent在推理时直接调用，而不是临时学习。这几年大家用得很多，但它到底什么时候有效、为什么有效、什么时候会失灵，其实一直没被好好研究过。这篇论文就做了这么一件事：设计了大量对照实验，分离出representation、outcome annotation、retrieval difficulty、cross-framework robustness这些因素对skill效果的影响。然后又做了一个对比研究，把定量实验和轨迹分析结合起来。最后他们清洗了8135条实验记录，保留了238条有效的未配对记录来分析。得出的结论很有意思：skill在大多数情况下能提升任务成功率，但它的有效性...",
-    "papers": [
-      {
-        "title": "Demystifying Agent Skills: Why They Work-Until They Don't",
-        "url": "https://arxiv.org/abs/2608.14036",
-        "arxiv_id": "2608.14036"
-      },
-      {
-        "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
-        "url": "https://arxiv.org/abs/2608.16157",
-        "arxiv_id": "2608.16157"
-      },
-      {
-        "title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
-        "url": "https://arxiv.org/abs/2608.17271",
-        "arxiv_id": "2608.17271"
-      },
-      {
-        "title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
-        "url": "https://arxiv.org/abs/2608.17310",
-        "arxiv_id": "2608.17310"
-      },
-      {
-        "title": "StateM: Reaching 95.3% Raw Accuracy, or a \\$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling",
-        "url": "https://arxiv.org/abs/2608.15089",
-        "arxiv_id": "2608.15089"
-      }
-    ],
-    "published_at": "2026-08-19T22:54:11.557593Z"
   }
 ]
