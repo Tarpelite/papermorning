@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-20",
+    "title": "Paper Morning 2026-09-20",
+    "description": "今日学术播报: Can MiniMax-H3 Reason About th, LimiX-2: A Contextual Mechanis, When EOS Tokens Disagree: Unde...",
+    "audio_file": "2026-09-20.mp3",
+    "script": "各位早上好，周末的早晨终于能喘口气了，Paper Morning又和大家见面了。\n\n今天想先聊一篇挺有意思的评估工作，是关于MiniMax-H3这个全模态生成模型的。熟悉大模型的朋友可能知道，现在的多模态模型已经不只是处理图像或文本了，而是在往统一所有模态的方向走。MiniMax-H3就是这样一个尝试，把多模态理解和音视频生成塞进一个共享的潜在框架里。这篇文章问了一个很根本的问题：这种多模态的对齐到底能不能提升模型对物理世界的推理能力？作者为此设计了一套围绕物理世界推理的评估框架，分成四个互补的维度。这件事让我想到，咱们做科学计算的人其实也很关心模型能不能真正理解物理规律，而不只是拟合数据。如果多模态学习能让模型建立更好的世界表征，这或许会反过来影响我们做物理模拟和科学发现的方式。\n\n接下来这篇LimiX-2很有意思，它代表了一个新的模型范式，叫做上下文机制网络。这个工作的背景是，传统的表格数据预训练模型通常在做一种叫做p的预测，就是给定上下文数据来预测目标。但LimiX-2换了个思路，它要建模的是p，也就是同时学习输入和输出在上下文中的联合结构。作者说这是从“以目标为中心的预测”转向...",
+    "papers": [
+      {
+        "title": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+        "url": "https://arxiv.org/abs/2609.18323",
+        "arxiv_id": "2609.18323"
+      },
+      {
+        "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+        "url": "https://arxiv.org/abs/2609.17488",
+        "arxiv_id": "2609.17488"
+      },
+      {
+        "title": "When EOS Tokens Disagree: Understanding Length Inflation in On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2609.20511",
+        "arxiv_id": "2609.20511"
+      },
+      {
+        "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+        "url": "https://arxiv.org/abs/2609.19969",
+        "arxiv_id": "2609.19969"
+      },
+      {
+        "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+        "url": "https://arxiv.org/abs/2609.20800",
+        "arxiv_id": "2609.20800"
+      }
+    ],
+    "published_at": "2026-09-20T00:19:31.474890Z"
+  },
+  {
     "date": "2026-09-19",
     "title": "Paper Morning 2026-09-19",
     "description": "今日学术播报: LimiX-2: A Contextual Mechanis, DeepSeek-V4.1-Flash: Pushing t, Rethinking Critic Learning in ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-21T22:54:13.730198Z"
-  },
-  {
-    "date": "2026-08-20",
-    "title": "Paper Morning 2026-08-20",
-    "description": "今日学术播报: OmniScientist: An Omni-Modal O, Co-RL: Unsupervised Reasoning , Zetta ζ: An Efficient Closed-L...",
-    "audio_file": "2026-08-20.mp3",
-    "script": "各位早上好，周四的Paper Morning又和大家见面了。\n\n今天想先和大家聊一篇关于AI科学家的论文，叫OmniScientist。现在很多AI系统已经能做假设生成、代码执行到论文写作的全流程，但这些系统大多停留在文本、代码和标签层面，那些对科学发现至关重要的空间关系、时间过程、跨模态信息往往被忽略了。OmniScientist的亮点在于它能直接处理异构的原始证据——图片、实验数据、视频等等——然后在一个确定性的pipeline里完成从 ideation 到实验再到写作的全过程。我觉得这其实反映了一个趋势：AI4S正从“辅助工具”向“真正的研究伙伴”演进，未来我们可能会看到更多能够自主设计实验、分析多模态数据的AI系统。\n\n接下来这篇Co-RL很有意思，它研究的是如何在没有人工标注奖励的情况下让多智能体系统涌现出推理能力。我们知道强化学习在语言模型上已经取得了不错的进展，但最成功的例子还是依赖可验证的ground-truth reward，自己生成反馈又容易陷入同质化。Co-RR提出让多个智能体在合作中相互提供反馈信号，这样就能在无需人工标注的情况下学到推理能力。这让我想到，这和我...",
-    "papers": [
-      {
-        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
-        "url": "https://arxiv.org/abs/2608.13558",
-        "arxiv_id": "2608.13558"
-      },
-      {
-        "title": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
-        "url": "https://arxiv.org/abs/2608.17253",
-        "arxiv_id": "2608.17253"
-      },
-      {
-        "title": "Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence",
-        "url": "https://arxiv.org/abs/2608.16590",
-        "arxiv_id": "2608.16590"
-      },
-      {
-        "title": "SemComp-Bench: Benchmarking Semantic Task Completion in Video Generation",
-        "url": "https://arxiv.org/abs/2608.17426",
-        "arxiv_id": "2608.17426"
-      },
-      {
-        "title": "SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation",
-        "url": "https://arxiv.org/abs/2608.18565",
-        "arxiv_id": "2608.18565"
-      }
-    ],
-    "published_at": "2026-08-20T22:57:30.612350Z"
   }
 ]

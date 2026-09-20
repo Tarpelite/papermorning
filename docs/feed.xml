@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-20</title>
+      <description>今日学术播报: Can MiniMax-H3 Reason About th, LimiX-2: A Contextual Mechanis, When EOS Tokens Disagree: Unde...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-20.mp3" length="8772171" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-20.mp3</guid>
+      <pubDate>2026-09-20T00:19:31.474890Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-19</title>
       <description>今日学术播报: LimiX-2: A Contextual Mechanis, DeepSeek-V4.1-Flash: Pushing t, Rethinking Critic Learning in ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-19.mp3" length="9239240" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-21.mp3" length="8384723" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-21.mp3</guid>
       <pubDate>2026-08-21T22:54:13.730198Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-20</title>
-      <description>今日学术播报: OmniScientist: An Omni-Modal O, Co-RL: Unsupervised Reasoning , Zetta ζ: An Efficient Closed-L...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-20.mp3" length="6874427" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-20.mp3</guid>
-      <pubDate>2026-08-20T22:57:30.612350Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
