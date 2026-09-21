@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-21",
+    "title": "Paper Morning 2026-09-21",
+    "description": "今日学术播报: Can MiniMax-H3 Reason About th, JEPA-Anything: Learning Predic, LimiX-2: A Contextual Mechanis...",
+    "audio_file": "2026-09-21.mp3",
+    "script": "各位早上好，新的一周开始了，Paper Morning继续和大家聊聊最近的学术前沿。\n\n今天想和大家分享几篇很有意思的论文，涉及多模态推理、跨领域建模、结构化数据智能，还有大模型推理效率这些看似不同但内在关联的方向。\n\n第一篇是MiniMax-H3，这两天在HuggingFace上热度很高。它是一个全模态生成模型，能同时处理文本、图像、视频、音频。但研究者更关心的问题是：这种多模态的统一建模，能不能让模型真正理解物理世界？论文提出了一个围绕四个互补维度的评估框架，来考察模型对物理世界的推理能力。这个问题的深层意义在于，我们过去评价生成模型，往往看的是生成质量，却忽略了模型是否建立了对物理因果的理解。如果多模态信号能让模型学到更可靠的世界模型，这对我们做AI for Science的人来说，是个很重要的信号。\n\n接下来这篇JEPA-Anything很有意思，它试图回答一个更根本的问题：能不能用一个通用的学习原理，在完全不同的领域里做世界建模？比如视觉、生物、临床轨迹、控制、分子动力学、物理场、天气预测，这些领域的底层规律差别很大。JEPA-Anything引入了正交预测分解的方法，把潜在...",
+    "papers": [
+      {
+        "title": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+        "url": "https://arxiv.org/abs/2609.18323",
+        "arxiv_id": "2609.18323"
+      },
+      {
+        "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+        "url": "https://arxiv.org/abs/2609.20800",
+        "arxiv_id": "2609.20800"
+      },
+      {
+        "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+        "url": "https://arxiv.org/abs/2609.17488",
+        "arxiv_id": "2609.17488"
+      },
+      {
+        "title": "When EOS Tokens Disagree: Understanding Length Inflation in On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2609.20511",
+        "arxiv_id": "2609.20511"
+      },
+      {
+        "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+        "url": "https://arxiv.org/abs/2609.19969",
+        "arxiv_id": "2609.19969"
+      }
+    ],
+    "published_at": "2026-09-21T00:28:13.028716Z"
+  },
+  {
     "date": "2026-09-20",
     "title": "Paper Morning 2026-09-20",
     "description": "今日学术播报: Can MiniMax-H3 Reason About th, LimiX-2: A Contextual Mechanis, When EOS Tokens Disagree: Unde...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-22T22:51:11.710507Z"
-  },
-  {
-    "date": "2026-08-21",
-    "title": "Paper Morning 2026-08-21",
-    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
-    "audio_file": "2026-08-21.mp3",
-    "script": "各位早上好，周五的Paper Morning如约而至。\n\n今天想先和大家聊一个很有意思的观察：过去一周HuggingFace上最热门的论文，几乎清一色都指向同一个方向——AI Agent。无论是任务规划、环境构建还是代码执行，Agent正在从研究热点变成实实在在的工具链。几篇论文虽然具体问题不同，但都指向一个核心命题：怎样让AI Agent更好地「落地」，真正帮上科研工作者的忙。\n\n先看这篇OmniScientist，它试图回答一个很根本的问题：AI科学家到底能「看」什么？过去我们觉得大模型能读论文、写代码就够了，但OmniScientist告诉我们，真正的科学发现需要的远不止这些。它构建了一个端到端的全模态AI系统，感知层可以直接处理图像、表格、代码等异构原始证据，然后通过三个自主代理分别负责 ideation、experiment 和 writeup。注意这里的关键词是「raw evidence」——它不只是处理文本和标签，而是能「看到」科学数据本身的空间关系、时间演化、跨通道信息。这让我想到我们在AI4S里常说的「多模态感知」，以前我们觉得这是数据可视化的需求，现在看来，它可能是...",
-    "papers": [
-      {
-        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
-        "url": "https://arxiv.org/abs/2608.20335",
-        "arxiv_id": "2608.20335"
-      },
-      {
-        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
-        "url": "https://arxiv.org/abs/2608.13558",
-        "arxiv_id": "2608.13558"
-      },
-      {
-        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
-        "url": "https://arxiv.org/abs/2608.19799",
-        "arxiv_id": "2608.19799"
-      },
-      {
-        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
-        "url": "https://arxiv.org/abs/2608.18580",
-        "arxiv_id": "2608.18580"
-      },
-      {
-        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
-        "url": "https://arxiv.org/abs/2608.19880",
-        "arxiv_id": "2608.19880"
-      }
-    ],
-    "published_at": "2026-08-21T22:54:13.730198Z"
   }
 ]

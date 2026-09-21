@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-21</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-21</h1>
+    <p class="date">2026-09-21</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-21.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，新的一周开始了，Paper Morning继续和大家聊聊最近的学术前沿。
+
+今天想和大家分享几篇很有意思的论文，涉及多模态推理、跨领域建模、结构化数据智能，还有大模型推理效率这些看似不同但内在关联的方向。
+
+第一篇是MiniMax-H3，这两天在HuggingFace上热度很高。它是一个全模态生成模型，能同时处理文本、图像、视频、音频。但研究者更关心的问题是：这种多模态的统一建模，能不能让模型真正理解物理世界？论文提出了一个围绕四个互补维度的评估框架，来考察模型对物理世界的推理能力。这个问题的深层意义在于，我们过去评价生成模型，往往看的是生成质量，却忽略了模型是否建立了对物理因果的理解。如果多模态信号能让模型学到更可靠的世界模型，这对我们做AI for Science的人来说，是个很重要的信号。
+
+接下来这篇JEPA-Anything很有意思，它试图回答一个更根本的问题：能不能用一个通用的学习原理，在完全不同的领域里做世界建模？比如视觉、生物、临床轨迹、控制、分子动力学、物理场、天气预测，这些领域的底层规律差别很大。JEPA-Anything引入了正交预测分解的方法，把潜在目标分解成互补的因素，通过专门的学习路径分别学习，然后在共享的预测框架里重新组合。七个领域的实验结果表明，这种方法在表示学习、干预预测、分布外生成等任务上都有不错的表现。这让我想到，我们做PDE求解器或者物理模拟的时候，是不是也可以借鉴这种思路——把不同的物理机制分解开学习，然后再组合起来。
+
+第三篇LimiX-2是今天热度最高的，有371个点赞。它提出了情境机制网络的新范式，和传统的表格数据预训练方法不同。传统方法关注的是给定上下文条件下对目标变量的预测，而LimiX-2学习的是数据生成背后的联合结构。论文用结构因果模型生成了多样化的合成数据进行预训练，涵盖了不同的图结构、功能机制和观测噪声。这个思路其实和我们做物理信息神经网络时构造训练数据的理念很像——通过已知的物理规律来引导模型学习。
+
+今天的最后两篇论文更偏向工程优化，但我觉得也非常关键。第一篇关于大模型蒸馏中的长度膨胀问题很有意思，研究者发现基础模型和微调后模型的终止token位置不一致，会导致学生模型生成过长的回答。这让我想到，我们在把大模型能力迁移到小模型的时候，还有很多细节问题需要关注。第二篇DeepSeek-V4.1-Flash则关注长上下文推理的效率问题，它通过混合专家架构和因果编码器-解码器的设计，在支持百万token超长上下文的同时，显著降低了预填充阶段的计算成本。这种工程上的突破，其实决定了这些强大的模型能不能真正被广泛使用。
+
+今天的几篇论文看起来方向各异，但我感觉有一条暗线在贯穿：无论是对物理世界的推理、跨领域的世界建模，还是长上下文的高效处理，大家都在探索同一个问题——如何让模型在更广泛的场景中建立更可靠、更高效的智能。这或许代表着基础模型发展的一个新趋势。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.18323" target="_blank">Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model</a></li>
+<li><a href="https://arxiv.org/abs/2609.20800" target="_blank">JEPA-Anything: Learning Predictive Models across Different Worlds</a></li>
+<li><a href="https://arxiv.org/abs/2609.17488" target="_blank">LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence</a></li>
+<li><a href="https://arxiv.org/abs/2609.20511" target="_blank">When EOS Tokens Disagree: Understanding Length Inflation in On-Policy Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2609.19969" target="_blank">DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
