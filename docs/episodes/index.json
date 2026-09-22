@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-22",
+    "title": "Paper Morning 2026-09-22",
+    "description": "今日学术播报: Can MiniMax-H3 Reason About th, JEPA-Anything: Learning Predic, IntBMoE: Integrating Block-Lev...",
+    "audio_file": "2026-09-22.mp3",
+    "script": "各位早上好，今天Paper Morning想聊一个特别有意思的话题。你们有没有注意到，最近AI领域有股趋势在慢慢浮现，不只在追求更强的语言能力，还在试图让模型理解我们生活的物理世界。这个趋势在今天几篇论文里都能看到影子。\n\n第一篇是关于MiniMax-H3的评估工作。它是一个Omni-Modal的生成模型，能同时处理文本、图像、视频和音频。但这篇论文关心的不是生成质量本身，而是另一个更深层的问题：当模型能同时“看”和“听”的时候，它是否真的理解了物理世界的运作规律？比如东西掉下来会怎样，碰撞会发生什么。研究团队为此设计了一套全新的评估框架，从四个维度来考察模型的物理推理能力。这个工作的价值不在于它又刷新了什么生成分数，而在于它提出了一个根本性的问题：多模态的“对齐”到底能不能带来真正的“世界理解”。这其实是在质疑我们现在的评估范式是否出了问题。\n\n第二篇JEPA-Anything更激进，它在问能不能用一个通用的学习原理来建模完全不同的物理系统。它提出了正交预测因子分解的方法，可以把复杂的目标分解成不同因子分别学习，然后在统一的预测框架里重新组合。论文在七个完全不同的领域做了测试，从视觉...",
+    "papers": [
+      {
+        "title": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+        "url": "https://arxiv.org/abs/2609.18323",
+        "arxiv_id": "2609.18323"
+      },
+      {
+        "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+        "url": "https://arxiv.org/abs/2609.20800",
+        "arxiv_id": "2609.20800"
+      },
+      {
+        "title": "IntBMoE: Integrating Block-Level Conditioning into Expert Composition for Full-Participation Mixture-of-Experts",
+        "url": "https://arxiv.org/abs/2609.21346",
+        "arxiv_id": "2609.21346"
+      },
+      {
+        "title": "EvoOntology: A Self-Evolving Ontology Layer for Data Agents",
+        "url": "https://arxiv.org/abs/2609.15779",
+        "arxiv_id": "2609.15779"
+      },
+      {
+        "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
+        "url": "https://arxiv.org/abs/2609.22068",
+        "arxiv_id": "2609.22068"
+      }
+    ],
+    "published_at": "2026-09-22T01:04:47.033081Z"
+  },
+  {
     "date": "2026-09-21",
     "title": "Paper Morning 2026-09-21",
     "description": "今日学术播报: Can MiniMax-H3 Reason About th, JEPA-Anything: Learning Predic, LimiX-2: A Contextual Mechanis...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-23T22:51:09.782680Z"
-  },
-  {
-    "date": "2026-08-22",
-    "title": "Paper Morning 2026-08-22",
-    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
-    "audio_file": "2026-08-22.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们一直在追踪AI for Science里neural operator和基础模型的进展，但最近行业有一个很明显的趋势：AI Agent正在从“工具”变成“科研伙伴”。今天带来的几篇论文，正好从不同角度触及了这个变化。\n\n第一篇叫OmniScientist，名字很有野心——它是试图做一个“全模态全学科”的AI科学家。过去的AI科学家大多在文本、代码、预计算结果上做推理，但它直接从原始的多模态证据出发，包括图像、时序数据、跨通道的信息。系统里有感知层，有三个自主Agent分别负责 ideation、实验和写作。更关键的是，它有一个deterministic pipeline来确保整个研究过程的连贯性。我看到这篇工作的时候，第一个想法是：它能不能帮我们解决实验物理中那种“数据在手里但不知道怎么建模”的困境？当实验数据是多模态的时候，传统的pipeline往往要把数据硬塞进某个固定表征，但OmniScientist的思路是让Agent自己从原始证据里发现关系。这和我们在neural operator里追...",
-    "papers": [
-      {
-        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
-        "url": "https://arxiv.org/abs/2608.20335",
-        "arxiv_id": "2608.20335"
-      },
-      {
-        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
-        "url": "https://arxiv.org/abs/2608.13558",
-        "arxiv_id": "2608.13558"
-      },
-      {
-        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
-        "url": "https://arxiv.org/abs/2608.19799",
-        "arxiv_id": "2608.19799"
-      },
-      {
-        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
-        "url": "https://arxiv.org/abs/2608.18580",
-        "arxiv_id": "2608.18580"
-      },
-      {
-        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
-        "url": "https://arxiv.org/abs/2608.19880",
-        "arxiv_id": "2608.19880"
-      }
-    ],
-    "published_at": "2026-08-22T22:51:11.710507Z"
   }
 ]
