@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-23",
+    "title": "Paper Morning 2026-09-23",
+    "description": "今日学术播报: OmniEdu: Open Foundation Model, WorldCrafter: Consistent Video, GameHorizon Suite: Multi-Horiz...",
+    "audio_file": "2026-09-23.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一篇教育AI的论文聊起，叫OmniEdu，做的是K12教育的基础模型。你可能会问，教育模型跟咱们AI for Science有什么关系？我觉得它展示了一个很有启发的思路：怎么把多个能力维度统一到一个预训练框架里。它定义了四个能力——学科知识、课程理解、诊断推理和教学支架——然后用统一的指令微调数据把这些能力整合到一起。这其实和我们现在讨论的PDE foundation model很像：我们不只要一个能求解方程的模型，我们还希望它能诊断物理问题、理解不同尺度的关系、甚至给出可解释的推理过程。OmniEdu用超过100种教育资源构建指令数据集的做法，也提醒我们：科学计算领域同样需要高质量、多样化的指令数据，而不仅仅是方程和解的配对。\n\n聊完教育模型，接着看一篇做视频世界模型的工作WorldCrafter。它提出了一个很有意思的问题：当我们有一个环境的历史观察，怎么让模型能够从任意新视角生成后续的视频？传统的世界模型往往受限于固定的视角，WorldCrafter的解决办法是引入一个相机可查询的隐式3D感知记忆。它用记忆编码器...",
+    "papers": [
+      {
+        "title": "OmniEdu: Open Foundation Models for Learning and Teaching",
+        "url": "https://arxiv.org/abs/2609.23088",
+        "arxiv_id": "2609.23088"
+      },
+      {
+        "title": "WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory",
+        "url": "https://arxiv.org/abs/2609.24984",
+        "arxiv_id": "2609.24984"
+      },
+      {
+        "title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
+        "url": "https://arxiv.org/abs/2609.25001",
+        "arxiv_id": "2609.25001"
+      },
+      {
+        "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+        "url": "https://arxiv.org/abs/2609.24972",
+        "arxiv_id": "2609.24972"
+      },
+      {
+        "title": "Transferring the Intelligence of VLMs to Robotic Control",
+        "url": "https://arxiv.org/abs/2609.22966",
+        "arxiv_id": "2609.22966"
+      }
+    ],
+    "published_at": "2026-09-23T00:53:47.434554Z"
+  },
+  {
     "date": "2026-09-22",
     "title": "Paper Morning 2026-09-22",
     "description": "今日学术播报: Can MiniMax-H3 Reason About th, JEPA-Anything: Learning Predic, IntBMoE: Integrating Block-Lev...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-24T22:56:25.222048Z"
-  },
-  {
-    "date": "2026-08-23",
-    "title": "Paper Morning 2026-08-23",
-    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , OmniScientist: An Omni-Modal O, SWE-bench Science: Can Coding ...",
-    "audio_file": "2026-08-23.mp3",
-    "script": "各位早上好，周末的Paper Morning如约而至。\n\n今天想先和大家聊一个趋势，就是AI for Science正在从“做计算”走向“做研究”。这不是说偏微分方程求解不重要了，而是我们开始看到一种更整体的智能在介入科研流程。刚好今天有几篇论文从不同角度触及了这个转变，我很乐意和大家分享我的观察。\n\n先看这篇OmniScientist。现在的AI Scientist大多还是在文本、代码、标签或者预计算的摘要上做推理，但科学发现依赖的证据远不止这些。作者提出了一个端到端的全模态AI科学家，能够直接从异构的原始证据出发做研究。它有一个感知层加上三个自主Agent分别负责 ideation、experiment和writeup，在确定性pipeline里协作。读到这我想到一个类比：过去的AI Scientist像是一个只看文献综述做研究的科学家，而OmniScientist像是真的走进了实验室，看到了原始数据、仪器输出、甚至实验过程中的Procedural信息。这其实解决了一个根本问题——我们怎么让AI不仅仅复现论文的结论，而是真正像研究者一样处理原始证据？这对AI4S的意义在于，当模型能...",
-    "papers": [
-      {
-        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
-        "url": "https://arxiv.org/abs/2608.20335",
-        "arxiv_id": "2608.20335"
-      },
-      {
-        "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
-        "url": "https://arxiv.org/abs/2608.13558",
-        "arxiv_id": "2608.13558"
-      },
-      {
-        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
-        "url": "https://arxiv.org/abs/2608.19799",
-        "arxiv_id": "2608.19799"
-      },
-      {
-        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
-        "url": "https://arxiv.org/abs/2608.18580",
-        "arxiv_id": "2608.18580"
-      },
-      {
-        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
-        "url": "https://arxiv.org/abs/2608.19880",
-        "arxiv_id": "2608.19880"
-      }
-    ],
-    "published_at": "2026-08-23T22:51:09.782680Z"
   }
 ]
