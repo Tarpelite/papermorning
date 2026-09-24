@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-24</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-24</h1>
+    <p class="date">2026-09-24</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-24.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周四的Paper Morning如约而至。
+
+今天想先从一个观察聊起。大家有没有注意到，这两年我们谈AI的范式变迁，往往会把注意力放在模型架构或者数据规模上，但最近几周其实有几类工作悄悄在回答另一个问题：到底什么样的能力，才是我们真正想要的智能？今天的五篇论文恰好从不同角度触及了这个本质。
+
+第一篇是OmniEdu，教育领域的基础模型。熟悉大模型的朋友可能知道，教育场景特别有意思，因为它本质上要求模型同时具备学科知识、课程理解、诊断推理和教学支架这四种能力。以往的教育模型往往是孤立地做某一项，而OmniEdu的思路是把这些能力统一到一个预训练再加指令微调的框架里。他们构建了一个包含一百多种教育资源和通用指令的数据集，用一种叫token-budgeted diversity selection的方法来做数据混合。这个工作的价值不在于又做了一个教育模型，而在于它展示了foundation model如何能真正围绕“能力”而非“任务”来组织训练数据。这让我想到我们AI4S社区一直在讨论的：科学基础模型到底应该学什么能力？是纯数学推理，还是物理直觉？如果我们能把这个问题想清楚，可能就不需要在模型容量和任务覆盖之间反复trade-off了。
+
+顺着这个能力组织的思路，第二篇Grounded Action Models很有意思，它在解决机器人领域一个很根本的问题：现有的视觉语言动作模型，它的预训练 backbone 要么基于语言，要么基于视频生成，但这些预训练本身并不要求模型理解三维空间中的度量信息和物体几何。那么机器人怎么学会在真实空间里精准操作呢？GAMs提出的方案很直接：先把语言、点云或者边界框提示转换成一种共享的以物体为中心的表示，这种表示既包含目标物体的视觉特征，又包含度量几何信息，然后再用一个多流transformer和机器人状态历史做融合。这篇工作让我想到我们在做物理仿真时候经常遇到的sim-to-real gap，本质上也是因为缺少这种metric grounding。如果把物理引擎的domain knowledge通过类似的方式嵌入到模型结构里，是不是能缓解物理仿真的泛化问题？
+
+第三篇Taste-Bench很有意思，它在问一个我们日常科研中经常遇到但很少被形式化的问题：一个LLM agent在完成长程任务的时候，中间的决策质量该怎么衡量？我们知道最终结果可能成功也可能失败，但成功里面有多少是靠运气、有多少是真正做出了好决策？反过来，失败里面有多少是决策本身不好、有多少是执行出了偏差？这篇工作提出的Taste-Bench很有意思，它从 agent 的轨迹中自动提取“决策分叉点”，然后让人类或者模型来判断在每个分叉处哪个选择更好。他们发现现有的benchmark都没有办法捕捉这种“品味”差异。这个工作的意义可能不只是评测本身，它其实在暗示我们：未来衡量AI能力，可能不能只看最终指标，还要看中间决策的质量。这对于我们设计科研agent或者代码生成agent都有直接启发。
+
+第四篇关于SVG生成的RULER也很有意思。SVG代码生成是一个典型的open-ended任务，没有唯一的正确答案，所以传统的CLIP score或者美学评分迁移过来效果很差。这篇工作发现，用一个多维度的rubric让视觉语言模型来判断生成质量，比任何单一标量指标都更接近人类判断。然后他们把这个发现做成了RL的reward signal。他们在论文里特别提到，直接用标量指标作为reward会导致reward hacking——这在我们做物理启发的生成模型时也要非常警惕，有时候我们优化的loss可能跟真正想要的物理性质完全无关。rubric-based scoring这个思路其实可以推广到很多缺乏明确目标的科学生成任务上，比如设计分子、设计材料结构。
+
+最后 Realtime-Venus 展示了一个全双工的交互系统，能够同时处理音频和视频输入，并且在用户输入、模型输出和工具调用之间维护一个共享的因果时间线。他们用了两个9B规模的模型分别处理视听交互和纯语音交互，再用双循环运行时来协调前台交互和后台推理。这个工作的工程量很大，但更值得关注的是它展示了一种可能性：当我们把交互的延迟降到足够低的时候，人和AI的关系会发生变化——从我们下达指令等待执行，变成一种持续的协作对话。这对于未来AI辅助科学发现的意义在于，我们或许可以构建一种“人机协作”的实时研究环境，AI不再是工具，而更像是研究组里的一位virtual colleague。
+
+好了，今天的五篇论文看下来，我有一个统一的感受：AI正在从“完成单一任务”走向“组织能力”，从“追求最终指标”走向“关注过程质量”，从“人机命令”走向“人机协作”。这些转变看似分散，但实际上都在回答同一个问题：什么样的智能，才是我们真正需要的智能？当我们能够更精确地定义这个问题本身，可能就是范式真正前进的时候。早上就先聊到这里。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.23088" target="_blank">OmniEdu: Open Foundation Models for Learning and Teaching</a></li>
+<li><a href="https://arxiv.org/abs/2609.23863" target="_blank">Grounded Action Model: 3D Grounding as a Foundation for Robotics</a></li>
+<li><a href="https://arxiv.org/abs/2609.25804" target="_blank">The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks</a></li>
+<li><a href="https://arxiv.org/abs/2609.25270" target="_blank">RULER: Instance-aware Rubric Rewards for SVG Generation</a></li>
+<li><a href="https://arxiv.org/abs/2609.13814" target="_blank">Realtime-Venus: A full-duplex interaction system with asynchronous delegation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-24",
+    "title": "Paper Morning 2026-09-24",
+    "description": "今日学术播报: OmniEdu: Open Foundation Model, Grounded Action Model: 3D Grou, The Tasteful Agent: Measuring ...",
+    "audio_file": "2026-09-24.mp3",
+    "script": "各位早上好，周四的Paper Morning如约而至。\n\n今天想先从一个观察聊起。大家有没有注意到，这两年我们谈AI的范式变迁，往往会把注意力放在模型架构或者数据规模上，但最近几周其实有几类工作悄悄在回答另一个问题：到底什么样的能力，才是我们真正想要的智能？今天的五篇论文恰好从不同角度触及了这个本质。\n\n第一篇是OmniEdu，教育领域的基础模型。熟悉大模型的朋友可能知道，教育场景特别有意思，因为它本质上要求模型同时具备学科知识、课程理解、诊断推理和教学支架这四种能力。以往的教育模型往往是孤立地做某一项，而OmniEdu的思路是把这些能力统一到一个预训练再加指令微调的框架里。他们构建了一个包含一百多种教育资源和通用指令的数据集，用一种叫token-budgeted diversity selection的方法来做数据混合。这个工作的价值不在于又做了一个教育模型，而在于它展示了foundation model如何能真正围绕“能力”而非“任务”来组织训练数据。这让我想到我们AI4S社区一直在讨论的：科学基础模型到底应该学什么能力？是纯数学推理，还是物理直觉？如果我们能把这个问题想清楚，可能...",
+    "papers": [
+      {
+        "title": "OmniEdu: Open Foundation Models for Learning and Teaching",
+        "url": "https://arxiv.org/abs/2609.23088",
+        "arxiv_id": "2609.23088"
+      },
+      {
+        "title": "Grounded Action Model: 3D Grounding as a Foundation for Robotics",
+        "url": "https://arxiv.org/abs/2609.23863",
+        "arxiv_id": "2609.23863"
+      },
+      {
+        "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
+        "url": "https://arxiv.org/abs/2609.25804",
+        "arxiv_id": "2609.25804"
+      },
+      {
+        "title": "RULER: Instance-aware Rubric Rewards for SVG Generation",
+        "url": "https://arxiv.org/abs/2609.25270",
+        "arxiv_id": "2609.25270"
+      },
+      {
+        "title": "Realtime-Venus: A full-duplex interaction system with asynchronous delegation",
+        "url": "https://arxiv.org/abs/2609.13814",
+        "arxiv_id": "2609.13814"
+      }
+    ],
+    "published_at": "2026-09-24T00:46:18.175287Z"
+  },
+  {
     "date": "2026-09-23",
     "title": "Paper Morning 2026-09-23",
     "description": "今日学术播报: OmniEdu: Open Foundation Model, WorldCrafter: Consistent Video, GameHorizon Suite: Multi-Horiz...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-25T22:58:40.287690Z"
-  },
-  {
-    "date": "2026-08-24",
-    "title": "Paper Morning 2026-08-24",
-    "description": "今日学术播报: 4DAnyone: Create Anyone in 4D , SWE-bench Science: Can Coding , FACET: Preserving Source Inten...",
-    "audio_file": "2026-08-24.mp3",
-    "script": "各位早上好，欢迎来到Paper Morning。\n\n今天想和大家聊一个可能比较意外的话题：我从HuggingFaceTrending上挑了几篇最近的论文，但它们和咱们平时关注的neural operator、PDE求解器这些AI4S核心方向不太一样。反过来想，这些论文其实从另一个角度提醒我们：AI工具链在科研流程中的渗透，可能比模型本身更值得关注。\n\n第一篇是4DAnyone，做的是从单目视频重建4D人体。这项工作解决的核心问题是：现有的视频扩散模型在生成少量新视角时效果不错，但要生成几十个视角来支撑4D高斯溅射重建，就会出现视角间不一致。他们把这个问题归因于bounded-attention-context——当目标视角数量超过单次前向传播的容量时，不得不分批处理，导致之前生成的视角信息被稀释。这让我想到，我们在做PDE求解的neural operator时其实也经常遇到类似问题：处理长时间序列或者大空间域时，如何保持信息的一致传递？这篇工作在计算机图形学领域是很好的进展，但方法论上的洞察其实可以延伸到其他需要一致性生成的场景。\n\n第二篇是SWE-benchScience，关注的是编...",
-    "papers": [
-      {
-        "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
-        "url": "https://arxiv.org/abs/2608.20335",
-        "arxiv_id": "2608.20335"
-      },
-      {
-        "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
-        "url": "https://arxiv.org/abs/2608.19799",
-        "arxiv_id": "2608.19799"
-      },
-      {
-        "title": "FACET: Preserving Source Intent and Executable State in Terminal Task Synthesis",
-        "url": "https://arxiv.org/abs/2608.18580",
-        "arxiv_id": "2608.18580"
-      },
-      {
-        "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
-        "url": "https://arxiv.org/abs/2608.19880",
-        "arxiv_id": "2608.19880"
-      },
-      {
-        "title": "ForgeWM: Progressive Causal Training for Few-Step Action-Conditioned Video World Models",
-        "url": "https://arxiv.org/abs/2608.14022",
-        "arxiv_id": "2608.14022"
-      }
-    ],
-    "published_at": "2026-08-24T22:56:25.222048Z"
   }
 ]
