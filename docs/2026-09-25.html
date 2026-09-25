@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-25</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-25</h1>
+    <p class="date">2026-09-25</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-25.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想和大家聊一个我觉得很有意思的趋势：最近在arXiv上出现了好几批工作，都在讨论同一个根本问题——一个能"理解"世界的智能体，究竟需要什么样的记忆和一致性？ 这个话题看似分散，但从视频生成到多轮对话，从3D世界建模到长期任务决策，其实都在回应同一个核心挑战。
+
+先来看一篇3D生成方向的工作。GAE这个工作提出了一个几何原生潜空间的概念，作者认为现在很多视觉生成模型能产生逼真的画面，但往往缺乏一致的几何结构。问题不在于模型不够大，而在于表征本身就不适合描述3D关系。他们把几何基础模型的特征重新参数化到一个紧凑的潜空间里，让这个潜空间可以同时解码出外观、深度、相机位姿和点云。这样一来，一个标准的条件流模型就能生成具有3D一致性的画面了。这个思路其实和我们做PDE求解器有点像——与其在输出端硬加物理约束，不如在表征层面就让它“物理友好”。当然，具体效果还要看实验，但这个方向值得关注。
+
+接下来切换到LLM memory的领域。SpeakerMem-R1这篇文章处理的是一个很实际的问题：多轮对话中，如何准确追踪谁说了什么、谁对谁的态度发生了什么变化。之前的通用LLM记忆系统往往会把人物关系和群体信息丢失掉。作者提出了双轨记忆的方案，一轨存说话者标记的事件，另一轨维护关系图谱和状态变化。这个工作让我想到在做科学计算时，我们常常也需要维护多个变量的状态和它们之间的依赖关系，只是这里的“变量”变成了人和关系。本质上都是状态追踪问题，只是领域不同。
+
+然后是一篇关于评估agent“品味”的工作。Tasteful Agent这个研究很有意思，它提出了一个关键问题：一个LLM agent在完成长期任务时，中间的每一步决策——比如选择哪个假设去验证、基于哪个实现去构建——最终决定了整个任务的成败。我们怎么衡量这些决策的质量？作者构建了Taste-Bench这个benchmark，从真实的任务轨迹中自动构造“决策分叉点”，让模型在多个选项中做选择，然后用人来评判哪个选择更有“品味”。这个思路其实和我们评估科学计算模型的思路很像——不仅要看最终结果好不好，还要看中间的计算路径是否合理。长期来看，也许我们会给agent的每一步决策都打出“品味分”。
+
+再来看世界模型的方向。HappyWorld-Bench是一个评估生成世界一致性的benchmark，它关注的不只是生成的世界有多逼真，而是当agent真的去探索、交互、修改这个世界时，这个世界还能不能保持可靠。作者设计了三套评估体系：视频世界模型、空间世界模型和实体化世界模型，每个都有相应的测试用例。这让我想到我们在训练物理PINN模型时经常遇到的问题——模型在训练区域内表现不错，但一旦外推或遇到未见过的物理过程，马上就失效。本质上都是在问同一个问题：你的模型真的“理解”了背后的规律，还是只是在记忆训练数据的某种统计关联？
+
+最后是一篇关于自回归视频生成中记忆机制的文章。作者指出，随着生成序列越来越长，模型必须在有限的上下文窗口内工作，导致很多关键的历史信息——比如实体的身份、动态状态、干预带来的因果变化——在实际相关性消失很久之前就被遗忘了。这其实和我们在做长期 PDE 模拟时遇到的挑战非常类似：如何让模型记住长期的物理规律，而不是被短期的上下文所局限。
+
+好，今天的播报就到这里。回头看这几篇论文，我发现一个很有趣的共同点：无论是在视觉生成、对话系统还是agent决策中，核心瓶颈都是如何在长程上下文里维护信息和关系的一致性。 这个问题在NLP领域被讨论了很多年，现在正在向更广泛的AI for Science领域延伸。也许未来我们训练科学计算模型的时候，也需要思考的不只是如何拟合方程，还要考虑模型如何“记住”物理世界的长期规律。各位今天也辛苦了，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.24981" target="_blank">GAE: Learning a Geometry-Native Latent Space for 3D-Consistent World Generation</a></li>
+<li><a href="https://arxiv.org/abs/2609.26780" target="_blank">SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue</a></li>
+<li><a href="https://arxiv.org/abs/2609.25804" target="_blank">The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks</a></li>
+<li><a href="https://arxiv.org/abs/2609.24308" target="_blank">HappyWorld-Bench</a></li>
+<li><a href="https://arxiv.org/abs/2609.28466" target="_blank">The Past Frames the Future: Memory for Autoregressive Video Generation</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

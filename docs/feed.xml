@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-25</title>
+      <description>今日学术播报: GAE: Learning a Geometry-Nativ, SpeakerMem-R1: Speaker-Centere, The Tasteful Agent: Measuring ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-25.mp3" length="7949627" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-25.mp3</guid>
+      <pubDate>2026-09-25T00:42:25.420695Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-24</title>
       <description>今日学术播报: OmniEdu: Open Foundation Model, Grounded Action Model: 3D Grou, The Tasteful Agent: Measuring ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-24.mp3" length="9580295" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-27.mp3" length="7512651" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-27.mp3</guid>
       <pubDate>2026-08-27T03:30:48.916883Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-25</title>
-      <description>今日学术播报: EchoWM: Open and Enterable Omn, Unlocking the Potential of Ima, Apodex 1.1: Scaling Agentic In...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-25.mp3" length="10758940" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-25.mp3</guid>
-      <pubDate>2026-08-25T22:58:40.287690Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-25",
+    "title": "Paper Morning 2026-09-25",
+    "description": "今日学术播报: GAE: Learning a Geometry-Nativ, SpeakerMem-R1: Speaker-Centere, The Tasteful Agent: Measuring ...",
+    "audio_file": "2026-09-25.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我觉得很有意思的趋势：最近在arXiv上出现了好几批工作，都在讨论同一个根本问题——一个能\"理解\"世界的智能体，究竟需要什么样的记忆和一致性？ 这个话题看似分散，但从视频生成到多轮对话，从3D世界建模到长期任务决策，其实都在回应同一个核心挑战。\n\n先来看一篇3D生成方向的工作。GAE这个工作提出了一个几何原生潜空间的概念，作者认为现在很多视觉生成模型能产生逼真的画面，但往往缺乏一致的几何结构。问题不在于模型不够大，而在于表征本身就不适合描述3D关系。他们把几何基础模型的特征重新参数化到一个紧凑的潜空间里，让这个潜空间可以同时解码出外观、深度、相机位姿和点云。这样一来，一个标准的条件流模型就能生成具有3D一致性的画面了。这个思路其实和我们做PDE求解器有点像——与其在输出端硬加物理约束，不如在表征层面就让它“物理友好”。当然，具体效果还要看实验，但这个方向值得关注。\n\n接下来切换到LLM memory的领域。SpeakerMem-R1这篇文章处理的是一个很实际的问题：多轮对话中，如何准确追踪谁说了什么、谁对谁的态...",
+    "papers": [
+      {
+        "title": "GAE: Learning a Geometry-Native Latent Space for 3D-Consistent World Generation",
+        "url": "https://arxiv.org/abs/2609.24981",
+        "arxiv_id": "2609.24981"
+      },
+      {
+        "title": "SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue",
+        "url": "https://arxiv.org/abs/2609.26780",
+        "arxiv_id": "2609.26780"
+      },
+      {
+        "title": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
+        "url": "https://arxiv.org/abs/2609.25804",
+        "arxiv_id": "2609.25804"
+      },
+      {
+        "title": "HappyWorld-Bench",
+        "url": "https://arxiv.org/abs/2609.24308",
+        "arxiv_id": "2609.24308"
+      },
+      {
+        "title": "The Past Frames the Future: Memory for Autoregressive Video Generation",
+        "url": "https://arxiv.org/abs/2609.28466",
+        "arxiv_id": "2609.28466"
+      }
+    ],
+    "published_at": "2026-09-25T00:42:25.420695Z"
+  },
+  {
     "date": "2026-09-24",
     "title": "Paper Morning 2026-09-24",
     "description": "今日学术播报: OmniEdu: Open Foundation Model, Grounded Action Model: 3D Grou, The Tasteful Agent: Measuring ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-27T03:30:48.916883Z"
-  },
-  {
-    "date": "2026-08-25",
-    "title": "Paper Morning 2026-08-25",
-    "description": "今日学术播报: EchoWM: Open and Enterable Omn, Unlocking the Potential of Ima, Apodex 1.1: Scaling Agentic In...",
-    "audio_file": "2026-08-25.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，基础模型在自然语言处理和计算机视觉领域已经展现了惊人的 scaling 能力，但当我们把目光投向科学计算领域时，一个核心问题始终在叩问我们：这种预训练范式能不能真正迁移到物理世界的建模上？这不只是一个技术问题，更关乎我们如何理解“智能”这件事——是从数据中压缩规律，还是从第一性原理出发构建可解释的结构。今天的几篇论文恰好从不同角度触碰了这个问题。\n\n先来看第一篇，EchoWM，全称是“可进入的多模态世界模型”。这篇工作来自一个我很关注的团队，他们试图构建一个能同时生成视频、声音、音乐和语音的统一世界模型，并且响应连续的导航操作。听起来很像是为具身智能量身打造的“虚拟试验场”。但我更在意的是它背后的方法论：他们把离散的指令和连续的姿态映射到一个共享的度量尺度的六自由度轨迹上，然后在数据层面做校准，保证不同来源的数据在运动幅度上保持一致。这其实回应了一个很实际的问题——当我们想把互联网视频、3D模拟数据、甚至真实机器人数据混在一起训练时，如何让模型理解“移动一米”这件事在不同语境下到底意味着...",
-    "papers": [
-      {
-        "title": "EchoWM: Open and Enterable Omnimodal World Models",
-        "url": "https://arxiv.org/abs/2608.23189",
-        "arxiv_id": "2608.23189"
-      },
-      {
-        "title": "Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision",
-        "url": "https://arxiv.org/abs/2608.16812",
-        "arxiv_id": "2608.16812"
-      },
-      {
-        "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
-        "url": "https://arxiv.org/abs/2608.23283",
-        "arxiv_id": "2608.23283"
-      },
-      {
-        "title": "TLive-Omni: An Omni-Modal Understanding Model for E-Commerce Live Streaming",
-        "url": "https://arxiv.org/abs/2608.20958",
-        "arxiv_id": "2608.20958"
-      },
-      {
-        "title": "Inertial Manifold Neural Operator for Dissipative Time-Dependent Partial Differential Equations",
-        "url": "https://arxiv.org/abs/2608.23546v1",
-        "arxiv_id": "2608.23546v1"
-      }
-    ],
-    "published_at": "2026-08-25T22:58:40.287690Z"
   }
 ]
