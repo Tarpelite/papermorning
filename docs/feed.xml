@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-26</title>
+      <description>今日学术播报: Training Object Permanence in , Your Transformer Can Hold Two , HappyWorld-Bench...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-26.mp3" length="8695684" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-26.mp3</guid>
+      <pubDate>2026-09-26T00:48:07.067658Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-25</title>
       <description>今日学术播报: GAE: Learning a Geometry-Nativ, SpeakerMem-R1: Speaker-Centere, The Tasteful Agent: Measuring ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-25.mp3" length="7949627" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-08-28.mp3" length="7401056" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-08-28.mp3</guid>
       <pubDate>2026-08-28T06:17:31.560544Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-27</title>
-      <description>今日学术播报: GigaBrain-0.7: Scaling Embodie, On-Policy Self-Distillation in, Annotations as Rollouts: Effic...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-27.mp3" length="7512651" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-27.mp3</guid>
-      <pubDate>2026-08-27T03:30:48.916883Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
