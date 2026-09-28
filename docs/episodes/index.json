@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-28",
+    "title": "Paper Morning 2026-09-28",
+    "description": "今日学术播报: Training Object Permanence in , HappyWorld-Bench, Your Transformer Can Hold Two ...",
+    "audio_file": "2026-09-28.mp3",
+    "script": "各位早上好，新的一周开始了，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我觉得特别有意思的主题，就是AI系统怎么“记住”事情。当然我说的记住不是简单的存储，而是一种更本质的能力——在生成视频的时候记住哪个物体在哪里，在对话中记住谁对谁说了什么，甚至在Transformer里同时容纳多个“想法”。这几篇论文虽然领域不同，但都在触及这个核心问题。\n\n先看第一篇，Training Object Permanence in World Models，作者来自多所机构，提出了一个叫WROP的数据集，专门用来测试和训练视频生成模型的“物体恒常性”。大家知道，物体恒常性是人类从婴儿时期就有的认知先验——一个物体被遮挡后仍然存在，这是我们理解物理世界的基础。但现在的视频生成模型其实并没有内建这种能力，它们生成的视频里，物体经常凭空消失或者错误出现。作者设计了150个认知科学启发的任务，用Blender生成了一万多个样本，来教模型学会物体恒常性。这个工作让我想到一个问题：我们以前总觉得 scaling law 能让模型自己涌现出各种能力，但像物体恒常性这种基础的物理直觉，可能真的需要...",
+    "papers": [
+      {
+        "title": "Training Object Permanence in World Models",
+        "url": "https://arxiv.org/abs/2609.28654",
+        "arxiv_id": "2609.28654"
+      },
+      {
+        "title": "HappyWorld-Bench",
+        "url": "https://arxiv.org/abs/2609.24308",
+        "arxiv_id": "2609.24308"
+      },
+      {
+        "title": "Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs",
+        "url": "https://arxiv.org/abs/2609.29845",
+        "arxiv_id": "2609.29845"
+      },
+      {
+        "title": "SpeakerMem-R1: Speaker-Centered Dual-Track Memory for Multi-Party Dialogue",
+        "url": "https://arxiv.org/abs/2609.26780",
+        "arxiv_id": "2609.26780"
+      },
+      {
+        "title": "The Past Frames the Future: Memory for Autoregressive Video Generation",
+        "url": "https://arxiv.org/abs/2609.28466",
+        "arxiv_id": "2609.28466"
+      }
+    ],
+    "published_at": "2026-09-28T01:03:59.199706Z"
+  },
+  {
     "date": "2026-09-27",
     "title": "Paper Morning 2026-09-27",
     "description": "今日学术播报: Training Object Permanence in , HappyWorld-Bench, Your Transformer Can Hold Two ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-30T00:36:53.521511Z"
-  },
-  {
-    "date": "2026-08-29",
-    "title": "Paper Morning 2026-08-29",
-    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
-    "audio_file": "2026-08-29.mp3",
-    "script": "各位早上好，今天是周末，Paper Morning准时开播了。\n\n今天的几篇论文有一个共同的底层关切：怎样让AI agent在物理世界里更好地学习和推理。这个问题看起来像是传统的机器人或具身智能议题，但今天的几项工作把它推向了更本质的层面——从数据、评估到训练范式，都在重新思考agent的构建方式。\n\n第一篇关于游戏开发作为世界模型数据引擎的工作很有意思。作者指出，现在训练世界模型的主流思路是堆数据、堆算力，但这种思路其实漏掉了一个关键问题：数据质量。他们做了一个很妙的类比：代码agent为什么能快速进步？因为代码是可执行的，编译器和运行时可以提供高精度的reward信号。但空间生成领域呢？长期以来依赖的是CLIP分数这种模糊的代理信号，根本不足以支撑强化学习的训练。作者认为游戏开发恰恰填补了这个空白——游戏引擎里的场景本质上是一个可执行的世界规格，引擎本身就能给出精确的反馈。这样一来，就能在RL后训练中获得真正有信号的学习信号，而不是在模糊的相似度度量里打转。这个思路对做neural operator和PDE求解的朋友们其实很有启发：我们是不是也可以思考，在科学计算任务里，什么样的“...",
-    "papers": [
-      {
-        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
-        "url": "https://arxiv.org/abs/2608.25518",
-        "arxiv_id": "2608.25518"
-      },
-      {
-        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
-        "url": "https://arxiv.org/abs/2608.27345",
-        "arxiv_id": "2608.27345"
-      },
-      {
-        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
-        "url": "https://arxiv.org/abs/2608.25593",
-        "arxiv_id": "2608.25593"
-      },
-      {
-        "title": "TTPO: Test-Time Policy Optimization",
-        "url": "https://arxiv.org/abs/2608.27448",
-        "arxiv_id": "2608.27448"
-      },
-      {
-        "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
-        "url": "https://arxiv.org/abs/2608.27456",
-        "arxiv_id": "2608.27456"
-      }
-    ],
-    "published_at": "2026-08-29T03:50:59.903371Z"
   }
 ]
