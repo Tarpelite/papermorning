@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-29</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-29</h1>
+    <p class="date">2026-09-29</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-29.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，又到了 Paper Morning 的时间。
+
+今天想先从一个我们每天都在面对但很少系统思考的问题说起：foundation model 的数据准备。RayOrch 这篇工作关注的是一个很实际但很少被学术界正式建模的场景——如何高效处理foundation model训练中那种"父子依赖"的数据流。简单说，就是一条数据进来，可能产生多个子任务，而这些子任务之间有顺序关系，不同父任务产生的子任务数量又不一样，现有的系统要么把并行性藏得太深，要么把关系展平了让开发者自己管理。RayOrch 的贡献在于提出了一个能保持父子关系贯穿始终的编程模型和分布式执行引擎，让GPU能够跨父任务批量处理子任务，同时不丢失血缘关系和信息路由。这其实暴露了一个被长期忽视的工程问题：当我们谈论预训练的scaling时，基础设施层面数据准备的效率往往成了隐形的瓶颈，而RayOrch把它摆上了台面。
+
+说完数据准备，我们来看一个更接近模型架构的问题。FuseReg 这篇研究representation autoencoder，讲的是怎么在图像重建和生成之间找到更好的encoder层共享方案。大家知道，用预训练视觉encoder的特征来做重建和diffusion的latent，浅层特征保留像素细节更好，深层特征生成质量更高，但以前只能靠人工经验选一层或者做一个固定的融合。FuseReg的聪明之处在于，它不再纠结选哪一层，而是让模型在训练时随机采样不同的层组合，理论上这显式惩罚了对跨层信息的敏感性。效果也很显著，在多个生成指标上取得了提升。这让我想到，这其实是一种更优雅的dynamic computation路径选择思路，用数据驱动而不是人工调参来解决架构设计中的两难问题。
+
+接下来这篇很有意思，它在研究LLM的一个根本性质——线性叠加。Your Transformer Can Hold Two Thoughts at Once这篇文章提出了一个"叠加线性假设"：当来自不同文本流的输入被线性组合时，模型的输出居然是各自next-token分布的叠加。注意这可是一个高度非线性的Transformer架构产生的现象。作者进一步发现，这个性质其实是架构本身的特性，而不是训练出来的意外结果，甚至随着预训练推进反而会减弱。但好消息是，通过轻量级的微调可以显著恢复这种线性叠加能力。这个发现让我觉得它可能为未来模型编辑和知识操作提供一个新的切入点——如果我们能精确控制哪些知识可以叠加、哪些不能，可能会打开模型可解释性和可控性的新思路。
+
+然后是一个推理效率相关的工作。Disaggregated Quantization关注的是LLM推理中prefill和decode两个阶段对量化方案的不同需求。Prefill阶段希望低精度算术加速prompt处理，decode阶段则希望紧凑的权重减少内存访问。传统方法用统一的量化策略，实际上是让一个模型干两件需求不同的事。DQ的思路很直接：给两个阶段训练不同的计算格式和存储方案。在Qwen3和Gemma3上的实验表明，去除decode阶段的activation quantization能在不增加开销的情况下提升decode-heavy任务的精度，而单独训练一个NVFP4的prefill权重则能在2-3bit decode精度下大幅提升prompt处理速度。这本质上是一个针对推理工作负载做专业化定制的思路，和我们今天第一篇论文RayOrch在理念上其实是一致的——都是反对"一刀切"的做法，强调根据任务特性做细粒度优化。
+
+最后今天有一篇很直接面向科学计算的工作：利用预训练diffusion model来增强摄影测量得到的数字表面模型。简单说，就是用卫星图像通过立体摄影测量生成的3D地图往往有噪声和空洞，而激光雷达数据太贵，作者就想到用diffusion model同时以摄影测量的DSM和Pléiades影像为条件来 refinement。他们改造了Stable Diffusion 3架构，删减了text stream，加入了patch-wise归一化，使得模型能够稳定地在LiDAR数据上训练，并从自然图像迁移到高程图。实验在法国城市的测试显示，多模态条件确实能提升高程精度，尤其在密集城区的RMSE有明显下降。这让我想到，这其实是一个典型的"预训练模型降维打击"的成功案例——用大规模自然图像预训练的diffusion能力，去解决高程数据这个相对小众领域的重建问题，和我们在neural operator里看到的预训练思路是一脉相承的。
+
+今天的五篇论文看下来，有一个很清晰的共同主题浮现出来：foundation model时代的基础设施和效率优化正在被更细致地打磨。无论是数据准备的流水线、模型内部的层融合、推理阶段的量化策略，还是diffusion model跨领域的迁移应用，大家都在从"能用"走向"好用"，从粗粒度的方案走向细粒度的专业化。这可能也反映了整个领域正在从暴力scaling的粗放阶段，进入到一个更注重效率和应用深度的精细化阶段。我是 Paper Morning，明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.18703" target="_blank">RayOrch: Programming and Executing Lineage-Controlled Multi-Grain Dataflows for Foundation-Model Data Preparation</a></li>
+<li><a href="https://arxiv.org/abs/2609.31620" target="_blank">FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders</a></li>
+<li><a href="https://arxiv.org/abs/2609.29845" target="_blank">Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs</a></li>
+<li><a href="https://arxiv.org/abs/2609.26333" target="_blank">Disaggregated Quantization: Specializing LLM Prefill and Decode</a></li>
+<li><a href="https://arxiv.org/abs/2609.31199" target="_blank">Enhancing Photogrammetric Digital Surface Models with Pretrained Diffusion Models and Multimodal Conditioning</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

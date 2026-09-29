@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-09-29",
+    "title": "Paper Morning 2026-09-29",
+    "description": "今日学术播报: RayOrch: Programming and Execu, FuseReg: Regularizing Layer Fu, Your Transformer Can Hold Two ...",
+    "audio_file": "2026-09-29.mp3",
+    "script": "各位早上好，又到了 Paper Morning 的时间。\n\n今天想先从一个我们每天都在面对但很少系统思考的问题说起：foundation model 的数据准备。RayOrch 这篇工作关注的是一个很实际但很少被学术界正式建模的场景——如何高效处理foundation model训练中那种\"父子依赖\"的数据流。简单说，就是一条数据进来，可能产生多个子任务，而这些子任务之间有顺序关系，不同父任务产生的子任务数量又不一样，现有的系统要么把并行性藏得太深，要么把关系展平了让开发者自己管理。RayOrch 的贡献在于提出了一个能保持父子关系贯穿始终的编程模型和分布式执行引擎，让GPU能够跨父任务批量处理子任务，同时不丢失血缘关系和信息路由。这其实暴露了一个被长期忽视的工程问题：当我们谈论预训练的scaling时，基础设施层面数据准备的效率往往成了隐形的瓶颈，而RayOrch把它摆上了台面。\n\n说完数据准备，我们来看一个更接近模型架构的问题。FuseReg 这篇研究representation autoencoder，讲的是怎么在图像重建和生成之间找到更好的encoder层共享方案。大家知道，用...",
+    "papers": [
+      {
+        "title": "RayOrch: Programming and Executing Lineage-Controlled Multi-Grain Dataflows for Foundation-Model Data Preparation",
+        "url": "https://arxiv.org/abs/2609.18703",
+        "arxiv_id": "2609.18703"
+      },
+      {
+        "title": "FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders",
+        "url": "https://arxiv.org/abs/2609.31620",
+        "arxiv_id": "2609.31620"
+      },
+      {
+        "title": "Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs",
+        "url": "https://arxiv.org/abs/2609.29845",
+        "arxiv_id": "2609.29845"
+      },
+      {
+        "title": "Disaggregated Quantization: Specializing LLM Prefill and Decode",
+        "url": "https://arxiv.org/abs/2609.26333",
+        "arxiv_id": "2609.26333"
+      },
+      {
+        "title": "Enhancing Photogrammetric Digital Surface Models with Pretrained Diffusion Models and Multimodal Conditioning",
+        "url": "https://arxiv.org/abs/2609.31199",
+        "arxiv_id": "2609.31199"
+      }
+    ],
+    "published_at": "2026-09-29T02:13:07.064407Z"
+  },
+  {
     "date": "2026-09-28",
     "title": "Paper Morning 2026-09-28",
     "description": "今日学术播报: Training Object Permanence in , HappyWorld-Bench, Your Transformer Can Hold Two ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-08-31T00:48:44.271316Z"
-  },
-  {
-    "date": "2026-08-30",
-    "title": "Paper Morning 2026-08-30",
-    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...",
-    "audio_file": "2026-08-30.mp3",
-    "script": "各位早上好，今天是周末，Paper Morning准时开播。\n\n最近AI领域有一个很明显的趋势，就是大家对“世界模型”的关注度越来越高了，但真正做起来才发现困难重重。今天选的五篇论文，恰好从不同角度触及了构建世界模型面临的核心挑战。\n\n第一篇讲的是用游戏开发作为可验证的数据引擎。我们都知道训练世界模型需要大量数据，现在的思路是爬取更多视频、用更多算力。但这篇论文指出这样效率不高，因为空间生成领域还缺少像代码那样的“执行反馈”——你用CLIP分数来评估生成质量，这些信号太模糊了，而且无法为强化学习提供可靠的奖励信号。代码为什么能训出强大的code agent？因为编译器可以给出确定性的对错反馈。游戏引擎正好提供了类似的环境：场景是引擎生成的，引擎当然知道什么是对的、什么是错的，所以可以作为可验证的数据引擎来支撑世界模型的训练。这思路很直接，但确实点出了一个关键瓶颈：没有可执行的反馈信号，RL post-training就无从谈起。\n\n那么接下来一个问题就是，我们现在训出来的世界模型，到底能做到什么程度？第二篇论文就针对这个问题做了一个系统性的评估。他们提出一个概念叫“概率对齐”——物理世...",
-    "papers": [
-      {
-        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
-        "url": "https://arxiv.org/abs/2608.25518",
-        "arxiv_id": "2608.25518"
-      },
-      {
-        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
-        "url": "https://arxiv.org/abs/2608.27345",
-        "arxiv_id": "2608.27345"
-      },
-      {
-        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
-        "url": "https://arxiv.org/abs/2608.25593",
-        "arxiv_id": "2608.25593"
-      },
-      {
-        "title": "TTPO: Test-Time Policy Optimization",
-        "url": "https://arxiv.org/abs/2608.27448",
-        "arxiv_id": "2608.27448"
-      },
-      {
-        "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
-        "url": "https://arxiv.org/abs/2608.27456",
-        "arxiv_id": "2608.27456"
-      }
-    ],
-    "published_at": "2026-08-30T00:36:53.521511Z"
   }
 ]
