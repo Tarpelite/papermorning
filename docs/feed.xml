@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-09-30</title>
+      <description>今日学术播报: VisionHOPE: Visual Backbones a, Groupwise Agentic Grading and , How Far Are We from Removing t...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-30.mp3" length="5416795" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-09-30.mp3</guid>
+      <pubDate>2026-09-30T01:27:25.776109Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-09-29</title>
       <description>今日学术播报: RayOrch: Programming and Execu, FuseReg: Regularizing Layer Fu, Your Transformer Can Hold Two ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-29.mp3" length="9471208" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-01.mp3" length="8238019" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-01.mp3</guid>
       <pubDate>2026-09-01T01:24:09.420815Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-08-31</title>
-      <description>今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , JIT-Agent: Scaling Harness Int...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-08-31.mp3" length="9329520" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-08-31.mp3</guid>
-      <pubDate>2026-08-31T00:48:44.271316Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-09-30</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-09-30</h1>
+    <p class="date">2026-09-30</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-09-30.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+先聊聊两篇视觉领域的工作。VisionHOPE提出了第一个将视觉骨干网络建模为自修改学习系统的框架，简单说就是让模型在处理每张图像时同时“记住”什么和“学习”什么，这两个过程协同演化。在AI4S的视角下，这让我想到我们一直在追求的物理先验嵌入——与其预设规则，不如让模型学会自适应地构建内部表示。另一篇关于无编码器多模态大语言模型Scaling Laws的论文则回答了一个很实际的问题：去掉视觉编码器后，模型应该如何分配计算资源？答案是算力分配需要向更大的模型倾斜，而这种权衡在文本任务上影响不大，但在多模态任务上，无编码器方案在小规模时明显落后，但随规模增大而改善。这对科学计算很有启发——我们在构建PDE基础模型时，是否也应该更勇敢地简化架构，让模型从原始数据中学习真正的物理规律？
+
+再来看强化学习与代码智能体的研究。GAGAR提出了对代码智能体强化学习的改进，它不再只关注测试是否通过，而是引入智能体评审员来评估代码质量差异，从而给出更细粒度的学习信号。这和我们在科学计算中设计损失函数的思路其实一脉相承——不能只要求“答案对了”，还要追求“方法优雅”。RL的核心问题是信用分配，GAGAR的洞见在于把这个问题从单条轨迹扩展到整个组，让组内比较成为学习信号，这个思路也许能为物理模拟的强化学习提供参考。
+
+最后两篇论文都涉及知识复用的新范式。Recursive Harness Distillation把强大智能体的经验蒸馏成“剧本”，让轻量级智能体也能复用干预知识，这本质上是一种不更新模型参数的知识迁移。这种“可组合的知识表示”让我想到神经算子的追求——我们也想提取与网格分辨率无关的物理规律，而SINO正好回应了这个问题。SINO提出尺度不变的神经算子，解决的是PDE求解中的闭包问题——粗网格丢失的信息如何建模。传统方法容易让模型记住网格特定的模式，SINO的方案是通过双分支架构在频谱域和空间域同时操作，让模型学习与尺度无关的物理规律。这和VisionHOPE的自适应思想形成了有趣的对照：一个让视觉模型自适应输入，一个让物理模型自适应尺度。
+
+今天聊的这些论文其实都指向同一个趋势：让模型学会“如何学习”比预设规则更重要。无论是VisionHOPE的共演化记忆、SINO的尺度不变性、GAGAR的比较学习，还是无编码器架构的端到端训练，都在打破固定表征的束缚。这或许预示着AI4S的下一个阶段——不仅学习物理规律，还要学习如何在不同任务和尺度上灵活运用这些规律。好了，明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.33325" target="_blank">VisionHOPE: Visual Backbones as Self-Modifying Learning Systems</a></li>
+<li><a href="https://arxiv.org/abs/2609.32577" target="_blank">Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL</a></li>
+<li><a href="https://arxiv.org/abs/2609.35457" target="_blank">How Far Are We from Removing the Visual Encoder? Scaling Laws for Encoder-Free Multimodal Pretraining</a></li>
+<li><a href="https://arxiv.org/abs/2609.33378" target="_blank">Recursive Harness Distillation across Agents for Robot Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2609.36890v1" target="_blank">SINO: Scale-Invariant Neural Operator</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
