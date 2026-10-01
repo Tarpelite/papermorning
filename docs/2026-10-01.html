@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-01</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-01</h1>
+    <p class="date">2026-10-01</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-01.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先聊一个我们领域之外，但可能正在悄悄塑造整个AI基础设施格局的话题——大模型推理效率与Agent架构的最新进展。这些工作虽然不直接针对科学计算，但它们解决的正是我们AI4S工作者每天都要面对的问题：如何更高效地跑模型、如何让模型更好地替我们管理复杂任务。
+
+先来看第一篇，Omni-IO Skills，讲的是怎么让现有的Agent获得多模态能力。作者的核心思路是，不去改动模型本身，而是构建一个“工具腰带”——通过层次化的Skill定义、标准化的多模态执行接口、依赖感知的编排和持久化的资产注册，让Agent能够调用各种工具处理文本、图像、音频、视频、3D资产和代码。这其实回应了一个很现实的问题：我们训练一个Foundation Model要花巨大成本，但想让它多会一种能力就得重新训练。现在作者告诉你，可以不训练，用工具链来补。这种“模型+工具”的组合策略，其实在我们科学计算领域早就被采用了——比如用Python调用外部求解器、用现成的可视化库。但这里有意思的是，他们把这种组合做成了可声明、可编排的框架，叫Declare Execution Graphs。对于我们构建AI4S平台来说，这个思路值得借鉴：与其追求一个全能模型，不如设计好工具生态和调度层，让多个专用模型协同工作。
+
+接下来这篇非常有意思，Periodic Weak Points，讲的是KV-cache压缩引入的相位敏感性问题。大家知道，现在长上下文推理一个很大的瓶颈就是KV-cache的内存和计算成本。Chunked KV-cache是一种压缩策略，它把连续窗口的token压缩成更少的缓存条目。但作者发现了一个反直觉的现象：同一个信息，在不同的“相位”，也就是相对于压缩窗口边界的位置，检索难度可以差到40个百分点。换句话说，模型在某些位置有周期性的弱點，但平均分数往往掩盖了这个问题。这个发现对我们意味着什么？它提醒我们，优化不能只看avg指标，要关注worst-case。特别是在科学计算中，如果我们在关键位置（比如相场演化的某个特定时刻）总是出错，那平均性能再好也没用。更进一步，这种相位敏感性的发现，可能会催生新的缓存策略或者位置编码设计，这是值得我们关注的。
+
+第三篇关于Same-Family On-Policy Distillation的Scaling Properties，非常契合我们之前讨论过的话题——RL到底能不能教会模型推理。作者研究了在weak-to-strong、same-base、strong-to-weak三种设置下，RL蒸馏的Scaling规律。他们发现了一个有趣的“有用转移” regime：学生的“gold score”大约和token级别的reverse KL散度的平方根呈线性关系。而且，在所有weak-to-strong的配对中，学生的峰值表现都超过了老师。这意味着什么？一个更小、更专业的RL模型可以把能力转移给更大的模型，而且青出于蓝。这个发现如果成立，对我们构建科学计算的专家系统很有启发：也许我们不需要一开始就训练一个巨大的通用模型，而是可以用一个小的、精心微调的expert，通过蒸馏和RL把它的高级推理能力“注入”到更大的模型中去。这其实有点像是科学计算中“降维求解”的思想——在低维空间找到好的解，然后提升到高维。
+
+第四篇，LLMs are General Asynchronous Agents，关注的是一个我们领域也很关心的问题：Agent如何处理现实世界中“非顺序”的任务。现在的LLM Agent基本都是“读-想-回-工具-重复”的顺序循环，但很多场景——语音助手、具身Agent、监控系统——都是新输入随时到来，而模型正在“思考”或执行其他任务。作者提出了一个异步LLM框架，允许用户或Agent自己定义具有重叠记忆状态的推理协程。这本质上是在解决并发问题。对于我们科学计算来说，这很有启发：我们能不能让一个模型在求解PDE的同时，异步地接收新的观测数据、调整边界条件？这种异步推理能力可能是实现真正的“在线学习”和“实时仿真”的关键。
+
+最后一篇，Beyond Dyadic Memory，讲的是多方会话中的长期记忆问题。作者提出了VoxPolyMem，一个交互感知的多模态记忆框架，结合了增量说话人识别和记忆层次结构。这篇工作看起来是偏多模态对话的，但它提出的“把检索建模为序贯决策”的思路很有意思——Agent根据累积的证据不断改写查询、选择检索工具和记忆层次。对于我们构建科学Agent来说，这种主动的、迭代的检索策略可能比一次性的向量检索更接近人类科学家的思考方式：先有个假设，然后根据中间结果调整检索策略。
+
+好，今天的论文都聊完了。我有一个整体的观察：这五篇论文虽然topic分散，但都指向同一个趋势——我们在从“追求更大的模型”转向“构建更高效的协作系统”。无论是通过工具链补齐多模态能力、通过相位感知的缓存优化解决长上下文效率、还是通过异步框架处理并发任务，本质上都是在回答一个现实问题：怎么让有限的算力发挥最大的科学计算价值。这对我们AI4S领域的启示是：也许不必执着于训练更大的Foundation Model，而是在推理效率、工具生态、协作范式这些“基础设施”上多下功夫——这些可能是决定我们能否真正实现“AI辅助科学发现”的关键短板。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.31847" target="_blank">Omni-IO Skills: Harnessing Your Agent Omni-Native</a></li>
+<li><a href="https://arxiv.org/abs/2609.36322" target="_blank">Periodic Weak Spots: Phase Sensitivity from Chunked KV-Cache Compression</a></li>
+<li><a href="https://arxiv.org/abs/2609.32722" target="_blank">Scaling Properties of Same-Family On-Policy Distillation</a></li>
+<li><a href="https://arxiv.org/abs/2609.35427" target="_blank">LLMs are General Asynchronous Agents</a></li>
+<li><a href="https://arxiv.org/abs/2609.32522" target="_blank">Beyond Dyadic Memory: Interaction-Aware Multimodal Memory with Adaptive Agentic Retrieval for Multi-Party Spoken Conversations</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

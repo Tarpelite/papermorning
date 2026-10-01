@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-01",
+    "title": "Paper Morning 2026-10-01",
+    "description": "今日学术播报: Omni-IO Skills: Harnessing You, Periodic Weak Spots: Phase Sen, Scaling Properties of Same-Fam...",
+    "audio_file": "2026-10-01.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先聊一个我们领域之外，但可能正在悄悄塑造整个AI基础设施格局的话题——大模型推理效率与Agent架构的最新进展。这些工作虽然不直接针对科学计算，但它们解决的正是我们AI4S工作者每天都要面对的问题：如何更高效地跑模型、如何让模型更好地替我们管理复杂任务。\n\n先来看第一篇，Omni-IO Skills，讲的是怎么让现有的Agent获得多模态能力。作者的核心思路是，不去改动模型本身，而是构建一个“工具腰带”——通过层次化的Skill定义、标准化的多模态执行接口、依赖感知的编排和持久化的资产注册，让Agent能够调用各种工具处理文本、图像、音频、视频、3D资产和代码。这其实回应了一个很现实的问题：我们训练一个Foundation Model要花巨大成本，但想让它多会一种能力就得重新训练。现在作者告诉你，可以不训练，用工具链来补。这种“模型+工具”的组合策略，其实在我们科学计算领域早就被采用了——比如用Python调用外部求解器、用现成的可视化库。但这里有意思的是，他们把这种组合做成了可声明、可编排的框架，叫Declare Exe...",
+    "papers": [
+      {
+        "title": "Omni-IO Skills: Harnessing Your Agent Omni-Native",
+        "url": "https://arxiv.org/abs/2609.31847",
+        "arxiv_id": "2609.31847"
+      },
+      {
+        "title": "Periodic Weak Spots: Phase Sensitivity from Chunked KV-Cache Compression",
+        "url": "https://arxiv.org/abs/2609.36322",
+        "arxiv_id": "2609.36322"
+      },
+      {
+        "title": "Scaling Properties of Same-Family On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2609.32722",
+        "arxiv_id": "2609.32722"
+      },
+      {
+        "title": "LLMs are General Asynchronous Agents",
+        "url": "https://arxiv.org/abs/2609.35427",
+        "arxiv_id": "2609.35427"
+      },
+      {
+        "title": "Beyond Dyadic Memory: Interaction-Aware Multimodal Memory with Adaptive Agentic Retrieval for Multi-Party Spoken Conversations",
+        "url": "https://arxiv.org/abs/2609.32522",
+        "arxiv_id": "2609.32522"
+      }
+    ],
+    "published_at": "2026-10-01T01:28:17.416694Z"
+  },
+  {
     "date": "2026-09-30",
     "title": "Paper Morning 2026-09-30",
     "description": "今日学术播报: VisionHOPE: Visual Backbones a, Groupwise Agentic Grading and , How Far Are We from Removing t...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-02T00:28:06.230034Z"
-  },
-  {
-    "date": "2026-09-01",
-    "title": "Paper Morning 2026-09-01",
-    "description": "今日学术播报: Agentic Game Development as a , PAWBench: How Far Are We from , GameWAM: A World Action Model ...",
-    "audio_file": "2026-09-01.mp3",
-    "script": "各位早上好，今天Paper Morning开播了。\n\n最近AI领域有股热潮，大家都在谈world model，但很多讨论其实停留在“生成一段视频”这个层面。我们今天聊的几篇论文，恰好从不同角度戳破了一些幻觉。\n\n第一篇说了一个很根本的问题：现在训练world model都想着堆更多视频数据、堆更多算力，但作者认为这条路走不通，因为缺了一个关键东西——可验证的reward signal。他们拿code agents做类比，说代码为什么能训出来？因为代码是可执行的，编译器能告诉模型写对了还是写错了，这是高质量的反馈。但空间生成呢？大家还在用CLIP score这种模糊的、带有偏见的信号，完全撑不起RL post-training。游戏开发刚好能补上这个缺口，因为游戏引擎本身就是可执行的世界规格，引擎可以直接告诉模型这一步走对了没有。这篇文章的思路我觉得很值得AI4S的人想想——我们做PDE求解、做物理模拟，其实也是在构建可执行的世界规格，有没有可能也从中提炼出reward signal来反哺模型训练？\n\n那么下一个问题来了，即使有了数据，怎么才算训出了一个好的world model？第二篇...",
-    "papers": [
-      {
-        "title": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models",
-        "url": "https://arxiv.org/abs/2608.25518",
-        "arxiv_id": "2608.25518"
-      },
-      {
-        "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
-        "url": "https://arxiv.org/abs/2608.27345",
-        "arxiv_id": "2608.27345"
-      },
-      {
-        "title": "GameWAM: A World Action Model for Video Games",
-        "url": "https://arxiv.org/abs/2608.26200",
-        "arxiv_id": "2608.26200"
-      },
-      {
-        "title": "LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering",
-        "url": "https://arxiv.org/abs/2608.28281",
-        "arxiv_id": "2608.28281"
-      },
-      {
-        "title": "Agentic Artifact Creation: Systems, Evaluation, Principles, and Opportunities",
-        "url": "https://arxiv.org/abs/2608.28122",
-        "arxiv_id": "2608.28122"
-      }
-    ],
-    "published_at": "2026-09-01T01:24:09.420815Z"
   }
 ]
