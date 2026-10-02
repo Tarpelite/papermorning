@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-10-02</title>
+      <description>今日学术播报: EVOKE: Eliciting World Knowled, Rethinking Latent Visual Reaso, False Frontiers: Diagnosing an...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-10-02.mp3" length="8469986" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-10-02.mp3</guid>
+      <pubDate>2026-10-02T01:48:45.257254Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-10-01</title>
       <description>今日学术播报: Omni-IO Skills: Harnessing You, Periodic Weak Spots: Phase Sen, Scaling Properties of Same-Fam...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-10-01.mp3" length="10320083" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-03.mp3" length="9006646" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-03.mp3</guid>
       <pubDate>2026-09-03T00:34:04.287412Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-09-02</title>
-      <description>今日学术播报: DreamX-Creator: Democratizing , Lucida: Parse, Generate, and P, GenFirst: Generation Before Re...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-02.mp3" length="10412243" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-09-02.mp3</guid>
-      <pubDate>2026-09-02T00:28:06.230034Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

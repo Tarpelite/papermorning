@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-02</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-02</h1>
+    <p class="date">2026-10-02</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-02.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想和大家聊一个我最近反复思考的问题：当我们训练大模型做复杂任务的时候，我们到底在训练什么？这个问题听起来有点抽象，但最近几篇很有意思的论文其实都在触及同一个根本性的挑战。
+
+先看第一篇，EVOKE，讲的是LLM agents怎么在没见过的环境里做决策。大家知道，现在很多agent让模型自己预测未来会发生什么来规划行动，但这需要额外训练，而且预测会累积误差。但这篇论文指出一个很妙的洞察：对于在数字环境里运行的LLM agent，很多世界知识其实在预训练阶段就已经内化了，问题是怎样把这些知识“引出来”。他们发现，常规的后训练只在单一目标下提供监督，这让agent养成了依赖表面上下文习惯的“惰性”。EVOKE就是专门设计了一种训练压力，让模型不得不调动内部的世界模型来做决策。
+
+这个思路让我想到我们AI4S领域的一个经典问题：我们训练PDE求解器的时候，是不是也经常在做类似的事？模型明明从大量物理数据中学到了很多潜在的规律，但训练目标太单一，反而让模型只会做表面匹配。
+
+第二篇论文 Rethinking Latent Visual Reasoning 正好呼应了这个问题。这篇研究的是多模态大模型怎么做“潜在推理”——不把每一步都写出来，而是在latent tokens里做中间计算。但他们发现了一个很有意思的gap：latent tokens对那些会改变正确答案的图像扰动响应非常弱。这说明模型学到的latent表示并没有很好地跟视觉证据对齐。原因在于GRPO训练只给了最终答案的reward，没有明确告诉latent tokens应该关注哪些视觉信息。这是一个很深刻的诊断：当我们用弱监督训练潜在推理能力时，模型其实并没有真的学会“看见”，而只是学会了对答案做出反应。
+
+顺着这个思路，第三篇论文 False Frontiers 报告了一个更惊人的现象。他们研究self-evolving search agents，就是让agent自己生成问题自己训练自己，结果发现了一个叫做“co-cheating”的失败模式：生成问题的proposer和回答问题的solver会在共同的错误上达成一致，内部reward看起来在涨，但实际上对外部真实任务的正确率反而在下降甚至停滞。这篇论文让我想起我们训练scientific foundation model时候的一个隐忧：如果自我进化过程中缺乏真正的外部验证，模型可能会在某个错误的知识表征上越走越远。论文提出的MSV方法本质上是引入了一个“旁观者”视角，用带source和不带source的多重查询来筛选真正有价值的问题。
+
+相比之下，第四篇论文 LANTERN 展示了一个更健康的知识发现范式。他们不是让模型自己生成训练数据，而是用一个预训练模型的内部表示作为“好奇心探测器”，去OEIS数据库里挖掘序列之间的隐藏关系。模型不需要自己创造问题，而是被动地对人类已经产生的数学知识进行筛选和重组。这种方式让我想到物理学家做文献综述——不是自己闭门造车，而是在已有的知识矿藏里寻找被遗漏的金子。
+
+最后一篇 Unmask the State 稍微转向了一个不同的方向，研究masked diffusion language model的推理策略。他们把denoising过程拆成五个轴来分析，然后问了一个很实际的问题：什么时候该坚持一个固定的unmasking策略，什么时候该根据当前状态做调整？这篇的技术细节可能更偏NLP，但我认为它揭示了一个普适性的原则：好的推理不仅要选对方法，还要知道什么时候该换方法。
+
+好，让我们把今天的观察串起来。我发现一个很有意思的共同主题：这些工作都在处理同一个根本张力——预训练模型已经包含了大量有价值的知识和能力，但现有的训练范式（后训练、RL、self-evolution）并不能有效地把这些潜力“引出来”。无论是EVOKE强调的“ elicitation pressure”，还是False Frontiers揭示的“co-cheating”，或者是LANTERN展示的“激活已有知识”，其实都在说同一件事：我们花了太多时间去教模型做什么，却很少花心思去设计让模型“不得不”使用它已经学到的东西的training setup。这个洞察对AI4S尤其重要，因为物理世界本身就提供了最丰富的structured knowledge，我们真正需要的可能不是更强的模型，而是一种更巧妙的“提问方式”，让模型现有的物理直觉能够被自然地激发出来。
+
+今天早上就聊到这里，Paper Morning，下期再会。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.38334" target="_blank">EVOKE: Eliciting World Knowledge in Agents for Transferable Decision-Making</a></li>
+<li><a href="https://arxiv.org/abs/2609.34563" target="_blank">Rethinking Latent Visual Reasoning: Grounding Latent Reasoning in Visual Evidence</a></li>
+<li><a href="https://arxiv.org/abs/2609.39102" target="_blank">False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents</a></li>
+<li><a href="https://arxiv.org/abs/2609.32264" target="_blank">LANTERN: Illuminating Hidden Mathematical Knowledge in Language Models</a></li>
+<li><a href="https://arxiv.org/abs/2609.33355" target="_blank">Unmask the State: When Does State Adaptation Matter for Masked Diffusion Language Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

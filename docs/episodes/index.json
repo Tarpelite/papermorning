@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-02",
+    "title": "Paper Morning 2026-10-02",
+    "description": "今日学术播报: EVOKE: Eliciting World Knowled, Rethinking Latent Visual Reaso, False Frontiers: Diagnosing an...",
+    "audio_file": "2026-10-02.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我最近反复思考的问题：当我们训练大模型做复杂任务的时候，我们到底在训练什么？这个问题听起来有点抽象，但最近几篇很有意思的论文其实都在触及同一个根本性的挑战。\n\n先看第一篇，EVOKE，讲的是LLM agents怎么在没见过的环境里做决策。大家知道，现在很多agent让模型自己预测未来会发生什么来规划行动，但这需要额外训练，而且预测会累积误差。但这篇论文指出一个很妙的洞察：对于在数字环境里运行的LLM agent，很多世界知识其实在预训练阶段就已经内化了，问题是怎样把这些知识“引出来”。他们发现，常规的后训练只在单一目标下提供监督，这让agent养成了依赖表面上下文习惯的“惰性”。EVOKE就是专门设计了一种训练压力，让模型不得不调动内部的世界模型来做决策。\n\n这个思路让我想到我们AI4S领域的一个经典问题：我们训练PDE求解器的时候，是不是也经常在做类似的事？模型明明从大量物理数据中学到了很多潜在的规律，但训练目标太单一，反而让模型只会做表面匹配。\n\n第二篇论文 Rethinking Latent Visual...",
+    "papers": [
+      {
+        "title": "EVOKE: Eliciting World Knowledge in Agents for Transferable Decision-Making",
+        "url": "https://arxiv.org/abs/2609.38334",
+        "arxiv_id": "2609.38334"
+      },
+      {
+        "title": "Rethinking Latent Visual Reasoning: Grounding Latent Reasoning in Visual Evidence",
+        "url": "https://arxiv.org/abs/2609.34563",
+        "arxiv_id": "2609.34563"
+      },
+      {
+        "title": "False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents",
+        "url": "https://arxiv.org/abs/2609.39102",
+        "arxiv_id": "2609.39102"
+      },
+      {
+        "title": "LANTERN: Illuminating Hidden Mathematical Knowledge in Language Models",
+        "url": "https://arxiv.org/abs/2609.32264",
+        "arxiv_id": "2609.32264"
+      },
+      {
+        "title": "Unmask the State: When Does State Adaptation Matter for Masked Diffusion Language Models",
+        "url": "https://arxiv.org/abs/2609.33355",
+        "arxiv_id": "2609.33355"
+      }
+    ],
+    "published_at": "2026-10-02T01:48:45.257254Z"
+  },
+  {
     "date": "2026-10-01",
     "title": "Paper Morning 2026-10-01",
     "description": "今日学术播报: Omni-IO Skills: Harnessing You, Periodic Weak Spots: Phase Sen, Scaling Properties of Same-Fam...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-03T00:34:04.287412Z"
-  },
-  {
-    "date": "2026-09-02",
-    "title": "Paper Morning 2026-09-02",
-    "description": "今日学术播报: DreamX-Creator: Democratizing , Lucida: Parse, Generate, and P, GenFirst: Generation Before Re...",
-    "audio_file": "2026-09-02.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。今天是周三，我来和大家聊聊本周学术界有意思的几个新进展。\n\n先看一篇关于音视频联合生成的工作。DreamX-Creator提出了一个70亿参数的原生音视频生成模型，能够在2K分辨率下根据首帧图像和文本提示同时生成视频和音频流。这件事有意思的地方在于，它不是先生成视频再单独合成音频，而是让两个模态在模型内部联合去噪。关键创新是Gated Cross-Modal Attention机制，通过门控机制在网络后半程对跨模态注意力进行动态调制。我觉得这个设计很巧妙，因为它承认了一个基本事实：音视频之间的相关性是选择性的，不是所有帧都需要跨模态信息流动，用门控来控制这种流动比简单拼接要优雅。不过我们也要问一句，这对科学计算意味着什么？音视频生成和PDE求解看起来风马牛不相及，但联合去噪的思想其实和物理模拟中多物理场耦合求解异曲同工。不同模态之间的信息流动什么时候该强、什么时候该弱，这正是科学计算中耦合问题最难处理的地方。一个7B模型能在这种耦合机制上学到什么东西，值得我们关注。\n\n第二篇是Lucida，做的是从真实场景到仿真环境的场景重建。它把...",
-    "papers": [
-      {
-        "title": "DreamX-Creator: Democratizing Native Audio-Video Generation at 2K Resolution",
-        "url": "https://arxiv.org/abs/2608.31106",
-        "arxiv_id": "2608.31106"
-      },
-      {
-        "title": "Lucida: Parse, Generate, and Place for Composable Real-to-Sim Scene Modeling",
-        "url": "https://arxiv.org/abs/2608.30821",
-        "arxiv_id": "2608.30821"
-      },
-      {
-        "title": "GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling",
-        "url": "https://arxiv.org/abs/2608.29335",
-        "arxiv_id": "2608.29335"
-      },
-      {
-        "title": "Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement",
-        "url": "https://arxiv.org/abs/2608.31046",
-        "arxiv_id": "2608.31046"
-      },
-      {
-        "title": "LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering",
-        "url": "https://arxiv.org/abs/2608.28281",
-        "arxiv_id": "2608.28281"
-      }
-    ],
-    "published_at": "2026-09-02T00:28:06.230034Z"
   }
 ]
