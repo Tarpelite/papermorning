@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-03",
+    "title": "Paper Morning 2026-10-03",
+    "description": "今日学术播报: E-MoE: Enhanced Mixture-of-Exp, On-Policy or Off-Policy Learni, OneStreamer: Unifying Percepti...",
+    "audio_file": "2026-10-03.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察说起，最近我们看到 diffusion model 的研究正在往两个很有意思的方向分化，一个是在语言生成任务上追求更少的采样步数，另一个是在物理决策任务上借用去噪的思想来解决组合优化问题。刚好今天有几篇论文可以从这个线索串起来聊一聊。\n\n先看第一篇 E-MoE，它研究的是如何改进 masked diffusion model 的采样质量。我们知道 masked diffusion 通过逐步 unmask token 来生成序列，但传统方法的 reverse 过程是位置独立的，这就导致在 few-step 采样时效果不够好。这篇工作引入了 mixture-of-experts 的思想，用离散的共享 latent 作为 routing 决策的基础，构建了一个非因子化的 reverse 过程。听起来是不是有点眼熟？这其实有点像是把离散 VAE 的思想塞进了 diffusion 框架，试图在不增加 active parameters 的情况下捕获跨位置的依赖关系。不过我比较好奇的是，这个方法在 posterior co...",
+    "papers": [
+      {
+        "title": "E-MoE: Enhanced Mixture-of-Experts for Non-Factorized Diffusion Language Models",
+        "url": "https://arxiv.org/abs/2609.37533",
+        "arxiv_id": "2609.37533"
+      },
+      {
+        "title": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
+        "url": "https://arxiv.org/abs/2609.35259",
+        "arxiv_id": "2609.35259"
+      },
+      {
+        "title": "OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction",
+        "url": "https://arxiv.org/abs/2610.01762",
+        "arxiv_id": "2610.01762"
+      },
+      {
+        "title": "Decentralized Master-Mind: Joint Action Refinement through Iterative Intent Denoising in Multi-Agent Pathfinding",
+        "url": "https://arxiv.org/abs/2609.32019",
+        "arxiv_id": "2609.32019"
+      },
+      {
+        "title": "InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation",
+        "url": "https://arxiv.org/abs/2610.02196",
+        "arxiv_id": "2610.02196"
+      }
+    ],
+    "published_at": "2026-10-03T01:20:26.515281Z"
+  },
+  {
     "date": "2026-10-02",
     "title": "Paper Morning 2026-10-02",
     "description": "今日学术播报: EVOKE: Eliciting World Knowled, Rethinking Latent Visual Reaso, False Frontiers: Diagnosing an...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-04T00:19:55.707387Z"
-  },
-  {
-    "date": "2026-09-03",
-    "title": "Paper Morning 2026-09-03",
-    "description": "今日学术播报: Qwen-Drive-1.0: An Initial Ste, H3-World: Turning Language Und, SMELT: Scaling Laws for Comput...",
-    "audio_file": "2026-09-03.mp3",
-    "script": "各位早上好，今天Paper Morning来聊聊最近arXiv上几篇有意思的工作。\n\n先看Qwen-Drive-1.0，这是阿里把视觉语言模型做进自动驾驶的尝试。核心思路很直接：用预训练的VLM做基座，然后外挂一个BEV感知头和规划模块。BEV头同时做3D检测、语义占用和地图分割，规划头直接输出自车轨迹。这里有个设计我很欣赏：BEV头不只是输出结果，它本质上是一个探针，用来探测VLM的shared representation里到底学到了多少3D信息。这种inspectable interface的思路，其实在我们AI4S里也很重要——你要知道模型学到了什么，而不是只关心输出对不对。VLM在自动驾驶里火了一年多了，但大多数工作还停留在感知阶段，Qwen-Drive-1.0这一步迈到了planning，说明基础模型的推理能力确实在往更下游任务渗透。\n\n再看H3-World，这个工作很有趣。它把一个33B的视频生成模型MiniMax-H3变成了可交互的世界模型。关键洞察是：现在的视频生成模型已经能通过自然语言指令控制角色行为和相机运动了，但它只能做粗粒度控制。H3-World的做法是把动作...",
-    "papers": [
-      {
-        "title": "Qwen-Drive-1.0: An Initial Step towards a Vision-Language Foundation Model for Autonomous Driving",
-        "url": "https://arxiv.org/abs/2609.00111",
-        "arxiv_id": "2609.00111"
-      },
-      {
-        "title": "H3-World: Turning Language Understanding into World Control",
-        "url": "https://arxiv.org/abs/2609.01560",
-        "arxiv_id": "2609.01560"
-      },
-      {
-        "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
-        "url": "https://arxiv.org/abs/2609.01343",
-        "arxiv_id": "2609.01343"
-      },
-      {
-        "title": "UI-Venus-2 Technical Report",
-        "url": "https://arxiv.org/abs/2609.00028",
-        "arxiv_id": "2609.00028"
-      },
-      {
-        "title": "StudentSim: Training LLM-based Student Simulators",
-        "url": "https://arxiv.org/abs/2609.01591",
-        "arxiv_id": "2609.01591"
-      }
-    ],
-    "published_at": "2026-09-03T00:34:04.287412Z"
   }
 ]

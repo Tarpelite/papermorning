@@ -1,0 +1,15 @@
+各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个观察说起，最近我们看到 diffusion model 的研究正在往两个很有意思的方向分化，一个是在语言生成任务上追求更少的采样步数，另一个是在物理决策任务上借用去噪的思想来解决组合优化问题。刚好今天有几篇论文可以从这个线索串起来聊一聊。
+
+先看第一篇 E-MoE，它研究的是如何改进 masked diffusion model 的采样质量。我们知道 masked diffusion 通过逐步 unmask token 来生成序列，但传统方法的 reverse 过程是位置独立的，这就导致在 few-step 采样时效果不够好。这篇工作引入了 mixture-of-experts 的思想，用离散的共享 latent 作为 routing 决策的基础，构建了一个非因子化的 reverse 过程。听起来是不是有点眼熟？这其实有点像是把离散 VAE 的思想塞进了 diffusion 框架，试图在不增加 active parameters 的情况下捕获跨位置的依赖关系。不过我比较好奇的是，这个方法在 posterior collapse 问题上是否真的比之前的 continuous latent 方法更有优势，论文没有太展开说。
+
+接下来这篇 On-Policy or Off-Policy Learning 就更有意思了，它是一个关于模型蒸馏的系统性研究。作者们想回答一个问题：在做知识蒸馏的时候，用 on-policy 的 rollout 还是 off-policy 的数据真的有本质区别吗？他们通过控制变量实验发现，rollout policy 本身并没有大家之前想的那么关键，反而是 token-level KL 散度的方向对结果影响更明显。这个结论其实挺反直觉的，因为我们通常觉得 rollout 的分布差异会严重影响学习。这篇工作的价值在于把很多混在一起的因素剥离开，让我们看到了蒸馏过程中真正起作用的机制。对我们做 AI4S 的人来说，这个洞察其实可以迁移到科学数据的预训练场景——我们在做 operator learning 时采集的 rollout 数据是否真的比静态数据集好？可能也需要类似的控制变量实验才能说清楚。
+
+然后这篇 OneStreamer 是做 streaming video 的，核心贡献是提出了一个 Proactive Hierarchical Caption Memory 机制，让模型可以在实时感知的同时构建可复用的factual memory。这里面的关键思想是：不要等任务来了再去找相关信息，而是主动把看到的东西记录下来。这个设计思路我觉得非常有启发性，尤其是在科学计算场景里，我们其实经常面对类似的问题——比如在 PDE 求解时，模型需要记住历史时刻的信息来做长期预测，或者在分子动力学模拟里需要记住之前几步的构象变化。这种 proactive memory 的思想或许可以借鉴到物理模拟的 state representation 里面。
+
+第四篇 Decentralized Master-Mind 解决的问题很有趣：多智能体路径规划中，每个智能体单独采样动作时可能是合理的，但组合起来就可能冲突。作者借鉴 diffusion model 的 denoising 思想，提出了迭代式的 action intent refinement 过程。这其实是一个很有洞察的类比——diffusion model 通过逐步去噪从噪声恢复信号，他们用类似的思想让多个智能体通过多轮通信来逐步消除动作之间的冲突。我之前说过 diffusion 的思想正在渗透到物理决策领域，这篇就是一个很好的例子。
+
+最后这篇 InterEvolve 关注的是机器人在测试时的 evolution 问题。简单说就是让一个已经训练好的机器人控制器，在不重新训练的情况下，通过自身的尝试来学会新任务。核心思路是构建一个 object-aware 的 forward-backward behavioral foundation model，用它来作为 planning 和 control 之间的接口。这里面的关键洞察是：一个足够 broad 的控制器已经包含了解决新任务所需的大部分能力，关键是找到一个足够表达力又可测量的接口来激活这些能力。这个思想其实和我们现在讨论的 foundation model 非常呼应——不只是预训练一个模型，更关键的是设计好它的使用方式。
+
+好了，今天的播报就到这里。我最近的一个整体观察是：diffusion model 的核心思想——从噪声逐步去噪恢复结构——正在从图像生成这个老家往外扩散，已经渗透到了语言生成、多智能体协作、甚至机器人控制这些领域。这种思想迁移其实呼应了我们 AI4S 领域一直在讨论的话题：如何用迭代优化的框架来处理结构化的科学计算问题。也许未来我们会在 PDE 求解、分子设计这些核心 AI4S 任务上看到更多 diffusion 思想的创造性应用。早安各位。

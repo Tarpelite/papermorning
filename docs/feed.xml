@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-10-03</title>
+      <description>今日学术播报: E-MoE: Enhanced Mixture-of-Exp, On-Policy or Off-Policy Learni, OneStreamer: Unifying Percepti...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-10-03.mp3" length="8333941" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-10-03.mp3</guid>
+      <pubDate>2026-10-03T01:20:26.515281Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-10-02</title>
       <description>今日学术播报: EVOKE: Eliciting World Knowled, Rethinking Latent Visual Reaso, False Frontiers: Diagnosing an...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-10-02.mp3" length="8469986" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-04.mp3" length="7270653" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-04.mp3</guid>
       <pubDate>2026-09-04T00:19:55.707387Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-09-03</title>
-      <description>今日学术播报: Qwen-Drive-1.0: An Initial Ste, H3-World: Turning Language Und, SMELT: Scaling Laws for Comput...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-03.mp3" length="9006646" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-09-03.mp3</guid>
-      <pubDate>2026-09-03T00:34:04.287412Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
