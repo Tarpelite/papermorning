@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-04</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-04</h1>
+    <p class="date">2026-10-04</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-04.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和各位见面了。
+
+今天想先从一篇有意思的论文聊起。你们有没有觉得，现在diffusion model在语言生成上势头很猛，但仔细一看，它在真正需要跟自回归模型拼速度的few-step regime，也就是少步生成场景下，质量和效率往往不能兼得。E-MoE这篇工作就在解决这个问题。它核心的洞察是，传统的masked diffusion model在做反向过程的时候，是对每个位置独立建模的，这样就丢失了序列内部的位置关联。而它提出的方案很有意思，用MoE的路由机制来管理一个离散的共享隐变量，在不增加活跃参数的情况下，让模型能够在生成早期就捕捉到跨位置的依赖关系。从方法上讲，它把reverse process构建成一个混合分布， Expert routing decision给这个过程带来了非因式分解的能力。这篇工作让我想到科学计算里我们一直在意的operator learning——本质上也是在处理跨位置、跨时间的依赖关系，只是这里处理的是token序列，而不是物理场。
+
+说完diffusion，我们来看看机器人控制领域最近的一个趋势。InterEvolve这篇论文研究的是人形机器人的test-time evolution。什么意思呢？它不是让机器人从零开始学习一个新任务，而是让已有的controller通过重新组合自己已经掌握的技能来解决从未训练过的任务。这里面的关键在于设计一个接口，既要足够表达丰富，能够指定contact-rich的多阶段交互，又要可执行、可测量，这样执行反馈才能指导规划。它用了一个object-aware forward-backward behavioral foundation model，通过object residuals来把新任务的需求映射到已有的技能组合上。这让我特别感兴趣的是，这个思路和现在大语言模型里的test-time compute scaling其实是一脉相承的——不是靠更多的预训练计算，而是靠测试时的推理策略来扩展能力。只是在这里，推理策略变成了物理世界中的技能重组。
+
+接下来这篇论文名字很有意思，叫Decentralized Master-Mind，Master-Mind原来是一种密码猜测游戏的名字。它研究的是多智能体路径规划中的协同问题。你们可能知道，当多个智能体各自从自己的策略里采样动作时，即使每个智能体的选择单独看都是有效的，组合起来也可能产生冲突。DMM的解决方案很巧妙，它借鉴了diffusion model里denoising的思想，把一次性采样改成了多轮通信中的迭代式意图精炼。每个智能体先初始化一个粗略的行动意图，然后通过多轮信息交换逐步精炼，最后得到兼容的联合动作。这篇工作让我觉得有启发的是，它把NLP领域训练diffusion model的思路——iterative refinement——迁移到了多智能体协调问题中，而且同样是通过离散迭代而非连续过程来实现的。这种跨领域的思路迁移，往往能带来意想不到的突破。
+
+然后我们来看一篇关于transformer本身局限性的工作。Transformers Stop Thinking Too Early——这个标题本身就很有意思，它说transformer想得太少了。这篇论文发现，预训练transformer在处理长上下文时，其实只用了很少的层数来做in-context learning。比如处理24行的代码链时，模型可靠地只利用了1.4到3.6行的信息，而且即使增加预训练也改善有限。有趣的是，作者发现只需要在某个早期层插入一个很小的LoRA——rank-8就够了——就能显著扩展这个能力。比如Qwen3-8B在24行链上从15.5%的准确率提升到99%，更长的LoRA甚至能达到50行。它的机制也很有趣：这个LoRA在中间层启动了一个relay，让信息能够在链上传递得更远，而冻结的attention head则逐步读取更远的上下文。这让我想到科学计算里的一个问题：我们是不是也经常抱怨模型太小、数据不够，却没注意到可能只是没有找到正确的激活方式？
+
+最后我们聊一篇方法论层面的工作，On-Policy or Off-Policy Learning? 这是一个在蒸馏场景下被广泛讨论的问题——到底应该用on-policy的 rollout还是off-policy的数据来训练学生模型？作者们做了一件很扎实的事情：他们在Llama3和Qwen2.5上，针对科学、医学、算术等多个推理领域，做了系统的控制变量实验，单独分离出rollout policy、token-level KL方向、学习率这些因素。结果发现一个挺意外的现象：rollout policy的影响其实没有那么大，反而是token-level KL的方向——也就是从老师到学生，还是学生到老师——对模型行为的影响更清晰。这个发现之所以重要，是因为它提醒我们，在做方法论研究的时候，有很多看似直观的假设，实际上可能经不起严格的检验。
+
+今天的五篇论文看下来，有一个共同的主题呼之欲出：如何更聪明地激活和使用我们已经拥有的能力，而不是一味追求更大的模型、更多的数据。E-MoE通过MoE路由在不增加计算的情况下激活更多参数，InterEvolve通过test-time adaptation重组已有技能，LoRA通过少量参数激活冻结模型的深层表示，蒸馏研究则告诉我们知识传递的路径可能比我们想象的更微妙。这些工作都在指向同一个方向：也许制约我们进步的不是模型容量本身，而是我们激活它的方式。今天的观察就到这里，我们明天再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.37533" target="_blank">E-MoE: Enhanced Mixture-of-Experts for Non-Factorized Diffusion Language Models</a></li>
+<li><a href="https://arxiv.org/abs/2610.02196" target="_blank">InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2609.32019" target="_blank">Decentralized Master-Mind: Joint Action Refinement through Iterative Intent Denoising in Multi-Agent Pathfinding</a></li>
+<li><a href="https://arxiv.org/abs/2609.36585" target="_blank">Transformers Stop Thinking Too Early, and a Tiny LoRA Fixes It</a></li>
+<li><a href="https://arxiv.org/abs/2609.35259" target="_blank">On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

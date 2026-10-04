@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-10-04</title>
+      <description>今日学术播报: E-MoE: Enhanced Mixture-of-Exp, InterEvolve: Test-Time Evoluti, Decentralized Master-Mind: Joi...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-10-04.mp3" length="10032318" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-10-04.mp3</guid>
+      <pubDate>2026-10-04T01:54:08.725690Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-10-03</title>
       <description>今日学术播报: E-MoE: Enhanced Mixture-of-Exp, On-Policy or Off-Policy Learni, OneStreamer: Unifying Percepti...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-10-03.mp3" length="8333941" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-05.mp3" length="11167704" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-05.mp3</guid>
       <pubDate>2026-09-05T00:24:22.896720Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-09-04</title>
-      <description>今日学术播报: SolarWM: Open Data and Scalabl, HarnessDev: Can LLMs Create an, Aspire: Can Models Self-Evolve...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-04.mp3" length="7270653" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-09-04.mp3</guid>
-      <pubDate>2026-09-04T00:19:55.707387Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>

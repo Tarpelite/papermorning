@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-04",
+    "title": "Paper Morning 2026-10-04",
+    "description": "今日学术播报: E-MoE: Enhanced Mixture-of-Exp, InterEvolve: Test-Time Evoluti, Decentralized Master-Mind: Joi...",
+    "audio_file": "2026-10-04.mp3",
+    "script": "各位早上好，Paper Morning又和各位见面了。\n\n今天想先从一篇有意思的论文聊起。你们有没有觉得，现在diffusion model在语言生成上势头很猛，但仔细一看，它在真正需要跟自回归模型拼速度的few-step regime，也就是少步生成场景下，质量和效率往往不能兼得。E-MoE这篇工作就在解决这个问题。它核心的洞察是，传统的masked diffusion model在做反向过程的时候，是对每个位置独立建模的，这样就丢失了序列内部的位置关联。而它提出的方案很有意思，用MoE的路由机制来管理一个离散的共享隐变量，在不增加活跃参数的情况下，让模型能够在生成早期就捕捉到跨位置的依赖关系。从方法上讲，它把reverse process构建成一个混合分布， Expert routing decision给这个过程带来了非因式分解的能力。这篇工作让我想到科学计算里我们一直在意的operator learning——本质上也是在处理跨位置、跨时间的依赖关系，只是这里处理的是token序列，而不是物理场。\n\n说完diffusion，我们来看看机器人控制领域最近的一个趋势。InterEv...",
+    "papers": [
+      {
+        "title": "E-MoE: Enhanced Mixture-of-Experts for Non-Factorized Diffusion Language Models",
+        "url": "https://arxiv.org/abs/2609.37533",
+        "arxiv_id": "2609.37533"
+      },
+      {
+        "title": "InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation",
+        "url": "https://arxiv.org/abs/2610.02196",
+        "arxiv_id": "2610.02196"
+      },
+      {
+        "title": "Decentralized Master-Mind: Joint Action Refinement through Iterative Intent Denoising in Multi-Agent Pathfinding",
+        "url": "https://arxiv.org/abs/2609.32019",
+        "arxiv_id": "2609.32019"
+      },
+      {
+        "title": "Transformers Stop Thinking Too Early, and a Tiny LoRA Fixes It",
+        "url": "https://arxiv.org/abs/2609.36585",
+        "arxiv_id": "2609.36585"
+      },
+      {
+        "title": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
+        "url": "https://arxiv.org/abs/2609.35259",
+        "arxiv_id": "2609.35259"
+      }
+    ],
+    "published_at": "2026-10-04T01:54:08.725690Z"
+  },
+  {
     "date": "2026-10-03",
     "title": "Paper Morning 2026-10-03",
     "description": "今日学术播报: E-MoE: Enhanced Mixture-of-Exp, On-Policy or Off-Policy Learni, OneStreamer: Unifying Percepti...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-05T00:24:22.896720Z"
-  },
-  {
-    "date": "2026-09-04",
-    "title": "Paper Morning 2026-09-04",
-    "description": "今日学术播报: SolarWM: Open Data and Scalabl, HarnessDev: Can LLMs Create an, Aspire: Can Models Self-Evolve...",
-    "audio_file": "2026-09-04.mp3",
-    "script": "各位早上好，今天周五，Paper Morning又和大家见面了。\n\n先说一篇很有意思的工作，SolarWM，做视频世界模型的。现在世界模型火得不行，但真正能打的开源方案很少。这篇工作最让我觉得实在的地方，是他们把数据pipeline和模型架构解耦了。你知道现在训练一个视频生成模型，数据来源五花八门，时间尺度、相机几何、视觉质量、运动模式都不一样，直接混在一起训效果肯定拉跨。SolarWM搞了一个可配置的多源数据引擎，把来自10个数据集的143万clip统一成了标准化的帧级标注。这个思路其实很像我们做科学计算数据清洗时的规范化流程，只是他们把它产品化了。 backbone-native adaptation framework也很关键，让不同架构的视频生成器都能复用这套数据。我觉得这件事的真正意义在于，它为世界模型的规模化训练扫清了工程障碍。过去我们老说缺数据、缺算力，但数据质量参差不齐、训练流程不稳定这些问题，往往比缺数据更致命。SolarWM至少在工程层面给出了解法。\n\n说完世界模型，再看一篇关于agent基础设施的工作，Repo-To-Skill。这个工作提出的问题我觉得特别本质：...",
-    "papers": [
-      {
-        "title": "SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models",
-        "url": "https://arxiv.org/abs/2609.02886",
-        "arxiv_id": "2609.02886"
-      },
-      {
-        "title": "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?",
-        "url": "https://arxiv.org/abs/2609.01437",
-        "arxiv_id": "2609.01437"
-      },
-      {
-        "title": "Aspire: Can Models Self-Evolve from Vague Goals?",
-        "url": "https://arxiv.org/abs/2608.31111",
-        "arxiv_id": "2608.31111"
-      },
-      {
-        "title": "Repo-To-Skill: Distilling GitHub Repositories Into AI4AI Skills",
-        "url": "https://arxiv.org/abs/2609.02749",
-        "arxiv_id": "2609.02749"
-      },
-      {
-        "title": "EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction",
-        "url": "https://arxiv.org/abs/2609.02783",
-        "arxiv_id": "2609.02783"
-      }
-    ],
-    "published_at": "2026-09-04T00:19:55.707387Z"
   }
 ]
