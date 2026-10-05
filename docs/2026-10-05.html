@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-05</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-05</h1>
+    <p class="date">2026-10-05</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-05.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先从一个现象说起，不知道大家注意到没有，这两年diffusion model已经从图像生成这个"舒适区"走出来，渗透到越来越多看似不相关的领域。而这种渗透往往伴随着方法论的迁移和创新。今天的几篇论文恰好都反映了这种趋势。
+
+先来看第一篇，E-MoE，它试图解决一个很实际的问题：masked diffusion model在生成的时候，虽然可以并行处理多个token，但在few-step的快速生成场景下，质量往往不如自回归模型。根本原因在于它的reverse process是逐位置factorized的，没有捕捉到token之间的依赖关系。这篇工作提出了一个很巧妙的思路：用MoE的routing决策来构建一个离散的共享隐变量，然后在这个隐变量上做mixture of factorized distributions。这样既保留了并行生成的速度优势，又通过离散的latent capture了位置之间的关联。我觉得这个设计挺优雅的，它避免了之前continuous Gaussian latent容易出现的posterior collapse问题。
+
+第二篇也很有趣，DMM做的是多智能体路径规划。它发现一个很隐蔽的问题：当多个智能体各自从自己的策略分布里采样时，即使每个智能体的决策都是合理的，最终组合出来的joint action却可能产生冲突。这就像是一群各自走最优路径的人，结果在路口撞在一起了。作者借鉴diffusion model的去噪思想，把一次性的采样改成了多轮迭代的intent denoising过程，让智能体之间能够通过通信逐步协调出兼容的联合动作。这个思路让我想到，其实在科学计算里我们也会遇到类似的问题，比如多物理场耦合时各个子系统的解要满足一致的interface条件，这种迭代协调的思想或许能给我们一些启发。
+
+第三篇InterEvolve关注的是一个我很感兴趣的命题：机器人在测试时的进化。它想做到的是，给定一个已经训练好的控制器，不重新训练，就能让它解决从未见过的新任务。核心思路是找到一个足够expressive的interface来连接planning和control，让execution feedback能够指导planning的改进。他们构建了一个object-aware的behavioral foundation model，通过object residuals来桥接新旧任务。这个方向其实和现在foundation model的test-time scaling趋势是一致的——不只是模型大更有用，模型在测试时能持续adapt可能更重要。
+
+第四篇是video generation的survey，关注的是post-training和alignment。这个领域比图像生成更复杂，因为时间维度会带来error accumulation，还有motion-appearance coupling的问题。我觉得作者们提出来的一个观点值得关注：视频生成的对齐不仅是要follow human intent，还要满足物理和安全的约束。这其实和我们做物理仿真时对conservation law的要求是类似的——不是简单的loss function，而是必须满足的硬约束。
+
+最后一篇很有意思，它揭示了一个反直觉的现象：pretrained transformer在处理长链式推理时，其实只用了很少的几层就完成了主要的信息传递，后面的层基本上在做重复工作。作者通过一个很轻量的rank-8 LoRA就显著提升了模型处理长上下文的能力，从15.5%提升到99%。这个发现让我觉得，它其实揭示了当前transformer架构在长程信息传递上的一个结构性问题，而一个小小的LoRA就能修复，说明模型本身具备这个潜力，只是原始设计没有很好地激发出来。
+
+好，让我们回到整体观察。今天这几篇论文有一个共同的线索：无论是diffusion model的跨领域迁移，还是test-time的adaptation，或者是对模型推理过程的重新审视，大家都在关注同一个命题——如何在已有的模型能力基础上，通过更巧妙的使用方式释放更多潜力。这和我们在科学计算里追求的其实很像：不仅是训练更大的模型，更是怎么让现有的计算资源在推理时发挥更大价值。好的以上就是今天的Paper Morning，我们明天再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2609.37533" target="_blank">E-MoE: Enhanced Mixture-of-Experts for Non-Factorized Diffusion Language Models</a></li>
+<li><a href="https://arxiv.org/abs/2609.32019" target="_blank">Decentralized Master-Mind: Joint Action Refinement through Iterative Intent Denoising in Multi-Agent Pathfinding</a></li>
+<li><a href="https://arxiv.org/abs/2610.02196" target="_blank">InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation</a></li>
+<li><a href="https://arxiv.org/abs/2610.00812" target="_blank">Video Generation Models: A Survey of Post-Training and Alignment</a></li>
+<li><a href="https://arxiv.org/abs/2609.36585" target="_blank">Transformers Stop Thinking Too Early, and a Tiny LoRA Fixes It</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
