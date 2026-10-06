@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-06",
+    "title": "Paper Morning 2026-10-06",
+    "description": "今日学术播报: Spatial Memory Intelligence: E, HelixWorld: A Real-time Intera, RealCompanion: Benchmarking Hu...",
+    "audio_file": "2026-10-06.mp3",
+    "script": "各位早上好，今天Paper Morning来聊聊几篇有意思的世界模型论文。\n\n先说第一篇，Spatial Memory Intelligence，说的是给世界模型装上一个“理解驱动”的记忆管理系统。现在长视频生成和世界模型很火，但时间一长，记忆序列就变得非常复杂，怎么管理这种长程空间上下文就成了难题。这篇文章提出用多模态大语言模型来做“理解模型”，让模型自己判断哪些记忆值得保留、哪些可以遗忘。我觉得这个思路很关键，它不是简单地把所有历史都存下来，而是让模型具备“推理什么重要”的能力，这和我们做PDE求解时处理长期依赖问题的思路其实是一致的。\n\n接下来这篇HelixWorld就更有意思了，它给世界模型加上了声音。现在大多数交互式世界模型都是“哑巴”，只看画面。但真实世界的声音和视觉是共同演化的，比如你推着一个箱子走，箱子滚动的声音和它移动的轨迹是天然绑定的。这篇文章构建了一个带空间音频的数据集，然后做双向师生蒸馏，实现低延迟的视听世界模型。想想看，以后具身智能的模拟，不光要有视觉，还要能“听见”物理交互的声音，这对于真实感的提升是质变的。\n\n然后第三篇RealCompanion非常特别，...",
+    "papers": [
+      {
+        "title": "Spatial Memory Intelligence: Endowing World Models with Understanding-Driven Long-Term Memory",
+        "url": "https://arxiv.org/abs/2610.02521",
+        "arxiv_id": "2610.02521"
+      },
+      {
+        "title": "HelixWorld: A Real-time Interactive Audio-Visual World Model",
+        "url": "https://arxiv.org/abs/2609.38123",
+        "arxiv_id": "2609.38123"
+      },
+      {
+        "title": "RealCompanion: Benchmarking Human Understanding from Reasoning over Longitudinal Real-World Conversations",
+        "url": "https://arxiv.org/abs/2610.01780",
+        "arxiv_id": "2610.01780"
+      },
+      {
+        "title": "Latent-MOPD: Latent Multi-Teacher On-Policy Distillation",
+        "url": "https://arxiv.org/abs/2610.02381",
+        "arxiv_id": "2610.02381"
+      },
+      {
+        "title": "World Action Modeling with Progressive Visual Planning",
+        "url": "https://arxiv.org/abs/2610.02508",
+        "arxiv_id": "2610.02508"
+      }
+    ],
+    "published_at": "2026-10-06T02:26:44.698574Z"
+  },
+  {
     "date": "2026-10-05",
     "title": "Paper Morning 2026-10-05",
     "description": "今日学术播报: E-MoE: Enhanced Mixture-of-Exp, Decentralized Master-Mind: Joi, InterEvolve: Test-Time Evoluti...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-07T00:15:14.258155Z"
-  },
-  {
-    "date": "2026-09-06",
-    "title": "Paper Morning 2026-09-06",
-    "description": "今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...",
-    "audio_file": "2026-09-06.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我最近反复思考的问题：当我们把AI系统做得越来越强大的时候，怎么才能不让它们变成“吞金兽”？这个看似工程的问题，其实正在变成科学问题的核心。我们今天聊的几篇论文，表面上主题分散，但实际上都指向同一个趋势——怎么让昂贵的计算变得可以承受，甚至变得更聪明。\n\n先看第一篇，RoboTok。它做的事情是解决机器人学习的数据瓶颈问题。大家知道训练一个灵巧的机器人策略需要大量人类演示，但真人演示数据既贵又难覆盖真实场景的长尾分布。RoboTok的思路很直接：互联网上有海量的 Manipulation视频，能不能从中检索出有用的演示？它的核心贡献是学习了一个latent motion space，把3D手部轨迹表示在以演员为中心的参考系里。这样一来，不管摄像头视角怎么变、场景外观怎么变，甚至操作者被遮挡了，都能找到行为相似的演示用于训练。这篇工作让我想到一个问题：我们以前总觉得机器人数据必须自己采集，但互联网本身就是一个巨大的数据引擎，只是我们以前不知道怎么有效地“蒸馏”出有用的部分。\n\n接下来这篇Compile by Tr...",
-    "papers": [
-      {
-        "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
-        "url": "https://arxiv.org/abs/2609.03199",
-        "arxiv_id": "2609.03199"
-      },
-      {
-        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
-        "url": "https://arxiv.org/abs/2609.04199",
-        "arxiv_id": "2609.04199"
-      },
-      {
-        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
-        "url": "https://arxiv.org/abs/2608.26730",
-        "arxiv_id": "2608.26730"
-      },
-      {
-        "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
-        "url": "https://arxiv.org/abs/2609.04196",
-        "arxiv_id": "2609.04196"
-      },
-      {
-        "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
-        "url": "https://arxiv.org/abs/2609.03430",
-        "arxiv_id": "2609.03430"
-      }
-    ],
-    "published_at": "2026-09-06T00:11:41.258987Z"
   }
 ]
