@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-07",
+    "title": "Paper Morning 2026-10-07",
+    "description": "今日学术播报: In-Distribution Forcing for Lo, Data Unlearning via Inverse Di, LMBuild: Evaluating LLM Agents...",
+    "audio_file": "2026-10-07.mp3",
+    "script": "各位早上好，今天Paper Morning开播。\n\n我想先从一个观察说起。这几年我们看到foundation model从NLP、CV火到了科学计算领域，很多人都在问：预训练范式到底能给科学问题带来什么？今天的几篇论文刚好从不同角度回答了这个问题。\n\n先看遥感方向的进展。GeoSET提出了第一个通用的SAR到EO图像转换foundation model。我们知道SAR和EO是两种非常不同的观测手段，SAR是主动微波，EO是可见光或红外，传统方法往往针对特定传感器、特定分辨率训练一个模型。但GeoSET用了超过三百万对高质量数据，涵盖多种传感器和分辨率，训练了一个统一的“通用翻译器”。这让我想到NLP里GPT的做法——大数据、大模型、统一框架。遥感数据的多样性其实比自然图像更复杂，能在这种条件下学到跨传感器、跨分辨率的通用表征，背后的思路值得思考：它是怎么处理speckle噪声这种SAR特有的问题的？pretrain阶段用的图像生成器又是怎么和SAR encoder结合的？这些问题对其他科学领域的跨模态学习很有借鉴意义。\n\n不过，模型能力强了之后，我们还得问一句：它对所有数据都一视同仁吗...",
+    "papers": [
+      {
+        "title": "In-Distribution Forcing for Long Video Generation at Test Time",
+        "url": "https://arxiv.org/abs/2610.03120",
+        "arxiv_id": "2610.03120"
+      },
+      {
+        "title": "Data Unlearning via Inverse Distillation",
+        "url": "https://arxiv.org/abs/2609.36099",
+        "arxiv_id": "2609.36099"
+      },
+      {
+        "title": "LMBuild: Evaluating LLM Agents for Generating Buildable and Functional Structures",
+        "url": "https://arxiv.org/abs/2610.04292",
+        "arxiv_id": "2610.04292"
+      },
+      {
+        "title": "FairRSFM: A Biome-Aware Benchmark and Debiasing Framework for Remote Sensing Foundation Models",
+        "url": "https://arxiv.org/abs/2610.05790",
+        "arxiv_id": "2610.05790"
+      },
+      {
+        "title": "GeoSET: Generalist Foundation Model for SAR-to-EO Image Translation",
+        "url": "https://arxiv.org/abs/2609.37496",
+        "arxiv_id": "2609.37496"
+      }
+    ],
+    "published_at": "2026-10-07T01:45:42.976228Z"
+  },
+  {
     "date": "2026-10-06",
     "title": "Paper Morning 2026-10-06",
     "description": "今日学术播报: Spatial Memory Intelligence: E, HelixWorld: A Real-time Intera, RealCompanion: Benchmarking Hu...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-08T00:39:32.472215Z"
-  },
-  {
-    "date": "2026-09-07",
-    "title": "Paper Morning 2026-09-07",
-    "description": "今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...",
-    "audio_file": "2026-09-07.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊一个我最近反复思考的问题：我们做科学计算的人，往往关注的是模型精度、收敛速度、是否满足物理定律，但有没有可能，我们其实忽视了一个同样根本的问题——当这些模型变大、推理变长的时候，我们怎么更聪明地管理它的计算资源？这也是我今天选这几篇论文的切入点。\n\n先来看一篇挺有意思的工作，Compile by Training。它做的事情用一句话说，就是把一段自然语言描述的功能需求，直接“编译”成一个可运行的神经函数。听起来是不是有点像我们做neural operator的思路？把一个输入输出关系学出来，但这里输入不是网格点，而是一段文本规范。这个工作的关键创新在于它的两阶段设计：用大模型作为“教师”在编译时生成任务相关的例子，然后用这些例子去训练一个小的适配器，这个适配器运行时就完全不需要教师模型了，可以独立部署、版本控制、像普通软件一样组合使用。这让我想到一件事，我们做PDE求解器的时候，经常面临精度和效率的取舍，有时不得不为每个新任务重新调用大模型，延迟和成本都很高。如果能把这些“推理能力”蒸馏到一个轻量级的执行器里，是不...",
-    "papers": [
-      {
-        "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
-        "url": "https://arxiv.org/abs/2609.03199",
-        "arxiv_id": "2609.03199"
-      },
-      {
-        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
-        "url": "https://arxiv.org/abs/2609.04199",
-        "arxiv_id": "2609.04199"
-      },
-      {
-        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
-        "url": "https://arxiv.org/abs/2608.26730",
-        "arxiv_id": "2608.26730"
-      },
-      {
-        "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
-        "url": "https://arxiv.org/abs/2609.04196",
-        "arxiv_id": "2609.04196"
-      },
-      {
-        "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
-        "url": "https://arxiv.org/abs/2609.03430",
-        "arxiv_id": "2609.03430"
-      }
-    ],
-    "published_at": "2026-09-07T00:15:14.258155Z"
   }
 ]

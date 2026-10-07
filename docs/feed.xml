@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-10-07</title>
+      <description>今日学术播报: In-Distribution Forcing for Lo, Data Unlearning via Inverse Di, LMBuild: Evaluating LLM Agents...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-10-07.mp3" length="5681990" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-10-07.mp3</guid>
+      <pubDate>2026-10-07T01:45:42.976228Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-10-06</title>
       <description>今日学术播报: Spatial Memory Intelligence: E, HelixWorld: A Real-time Intera, RealCompanion: Benchmarking Hu...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-10-06.mp3" length="6468171" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-08.mp3" length="9054293" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-08.mp3</guid>
       <pubDate>2026-09-08T00:39:32.472215Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-09-07</title>
-      <description>今日学术播报: RoboTok: An Internet-Scale Dat, Compile by Training: Turning N, Knowing When Not to Reuse: Con...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-07.mp3" length="8703208" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-09-07.mp3</guid>
-      <pubDate>2026-09-07T00:15:14.258155Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
