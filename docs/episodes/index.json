@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-08",
+    "title": "Paper Morning 2026-10-08",
+    "description": "今日学术播报: CheckerBench: Can Long-Horizon, Adaptive Latent Capacity for W, RLHND: Video Foundation Models...",
+    "audio_file": "2026-10-08.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先和大家聊一个观察，就是最近AI for Science这个领域正在发生一个微妙的变化：以前我们总盯着PDE求解、分子模拟这些“纯科学”问题，但越来越多的研究者开始把目光投向一个更根本的挑战——如何让AI理解物理世界本身。这不，今天带来的几篇论文虽然各自切入角度不同，但都指向同一个方向：物理智能。\n\n第一篇是CheckerBench，做的是静态分析检查器的合成。这个工作很有意思，它构建了一个包含300个任务的大规模benchmark，核心考察的是AI agent能否从零开始为一个真实的代码仓库编写一个可工作的缺陷检查器。作者们收集了297个CVE漏洞，跨越167个代码仓库、85个CWE类型、五种语言生态。这个工作的价值不在于检查器本身，而在于它暴露了当前AI agent在长程推理、工具使用和迭代修正方面的能力边界。我们做科学计算的人经常讨论tool use和agentic workflow，但这篇工作提醒我们，AI在科学推理中需要的可能不只是调用API，而是对“缺陷是什么”这件事有更深的理解。\n\n接下来这篇Adaptive...",
+    "papers": [
+      {
+        "title": "CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?",
+        "url": "https://arxiv.org/abs/2610.07557",
+        "arxiv_id": "2610.07557"
+      },
+      {
+        "title": "Adaptive Latent Capacity for World Models",
+        "url": "https://arxiv.org/abs/2609.32921",
+        "arxiv_id": "2609.32921"
+      },
+      {
+        "title": "RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning",
+        "url": "https://arxiv.org/abs/2610.09455",
+        "arxiv_id": "2610.09455"
+      },
+      {
+        "title": "Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models",
+        "url": "https://arxiv.org/abs/2610.00864",
+        "arxiv_id": "2610.00864"
+      },
+      {
+        "title": "Magic-W0: A Structured World-Action Foundation Model for Physical Intelligence",
+        "url": "https://arxiv.org/abs/2609.39870",
+        "arxiv_id": "2609.39870"
+      }
+    ],
+    "published_at": "2026-10-08T02:14:15.958735Z"
+  },
+  {
     "date": "2026-10-07",
     "title": "Paper Morning 2026-10-07",
     "description": "今日学术播报: In-Distribution Forcing for Lo, Data Unlearning via Inverse Di, LMBuild: Evaluating LLM Agents...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-09T00:32:24.380902Z"
-  },
-  {
-    "date": "2026-09-08",
-    "title": "Paper Morning 2026-09-08",
-    "description": "今日学术播报: Bilevel Coordinated Reflection, Iris: Climbing to the Search F, RoboTok: An Internet-Scale Dat...",
-    "audio_file": "2026-09-08.mp3",
-    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个观察说起。大家有没有感觉到，最近我们聊AI的时候，单模型能力的提升当然重要，但一个更底层的问题正在浮出水面：怎么把多个模型、多个模块、甚至多个智能体有效地组合在一起，让它们协同工作？这个问题在工业界可能叫Agent编排，在学术圈则涉及到协调机制、训练范式和数据构建等多个层面。今天的几篇论文恰好从不同角度触及了这个方向，我们来逐一看看。\n\n第一篇叫Bilevel Coordinated Reflection，讲的是多智能体LLM系统的博弈理论分析。作者把orchestrator和worker之间的交互建模成一个双层协调博弈，这个视角我觉得很有意思。以前我们聊多智能体协作，多半是经验性地设计prompt、设计工作流，但这篇文章试图给出一个理论框架，告诉我们协调质量是有上界的，而这个上界取决于任务分解的质量。这个理论洞察对于我们设计多智能体系统有直接的指导意义——与其在反思机制上花太多心思，不如先把任务分解这一步做好。\n\n顺着这个思路，第二篇Iris就很有意思了，它做的是搜索智能体的训练。我们知道，让LLM学会使用搜索工...",
-    "papers": [
-      {
-        "title": "Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems",
-        "url": "https://arxiv.org/abs/2609.02750",
-        "arxiv_id": "2609.02750"
-      },
-      {
-        "title": "Iris: Climbing to the Search Frontier",
-        "url": "https://arxiv.org/abs/2609.04304",
-        "arxiv_id": "2609.04304"
-      },
-      {
-        "title": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
-        "url": "https://arxiv.org/abs/2609.03199",
-        "arxiv_id": "2609.03199"
-      },
-      {
-        "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
-        "url": "https://arxiv.org/abs/2609.04199",
-        "arxiv_id": "2609.04199"
-      },
-      {
-        "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
-        "url": "https://arxiv.org/abs/2608.26730",
-        "arxiv_id": "2608.26730"
-      }
-    ],
-    "published_at": "2026-09-08T00:39:32.472215Z"
   }
 ]

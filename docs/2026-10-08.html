@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-08</h1>
+    <p class="date">2026-10-08</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-08.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想先和大家聊一个观察，就是最近AI for Science这个领域正在发生一个微妙的变化：以前我们总盯着PDE求解、分子模拟这些“纯科学”问题，但越来越多的研究者开始把目光投向一个更根本的挑战——如何让AI理解物理世界本身。这不，今天带来的几篇论文虽然各自切入角度不同，但都指向同一个方向：物理智能。
+
+第一篇是CheckerBench，做的是静态分析检查器的合成。这个工作很有意思，它构建了一个包含300个任务的大规模benchmark，核心考察的是AI agent能否从零开始为一个真实的代码仓库编写一个可工作的缺陷检查器。作者们收集了297个CVE漏洞，跨越167个代码仓库、85个CWE类型、五种语言生态。这个工作的价值不在于检查器本身，而在于它暴露了当前AI agent在长程推理、工具使用和迭代修正方面的能力边界。我们做科学计算的人经常讨论tool use和agentic workflow，但这篇工作提醒我们，AI在科学推理中需要的可能不只是调用API，而是对“缺陷是什么”这件事有更深的理解。
+
+接下来这篇Adaptive Latent Capacity for World Models很有意思。作者提出了一种叫ALeWM的方法，用联合嵌入预测架构来学习在紧凑的latent前缀中集中预测信息。听起来很技术，但我更关注它背后的动机：它试图回答一个问题——当我们训练一个世界模型时，latent空间的哪些维度真正重要？这实际上是一个关于表示学习效率的问题。我们在做PDE求解器或者科学基础模型时，经常被告诉要增加参数、扩大数据规模，但这篇工作提醒我们，可能更重要的是弄清楚模型到底在学什么、在哪里学。它提出的MixSIGReg正则化方法，通过对不同坐标施加不同的信息保留压力，引导模型自发地组织起“预测重要”的维度在前、信息冗余的在后。这种思路和我们做operator learning时思考的“哪些特征真正决定解的行为”是一脉相承的。
+
+然后这篇RLHND关注的是手部追踪。但它的切入点很特别：之前的手部追踪方法都是从cropped帧回归pose，缺乏对物体交互和触觉信息的物理建模。RLHND的创新在于把预训练的Cosmos 3视频扩散模型改造成了一个确定性的特征提取器，然后联合估计手部姿态和触觉信息。等等，这和我们做科学计算的人有什么关系？我认为关键在于“物理先验的迁移”。Cosmos学到了丰富的物理动力学先验，RLHND把这些先验“蒸馏”到手部追踪任务中。这其实正是我们想要的：foundation model学到的物理世界知识，能否被提取出来用到我们关心的科学问题上？虽然这篇工作在机器人领域，但它验证了一条路径——从通用视觉模型到物理智能任务的迁移是可行的。
+
+第四篇Kinematic MeanFlow研究的是机器人基础模型中的一步动作生成。MeanFlow是一个很有前景的框架，但它直接应用会出现性能崩溃。作者分析发现，问题在于RFM的velocity field有两个独特现象：早期局部加速度稳定，但快结束时急剧飙升；另一个是样本间的速度幅度分布在去噪过程中逐渐发散。这篇工作的贡献在于引入运动学identity，把时间导数项解耦出来，从而实现稳定的一步生成。这篇工作方法论上很扎实，但它提出的问题值得深思：当我们在科学计算中训练生成模型时，是否也会遇到类似的训练动力学期末端不稳定性？我们是不是也需要引入一些物理约束来保证数值稳定？
+
+最后这篇Magic-W0我特别想多聊几句。它提出了一个结构化的世界-动作基础模型，核心创新是把交互表示为“结构化世界转换”——包含当前状态、转换和未来状态。当前状态结合视觉语言和3D几何，转换用3D运动描述动作引起的三维变化，未来状态用语义描述任务相关变化。这个设计很巧妙，它不再让模型去隐式地学习物理规律，而是显式地把“状态-动作-下一状态”这个因果链条结构化了。我们做PDE求解的时候，也在讨论要不要把物理先验嵌入模型、嵌入多少，Magic-W0给了一个很好的范例：不是把物理写成loss里的正则项，而是让模型的表示本身就和物理结构对齐。
+
+好了，今天的播报接近尾声。我有一个整体观察想分享给大家：今天的论文虽然来自不同子领域，但从方法论上看，它们都在回答同一个问题——如何在模型容量增长的同时，让它更有效地利用和表达物理知识。无论是latent前缀的自组织、预训练先验的提取、还是结构化的世界表示，都在指向一个趋势：AI for Science的下一步，可能不在于更大的模型，而在于更聪明的表示。物理智能不是多装几个物理引擎，而是让模型自己学会用物理的方式思考。今天的Paper Morning就到这里，我们明天见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2610.07557" target="_blank">CheckerBench: Can Long-Horizon Agents Synthesize Static-Analysis Checkers?</a></li>
+<li><a href="https://arxiv.org/abs/2609.32921" target="_blank">Adaptive Latent Capacity for World Models</a></li>
+<li><a href="https://arxiv.org/abs/2610.09455" target="_blank">RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning</a></li>
+<li><a href="https://arxiv.org/abs/2610.00864" target="_blank">Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models</a></li>
+<li><a href="https://arxiv.org/abs/2609.39870" target="_blank">Magic-W0: A Structured World-Action Foundation Model for Physical Intelligence</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
