@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-09",
+    "title": "Paper Morning 2026-10-09",
+    "description": "今日学术播报: UniWAM: Unified World-Action M, Self-Retrospection Distillatio, Tetris3D: 3D Scene Generation ...",
+    "audio_file": "2026-10-09.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想先从一个更大的话题聊起。我们都知道，这两年AI for Science里有个很热门的方向叫foundation model，从Neural Operator到PDE求解器，大家都在讨论预训练范式能不能迁移到科学计算。但今天我看到的几篇论文，反而让我觉得有一个被忽视的维度正在浮出水面，那就是：如何让AI模型真正理解物理世界的时间和空间结构。这事儿不只关乎机器人，也关乎我们怎么构建更可靠的科学模型。\n\n先看第一篇，UniWAM，标题叫统一世界-动作模型。这篇文章试图解决的问题，我觉得正好戳中了很多做物理模拟的人的痛点：现在的视觉-语言-动作模型，往往只能从纯文字或者纯视觉的监督信号里学习，但它缺了一种对物理世界动态的直觉。而反过来，那些做世界模型的研究，虽然能从视频生成里学到时空先验，却在语义理解和推理上很弱。作者的做法是把物理推理器、世界生成器和动作预测器三者合一，让它们互相制约、互相增强。我看到这儿的时候在想，这不就是我们一直想要的PDE求解器和神经网络结合的那个影子吗？以前我们老说物理信息神经网络是在“约束”网络，但真正...",
+    "papers": [
+      {
+        "title": "UniWAM: Unified World-Action Model",
+        "url": "https://arxiv.org/abs/2610.02054",
+        "arxiv_id": "2610.02054"
+      },
+      {
+        "title": "Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight",
+        "url": "https://arxiv.org/abs/2610.08077",
+        "arxiv_id": "2610.08077"
+      },
+      {
+        "title": "Tetris3D: 3D Scene Generation With Objects That Fit Together",
+        "url": "https://arxiv.org/abs/2610.10539",
+        "arxiv_id": "2610.10539"
+      },
+      {
+        "title": "RunningTab: Direct Workspace Interaction with Environment-Side Tabs",
+        "url": "https://arxiv.org/abs/2610.10444",
+        "arxiv_id": "2610.10444"
+      },
+      {
+        "title": "Internalizing Agent Experience into Diffusion Model Weights via On-Policy Context Distillation",
+        "url": "https://arxiv.org/abs/2610.07250",
+        "arxiv_id": "2610.07250"
+      }
+    ],
+    "published_at": "2026-10-09T02:27:47.697097Z"
+  },
+  {
     "date": "2026-10-08",
     "title": "Paper Morning 2026-10-08",
     "description": "今日学术播报: CheckerBench: Can Long-Horizon, Adaptive Latent Capacity for W, RLHND: Video Foundation Models...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-10T00:29:35.754324Z"
-  },
-  {
-    "date": "2026-09-09",
-    "title": "Paper Morning 2026-09-09",
-    "description": "今日学术播报: Unlocking Lossless Speedups in, FlowBalance: Verifier-Grounded, Dr. Claw: An AI Scientist Work...",
-    "audio_file": "2026-09-09.mp3",
-    "script": "各位早上好，今天周三，Paper Morning开播。\n\n先聊一篇很有意思的论文，它试图解决大语言模型生成速度的老大难问题。大家都知道了，自回归生成是LLM成功的基石，但它的顺序性也导致了推理成本居高不下。有没有办法既保留next-token prediction的优点，又能实现并行生成呢？这篇《Unlocking Lossless Speedups in LLMs via Discrete Diffusion》提出了一个很巧妙的思路：他们不追求用diffusion完全替代自回归，而是让diffusion作为“加速器”从已经训练好的自回归模型中采样多个token。作者把模型参数分成两部分，一部分是保持不变的自回归权重，用标准next-token预测训练，另一部分是轻量级的扩散权重，专门负责一次生成多个token。关键在于这个 Diffusion Distillation 过程，它几乎不增加训练开销，却能实现无损加速。这让我想到，这可能是未来大模型推理优化的一条中间路线——不必完全推翻自回归架构，而是在其基础上做增量的效率提升。\n\n说完生成加速，我们来看看模型自我提升这个更根本的问题。这...",
-    "papers": [
-      {
-        "title": "Unlocking Lossless Speedups in LLMs via Discrete Diffusion",
-        "url": "https://arxiv.org/abs/2609.04010",
-        "arxiv_id": "2609.04010"
-      },
-      {
-        "title": "FlowBalance: Verifier-Grounded Self-Improvement from On-Policy Reasoning Experience",
-        "url": "https://arxiv.org/abs/2609.03241",
-        "arxiv_id": "2609.03241"
-      },
-      {
-        "title": "Dr. Claw: An AI Scientist Workspace for Vibe Research",
-        "url": "https://arxiv.org/abs/2609.00365",
-        "arxiv_id": "2609.00365"
-      },
-      {
-        "title": "Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems",
-        "url": "https://arxiv.org/abs/2609.02750",
-        "arxiv_id": "2609.02750"
-      },
-      {
-        "title": "Iris: Climbing to the Search Frontier",
-        "url": "https://arxiv.org/abs/2609.04304",
-        "arxiv_id": "2609.04304"
-      }
-    ],
-    "published_at": "2026-09-09T00:32:24.380902Z"
   }
 ]

@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-10-09</title>
+      <description>今日学术播报: UniWAM: Unified World-Action M, Self-Retrospection Distillatio, Tetris3D: 3D Scene Generation ...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-10-09.mp3" length="8705715" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-10-09.mp3</guid>
+      <pubDate>2026-10-09T02:27:47.697097Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-10-08</title>
       <description>今日学术播报: CheckerBench: Can Long-Horizon, Adaptive Latent Capacity for W, RLHND: Video Foundation Models...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-10-08.mp3" length="9517601" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-10.mp3" length="10842323" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-10.mp3</guid>
       <pubDate>2026-09-10T00:29:35.754324Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-09-09</title>
-      <description>今日学术播报: Unlocking Lossless Speedups in, FlowBalance: Verifier-Grounded, Dr. Claw: An AI Scientist Work...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-09.mp3" length="8967149" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-09-09.mp3</guid>
-      <pubDate>2026-09-09T00:32:24.380902Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
