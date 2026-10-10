@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-10",
+    "title": "Paper Morning 2026-10-10",
+    "description": "今日学术播报: Multi-Agent Egocentric World M, MiMo-V2.6: Scaling Reinforceme, OuroWorld: Bringing Any 3D Wor...",
+    "audio_file": "2026-10-10.mp3",
+    "script": "各位早上好，周六的早晨，Paper Morning如约而至。\n\n今天想先和大家聊一个观察：最近AI社区出现了一个很值得注意的趋势——无论是世界模型、RL scaling，还是3D场景生成，大家都在做同一件事：让模型对世界的理解从“静态”走向“动态”，从“单点”走向“持续交互”。这个趋势其实和我们在AI4S里关心的核心问题——如何让神经网络真正理解物理世界的演化规律——是相通的。\n\n第一篇论文Multi-Agent Egocentric World Model关注的是多智能体的自我中心世界建模。传统世界模型大多针对单个智能体，但现实物理场景中往往是多个主体在共享环境中交互。这篇工作提出了ME-World框架，用去噪同步的方式生成多视角的第一人称观察。听起来像是机器人学的工作，但我觉得它回答的问题其实和PDE求解器面临的挑战类似：当多个物理过程在同一区域耦合时，如何保证各自演化的独立性和相互影响的一致性？只不过这里用diffusion来做动态预测，而我们更关心用neural operator来捕捉偏微分方程的算子结构。这两条路最后会不会走到一起，其实挺值得关注的。\n\n第二篇MiMo-V2....",
+    "papers": [
+      {
+        "title": "Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction",
+        "url": "https://arxiv.org/abs/2610.12299",
+        "arxiv_id": "2610.12299"
+      },
+      {
+        "title": "MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement",
+        "url": "https://arxiv.org/abs/2610.11959",
+        "arxiv_id": "2610.11959"
+      },
+      {
+        "title": "OuroWorld: Bringing Any 3D World Alive as Diverse, Endlessly Looping 3D Cinemagraphs",
+        "url": "https://arxiv.org/abs/2610.12461",
+        "arxiv_id": "2610.12461"
+      },
+      {
+        "title": "Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks",
+        "url": "https://arxiv.org/abs/2610.11794",
+        "arxiv_id": "2610.11794"
+      },
+      {
+        "title": "Beyond Spatio-Temporal Priors: A Generalizable Approach for Dense Correspondence Matching",
+        "url": "https://arxiv.org/abs/2610.12421",
+        "arxiv_id": "2610.12421"
+      }
+    ],
+    "published_at": "2026-10-10T01:54:17.273089Z"
+  },
+  {
     "date": "2026-10-09",
     "title": "Paper Morning 2026-10-09",
     "description": "今日学术播报: UniWAM: Unified World-Action M, Self-Retrospection Distillatio, Tetris3D: 3D Scene Generation ...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-11T00:25:36.699853Z"
-  },
-  {
-    "date": "2026-09-10",
-    "title": "Paper Morning 2026-09-10",
-    "description": "今日学术播报: DriveZero: End-to-End Driving , Miles v0.1: Production-Level P, Mask Forcing: Improving Autore...",
-    "audio_file": "2026-09-10.mp3",
-    "script": "各位早上好，今天周四，Paper Morning开播了。\n\n最近AI圈有个很有意思的现象：各个方向的研究者似乎都在做同一件事——让系统学会“自己教自己”，而不是完全依赖人类提供的数据或者标注。今天要聊的几篇论文，虽然 topic 看起来比较分散，有自动驾驶、有 RL 训练框架、有语音生成、有视频蒸馏，还有人机交互，但它们背后其实都贯穿着一条主线：如何在闭环环境里，让模型通过交互和反馈来获得超越人类演示的能力。\n\n先来看 DriveZero这篇工作。它做的是端到端自动驾驶，但有意思的是，作者们指出了一个很根本的问题：现在大多数端到端系统都是模仿学习，学的是人类司机的行车数据，这就意味着模型的表现永远被人类数据质量和覆盖范围所限制。DriveZero 尝试打破这个天花板，它把驾驶任务拆成感知模型和动作模型两部分来分别预训练，然后再组合成完整的 planner。这里有一个很值得我们关注的点：感知需要海量的多样化视觉数据来理解世界，而动作模型需要闭环反馈来学会与环境交互——这两者的学习范式天然就不同。作者在动作侧引入了 DriveRL，一个混合智能体的闭环强化学习框架，把真实驾驶场景的交互信号...",
-    "papers": [
-      {
-        "title": "DriveZero: End-to-End Driving Beyond Human Demonstrations",
-        "url": "https://arxiv.org/abs/2609.06055",
-        "arxiv_id": "2609.06055"
-      },
-      {
-        "title": "Miles v0.1: Production-Level Post-Training",
-        "url": "https://arxiv.org/abs/2609.08368",
-        "arxiv_id": "2609.08368"
-      },
-      {
-        "title": "Mask Forcing: Improving Autoregressive Video Diffusion Distillation via Dual-Noise Masking Rollout",
-        "url": "https://arxiv.org/abs/2609.09123",
-        "arxiv_id": "2609.09123"
-      },
-      {
-        "title": "AuK Technical Report: An Open-Source Foundational Model for Speech Generation and Editing",
-        "url": "https://arxiv.org/abs/2609.08936",
-        "arxiv_id": "2609.08936"
-      },
-      {
-        "title": "Omni Interaction Agent Technical Report",
-        "url": "https://arxiv.org/abs/2609.08977",
-        "arxiv_id": "2609.08977"
-      }
-    ],
-    "published_at": "2026-09-10T00:29:35.754324Z"
   }
 ]

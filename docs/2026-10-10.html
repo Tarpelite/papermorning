@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-10</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-10</h1>
+    <p class="date">2026-10-10</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-10.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，周六的早晨，Paper Morning如约而至。
+
+今天想先和大家聊一个观察：最近AI社区出现了一个很值得注意的趋势——无论是世界模型、RL scaling，还是3D场景生成，大家都在做同一件事：让模型对世界的理解从“静态”走向“动态”，从“单点”走向“持续交互”。这个趋势其实和我们在AI4S里关心的核心问题——如何让神经网络真正理解物理世界的演化规律——是相通的。
+
+第一篇论文Multi-Agent Egocentric World Model关注的是多智能体的自我中心世界建模。传统世界模型大多针对单个智能体，但现实物理场景中往往是多个主体在共享环境中交互。这篇工作提出了ME-World框架，用去噪同步的方式生成多视角的第一人称观察。听起来像是机器人学的工作，但我觉得它回答的问题其实和PDE求解器面临的挑战类似：当多个物理过程在同一区域耦合时，如何保证各自演化的独立性和相互影响的一致性？只不过这里用diffusion来做动态预测，而我们更关心用neural operator来捕捉偏微分方程的算子结构。这两条路最后会不会走到一起，其实挺值得关注的。
+
+第二篇MiMo-V2.6是一个把强化学习scaling做到极致的尝试。它通过扩大batch size、提高吞吐量、设计更复杂多样的环境来扩展RL训练的三个维度。这篇工作本身是纯LLM/多模态方向的，但我觉得它给AI4S社区提了一个非常尖锐的问题：我们在科学计算里谈foundation model，谈预训练，有没有认真考虑过RL这条路径？过去我们总觉得RL主要用于游戏和机器人，但现在它正在成为大模型自我提升的核心引擎。那科学计算领域呢？能不能用RL来让PDE求解器自己学会更高效的求解策略？这篇工作虽然没有直接回答，但它的Scaling思路绝对值得AI4S的研究者认真借鉴。
+
+第三篇 OuroWorld 提出了一个很有意思的问题：如何把静态的3D场景变成可以无缝循环的动态场景。它用vision-language model推断合理的动态，生成参考视频，再通过Fourier级数变形场来保证周期性。这个思路让我想起我们在做物理模拟时的时间步进问题——我们总希望找到某种不依赖时间步长的、能够捕捉本质动力学的表示。当diffusion model开始介入物理模拟时，这种“生成式”的时间演化思路，或许真能给我们带来一些启发。
+
+第四篇 Memento 3 走的是另一条路：让冻结的LLM通过外部记忆来实现持续的自我改进。它让agent维护一个自然语言规则书作为持久化的语义记忆，通过“观察-反思-修订-编译-验证”的循环不断更新对世界的理解。这个设计非常有意思，因为它实际上是在尝试构建一个可以自我修正的“世界模型”。在我们AI4S的语境里，这种思路对应的是什么？我想是自适应网格 refinement，或者更广义的、能够在推理过程中根据新数据动态调整的物理模型。传统PDE求解中，网格适应是基于误差估计的；而Memento 3展示了一种可能性：用自然语言作为中间表示，让模型自己学会什么样的调整是合理的。这种跨语言的泛化能力，可能是未来科学AI的一个关键。
+
+第五篇 FreeMatching 提出了一个非常根本的问题：传统基于时空先验的稠密对应匹配，在图像编辑和参考引导生成任务中会失效，因为它假设的是物理连续的形变，但视觉编辑恰恰可能破坏这种连续性。它的解决思路是结合生成式和语义的基础表示，用异构监督来训练。这让我想到一个我们在AI4S里经常遇到的问题：当我们训练数据来自理想化的物理仿真，但测试时面对的是真实世界的“反常”数据时，如何让模型保持鲁棒性？FreeMatching给出的答案是：用更丰富的监督信号，用更通用的表示。这和我们在构建PDE foundation model时强调的“数据多样性”和“表示泛化性”，本质上是一回事。
+
+好，总结一下今天的观察。这五篇论文看似分散，但背后有一条暗线：大家都在尝试构建更强大的“世界模型”——无论是多智能体交互、RL自我提升、3D动态场景、可反思的记忆系统，还是跨域的视觉对应。AI4S社区最近也在谈foundation model，谈operator learning，谈物理信息学习，但可能需要更主动地从这些更广义的AI进展中汲取养分。当diffusion可以做世界模型，当RL可以scaling到这种程度，当LLM可以通过规则书进行持续学习，这些方法论上的突破，会不会在未来三到五年重塑我们做科学计算的方式？我觉得这个问题的答案取决于我们是否愿意跳出自己的舒适区，去真正理解这些进展在说什么。好了，祝大家周末愉快，Paper Morning下周再见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2610.12299" target="_blank">Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2610.11959" target="_blank">MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement</a></li>
+<li><a href="https://arxiv.org/abs/2610.12461" target="_blank">OuroWorld: Bringing Any 3D World Alive as Diverse, Endlessly Looping 3D Cinemagraphs</a></li>
+<li><a href="https://arxiv.org/abs/2610.11794" target="_blank">Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks</a></li>
+<li><a href="https://arxiv.org/abs/2610.12421" target="_blank">Beyond Spatio-Temporal Priors: A Generalizable Approach for Dense Correspondence Matching</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>

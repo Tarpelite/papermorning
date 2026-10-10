@@ -10,6 +10,14 @@
     <ns0:image href="https://papermorning.pages.dev/cover.jpg" />
     <ns0:category text="Science" />
     <item>
+      <title>Paper Morning 2026-10-10</title>
+      <description>今日学术播报: Multi-Agent Egocentric World M, MiMo-V2.6: Scaling Reinforceme, OuroWorld: Bringing Any 3D Wor...</description>
+      <enclosure url="https://papermorning.pages.dev/episodes/2026-10-10.mp3" length="9164008" type="audio/mpeg" />
+      <guid>https://papermorning.pages.dev/episodes/2026-10-10.mp3</guid>
+      <pubDate>2026-10-10T01:54:17.273089Z</pubDate>
+      <ns0:duration>300</ns0:duration>
+    </item>
+    <item>
       <title>Paper Morning 2026-10-09</title>
       <description>今日学术播报: UniWAM: Unified World-Action M, Self-Retrospection Distillatio, Tetris3D: 3D Scene Generation ...</description>
       <enclosure url="https://papermorning.pages.dev/episodes/2026-10-09.mp3" length="8705715" type="audio/mpeg" />
@@ -239,14 +247,6 @@
       <enclosure url="https://papermorning.pages.dev/episodes/2026-09-11.mp3" length="7240560" type="audio/mpeg" />
       <guid>https://papermorning.pages.dev/episodes/2026-09-11.mp3</guid>
       <pubDate>2026-09-11T00:25:36.699853Z</pubDate>
-      <ns0:duration>300</ns0:duration>
-    </item>
-    <item>
-      <title>Paper Morning 2026-09-10</title>
-      <description>今日学术播报: DriveZero: End-to-End Driving , Miles v0.1: Production-Level P, Mask Forcing: Improving Autore...</description>
-      <enclosure url="https://papermorning.pages.dev/episodes/2026-09-10.mp3" length="10842323" type="audio/mpeg" />
-      <guid>https://papermorning.pages.dev/episodes/2026-09-10.mp3</guid>
-      <pubDate>2026-09-10T00:29:35.754324Z</pubDate>
       <ns0:duration>300</ns0:duration>
     </item>
   </channel>
