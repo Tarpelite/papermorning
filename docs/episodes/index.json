@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-11",
+    "title": "Paper Morning 2026-10-11",
+    "description": "今日学术播报: Multi-Agent Egocentric World M, MiMo-V2.6: Scaling Reinforceme, OuroWorld: Bringing Any 3D Wor...",
+    "audio_file": "2026-10-11.mp3",
+    "script": "各位早上好，周末的Paper Morning又和大家见面了。\n\n今天想先从一个我们在AI4S里经常遇到的问题说起：当我们训练一个模型来预测物理系统时，本质上我们是在构建一个关于这个世界的“模型”，只是这个模型通常只服务于单一任务。那么跨任务、跨场景的泛化能力怎么来？这周有几篇论文从不同角度触及了这个问题，我觉得挺有意思。\n\n第一篇是多智能体自我中心世界模型。之前的世界模型研究大多聚焦在单个智能体上，但这篇工作关注的是多个智能体在共享环境中的交互。他们提出ME-World框架，能够在第一人称视角下同时预测多个智能体的观测，并且保持动作一致性、环境一致性和交互引起的状态更新传播。\n\n这篇工作的亮点在于它把“多个智能体在同一个物理世界中交互”这个问题本身，抽象成了一个可以联合建模的生成任务。但我更关心的是它和科学计算的联系：想象一下多物理场模拟中，不同物理量之间的耦合关系是不是也很像多个智能体的交互？温度场和速度场的相互影响，能否借鉴这种交叉视角的一致性建模思路？这篇工作目前更多是视觉和机器人场景，但它提出的跨智能体状态传播机制，对我们构建耦合的物理仿真模型或许有启发。\n\n接下来这篇 MiM...",
+    "papers": [
+      {
+        "title": "Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction",
+        "url": "https://arxiv.org/abs/2610.12299",
+        "arxiv_id": "2610.12299"
+      },
+      {
+        "title": "MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement",
+        "url": "https://arxiv.org/abs/2610.11959",
+        "arxiv_id": "2610.11959"
+      },
+      {
+        "title": "OuroWorld: Bringing Any 3D World Alive as Diverse, Endlessly Looping 3D Cinemagraphs",
+        "url": "https://arxiv.org/abs/2610.12461",
+        "arxiv_id": "2610.12461"
+      },
+      {
+        "title": "Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks",
+        "url": "https://arxiv.org/abs/2610.11794",
+        "arxiv_id": "2610.11794"
+      },
+      {
+        "title": "Foundations of Large Language Models",
+        "url": "https://arxiv.org/abs/2501.09223",
+        "arxiv_id": "2501.09223"
+      }
+    ],
+    "published_at": "2026-10-11T01:11:46.572522Z"
+  },
+  {
     "date": "2026-10-10",
     "title": "Paper Morning 2026-10-10",
     "description": "今日学术播报: Multi-Agent Egocentric World M, MiMo-V2.6: Scaling Reinforceme, OuroWorld: Bringing Any 3D Wor...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-12T00:31:17.643134Z"
-  },
-  {
-    "date": "2026-09-11",
-    "title": "Paper Morning 2026-09-11",
-    "description": "今日学术播报: Programmable World Model, AgentGrad: Intervention-guided, Show-Harness: Just a VLM Agent...",
-    "audio_file": "2026-09-11.mp3",
-    "script": "各位早上好，今天周五，Paper Morning开播了。\n\n我想先从一个我们领域最近特别热闹的话题说起——怎么让AI真正理解物理世界？过去一年，大家都在讨论world model，但真正能用来做科学计算、能和物理模拟对接的world model其实还很少。今天这几篇论文刚好从不同角度触碰了这个问题。\n\n第一篇是Programmable World Model，作者是港中文的团队。他们提出了一个很有野心的想法：把world model分成两层，一层管世界状态的演化，一层管视觉生成。具体做法是用自然语言指令生成可执行程序，这些程序直接控制实体状态和状态转移规则，而不仅仅是生成像素。这意味着模型能维护一个显式的、持久的世界状态，哪怕物体不在画面里。这让我想到我们做PDE求解的时候，解的存在性本身就是对全局状态的某种保证。如果把这个思路迁移到科学计算，也许能让neural operator真正记住系统的长期行为，而不是只预测下一个时间步。\n\n第二篇AgentGrad关注的是多智能体系统的prompt优化。这个问题其实和我们训练neural operator时遇到的挑战很像——怎么让各个组件之间...",
-    "papers": [
-      {
-        "title": "Programmable World Model",
-        "url": "https://arxiv.org/abs/2609.10540",
-        "arxiv_id": "2609.10540"
-      },
-      {
-        "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
-        "url": "https://arxiv.org/abs/2609.08572",
-        "arxiv_id": "2609.08572"
-      },
-      {
-        "title": "Show-Harness: Just a VLM Agent Can Play Robots",
-        "url": "https://arxiv.org/abs/2609.10522",
-        "arxiv_id": "2609.10522"
-      },
-      {
-        "title": "OpenWAM: An Open, Modular Exploration Towards Systematic World-Action Model Pretraining",
-        "url": "https://arxiv.org/abs/2609.07398",
-        "arxiv_id": "2609.07398"
-      },
-      {
-        "title": "Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation",
-        "url": "https://arxiv.org/abs/2609.08084",
-        "arxiv_id": "2609.08084"
-      }
-    ],
-    "published_at": "2026-09-11T00:25:36.699853Z"
   }
 ]
