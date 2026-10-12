@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-10-12",
+    "title": "Paper Morning 2026-10-12",
+    "description": "今日学术播报: Multi-Agent Egocentric World M, MiMo-V2.6: Scaling Reinforceme, OuroWorld: Bringing Any 3D Wor...",
+    "audio_file": "2026-10-12.mp3",
+    "script": "各位早上好，Paper Morning又和大家见面了。\n\n今天想和大家聊几篇最近比较热闹的论文，不过我得先坦白一件事：今天选的这些文章，严格来说大部分不是我们AI4S“自己家里”的活儿。但我之所以还是把它们挑出来，是因为我觉得它们折射出的趋势，其实和我们在意的事情暗暗相通。\n\n先看第一篇，Multi-Agent Egocentric World Model，简称ME-World。这篇文章在解决一个什么问题呢？它说现在的world model大多只关注单个智能体，但真实世界从来不是这样的。多个智能体共享一个环境，还要做精细的物理交互——比如两个人协作搬一个箱子，或者机器人之间传递工具——这种场景下，你的world model怎么保持一致性？这篇文章提出了三个一致性要求：跨视角的动作一致性、共享环境的一致性，以及交互引起的状态更新的连续性。他们用了一个联合去噪的架构来处理多个智能体的ego-stream。我感兴趣的是，这本质上是在处理多体系统的演化问题，和我们做PDE求解、分子动力学模拟其实面对的是类似的挑战——只不过他们用的是视觉观测，我们用的是物理方程。\n\n接下来这篇MiMo-V2.6...",
+    "papers": [
+      {
+        "title": "Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction",
+        "url": "https://arxiv.org/abs/2610.12299",
+        "arxiv_id": "2610.12299"
+      },
+      {
+        "title": "MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement",
+        "url": "https://arxiv.org/abs/2610.11959",
+        "arxiv_id": "2610.11959"
+      },
+      {
+        "title": "OuroWorld: Bringing Any 3D World Alive as Diverse, Endlessly Looping 3D Cinemagraphs",
+        "url": "https://arxiv.org/abs/2610.12461",
+        "arxiv_id": "2610.12461"
+      },
+      {
+        "title": "Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks",
+        "url": "https://arxiv.org/abs/2610.11794",
+        "arxiv_id": "2610.11794"
+      },
+      {
+        "title": "Foundations of Large Language Models",
+        "url": "https://arxiv.org/abs/2501.09223",
+        "arxiv_id": "2501.09223"
+      }
+    ],
+    "published_at": "2026-10-12T01:38:16.853542Z"
+  },
+  {
     "date": "2026-10-11",
     "title": "Paper Morning 2026-10-11",
     "description": "今日学术播报: Multi-Agent Egocentric World M, MiMo-V2.6: Scaling Reinforceme, OuroWorld: Bringing Any 3D Wor...",
@@ -1013,40 +1048,5 @@
       }
     ],
     "published_at": "2026-09-13T00:11:28.730046Z"
-  },
-  {
-    "date": "2026-09-12",
-    "title": "Paper Morning 2026-09-12",
-    "description": "今日学术播报: Scaling Automatic Research Age, NCP-ArchPreview Technical Repo, SpatialBlock: Enhancing Spatia...",
-    "audio_file": "2026-09-12.mp3",
-    "script": "各位早上好，Paper Morning开播了。\n\n今天想先聊一篇特别应景的论文，叫做《Scaling Automatic Research Agents via World Models》。它讨论的是一个非常根本的问题：当我们要用强化学习去训练AI科研代理人的时候，成本到底花在哪里？作者发现了一个结构性的矛盾：科研代理人的轨迹由两部分组成——生成动作和执行环境——这两部分的计算特性完全不同。生成可以批量并行，但执行必须占用独立的沙箱和真实时间。结果就是，随着轨迹变长，环境执行成为了真正的瓶颈。这让我想到咱们AI4S领域训练神经算子的时候，何尝不是这样？训练数据生成往往才是成本大头，而不是模型本身的前向传播。这篇工作提出用世界模型来模拟执行环境，从而把成本从环境执行转移到生成侧来做批量计算，思路有点像咱们用神经网络代理PDE求解器的思路——用可学习的近似替代昂贵的真实过程。\n\n接下来一篇很有意思，《NCP-ArchPreview》提出了一种全新的语言模型预训练目标，叫做Next Concept Prediction。传统的next-token预测是在离散token级别做自回归，这篇工作说...",
-    "papers": [
-      {
-        "title": "Scaling Automatic Research Agents via World Models",
-        "url": "https://arxiv.org/abs/2608.12564",
-        "arxiv_id": "2608.12564"
-      },
-      {
-        "title": "NCP-ArchPreview Technical Report: Moving towards Latent Space Language Models through Next Concept Prediction",
-        "url": "https://arxiv.org/abs/2609.10715",
-        "arxiv_id": "2609.10715"
-      },
-      {
-        "title": "SpatialBlock: Enhancing Spatial Intelligence in LVLMs via Synthetic Block-Stacking Problem",
-        "url": "https://arxiv.org/abs/2609.07064",
-        "arxiv_id": "2609.07064"
-      },
-      {
-        "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
-        "url": "https://arxiv.org/abs/2609.11929",
-        "arxiv_id": "2609.11929"
-      },
-      {
-        "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
-        "url": "https://arxiv.org/abs/2609.08572",
-        "arxiv_id": "2609.08572"
-      }
-    ],
-    "published_at": "2026-09-12T00:31:17.643134Z"
   }
 ]

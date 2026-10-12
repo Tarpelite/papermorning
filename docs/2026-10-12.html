@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Morning 2026-10-12</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+               max-width: 680px; margin: 0 auto; padding: 24px; color: #1a1a1a;
+               background: #fafafa; }
+        h1 { font-size: 1.5em; margin-bottom: 8px; }
+        .date { color: #666; margin-bottom: 20px; }
+        audio { width: 100%; margin: 20px 0; }
+        .script { background: #fff; padding: 20px; border-radius: 8px;
+                   line-height: 1.8; white-space: pre-wrap; border: 1px solid #eee; }
+        .papers { margin-top: 24px; }
+        .papers h2 { font-size: 1.1em; margin-bottom: 12px; }
+        .papers li { margin: 8px 0; }
+        .papers a { color: #0066cc; text-decoration: none; }
+        .papers a:hover { text-decoration: underline; }
+        .nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+        .nav a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Paper Morning 2026-10-12</h1>
+    <p class="date">2026-10-12</p>
+
+    <audio controls preload="metadata">
+        <source src="episodes/2026-10-12.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放
+    </audio>
+
+    <div class="script">各位早上好，Paper Morning又和大家见面了。
+
+今天想和大家聊几篇最近比较热闹的论文，不过我得先坦白一件事：今天选的这些文章，严格来说大部分不是我们AI4S“自己家里”的活儿。但我之所以还是把它们挑出来，是因为我觉得它们折射出的趋势，其实和我们在意的事情暗暗相通。
+
+先看第一篇，Multi-Agent Egocentric World Model，简称ME-World。这篇文章在解决一个什么问题呢？它说现在的world model大多只关注单个智能体，但真实世界从来不是这样的。多个智能体共享一个环境，还要做精细的物理交互——比如两个人协作搬一个箱子，或者机器人之间传递工具——这种场景下，你的world model怎么保持一致性？这篇文章提出了三个一致性要求：跨视角的动作一致性、共享环境的一致性，以及交互引起的状态更新的连续性。他们用了一个联合去噪的架构来处理多个智能体的ego-stream。我感兴趣的是，这本质上是在处理多体系统的演化问题，和我们做PDE求解、分子动力学模拟其实面对的是类似的挑战——只不过他们用的是视觉观测，我们用的是物理方程。
+
+接下来这篇MiMo-V2.6很有意思，它是把RL的scaling推到了一个新尺度。作者说他们用了异步训练，每一步消耗1568个样本和27亿到37亿个token，上下文长度能达到100万。这让我想到一个我们领域一直在讨论的问题：科学计算领域能不能复现NLP的scaling law？过去一年各种PDE foundation model层出不穷，但到底能不能像大语言模型那样靠堆算力堆数据就迎来智能涌现？这篇工作给我们的启示可能不在于它的具体技术，而在于它展示了一条可行的scaling路径——先把模型做厚，再通过RL来激发能力。那么反过来，如果我们把类似的多模态RL训练范式引入到科学问题求解中，会不会也能打开新的空间？
+
+然后第三篇 OuroWorld 挺有创意，它要把静态的3D Gaussian Splatting场景变成可以动的cinemagraph，而且是任意视角都能平滑循环的那种。他们用视觉语言模型来推断合理的动态，再引导视频模型生成参考视频，最后lift成多视角视频。这里面有个技术细节我很欣赏：他们提出了Inconsistency-Robust Periodic 4DGS，用傅里叶级数保证循环，再用grounded drift field来处理跨视角的不一致。这其实反映了一个更广泛的问题：当我们从稀疏观测重建连续动态时，怎么处理不一致性？不管是做流体模拟还是材料变形，这个问题天天都会遇到。
+
+第四篇 Memento 3 是关于LLM智能体怎么通过外部记忆来持续学习world model的。它让智能体维护一个自然语言写的规则书，记录可修订的假设，然后把这些规则编译成可执行代码用于预测和规划。这让我想到一个根本性的问题：我们在科学计算中，通常是先有方程再有求解器，但如果我们想让AI系统从观测中自主发现物理规律，这个“规则书”的概念其实提供了一个有趣的中间表示——它比纯神经网络的可解释性强，又比硬编码的方程更灵活。我觉得这可能是未来AI辅助科学发现的一个很有前景的方向。
+
+最后一本是 Foundations of Large Language Models，一本教科书，作者说它聚焦于基础概念而不是全面覆盖最新技术，内容包括预训练、生成模型、提示、对齐、推理和推理。把它放在这里不是要推荐大家去读——作为AI4S的研究者，我们更关心的是怎么把LLM的能力迁移到科学问题上。但这本书的存在本身提醒了我一件事：整个AI领域正在从“做模型”走向“做系统”，从“刷榜单”走向“真实可用”。这个大趋势同样会影响到我们科学计算领域。
+
+好了，总结一下今天的观察。我发现今天这几篇文章其实都指向同一个方向：不管是world model、scaling RL、动态场景重建还是LLM的持续学习，大家都在处理同一个核心问题——怎么让AI系统对复杂世界保持一致的理解和推理能力。这种能力，在NLP领域可能叫“智能”，在我们科学计算领域，其实就是我们天天在解决的PDE求解、分子模拟、控制优化这些问题。路径不同，但目标相通。这或许意味着，AI4S的下一波突破，很可能就是从这些看似“外部”的进展中汲取灵感。咱们下周见。</div>
+
+    <div class="papers">
+        <h2>本期涉及论文</h2>
+        <ul><li><a href="https://arxiv.org/abs/2610.12299" target="_blank">Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction</a></li>
+<li><a href="https://arxiv.org/abs/2610.11959" target="_blank">MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement</a></li>
+<li><a href="https://arxiv.org/abs/2610.12461" target="_blank">OuroWorld: Bringing Any 3D World Alive as Diverse, Endlessly Looping 3D Cinemagraphs</a></li>
+<li><a href="https://arxiv.org/abs/2610.11794" target="_blank">Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks</a></li>
+<li><a href="https://arxiv.org/abs/2501.09223" target="_blank">Foundations of Large Language Models</a></li>
+</ul>
+    </div>
+
+    <div class="nav">
+        <a href="./">← 返回首页</a> ·
+        <a href="feed.xml">RSS 订阅</a>
+    </div>
+</body>
+</html>
